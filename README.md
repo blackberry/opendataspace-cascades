@@ -2,7 +2,7 @@ opendataspace-cascades
 ======================
 
 OpenDataSpace client for BlackBerry 10 devices using Cascades.
-This is a sister project of opendataspace-nnjava for client apps running on BlackBerry OS 7+.
+This is a sister project of opendataspace-bbjava for client apps running on BlackBerry OS 7+.
 
 OpenDataSpace client apps are accessing SecureDataSpace servers.
 
