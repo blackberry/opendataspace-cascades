@@ -14,8 +14,8 @@ The project is open sourced under the Apache 2.0 license
 Roadmap:
 ======================
 
-development starts in august 2012, a first app will be presented at Unconference Day of BB Jam Americas Conference in San Jose.
-A full featured app will be submitted to AppWorld in the beginning of 2013.
+Development starts in august 2012, a first app will be presented at [BB Jam Americas 2012 Unconference Day](http://www.blackberryjamconference.com/americas/content/unconference-day) in San Jose.
+A full featured app will be submitted to AppWorld in the beginning of 2013, a developer preview will become available end of september 2012.
 
 Follow the project
 ======================
