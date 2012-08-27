@@ -4,18 +4,31 @@
 <context>
     <name>LoginSheet</name>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="64"/>
+        <location filename="../assets/LoginSheet.qml" line="79"/>
         <source>Please enter your Username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="71"/>
+        <location filename="../assets/LoginSheet.qml" line="86"/>
         <source>Please enter your Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="76"/>
+        <location filename="../assets/LoginSheet.qml" line="92"/>
         <source>Login</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>main</name>
+    <message>
+        <location filename="../assets/main.qml" line="66"/>
+        <source>DataRooms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="70"/>
+        <source>Users</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

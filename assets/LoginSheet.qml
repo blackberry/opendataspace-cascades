@@ -20,17 +20,32 @@ import bb.cascades 1.0
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
  *
 */
-Page {
-    property alias sheetBackground: backgroundImage.image
+Page { 
     signal done(bool ok)
+    // seems not to work
+    resizeBehavior: PageResizeBehavior.Resize
     // 
     attachedObjects: [
+        // we need this image as background for the LoginScreen
+        // because we toggle often we use an ImageTracker
+        // TODO: different background images for different sizes of smartphone or tablet
+        ImageTracker {
+            id: backgroundLandscape
+            imageSource: "asset:///images/login-ods-1280x768.png"
+        }, 
+        // the BackgroundImage
+        ImageTracker {
+            id: backgroundPortrait
+            imageSource: "asset:///images/login-ods-768x1280.png"
+        },
         // recalculate positions
         OrientationHandler {
             onUiOrientationChanged: {
                 if (uiOrientation == UiOrientation.Landscape) {
+                    backgroundImage.image = backgroundLandscape.image
                     mainContainer.layoutProperties.positionY = 380
                 } else {
+                    backgroundImage.image = backgroundPortrait.image
                     mainContainer.layoutProperties.positionY = 900
                 }
             }
@@ -64,13 +79,14 @@ Page {
     		            hintText: qsTr("Please enter your Username")
     		            preferredWidth: 400.0
     		            opacity: 0.9
-    		            
     		        }
+    		        // we need password masking
     		        TextField {
     		            id: password
     		            hintText: qsTr("Please enter your Password")
     		            preferredWidth: 400.0
     		            opacity: 0.9
+    		            inputMode: TextFieldInputMode.Password 
     		        }
 		            Button {
 		                text: qsTr ("Login")
@@ -87,8 +103,10 @@ Page {
 		onCreationCompleted: {
 		    // initialize positioning
 		    if (OrientationSupport.uiOrientation == UiOrientation.Landscape) {
+		        backgroundImage.image = backgroundLandscape.image
                 mainContainer.layoutProperties.positionY = 380
             } else {
+                backgroundImage.image = backgroundPortrait.image
                 mainContainer.layoutProperties.positionY = 900
             }
 		}

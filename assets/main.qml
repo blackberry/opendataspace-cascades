@@ -21,6 +21,7 @@
 */
 
 Page {
+    id: homePage
     property alias sheetVisible: loginSheet.visible
     //
     attachedObjects: [
@@ -33,18 +34,17 @@ Page {
                 id: loginContent
             }
         },
-        // we need this image as background for the HomeScreen and LogIn Screen
-        // so we use an ImageTracker
-        // Hint: if Image wouldn't be from assets we had to watch onStateChanged
+        // we need this image as background for the HomeScreen
+        // because we toggle often we use an ImageTracker
         // TODO: different background images for different sizes of smartphone or tablet
         ImageTracker {
             id: backgroundLandscape
-            imageSource: "asset:///images/login-ods-1280x768.png"
+            imageSource: "asset:///images/login-ods-1280x768-o.png"
         }, 
         // the BackgroundImage
         ImageTracker {
             id: backgroundPortrait
-            imageSource: "asset:///images/login-ods-768x1280.png"
+            imageSource: "asset:///images/login-ods-768x1280-o.png"
         },
         // application supports changing the Orientation
         OrientationHandler {
@@ -57,9 +57,25 @@ Page {
                 } else {
                     backgroundImage.image = backgroundPortrait.image
                 }
-                // same bg for LoginSheet
-                // this works also if Orientation changes while Sheet is visible
-                loginContent.sheetBackground = backgroundImage.image
+            }
+        }
+    ]
+    // Actions
+    actions: [
+        ActionItem {
+            title: qsTr ("DataRooms")
+            ActionBar.placement: ActionBarPlacement.OnBar
+        }, 
+        ActionItem {
+            title: qsTr ("Users")
+            ActionBar.placement: ActionBarPlacement.OnBar
+        },
+        ActionItem {
+            title: "Dummi"
+            ActionBar.placement: ActionBarPlacement.OnBar
+            onTriggered: {
+                // dummi to reopen login
+                loginSheet.visible = true
             }
         }
     ]
@@ -87,15 +103,8 @@ Page {
                 positionX: 0
                 positionY: 0
             }
-            // only a placeholder
-            Button {
-                id: buttonDummi
-                text: ("Dummi")
-                onClicked: {
-                    //-- when a button is clicked, the LogIn is shown
-                    loginSheet.visible = true
-                }
-            }
+            // place recently used Room here
+            
         }
         // a delayed-for-1000 ms Animation to open LoginSheet first time
         animations: [
@@ -122,6 +131,8 @@ Page {
 
     // the HomeScreen is initialized
     onCreationCompleted: {
+        // Overlay ActionBar
+        homePage.actionBarVisibility = ChromeVisibility.Overlay
         // support all orientations
         OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
         // test current Orientation and set the Background Image
@@ -130,8 +141,6 @@ Page {
         } else {
             backgroundImage.image = backgroundPortrait.image
         }
-        // same bg for LoginSheet
-        loginContent.sheetBackground = backgroundImage.image
         //-- connect the sheet done SIGNAL to the handler SLOT
         loginContent.done.connect(saveEdits)
         // start the animation to open LoginSheet after 1 s
