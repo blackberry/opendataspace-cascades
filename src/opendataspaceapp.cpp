@@ -103,6 +103,9 @@ void OpenDataSpaceApp::feedbackTriggered(){
 // handles SLOT from helpItem
 void OpenDataSpaceApp::helpTriggered(){
 	// TODO root->setProperty("sheetVisible", true);
+	// en: http://www.ssp-europe.eu/en/products/secure-data-space.html
+	// de: http://www.ssp-europe.eu/produkte/secure-data-space.html
+
 }
 
 // handles SLOT from settingsItem
