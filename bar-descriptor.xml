@@ -91,7 +91,7 @@
     
     <!--  The icon for the application, which should be 86x86. -->
     <icon>
-        <image>icon.png</image>
+        <image>app-ods-150x150.png</image>
     </icon>
 
     <asset path="icon.png">icon.png</asset>
@@ -103,6 +103,8 @@
     <asset path="translations" dest="qm">
         <include name="*.qm"/>
     </asset>
+    <asset path="/daten/opendataspace-cascades">opendataspace-cascades</asset>
+    <asset path="assets/images/app-ods-150x150.png">app-ods-150x150.png</asset>
     
     <!-- Request permission to execute native code.  Required for native applications. -->
     <action system="true">run_native</action>
