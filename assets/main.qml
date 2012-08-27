@@ -69,14 +69,6 @@ Page {
         ActionItem {
             title: qsTr ("Users")
             ActionBar.placement: ActionBarPlacement.OnBar
-        },
-        ActionItem {
-            title: "Dummi"
-            ActionBar.placement: ActionBarPlacement.OnBar
-            onTriggered: {
-                // dummi to reopen login
-                loginSheet.visible = true
-            }
         }
     ]
     

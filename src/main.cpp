@@ -1,4 +1,4 @@
-#include "app.hpp"
+#include "opendataspaceapp.hpp"
 
 #include <bb/cascades/Application>
 
@@ -20,7 +20,7 @@ int main(int argc, char **argv)
         app.installTranslator( &translator );
     }
     
-    App mainApp;
+    OpenDataSpaceApp mainApp;
     
     //-- we complete the transaction started in the app constructor and start the client event loop here
     return Application::exec();
