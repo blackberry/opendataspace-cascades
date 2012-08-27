@@ -56,5 +56,8 @@ App::App()
     // Open the HomeScreen
     Application::setScene(root);
     // at StartUp the LoginSheet should be displayed immediately
-    root->setProperty("sheetVisible", true);
+    // so at first I tried it this way:
+    // root->setProperty("sheetVisible", true);
+    // but then the Sheet is so fast opened that the User doesn't notify what happened
+    // so I decided to use  a delayed animation
 }

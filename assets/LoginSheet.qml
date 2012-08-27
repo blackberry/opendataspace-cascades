@@ -23,6 +23,19 @@ import bb.cascades 1.0
 Page {
     property alias sheetBackground: backgroundImage.image
     signal done(bool ok)
+    // 
+    attachedObjects: [
+        // recalculate positions
+        OrientationHandler {
+            onUiOrientationChanged: {
+                if (uiOrientation == UiOrientation.Landscape) {
+                    mainContainer.layoutProperties.positionY = 380
+                } else {
+                    mainContainer.layoutProperties.positionY = 900
+                }
+            }
+        }
+    ]
     // the first Container to hold the Background
     Container {
             id: backgroundContainer
@@ -37,8 +50,7 @@ Page {
 		        layout: StackLayout {
 		        }
 		        layoutProperties: AbsoluteLayoutProperties {
-                    positionX: 0
-                    positionY: 0
+                    positionX: 50
                 }
 		        id: mainContainer
 		        // would prefer to use background: Color.Transparent
@@ -49,23 +61,35 @@ Page {
 		            }
 		            TextField {
     		            id: username
-    		            hintText: qsTr("Username")
+    		            hintText: qsTr("Please enter your Username")
+    		            preferredWidth: 400.0
+    		            opacity: 0.9
+    		            
     		        }
     		        TextField {
     		            id: password
-    		            hintText: qsTr("Password")
+    		            hintText: qsTr("Please enter your Password")
+    		            preferredWidth: 400.0
+    		            opacity: 0.9
     		        }
 		            Button {
-		                text: qsTr ("LogIn")
-		                preferredWidth: 50.0
+		                text: qsTr ("Login")
+		                preferredWidth: 400.0
 		                onClicked: {
 		                    // TODO call C++ function to test if Login was OK
 		                    done(true)
 		                }
 		            }
 		        }
-
-		        
 		    }
-}
+		}
+		// watch the Orientation and reposition the controls
+		onCreationCompleted: {
+		    // initialize positioning
+		    if (OrientationSupport.uiOrientation == UiOrientation.Landscape) {
+                mainContainer.layoutProperties.positionY = 380
+            } else {
+                mainContainer.layoutProperties.positionY = 900
+            }
+		}
 }
