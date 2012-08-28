@@ -4,8 +4,8 @@
 <context>
     <name>HelpSheet</name>
     <message>
-        <location filename="../assets/HelpSheet.qml" line="36"/>
-        <source>Back</source>
+        <location filename="../assets/HelpSheet.qml" line="30"/>
+        <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -22,27 +22,34 @@ import bb.cascades 1.0
 */
 Page { 
     signal helpDone(bool ok)
+    
+    id: helpPage
+    // Actions
+        actions: [
+        ActionItem {
+            title: qsTr ("Close")
+            ActionBar.placement: ActionBarPlacement.OnBar
+            onTriggered: {
+                helpDone(true)
+            }
+        }
+    ]
+    
     ScrollView {
 	    // the main container to go to website for Help
 	    Container {
 	        layout: StackLayout {
 	        }
 	        id: mainContainer
-	        Container {
-	            layout: StackLayout {
-	                layoutDirection: LayoutDirection.TopToBottom
-	            }
-	            Button {
-	                text: qsTr ("Back")
-	                onClicked: {
-	                    helpDone(true)
-	                }
-	            }
-	            WebView {
-	                   id: webView
-	                   url: "http://www.ssp-europe.eu/en/products/secure-data-space.html"       
-	               }
-	        }
+	        WebView {
+               id: webView
+               url: "http://www.ssp-europe.eu/en/products/secure-data-space.html"       
+           }
 	    }
-}
+	}
+	
+	onCreationCompleted: {
+        // Overlay ActionBar
+        helpPage.actionBarVisibility = ChromeVisibility.Overlay
+    }
 }
