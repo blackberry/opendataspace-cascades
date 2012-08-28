@@ -28,7 +28,7 @@ Page {
         actions: [
         ActionItem {
             title: qsTr ("Close")
-            ActionBar.placement: ActionBarPlacement.OnBar
+            ActionBar.placement: ActionBarPlacement.Default
             onTriggered: {
                 helpDone(true)
             }
