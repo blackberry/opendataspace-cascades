@@ -2,6 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="es_ES">
 <context>
+    <name>HelpSheet</name>
+    <message>
+        <location filename="../assets/HelpSheet.qml" line="36"/>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LoginSheet</name>
     <message>
         <location filename="../assets/LoginSheet.qml" line="79"/>
@@ -22,12 +30,12 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="66"/>
+        <location filename="../assets/main.qml" line="74"/>
         <source>DataRooms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="70"/>
+        <location filename="../assets/main.qml" line="78"/>
         <source>Users</source>
         <translation type="unfinished"></translation>
     </message>

@@ -31,8 +31,8 @@
     <!-- The name that is displayed in the BlackBerry Tablet OS application installer. 
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
     <name>
-       OpenDataSpace
-       <text xml:lang="de">OpenDataSpace</text>
+       Data Space
+       <text xml:lang="de">Data Space</text>
     </name>
     
     <!-- A string value of the format <0-999>.<0-999>.<0-999> that represents application version which can be used to check for application upgrade. 

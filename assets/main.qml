@@ -22,16 +22,24 @@
 
 Page {
     id: homePage
-    property alias sheetVisible: loginSheet.visible
+    property alias loginSheetVisible: loginSheet.visible
+    property alias helpSheetVisible: helpSheet.visible
     //
     attachedObjects: [
         //-- sheet is not visible still, prepare it and append to the attachedObjects
         //-- attachedObjects property is a storage for objects which are not supposed to be visible on scene
         Sheet {
             id: loginSheet
-            //-- sheet GUI appearence component is defined in external CommentSheet.qml file
+            //-- sheet GUI appearence component is defined in external LoginSheet.qml file
             content: LoginSheet {
                 id: loginContent
+            }
+        },
+        Sheet {
+            id: helpSheet
+            //-- sheet GUI appearence component is defined in external HelpSheet.qml file
+            content: HelpSheet {
+                id: helpContent
             }
         },
         // we need this image as background for the HomeScreen
@@ -120,6 +128,10 @@ Page {
         }
         loginSheet.visible = false
     }
+    // the handler  SLOT HELP done
+    function closeHelp(ok) {
+        helpSheet.visible = false
+    }
 
     // the HomeScreen is initialized
     onCreationCompleted: {
@@ -135,6 +147,10 @@ Page {
         }
         //-- connect the sheet done SIGNAL to the handler SLOT
         loginContent.done.connect(saveEdits)
+        //
+        helpContent.helpDone.connect(closeHelp)
+        helpSheet.visible = false
+        loginSheet.visible = false
         // start the animation to open LoginSheet after 1 s
         startupDelayToOpenSheetFirstTime.play();
     }

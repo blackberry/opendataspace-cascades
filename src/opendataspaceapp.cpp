@@ -74,7 +74,7 @@ Menu* OpenDataSpaceApp::createSystemMenu() {
 	// TODO IMAGE
 	// SETTINGS will open the User Settings
 	SettingsActionItem* settingsItem = new SettingsActionItem();
-	settingsItem->setTitle("Help");
+	settingsItem->setTitle("Settings");
 	// TODO Image
 	// plug it all together
 	Menu* menu = Menu::create()
@@ -92,7 +92,7 @@ Menu* OpenDataSpaceApp::createSystemMenu() {
 
 // handles SLOT from logoutItem
 void OpenDataSpaceApp::logoutTriggered(){
-	root->setProperty("sheetVisible", true);
+	root->setProperty("loginSheetVisible", true);
 }
 
 // handles SLOT from feedbackItem
@@ -102,10 +102,9 @@ void OpenDataSpaceApp::feedbackTriggered(){
 
 // handles SLOT from helpItem
 void OpenDataSpaceApp::helpTriggered(){
-	// TODO root->setProperty("sheetVisible", true);
 	// en: http://www.ssp-europe.eu/en/products/secure-data-space.html
 	// de: http://www.ssp-europe.eu/produkte/secure-data-space.html
-
+	root->setProperty("helpSheetVisible", true);
 }
 
 // handles SLOT from settingsItem
