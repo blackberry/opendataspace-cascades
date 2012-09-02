@@ -16,6 +16,7 @@
 import "rooms"
 import "users"
 import "upload"
+import "webpages"
 
 /*
  * 
@@ -48,8 +49,10 @@ TabbedPane {
         Sheet {
             id: helpSheet
             //-- sheet GUI appearence component is defined in external HelpSheet.qml file
-            content: HelpSheet {
+            content: WebPageHelpSheet {
                 id: helpContent
+                // theURL is a custom property to allow setting the URL fro  outside or inside the QML file
+                theURL: "http://www.ssp-europe.eu/en/products/secure-data-space.html"
             }
         }
     ]

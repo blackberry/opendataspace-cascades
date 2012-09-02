@@ -4,9 +4,8 @@
 <context>
     <name>HelpSheet</name>
     <message>
-        <location filename="../assets/HelpSheet.qml" line="30"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Schließen</translation>
     </message>
 </context>
 <context>
@@ -14,38 +13,38 @@
     <message>
         <location filename="../assets/LoginSheet.qml" line="80"/>
         <source>Please enter your Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte Benutzernamen eingeben</translation>
     </message>
     <message>
         <location filename="../assets/LoginSheet.qml" line="87"/>
         <source>Please enter your Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte Passwort eingeben</translation>
     </message>
     <message>
         <location filename="../assets/LoginSheet.qml" line="93"/>
         <source>Login</source>
-        <translation type="unfinished"></translation>
+        <translation>Anmelden</translation>
     </message>
 </context>
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="61"/>
+        <location filename="../assets/main.qml" line="64"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="69"/>
+        <location filename="../assets/main.qml" line="72"/>
         <source>Rooms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="78"/>
+        <location filename="../assets/main.qml" line="81"/>
         <source>Users</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="87"/>
+        <location filename="../assets/main.qml" line="90"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
