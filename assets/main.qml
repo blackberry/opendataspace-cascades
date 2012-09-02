@@ -66,12 +66,13 @@ TabbedPane {
             id: homePage
         }
     } 
-    // Tab: Rooms with List of Rooms (DataSpace)
+    // Tab: DataSpace with List of Rooms (DataSpace)
+    // SubRooms and Folders are in Pages
     Tab {
-        id: roomsTab
-        title: qsTr("Rooms")
-        RoomsNavPane {
-            id: roomsPane
+        id: dataspaceTab
+        title: qsTr("Data Space")
+        DataSpaceNavPane {
+            id: dataspacePane
         }
     }
     // Tab: Users with List of Users
