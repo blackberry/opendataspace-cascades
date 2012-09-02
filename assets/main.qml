@@ -13,6 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */import bb.cascades 1.0
+import "rooms"
+import "users"
+import "upload"
 
 /*
  * 
@@ -20,14 +23,21 @@
  *
 */
 
-Page {
-    id: homePage
+// our Root is a Tabbed Pane, where all Tabs are on ActionBar at HomePage
+
+// all following Pages hide the TAB Navigation in the Sidebar to give the ActionBar space to ActionItems
+
+// unfortunately I cannot hide or add/delete Tabs from QML, so the Uploads Tab is disabled instead invisible
+
+TabbedPane {
+    id: rootNavigationPane
+    showTabsOnActionBar: true
+    // allow setting these Sheets to visible from C++ (SystemMenu)
     property alias loginSheetVisible: loginSheet.visible
     property alias helpSheetVisible: helpSheet.visible
-    //
+    // these objects have to be available on all tabs
     attachedObjects: [
-        //-- sheet is not visible still, prepare it and append to the attachedObjects
-        //-- attachedObjects property is a storage for objects which are not supposed to be visible on scene
+        // SHEETS to be used by SYSTEM MENU
         Sheet {
             id: loginSheet
             //-- sheet GUI appearence component is defined in external LoginSheet.qml file
@@ -41,84 +51,49 @@ Page {
             content: HelpSheet {
                 id: helpContent
             }
-        },
-        // we need this image as background for the HomeScreen
-        // because we toggle often we use an ImageTracker
-        // TODO: different background images for different sizes of smartphone or tablet
-        ImageTracker {
-            id: backgroundLandscape
-            imageSource: "asset:///images/login-ods-1280x768-o.png"
-        }, 
-        // the BackgroundImage
-        ImageTracker {
-            id: backgroundPortrait
-            imageSource: "asset:///images/login-ods-768x1280-o.png"
-        },
-        // application supports changing the Orientation
-        OrientationHandler {
-            onUiOrientationChanging: {
-                // perhaps an animation later
-            }
-            onUiOrientationChanged: {
-                if (uiOrientation == UiOrientation.Landscape) {
-                    backgroundImage.image = backgroundLandscape.image
-                } else {
-                    backgroundImage.image = backgroundPortrait.image
-                }
-            }
         }
     ]
-    // Actions
-    actions: [
-        ActionItem {
-            title: qsTr ("DataRooms")
-            ActionBar.placement: ActionBarPlacement.OnBar
-        }, 
-        ActionItem {
-            title: qsTr ("Users")
-            ActionBar.placement: ActionBarPlacement.OnBar
+
+    // first Tab: HomePage with custom Image as Background
+    Tab {
+        id: homeTab
+        objectName: "homeTab"
+        title: qsTr("Home")
+        HomePage {
+            id: homePage
         }
-    ]
-    
-    // the content of the HomeScreen
-    content:
-    
-    // at first we need a Container with the Background Image
- // we use AbsoluteLayout because then its easy to place the main container at 0,0
- Container {
-        id: backgroundContainer
-        layout: AbsoluteLayout {
+    } 
+    // Tab: Rooms with List of Rooms (DataSpace)
+    Tab {
+        id: roomsTab
+        title: qsTr("Rooms")
+        RoomsNavPane {
+            id: roomsPane
         }
-        // the background Image
-        ImageView {
-            id: backgroundImage
-            // image will be set:
-            // a: onCreationCompleted
-            // b: onUiOrientationChanged
-        }
-        // the main Container (starting at 0,0)
-        Container {
-            id: mainContainer
-            layoutProperties: AbsoluteLayoutProperties {
-                positionX: 0
-                positionY: 0
-            }
-            // place recently used Room here
-            
-        }
-        // a delayed-for-1000 ms Animation to open LoginSheet first time
-        animations: [
-            TranslateTransition {
-                id: startupDelayToOpenSheetFirstTime
-                delay: 2000
-                onEnded: {
-                    loginSheet.visible = true
-                }
-            }
-        ]
     }
-    
+    // Tab: Users with List of Users
+    // TODO only enabled if Admin
+    Tab {
+        id: usersTab
+        title: qsTr("Users")
+        UsersNavPane {
+            id: usersPane
+        }
+    }
+    // Tab: Uploads with List of Files prepared for Upload
+    // disabled at startup if nothing to upload
+    Tab {
+        id: uploadTab
+        title: qsTr("Upload")
+        enabled: false
+        UsersNavPane {
+            id: uploadPane
+        }
+    }
+	
+    // FUNCTIONS for the complete TabbedPane called from the Sheets attached to TabbedPane
     // the handler SLOT if LogIn was done
+    // SIGNALed from LoginSheet
     function saveEdits(ok) {
         if (ok) {
             //-- when sheet is closed with success, login was OK
@@ -126,32 +101,43 @@ Page {
         } else {
             // TODO bring back the LogIn and perhaps a Dialog
         }
+        rootNavigationPane.activeTab = homeTab
         loginSheet.visible = false
     }
     // the handler  SLOT HELP done
+    // SIGNALed from HelpSheet
     function closeHelp(ok) {
         helpSheet.visible = false
     }
-
-    // the HomeScreen is initialized
+    
+    // the TabbedPane is initialized, lets do some work at startup
     onCreationCompleted: {
-        // Overlay ActionBar
-        homePage.actionBarVisibility = ChromeVisibility.Overlay
+        // first tab (homePage) is the active Tab
+        rootNavigationPane.activeTab = homeTab
         // support all orientations
         OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
-        // test current Orientation and set the Background Image
-        if (OrientationSupport.uiOrientation == UiOrientation.Landscape) {
-            backgroundImage.image = backgroundLandscape.image
-        } else {
-            backgroundImage.image = backgroundPortrait.image
-        }
         //-- connect the sheet done SIGNAL to the handler SLOT
         loginContent.done.connect(saveEdits)
-        //
+        //-- connect the help sheet close SIGNAL to the handler SLOT
         helpContent.helpDone.connect(closeHelp)
+        // at startup no Sheets should be visible
         helpSheet.visible = false
         loginSheet.visible = false
+        // but we have to do LogIn at Startup
+        // dont want to display the Shee immediately, so using a delayed animation
         // start the animation to open LoginSheet after 1 s
-        startupDelayToOpenSheetFirstTime.play();
+        homePage.loginDelayed()
+    }
+
+    // special things to be happened if user changes the Tab
+    onActiveTabChanged: {
+        if (rootNavigationPane.activeTab == homeTab) {
+            // on on HomeTab all tabs should be visible in ActionBar
+            // so the user knows what's there
+            rootNavigationPane.showTabsOnActionBar = true
+        } else {
+            // all other Tabs give the space of ActionBar to Actionitems and hide the Tabs in Sidebar
+            rootNavigationPane.showTabsOnActionBar = false
+        }
     }
 }

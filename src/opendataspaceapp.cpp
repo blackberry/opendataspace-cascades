@@ -18,6 +18,7 @@
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/AbstractPane>
+#include <bb/cascades/TabbedPane>
 #include <bb/cascades/Menu>
 #include <bb/cascades/ActionItem>
 #include <bb/cascades/HelpActionItem>
@@ -47,7 +48,7 @@ OpenDataSpaceApp::OpenDataSpaceApp()
     //qml->setContextProperty("app", this);
     
 	// the ROOT Pane
-	root = qml->createRootNode<Page>();
+	root = qml->createRootNode<TabbedPane>();
 
     // Open the HomeScreen
     Application::setScene(root);

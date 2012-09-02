@@ -2,7 +2,7 @@
 #define OPENDATASPACEAPP_H
 
 #include <QObject>
-#include <bb/cascades/Page>
+#include <bb/cascades/TabbedPane>
 #include <bb/cascades/Menu>
 
 using namespace bb::cascades;
@@ -23,7 +23,7 @@ public slots:
     void settingsTriggered();
 
 private:
-    Page *root;
+    TabbedPane *root;
 
     Menu* createSystemMenu();
 

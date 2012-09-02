@@ -13,42 +13,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import bb.cascades 1.0
+ import bb.cascades 1.0
 
 /*
  * 
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
  *
 */
-Page { 
+
+Page {
     signal helpDone(bool ok)
-    
     id: helpPage
     // Actions
-        actions: [
+    actions: [
         ActionItem {
-            title: qsTr ("Close")
+            title: qsTr("Close")
             ActionBar.placement: ActionBarPlacement.Default
             onTriggered: {
                 helpDone(true)
             }
         }
     ]
-    
     ScrollView {
-	    // the main container to go to website for Help
-	    Container {
-	        layout: StackLayout {
-	        }
-	        id: mainContainer
-	        WebView {
-               id: webView
-               url: "http://www.ssp-europe.eu/en/products/secure-data-space.html"       
-           }
-	    }
-	}
-	
-	onCreationCompleted: {
+        // the main container to go to website for Help
+        Container {
+            layout: StackLayout {
+            }
+            id: mainContainer
+            WebView {
+                id: webView
+                url: "http://www.ssp-europe.eu/en/products/secure-data-space.html"
+            }
+        }
+    }
+    onCreationCompleted: {
         // Overlay ActionBar
         helpPage.actionBarVisibility = ChromeVisibility.Overlay
     }

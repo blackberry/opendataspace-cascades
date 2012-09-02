@@ -13,14 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import bb.cascades 1.0
+ import bb.cascades 1.0
 
 /*
  * 
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
  *
 */
-Page { 
+
+Page {
     signal done(bool ok)
     // seems not to work
     resizeBehavior: PageResizeBehavior.Resize
@@ -53,61 +54,61 @@ Page {
     ]
     // the first Container to hold the Background
     Container {
-            id: backgroundContainer
-            layout: AbsoluteLayout {
+        id: backgroundContainer
+        layout: AbsoluteLayout {
+        }
+        ImageView {
+            id: backgroundImage
+            // image will be set from main.qml thru alias property sheetBackground
+        }
+        // the main container to do the Login
+        Container {
+            layout: StackLayout {
             }
-            ImageView {
-                id: backgroundImage
-                // image will be set from main.qml thru alias property sheetBackground
+            layoutProperties: AbsoluteLayoutProperties {
+                positionX: 50
             }
-            // the main container to do the Login
-		    Container {
-		        layout: StackLayout {
-		        }
-		        layoutProperties: AbsoluteLayoutProperties {
-                    positionX: 50
+            id: mainContainer
+            // would prefer to use background: Color.Transparent
+            // but doenst work to get the background from screen below
+            Container {
+                layout: StackLayout {
+                    layoutDirection: LayoutDirection.TopToBottom
                 }
-		        id: mainContainer
-		        // would prefer to use background: Color.Transparent
-		        // but doenst work to get the background from screen below
-		        Container {
-		            layout: StackLayout {
-		                layoutDirection: LayoutDirection.TopToBottom
-		            }
-		            TextField {
-    		            id: username
-    		            hintText: qsTr("Please enter your Username")
-    		            preferredWidth: 400.0
-    		            opacity: 0.9
-    		        }
-    		        // we need password masking
-    		        TextField {
-    		            id: password
-    		            hintText: qsTr("Please enter your Password")
-    		            preferredWidth: 400.0
-    		            opacity: 0.9
-    		            inputMode: TextFieldInputMode.Password 
-    		        }
-		            Button {
-		                text: qsTr ("Login")
-		                preferredWidth: 400.0
-		                onClicked: {
-		                    // TODO call C++ function to test if Login was OK
-		                    done(true)
-		                }
-		            }
-		        }
-		    }
-		}
-		// watch the Orientation and reposition the controls
-		onCreationCompleted: {
-		    // initialize positioning
-		    if (OrientationSupport.uiOrientation == UiOrientation.Landscape) {
-		        backgroundImage.image = backgroundLandscape.image
-                mainContainer.layoutProperties.positionY = 380
-            } else {
-                backgroundImage.image = backgroundPortrait.image
-                mainContainer.layoutProperties.positionY = 900
+                TextField {
+                    id: username
+                    hintText: qsTr("Please enter your Username")
+                    preferredWidth: 400.0
+                    opacity: 0.9
+                }
+                // we need password masking
+                TextField {
+                    id: password
+                    hintText: qsTr("Please enter your Password")
+                    preferredWidth: 400.0
+                    opacity: 0.9
+                    inputMode: TextFieldInputMode.Password
+                }
+                Button {
+                    text: qsTr("Login")
+                    preferredWidth: 400.0
+                    onClicked: {
+                        // TODO call C++ function to test if Login was OK
+                        done(true)
+                    }
+                }
             }
-		}
+        }
+    }
+    // watch the Orientation and reposition the controls
+    onCreationCompleted: {
+        // initialize positioning
+        if (OrientationSupport.uiOrientation == UiOrientation.Landscape) {
+            backgroundImage.image = backgroundLandscape.image
+            mainContainer.layoutProperties.positionY = 380
+        } else {
+            backgroundImage.image = backgroundPortrait.image
+            mainContainer.layoutProperties.positionY = 900
+        }
+    }
 }
