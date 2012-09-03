@@ -52,7 +52,9 @@ NavigationPane {
                 // TODO from Server / JSON / MySQL
                 GroupDataModel {
                     id: mockupUserModel
-                    sortingKeys: ["name"]
+                    sortingKeys: [
+                        "name"
+                    ]
                     onItemAdded: {
                     }
                     onItemRemoved: {
@@ -87,7 +89,11 @@ NavigationPane {
                     }
                 ]
                 function itemType(data, indexPath) {
-                    return "usersItem";
+                    if (data.displayType == "A" || data.displayType == "U") {
+                        return "usersItem";
+                    } else {
+                        return "header";
+                    }
                 }
                                     
                 // MOCKUP DATA
@@ -96,23 +102,28 @@ NavigationPane {
                 onCreationCompleted: {
                     mockupUserModel.insert({
                             "name": "Max Mustermann",
-                            "displayType": "U"
+                            "displayType": "U",
+                            "icon": "../images/users-icon.png"
                         });
                     mockupUserModel.insert({
                             "name": "Johnny Controletti",
-                            "displayType": "A"
+                            "displayType": "A",
+                            "icon": "../images/admin-icon.png"
                         });
                     mockupUserModel.insert({
                             "name": "Jane Doe",
-                            "displayType": "U"
+                            "displayType": "U",
+                            "icon": "../images/users-icon.png"
                         });
                     mockupUserModel.insert({
                             "name": "Homer Simpson",
-                            "displayType": "U"
+                            "displayType": "U",
+                            "icon": "../images/users-icon.png"
                         });
                     mockupUserModel.insert({
                             "name": "Big Lebowsky",
-                            "displayType": "A"
+                            "displayType": "A",
+                            "icon": "../images/admin-icon.png"
                         });
                 }
             } // end ListView

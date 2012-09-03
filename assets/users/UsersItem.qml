@@ -71,11 +71,14 @@ Container {
                 horizontalAlignment: HorizontalAlignment.Fill
             }
             ImageView {
+                id: itemIcon
                 preferredWidth: 150
                 preferredHeight: 150
                 leftMargin: 9
                 topMargin: 9
-                imageSource: "../images/users-icon.png"
+                // datamodel knows the icon source
+                imageSource: ListItemData.icon
+
                 layoutProperties: StackLayoutProperties {
                     verticalAlignment: VerticalAlignment.Center
                 }
