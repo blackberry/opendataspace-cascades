@@ -12,8 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
- import bb.cascades 1.0
+ */import bb.cascades 1.0
 
 /*
  * 
@@ -22,49 +21,106 @@
 */
 
 NavigationPane {
-    id: paneId
+    id: navigationPane
     Page {
-        id: tab1
+        id: usersPage
         actions: [
-            //-- define the actions for first tab here
+            //TODO only for Admins
             ActionItem {
-                title: qsTr("Placeholder")
-                ActionBar.placement: ActionBarPlacement.OnBar
+                title: qsTr("New User")
+                ActionBar.placement: ActionBarPlacement.InOverflow
                 onTriggered: {
-                    //imgTab1.rotationZ = imgTab1.rotationZ + 90;
+                    // TODO push NewUser Sheet
+                }
+            },
+            ActionItem {
+                title: qsTr("Refresh Users")
+                ActionBar.placement: ActionBarPlacement.InOverflow
+                onTriggered: {
+                    // TODO call server
                 }
             }
         ]
-        Container {
-            //-- define tab content here
-            layout: StackLayout {
+        content: Container {
+            id: listContainer
+            layout: DockLayout {
             }
-            Label {
-                layoutProperties: StackLayoutProperties {
-                    horizontalAlignment: HorizontalAlignment.Center
+            // attached objects
+            attachedObjects: [
+                // M O D E L
+                // Mockup Datamodel
+                // TODO from Server / JSON / MySQL
+                GroupDataModel {
+                    id: mockupUserModel
+                    sortingKeys: ["name"]
+                    onItemAdded: {
+                    }
+                    onItemRemoved: {
+                    }
+                    onItemUpdated: {
+                    }
                 }
-                text: qsTr("Users")
-                textStyle {
-                    base: SystemDefaults.TextStyles.TitleText
+            ]
+            // V I E W
+            ListView {
+                id: usersList
+                objectName: "usersList"
+                // The data model is defined in the attached object list below.
+                // TODO get from Server
+                dataModel: mockupUserModel
+                // its the root, only single selction makes sense
+                selectionMode: SelectionMode.Single
+                
+                // define the appearance
+                listItemComponents: [
+                    ListItemComponent {
+                        type: "usersItem"
+                        UsersItem {
+                            id: usersItem
+                        }
+                    },
+                    ListItemComponent {
+                        type: "header"
+                        Container {
+                            // nothing yet
+                        }
+                    }
+                ]
+                function itemType(data, indexPath) {
+                    return "usersItem";
                 }
-            }
-            ImageView {
-                id: imgTab1
-                imageSource: "asset:///images/app-ods-150x150.png"
-                layoutProperties: StackLayoutProperties {
-                    horizontalAlignment: HorizontalAlignment.Center
-                    spaceQuota: 1.0
-                    verticalAlignment: VerticalAlignment.Center
+                                    
+                // MOCKUP DATA
+                // After the list is created, add some mockup items
+                // A Admin U USer
+                onCreationCompleted: {
+                    mockupUserModel.insert({
+                            "name": "Max Mustermann",
+                            "displayType": "U"
+                        });
+                    mockupUserModel.insert({
+                            "name": "Johnny Controletti",
+                            "displayType": "A"
+                        });
+                    mockupUserModel.insert({
+                            "name": "Jane Doe",
+                            "displayType": "U"
+                        });
+                    mockupUserModel.insert({
+                            "name": "Homer Simpson",
+                            "displayType": "U"
+                        });
+                    mockupUserModel.insert({
+                            "name": "Big Lebowsky",
+                            "displayType": "A"
+                        });
                 }
-                scalingMethod: ScalingMethod.AspectFit
-            }
-        }
-    }
+            } // end ListView
+        } // end Container
     
-    // we need this and the entry in bar-descriptor to support all directions
-    onCreationCompleted: {
-        OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
-        //label5.text = "5555"
-        //t6.text = "sechs"
-    }
-}
+        // we need this and the entry in bar-descriptor to support all directions
+        onCreationCompleted: {
+            OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
+        }
+    } // end page
+}// end navigationpane
