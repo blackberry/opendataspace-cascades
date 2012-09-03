@@ -107,43 +107,50 @@ NavigationPane {
                         return "header";
                     }
                 }
-                onSelectionChanged: {
+                onTriggered: {
                     // TODO set the datamodel depending on path
                     if (selected) {
                         navigationPane.push(roomsListPage)
                     }
                 }
-                                    
+
                 // MOCKUP DATA
                 // After the list is created, add some mockup items
                 onCreationCompleted: {
                     mockupModel.insert({
                             "name": "Department Italy",
-                            "displayType": "R"
+                            "displayType": "R",
+                            "icon": "../images/rooms-icon.png"
                         });
                     mockupModel.insert({
                             "name": "Department Spain",
-                            "displayType": "R"
+                            "displayType": "R",
+                            "icon": "../images/rooms-icon.png"
                         });
                     mockupModel.insert({
                             "name": "Department Canada",
-                            "displayType": "R"
+                            "displayType": "R",
+                            "icon": "../images/rooms-icon.png"
                         });
                     mockupModel.insert({
                             "name": "Department Germany",
-                            "displayType": "R"
+                            "displayType": "R",
+                            "icon": "../images/rooms-icon.png"
                         });
                     mockupModel.insert({
                             "name": "Department Austria",
-                            "displayType": "R"
+                            "displayType": "R",
+                            "icon": "../images/rooms-icon.png"
                         });
                     mockupModel.insert({
                             "name": "Department Denmark",
-                            "displayType": "R"
+                            "displayType": "R",
+                            "icon": "../images/rooms-icon.png"
                         });
                     mockupModel.insert({
                             "name": "Department France",
-                            "displayType": "R"
+                            "displayType": "R",
+                            "icon": "../images/rooms-icon.png"
                         });
                 }
             } // end ListView

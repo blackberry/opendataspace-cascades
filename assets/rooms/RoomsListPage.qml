@@ -112,18 +112,120 @@ Page {
                     type: "subroomsItem"
                     RoomsItem {
                         id: subroomsItem
+                        contextActions: [
+                            ActionSet {
+                                title: ListItemData.name
+                                subtitle: "ODS Subroom"
+                                ActionItem {
+                                    title: "Info"
+                                    onTriggered: {
+                                        // TODO
+                                    }
+                                }
+                            }
+                        ]
                     }
                 },
                 ListItemComponent {
                     type: "foldersItem"
                     RoomsItem {
                         id: foldersItem
+                        contextActions: [
+                            ActionSet {
+                                title: ListItemData.name
+                                subtitle: "ODS Folder"
+                                ActionItem {
+                                    title: "Info"
+                                    onTriggered: {
+                                        // TODO
+                                    }
+                                }
+                                ActionItem {
+                                    title: "Copy"
+                                    onTriggered: {
+                                        // TODO
+                                    }
+                                }
+                                ActionItem {
+                                    title: "Move"
+                                    onTriggered: {
+                                        // TODO
+                                    }
+                                }
+                                ActionItem {
+                                    title: "Rename"
+                                    onTriggered: {
+                                        // TODO
+                                    }
+                                }
+                                deleteAction: DeleteActionItem {
+                                    title: "Delete"
+                                    onTriggered: {
+                                        // TODO
+                                    }
+                                }
+                            }
+                        ]
                     }
                 },
                 ListItemComponent {
                     type: "filesItem"
                     RoomsItem {
                         id: filesItem
+                        contextActions: [
+                            ActionSet {
+                                title: ListItemData.name
+                                subtitle: "ODS File"
+                                ActionItem {
+                                    title: "View"
+                                    onTriggered: {
+                                        // TODO
+                                    }
+                                }
+                                ActionItem {
+                                    title: "Info"
+                                    onTriggered: {
+                                        // TODO
+                                    }
+                                }
+                                ActionItem {
+                                    title: "Copy"
+                                    onTriggered: {
+                                        // TODO
+                                    }
+                                }
+                                ActionItem {
+                                    title: "Move"
+                                    onTriggered: {
+                                        // TODO
+                                    }
+                                }
+                                ActionItem {
+                                    title: "Rename"
+                                    onTriggered: {
+                                        // TODO
+                                    }
+                                }
+                                ActionItem {
+                                    title: "Download"
+                                    onTriggered: {
+                                        // TODO
+                                    }
+                                }
+                                ActionItem {
+                                    title: "Link"
+                                    onTriggered: {
+                                        // TODO
+                                    }
+                                }
+                                deleteAction: DeleteActionItem {
+                                    title: "Delete"
+                                    onTriggered: {
+                                        // TODO
+                                    }
+                                }
+                            }
+                        ]
                     }
                 },
                 ListItemComponent {
@@ -151,19 +253,23 @@ Page {
             onCreationCompleted: {
                 mockupModel.insert({
                         "name": "Berlin",
-                        "displayType": "S"
+                        "displayType": "S",
+                        "icon": "../images/subrooms-icon.png"
                     });
                 mockupModel.insert({
                         "name": "Schwabing",
-                        "displayType": "F"
+                        "displayType": "F",
+                        "icon": "../images/folders-icon.png"
                     });
                 mockupModel.insert({
                         "name": "Orders",
-                        "displayType": "L"
+                        "displayType": "L",
+                        "icon": "../images/files-icon.png"
                     });
                 mockupModel.insert({
                         "name": "Offers",
-                        "displayType": "L"
+                        "displayType": "L",
+                        "icon": "../images/files-icon.png"
                     });
             }
         } // end ListView

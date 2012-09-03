@@ -75,7 +75,8 @@ Container {
                 preferredHeight: 150
                 leftMargin: 9
                 topMargin: 9
-                imageSource: "../images/rooms-icon.png"
+                // datamodel knows the icon source
+                imageSource: ListItemData.icon
                 layoutProperties: StackLayoutProperties {
                     verticalAlignment: VerticalAlignment.Center
                 }
