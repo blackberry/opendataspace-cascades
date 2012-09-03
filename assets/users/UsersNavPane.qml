@@ -79,6 +79,72 @@ NavigationPane {
                         type: "usersItem"
                         UsersItem {
                             id: usersItem
+                            contextActions: [
+                                ActionSet {
+                                    title: ListItemData.name
+                                    subtitle: "ODS User"
+                                    ActionItem {
+                                        title: "Info"
+                                        onTriggered: {
+                                            // TODO
+                                        }
+                                    }
+                                    ActionItem {
+                                        title: "MailTo"
+                                        onTriggered: {
+                                            // TODO
+                                        }
+                                    }
+                                    ActionItem {
+                                        title: "Contact"
+                                        onTriggered: {
+                                            // TODO
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    ListItemComponent {
+                        type: "adminItem"
+                        UsersItem {
+                            id: adminItem
+                            contextActions: [
+                                ActionSet {
+                                    title: ListItemData.name
+                                    subtitle: "ODS Aministrator"
+                                    ActionItem {
+                                        title: "Add Room"
+                                        onTriggered: {
+                                            // TODO
+                                        }
+                                    }
+                                    ActionItem {
+                                        title: "Info"
+                                        onTriggered: {
+                                            // TODO
+                                        }
+                                    }
+                                    ActionItem {
+                                        title: "MailTo"
+                                        onTriggered: {
+                                            // TODO
+                                        }
+                                    }
+                                    ActionItem {
+                                        title: "Contact"
+                                        onTriggered: {
+                                            // TODO
+                                        }
+                                    }
+                                    deleteAction: DeleteActionItem {
+                                        title: "Delete"
+                                        onTriggered: {
+                                            // TODO
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     },
                     ListItemComponent {
@@ -89,11 +155,13 @@ NavigationPane {
                     }
                 ]
                 function itemType(data, indexPath) {
-                    if (data.displayType == "A" || data.displayType == "U") {
+                    if (data.displayType == "U") {
                         return "usersItem";
-                    } else {
-                        return "header";
                     }
+                    if (data.displayType == "A") {
+                        return "adminItem";
+                    }
+                    return "header";
                 }
                                     
                 // MOCKUP DATA

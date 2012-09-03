@@ -22,6 +22,18 @@
 
 NavigationPane {
     id: navigationPane
+    attachedObjects: [
+        RoomsListPage {
+            id: roomsListPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
+        }
+    ]
     Page {
         id: dataspacePage
         actions: [
@@ -52,7 +64,9 @@ NavigationPane {
                 // TODO from Server / JSON / MySQL
                 GroupDataModel {
                     id: mockupModel
-                    sortingKeys: ["name"]
+                    sortingKeys: [
+                        "name"
+                    ]
                     onItemAdded: {
                     }
                     onItemRemoved: {
@@ -91,6 +105,12 @@ NavigationPane {
                         return "roomsItem";
                     } else {
                         return "header";
+                    }
+                }
+                onSelectionChanged: {
+                    // TODO set the datamodel depending on path
+                    if (selected) {
+                        navigationPane.push(roomsListPage)
                     }
                 }
                                     
