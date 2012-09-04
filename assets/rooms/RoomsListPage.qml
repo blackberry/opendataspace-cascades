@@ -94,8 +94,34 @@ Page {
                 }
                 onItemUpdated: {
                 }
+            },
+            // TODO should be a SystemToast
+            CustomDialog {
+                id: longpressDialog
+                Container {
+                    Label {
+                        text: qsTr("Hint: Please press a ListItem for 2 seconds to see the options")
+                        textStyle {
+                            base: SystemDefaults.TextStyles.TitleText
+                            color: Color.Black
+                        }
+                    }
+                    onTouch: {
+                        longpressDialog.visible = false
+                    }
+                }
             }
         ]
+        animations: [
+            TranslateTransition {
+                id: userInteractionDelay
+                delay: 3000
+                onEnded: {
+                    longpressDialog.visible = true;
+                }
+            }
+        ]
+        
         // V I E W
         ListView {
             id: dataspaceList
@@ -247,6 +273,9 @@ Page {
                 }
                 return "header";
             }
+            onTouch: {
+                userInteractionDelay.stop();
+            }
                                     
             // MOCKUP DATA
             // After the list is created, add some mockup items
@@ -254,29 +283,48 @@ Page {
                 mockupModel.insert({
                         "name": "Berlin",
                         "displayType": "S",
+                        "lastEditedBy": "",
+                        "fileSize": "",
+                        "fileType": "",
+                        "timestamp": "",
                         "icon": "../images/subrooms-icon.png"
                     });
                 mockupModel.insert({
                         "name": "Schwabing",
                         "displayType": "F",
+                        "lastEditedBy": "",
+                        "fileSize": "",
+                        "fileType": "",
+                        "timestamp": "",
                         "icon": "../images/folders-icon.png"
                     });
                 mockupModel.insert({
                         "name": "Orders",
                         "displayType": "L",
+                        "lastEditedBy": "Max Mustermann",
+                        "fileSize": "12.234 MB",
+                        "fileType": "zip",
+                        "timestamp": "2012-07-25 12:11:13",
                         "icon": "../images/files-icon.png"
                     });
                 mockupModel.insert({
                         "name": "Offers",
                         "displayType": "L",
+                        "lastEditedBy": "Jane Doe",
+                        "fileSize": "1.650 MB",
+                        "fileType": ".pdf",
+                        "timestamp": "2012-08-13 10:01:00",
                         "icon": "../images/files-icon.png"
                     });
             }
         } // end ListView
     } // end Container
     
+
     // we need this and the entry in bar-descriptor to support all directions
     onCreationCompleted: {
         OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
+        // start delayed help
+        userInteractionDelay.play();
     }
 }// end page

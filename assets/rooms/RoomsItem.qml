@@ -81,16 +81,31 @@ Container {
                     verticalAlignment: VerticalAlignment.Center
                 }
             }
-            Label {
-                // name is a property from data model
-                text: ListItemData.name
-                leftMargin: 30
-                textStyle {
-                    base: SystemDefaults.TextStyles.TitleText
-                    color: Color.Black
+            Container {
+                layout: StackLayout {
+                    layoutDirection: LayoutDirection.TopToBottom
                 }
                 layoutProperties: StackLayoutProperties {
                     verticalAlignment: VerticalAlignment.Center
+                } 
+                leftMargin: 30
+                Label {
+                    // name is a property from data model
+                    text: ListItemData.name
+                    textStyle {
+                        base: SystemDefaults.TextStyles.TitleText
+                        color: Color.Black
+                    }
+                }
+                Label {
+                    // should only be visible for Labels
+                    visible: ListItemData.displayType == "L"
+                    // lastEditedBy and timestamp are properties from data model
+                    text: ListItemData.lastEditedBy + " " + ListItemData.timestamp
+                    textStyle {
+                        base: SystemDefaults.TextStyles.SubtitleText
+                        color: Color.Black
+                    }
                 }
             }
         }
@@ -102,7 +117,6 @@ Container {
             highlightContainer.opacity = 0.0;
         }
     }
-
     ListItem.onActivationChanged: {
         setHighlight(ListItem.active);
     }

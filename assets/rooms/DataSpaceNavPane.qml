@@ -120,36 +120,64 @@ NavigationPane {
                     mockupModel.insert({
                             "name": "Department Italy",
                             "displayType": "R",
+                            "lastEditedBy": "",
+                            "fileSize": "",
+                            "fileType": "",
+                            "timestamp": "",
                             "icon": "../images/rooms-icon.png"
                         });
                     mockupModel.insert({
                             "name": "Department Spain",
                             "displayType": "R",
+                            "lastEditedBy": "",
+                            "fileSize": "",
+                            "fileType": "",
+                            "timestamp": "",
                             "icon": "../images/rooms-icon.png"
                         });
                     mockupModel.insert({
                             "name": "Department Canada",
                             "displayType": "R",
+                            "lastEditedBy": "",
+                            "fileSize": "",
+                            "fileType": "",
+                            "timestamp": "",
                             "icon": "../images/rooms-icon.png"
                         });
                     mockupModel.insert({
                             "name": "Department Germany",
                             "displayType": "R",
+                            "lastEditedBy": "",
+                            "fileSize": "",
+                            "fileType": "",
+                            "timestamp": "",
                             "icon": "../images/rooms-icon.png"
                         });
                     mockupModel.insert({
                             "name": "Department Austria",
                             "displayType": "R",
+                            "lastEditedBy": "",
+                            "fileSize": "",
+                            "fileType": "",
+                            "timestamp": "",
                             "icon": "../images/rooms-icon.png"
                         });
                     mockupModel.insert({
                             "name": "Department Denmark",
                             "displayType": "R",
+                            "lastEditedBy": "",
+                            "fileSize": "",
+                            "fileType": "",
+                            "timestamp": "",
                             "icon": "../images/rooms-icon.png"
                         });
                     mockupModel.insert({
                             "name": "Department France",
                             "displayType": "R",
+                            "lastEditedBy": "",
+                            "fileSize": "",
+                            "fileType": "",
+                            "timestamp": "",
                             "icon": "../images/rooms-icon.png"
                         });
                 }
