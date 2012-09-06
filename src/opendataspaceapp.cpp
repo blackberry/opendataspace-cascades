@@ -110,5 +110,5 @@ void OpenDataSpaceApp::helpTriggered(){
 
 // handles SLOT from settingsItem
 void OpenDataSpaceApp::settingsTriggered(){
-	// TODO root->setProperty("sheetVisible", true);
+	root->setProperty("preferencesSheetVisible", true);
 }

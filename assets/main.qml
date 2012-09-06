@@ -36,6 +36,7 @@ TabbedPane {
     // allow setting these Sheets to visible from C++ (SystemMenu)
     property alias loginSheetVisible: loginSheet.visible
     property alias helpSheetVisible: helpSheet.visible
+    property alias preferencesSheetVisible: preferencesSheet.visible
     // these objects have to be available on all tabs
     attachedObjects: [
         // SHEETS to be used by SYSTEM MENU
@@ -54,7 +55,14 @@ TabbedPane {
                 // theURL is a custom property to allow setting the URL fro  outside or inside the QML file
                 theURL: "http://www.ssp-europe.eu/en/products/secure-data-space.html"
             }
-        }
+        },
+                Sheet {
+                    id: preferencesSheet
+                    //-- sheet GUI appearence component is defined in external PreferencesSheet.qml file
+                    content: PreferencesSheet {
+                        id: preferencesContent
+                    }
+                }
     ]
 
     // first Tab: HomePage with custom Image as Background
@@ -98,7 +106,7 @@ TabbedPane {
     // FUNCTIONS for the complete TabbedPane called from the Sheets attached to TabbedPane
     // the handler SLOT if LogIn was done
     // SIGNALed from LoginSheet
-    function saveEdits(ok) {
+    function saveLogin(ok) {
         if (ok) {
             //-- when sheet is closed with success, login was OK
             // TODO
@@ -108,6 +116,16 @@ TabbedPane {
         rootNavigationPane.activeTab = homeTab
         loginSheet.visible = false
     }
+    // the handler SLOT if Prefs were saved
+        // SIGNALed from PrefrencesSheet
+        function savePreferences(ok) {
+            if (ok) {
+                //-- when sheet is closed with success, changes should be saved
+                // TODO
+            } 
+            preferencesSheet.visible = false
+        }
+    
     // the handler  SLOT HELP done
     // SIGNALed from HelpSheet
     function closeHelp(ok) {
@@ -121,12 +139,15 @@ TabbedPane {
         // support all orientations
         OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
         //-- connect the sheet done SIGNAL to the handler SLOT
-        loginContent.done.connect(saveEdits)
+        loginContent.done.connect(saveLogin)
         //-- connect the help sheet close SIGNAL to the handler SLOT
         helpContent.helpDone.connect(closeHelp)
+        //-- connect the preferences save SIGNAL to the handler SLOT
+        preferencesContent.done.connect(savePreferences)
         // at startup no Sheets should be visible
         helpSheet.visible = false
         loginSheet.visible = false
+        preferencesSheet.visible = false
         // but we have to do LogIn at Startup
         // dont want to display the Shee immediately, so using a delayed animation
         // start the animation to open LoginSheet after 1 s
