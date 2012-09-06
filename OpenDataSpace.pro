@@ -9,6 +9,10 @@ HEADERS += ../src/*.hpp ../src/*.h
 
 lupdate_inclusion {
     SOURCES += ../assets/*.qml
+    SOURCES += ../assets/rooms/*.qml
+    SOURCES += ../assets/upload/*.qml
+    SOURCES += ../assets/users/*.qml
+    SOURCES += ../assets/common/*.qml
 }
 
 device {
