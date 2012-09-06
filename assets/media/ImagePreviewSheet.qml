@@ -65,7 +65,7 @@ Sheet {
                     onClicked: {
                         
                         // Calls a function that show's the image in the pictures app.
-                        //photoBomber.showInPicturesApp(previewSheet.previewPath);
+                        ods.showInPicturesApp(previewSheet.previewPath);
                         console.debug("Calling function to launchpicturesapp");
                     }
                 }

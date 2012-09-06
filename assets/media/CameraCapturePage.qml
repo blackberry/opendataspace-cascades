@@ -51,6 +51,7 @@ Page {
                 objectName: "odsCamera"
                 onTouch: {
                     if (event.isDown()) {
+                        
                         capturePhoto();
                         setting.visible = true;
                       
@@ -75,8 +76,7 @@ Page {
                     console.log("photoSaveFailed signal received with error " + error);
                 }
                 onPhotoSaved: {
-                    //photoBomber.manipulatePhoto(fileName);
-                    // we do a o preview
+                    // we do a o preview             
                     imagePreviewSheet.visible = true;
                     imagePreviewSheet.previewPath = fileName;
                 }

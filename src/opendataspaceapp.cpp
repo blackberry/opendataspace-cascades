@@ -72,7 +72,18 @@ OpenDataSpaceApp::OpenDataSpaceApp() {
 
 	// initialize the camera
 	Camera *camera = root->findChild<Camera*>("odsCamera");
-	QObject::connect(camera, SIGNAL(shutterFired()), this, SLOT(onShutterFired()));
+
+	if (camera) {
+		qDebug() << "camera child found";
+
+		QObject::connect(camera, SIGNAL(shutterFired()), this,
+				SLOT(onShutterFired()));
+		// seems that REAR doesn't work and displays black sites in Preview
+		camera->open(CameraUnit::Front);
+		camera->startViewfinder();
+	} else {
+		// TODO give some feedback to user
+	}
 }
 
 // SystemMenu is available on all Screens
@@ -131,47 +142,37 @@ void OpenDataSpaceApp::settingsTriggered() {
 	root->setProperty("preferencesSheetVisible", true);
 }
 
-void OpenDataSpaceApp::openCamera()
-{
+void OpenDataSpaceApp::openCamera() {
+	qDebug() << "open Camera CPP";
 	if (camera) {
-		camera->open(CameraUnit::Front);
-			camera->startViewfinder();
+		//
 	} else {
 		// TODO give some feedback to user
+		qDebug() << "uuups - no Camera Object";
 	}
 
 }
 
-void OpenDataSpaceApp::onShutterFired()
-{
-    // A cool trick here to play a sound. There is legal requirements in many countries to have a shutter-sound when
-    // taking pictures and we need this is needed if you are planning to submit you're app to app world.
-    soundplayer_play_sound("event_camera_shutter");
+void OpenDataSpaceApp::onShutterFired() {
+	// A cool trick here to play a sound. There is legal requirements in many countries to have a shutter-sound when
+	// taking pictures and we need this is needed if you are planning to submit you're app to app world.
+	soundplayer_play_sound("event_camera_shutter");
 }
 
-void OpenDataSpaceApp::showInPicturesApp(QString fileName)
-{
-    // Here we create a invoke request to the pictures app.
-    // we could also ask the system what other applications can
-    // receive something of our mimeType.
-    // the pictures app will come pre-installed so it's a safe bet.
+void OpenDataSpaceApp::showInPicturesApp(QString fileName) {
+	// Here we create a invoke request to the pictures app.
+	// we could also ask the system what other applications can
+	// receive something of our mimeType.
+	// the pictures app will come pre-installed so it's a safe bet.
+	qDebug() << "ShowInPicturesApp called";
+	InvokeRequest invokeRequest;
+	invokeRequest.setAction("bb.action.OPEN");
+	invokeRequest.setTarget("sys.pictures.app");
+	invokeRequest.setMimeType("images/jpeg");
+	invokeRequest.setUri(
+			QString("%1%2").arg("photos:").arg(fileName.remove(0, 7)));
 
-    InvokeRequest invokeRequest;
-    invokeRequest.setAction("bb.action.OPEN");
-    invokeRequest.setTarget("sys.pictures.app");
-    invokeRequest.setMimeType("images/jpeg");
-    invokeRequest.setUri(QString("%1%2").arg("photos:").arg(fileName.remove(0,7)));
-
-    InvokeManager invokeManager;
-    invokeManager.invoke(invokeRequest);
+	InvokeManager invokeManager;
+	invokeManager.invoke(invokeRequest);
 }
 
-void OpenDataSpaceApp::savePhoto(const QString &fileName)
-{
-    QImageReader reader;
-
-    // Set image name
-    reader.setFileName(fileName);
-    QImage image = reader.read();
-    image.save(fileName, "JPG");
-}

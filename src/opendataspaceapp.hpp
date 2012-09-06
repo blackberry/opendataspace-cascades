@@ -24,9 +24,6 @@ public:
 	// Function that uses the invoke framework to launch the picture in the pictures app.
 	void showInPicturesApp(QString fileName);
 
-	Q_INVOKABLE
-	    // function to save the image
-	    void savePhoto(const QString &fileName);
 
 	Q_INVOKABLE
 		    // function to save the image

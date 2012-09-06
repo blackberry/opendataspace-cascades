@@ -108,6 +108,14 @@
     
     <!-- Request permission to execute native code.  Required for native applications. -->
     <action system="true">run_native</action>
+    <action>record_audio</action>
+    <action>read_geolocation</action>
+    <action>use_camera</action>
+    <action>access_internet</action>
+    <action>play_audio</action>
+    <action>access_led_control</action>
+    <action>set_audio_volume</action>
+    <action>access_shared</action>
     <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib"/>
 
     <!--  The permissions requested by your application. -->
