@@ -151,30 +151,8 @@ NavigationPane {
                     },
                     ListItemComponent {
                         type: "header"
-                        Container {
-                            layout: StackLayout {
-                                layoutDirection: LayoutDirection.LeftToRight
-                                leftPadding: 25
-                                bottomPadding: 20
-                                topPadding: 20
-                            }
-                            Label {
-                                textStyle {
-                                    base: SystemDefaults.TextStyles.TitleText
-                                }
-                                text: {
-                                    if (ListItemData.title) {
-                                        ListItemData.title
-                                    } else {
-                                        // If it is loaded from JSON and set in a GroupDataModel the header info in ListItemData
-                                        if (ListItemData == "A") {
-                                            "Administrator"
-                                        } else {
-                                            "User"
-                                        }
-                                    }
-                                }
-                            }
+                        UsersHeaderItem {
+                            //
                         }
                     }
                 ]
