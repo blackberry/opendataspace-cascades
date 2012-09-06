@@ -98,7 +98,7 @@ void OpenDataSpaceApp::logoutTriggered(){
 
 // handles SLOT from feedbackItem
 void OpenDataSpaceApp::feedbackTriggered(){
-	// TODO root->setProperty("sheetVisible", true);
+	root->setProperty("feedbackSheetVisible", true);
 }
 
 // handles SLOT from helpItem

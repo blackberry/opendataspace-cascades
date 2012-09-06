@@ -37,6 +37,7 @@ TabbedPane {
     property alias loginSheetVisible: loginSheet.visible
     property alias helpSheetVisible: helpSheet.visible
     property alias preferencesSheetVisible: preferencesSheet.visible
+    property alias feedbackSheetVisible: feedbackSheet.visible
     // these objects have to be available on all tabs
     attachedObjects: [
         // SHEETS to be used by SYSTEM MENU
@@ -56,13 +57,20 @@ TabbedPane {
                 theURL: "http://www.ssp-europe.eu/en/products/secure-data-space.html"
             }
         },
-                Sheet {
-                    id: preferencesSheet
-                    //-- sheet GUI appearence component is defined in external PreferencesSheet.qml file
-                    content: PreferencesSheet {
-                        id: preferencesContent
-                    }
-                }
+        Sheet {
+            id: preferencesSheet
+            //-- sheet GUI appearence component is defined in external PreferencesSheet.qml file
+            content: PreferencesSheet {
+                id: preferencesContent
+            }
+        },
+        Sheet {
+            id: feedbackSheet
+            //-- sheet GUI appearence component is defined in external PreferencesSheet.qml file
+            content: FeedbackSheet {
+                id: feedbackContent
+            }
+        }
     ]
 
     // first Tab: HomePage with custom Image as Background
@@ -117,14 +125,23 @@ TabbedPane {
         loginSheet.visible = false
     }
     // the handler SLOT if Prefs were saved
-        // SIGNALed from PrefrencesSheet
-        function savePreferences(ok) {
-            if (ok) {
-                //-- when sheet is closed with success, changes should be saved
-                // TODO
-            } 
-            preferencesSheet.visible = false
+    // SIGNALed from PrefrencesSheet
+    function savePreferences(ok) {
+        if (ok) {
+            //-- when sheet is closed with success, changes should be saved
+            // TODO
         }
+        preferencesSheet.visible = false
+    }
+    // the handler SLOT if Prefs were saved
+    // SIGNALed from PrefrencesSheet
+    function sendFeedback(ok) {
+        if (ok) {
+            //-- when sheet is closed with success, feedback should be sent
+            // TODO
+        }
+        feedbackSheet.visible = false
+    }
     
     // the handler  SLOT HELP done
     // SIGNALed from HelpSheet
@@ -144,10 +161,13 @@ TabbedPane {
         helpContent.helpDone.connect(closeHelp)
         //-- connect the preferences save SIGNAL to the handler SLOT
         preferencesContent.done.connect(savePreferences)
+        //-- connect the preferences save SIGNAL to the handler SLOT
+        feedbackContent.send.connect(sendFeedback)
         // at startup no Sheets should be visible
         helpSheet.visible = false
         loginSheet.visible = false
         preferencesSheet.visible = false
+        feedbackSheet.visible = false
         // but we have to do LogIn at Startup
         // dont want to display the Shee immediately, so using a delayed animation
         // start the animation to open LoginSheet after 1 s

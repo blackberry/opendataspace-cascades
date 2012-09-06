@@ -33,6 +33,39 @@
     </message>
 </context>
 <context>
+    <name>FeedbackSheet</name>
+    <message>
+        <location filename="../assets/FeedbackSheet.qml" line="30"/>
+        <source>Feedback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/FeedbackSheet.qml" line="33"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/FeedbackSheet.qml" line="39"/>
+        <source>Send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/FeedbackSheet.qml" line="68"/>
+        <source>from</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/FeedbackSheet.qml" line="84"/>
+        <source>to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/FeedbackSheet.qml" line="109"/>
+        <source>Please enter your Feedback</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>HelpSheet</name>
     <message>
         <source>Close</source>
@@ -214,22 +247,22 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="72"/>
+        <location filename="../assets/main.qml" line="80"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="81"/>
+        <location filename="../assets/main.qml" line="89"/>
         <source>Data Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="90"/>
+        <location filename="../assets/main.qml" line="98"/>
         <source>Users</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="99"/>
+        <location filename="../assets/main.qml" line="107"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
