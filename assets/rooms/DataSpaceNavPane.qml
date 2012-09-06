@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */import bb.cascades 1.0
+import "../media"
 
 /*
  * 
@@ -25,6 +26,16 @@ NavigationPane {
     attachedObjects: [
         RoomsListPage {
             id: roomsListPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
+        },
+        CameraCapturePage {
+            id: cameraCapturePage
             paneProperties: NavigationPaneProperties {
                 backButton: ActionItem {
                     onTriggered: {
@@ -183,10 +194,20 @@ NavigationPane {
                 }
             } // end ListView
         } // end Container
+        // SLOT
+        function openCameraPage() {
+            console.debug("got signal to open camera")
+            navigationPane.push(cameraCapturePage)
+            console.debug("openCamera")
+             ods.openCamera()
+        }
     
         // we need this and the entry in bar-descriptor to support all directions
         onCreationCompleted: {
             OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
+            //-- connect the RoomsList openCamera SIGNAL to the handler SLOT
+            roomsListPage.openCamera.connect(openCameraPage)
+            
         }
     } // end page
 }// end navigationpane

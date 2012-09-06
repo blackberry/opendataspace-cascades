@@ -2,6 +2,7 @@ TEMPLATE = app
 TARGET = OpenDataSpace
 
 CONFIG += qt warn_on debug_and_release cascades
+LIBS += -lcamapi -lscreen  -lbbcascadesmultimedia -lbbsystem 
 
 INCLUDEPATH += ../src
 SOURCES += ../src/*.cpp
@@ -13,6 +14,7 @@ lupdate_inclusion {
     SOURCES += ../assets/upload/*.qml
     SOURCES += ../assets/users/*.qml
     SOURCES += ../assets/common/*.qml
+    SOURCES += ../assets/media/*.qml
 }
 
 device {

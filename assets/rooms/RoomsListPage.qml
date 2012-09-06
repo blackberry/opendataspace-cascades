@@ -20,8 +20,10 @@
  *
 */
 
+
 Page {
     id: roomsListPage
+    signal openCamera()
     actions: [
         //TODO only for Admins
         ActionItem {
@@ -66,7 +68,9 @@ Page {
             title: qsTr("Open Camera")
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
-                // TODO call server
+                // SIGNAL
+                console.debug("clicked open camera action")
+                roomsListPage.openCamera()
             }
         },
         ActionItem {
@@ -297,7 +301,7 @@ Page {
             }
         } // end ListView
     } // end Container
-    
+
 
     // we need this and the entry in bar-descriptor to support all directions
     onCreationCompleted: {
