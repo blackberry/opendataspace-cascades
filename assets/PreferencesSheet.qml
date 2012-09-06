@@ -23,16 +23,30 @@ import "common"
 */
 
 // we're using a NavigationPane to be able to push/pop Pages with special editors like language selection
+
 NavigationPane {
     // SIGNAL
     signal done(bool ok)
     // the current locale - can be set from outside
     property string currentLanguage: "de"
+    // the current customer - can be set from outside
+    property string currentCustomer: "Musterfirma GmbH"
     id: navigationPane
     attachedObjects: [
         // special editor to select the Language
         LanguageSelection {
             id: languageSelection
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
+        },
+        // special editor to select the Customer
+        CustomerSelection {
+            id: customerSelection
             paneProperties: NavigationPaneProperties {
                 backButton: ActionItem {
                     onTriggered: {
@@ -85,6 +99,21 @@ NavigationPane {
                         base: SystemDefaults.TextStyles.BodyText
                     }
                 }
+                // Label displays the current selected customer
+                Label {
+                    id: customerLabel
+                    text: qsTr("Musterfiirma GmbH")
+                    leftMargin: 20
+                    textStyle {
+                        base: SystemDefaults.TextStyles.BodyText
+                    }
+                    // open the language editor
+                    onTouch: {
+                        customerSelection.setCustomer(navigationPane.currentCustomer)
+                        navigationPane.push(customerSelection)
+                    }
+                }
+                
                 // Label displays the current Locale
                 Label {
                     id: languageLabel
@@ -98,9 +127,7 @@ NavigationPane {
                         languageSelection.setLanguage(navigationPane.currentLanguage)
                         navigationPane.push(languageSelection)
                     }
-                    
                 }
-
                 TextField {
                     id: server
                     hintText: qsTr("Please enter your Server URL")
@@ -109,13 +136,39 @@ NavigationPane {
                         base: SystemDefaults.TextStyles.BodyText
                     }
                 }
+                Label {
+                    id: uploadLabel
+                    text: "1.6 MB " + qsTr("Files to upload")
+                    leftMargin: 20
+                    textStyle {
+                        base: SystemDefaults.TextStyles.BodyText
+                    }
+                }
+                // TODO red-green bar to indicat the usage
+                Label {
+                    id: memoryUsedLabel
+                    text: "257.0 MB " + qsTr("of") + " 10.0 GB " + qsTr("Memory used")
+                    leftMargin: 20
+                    textStyle {
+                        base: SystemDefaults.TextStyles.BodyText
+                    }
+                }
+                // TODO red-green bar to indicat the usage
+                Label {
+                    id: versionLabel
+                    text: qsTr("Version") + " 1.3.2"
+                    leftMargin: 20
+                    textStyle {
+                        base: SystemDefaults.TextStyles.SmallText
+                    }
+                }
             }
             //} // ScrollView
         }
     }
-    // SLOT
+    // SLOTS
     function newLanguage(locale) {
-        console.debug("new locale: "+locale)
+        console.debug("new locale: " + locale)
         navigationPane.currentLanguage = locale
         if (locale == "de") {
             languageLabel.text = qsTr("German")
@@ -123,8 +176,14 @@ NavigationPane {
             languageLabel.text = qsTr("English")
         }
     }
+    function newCustomer(name) {
+        console.debug("new customer: " + name)
+        navigationPane.currentCustomer = name
+        customerLabel.text = name
+    }
     onCreationCompleted: {
         //-- connect the preferences save SIGNAL to the handler SLOT
         languageSelection.languageChanged.connect(navigationPane.newLanguage)
+        customerSelection.customerChanged.connect(navigationPane.newCustomer)
     }
 }

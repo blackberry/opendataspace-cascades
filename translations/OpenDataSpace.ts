@@ -2,6 +2,24 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
+    <name>CustomerSelection</name>
+    <message>
+        <location filename="../assets/common/CustomerSelection.qml" line="31"/>
+        <source>Customer Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/common/CustomerSelection.qml" line="56"/>
+        <source>Musterfirma GmbH</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/common/CustomerSelection.qml" line="61"/>
+        <source>Family Meier</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DataSpaceNavPane</name>
     <message>
         <location filename="../assets/rooms/DataSpaceNavPane.qml" line="42"/>
@@ -53,38 +71,63 @@
 <context>
     <name>PreferencesSheet</name>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="51"/>
+        <location filename="../assets/PreferencesSheet.qml" line="65"/>
         <source>Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="54"/>
+        <location filename="../assets/PreferencesSheet.qml" line="68"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="60"/>
+        <location filename="../assets/PreferencesSheet.qml" line="74"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="82"/>
+        <location filename="../assets/PreferencesSheet.qml" line="96"/>
         <source>Please enter your email address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="91"/>
-        <location filename="../assets/PreferencesSheet.qml" line="121"/>
+        <location filename="../assets/PreferencesSheet.qml" line="105"/>
+        <source>Musterfiirma GmbH</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/PreferencesSheet.qml" line="120"/>
+        <location filename="../assets/PreferencesSheet.qml" line="174"/>
         <source>German</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="106"/>
+        <location filename="../assets/PreferencesSheet.qml" line="133"/>
         <source>Please enter your Server URL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="123"/>
+        <location filename="../assets/PreferencesSheet.qml" line="141"/>
+        <source>Files to upload</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/PreferencesSheet.qml" line="150"/>
+        <source>of</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/PreferencesSheet.qml" line="150"/>
+        <source>Memory used</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/PreferencesSheet.qml" line="159"/>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/PreferencesSheet.qml" line="176"/>
         <source>English</source>
         <translation type="unfinished"></translation>
     </message>
