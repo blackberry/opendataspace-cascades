@@ -34,8 +34,8 @@ NavigationPane {
                 }
             },
             ActionItem {
-                title: qsTr("Refresh Users")
-                ActionBar.placement: ActionBarPlacement.InOverflow
+                title: qsTr("Refresh")
+                ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {
                     // TODO call server
                 }

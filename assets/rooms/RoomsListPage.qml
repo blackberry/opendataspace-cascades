@@ -29,13 +29,16 @@ Page {
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // TODO push NewRoom Sheet
+                
             }
         },
         ActionItem {
-            title: qsTr("Refresh Data Rooms")
-            ActionBar.placement: ActionBarPlacement.InOverflow
+            id: refreshAction
+            title: qsTr("Refresh")
+            ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 // TODO call server
+                
             }
         },
         ActionItem {
@@ -94,31 +97,6 @@ Page {
                 }
                 onItemUpdated: {
                 }
-            },
-            // TODO should be a SystemToast
-            CustomDialog {
-                id: longpressDialog
-                Container {
-                    Label {
-                        text: qsTr("Hint: Please press a ListItem for 2 seconds to see the options")
-                        textStyle {
-                            base: SystemDefaults.TextStyles.TitleText
-                            color: Color.Black
-                        }
-                    }
-                    onTouch: {
-                        longpressDialog.visible = false
-                    }
-                }
-            }
-        ]
-        animations: [
-            TranslateTransition {
-                id: userInteractionDelay
-                delay: 3000
-                onEnded: {
-                    longpressDialog.visible = true;
-                }
             }
         ]
         
@@ -131,7 +109,10 @@ Page {
             dataModel: mockupModel
             // its the root, only single selction makes sense
             selectionMode: SelectionMode.Single
-                
+            leadingVisual:{
+                    // TODO waiting for bugfix
+                }
+            
             // define the appearance
             listItemComponents: [
                 ListItemComponent {
@@ -273,9 +254,6 @@ Page {
                 }
                 return "header";
             }
-            onTouch: {
-                userInteractionDelay.stop();
-            }
                                     
             // MOCKUP DATA
             // After the list is created, add some mockup items
@@ -324,7 +302,5 @@ Page {
     // we need this and the entry in bar-descriptor to support all directions
     onCreationCompleted: {
         OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
-        // start delayed help
-        userInteractionDelay.play();
     }
 }// end page
