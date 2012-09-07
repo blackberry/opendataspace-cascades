@@ -39,6 +39,7 @@ NavigationPane {
             paneProperties: NavigationPaneProperties {
                 backButton: ActionItem {
                     onTriggered: {
+                        cameraCapturePage.closeODSCamera(); 
                         navigationPane.pop();
                     }
                 }
@@ -208,10 +209,11 @@ NavigationPane {
         } // end Container
         // SLOTS
         function openCameraPage() {
+            cameraCapturePage.openODSCamera()
             console.debug("got signal to open camera")
             navigationPane.push(cameraCapturePage)
             console.debug("openCamera")
-            ods.openCamera()
+            // ods.openCamera()
         }
         function previewImage(path) {
             console.debug("got signal to preview: "+path)

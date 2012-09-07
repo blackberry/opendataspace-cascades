@@ -72,6 +72,19 @@ Page {
             }
         }
     }
+    // Open the Camera and start the Viewfinder
+    function openODSCamera() {
+        // seems that REAR doesn't work and displays black sites in Preview
+        camera.open(CameraUnit.Front);
+        camera.startViewfinder();
+    }
+    // Stop the Viewfinder and close the Camera
+    // TODO dont know if I must do this
+    function closeODSCamera() {
+        camera.stopViewfinder();
+        camera.close();
+        
+    }
     onCreationCompleted: {
         // the Image from Viewfinder should be visible
         cameraCapturePage.actionBarVisibility = ChromeVisibility.Overlay

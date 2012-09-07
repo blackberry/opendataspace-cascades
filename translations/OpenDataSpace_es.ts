@@ -22,12 +22,12 @@
 <context>
     <name>DataSpaceNavPane</name>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="63"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="64"/>
         <source>New Room</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="71"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="72"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>

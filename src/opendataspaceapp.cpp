@@ -78,9 +78,6 @@ OpenDataSpaceApp::OpenDataSpaceApp() {
 
 		QObject::connect(camera, SIGNAL(shutterFired()), this,
 				SLOT(onShutterFired()));
-		// seems that REAR doesn't work and displays black sites in Preview
-		camera->open(CameraUnit::Front);
-		camera->startViewfinder();
 	} else {
 		// TODO give some feedback to user
 	}
@@ -142,17 +139,6 @@ void OpenDataSpaceApp::helpTriggered() {
 // handles SLOT from settingsItem
 void OpenDataSpaceApp::settingsTriggered() {
 	root->setProperty("preferencesSheetVisible", true);
-}
-
-void OpenDataSpaceApp::openCamera() {
-	qDebug() << "open Camera CPP";
-	if (camera) {
-		//
-	} else {
-		// TODO give some feedback to user
-		qDebug() << "uuups - no Camera Object";
-	}
-
 }
 
 void OpenDataSpaceApp::onShutterFired() {
