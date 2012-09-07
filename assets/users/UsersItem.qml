@@ -65,17 +65,16 @@ Container {
         Container {
             layout: StackLayout {
                 layoutDirection: LayoutDirection.LeftToRight
-                leftPadding: 3
+                leftPadding: 6
             }
             layoutProperties: DockLayoutProperties {
                 horizontalAlignment: HorizontalAlignment.Fill
+                verticalAlignment: VerticalAlignment.Center
             }
             ImageView {
                 id: itemIcon
                 preferredWidth: 150
                 preferredHeight: 150
-                leftMargin: 9
-                topMargin: 9
                 // datamodel knows the icon source
                 imageSource: ListItemData.icon
 
