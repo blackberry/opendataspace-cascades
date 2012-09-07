@@ -18,9 +18,7 @@
 * 
 * We use the Camera control from cascades multimedia, it needs to be initiated from C++  
 * code before we can use it though.
-*/
-
-import bb.cascades 1.0
+*/import bb.cascades 1.0
 import bb.cascades.multimedia 1.0
 
 /*
@@ -28,15 +26,10 @@ import bb.cascades.multimedia 1.0
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
  *
 */
+
 Page {
+    signal previewImage(string path)
     id: cameraCapturePage
-    
-    attachedObjects: [
-            ImagePreviewSheet {
-                id: imagePreviewSheet
-            }
-        ]
-        
     content: Container {
         layout: DockLayout {
         }
@@ -51,10 +44,7 @@ Page {
                 objectName: "odsCamera"
                 onTouch: {
                     if (event.isDown()) {
-                        
                         capturePhoto();
-                        setting.visible = true;
-                      
                     }
                 } 
         		             
@@ -77,32 +67,13 @@ Page {
                 }
                 onPhotoSaved: {
                     // we do a o preview             
-                    imagePreviewSheet.visible = true;
-                    imagePreviewSheet.previewPath = fileName;
-                }
-            }
-        }
-        Container {
-            layoutProperties: DockLayoutProperties {
-                horizontalAlignment: HorizontalAlignment.Fill
-                verticalAlignment: VerticalAlignment.Bottom
-            }
-            layout: DockLayout {
-            }
-            ImageButton {
-                id: setting
-                visible: false
-                defaultImageSource: "asset:///images/settings_unpressed.png"
-                pressedImageSource: "asset:///images/settings_pressed.png"
-                onClicked: {
-                    imagePreviewSheet.visible = true;
-                }
-                layoutProperties: DockLayoutProperties {
-                    horizontalAlignment: HorizontalAlignment.Right
-                    verticalAlignment: VerticalAlignment.Bottom
+                    cameraCapturePage.previewImage(fileName)
                 }
             }
         }
     }
-    
+    onCreationCompleted: {
+        // the Image from Viewfinder should be visible
+        cameraCapturePage.actionBarVisibility = ChromeVisibility.Overlay
+    }
 }

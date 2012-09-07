@@ -43,6 +43,16 @@ NavigationPane {
                     }
                 }
             }
+        },
+        ImagePreviewPage {
+            id: imagePreviewPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
         }
     ]
     Page {
@@ -196,12 +206,17 @@ NavigationPane {
                 }
             } // end ListView
         } // end Container
-        // SLOT
+        // SLOTS
         function openCameraPage() {
             console.debug("got signal to open camera")
             navigationPane.push(cameraCapturePage)
             console.debug("openCamera")
-             ods.openCamera()
+            ods.openCamera()
+        }
+        function previewImage(path) {
+            console.debug("got signal to preview: "+path)
+            imagePreviewPage.previewPath = path;
+            navigationPane.push(imagePreviewPage)
         }
     
         // we need this and the entry in bar-descriptor to support all directions
@@ -209,7 +224,8 @@ NavigationPane {
             OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
             //-- connect the RoomsList openCamera SIGNAL to the handler SLOT
             roomsListPage.openCamera.connect(openCameraPage)
-            
+            //-- connect the CameraCapturePage previewImage SIGNAL to the handler SLOT
+            cameraCapturePage.previewImage.connect(previewImage)
         }
     } // end page
 }// end navigationpane

@@ -22,12 +22,12 @@
 <context>
     <name>DataSpaceNavPane</name>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="53"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="63"/>
         <source>New Room</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="61"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="71"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
@@ -70,15 +70,15 @@
     </message>
 </context>
 <context>
-    <name>ImagePreviewSheet</name>
+    <name>ImagePreviewPage</name>
     <message>
-        <location filename="../assets/media/ImagePreviewSheet.qml" line="45"/>
-        <source>Close</source>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="35"/>
+        <source>Share</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/media/ImagePreviewSheet.qml" line="58"/>
-        <source>Share</source>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="45"/>
+        <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
