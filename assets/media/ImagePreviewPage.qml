@@ -34,7 +34,7 @@ Page {
         ActionItem {
             title: qsTr("Share")
             imageSource: "asset:///images/ics/6-social-share81.png"
-            ActionBar.placement: ActionBarPlacement.InOverflow
+            ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 // Calls a function that show's the image in the pictures app.
                 ods.showInPicturesApp(previewPage.previewPath);
