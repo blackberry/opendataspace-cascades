@@ -65,32 +65,17 @@ Page {
                 }
                 Label {
                     id: fromLabel
-                    text: qsTr("from")
+                    text: qsTr("from")+": "+"mustermann@me.com"
                     leftMargin: 20
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText
                     }
                 }
-                TextField {
-                    id: fromEmail
-                    text: "mustermann@me.com"
-                    enabled: false
-                    textStyle {
-                        base: SystemDefaults.TextStyles.BodyText
-                    }
-                }
+
                 Label {
                     id: toLabel
-                    text: qsTr("to")
+                    text: qsTr("to")+": "+"support@opendataspace.org"
                     leftMargin: 20
-                    textStyle {
-                        base: SystemDefaults.TextStyles.BodyText
-                    }
-                }
-                TextField {
-                    id: toEmail
-                    text: "support@opendataspace.org"
-                    enabled: false
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText
                     }
