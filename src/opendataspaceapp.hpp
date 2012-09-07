@@ -22,6 +22,10 @@ public:
 	// Function that uses the invoke framework to launch the picture in the pictures app.
 	void showInPicturesApp(QString fileName);
 
+	Q_INVOKABLE
+		// Function that uses the invoke framework to launch the picture in the pictures app.
+		void showInVideosApp(QString fileName);
+
 public slots:
 	void logoutTriggered();
 	void feedbackTriggered();
@@ -32,6 +36,7 @@ private:
 	TabbedPane *root;
 
 	Camera *camera;
+	Camera *videocamera;
 
 	Menu* createSystemMenu();
 

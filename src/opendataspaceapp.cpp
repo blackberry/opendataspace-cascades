@@ -70,9 +70,21 @@ OpenDataSpaceApp::OpenDataSpaceApp() {
 	// but then the Sheet is so fast opened that the User doesn't notify what happened
 	// so I decided to use  a delayed animation
 
+
+	// initialize the videocamera
+			Camera *videocamera = root->findChild<Camera*>("odsVideo");
+			if (videocamera) {
+				qDebug() << "videocamera child found";
+
+				QObject::connect(videocamera, SIGNAL(shutterFired()), this,
+						SLOT(onShutterFired()));
+			} else {
+				// TODO give some feedback to user
+				qDebug() << "videocamera child N O T found";
+			}
+
 	// initialize the camera
 	Camera *camera = root->findChild<Camera*>("odsCamera");
-
 	if (camera) {
 		qDebug() << "camera child found";
 
@@ -80,7 +92,10 @@ OpenDataSpaceApp::OpenDataSpaceApp() {
 				SLOT(onShutterFired()));
 	} else {
 		// TODO give some feedback to user
+		qDebug() << "camera child N O T  found";
 	}
+
+
 }
 
 // SystemMenu is available on all Screens
@@ -159,6 +174,20 @@ void OpenDataSpaceApp::showInPicturesApp(QString fileName) {
 	invokeRequest.setMimeType("images/jpeg");
 	invokeRequest.setUri(
 			QString("%1%2").arg("photos:").arg(fileName.remove(0, 7)));
+
+	InvokeManager invokeManager;
+	invokeManager.invoke(invokeRequest);
+}
+
+void OpenDataSpaceApp::showInVideosApp(QString fileName) {
+	// TODO only guessing yet
+	qDebug() << "showInVideoApp called: "+fileName;
+	InvokeRequest invokeRequest;
+	invokeRequest.setAction("bb.action.OPEN");
+	invokeRequest.setTarget("sys.videos.app");
+	invokeRequest.setMimeType("images/mp4");
+	invokeRequest.setUri(
+			QString("%1%2").arg("videos:").arg(fileName.remove(0, 7)));
 
 	InvokeManager invokeManager;
 	invokeManager.invoke(invokeRequest);

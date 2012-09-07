@@ -39,7 +39,18 @@ NavigationPane {
             paneProperties: NavigationPaneProperties {
                 backButton: ActionItem {
                     onTriggered: {
-                        cameraCapturePage.closeODSCamera(); 
+                        cameraCapturePage.closeODSCamera();
+                        navigationPane.pop();
+                    }
+                }
+            }
+        },
+        CameraCapturePage {
+            id: videoCapturePage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        videoCapturePage.closeODSVideo();
                         navigationPane.pop();
                     }
                 }
@@ -47,6 +58,16 @@ NavigationPane {
         },
         ImagePreviewPage {
             id: imagePreviewPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
+        },
+        VideoPreviewPage {
+            id: videoPreviewPage
             paneProperties: NavigationPaneProperties {
                 backButton: ActionItem {
                     onTriggered: {
@@ -216,9 +237,14 @@ NavigationPane {
             // ods.openCamera()
         }
         function previewImage(path) {
-            console.debug("got signal to preview: "+path)
+            console.debug("got signal to preview image: " + path)
             imagePreviewPage.previewPath = path;
             navigationPane.push(imagePreviewPage)
+        }
+        function previewVideo(path) {
+            console.debug("got signal to preview video: " + path)
+            videoPreviewPage.previewPath = path;
+            navigationPane.push(videoPreviewPage)
         }
     
         // we need this and the entry in bar-descriptor to support all directions
@@ -228,6 +254,8 @@ NavigationPane {
             roomsListPage.openCamera.connect(openCameraPage)
             //-- connect the CameraCapturePage previewImage SIGNAL to the handler SLOT
             cameraCapturePage.previewImage.connect(previewImage)
+            //-- connect the VideoCameraCapturePage previewVideo SIGNAL to the handler SLOT
+            videoCapturePage.previewVideo.connect(previewVideo)
         }
     } // end page
 }// end navigationpane

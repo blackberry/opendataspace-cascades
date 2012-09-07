@@ -20,10 +20,10 @@
  *
 */
 
-
 Page {
     id: roomsListPage
     signal openCamera()
+    signal openVideo()
     actions: [
         //TODO only for Admins
         ActionItem {
@@ -32,7 +32,6 @@ Page {
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // TODO push NewRoom Sheet
-                
             }
         },
         ActionItem {
@@ -42,7 +41,6 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 // TODO call server
-                
             }
         },
         ActionItem {
@@ -80,11 +78,21 @@ Page {
             }
         },
         ActionItem {
+            title: qsTr("Record Video")
+            imageSource: "asset:///images/ics/10-device-access-video81.png"
+            ActionBar.placement: ActionBarPlacement.InOverflow
+            onTriggered: {
+                // SIGNAL
+                console.debug("clicked open record Video action")
+                roomsListPage.openVideo()
+            }
+        },
+        ActionItem {
             title: qsTr("Record Audio")
             imageSource: "asset:///images/ics/10-device-access-mic81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
-                // TODO call server
+                // TODO
             }
         }
     ]
@@ -120,9 +128,9 @@ Page {
             dataModel: mockupModel
             // its the root, only single selction makes sense
             selectionMode: SelectionMode.Single
-            leadingVisual:{
-                    // TODO waiting for bugfix
-                }
+            leadingVisual: {
+                // TODO waiting for bugfix
+            }
             
             // define the appearance
             listItemComponents: [

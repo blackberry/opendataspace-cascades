@@ -22,12 +22,12 @@
 <context>
     <name>DataSpaceNavPane</name>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="64"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="85"/>
         <source>New Room</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="72"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="93"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
@@ -190,7 +190,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="40"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="39"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
@@ -199,27 +199,32 @@
         <translation type="obsolete">asset:///images/ics/1-navigation-refresh81.png</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="49"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="47"/>
         <source>Select Document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="57"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="55"/>
         <source>Select Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="65"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="63"/>
         <source>Select Video</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="73"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="71"/>
         <source>Open Camera</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="83"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="81"/>
+        <source>Record Video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="91"/>
         <source>Record Audio</source>
         <translation type="unfinished"></translation>
     </message>
@@ -247,6 +252,32 @@
     <message>
         <location filename="../assets/users/UsersNavPane.qml" line="38"/>
         <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>VideoCapturePage</name>
+    <message>
+        <location filename="../assets/media/VideoCapturePage.qml" line="37"/>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/media/VideoCapturePage.qml" line="48"/>
+        <source>Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>VideoPreviewPage</name>
+    <message>
+        <location filename="../assets/media/VideoPreviewPage.qml" line="36"/>
+        <source>Share</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/media/VideoPreviewPage.qml" line="46"/>
+        <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
