@@ -27,7 +27,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="60"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="61"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
@@ -201,32 +201,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="39"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="40"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="47"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="49"/>
         <source>Select Document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="54"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="57"/>
         <source>Select Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="61"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="65"/>
         <source>Select Video</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="68"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="73"/>
         <source>Open Camera</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="77"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="83"/>
         <source>Record Audio</source>
         <translation type="unfinished"></translation>
     </message>
@@ -252,7 +252,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="37"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="38"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
@@ -265,17 +265,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="89"/>
+        <location filename="../assets/main.qml" line="90"/>
         <source>Data Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="98"/>
+        <location filename="../assets/main.qml" line="99"/>
         <source>Users</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="107"/>
+        <location filename="../assets/main.qml" line="109"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>

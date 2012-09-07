@@ -28,6 +28,7 @@ NavigationPane {
             //TODO only for Admins
             ActionItem {
                 title: qsTr("New User")
+                imageSource: "asset:///images/ics/6-social-add-person81.png"
                 ActionBar.placement: ActionBarPlacement.InOverflow
                 onTriggered: {
                     // TODO push NewUser Sheet
@@ -35,6 +36,7 @@ NavigationPane {
             },
             ActionItem {
                 title: qsTr("Refresh")
+                imageSource: "asset:///images/ics/1-navigation-refresh81.png"
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {
                     // TODO call server

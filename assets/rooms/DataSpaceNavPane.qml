@@ -51,6 +51,7 @@ NavigationPane {
             //TODO only for Admins
             ActionItem {
                 title: qsTr("New Room")
+                imageSource: "asset:///images/ics/5-content-new81.png"
                 ActionBar.placement: ActionBarPlacement.InOverflow
                 onTriggered: {
                     // TODO push NewRoom Sheet
@@ -58,6 +59,7 @@ NavigationPane {
             },
             ActionItem {
                 title: qsTr("Refresh")
+                imageSource: "asset:///images/ics/1-navigation-refresh81.png"
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {
                     // TODO call server

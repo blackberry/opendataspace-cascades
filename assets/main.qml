@@ -86,6 +86,7 @@ TabbedPane {
     // SubRooms and Folders are in Pages
     Tab {
         id: dataspaceTab
+        imageSource: "asset:///images/ics/4-collections-cloud81.png"
         title: qsTr("Data Space")
         DataSpaceNavPane {
             id: dataspacePane
@@ -96,6 +97,7 @@ TabbedPane {
     Tab {
         id: usersTab
         title: qsTr("Users")
+        imageSource: "asset:///images/ics/6-social-group81.png"
         UsersNavPane {
             id: usersPane
         }
@@ -105,6 +107,7 @@ TabbedPane {
     Tab {
         id: uploadTab
         title: qsTr("Upload")
+        imageSource: "asset:///images/ics/9-av-upload81.png"
         enabled: false
         UsersNavPane {
             id: uploadPane

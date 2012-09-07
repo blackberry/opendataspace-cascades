@@ -28,6 +28,7 @@ Page {
         //TODO only for Admins
         ActionItem {
             title: qsTr("New Folder")
+            imageSource: "asset:///images/ics/5-content-new81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // TODO push NewRoom Sheet
@@ -37,6 +38,7 @@ Page {
         ActionItem {
             id: refreshAction
             title: qsTr("Refresh")
+            imageSource: "asset:///images/ics/1-navigation-refresh81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 // TODO call server
@@ -45,6 +47,7 @@ Page {
         },
         ActionItem {
             title: qsTr("Select Document")
+            imageSource: "asset:///images/ics/4-collections-view-as-list81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // TODO call server
@@ -52,6 +55,7 @@ Page {
         },
         ActionItem {
             title: qsTr("Select Image")
+            imageSource: "asset:///images/ics/5-content-picture81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // TODO call server
@@ -59,6 +63,7 @@ Page {
         },
         ActionItem {
             title: qsTr("Select Video")
+            imageSource: "asset:///images/ics/10-device-access-video81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // TODO call server
@@ -66,6 +71,7 @@ Page {
         },
         ActionItem {
             title: qsTr("Open Camera")
+            imageSource: "asset:///images/ics/10-device-access-camera81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // SIGNAL
@@ -75,6 +81,7 @@ Page {
         },
         ActionItem {
             title: qsTr("Record Audio")
+            imageSource: "asset:///images/ics/10-device-access-mic81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // TODO call server

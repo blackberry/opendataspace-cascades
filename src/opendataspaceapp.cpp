@@ -95,10 +95,12 @@ Menu* OpenDataSpaceApp::createSystemMenu() {
 	// FEEDBACK will send an email to OpenDataSpace
 	ActionItem* feedbackItem = new ActionItem();
 	feedbackItem->setTitle("Feedback");
+	feedbackItem->setImageSource(QString("asset:///images/ics/5-content-email81.png"));
 	// TODO Image
 	// LOGOUT will do a LogOut and jump back to HomeScreen and open the LogIn Sheet
 	ActionItem* logoutItem = new ActionItem();
 	logoutItem->setTitle("Logout");
+	logoutItem->setImageSource(QString("asset:///images/ics/10-device-access-accounts81.png"));
 	// TODO IMAGE
 	// SETTINGS will open the User Settings
 	SettingsActionItem* settingsItem = new SettingsActionItem();
