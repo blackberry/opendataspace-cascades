@@ -14,7 +14,10 @@
  * limitations under the License.
  */import bb.cascades 1.0
 /*
- * 
+ * Two ImageViews horizontally layouted
+ * as a small bar filling the complete width
+ * using spacequota to get the width of each ImageView
+ *
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
  *
 */
@@ -22,11 +25,13 @@
 Container {
     id: redGreen
     attachedObjects: [
+        // a red tile of 16x16 pixels
         ImagePaintDefinition {
             id: redTile
             repeatPattern: RepeatPattern.XY
             imageSource: "asset:///images/tiles/red16x16.png"
         },
+        // a green tile of 16x16 pixels
         ImagePaintDefinition {
             id: greenTile
             repeatPattern: RepeatPattern.XY
@@ -54,6 +59,7 @@ Container {
         minHeight: 20
         leftMargin: 0
     }
+    // called from outside to set the values
     function setRedGreen(red, green) {
         redBar.layoutProperties.spaceQuota = red
         greenBar.layoutProperties.spaceQuota = green

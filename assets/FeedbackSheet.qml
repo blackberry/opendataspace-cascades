@@ -23,7 +23,19 @@
 Page {
     id: page
     signal send(bool ok)
-    // seems not to work
+    attachedObjects: [
+        // application supports changing the Orientation
+        OrientationHandler {
+            onUiOrientationChanged: {
+                if (uiOrientation == UiOrientation.Landscape) {
+                    feedback.preferredHeight = 430
+                } else {
+                    feedback.preferredHeight = 940
+                }
+            }
+        }
+    ]
+    // resizes to have space for the keyboard
     resizeBehavior: PageResizeBehavior.Resize
     titleBar: TitleBar {
         id: theBar
@@ -42,58 +54,51 @@ Page {
             }
         }
     } 
-    // the first Container to hold the Background
+    // the main container
     Container {
-        id: backgroundContainer
-        layout: DockLayout {
+        layout: StackLayout {
+            topPadding: 25
+            leftPadding: 25
+            rightPadding: 25
+            layoutDirection: LayoutDirection.TopToBottom
         }
-
-        // the main container to do the Login
-        Container {
-            layout: StackLayout {
-                topPadding: 25
-                leftPadding: 25
-                rightPadding: 25
+        id: mainContainer
+        Label {
+            id: fromLabel
+            text: qsTr("from") + ": " + "mustermann@me.com"
+            leftMargin: 20
+            textStyle {
+                base: SystemDefaults.TextStyles.BodyText
             }
-            id: mainContainer
-            // would prefer to use background: Color.Transparent
-            // but doenst work to get the background from screen below
-            Container {
-                layout: StackLayout {
-                    layoutDirection: LayoutDirection.TopToBottom
-                    
-                }
-                Label {
-                    id: fromLabel
-                    text: qsTr("from")+": "+"mustermann@me.com"
-                    leftMargin: 20
-                    textStyle {
-                        base: SystemDefaults.TextStyles.BodyText
-                    }
-                }
-
-                Label {
-                    id: toLabel
-                    text: qsTr("to")+": "+"support@opendataspace.org"
-                    leftMargin: 20
-                    textStyle {
-                        base: SystemDefaults.TextStyles.BodyText
-                    }
-                }
-                Divider {
-                    bottomMargin: 40
-                    topMargin: 40
-                }
-                TextArea {
-                    id: feedback
-                    bottomMargin: 80
-                    preferredHeight: 600
-                    layoutProperties: StackLayoutProperties {
-                        verticalAlignment: VerticalAlignment.Fill
-                    }
-                    hintText: qsTr("Please enter your Feedback")
-                }
+        }
+        Label {
+            id: toLabel
+            text: qsTr("to") + ": " + "support@opendataspace.org"
+            leftMargin: 20
+            textStyle {
+                base: SystemDefaults.TextStyles.BodyText
             }
+        }
+        Divider {
+            bottomMargin: 20
+            topMargin: 20
+        }
+        TextArea {
+            id: feedback
+            bottomMargin: 80
+            preferredHeight: 900
+            layoutProperties: StackLayoutProperties {
+                verticalAlignment: VerticalAlignment.Fill
+            }
+            hintText: qsTr("Please enter your Feedback")
+        }
+    }
+    onCreationCompleted: {
+        // initial setup for orientation
+        if (OrientationSupport.uiOrientation == UiOrientation.Landscape) {
+            feedback.preferredHeight = 430
+        } else {
+            feedback.preferredHeight = 940
         }
     }
 }

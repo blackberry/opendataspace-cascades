@@ -137,9 +137,10 @@ NavigationPane {
                     }
                 }
                 Divider {
-                    topMargin: 40
-                    bottomMargin: 40
+                    topMargin: 20
+                    bottomMargin: 20
                 }
+                // TODO data from server
                 Label {
                     id: memoryUsedLabel
                     text: "257.0 MB " + qsTr("of") + " 2.0 GB " + qsTr("Memory used")
@@ -148,6 +149,7 @@ NavigationPane {
                         base: SystemDefaults.TextStyles.BodyText
                     }
                 }
+                // special class to draw a bar with red and green colors
                 RedGreenBar {
                     id: usedMem
                 }

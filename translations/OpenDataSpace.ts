@@ -39,17 +39,17 @@
 <context>
     <name>FeedbackSheet</name>
     <message>
-        <location filename="../assets/FeedbackSheet.qml" line="30"/>
+        <location filename="../assets/FeedbackSheet.qml" line="42"/>
         <source>Feedback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/FeedbackSheet.qml" line="33"/>
+        <location filename="../assets/FeedbackSheet.qml" line="45"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/FeedbackSheet.qml" line="39"/>
+        <location filename="../assets/FeedbackSheet.qml" line="51"/>
         <source>Send</source>
         <translation type="unfinished"></translation>
     </message>
@@ -59,12 +59,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/FeedbackSheet.qml" line="77"/>
+        <location filename="../assets/FeedbackSheet.qml" line="76"/>
         <source>to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/FeedbackSheet.qml" line="94"/>
+        <location filename="../assets/FeedbackSheet.qml" line="93"/>
         <source>Please enter your Feedback</source>
         <translation type="unfinished"></translation>
     </message>
@@ -147,7 +147,7 @@
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="128"/>
-        <location filename="../assets/PreferencesSheet.qml" line="182"/>
+        <location filename="../assets/PreferencesSheet.qml" line="184"/>
         <source>German</source>
         <translation type="unfinished"></translation>
     </message>
@@ -157,27 +157,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="156"/>
+        <location filename="../assets/PreferencesSheet.qml" line="158"/>
         <source>Files to upload</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="145"/>
+        <location filename="../assets/PreferencesSheet.qml" line="146"/>
         <source>of</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="145"/>
+        <location filename="../assets/PreferencesSheet.qml" line="146"/>
         <source>Memory used</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="167"/>
+        <location filename="../assets/PreferencesSheet.qml" line="169"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="184"/>
+        <location filename="../assets/PreferencesSheet.qml" line="186"/>
         <source>English</source>
         <translation type="unfinished"></translation>
     </message>
