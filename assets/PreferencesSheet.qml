@@ -92,6 +92,14 @@ NavigationPane {
                     layoutDirection: LayoutDirection.TopToBottom
                 }
                 TextField {
+                    id: server
+                    hintText: qsTr("Please enter your Server URL")
+                    inputMode: TextFieldInputMode.URL
+                    textStyle {
+                        base: SystemDefaults.TextStyles.BodyText
+                    }
+                }
+                TextField {
                     id: email
                     hintText: qsTr("Please enter your email address")
                     inputMode: TextFieldInputMode.EmailAddress
@@ -128,32 +136,32 @@ NavigationPane {
                         navigationPane.push(languageSelection)
                     }
                 }
-                TextField {
-                    id: server
-                    hintText: qsTr("Please enter your Server URL")
-                    inputMode: TextFieldInputMode.URL
+                Divider {
+                    topMargin: 40
+                    bottomMargin: 40
+                }
+                Label {
+                    id: memoryUsedLabel
+                    text: "257.0 MB " + qsTr("of") + " 2.0 GB " + qsTr("Memory used")
+                    leftMargin: 20
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText
                     }
+                }
+                RedGreenBar {
+                    id: usedMem
                 }
                 Label {
                     id: uploadLabel
-                    text: "1.6 MB " + qsTr("Files to upload")
+                    text: "86.6 MB " + qsTr("Files to upload")
                     leftMargin: 20
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText
                     }
                 }
-                // TODO red-green bar to indicat the usage
-                Label {
-                    id: memoryUsedLabel
-                    text: "257.0 MB " + qsTr("of") + " 10.0 GB " + qsTr("Memory used")
-                    leftMargin: 20
-                    textStyle {
-                        base: SystemDefaults.TextStyles.BodyText
-                    }
+                RedGreenBar {
+                    id: afterUploadMem
                 }
-                // TODO red-green bar to indicat the usage
                 Label {
                     id: versionLabel
                     text: qsTr("Version") + " 1.3.2"
@@ -185,5 +193,8 @@ NavigationPane {
         //-- connect the preferences save SIGNAL to the handler SLOT
         languageSelection.languageChanged.connect(navigationPane.newLanguage)
         customerSelection.customerChanged.connect(navigationPane.newCustomer)
+        // init values
+        usedMem.setRedGreen(257, 2000);
+        afterUploadMem.setRedGreen(344, 2000);
     }
 }

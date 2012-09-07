@@ -139,48 +139,48 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="96"/>
+        <location filename="../assets/PreferencesSheet.qml" line="104"/>
         <source>Please enter your email address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="105"/>
+        <location filename="../assets/PreferencesSheet.qml" line="113"/>
         <source>Musterfiirma GmbH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="120"/>
-        <location filename="../assets/PreferencesSheet.qml" line="174"/>
+        <location filename="../assets/PreferencesSheet.qml" line="128"/>
+        <location filename="../assets/PreferencesSheet.qml" line="182"/>
         <source>German</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="133"/>
+        <location filename="../assets/PreferencesSheet.qml" line="96"/>
         <source>Please enter your Server URL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="141"/>
+        <location filename="../assets/PreferencesSheet.qml" line="156"/>
         <source>Files to upload</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="150"/>
+        <location filename="../assets/PreferencesSheet.qml" line="145"/>
         <source>of</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="150"/>
+        <location filename="../assets/PreferencesSheet.qml" line="145"/>
         <source>Memory used</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="159"/>
+        <location filename="../assets/PreferencesSheet.qml" line="167"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="176"/>
+        <location filename="../assets/PreferencesSheet.qml" line="184"/>
         <source>English</source>
         <translation type="unfinished"></translation>
     </message>
