@@ -55,12 +55,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/FeedbackSheet.qml" line="84"/>
+        <location filename="../assets/FeedbackSheet.qml" line="77"/>
         <source>to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/FeedbackSheet.qml" line="109"/>
+        <location filename="../assets/FeedbackSheet.qml" line="94"/>
         <source>Please enter your Feedback</source>
         <translation type="unfinished"></translation>
     </message>
@@ -245,22 +245,22 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="80"/>
+        <location filename="../assets/main.qml" line="81"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="90"/>
+        <location filename="../assets/main.qml" line="91"/>
         <source>Data Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="99"/>
+        <location filename="../assets/main.qml" line="100"/>
         <source>Users</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="109"/>
+        <location filename="../assets/main.qml" line="110"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>

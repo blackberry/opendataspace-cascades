@@ -76,6 +76,7 @@ TabbedPane {
     // first Tab: HomePage with custom Image as Background
     Tab {
         id: homeTab
+        imageSource: "asset:///images/ics/10-device-access-location-found81.png"
         objectName: "homeTab"
         title: qsTr("Home")
         HomePage {

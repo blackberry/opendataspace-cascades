@@ -89,18 +89,21 @@ NavigationPane {
                                     subtitle: "ODS User"
                                     ActionItem {
                                         title: "Info"
+                                        imageSource: "asset:///images/ics/2-action-about81.png"
                                         onTriggered: {
                                             // TODO
                                         }
                                     }
                                     ActionItem {
                                         title: "MailTo"
+                                        imageSource: "asset:///images/ics/5-content-email81.png"
                                         onTriggered: {
                                             // TODO
                                         }
                                     }
                                     ActionItem {
                                         title: "Contact"
+                                        imageSource: "asset:///images/ics/6-social-person81.png"
                                         onTriggered: {
                                             // TODO
                                         }
@@ -119,24 +122,28 @@ NavigationPane {
                                     subtitle: "ODS Aministrator"
                                     ActionItem {
                                         title: "Add Room"
+                                        imageSource: "asset:///images/ics/5-content-new81.png"
                                         onTriggered: {
                                             // TODO
                                         }
                                     }
                                     ActionItem {
                                         title: "Info"
+                                        imageSource: "asset:///images/ics/2-action-about81.png"
                                         onTriggered: {
                                             // TODO
                                         }
                                     }
                                     ActionItem {
                                         title: "MailTo"
+                                        imageSource: "asset:///images/ics/5-content-email81.png"
                                         onTriggered: {
                                             // TODO
                                         }
                                     }
                                     ActionItem {
                                         title: "Contact"
+                                        imageSource: "asset:///images/ics/6-social-person81.png"
                                         onTriggered: {
                                             // TODO
                                         }

@@ -136,6 +136,7 @@ Page {
                                 subtitle: "ODS Subroom"
                                 ActionItem {
                                     title: "Info"
+                                    imageSource: "asset:///images/ics/2-action-about81.png"
                                     onTriggered: {
                                         // TODO
                                     }
@@ -154,24 +155,28 @@ Page {
                                 subtitle: "ODS Folder"
                                 ActionItem {
                                     title: "Info"
+                                    imageSource: "asset:///images/ics/2-action-about81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
                                     title: "Copy"
+                                    imageSource: "asset:///images/ics/5-content-copy81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
                                     title: "Move"
+                                    imageSource: "asset:///images/ics/5-content-import-export81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
                                     title: "Rename"
+                                    imageSource: "asset:///images/ics/5-content-edit81.png"
                                     onTriggered: {
                                         // TODO
                                     }
@@ -196,42 +201,49 @@ Page {
                                 subtitle: "ODS File"
                                 ActionItem {
                                     title: "View"
+                                    imageSource: "asset:///images/ics/2-action-search81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
                                     title: "Info"
+                                    imageSource: "asset:///images/ics/2-action-about81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
                                     title: "Copy"
+                                    imageSource: "asset:///images/ics/5-content-copy81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
                                     title: "Move"
+                                    imageSource: "asset:///images/ics/5-content-import-export81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
                                     title: "Rename"
+                                    imageSource: "asset:///images/ics/5-content-edit81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
                                     title: "Download"
+                                    imageSource: "asset:///images/ics/9-av-download81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
                                     title: "Link"
+                                    imageSource: "asset:///images/ics/4-collections-labels81.png"
                                     onTriggered: {
                                         // TODO
                                     }
