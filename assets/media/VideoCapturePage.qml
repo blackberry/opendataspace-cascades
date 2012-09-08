@@ -39,6 +39,7 @@ Page {
             imageSource: "asset:///images/ics/9-av-play81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
+                console.debug("VideoCapturePage START")
                 videocamera.startVideoCapture();
                 videocamera.startId.enabled = false
                 videocamera.stopId.enabled = true
@@ -51,6 +52,7 @@ Page {
             imageSource: "asset:///images/ics/9-av-stop81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
+                console.debug("VideoCapturePage STOP")
                 videocamera.stopVideoCapture();
                 videocamera.startId.enabled = true
                 videocamera.stopId.enabled = false
@@ -80,19 +82,22 @@ Page {
                 // There are loads of messages we could listen to here
                 //onPhotoSaved and onShutterFired are taken care of in the C code
                 onCameraOpenFailed: {
-                    console.log("onCameraOpenFailed signal received with error " + error);
+                    console.log("VideoCapturePage onCameraOpenFailed signal received with error " + error);
                 }
                 onViewfinderStartFailed: {
-                    console.log("viewfinderStartFailed signal received with error " + error);
+                    console.log("VideoCapturePage viewfinderStartFailed signal received with error " + error);
                 }
                 onViewfinderStopFailed: {
-                    console.log("viewfinderStopFailed signal received with error " + error);
+                    console.log("VideoCapturePage viewfinderStopFailed signal received with error " + error);
                 }
                 onPhotoCaptureFailed: {
-                    console.log("photoCaptureFailed signal received with error " + error);
+                    console.log("VideoCapturePage photoCaptureFailed signal received with error " + error);
                 }
                 onPhotoSaveFailed: {
-                    console.log("photoSaveFailed signal received with error " + error);
+                    console.log("VideoCapturePage photoSaveFailed signal received with error " + error);
+                }
+                onVideoCaptureFailed:{
+                    console.log("VideoCapturePage videoCaptureFailed signal received with error " + error);
                 }
                 onPhotoSaved: {
                     // we do a preview             

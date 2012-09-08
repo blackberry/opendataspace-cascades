@@ -75,7 +75,9 @@ Page {
     // Open the Camera and start the Viewfinder
     function openODSCamera() {
         console.debug("CameraCapturePage openODSCamera called")
-        // seems that REAR doesn't work and displays black sites in Preview
+        // seems that REAR doesn't work:
+        // ViewFinder is from REAR Camera,
+        // but Previewung the snapshot displays black sites in Preview
         camera.open(CameraUnit.Front);
         camera.startViewfinder();
     }

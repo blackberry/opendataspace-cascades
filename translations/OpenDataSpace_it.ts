@@ -255,7 +255,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/media/VideoCapturePage.qml" line="48"/>
+        <location filename="../assets/media/VideoCapturePage.qml" line="49"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
