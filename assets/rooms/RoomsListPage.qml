@@ -83,7 +83,7 @@ Page {
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // SIGNAL
-                console.debug("clicked open record Video action")
+                console.debug("clicked record Video action")
                 roomsListPage.openVideo()
             }
         },

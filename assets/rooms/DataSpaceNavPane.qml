@@ -45,7 +45,7 @@ NavigationPane {
                 }
             }
         },
-        CameraCapturePage {
+        VideoCapturePage {
             id: videoCapturePage
             paneProperties: NavigationPaneProperties {
                 backButton: ActionItem {
@@ -230,11 +230,18 @@ NavigationPane {
         } // end Container
         // SLOTS
         function openCameraPage() {
-            cameraCapturePage.openODSCamera()
             console.debug("got signal to open camera")
+            cameraCapturePage.openODSCamera()
+            console.debug("push CameraCapturePage")
             navigationPane.push(cameraCapturePage)
-            console.debug("openCamera")
-            // ods.openCamera()
+            console.debug("openedCamera")
+        }
+        function openVideoCameraPage() {
+            console.debug("got signal to open VIDEOcamera")
+            videoCapturePage.openODSVideo()
+            console.debug("push VideoCapturePage")
+            navigationPane.push(videoCapturePage)
+            console.debug("openedVIDEOCamera")
         }
         function previewImage(path) {
             console.debug("got signal to preview image: " + path)
@@ -254,8 +261,12 @@ NavigationPane {
             roomsListPage.openCamera.connect(openCameraPage)
             //-- connect the CameraCapturePage previewImage SIGNAL to the handler SLOT
             cameraCapturePage.previewImage.connect(previewImage)
+            console.debug("CameraCapturePage CONNECTED")
+            //-- connect the RoomsList openVideo SIGNAL to the handler SLOT
+            roomsListPage.openVideo.connect(openVideoCameraPage)
             //-- connect the VideoCameraCapturePage previewVideo SIGNAL to the handler SLOT
             videoCapturePage.previewVideo.connect(previewVideo)
+            console.debug("VideoCapturePage CONNECTED")
         }
     } // end page
 }// end navigationpane

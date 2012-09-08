@@ -70,31 +70,29 @@ OpenDataSpaceApp::OpenDataSpaceApp() {
 	// but then the Sheet is so fast opened that the User doesn't notify what happened
 	// so I decided to use  a delayed animation
 
-
-	// initialize the videocamera
-			Camera *videocamera = root->findChild<Camera*>("odsVideo");
-			if (videocamera) {
-				qDebug() << "videocamera child found";
-
-				QObject::connect(videocamera, SIGNAL(shutterFired()), this,
-						SLOT(onShutterFired()));
-			} else {
-				// TODO give some feedback to user
-				qDebug() << "videocamera child N O T found";
-			}
-
 	// initialize the camera
 	Camera *camera = root->findChild<Camera*>("odsCamera");
 	if (camera) {
-		qDebug() << "camera child found";
+		qDebug() << "odsCamera child found";
 
 		QObject::connect(camera, SIGNAL(shutterFired()), this,
 				SLOT(onShutterFired()));
 	} else {
 		// TODO give some feedback to user
-		qDebug() << "camera child N O T  found";
+		qDebug() << "odsCamera child N O T  found";
 	}
+	// initialize the videocamera
+	Camera *videocamera = root->findChild<Camera*>("odsVideo");
+	if (videocamera) {
+		qDebug() << "odsVideo child found";
 
+		QObject::connect(videocamera, SIGNAL(shutterFired()), this,
+				SLOT(onShutterFired()));
+	} else {
+		// TODO give some feedback to user
+		qDebug() << "odsVideo child N O T found";
+	}
+	// TODO collect problems in a healthyStatus list to be displayed from PreferencesPage
 
 }
 
@@ -107,12 +105,14 @@ Menu* OpenDataSpaceApp::createSystemMenu() {
 	// FEEDBACK will send an email to OpenDataSpace
 	ActionItem* feedbackItem = new ActionItem();
 	feedbackItem->setTitle("Feedback");
-	feedbackItem->setImageSource(QString("asset:///images/ics/5-content-email81.png"));
+	feedbackItem->setImageSource(
+			QString("asset:///images/ics/5-content-email81.png"));
 	// TODO Image
 	// LOGOUT will do a LogOut and jump back to HomeScreen and open the LogIn Sheet
 	ActionItem* logoutItem = new ActionItem();
 	logoutItem->setTitle("Logout");
-	logoutItem->setImageSource(QString("asset:///images/ics/10-device-access-accounts81.png"));
+	logoutItem->setImageSource(
+			QString("asset:///images/ics/10-device-access-accounts81.png"));
 	// TODO IMAGE
 	// SETTINGS will open the User Settings
 	SettingsActionItem* settingsItem = new SettingsActionItem();
@@ -181,7 +181,7 @@ void OpenDataSpaceApp::showInPicturesApp(QString fileName) {
 
 void OpenDataSpaceApp::showInVideosApp(QString fileName) {
 	// TODO only guessing yet
-	qDebug() << "showInVideoApp called: "+fileName;
+	qDebug() << "showInVideoApp called: " + fileName;
 	InvokeRequest invokeRequest;
 	invokeRequest.setAction("bb.action.OPEN");
 	invokeRequest.setTarget("sys.videos.app");

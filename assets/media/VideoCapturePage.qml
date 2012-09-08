@@ -39,9 +39,9 @@ Page {
             imageSource: "asset:///images/ics/9-av-play81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                startVideoCapture();
-                startId.enabled = false
-                stopId.enabled = true
+                videocamera.startVideoCapture();
+                videocamera.startId.enabled = false
+                videocamera.stopId.enabled = true
             }
         },
         ActionItem {
@@ -51,9 +51,9 @@ Page {
             imageSource: "asset:///images/ics/9-av-stop81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                stopVideoCapture();
-                startId.enabled = true
-                stopId.enabled = false
+                videocamera.stopVideoCapture();
+                videocamera.startId.enabled = true
+                videocamera.stopId.enabled = false
             }
         }
     ]
@@ -95,14 +95,15 @@ Page {
                     console.log("photoSaveFailed signal received with error " + error);
                 }
                 onPhotoSaved: {
-                    // we do a o preview             
-                    cameraCapturePage.previewVideo(fileName)
+                    // we do a preview             
+                    videocameraCapturePage.previewVideo(fileName)
                 }
             }
         }
     }
     // Open the Camera and start the Viewfinder
     function openODSVideo() {
+        console.debug("VideoCapturePage openODSVideo called")
         // seems that REAR doesn't work and displays black sites in Preview
         videocamera.open(CameraUnit.Front);
         videocamera.startViewfinder();
@@ -110,6 +111,7 @@ Page {
     // Stop the Viewfinder and close the Camera
     // TODO dont know if I must do this
     function closeODSVideo() {
+        console.debug("VideoCapturePage closeODSVideo called")
         videocamera.stopVideoCapture;
         videocamera.stopViewfinder();
         videocamera.close();
@@ -117,5 +119,6 @@ Page {
     onCreationCompleted: {
         // the Image from Viewfinder should be shine through
         videocameraCapturePage.actionBarVisibility = ChromeVisibility.Overlay
+        console.debug("VideoCapturePage INIT done")
     }
 }
