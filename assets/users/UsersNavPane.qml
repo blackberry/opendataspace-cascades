@@ -229,7 +229,6 @@ NavigationPane {
                     "displayType": displayType,
                     "icon": getDisplayIcon(displayType)
                 });
-            navigationPane.pop()
         }
         function getDisplayIcon(displayType) {
             if (displayType == "U") {
