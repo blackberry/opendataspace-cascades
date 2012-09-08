@@ -87,6 +87,7 @@ NavigationPane {
             }
         }
     ]
+    // the ROOT Page of this NavigationPane
     Page {
         id: dataspacePage
         actions: [

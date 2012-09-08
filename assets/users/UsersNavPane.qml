@@ -22,6 +22,19 @@
 
 NavigationPane {
     id: navigationPane
+    attachedObjects: [
+        AddUserPage {
+            id: addUserPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
+        }
+    ]
+    // the Root Page of this NavigationPane
     Page {
         id: usersPage
         actions: [
@@ -31,18 +44,20 @@ NavigationPane {
                 imageSource: "asset:///images/ics/6-social-add-person81.png"
                 ActionBar.placement: ActionBarPlacement.InOverflow
                 onTriggered: {
-                    // TODO push NewUser Sheet
+                    console.debug("now pushing AddUserPage")
+                    push(addUserPage)
                 }
             },
             ActionItem {
                 title: qsTr("Refresh")
                 imageSource: "asset:///images/ics/1-navigation-refresh81.png"
                 ActionBar.placement: ActionBarPlacement.OnBar
-                onTriggered: {
+                onTriggered: { 
                     // TODO call server
                 }
             }
         ]
+        //
         content: Container {
             id: listContainer
             layout: DockLayout {
@@ -207,10 +222,28 @@ NavigationPane {
                 }
             } // end ListView
         } // end Container
-    
+        function addUser(name, displayType) {
+            console.debug("Now add new USER to LISTMODEL on UserNavPage")
+            mockupUserModel.insert({
+                    "name": name,
+                    "displayType": displayType,
+                    "icon": getDisplayIcon(displayType)
+                });
+            navigationPane.pop()
+        }
+        function getDisplayIcon(displayType) {
+            if (displayType == "U") {
+                return "../images/users-icon.png"
+            } else {
+                return "../images/admin-icon.png"
+            }
+        }
         // we need this and the entry in bar-descriptor to support all directions
         onCreationCompleted: {
             OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
+            //-- connect the onUserAdded SIGNAL from AddFolderPage with SLOT folderAdded
+            addUserPage.onUserAdded.connect(addUser)
+            console.debug("AddUserPage CONNECTED")
         }
     } // end page
 }// end navigationpane

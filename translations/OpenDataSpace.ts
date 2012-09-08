@@ -5,7 +5,7 @@
     <name>AddFolderPage</name>
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="23"/>
-        <source>New Folder</source>
+        <source>Add Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -21,6 +21,54 @@
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="38"/>
         <source>Folder Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AddUserPage</name>
+    <message>
+        <location filename="../assets/users/AddUserPage.qml" line="54"/>
+        <source>New User</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/users/AddUserPage.qml" line="41"/>
+        <source>Add User</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/users/AddUserPage.qml" line="83"/>
+        <source>Please enter your email address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/users/AddUserPage.qml" line="105"/>
+        <source>Salutation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/users/AddUserPage.qml" line="127"/>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/users/AddUserPage.qml" line="135"/>
+        <source>First Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/users/AddUserPage.qml" line="143"/>
+        <source>Last Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/users/AddUserPage.qml" line="166"/>
+        <source>Administrator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/users/AddUserPage.qml" line="217"/>
+        <source>DataRoom</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -45,12 +93,12 @@
 <context>
     <name>DataSpaceNavPane</name>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="95"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="96"/>
         <source>New Room</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="104"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="105"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
@@ -273,12 +321,12 @@
 <context>
     <name>UsersNavPane</name>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="30"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="43"/>
         <source>New User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="38"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="52"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>

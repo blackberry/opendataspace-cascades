@@ -20,7 +20,7 @@ Page {
     id: addFolderPage
     actions: [
         ActionItem {
-            title: qsTr("New Folder")
+            title: qsTr("Add Folder")
             imageSource: "asset:///images/ics/5-content-new81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
