@@ -75,6 +75,16 @@ NavigationPane {
                     }
                 }
             }
+        },
+        AddFolderPage {
+            id: addFolderPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
         }
     ]
     Page {
@@ -83,7 +93,8 @@ NavigationPane {
             //TODO only for Admins
             ActionItem {
                 title: qsTr("New Room")
-                imageSource: "asset:///images/ics/5-content-new81.png"
+                enabled: false
+                imageSource: "asset:///images/ics/4-collections-cloud_newLabel81.png"
                 ActionBar.placement: ActionBarPlacement.InOverflow
                 onTriggered: {
                     // TODO push NewRoom Sheet
@@ -253,6 +264,14 @@ NavigationPane {
             videoPreviewPage.previewPath = path;
             navigationPane.push(videoPreviewPage)
         }
+        function openAddFolderPage() {
+            console.debug("got signal to open AddFolderPage")
+            navigationPane.push(addFolderPage)
+        }
+        function folderAdded(name) {
+            console.debug("got signal to add a new folder: " + name)
+            roomsListPage.addFolder(name)
+        }
     
         // we need this and the entry in bar-descriptor to support all directions
         onCreationCompleted: {
@@ -267,6 +286,11 @@ NavigationPane {
             //-- connect the VideoCameraCapturePage previewVideo SIGNAL to the handler SLOT
             videoCapturePage.previewVideo.connect(previewVideo)
             console.debug("VideoCapturePage CONNECTED")
+            //-- connect the RoomsList onOpenAddFolder SIGNAL to the handler SLOT
+            roomsListPage.onOpenAddFolder.connect(openAddFolderPage)
+            //-- connect the onFolderAdded SIGNAL from AddFolderPage with SLOT folderAdded
+            addFolderPage.onFolderAdded.connect(folderAdded)
+            console.debug("AddFolderPage CONNECTED")
         }
     } // end page
 }// end navigationpane

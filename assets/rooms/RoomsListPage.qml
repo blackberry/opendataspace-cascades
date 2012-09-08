@@ -24,14 +24,24 @@ Page {
     id: roomsListPage
     signal openCamera()
     signal openVideo()
+    signal onOpenAddFolder()
     actions: [
         //TODO only for Admins
         ActionItem {
-            title: qsTr("New Folder")
-            imageSource: "asset:///images/ics/5-content-new81.png"
+            title: qsTr("New SubRoom")
+            enabled: false
+            imageSource: "asset:///images/ics/4-collections-cloud_newLabel81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
-                // TODO push NewRoom Sheet
+                // TODO push NewSubRoom Sheet
+            }
+        },
+        ActionItem {
+            title: qsTr("New Folder")
+            imageSource: "asset:///images/ics/4-collections-collection_newlabel81.png"
+            ActionBar.placement: ActionBarPlacement.InOverflow
+            onTriggered: {
+                roomsListPage.onOpenAddFolder()
             }
         },
         ActionItem {
@@ -328,7 +338,18 @@ Page {
             }
         } // end ListView
     } // end Container
-
+    function addFolder(name) {
+        console.debug("Now add new FOLDER to LISTMODEL on RoomsListPage")
+        mockupModel.insert({
+                "name": name,
+                "displayType": "F",
+                "lastEditedBy": "",
+                "fileSize": "",
+                "fileType": "",
+                "timestamp": "",
+                "icon": "../images/folders-icon.png"
+            })
+    }
 
     // we need this and the entry in bar-descriptor to support all directions
     onCreationCompleted: {

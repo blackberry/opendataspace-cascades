@@ -2,6 +2,29 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="it_IT">
 <context>
+    <name>AddFolderPage</name>
+    <message>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="23"/>
+        <source>New Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="31"/>
+        <source>add next Foldername</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="57"/>
+        <source>Name of the new Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="38"/>
+        <source>Folder Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CustomerSelection</name>
     <message>
         <location filename="../assets/common/CustomerSelection.qml" line="31"/>
@@ -22,12 +45,12 @@
 <context>
     <name>DataSpaceNavPane</name>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="85"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="95"/>
         <source>New Room</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="93"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="104"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
@@ -181,42 +204,47 @@
 <context>
     <name>RoomsListPage</name>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="30"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="31"/>
+        <source>New SubRoom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="40"/>
         <source>New Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="39"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="49"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="47"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="57"/>
         <source>Select Document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="55"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="65"/>
         <source>Select Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="63"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="73"/>
         <source>Select Video</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="71"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="81"/>
         <source>Open Camera</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="81"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="91"/>
         <source>Record Video</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="91"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="101"/>
         <source>Record Audio</source>
         <translation type="unfinished"></translation>
     </message>
