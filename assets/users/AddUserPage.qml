@@ -28,10 +28,6 @@ Page {
             repeatPattern: RepeatPattern.XY
             imageSource: "asset:///images/tiles/red16x16.png"
         },
-        ImageTracker {
-            id: errorHelper
-            imageSource: "asset:///images/chat.png"
-        },
         // recalculate positions
         OrientationHandler {
             onUiOrientationChanged: {
@@ -55,7 +51,10 @@ Page {
             onTriggered: {
                 if (firstNameWithMarker.textFieldText != "" && lastNameWithMarker.textFieldText != "" && emailWithMarker.textFieldText != "") {
                     addUserPage.onUserAdded(firstNameWithMarker.textFieldText + " " + lastNameWithMarker.textFieldText, isAdmin.displayType)
-                    // TODO animation flying data away to the cloud
+                    // animation flying data away to the cloud
+                    transport.animation.play()
+                    transport.containerVisible = true
+                    userDataContainer.visible = false
                     emailWithMarker.textFieldText = ""
                     firstNameWithMarker.textFieldText = ""
                     lastNameWithMarker.textFieldText = ""
@@ -70,7 +69,7 @@ Page {
     ]
     titleBar: TitleBar {
         id: addBar
-        title: qsTr("New User")
+        title: qsTr("User Data")
         visibility: ChromeVisibility.Visible
     }
     Container {
@@ -79,6 +78,10 @@ Page {
         // Error Assistant
         ErrorAssistant {
             id: dataError
+        }
+        // Animate the data transport
+        TransportDataToCloud {
+            id: transport
         }
     
         // using a ScrollView to manage the fields in Landscape
@@ -271,6 +274,9 @@ Page {
         lastNameWithMarker.textFieldText = ""
         userTitle.text = ""
     }
+    function doTransportAnimationEnd(){
+        userDataContainer.visible = true
+    }
     onCreationCompleted: {
         // initialize positioning
         if (OrientationSupport.uiOrientation == UiOrientation.Landscape) {
@@ -281,6 +287,8 @@ Page {
             userDataContainer.layout.leftPadding = 25
         }
         clearFields();
+        // connect transport animation end SIGNAL
+        transport.animation.onTransportAnimationEnd.connect(doTransportAnimationEnd)
         console.debug("AddUserPage INIT done")
     }
 }

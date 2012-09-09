@@ -4,22 +4,22 @@
 <context>
     <name>AddFolderPage</name>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="23"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="24"/>
         <source>Add Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="31"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="35"/>
         <source>add next Foldername</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="57"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="68"/>
         <source>Name of the new Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="38"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="44"/>
         <source>Folder Name</source>
         <translation type="unfinished"></translation>
     </message>
@@ -27,47 +27,47 @@
 <context>
     <name>AddUserPage</name>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="73"/>
-        <source>New User</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/users/AddUserPage.qml" line="52"/>
+        <location filename="../assets/users/AddUserPage.qml" line="48"/>
         <source>Add User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="111"/>
+        <location filename="../assets/users/AddUserPage.qml" line="72"/>
+        <source>User Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/users/AddUserPage.qml" line="114"/>
         <source>Please enter your email address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="131"/>
+        <location filename="../assets/users/AddUserPage.qml" line="134"/>
         <source>Salutation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="153"/>
+        <location filename="../assets/users/AddUserPage.qml" line="156"/>
         <source>Title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="162"/>
+        <location filename="../assets/users/AddUserPage.qml" line="165"/>
         <source>First Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="168"/>
+        <location filename="../assets/users/AddUserPage.qml" line="171"/>
         <source>Last Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="188"/>
+        <location filename="../assets/users/AddUserPage.qml" line="191"/>
         <source>Administrator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="239"/>
+        <location filename="../assets/users/AddUserPage.qml" line="242"/>
         <source>DataRoom</source>
         <translation type="unfinished"></translation>
     </message>
@@ -110,7 +110,7 @@
 <context>
     <name>ErrorAssistant</name>
     <message>
-        <location filename="../assets/common/ErrorAssistant.qml" line="41"/>
+        <location filename="../assets/common/ErrorAssistant.qml" line="52"/>
         <source>sorry: some Errors</source>
         <translation type="unfinished"></translation>
     </message>
@@ -318,6 +318,14 @@
     <message>
         <location filename="../assets/common/TextFieldWithMarker.qml" line="48"/>
         <source>please enter your text</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TransportDataToCloud</name>
+    <message>
+        <location filename="../assets/common/TransportDataToCloud.qml" line="58"/>
+        <source>Data to the Cloud...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

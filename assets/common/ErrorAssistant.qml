@@ -16,18 +16,28 @@
  
 /*
  * 
+ * can be used if errors at data entry
+ * gives the user a visual hint that something went wrong
+ *
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
  *
 */
 
 Container {
-    property alias animation : animateError
-    property alias containerVisible : errorContainer.visible
+    property alias animation: animateError
+    property alias containerVisible: errorContainer.visible
     id: errorContainer
+    attachedObjects: [
+        ImageTracker {
+            id: errorHelper
+            imageSource: "asset:///images/chat.png"
+        }
+    ]
     layout: StackLayout {
         leftPadding: 100
     }
     visible: false
+    // the error image
     ImageView {
         id: errorImage
         image: errorHelper.image
@@ -36,6 +46,7 @@ Container {
             horizontalAlignment: HorizontalAlignment.Fill
         }
     }
+    // error text
     Label {
         id: errorText
         text: qsTr("sorry: some Errors")
@@ -82,6 +93,7 @@ Container {
                     toOpacity: 0
                 }
             }
+            // at the end make container invisible
             onEnded: errorContainer.visible = false
         }
     ]

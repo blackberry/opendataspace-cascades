@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */import bb.cascades 1.0
+ import "../common"
 
 Page {
     // SIGNAL if folder was added
@@ -26,9 +27,14 @@ Page {
             onTriggered: {
                 if (folderName.text != "") {
                     addFolderPage.onFolderAdded(folderName.text)
-                    // TODO animation
+                    // animation flying data away to the cloud
+                    transport.animation.play()
+                    transport.containerVisible = true
+                    folderNameContainer.visible = false
                     folderName.text = ""
                     folderName.hintText = qsTr("add next Foldername")
+                } else {
+                    // TODO add red bar
                 }
             }
         }
@@ -42,6 +48,11 @@ Page {
         id: mainContainer
         layout: DockLayout {
         }
+        // Animate the data transport
+        TransportDataToCloud {
+            id: transport
+        }
+        //
         Container {
             id: folderNameContainer
             layoutProperties: DockLayoutProperties {
@@ -62,4 +73,11 @@ Page {
             }
         } // end Container
     } // end main container
+    function doTransportAnimationEnd() {
+        folderNameContainer.visible = true
+    }
+    onCreationCompleted: {
+        // connect transport animation end SIGNAL
+        transport.animation.onTransportAnimationEnd.connect(doTransportAnimationEnd)
+    }
 }
