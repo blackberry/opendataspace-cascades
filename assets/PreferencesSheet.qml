@@ -110,7 +110,7 @@ NavigationPane {
                 // Label displays the current selected customer
                 Label {
                     id: customerLabel
-                    text: qsTr("Musterfiirma GmbH")
+                    text: "Musterfiirma GmbH"
                     leftMargin: 20
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText

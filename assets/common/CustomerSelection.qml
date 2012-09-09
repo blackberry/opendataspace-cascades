@@ -53,12 +53,12 @@ Page {
                 dividersVisible: false
                 Option {
                     id: customer1
-                    text: qsTr("Musterfirma GmbH")
+                    text: "Musterfirma GmbH"
                     value: "Musterfirma GmbH"
                 }
                 Option {
                     id: customer2
-                    text: qsTr("Family Meier")
+                    text: "Family Meier"
                     value: "Family Meier"
                 }
                 onSelectedIndexChanged: {

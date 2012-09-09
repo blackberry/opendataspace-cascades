@@ -51,8 +51,8 @@
     <!-- Description, displayed in the BlackBerry Tablet OS application installer.
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
     <description>
-       The OpenDataSpace Client APP for Cascades.
-       <text xml:lang="de">Der OpenDataSpace Client f&#xfc;r Cascades.</text>
+       OpenDataSpace Client APP for Cascades. (Developer Preview)
+       <text xml:lang="de">OpenDataSpace Client f&#xfc;r Cascades. (Developer Preview)</text>
     </description>
 
     <!-- Copyright information. Optional. -->

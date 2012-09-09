@@ -79,16 +79,6 @@
         <source>Customer Account</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../assets/common/CustomerSelection.qml" line="56"/>
-        <source>Musterfirma GmbH</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/common/CustomerSelection.qml" line="61"/>
-        <source>Family Meier</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>DataSpaceNavPane</name>
@@ -217,11 +207,6 @@
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="104"/>
         <source>Please enter your email address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/PreferencesSheet.qml" line="113"/>
-        <source>Musterfiirma GmbH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
