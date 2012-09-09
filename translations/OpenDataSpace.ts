@@ -188,6 +188,39 @@
     </message>
 </context>
 <context>
+    <name>OpenDataSpaceApp</name>
+    <message>
+        <location filename="../src/opendataspaceapp.cpp" line="169"/>
+        <source>German</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/opendataspaceapp.cpp" line="171"/>
+        <source>English</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/opendataspaceapp.cpp" line="190"/>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/opendataspaceapp.cpp" line="193"/>
+        <source>Feedback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/opendataspaceapp.cpp" line="198"/>
+        <source>Logout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/opendataspaceapp.cpp" line="203"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PreferencesSheet</name>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="65"/>
@@ -210,8 +243,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="128"/>
-        <location filename="../assets/PreferencesSheet.qml" line="184"/>
+        <location filename="../assets/PreferencesSheet.qml" line="186"/>
         <source>German</source>
         <translation type="unfinished"></translation>
     </message>
@@ -221,27 +253,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="158"/>
+        <location filename="../assets/PreferencesSheet.qml" line="160"/>
         <source>Files to upload</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="146"/>
+        <location filename="../assets/PreferencesSheet.qml" line="148"/>
         <source>of</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="146"/>
+        <location filename="../assets/PreferencesSheet.qml" line="148"/>
         <source>Memory used</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="169"/>
+        <location filename="../assets/PreferencesSheet.qml" line="171"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="186"/>
+        <location filename="../assets/PreferencesSheet.qml" line="188"/>
         <source>English</source>
         <translation type="unfinished"></translation>
     </message>
@@ -297,6 +329,52 @@
         <source>Record Audio</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="156"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="175"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="228"/>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="182"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="235"/>
+        <source>Copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="189"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="242"/>
+        <source>Move</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="196"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="249"/>
+        <source>Rename</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="203"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="270"/>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="221"/>
+        <source>View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="256"/>
+        <source>Download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="263"/>
+        <source>Link</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextFieldWithMarker</name>
@@ -339,6 +417,34 @@
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../assets/users/UsersNavPane.qml" line="106"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="146"/>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/users/UsersNavPane.qml" line="113"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="153"/>
+        <source>MailTo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/users/UsersNavPane.qml" line="120"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="160"/>
+        <source>Contact</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/users/UsersNavPane.qml" line="139"/>
+        <source>Add Room</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/users/UsersNavPane.qml" line="167"/>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>VideoCapturePage</name>
@@ -363,6 +469,19 @@
     <message>
         <location filename="../assets/media/VideoPreviewPage.qml" line="46"/>
         <source>Upload</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WebPageHelpSheet</name>
+    <message>
+        <location filename="../assets/webpages/WebPageHelpSheet.qml" line="36"/>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/webpages/WebPageHelpSheet.qml" line="46"/>
+        <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

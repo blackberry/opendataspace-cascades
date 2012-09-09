@@ -32,6 +32,7 @@
 #include <bb/cascades/multimedia/Camera>
 
 #include <bps/soundplayer.h>
+#include <bps/virtualkeyboard.h>
 
 using namespace bb::cascades;
 using namespace bb::cascades::multimedia;
@@ -42,7 +43,11 @@ using namespace bb::system;
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
  *
  */
-OpenDataSpaceApp::OpenDataSpaceApp() {
+OpenDataSpaceApp::OpenDataSpaceApp() :
+		m_app(NULL), m_currentLocale("en"), m_translator(
+				NULL)
+
+{
 
 	// we need a system menu:
 	Menu* menu = createSystemMenu();
@@ -96,24 +101,106 @@ OpenDataSpaceApp::OpenDataSpaceApp() {
 
 }
 
+// INTERNATIONALIZATION
+/**
+ * void App::setApplication(bb::cascades::Application* app, QTranslator* translator, QString currentLocale)
+ *
+ * This method allows to change translation engine basing on the given locale
+ * at runtime.
+ *
+ */
+void OpenDataSpaceApp::setApplication(bb::cascades::Application* app,
+		QTranslator* translator, QString currentLocale) {
+	m_app = app;
+	m_translator = translator;
+	m_currentLocale = currentLocale;
+	updateLocale(currentLocale);
+
+	//update certain controls to reflect the correct state
+	// not yet needed
+}
+
+/**
+ * App::updateLocale(QString locale)
+ *
+ * Update view content basing on the given locale.
+ *
+ */
+void OpenDataSpaceApp::updateLocale(QString locale) {
+	qDebug() << "updateLocale: " << locale;
+	if (!m_app) {
+		qDebug() << "updateLocale: app pointer not valid";
+		return;
+	}
+
+	if (!m_translator) {
+		qDebug() << "updateLocale: translator pointer not valid";
+		return;
+	}
+
+	// if locale is empty - refresh current. otherwise change the local
+	if (!locale.trimmed().isEmpty() && m_currentLocale != locale) {
+		m_currentLocale = locale;
+
+		qDebug() << "updating UI to language: " << m_currentLocale;
+		QString filename = QString("Internationalization_%1").arg(
+				m_currentLocale);
+		if (m_translator->load(filename, "app/native/qm")) {
+			// multiple translators can be installed but for this
+			// app we only use one translator instance for brevity
+			m_app->removeTranslator(m_translator);
+			m_app->installTranslator(m_translator);
+		}
+	}
+
+	// re-translate controls.
+	// not yet done
+
+}
+
+/**
+ * App::getCurrentLanguage()
+ *
+ * Retrieve the language name corresponding to the current locale.
+ */
+QString OpenDataSpaceApp::getCurrentLanguage() {
+	qDebug() << "getCurrentLanguage: " << m_currentLocale;
+	if (m_currentLocale == "de" || m_currentLocale == "de_DE" || m_currentLocale == "de_AT" || m_currentLocale == "de_CH") {
+		return tr("German");
+	} else {
+		return tr("English");
+	}
+}
+
+/**
+ * App::suppressKeyboard()
+ *
+ * A helper function to force the keyboard to hide
+ */
+void OpenDataSpaceApp::suppressKeyboard() {
+	virtualkeyboard_request_events(0);
+	virtualkeyboard_hide();
+}
+
+// M E N U
 // SystemMenu is available on all Screens
 Menu* OpenDataSpaceApp::createSystemMenu() {
 	// HELP will open a website with Help Instructions from OpenDataSpace
 	HelpActionItem* helpItem = new HelpActionItem();
-	helpItem->setTitle("Help");
+	helpItem->setTitle(tr("Help"));
 	// FEEDBACK will send an email to OpenDataSpace
 	ActionItem* feedbackItem = new ActionItem();
-	feedbackItem->setTitle("Feedback");
+	feedbackItem->setTitle(tr("Feedback"));
 	feedbackItem->setImageSource(
 			QString("asset:///images/ics/5-content-email81.png"));
 	// LOGOUT will do a LogOut and jump back to HomeScreen and open the LogIn Sheet
 	ActionItem* logoutItem = new ActionItem();
-	logoutItem->setTitle("Logout");
+	logoutItem->setTitle(tr("Logout"));
 	logoutItem->setImageSource(
 			QString("asset:///images/ics/10-device-access-accounts81.png"));
 	// SETTINGS will open the User Settings
 	SettingsActionItem* settingsItem = new SettingsActionItem();
-	settingsItem->setTitle("Settings");
+	settingsItem->setTitle(tr("Settings"));
 	// plug it all together
 	Menu* menu =
 			Menu::create().addAction(feedbackItem).addAction(logoutItem).help(
@@ -130,6 +217,7 @@ Menu* OpenDataSpaceApp::createSystemMenu() {
 	return menu;
 }
 
+// S L O T S
 // handles SLOT from logoutItem
 void OpenDataSpaceApp::logoutTriggered() {
 	root->setProperty("loginSheetVisible", true);

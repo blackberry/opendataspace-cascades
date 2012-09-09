@@ -21,6 +21,9 @@ int main(int argc, char **argv)
     }
     
     OpenDataSpaceApp mainApp;
+    // set translation
+    mainApp.setApplication(&app, &translator, locale_string);
+
     
     //-- we complete the transaction started in the app constructor and start the client event loop here
     return Application::exec();

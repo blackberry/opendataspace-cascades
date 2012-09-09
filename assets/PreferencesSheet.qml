@@ -125,7 +125,9 @@ NavigationPane {
                 // Label displays the current Locale
                 Label {
                     id: languageLabel
-                    text: qsTr("German")
+                    //gets the actual language but too early, so its always english
+                    // TODO
+                    text: ods.getCurrentLanguage() 
                     leftMargin: 20
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText

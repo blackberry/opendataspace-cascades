@@ -65,6 +65,7 @@ Page {
                     console.debug("New language selected: " + languageOptions.selectedValue());
                     // SIGNAL
                     languagePage.languageChanged(languageOptions.selectedValue());
+                    ods.updateLocale(languageOptions.selectedValue())
                 }
             }
         } // end Container

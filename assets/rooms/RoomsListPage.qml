@@ -153,7 +153,7 @@ Page {
                                 title: ListItemData.name
                                 subtitle: "ODS Subroom"
                                 ActionItem {
-                                    title: "Info"
+                                    title: qsTr("Info")
                                     imageSource: "asset:///images/ics/2-action-about81.png"
                                     onTriggered: {
                                         // TODO
@@ -172,35 +172,35 @@ Page {
                                 title: ListItemData.name
                                 subtitle: "ODS Folder"
                                 ActionItem {
-                                    title: "Info"
+                                    title: qsTr("Info")
                                     imageSource: "asset:///images/ics/2-action-about81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
-                                    title: "Copy"
+                                    title: qsTr("Copy")
                                     imageSource: "asset:///images/ics/5-content-copy81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
-                                    title: "Move"
+                                    title: qsTr("Move")
                                     imageSource: "asset:///images/ics/5-content-import-export81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
-                                    title: "Rename"
+                                    title: qsTr("Rename")
                                     imageSource: "asset:///images/ics/5-content-edit81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 deleteAction: DeleteActionItem {
-                                    title: "Delete"
+                                    title: qsTr("Delete")
                                     onTriggered: {
                                         // TODO
                                     }
@@ -218,56 +218,56 @@ Page {
                                 title: ListItemData.name
                                 subtitle: "ODS File"
                                 ActionItem {
-                                    title: "View"
+                                    title: qsTr("View")
                                     imageSource: "asset:///images/ics/2-action-search81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
-                                    title: "Info"
+                                    title: qsTr("Info")
                                     imageSource: "asset:///images/ics/2-action-about81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
-                                    title: "Copy"
+                                    title: qsTr("Copy")
                                     imageSource: "asset:///images/ics/5-content-copy81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
-                                    title: "Move"
+                                    title: qsTr("Move")
                                     imageSource: "asset:///images/ics/5-content-import-export81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
-                                    title: "Rename"
+                                    title: qsTr("Rename")
                                     imageSource: "asset:///images/ics/5-content-edit81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
-                                    title: "Download"
+                                    title: qsTr("Download")
                                     imageSource: "asset:///images/ics/9-av-download81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
-                                    title: "Link"
+                                    title: qsTr("Link")
                                     imageSource: "asset:///images/ics/4-collections-labels81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 deleteAction: DeleteActionItem {
-                                    title: "Delete"
+                                    title: qsTr("Delete")
                                     onTriggered: {
                                         // TODO
                                     }
