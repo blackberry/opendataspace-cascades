@@ -66,12 +66,12 @@
         <translation>Nachname</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="191"/>
+        <location filename="../assets/users/AddUserPage.qml" line="192"/>
         <source>Administrator</source>
         <translation>Administrator</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="242"/>
+        <location filename="../assets/users/AddUserPage.qml" line="245"/>
         <source>DataRoom</source>
         <translation>Datenraum</translation>
     </message>
@@ -309,7 +309,7 @@
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="104"/>
         <source>User email address</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Benutzer email Adresse</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="148"/>

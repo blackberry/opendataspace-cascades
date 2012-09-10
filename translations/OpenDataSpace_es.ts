@@ -62,12 +62,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="191"/>
+        <location filename="../assets/users/AddUserPage.qml" line="192"/>
         <source>Administrator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="242"/>
+        <location filename="../assets/users/AddUserPage.qml" line="245"/>
         <source>DataRoom</source>
         <translation type="unfinished"></translation>
     </message>

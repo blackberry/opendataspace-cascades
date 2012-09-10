@@ -165,18 +165,24 @@ Page {
                         textFieldHintText: qsTr("First Name")
                         textFieldText: ""
                     }
-                    TextFieldWithMarker {
-                        id: lastNameWithMarker
-                        redBarImage: redTile.image
-                        textFieldHintText: qsTr("Last Name")
-                        textFieldText: ""
+                    Container {
+                        layout: StackLayout {
+                            layoutDirection: LayoutDirection.LeftToRight
+                            topPadding: 20
+                        }
+                        TextFieldWithMarker {
+                            id: lastNameWithMarker
+                            redBarImage: redTile.image
+                            textFieldHintText: qsTr("Last Name")
+                            textFieldText: ""
+                        }
                     }
                     Container {
                         id: contoTypeContainer
                         layout: StackLayout {
                             layoutDirection: LayoutDirection.LeftToRight
+                            topPadding: 20
                             leftPadding: 20
-                            bottomPadding: 20
                         }
                         layoutProperties: StackLayoutProperties {
                             horizontalAlignment: HorizontalAlignment.Fill
@@ -199,7 +205,7 @@ Page {
                             id: isAdmin
                             layoutProperties: StackLayoutProperties {
                                 verticalAlignment: VerticalAlignment.Center
-                                spaceQuota: 0.5
+                                spaceQuota: 0.6
                             }
                             checked: false
                             onCheckedChanged: {
@@ -217,10 +223,10 @@ Page {
                             id: contoTypeImage
                             layoutProperties: StackLayoutProperties {
                                 verticalAlignment: VerticalAlignment.Center
-                                spaceQuota: 0.5
+                                spaceQuota: 0.4
                             }
                             imageSource: "asset:///images/users-icon.png"
-                            scalingMethod: ScalingMethod.AspectFit
+                            scalingMethod: ScalingMethod.AspectFill
                         }
                     } // end contoTypeContainer
                     Container {
@@ -228,6 +234,7 @@ Page {
                         layout: StackLayout {
                             layoutDirection: LayoutDirection.LeftToRight
                             leftPadding: 20
+                            topPadding: 20
                         }
                         layoutProperties: StackLayoutProperties {
                             horizontalAlignment: HorizontalAlignment.Fill
@@ -274,7 +281,7 @@ Page {
         lastNameWithMarker.textFieldText = ""
         userTitle.text = ""
     }
-    function doTransportAnimationEnd(){
+    function doTransportAnimationEnd() {
         userDataContainer.visible = true
     }
     onCreationCompleted: {
