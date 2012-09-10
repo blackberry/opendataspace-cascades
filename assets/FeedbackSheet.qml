@@ -90,7 +90,7 @@ Page {
             layoutProperties: StackLayoutProperties {
                 verticalAlignment: VerticalAlignment.Fill
             }
-            hintText: qsTr("Please enter your Feedback")
+            hintText: qsTr("Your Feedback")
         }
     }
     onCreationCompleted: {

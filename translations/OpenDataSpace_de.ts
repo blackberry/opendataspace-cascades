@@ -37,9 +37,13 @@
         <translation>Benutzer Daten</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="114"/>
         <source>Please enter your email address</source>
-        <translation>Bitte email Adresse eingeben</translation>
+        <translation type="obsolete">Bitte email Adresse eingeben</translation>
+    </message>
+    <message>
+        <location filename="../assets/users/AddUserPage.qml" line="114"/>
+        <source>User email address</source>
+        <translation>Benutzer email Adresse</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="134"/>
@@ -141,8 +145,12 @@
     </message>
     <message>
         <location filename="../assets/FeedbackSheet.qml" line="93"/>
+        <source>Your Feedback</source>
+        <translation>Ihr Kommentar</translation>
+    </message>
+    <message>
         <source>Please enter your Feedback</source>
-        <translation>Bitte geben Sie hier Ihre Kommentare ein</translation>
+        <translation type="obsolete">Bitte geben Sie hier Ihre Kommentare ein</translation>
     </message>
 </context>
 <context>
@@ -197,14 +205,22 @@
 <context>
     <name>LoginSheet</name>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="80"/>
         <source>Please enter your Username</source>
-        <translation>Bitte Benutzernamen eingeben</translation>
+        <translation type="obsolete">Bitte Benutzernamen eingeben</translation>
+    </message>
+    <message>
+        <source>Please enter your Password</source>
+        <translation type="obsolete">Bitte Passwort eingeben</translation>
+    </message>
+    <message>
+        <location filename="../assets/LoginSheet.qml" line="80"/>
+        <source>Username</source>
+        <translation>Benutzername</translation>
     </message>
     <message>
         <location filename="../assets/LoginSheet.qml" line="87"/>
-        <source>Please enter your Password</source>
-        <translation>Bitte Passwort eingeben</translation>
+        <source>Password</source>
+        <translation>Passwort</translation>
     </message>
     <message>
         <location filename="../assets/LoginSheet.qml" line="93"/>
@@ -263,9 +279,8 @@
         <translation>Sichern</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="104"/>
         <source>Please enter your email address</source>
-        <translation type="unfinished">Bitte email Adresse eingeben</translation>
+        <translation type="obsolete">Bitte email Adresse eingeben</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="186"/>
@@ -273,9 +288,8 @@
         <translation type="unfinished">Deutsch</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="96"/>
         <source>Please enter your Server URL</source>
-        <translation>Bitte Server URL eingeben</translation>
+        <translation type="obsolete">Bitte Server URL eingeben</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="160"/>
@@ -286,6 +300,16 @@
         <location filename="../assets/PreferencesSheet.qml" line="148"/>
         <source>of</source>
         <translation>von</translation>
+    </message>
+    <message>
+        <location filename="../assets/PreferencesSheet.qml" line="96"/>
+        <source>Server URL</source>
+        <translation>Server Adresse (URL)</translation>
+    </message>
+    <message>
+        <location filename="../assets/PreferencesSheet.qml" line="104"/>
+        <source>User email address</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="148"/>

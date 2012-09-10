@@ -38,7 +38,7 @@
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="114"/>
-        <source>Please enter your email address</source>
+        <source>User email address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -130,7 +130,7 @@
     </message>
     <message>
         <location filename="../assets/FeedbackSheet.qml" line="93"/>
-        <source>Please enter your Feedback</source>
+        <source>Your Feedback</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -169,12 +169,12 @@
     <name>LoginSheet</name>
     <message>
         <location filename="../assets/LoginSheet.qml" line="80"/>
-        <source>Please enter your Username</source>
+        <source>Username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/LoginSheet.qml" line="87"/>
-        <source>Please enter your Password</source>
+        <source>Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -234,18 +234,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="104"/>
-        <source>Please enter your email address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../assets/PreferencesSheet.qml" line="186"/>
         <source>German</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/PreferencesSheet.qml" line="96"/>
-        <source>Please enter your Server URL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -256,6 +246,16 @@
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="148"/>
         <source>of</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/PreferencesSheet.qml" line="96"/>
+        <source>Server URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/PreferencesSheet.qml" line="104"/>
+        <source>User email address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

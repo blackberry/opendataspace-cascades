@@ -77,14 +77,14 @@ Page {
                 }
                 TextField {
                     id: username
-                    hintText: qsTr("Please enter your Username")
+                    hintText: qsTr("Username")
                     preferredWidth: 400.0
                     opacity: 0.9
                 }
                 // we need password masking
                 TextField {
                     id: password
-                    hintText: qsTr("Please enter your Password")
+                    hintText: qsTr("Password")
                     preferredWidth: 400.0
                     opacity: 0.9
                     inputMode: TextFieldInputMode.Password

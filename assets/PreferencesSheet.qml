@@ -93,7 +93,7 @@ NavigationPane {
                 }
                 TextField {
                     id: server
-                    hintText: qsTr("Please enter your Server URL")
+                    hintText: qsTr("Server URL")
                     inputMode: TextFieldInputMode.URL
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText
@@ -101,7 +101,7 @@ NavigationPane {
                 }
                 TextField {
                     id: email
-                    hintText: qsTr("Please enter your email address")
+                    hintText: qsTr("User email address")
                     inputMode: TextFieldInputMode.EmailAddress
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText

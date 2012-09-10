@@ -111,7 +111,7 @@ Page {
                     TextFieldWithMarker {
                         id: emailWithMarker
                         redBarImage: redTile.image
-                        textFieldHintText: qsTr("Please enter your email address")
+                        textFieldHintText: qsTr("User email address")
                         textFieldInputMode: TextFieldInputMode.EmailAddress
                         textFieldText: ""
                     }
