@@ -77,20 +77,20 @@ Page {
                 }
                 TextField {
                     id: username
-                    hintText: qsTr("Username")
+                    hintText: qsTr("Username")+ Retranslate.onLanguageChanged
                     preferredWidth: 400.0
                     opacity: 0.9
                 }
                 // we need password masking
                 TextField {
                     id: password
-                    hintText: qsTr("Password")
+                    hintText: qsTr("Password")+ Retranslate.onLanguageChanged
                     preferredWidth: 400.0
                     opacity: 0.9
                     inputMode: TextFieldInputMode.Password
                 }
                 Button {
-                    text: qsTr("Login")
+                    text: qsTr("Login")+ Retranslate.onLanguageChanged
                     preferredWidth: 400.0
                     onClicked: {
                         // TODO call C++ function to test if Login was OK

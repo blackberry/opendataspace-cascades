@@ -33,7 +33,7 @@ Page {
     }
     actions: [
         ActionItem {
-            title: qsTr("Share")
+            title: qsTr("Share")+ Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/6-social-share81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
@@ -43,7 +43,7 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("Upload")
+            title: qsTr("Upload")+ Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/9-av-upload81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {

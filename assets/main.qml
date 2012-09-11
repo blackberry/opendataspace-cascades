@@ -78,7 +78,7 @@ TabbedPane {
         id: homeTab
         imageSource: "asset:///images/ics/10-device-access-location-found81.png"
         objectName: "homeTab"
-        title: qsTr("Home")
+        title: qsTr("Home")+ Retranslate.onLanguageChanged
         HomePage {
             id: homePage
         }
@@ -88,7 +88,7 @@ TabbedPane {
     Tab {
         id: dataspaceTab
         imageSource: "asset:///images/ics/4-collections-cloud81.png"
-        title: qsTr("Data Space")
+        title: qsTr("Data Space")+ Retranslate.onLanguageChanged
         DataSpaceNavPane {
             id: dataspacePane
         }
@@ -97,7 +97,8 @@ TabbedPane {
     // TODO only enabled if Admin
     Tab {
         id: usersTab
-        title: qsTr("Users")
+        title: qsTr("Users")+ Retranslate.onLanguageChanged
+            
         imageSource: "asset:///images/ics/6-social-group81.png"
         UsersNavPane {
             id: usersPane
@@ -107,7 +108,7 @@ TabbedPane {
     // disabled at startup if nothing to upload
     Tab {
         id: uploadTab
-        title: qsTr("Upload")
+        title: qsTr("Upload")+ Retranslate.onLanguageChanged
         imageSource: "asset:///images/ics/9-av-upload81.png"
         enabled: false
         UsersNavPane {

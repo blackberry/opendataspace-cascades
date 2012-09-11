@@ -39,7 +39,7 @@ Page {
     resizeBehavior: PageResizeBehavior.Resize
     titleBar: TitleBar {
         id: theBar
-        title: qsTr("Feedback")
+        title: qsTr("Feedback")+ Retranslate.onLanguageChanged
         visibility: ChromeVisibility.Visible
         dismissAction: ActionItem {
             title: qsTr("Cancel")
@@ -65,7 +65,7 @@ Page {
         id: mainContainer
         Label {
             id: fromLabel
-            text: qsTr("from") + ": " + "mustermann@me.com"
+            text: qsTr("from")+ Retranslate.onLanguageChanged + ": " + "mustermann@me.com"
             leftMargin: 20
             textStyle {
                 base: SystemDefaults.TextStyles.BodyText
@@ -73,7 +73,7 @@ Page {
         }
         Label {
             id: toLabel
-            text: qsTr("to") + ": " + "support@opendataspace.org"
+            text: qsTr("to") + Retranslate.onLanguageChanged+ ": " + "support@opendataspace.org"
             leftMargin: 20
             textStyle {
                 base: SystemDefaults.TextStyles.BodyText
@@ -90,7 +90,7 @@ Page {
             layoutProperties: StackLayoutProperties {
                 verticalAlignment: VerticalAlignment.Fill
             }
-            hintText: qsTr("Your Feedback")
+            hintText: qsTr("Your Feedback")+ Retranslate.onLanguageChanged
         }
     }
     onCreationCompleted: {

@@ -28,7 +28,7 @@ Page {
     actions: [
         //TODO only for Admins
         ActionItem {
-            title: qsTr("New SubRoom")
+            title: qsTr("New SubRoom")+ Retranslate.onLanguageChanged
             enabled: false
             imageSource: "asset:///images/ics/4-collections-cloud_newLabel81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
@@ -37,7 +37,7 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("New Folder")
+            title: qsTr("New Folder")+ Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/4-collections-collection_newlabel81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
@@ -46,7 +46,7 @@ Page {
         },
         ActionItem {
             id: refreshAction
-            title: qsTr("Refresh")
+            title: qsTr("Refresh")+ Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/1-navigation-refresh81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
@@ -54,7 +54,7 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("Select Document")
+            title: qsTr("Select Document")+ Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/4-collections-view-as-list81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
@@ -62,7 +62,7 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("Select Image")
+            title: qsTr("Select Image")+ Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/5-content-picture81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
@@ -70,7 +70,7 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("Select Video")
+            title: qsTr("Select Video")+ Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/10-device-access-video81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
@@ -78,7 +78,7 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("Open Camera")
+            title: qsTr("Open Camera")+ Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/10-device-access-camera81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
@@ -88,7 +88,7 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("Record Video")
+            title: qsTr("Record Video")+ Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/10-device-access-video81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
@@ -98,7 +98,7 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("Record Audio")
+            title: qsTr("Record Audio")+ Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/10-device-access-mic81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
@@ -151,9 +151,9 @@ Page {
                         contextActions: [
                             ActionSet {
                                 title: ListItemData.name
-                                subtitle: "ODS Subroom"
+                                subtitle: qsTr("ODS Subroom")+ Retranslate.onLanguageChanged
                                 ActionItem {
-                                    title: qsTr("Info")
+                                    title: qsTr("Info")+ Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/2-action-about81.png"
                                     onTriggered: {
                                         // TODO
@@ -170,37 +170,37 @@ Page {
                         contextActions: [
                             ActionSet {
                                 title: ListItemData.name
-                                subtitle: "ODS Folder"
+                                subtitle: qsTr("ODS Folder")+ Retranslate.onLanguageChanged
                                 ActionItem {
-                                    title: qsTr("Info")
+                                    title: qsTr("Info")+ Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/2-action-about81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
-                                    title: qsTr("Copy")
+                                    title: qsTr("Copy")+ Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/5-content-copy81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
-                                    title: qsTr("Move")
+                                    title: qsTr("Move")+ Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/5-content-import-export81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
-                                    title: qsTr("Rename")
+                                    title: qsTr("Rename")+ Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/5-content-edit81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 deleteAction: DeleteActionItem {
-                                    title: qsTr("Delete")
+                                    title: qsTr("Delete")+ Retranslate.onLanguageChanged
                                     onTriggered: {
                                         // TODO
                                     }
@@ -216,58 +216,58 @@ Page {
                         contextActions: [
                             ActionSet {
                                 title: ListItemData.name
-                                subtitle: "ODS File"
+                                subtitle: qsTr("ODS File")+ Retranslate.onLanguageChanged
                                 ActionItem {
-                                    title: qsTr("View")
+                                    title: qsTr("View")+ Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/2-action-search81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
-                                    title: qsTr("Info")
+                                    title: qsTr("Info")+ Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/2-action-about81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
-                                    title: qsTr("Copy")
+                                    title: qsTr("Copy")+ Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/5-content-copy81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
-                                    title: qsTr("Move")
+                                    title: qsTr("Move")+ Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/5-content-import-export81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
-                                    title: qsTr("Rename")
+                                    title: qsTr("Rename")+ Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/5-content-edit81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
-                                    title: qsTr("Download")
+                                    title: qsTr("Download")+ Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/9-av-download81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 ActionItem {
-                                    title: qsTr("Link")
+                                    title: qsTr("Link")+ Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/4-collections-labels81.png"
                                     onTriggered: {
                                         // TODO
                                     }
                                 }
                                 deleteAction: DeleteActionItem {
-                                    title: qsTr("Delete")
+                                    title: qsTr("Delete")+ Retranslate.onLanguageChanged
                                     onTriggered: {
                                         // TODO
                                     }

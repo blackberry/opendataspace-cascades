@@ -45,7 +45,7 @@ Container {
     }
     TextField {
         id: textField
-        hintText: qsTr("please enter your text")
+        hintText: qsTr("please enter your text")+ Retranslate.onLanguageChanged
         inputMode: TextFieldInputMode.Text
         leftMargin: 0
         textStyle {

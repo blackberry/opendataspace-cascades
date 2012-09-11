@@ -34,7 +34,7 @@ Page {
     actions: [
         ActionItem {
             id: startId
-            title: qsTr("Start")
+            title: qsTr("Start")+ Retranslate.onLanguageChanged
             enabled: true
             imageSource: "asset:///images/ics/9-av-play81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
@@ -46,7 +46,7 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("Stop")
+            title: qsTr("Stop")+ Retranslate.onLanguageChanged
             id: stopId
             enabled: false
             imageSource: "asset:///images/ics/9-av-stop81.png"

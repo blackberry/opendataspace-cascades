@@ -62,16 +62,16 @@ NavigationPane {
         resizeBehavior: PageResizeBehavior.Resize
         titleBar: TitleBar {
             id: theBar
-            title: qsTr("Preferences")
+            title: qsTr("Preferences")+ Retranslate.onLanguageChanged
             visibility: ChromeVisibility.Visible
             dismissAction: ActionItem {
-                title: qsTr("Cancel")
+                title: qsTr("Cancel")+ Retranslate.onLanguageChanged
                 onTriggered: {
                     navigationPane.done(false);
                 }
             }
             acceptAction: ActionItem {
-                title: qsTr("Save")
+                title: qsTr("Save")+ Retranslate.onLanguageChanged
                 onTriggered: {
                     navigationPane.done(true);
                 }
@@ -93,7 +93,7 @@ NavigationPane {
                 }
                 TextField {
                     id: server
-                    hintText: qsTr("Server URL")
+                    hintText: qsTr("Server URL")+ Retranslate.onLanguageChanged
                     inputMode: TextFieldInputMode.URL
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText
@@ -101,7 +101,7 @@ NavigationPane {
                 }
                 TextField {
                     id: email
-                    hintText: qsTr("User email address")
+                    hintText: qsTr("User email address")+ Retranslate.onLanguageChanged
                     inputMode: TextFieldInputMode.EmailAddress
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText
@@ -110,7 +110,7 @@ NavigationPane {
                 // Label displays the current selected customer
                 Label {
                     id: customerLabel
-                    text: "Musterfiirma GmbH"
+                    text: "Musterfirma GmbH"
                     leftMargin: 20
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText
@@ -145,7 +145,7 @@ NavigationPane {
                 // TODO data from server
                 Label {
                     id: memoryUsedLabel
-                    text: "257.0 MB " + qsTr("of") + " 2.0 GB " + qsTr("Memory used")
+                    text: "257.0 MB " + qsTr("of")+ Retranslate.onLanguageChanged + " 2.0 GB " + qsTr("Memory used")+ Retranslate.onLanguageChanged
                     leftMargin: 20
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText
@@ -157,7 +157,7 @@ NavigationPane {
                 }
                 Label {
                     id: uploadLabel
-                    text: "86.6 MB " + qsTr("Files to upload")
+                    text: "86.6 MB " + qsTr("Files to upload")+ Retranslate.onLanguageChanged
                     leftMargin: 20
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText
@@ -168,7 +168,7 @@ NavigationPane {
                 }
                 Label {
                     id: versionLabel
-                    text: qsTr("Version") + " 1.3.2"
+                    text: qsTr("Version")+ Retranslate.onLanguageChanged + " 1.3.2"
                     leftMargin: 20
                     textStyle {
                         base: SystemDefaults.TextStyles.SmallText
@@ -183,9 +183,9 @@ NavigationPane {
         console.debug("new locale: " + locale)
         navigationPane.currentLanguage = locale
         if (locale == "de") {
-            languageLabel.text = qsTr("German")
+            languageLabel.text = qsTr("German")+ Retranslate.onLanguageChanged
         } else {
-            languageLabel.text = qsTr("English")
+            languageLabel.text = qsTr("English")+ Retranslate.onLanguageChanged
         }
     }
     function newCustomer(name) {

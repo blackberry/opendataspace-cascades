@@ -33,7 +33,7 @@ Page {
     actions: [
         ActionItem {
             id: backItem
-            title: qsTr("Back")
+            title: qsTr("Back")+ Retranslate.onLanguageChanged
             enabled: false
             ActionBar.placement: ActionBarPlacement.OnBar
             // we reset the URL
@@ -43,7 +43,7 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("Close")
+            title: qsTr("Close")+ Retranslate.onLanguageChanged
             ActionBar.placement: ActionBarPlacement.Default
             onTriggered: {
                 helpDone(true)

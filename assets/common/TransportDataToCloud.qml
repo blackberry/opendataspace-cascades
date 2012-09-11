@@ -55,7 +55,7 @@ Container {
     // transmission text
     Label {
         id: errorText
-        text: qsTr("Data to the Cloud...")
+        text: qsTr("Data to the Cloud...")+ Retranslate.onLanguageChanged
         layoutProperties: DockLayoutProperties {
             horizontalAlignment: HorizontalAlignment.Center
             verticalAlignment: VerticalAlignment.Center

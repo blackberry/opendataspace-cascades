@@ -28,7 +28,7 @@ NavigationPane {
         actions: [
             //-- define the actions for first tab here
             ActionItem {
-                title: qsTr("Placeholder")
+                title: qsTr("Placeholder")+ Retranslate.onLanguageChanged
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {
                     //imgTab1.rotationZ = imgTab1.rotationZ + 90;
@@ -43,7 +43,7 @@ NavigationPane {
                 layoutProperties: StackLayoutProperties {
                     horizontalAlignment: HorizontalAlignment.Center
                 }
-                text: qsTr("Uploads")
+                text: qsTr("Uploads")+ Retranslate.onLanguageChanged
                 textStyle {
                     base: SystemDefaults.TextStyles.TitleText
                 }

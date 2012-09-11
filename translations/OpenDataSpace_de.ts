@@ -51,6 +51,16 @@
         <translation>Anrede</translation>
     </message>
     <message>
+        <location filename="../assets/users/AddUserPage.qml" line="146"/>
+        <source>Mr.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/users/AddUserPage.qml" line="149"/>
+        <source>Mrs.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../assets/users/AddUserPage.qml" line="156"/>
         <source>Title</source>
         <translation>Titel</translation>
@@ -383,11 +393,21 @@
         <translation>Audio aufnehmen</translation>
     </message>
     <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="154"/>
+        <source>ODS Subroom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="156"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="175"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="228"/>
         <source>Info</source>
         <translation>Information</translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="173"/>
+        <source>ODS Folder</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="182"/>
@@ -412,6 +432,11 @@
         <location filename="../assets/rooms/RoomsListPage.qml" line="270"/>
         <source>Delete</source>
         <translation>Löschen</translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="219"/>
+        <source>ODS File</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="221"/>
@@ -556,7 +581,7 @@
         <translation>Benutzer</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="110"/>
+        <location filename="../assets/main.qml" line="111"/>
         <source>Upload</source>
         <translation type="unfinished">Upload</translation>
     </message>

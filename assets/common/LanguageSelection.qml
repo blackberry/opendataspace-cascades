@@ -28,7 +28,7 @@ Page {
     id: languagePage
     titleBar: TitleBar {
         id: addBar
-        title: qsTr("Your Language")
+        title: qsTr("Your Language")+ Retranslate.onLanguageChanged
         visibility: ChromeVisibility.Visible
     }
     Container {
@@ -53,12 +53,12 @@ Page {
                 dividersVisible: false
                 Option {
                     id: languageDe
-                    text: qsTr("German")
+                    text: qsTr("German")+ Retranslate.onLanguageChanged
                     value: "de"
                 }
                 Option {
                     id: languageEn
-                    text: qsTr("English")
+                    text: qsTr("English")+ Retranslate.onLanguageChanged
                     value: "en"
                 }
                 onSelectedIndexChanged: {

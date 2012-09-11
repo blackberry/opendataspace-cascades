@@ -49,7 +49,7 @@ Container {
     // error text
     Label {
         id: errorText
-        text: qsTr("sorry: some Errors")
+        text: qsTr("sorry: some Errors")+ Retranslate.onLanguageChanged
         textStyle {
             base: SystemDefaults.TextStyles.BigText
             color: Color.Red

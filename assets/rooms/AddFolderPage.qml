@@ -21,7 +21,7 @@ Page {
     id: addFolderPage
     actions: [
         ActionItem {
-            title: qsTr("Add Folder")
+            title: qsTr("Add Folder")+ Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/5-content-new81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
@@ -32,7 +32,7 @@ Page {
                     transport.containerVisible = true
                     folderNameContainer.visible = false
                     folderName.text = ""
-                    folderName.hintText = qsTr("add next Foldername")
+                    folderName.hintText = qsTr("add next Foldername")+ Retranslate.onLanguageChanged
                 } else {
                     // TODO add red bar
                 }
@@ -41,7 +41,7 @@ Page {
     ]
     titleBar: TitleBar {
         id: addBar
-        title: qsTr("Folder Name")
+        title: qsTr("Folder Name")+ Retranslate.onLanguageChanged
         visibility: ChromeVisibility.Visible
     }
     Container {
@@ -65,7 +65,7 @@ Page {
             }
             TextField {
                 id: folderName
-                hintText: qsTr("Name of the new Folder")
+                hintText: qsTr("Name of the new Folder")+ Retranslate.onLanguageChanged
                 inputMode: TextFieldInputMode.Text
                 textStyle {
                     base: SystemDefaults.TextStyles.TitleText

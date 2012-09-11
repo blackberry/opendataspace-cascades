@@ -93,7 +93,7 @@ NavigationPane {
         actions: [
             //TODO only for Admins
             ActionItem {
-                title: qsTr("New Room")
+                title: qsTr("New Room")+ Retranslate.onLanguageChanged
                 enabled: false
                 imageSource: "asset:///images/ics/4-collections-cloud_newLabel81.png"
                 ActionBar.placement: ActionBarPlacement.InOverflow
@@ -102,7 +102,7 @@ NavigationPane {
                 }
             },
             ActionItem {
-                title: qsTr("Refresh")
+                title: qsTr("Refresh")+ Retranslate.onLanguageChanged
                 imageSource: "asset:///images/ics/1-navigation-refresh81.png"
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {

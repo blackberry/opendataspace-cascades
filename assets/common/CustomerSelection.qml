@@ -28,7 +28,7 @@ Page {
     id: customerPage
     titleBar: TitleBar {
         id: addBar
-        title: qsTr("Customer Account")
+        title: qsTr("Customer Account")+ Retranslate.onLanguageChanged
         visibility: ChromeVisibility.Visible
     }
     Container {

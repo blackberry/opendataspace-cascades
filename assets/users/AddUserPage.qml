@@ -45,7 +45,7 @@ Page {
     ]
     actions: [
         ActionItem {
-            title: qsTr("Add User")
+            title: qsTr("Add User") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/5-content-new81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
@@ -69,7 +69,7 @@ Page {
     ]
     titleBar: TitleBar {
         id: addBar
-        title: qsTr("User Data")
+        title: qsTr("User Data")+ Retranslate.onLanguageChanged
         visibility: ChromeVisibility.Visible
     }
     Container {
@@ -111,7 +111,7 @@ Page {
                     TextFieldWithMarker {
                         id: emailWithMarker
                         redBarImage: redTile.image
-                        textFieldHintText: qsTr("User email address")
+                        textFieldHintText: qsTr("User email address")+ Retranslate.onLanguageChanged
                         textFieldInputMode: TextFieldInputMode.EmailAddress
                         textFieldText: ""
                     }
@@ -131,7 +131,7 @@ Page {
                                 verticalAlignment: VerticalAlignment.Center
                                 spaceQuota: 0.8
                             }
-                            text: qsTr("Salutation")
+                            text: qsTr("Salutation")+ Retranslate.onLanguageChanged
                             textStyle {
                                 base: SystemDefaults.TextStyles.BodyText
                             }
@@ -143,17 +143,17 @@ Page {
                                 spaceQuota: 1
                             }
                             Option {
-                                text: "Mr."
+                                text: qsTr("Mr.")+ Retranslate.onLanguageChanged
                             }
                             Option {
-                                text: "Mrs."
+                                text: qsTr("Mrs.")+ Retranslate.onLanguageChanged
                             }
                             selectedIndex: 0
                         }
                     } // end salutationContainer
                     TextField {
                         id: userTitle
-                        hintText: qsTr("Title")
+                        hintText: qsTr("Title")+ Retranslate.onLanguageChanged
                         inputMode: TextFieldInputMode.Text
                         textStyle {
                             base: SystemDefaults.TextStyles.BodyText
@@ -162,7 +162,7 @@ Page {
                     TextFieldWithMarker {
                         id: firstNameWithMarker
                         redBarImage: redTile.image
-                        textFieldHintText: qsTr("First Name")
+                        textFieldHintText: qsTr("First Name")+ Retranslate.onLanguageChanged
                         textFieldText: ""
                     }
                     Container {
@@ -173,7 +173,7 @@ Page {
                         TextFieldWithMarker {
                             id: lastNameWithMarker
                             redBarImage: redTile.image
-                            textFieldHintText: qsTr("Last Name")
+                            textFieldHintText: qsTr("Last Name")+ Retranslate.onLanguageChanged
                             textFieldText: ""
                         }
                     }
@@ -194,7 +194,7 @@ Page {
                                 verticalAlignment: VerticalAlignment.Center
                                 spaceQuota: 0.8
                             }
-                            text: qsTr("Administrator")
+                            text: qsTr("Administrator")+ Retranslate.onLanguageChanged
                             textStyle {
                                 base: SystemDefaults.TextStyles.BodyText
                             }
@@ -246,7 +246,7 @@ Page {
                                 verticalAlignment: VerticalAlignment.Center
                                 spaceQuota: 0.8
                             }
-                            text: qsTr("DataRoom")
+                            text: qsTr("DataRoom")+ Retranslate.onLanguageChanged
                             textStyle {
                                 base: SystemDefaults.TextStyles.BodyText
                             }

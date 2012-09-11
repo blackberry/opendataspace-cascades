@@ -12,8 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
-import bb.cascades 1.0
+ */import bb.cascades 1.0
 /*
  * Image Oreview
  * can share the image, do nothing (go back) or upload the image
@@ -21,18 +20,19 @@ import bb.cascades 1.0
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
  *
 */
+
 Page {
     property alias previewPath: previewImage.imageSource
     id: previewPage
     titleBar: TitleBar {
         id: titleBarId
         // TODO only the filename
-        title: previewImage.imageSource
+        title: "Preview"
         visibility: ChromeVisibility.Overlay
     }
     actions: [
         ActionItem {
-            title: qsTr("Share")
+            title: qsTr("Share") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/6-social-share81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
@@ -42,7 +42,7 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("Upload")
+            title: qsTr("Upload")+ Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/9-av-upload81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
@@ -62,7 +62,17 @@ Page {
                 id: previewImage
                 objectName: "previewImage"
                 scalingMethod: ScalingMethod.AspectFit
+                onImageSourceChanged: {
+                    console.debug("IMAGESOURCE Changed:" + imageSource)
+                    titleBarId.title = imageFileName(imageSource)
+                }
             }
         }
+    }
+    function imageFileName(imgsrc) {
+        // TODO js to extract the filename
+        return imgsrc
+        
+        
     }
 }
