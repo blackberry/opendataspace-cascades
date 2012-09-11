@@ -61,17 +61,17 @@
         <translation>Vorname</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="171"/>
+        <location filename="../assets/users/AddUserPage.qml" line="176"/>
         <source>Last Name</source>
         <translation>Nachname</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="192"/>
+        <location filename="../assets/users/AddUserPage.qml" line="197"/>
         <source>Administrator</source>
         <translation>Administrator</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="245"/>
+        <location filename="../assets/users/AddUserPage.qml" line="249"/>
         <source>DataRoom</source>
         <translation>Datenraum</translation>
     </message>
