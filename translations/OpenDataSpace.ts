@@ -200,32 +200,32 @@
 <context>
     <name>OpenDataSpaceApp</name>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="169"/>
+        <location filename="../src/opendataspaceapp.cpp" line="185"/>
         <source>German</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="171"/>
+        <location filename="../src/opendataspaceapp.cpp" line="187"/>
         <source>English</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="190"/>
+        <location filename="../src/opendataspaceapp.cpp" line="163"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="193"/>
+        <location filename="../src/opendataspaceapp.cpp" line="166"/>
         <source>Feedback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="198"/>
+        <location filename="../src/opendataspaceapp.cpp" line="169"/>
         <source>Logout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="203"/>
+        <location filename="../src/opendataspaceapp.cpp" line="172"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>

@@ -75,10 +75,16 @@ private:
 	Camera *videocamera;
 
 	Menu* createSystemMenu();
+	HelpActionItem* m_helpItem;
+	ActionItem* m_feedbackItem;
+	SettingsActionItem* m_settingsItem;
+	ActionItem* m_logoutItem;
 
 	QString m_currentLocale;
 
 	QTranslator* m_translator;
+
+	void translateMenuItems();
 
 private slots:
 

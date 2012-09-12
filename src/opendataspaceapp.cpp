@@ -44,8 +44,7 @@ using namespace bb::system;
  *
  */
 OpenDataSpaceApp::OpenDataSpaceApp() :
-		m_app(NULL), m_currentLocale("en"), m_translator(
-				NULL)
+		m_app(NULL), m_currentLocale("en"), m_translator(NULL)
 
 {
 
@@ -143,19 +142,35 @@ void OpenDataSpaceApp::updateLocale(QString locale) {
 		m_currentLocale = locale;
 
 		qDebug() << "updating UI to language: " << m_currentLocale;
-		QString filename = QString("OpenDataSpace_%1").arg(
-				m_currentLocale);
+		QString filename = QString("OpenDataSpace_%1").arg(m_currentLocale);
 		if (m_translator->load(filename, "app/native/qm")) {
 			// multiple translators can be installed but for this
 			// app we only use one translator instance for brevity
 			m_app->removeTranslator(m_translator);
 			m_app->installTranslator(m_translator);
 		}
+		// retranslate System menu items
+		translateMenuItems();
 	}
+}
 
-	// re-translate controls.
-	// not yet done
-
+/**
+ * (re)translates the titles of System menus
+ *
+ */
+void OpenDataSpaceApp::translateMenuItems() {
+	if (m_helpItem) {
+		m_helpItem->setTitle(tr("Help"));
+	}
+	if (m_feedbackItem) {
+		m_feedbackItem->setTitle(tr("Feedback"));
+	}
+	if (m_logoutItem) {
+		m_logoutItem->setTitle(tr("Logout"));
+	}
+	if (m_settingsItem) {
+		m_settingsItem->setTitle(tr("Settings"));
+	}
 }
 
 /**
@@ -165,7 +180,8 @@ void OpenDataSpaceApp::updateLocale(QString locale) {
  */
 QString OpenDataSpaceApp::getCurrentLanguage() {
 	qDebug() << "getCurrentLanguage: " << m_currentLocale;
-	if (m_currentLocale == "de" || m_currentLocale == "de_DE" || m_currentLocale == "de_AT" || m_currentLocale == "de_CH") {
+	if (m_currentLocale == "de" || m_currentLocale == "de_DE"
+			|| m_currentLocale == "de_AT" || m_currentLocale == "de_CH") {
 		return tr("German");
 	} else {
 		return tr("English");
@@ -186,33 +202,30 @@ void OpenDataSpaceApp::suppressKeyboard() {
 // SystemMenu is available on all Screens
 Menu* OpenDataSpaceApp::createSystemMenu() {
 	// HELP will open a website with Help Instructions from OpenDataSpace
-	HelpActionItem* helpItem = new HelpActionItem();
-	helpItem->setTitle(tr("Help"));
+	m_helpItem = new HelpActionItem();
 	// FEEDBACK will send an email to OpenDataSpace
-	ActionItem* feedbackItem = new ActionItem();
-	feedbackItem->setTitle(tr("Feedback"));
-	feedbackItem->setImageSource(
+	m_feedbackItem = new ActionItem();
+	m_feedbackItem->setImageSource(
 			QString("asset:///images/ics/5-content-email81.png"));
 	// LOGOUT will do a LogOut and jump back to HomeScreen and open the LogIn Sheet
-	ActionItem* logoutItem = new ActionItem();
-	logoutItem->setTitle(tr("Logout"));
-	logoutItem->setImageSource(
+	m_logoutItem = new ActionItem();
+	m_logoutItem->setImageSource(
 			QString("asset:///images/ics/10-device-access-accounts81.png"));
 	// SETTINGS will open the User Settings
-	SettingsActionItem* settingsItem = new SettingsActionItem();
-	settingsItem->setTitle(tr("Settings"));
+	m_settingsItem = new SettingsActionItem();
+	// set the translated Titles
+	translateMenuItems();
 	// plug it all together
-	Menu* menu =
-			Menu::create().addAction(feedbackItem).addAction(logoutItem).help(
-					helpItem).settings(settingsItem);
+	Menu* menu = Menu::create().addAction(m_feedbackItem).addAction(
+			m_logoutItem).help(m_helpItem).settings(m_settingsItem);
 	// Connect SIGNALS and SLOTS
-	QObject::connect(logoutItem, SIGNAL(triggered()), this,
+	QObject::connect(m_logoutItem, SIGNAL(triggered()), this,
 			SLOT(logoutTriggered()));
-	QObject::connect(feedbackItem, SIGNAL(triggered()), this,
+	QObject::connect(m_feedbackItem, SIGNAL(triggered()), this,
 			SLOT(feedbackTriggered()));
-	QObject::connect(helpItem, SIGNAL(triggered()), this,
+	QObject::connect(m_helpItem, SIGNAL(triggered()), this,
 			SLOT(helpTriggered()));
-	QObject::connect(settingsItem, SIGNAL(triggered()), this,
+	QObject::connect(m_settingsItem, SIGNAL(triggered()), this,
 			SLOT(settingsTriggered()));
 	return menu;
 }
