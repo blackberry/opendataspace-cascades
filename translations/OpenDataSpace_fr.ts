@@ -196,32 +196,32 @@
 <context>
     <name>OpenDataSpaceApp</name>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="185"/>
+        <location filename="../src/opendataspaceapp.cpp" line="186"/>
         <source>German</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="187"/>
+        <location filename="../src/opendataspaceapp.cpp" line="188"/>
         <source>English</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="163"/>
+        <location filename="../src/opendataspaceapp.cpp" line="164"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="166"/>
+        <location filename="../src/opendataspaceapp.cpp" line="167"/>
         <source>Feedback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="169"/>
+        <location filename="../src/opendataspaceapp.cpp" line="170"/>
         <source>Logout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="172"/>
+        <location filename="../src/opendataspaceapp.cpp" line="173"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>

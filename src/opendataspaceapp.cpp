@@ -148,9 +148,10 @@ void OpenDataSpaceApp::updateLocale(QString locale) {
 			// app we only use one translator instance for brevity
 			m_app->removeTranslator(m_translator);
 			m_app->installTranslator(m_translator);
+			// retranslate System menu items
+			translateMenuItems();
 		}
-		// retranslate System menu items
-		translateMenuItems();
+
 	}
 }
 
