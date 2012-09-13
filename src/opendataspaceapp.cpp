@@ -15,11 +15,9 @@
  */
 #include "opendataspaceapp.hpp"
 
-#include <QImage>
-#include <QImageReader>
-
 #include <bb/system/InvokeManager.hpp>
 #include <bb/system/InvokeRequest.hpp>
+#include <bb/system/locale/Notifier>
 
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
@@ -37,6 +35,7 @@
 using namespace bb::cascades;
 using namespace bb::cascades::multimedia;
 using namespace bb::system;
+using namespace bb::system::locale;
 
 /*
  *
@@ -115,8 +114,9 @@ void OpenDataSpaceApp::setApplication(bb::cascades::Application* app,
 	m_currentLocale = currentLocale;
 	updateLocale(currentLocale);
 
-	//update certain controls to reflect the correct state
-	// not yet needed
+	// watch if user changes locale from device settings
+	Notifier* m_notifier = new Notifier();
+	connect(m_notifier, SIGNAL(changed()), this, SLOT(localeChanged()));
 }
 
 /**
@@ -232,6 +232,12 @@ Menu* OpenDataSpaceApp::createSystemMenu() {
 }
 
 // S L O T S
+
+// handles SLOT from Locale Chaned by user at Device
+void OpenDataSpaceApp::localeChanged() {
+	updateLocale(QLocale().name());
+}
+
 // handles SLOT from logoutItem
 void OpenDataSpaceApp::logoutTriggered() {
 	root->setProperty("loginSheetVisible", true);

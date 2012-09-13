@@ -65,6 +65,8 @@ public slots:
 	void feedbackTriggered();
 	void helpTriggered();
 	void settingsTriggered();
+	// locale changed by user from device settings
+	void localeChanged();
 
 private:
 	Application* m_app;
