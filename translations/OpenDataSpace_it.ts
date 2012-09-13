@@ -244,6 +244,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../assets/PreferencesSheet.qml" line="171"/>
+        <source>Version %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../assets/PreferencesSheet.qml" line="186"/>
         <source>German</source>
         <translation type="unfinished"></translation>
@@ -271,11 +276,6 @@
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="148"/>
         <source>Memory used</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/PreferencesSheet.qml" line="171"/>
-        <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -328,7 +328,7 @@
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="171"/>
-        <source>Version</source>
+        <source>Version %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

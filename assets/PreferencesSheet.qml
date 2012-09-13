@@ -168,7 +168,7 @@ NavigationPane {
                 }
                 Label {
                     id: versionLabel
-                    text: qsTr("Version")+ Retranslate.onLanguageChanged + " 1.3.2"
+                    text: qsTr("Version %1").arg("1.3.2")  + Retranslate.onLanguageChanged
                     leftMargin: 20
                     textStyle {
                         base: SystemDefaults.TextStyles.SmallText
