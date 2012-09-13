@@ -30,12 +30,16 @@ Container {
     attachedObjects: [
         ImageTracker {
             id: errorHelper
-            imageSource: "asset:///images/chat.png"
+            imageSource: "asset:///images/rain.png"
         }
     ]
     layout: StackLayout {
-        leftPadding: 100
+        leftPadding: 25
+        topPadding: 25
+        layoutDirection: LayoutDirection.LeftToRight
     }
+    minHeight: 120
+
     visible: false
     // the error image
     ImageView {
@@ -43,58 +47,26 @@ Container {
         image: errorHelper.image
         scalingMethod: ScalingMethod.AspectFit
         layoutProperties: StackLayoutProperties {
-            horizontalAlignment: HorizontalAlignment.Fill
+            
         }
     }
     // error text
     Label {
         id: errorText
-        text: qsTr("sorry: some Errors")+ Retranslate.onLanguageChanged
+        text: qsTr("please check entry") + Retranslate.onLanguageChanged
         textStyle {
-            base: SystemDefaults.TextStyles.BigText
-            color: Color.Red
+            base: SystemDefaults.TextStyles.TitleText
         }
     }
     animations: [
-        SequentialAnimation {
+        FadeTransition {
             id: animateError
-            ParallelAnimation {
-                TranslateTransition {
-                    duration: 2000
-                    fromX: -180
-                    toX: 0
-                    fromY: -180
-                    toY: 0
-                }
-                FadeTransition {
-                    duration: 2000
-                    fromOpacity: 0
-                    toOpacity: 1.0
-                }
-                RotateTransition {
-                    id: rotateAnimation
-                    fromAngleZ: 180
-                    toAngleZ: 0
-                    duration: 2000
-                }
-            }
-            ParallelAnimation {
-                delay: 2000
-                TranslateTransition {
-                    duration: 2000
-                    fromX: 0
-                    toX: -256
-                    fromY: 0
-                    toY: -256
-                }
-                FadeTransition {
-                    duration: 2000
-                    fromOpacity: 1.0
-                    toOpacity: 0
-                }
-            }
-            // at the end make container invisible
-            onEnded: errorContainer.visible = false
+            duration: 2000
+            fromOpacity: 0.1
+            toOpacity: 1.0
         }
     ]
+    onTouch: {
+        errorContainer.visible = false
+    }
 }

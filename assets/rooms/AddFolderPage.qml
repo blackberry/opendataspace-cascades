@@ -19,19 +19,30 @@ Page {
     // SIGNAL if folder was added
     signal onFolderAdded(string name)
     id: addFolderPage
+    attachedObjects: [
+        // a red tile of 16x16 pixels
+        ImagePaintDefinition {
+            id: redTile
+            repeatPattern: RepeatPattern.XY
+            imageSource: "asset:///images/tiles/red16x16.png"
+        }
+    ]
     actions: [
         ActionItem {
             title: qsTr("Add Folder") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/5-content-new81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                if (folderName.text != "") {
-                    addFolderPage.onFolderAdded(folderName.text)
+                if (folderName.textFieldText != "") {
+                    addFolderPage.onFolderAdded(folderName.textFieldText)
+                    dataError.containerVisible = false
                     transport.value = 80
                     transport.visible = true
                     dummi.play()
                 } else {
-                    // TODO add red bar
+                    // animation to demonstrate that there are errors
+                    dataError.animation.play()
+                    dataError.containerVisible = true
                 }
             }
         }
@@ -67,49 +78,52 @@ Page {
                     }
                     id: dummi
                     FadeTransition {
-                        duration: 1500
+                        duration: 1000
                         fromOpacity: 1.0
-                        toOpacity: 0.1
+                        toOpacity: 0.4
                         onEnded: {
                             transport.value = 40
                         }
                     }
                     FadeTransition {
-                        duration: 500
-                        fromOpacity: 0.1
+                        duration: 1000
+                        fromOpacity: 0.4
                         toOpacity: 1.0
                     }
                     onEnded: {
                         transport.value = 10
                         transport.visible = false
+                        folderName.textFieldText = ""
+                        folderName.textFieldHintText = qsTr("another Foldername") + Retranslate.onLanguageChanged
                         folderName.enabled = true
-                        folderName.text = ""
-                        folderName.hintText = qsTr("another Foldername") + Retranslate.onLanguageChanged
                     }
                 }
             ]
+            // Error Assistant
+            ErrorAssistant {
+                id: dataError
+            }
             ProgressIndicator {
                 id: transport
+                topMargin: 25
                 fromValue: 100
                 toValue: 0
                 value: 80
                 visible: false
             }
-            TextField {
+            TextFieldWithMarker {
                 id: folderName
-                hintText: qsTr("Name of the new Folder") + Retranslate.onLanguageChanged
-                inputMode: TextFieldInputMode.Text
-                textStyle {
-                    base: SystemDefaults.TextStyles.TitleText
-                }
+                redBarImage: redTile.image
+                textFieldHintText: qsTr("Name of the new Folder") + Retranslate.onLanguageChanged
+                textFieldInputMode: TextFieldInputMode.Text
+                textFieldText: ""
             }
         } // end Container
     } // end main container
-    function doTransportAnimationEnd() {
-        folderNameContainer.visible = true
+    function clearFields() {
+        folderName.textFieldText = ""
     }
     onCreationCompleted: {
-        // connect transport animation end SIGNAL
-        transport.animation.onTransportAnimationEnd.connect(doTransportAnimationEnd)
+        clearFields();
     }
 }

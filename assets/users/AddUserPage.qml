@@ -51,6 +51,7 @@ Page {
             onTriggered: {
                 if (firstNameWithMarker.textFieldText != "" && lastNameWithMarker.textFieldText != "" && emailWithMarker.textFieldText != "") {
                     addUserPage.onUserAdded(firstNameWithMarker.textFieldText + " " + lastNameWithMarker.textFieldText, isAdmin.displayType)
+                    dataError.containerVisible = false
                     //TODO call CPP to send to the cloud
                     transport.value = 80
                     transport.visible = true
@@ -77,6 +78,7 @@ Page {
         }
         ProgressIndicator {
             id: transport
+            topMargin: 25
             visible: false
         }
     
@@ -102,26 +104,26 @@ Page {
                             }
                             id: dummi
                             FadeTransition {
-                                duration: 1500
+                                duration: 1000
                                 fromOpacity: 1.0
-                                toOpacity: 0.1
+                                toOpacity: 0.3
                                 onEnded: {
                                     transport.value = 40
                                 }
                             }
                             FadeTransition {
-                                duration: 500
-                                fromOpacity: 0.1
+                                duration: 1000
+                                fromOpacity: 0.3
                                 toOpacity: 1.0
                             }
                             onEnded: {
                                 transport.value = 10
                                 transport.visible = false
-                                userDataContainer.enabled = true
                                 emailWithMarker.textFieldText = ""
                                 firstNameWithMarker.textFieldText = ""
                                 lastNameWithMarker.textFieldText = ""
                                 userTitle.text = ""
+                                userDataContainer.enabled = true
                             }
                         }
                     ]
@@ -308,9 +310,6 @@ Page {
         lastNameWithMarker.textFieldText = ""
         userTitle.text = ""
     }
-    function doTransportAnimationEnd() {
-        userDataContainer.visible = true
-    }
     onCreationCompleted: {
         // initialize positioning
         if (OrientationSupport.uiOrientation == UiOrientation.Landscape) {
@@ -321,8 +320,6 @@ Page {
             userDataContainer.layout.leftPadding = 25
         }
         clearFields();
-        // connect transport animation end SIGNAL
-        transport.animation.onTransportAnimationEnd.connect(doTransportAnimationEnd)
         console.debug("AddUserPage INIT done")
     }
 }

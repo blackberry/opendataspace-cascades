@@ -4,22 +4,22 @@
 <context>
     <name>AddFolderPage</name>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="24"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="32"/>
         <source>Add Folder</source>
         <translation>Ordner hinzufügen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="87"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="97"/>
         <source>another Foldername</source>
         <translation>weiteren Ordnernamen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="100"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="117"/>
         <source>Name of the new Folder</source>
         <translation>Name des neuen Ordners</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="41"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="52"/>
         <source>Folder Name</source>
         <translation>Ordner Name</translation>
     </message>
@@ -32,7 +32,7 @@
         <translation>Benutzer hinzufügen</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="68"/>
+        <location filename="../assets/users/AddUserPage.qml" line="69"/>
         <source>User Data</source>
         <translation>Benutzer Daten</translation>
     </message>
@@ -41,47 +41,47 @@
         <translation type="obsolete">Bitte email Adresse eingeben</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="141"/>
+        <location filename="../assets/users/AddUserPage.qml" line="143"/>
         <source>User email address</source>
         <translation>Benutzer email Adresse</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="161"/>
+        <location filename="../assets/users/AddUserPage.qml" line="163"/>
         <source>Salutation</source>
         <translation>Anrede</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="173"/>
+        <location filename="../assets/users/AddUserPage.qml" line="175"/>
         <source>Mr.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="176"/>
+        <location filename="../assets/users/AddUserPage.qml" line="178"/>
         <source>Mrs.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="183"/>
+        <location filename="../assets/users/AddUserPage.qml" line="185"/>
         <source>Title</source>
         <translation>Titel</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="192"/>
+        <location filename="../assets/users/AddUserPage.qml" line="194"/>
         <source>First Name</source>
         <translation>Vorname</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="203"/>
+        <location filename="../assets/users/AddUserPage.qml" line="205"/>
         <source>Last Name</source>
         <translation>Nachname</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="224"/>
+        <location filename="../assets/users/AddUserPage.qml" line="226"/>
         <source>Administrator</source>
         <translation>Administrator</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="276"/>
+        <location filename="../assets/users/AddUserPage.qml" line="278"/>
         <source>DataRoom</source>
         <translation>Datenraum</translation>
     </message>
@@ -121,9 +121,13 @@
 <context>
     <name>ErrorAssistant</name>
     <message>
-        <location filename="../assets/common/ErrorAssistant.qml" line="52"/>
         <source>sorry: some Errors</source>
-        <translation>Leider einige Fehler</translation>
+        <translation type="obsolete">Leider einige Fehler</translation>
+    </message>
+    <message>
+        <location filename="../assets/common/ErrorAssistant.qml" line="56"/>
+        <source>please check entry</source>
+        <translation>Bitte Eingaben prüfen</translation>
     </message>
 </context>
 <context>
