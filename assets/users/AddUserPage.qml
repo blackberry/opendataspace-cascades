@@ -51,14 +51,10 @@ Page {
             onTriggered: {
                 if (firstNameWithMarker.textFieldText != "" && lastNameWithMarker.textFieldText != "" && emailWithMarker.textFieldText != "") {
                     addUserPage.onUserAdded(firstNameWithMarker.textFieldText + " " + lastNameWithMarker.textFieldText, isAdmin.displayType)
-                    // animation flying data away to the cloud
-                    transport.animation.play()
-                    transport.containerVisible = true
-                    userDataContainer.visible = false
-                    emailWithMarker.textFieldText = ""
-                    firstNameWithMarker.textFieldText = ""
-                    lastNameWithMarker.textFieldText = ""
-                    userTitle.text = ""
+                    //TODO call CPP to send to the cloud
+                    transport.value = 80
+                    transport.visible = true
+                    dummi.play()
                 } else {
                     // animation to demonstrate that there are errors
                     dataError.animation.play()
@@ -69,7 +65,7 @@ Page {
     ]
     titleBar: TitleBar {
         id: addBar
-        title: qsTr("User Data")+ Retranslate.onLanguageChanged
+        title: qsTr("User Data") + Retranslate.onLanguageChanged
         visibility: ChromeVisibility.Visible
     }
     Container {
@@ -79,9 +75,9 @@ Page {
         ErrorAssistant {
             id: dataError
         }
-        // Animate the data transport
-        TransportDataToCloud {
+        ProgressIndicator {
             id: transport
+            visible: false
         }
     
         // using a ScrollView to manage the fields in Landscape
@@ -98,6 +94,37 @@ Page {
                 }
                 Container {
                     id: userDataContainer
+                    // Animate the data transport
+                    animations: [
+                        SequentialAnimation {
+                            onStarted: {
+                                userDataContainer.enabled = false
+                            }
+                            id: dummi
+                            FadeTransition {
+                                duration: 1500
+                                fromOpacity: 1.0
+                                toOpacity: 0.1
+                                onEnded: {
+                                    transport.value = 40
+                                }
+                            }
+                            FadeTransition {
+                                duration: 500
+                                fromOpacity: 0.1
+                                toOpacity: 1.0
+                            }
+                            onEnded: {
+                                transport.value = 10
+                                transport.visible = false
+                                userDataContainer.enabled = true
+                                emailWithMarker.textFieldText = ""
+                                firstNameWithMarker.textFieldText = ""
+                                lastNameWithMarker.textFieldText = ""
+                                userTitle.text = ""
+                            }
+                        }
+                    ]
                     layoutProperties: DockLayoutProperties {
                         horizontalAlignment: HorizontalAlignment.Center
                         verticalAlignment: VerticalAlignment.Center
@@ -111,7 +138,7 @@ Page {
                     TextFieldWithMarker {
                         id: emailWithMarker
                         redBarImage: redTile.image
-                        textFieldHintText: qsTr("User email address")+ Retranslate.onLanguageChanged
+                        textFieldHintText: qsTr("User email address") + Retranslate.onLanguageChanged
                         textFieldInputMode: TextFieldInputMode.EmailAddress
                         textFieldText: ""
                     }
@@ -131,7 +158,7 @@ Page {
                                 verticalAlignment: VerticalAlignment.Center
                                 spaceQuota: 0.8
                             }
-                            text: qsTr("Salutation")+ Retranslate.onLanguageChanged
+                            text: qsTr("Salutation") + Retranslate.onLanguageChanged
                             textStyle {
                                 base: SystemDefaults.TextStyles.BodyText
                             }
@@ -143,17 +170,17 @@ Page {
                                 spaceQuota: 1
                             }
                             Option {
-                                text: qsTr("Mr.")+ Retranslate.onLanguageChanged
+                                text: qsTr("Mr.") + Retranslate.onLanguageChanged
                             }
                             Option {
-                                text: qsTr("Mrs.")+ Retranslate.onLanguageChanged
+                                text: qsTr("Mrs.") + Retranslate.onLanguageChanged
                             }
                             selectedIndex: 0
                         }
                     } // end salutationContainer
                     TextField {
                         id: userTitle
-                        hintText: qsTr("Title")+ Retranslate.onLanguageChanged
+                        hintText: qsTr("Title") + Retranslate.onLanguageChanged
                         inputMode: TextFieldInputMode.Text
                         textStyle {
                             base: SystemDefaults.TextStyles.BodyText
@@ -162,7 +189,7 @@ Page {
                     TextFieldWithMarker {
                         id: firstNameWithMarker
                         redBarImage: redTile.image
-                        textFieldHintText: qsTr("First Name")+ Retranslate.onLanguageChanged
+                        textFieldHintText: qsTr("First Name") + Retranslate.onLanguageChanged
                         textFieldText: ""
                     }
                     Container {
@@ -173,7 +200,7 @@ Page {
                         TextFieldWithMarker {
                             id: lastNameWithMarker
                             redBarImage: redTile.image
-                            textFieldHintText: qsTr("Last Name")+ Retranslate.onLanguageChanged
+                            textFieldHintText: qsTr("Last Name") + Retranslate.onLanguageChanged
                             textFieldText: ""
                         }
                     }
@@ -194,7 +221,7 @@ Page {
                                 verticalAlignment: VerticalAlignment.Center
                                 spaceQuota: 0.8
                             }
-                            text: qsTr("Administrator")+ Retranslate.onLanguageChanged
+                            text: qsTr("Administrator") + Retranslate.onLanguageChanged
                             textStyle {
                                 base: SystemDefaults.TextStyles.BodyText
                             }
@@ -246,7 +273,7 @@ Page {
                                 verticalAlignment: VerticalAlignment.Center
                                 spaceQuota: 0.8
                             }
-                            text: qsTr("DataRoom")+ Retranslate.onLanguageChanged
+                            text: qsTr("DataRoom") + Retranslate.onLanguageChanged
                             textStyle {
                                 base: SystemDefaults.TextStyles.BodyText
                             }
