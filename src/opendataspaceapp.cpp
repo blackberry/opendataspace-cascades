@@ -15,6 +15,7 @@
  */
 #include "opendataspaceapp.hpp"
 #include "FileBrowseDialog.hpp"
+#include "FileInfo.hpp"
 
 #include <bb/system/InvokeManager.hpp>
 #include <bb/system/InvokeRequest.hpp>
@@ -58,7 +59,11 @@ OpenDataSpaceApp::OpenDataSpaceApp() :
 	Camera::registerQmlTypes();
 
 	// Register the FileDialog, so QML knows about
-	qmlRegisterType<FileBrowseDialog>("Dialog.FileBrowse", 1, 0, "FileBrowseDialog");
+	qmlRegisterType<FileBrowseDialog>("Dialog.FileBrowse", 1, 0,
+			"FileBrowseDialog");
+
+	// Register the FileInfo, so QML knows about
+	qmlRegisterType<FileInfo>("FileInfo", 1, 0, "FileInfo");
 
 	// our main QML document: the HomeScreen with a custom Background Image
 	QmlDocument *qml = QmlDocument::create("main.qml");

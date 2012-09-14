@@ -14,6 +14,7 @@
  * limitations under the License.
  */import bb.cascades 1.0
 import Dialog.FileBrowse 1.0
+import FileInfo 1.0
 
 /*
  * 
@@ -34,12 +35,18 @@ Page {
             // filters set from ActionItem
             onSelectionCompleted: {
                 // TODO need more infos from file (size, timestamp, ...)
-                if (filebrowseDialog.filepaths.length > 0) addFile( filebrowseDialog.filepaths[0]); 
+                if (filebrowseDialog.filepaths.length > 0) 
+                    addFile( filebrowseDialog.filepaths[0]); 
                 // else filebrowseDialogLabel.text = qsTr("no file selected") + Retranslate.onLanguageChanged;
             }
             onSelectionCancelled: {
                 // filebrowseDialogLabel.text = qsTr("browsing files cancelled") + Retranslate.onLanguageChanged;
             }
+        },
+        // FileInfo
+        FileInfo {
+            id: fileInfo
+            
         }
     ]
     actions: [
@@ -389,7 +396,7 @@ Page {
     function addFile(name) {
         console.debug("Now add new FILE to LISTMODEL on RoomsListPage")
         mockupModel.insert({
-                "name": name,
+                "name": fileInfo.getShortName( name),
                 "displayType": "L",
                 "lastEditedBy": "",
                 "fileSize": "",
