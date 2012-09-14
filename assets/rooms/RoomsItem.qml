@@ -74,6 +74,7 @@ Container {
             ImageView {
                 preferredWidth: 150
                 preferredHeight: 150
+                minWidth: 150
                 // datamodel knows the icon source
                 imageSource: ListItemData.icon
                 layoutProperties: StackLayoutProperties {
