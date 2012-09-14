@@ -399,7 +399,7 @@ Page {
                 "name": fileInfo.getShortName( name),
                 "displayType": "L",
                 "lastEditedBy": "BlackBerry",
-                "fileSize": "",
+                "fileSize": fileInfo.getSize( name),
                 "fileType": fileInfo.getSuffix( name),
                 "timestamp": fileInfo.getLastModified(name),
                 "icon": "../images/files-icon.png"

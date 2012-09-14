@@ -57,9 +57,18 @@ QDateTime FileInfo::getLastModified(QString filePath) const {
  * get the suffix from filename
  *
  */
-Q_INVOKABLE
 QString FileInfo::getSuffix(QString filePath) const {
 	QFileInfo *info = new QFileInfo(filePath);
 	return info->suffix();
+}
+
+/*
+ *
+ * get the size in Bytes from filename
+ *
+ */
+int FileInfo::getSize(QString filePath) const {
+	QFileInfo *info = new QFileInfo(filePath);
+	return info->size();
 }
 

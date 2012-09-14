@@ -58,6 +58,14 @@ public:
 	Q_INVOKABLE
 	QString getSuffix(QString filePath) const;
 
+	/*
+	 *
+	 * get the size from filename
+	 *
+	 */
+	Q_INVOKABLE
+	int getSize(QString filePath) const;
+
 };
 
 #endif /* FILEINFO_HPP_ */
