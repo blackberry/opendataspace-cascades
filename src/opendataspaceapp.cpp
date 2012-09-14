@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 #include "opendataspaceapp.hpp"
+#include "FileBrowseDialog.hpp"
 
 #include <bb/system/InvokeManager.hpp>
 #include <bb/system/InvokeRequest.hpp>
@@ -55,6 +56,9 @@ OpenDataSpaceApp::OpenDataSpaceApp() :
 	// We need to register the QML types in the multimedia-library,
 	// otherwise we will get an error from the QML.
 	Camera::registerQmlTypes();
+
+	// Register the FileDialog, so QML knows about
+	qmlRegisterType<FileBrowseDialog>("Dialog.FileBrowse", 1, 0, "FileBrowseDialog");
 
 	// our main QML document: the HomeScreen with a custom Background Image
 	QmlDocument *qml = QmlDocument::create("main.qml");
