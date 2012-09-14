@@ -27,6 +27,15 @@ FileInfo::FileInfo() {
 
 }
 
+/*
+ * FileBrowseDialog gives us a path to the file
+ * with a full qualified FileName
+ *
+ * getShortName() extracts the Filename itself
+ * so from QML we can use this name in ListItems etc.
+ *
+ *
+ */
 QString FileInfo::getShortName(QString filePath) const {
 	QFileInfo *info = new QFileInfo(filePath);
 
