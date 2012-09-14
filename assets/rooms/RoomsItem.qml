@@ -101,7 +101,7 @@ Container {
                     // should only be visible for Labels
                     visible: ListItemData.displayType == "L"
                     // lastEditedBy and timestamp are properties from data model
-                    text: ListItemData.lastEditedBy + " " + ListItemData.timestamp
+                    text: ListItemData.lastEditedBy + " - " + ListItemData.timestamp + " (" +ListItemData.fileType +")"
                     textStyle {
                         base: SystemDefaults.TextStyles.SubtitleText
                         color: Color.Black

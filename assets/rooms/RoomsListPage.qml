@@ -373,7 +373,7 @@ Page {
                         "displayType": "L",
                         "lastEditedBy": "Jane Doe",
                         "fileSize": "1.650 MB",
-                        "fileType": ".pdf",
+                        "fileType": "pdf",
                         "timestamp": "2012-08-13 10:01:00",
                         "icon": "../images/files-icon.png"
                     });
@@ -398,10 +398,10 @@ Page {
         mockupModel.insert({
                 "name": fileInfo.getShortName( name),
                 "displayType": "L",
-                "lastEditedBy": "",
+                "lastEditedBy": "BlackBerry",
                 "fileSize": "",
-                "fileType": "",
-                "timestamp": "",
+                "fileType": fileInfo.getSuffix( name),
+                "timestamp": fileInfo.getLastModified(name),
                 "icon": "../images/files-icon.png"
             })
     }

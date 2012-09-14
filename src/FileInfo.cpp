@@ -16,12 +16,13 @@
 
 #include "FileInfo.hpp"
 #include <QFileInfo>
+#include <QDateTime>
 
 /*
  *
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
  *
-*/
+ */
 FileInfo::FileInfo() {
 	// TODO Auto-generated constructor stub
 
@@ -38,6 +39,27 @@ FileInfo::FileInfo() {
  */
 QString FileInfo::getShortName(QString filePath) const {
 	QFileInfo *info = new QFileInfo(filePath);
-
 	return info->fileName();
 }
+
+/*
+ *
+ * get the timestamp of last modification
+ *
+ */
+QDateTime FileInfo::getLastModified(QString filePath) const {
+	QFileInfo *info = new QFileInfo(filePath);
+	return info->lastModified();
+}
+
+/*
+ *
+ * get the suffix from filename
+ *
+ */
+Q_INVOKABLE
+QString FileInfo::getSuffix(QString filePath) const {
+	QFileInfo *info = new QFileInfo(filePath);
+	return info->suffix();
+}
+

@@ -18,13 +18,14 @@
 #define FILEINFO_HPP_
 
 #include <QFileInfo>
+#include <QDateTime>
 /*
  *
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
  *
  */
-class FileInfo : public QObject {
-	Q_OBJECT
+class FileInfo: public QObject {
+Q_OBJECT
 
 public:
 	FileInfo();
@@ -40,8 +41,23 @@ public:
 	 */
 	Q_INVOKABLE
 	QString getShortName(QString filePath) const;
+
+	/*
+	 *
+	 * get the timestamp of last modification
+	 *
+	 */
+	Q_INVOKABLE
+	QDateTime getLastModified(QString filePath) const;
+
+	/*
+	 *
+	 * get the suffix from filename
+	 *
+	 */
+	Q_INVOKABLE
+	QString getSuffix(QString filePath) const;
+
 };
-
-
 
 #endif /* FILEINFO_HPP_ */
