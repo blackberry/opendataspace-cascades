@@ -31,12 +31,9 @@ Page {
         FileBrowseDialog {
             id: filebrowseDialog
             multiselect: false
-            filters: [
-                "*.doc",
-                "*.jpg",
-                "*.txt"
-            ]
+            // filters set from ActionItem
             onSelectionCompleted: {
+                // TODO need more infos from file (size, timestamp, ...)
                 if (filebrowseDialog.filepaths.length > 0) addFile( filebrowseDialog.filepaths[0]); 
                 // else filebrowseDialogLabel.text = qsTr("no file selected") + Retranslate.onLanguageChanged;
             }
