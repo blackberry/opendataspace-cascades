@@ -28,7 +28,7 @@ NavigationPane {
     // SIGNAL
     signal done(bool ok)
     // the current locale - can be set from outside
-    property string currentLanguage: "de"
+    property string currentLanguage: "en"
     // the current customer - can be set from outside
     property string currentCustomer: "Musterfirma GmbH"
     id: navigationPane

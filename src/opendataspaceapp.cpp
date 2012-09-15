@@ -50,7 +50,7 @@ OpenDataSpaceApp::OpenDataSpaceApp() :
 {
 
 	// we need a system menu:
-	Menu* menu = createSystemMenu();
+	Menu* menu = createApplicationMenu();
 
 	Application::setMenu(menu);
 
@@ -199,6 +199,16 @@ QString OpenDataSpaceApp::getCurrentLanguage() {
 }
 
 /**
+ * App::getCurrentLocale()
+ *
+ * Retrieve the current locale.
+ */
+QString OpenDataSpaceApp::getCurrentLocale() {
+	qDebug() << "getCurrentLocale: " << m_currentLocale;
+	return m_currentLocale;
+}
+
+/**
  * App::suppressKeyboard()
  *
  * A helper function to force the keyboard to hide
@@ -209,8 +219,9 @@ void OpenDataSpaceApp::suppressKeyboard() {
 }
 
 // M E N U
-// SystemMenu is available on all Screens
-Menu* OpenDataSpaceApp::createSystemMenu() {
+// ApplicationMenu is available on all Screens
+// opens using swipe-down
+Menu* OpenDataSpaceApp::createApplicationMenu() {
 	// HELP will open a website with Help Instructions from OpenDataSpace
 	m_helpItem = new HelpActionItem();
 	// FEEDBACK will send an email to OpenDataSpace
@@ -305,4 +316,6 @@ void OpenDataSpaceApp::showInVideosApp(QString fileName) {
 	InvokeManager invokeManager;
 	invokeManager.invoke(invokeRequest);
 }
+
+
 

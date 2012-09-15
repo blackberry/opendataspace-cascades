@@ -78,7 +78,7 @@ TabbedPane {
         id: homeTab
         imageSource: "asset:///images/ics/10-device-access-location-found81.png"
         objectName: "homeTab"
-        title: qsTr("Home")+ Retranslate.onLanguageChanged
+        title: qsTr("Home") + Retranslate.onLanguageChanged
         HomePage {
             id: homePage
         }
@@ -88,7 +88,7 @@ TabbedPane {
     Tab {
         id: dataspaceTab
         imageSource: "asset:///images/ics/4-collections-cloud81.png"
-        title: qsTr("Data Space")+ Retranslate.onLanguageChanged
+        title: qsTr("Data Space") + Retranslate.onLanguageChanged
         DataSpaceNavPane {
             id: dataspacePane
         }
@@ -97,8 +97,7 @@ TabbedPane {
     // TODO only enabled if Admin
     Tab {
         id: usersTab
-        title: qsTr("Users")+ Retranslate.onLanguageChanged
-            
+        title: qsTr("Users") + Retranslate.onLanguageChanged
         imageSource: "asset:///images/ics/6-social-group81.png"
         UsersNavPane {
             id: usersPane
@@ -108,14 +107,14 @@ TabbedPane {
     // disabled at startup if nothing to upload
     Tab {
         id: uploadTab
-        title: qsTr("Upload")+ Retranslate.onLanguageChanged
+        title: qsTr("Upload") + Retranslate.onLanguageChanged
         imageSource: "asset:///images/ics/9-av-upload81.png"
         enabled: false
         UsersNavPane {
             id: uploadPane
         }
     }
-	
+    
     // FUNCTIONS for the complete TabbedPane called from the Sheets attached to TabbedPane
     // the handler SLOT if LogIn was done
     // SIGNALed from LoginSheet

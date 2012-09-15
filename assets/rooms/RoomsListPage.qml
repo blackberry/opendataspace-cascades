@@ -401,7 +401,7 @@ Page {
                 "lastEditedBy": "BlackBerry",
                 "fileSize": fileInfo.getSize( name),
                 "fileType": fileInfo.getSuffix( name),
-                "timestamp": fileInfo.getLastModified(name),
+                "timestamp": fileInfo.getLastModifiedAsLongString(ods.getCurrentLocale(), name),
                 "icon": "../images/files-icon.png"
             })
     }

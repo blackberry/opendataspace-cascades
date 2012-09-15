@@ -19,6 +19,7 @@
 
 #include <QFileInfo>
 #include <QDateTime>
+#include <QLocale>
 /*
  *
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
@@ -49,6 +50,26 @@ public:
 	 */
 	Q_INVOKABLE
 	QDateTime getLastModified(QString filePath) const;
+
+	/*
+	 *
+	 * get the timestamp of last modification
+	 * as String localized as short format
+	 *
+	 */
+	Q_INVOKABLE
+	QString getLastModifiedAsShortString(QString locale,
+			QString filePath) const;
+
+	/*
+	 *
+	 * get the timestamp of last modification
+	 * as String localized as long format
+	 *
+	 */
+	Q_INVOKABLE
+	QString getLastModifiedAsLongString(QString locale,
+			QString filePath) const;
 
 	/*
 	 *

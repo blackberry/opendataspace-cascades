@@ -17,6 +17,8 @@
 #include "FileInfo.hpp"
 #include <QFileInfo>
 #include <QDateTime>
+#include <QLocale>
+
 
 /*
  *
@@ -50,6 +52,34 @@ QString FileInfo::getShortName(QString filePath) const {
 QDateTime FileInfo::getLastModified(QString filePath) const {
 	QFileInfo *info = new QFileInfo(filePath);
 	return info->lastModified();
+}
+
+/*
+ *
+ * get the timestamp of last modification
+ * as String localized as short format
+ *
+ */
+QString FileInfo::getLastModifiedAsShortString(QString locale, QString filePath) const {
+	QFileInfo *info = new QFileInfo(filePath);
+
+	QLocale *loc = new QLocale(locale);
+	QString ld = loc->toString(info->lastModified(), QLocale::ShortFormat);
+	return ld;
+}
+
+/*
+ *
+ * get the timestamp of last modification
+ * as String localized as long format
+ *
+ */
+QString FileInfo::getLastModifiedAsLongString(QString locale, QString filePath) const {
+	QFileInfo *info = new QFileInfo(filePath);
+
+	QLocale *loc = new QLocale(locale);
+	QString ld = loc->toString(info->lastModified(), QLocale::LongFormat);
+	return ld;
 }
 
 /*

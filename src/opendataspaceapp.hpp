@@ -47,6 +47,14 @@ public:
 	QString getCurrentLanguage();
 
 	/*
+	 * Allows the current locale to be retrieved from QML
+	 *
+	 * @return the current locale
+	 */
+	Q_INVOKABLE
+	QString getCurrentLocale();
+
+	/*
 	 * Workaround to force keyboard to hide when readonly text area is touched
 	 */
 	Q_INVOKABLE
@@ -76,7 +84,7 @@ private:
 	Camera *camera;
 	Camera *videocamera;
 
-	Menu* createSystemMenu();
+	Menu* createApplicationMenu();
 	HelpActionItem* m_helpItem;
 	ActionItem* m_feedbackItem;
 	SettingsActionItem* m_settingsItem;
