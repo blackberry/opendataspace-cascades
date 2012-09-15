@@ -13,9 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */import bb.cascades 1.0
+import FileInfo 1.0
 /*
- * Image Oreview
+ * Image Overview
  * can share the image, do nothing (go back) or upload the image
+ * Image occupies as much space as possible as long as aspect ratio fits
  *
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
  *
@@ -28,8 +30,14 @@ Page {
         id: titleBarId
         // TODO only the filename
         title: "Preview"
-        visibility: ChromeVisibility.Overlay
+        visibility: ChromeVisibility.Visible
     }
+    attachedObjects: [
+        // FileInfo
+        FileInfo {
+            id: fileInfo
+        }
+    ]
     actions: [
         ActionItem {
             title: qsTr("Share") + Retranslate.onLanguageChanged
@@ -42,7 +50,7 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("Upload")+ Retranslate.onLanguageChanged
+            title: qsTr("Upload") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/9-av-upload81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
@@ -52,27 +60,46 @@ Page {
     ]
     Container {
         layout: DockLayout {
+            leftPadding: 25
+            topPadding: 25
         }
         Container {
+            layout: StackLayout {
+                layoutDirection: LayoutDirection.TopToBottom
+            }
             layoutProperties: DockLayoutProperties {
-                horizontalAlignment: HorizontalAlignment.Center
-                verticalAlignment: VerticalAlignment.Center
+                horizontalAlignment: HorizontalAlignment.Left
+                verticalAlignment: VerticalAlignment.Top
             }
             ImageView {
                 id: previewImage
+                // without this the image would be as large as possible
+                minHeight: 600
+                maxHeight: 600
                 objectName: "previewImage"
                 scalingMethod: ScalingMethod.AspectFit
                 onImageSourceChanged: {
                     console.debug("IMAGESOURCE Changed:" + imageSource)
-                    titleBarId.title = imageFileName(imageSource)
+                    recalculateValues(imageSource)
+                }
+            }
+            TextArea {
+                id: filenameInfo
+                text: ""
+                topMargin: 25
+                enabled: false
+                backgroundVisible: false
+                textStyle {
+                    base: SystemDefaults.TextStyles.BodyText
+                    color: Color.Black
                 }
             }
         }
     }
-    function imageFileName(imgsrc) {
-        // TODO js to extract the filename
-        return imgsrc
-        
-        
+    function recalculateValues(name){
+        titleBarId.title = fileInfo.getShortName(name);
+        filenameInfo.enabled = true;
+        filenameInfo.text = fileInfo.getDetailedInfo(ods.getCurrentLocale(), name);
+        filenameInfo.enabled = false;
     }
 }

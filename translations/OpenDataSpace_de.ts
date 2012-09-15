@@ -168,6 +168,19 @@
     </message>
 </context>
 <context>
+    <name>FileInfo</name>
+    <message>
+        <location filename="../src/FileInfo.cpp" line="182"/>
+        <source>created</source>
+        <translation>angelegt</translation>
+    </message>
+    <message>
+        <location filename="../src/FileInfo.cpp" line="184"/>
+        <source>modified</source>
+        <translation>bearbeitet</translation>
+    </message>
+</context>
+<context>
     <name>HelpSheet</name>
     <message>
         <source>Close</source>
@@ -181,12 +194,12 @@
         <translation type="obsolete">Schließen</translation>
     </message>
     <message>
-        <location filename="../assets/media/ImagePreviewPage.qml" line="35"/>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="43"/>
         <source>Share</source>
         <translation type="unfinished">Teilen</translation>
     </message>
     <message>
-        <location filename="../assets/media/ImagePreviewPage.qml" line="45"/>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="53"/>
         <source>Upload</source>
         <translation type="unfinished">Upload</translation>
     </message>

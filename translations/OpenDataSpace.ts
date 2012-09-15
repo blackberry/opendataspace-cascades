@@ -149,14 +149,27 @@
     </message>
 </context>
 <context>
+    <name>FileInfo</name>
+    <message>
+        <location filename="../src/FileInfo.cpp" line="182"/>
+        <source>created</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/FileInfo.cpp" line="184"/>
+        <source>modified</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ImagePreviewPage</name>
     <message>
-        <location filename="../assets/media/ImagePreviewPage.qml" line="35"/>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="43"/>
         <source>Share</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/media/ImagePreviewPage.qml" line="45"/>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="53"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
