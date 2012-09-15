@@ -76,7 +76,6 @@ QString FileInfo::getLastModifiedAsShortString(QString locale, QString filePath)
  */
 QString FileInfo::getLastModifiedAsLongString(QString locale, QString filePath) const {
 	QFileInfo *info = new QFileInfo(filePath);
-
 	QLocale *loc = new QLocale(locale);
 	QString ld = loc->toString(info->lastModified(), QLocale::LongFormat);
 	return ld;
@@ -100,5 +99,18 @@ QString FileInfo::getSuffix(QString filePath) const {
 int FileInfo::getSize(QString filePath) const {
 	QFileInfo *info = new QFileInfo(filePath);
 	return info->size();
+}
+
+/*
+ *
+ * get the size in Bytes from filename
+ * as localized String
+ *
+ */
+QString FileInfo::getSizeAsString(QString locale, QString filePath) const {
+	QFileInfo *info = new QFileInfo(filePath);
+	QLocale *loc = new QLocale(locale);
+	QString ld = loc->toString(info->size());
+	return ld;
 }
 

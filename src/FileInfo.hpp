@@ -68,8 +68,7 @@ public:
 	 *
 	 */
 	Q_INVOKABLE
-	QString getLastModifiedAsLongString(QString locale,
-			QString filePath) const;
+	QString getLastModifiedAsLongString(QString locale, QString filePath) const;
 
 	/*
 	 *
@@ -86,6 +85,15 @@ public:
 	 */
 	Q_INVOKABLE
 	int getSize(QString filePath) const;
+
+	/*
+	 *
+	 * get the size in Bytes from filename
+	 * as localized string
+	 *
+	 */
+	Q_INVOKABLE
+	QString getSizeAsString(QString locale, QString filePath) const;
 
 };
 

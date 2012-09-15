@@ -27,6 +27,7 @@ Page {
     signal openCamera()
     signal openVideo()
     signal onOpenAddFolder()
+    property alias headerTitle : theBar.title
     attachedObjects: [
         // native FileBrowsing Dialog
         FileBrowseDialog {
@@ -35,8 +36,7 @@ Page {
             // filters set from ActionItem
             onSelectionCompleted: {
                 // TODO need more infos from file (size, timestamp, ...)
-                if (filebrowseDialog.filepaths.length > 0) 
-                    addFile( filebrowseDialog.filepaths[0]); 
+                if (filebrowseDialog.filepaths.length > 0) addFile(filebrowseDialog.filepaths[0]); 
                 // else filebrowseDialogLabel.text = qsTr("no file selected") + Retranslate.onLanguageChanged;
             }
             onSelectionCancelled: {
@@ -46,7 +46,6 @@ Page {
         // FileInfo
         FileInfo {
             id: fileInfo
-            
         }
     ]
     actions: [
@@ -148,6 +147,11 @@ Page {
             }
         }
     ]
+    titleBar: TitleBar {
+        id: theBar
+        title: qsTr("DataRoom")
+        visibility: ChromeVisibility.Visible
+    }
     content: Container {
         id: listContainer
         layout: DockLayout {
@@ -363,7 +367,7 @@ Page {
                         "name": "Orders",
                         "displayType": "L",
                         "lastEditedBy": "Max Mustermann",
-                        "fileSize": "12.234 MB",
+                        "fileSize": "12.234.000",
                         "fileType": "zip",
                         "timestamp": "2012-07-25 12:11:13",
                         "icon": "../images/files-icon.png"
@@ -372,7 +376,7 @@ Page {
                         "name": "Offers",
                         "displayType": "L",
                         "lastEditedBy": "Jane Doe",
-                        "fileSize": "1.650 MB",
+                        "fileSize": "1.650.000",
                         "fileType": "pdf",
                         "timestamp": "2012-08-13 10:01:00",
                         "icon": "../images/files-icon.png"
@@ -396,12 +400,12 @@ Page {
     function addFile(name) {
         console.debug("Now add new FILE to LISTMODEL on RoomsListPage")
         mockupModel.insert({
-                "name": fileInfo.getShortName( name),
+                "name": fileInfo.getShortName(name),
                 "displayType": "L",
                 "lastEditedBy": "BlackBerry",
-                "fileSize": fileInfo.getSize( name),
-                "fileType": fileInfo.getSuffix( name),
-                "timestamp": fileInfo.getLastModifiedAsLongString(ods.getCurrentLocale(), name),
+                "fileSize": fileInfo.getSizeAsString(ods.getCurrentLocale(), name),
+                "fileType": fileInfo.getSuffix(name),
+                "timestamp": fileInfo.getLastModifiedAsShortString(ods.getCurrentLocale(), name),
                 "icon": "../images/files-icon.png"
             })
     }

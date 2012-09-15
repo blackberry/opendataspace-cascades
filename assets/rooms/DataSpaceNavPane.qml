@@ -167,6 +167,7 @@ NavigationPane {
                 onTriggered: {
                     // TODO set the datamodel depending on path
                     if (selected) {
+                        roomsListPage.headerTitle = mockupModel.data(indexPath).name
                         navigationPane.push(roomsListPage)
                     }
                 }
