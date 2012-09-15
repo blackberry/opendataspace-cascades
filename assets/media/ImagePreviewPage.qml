@@ -28,7 +28,6 @@ Page {
     id: previewPage
     titleBar: TitleBar {
         id: titleBarId
-        // TODO only the filename
         title: "Preview"
         visibility: ChromeVisibility.Visible
     }
@@ -36,6 +35,20 @@ Page {
         // FileInfo
         FileInfo {
             id: fileInfo
+        },
+        // application supports changing the Orientation
+        OrientationHandler {
+            onUiOrientationChanged: {
+                if (uiOrientation == UiOrientation.Landscape) {
+                    titleBarId.visibility = ChromeVisibility.Hidden
+                    titleLabel.visible = true
+                    imageAndTextContainer.layout.layoutDirection = LayoutDirection.LeftToRight
+                } else {
+                    imageAndTextContainer.layout.layoutDirection = LayoutDirection.TopToBottom
+                    titleBarId.visibility = ChromeVisibility.Visible
+                    titleLabel.visible = false
+                }
+            }
         }
     ]
     actions: [
@@ -64,15 +77,18 @@ Page {
             topPadding: 25
         }
         Container {
+            id: imageAndTextContainer
             layout: StackLayout {
                 layoutDirection: LayoutDirection.TopToBottom
             }
             layoutProperties: DockLayoutProperties {
                 horizontalAlignment: HorizontalAlignment.Left
-                verticalAlignment: VerticalAlignment.Top
             }
             ImageView {
                 id: previewImage
+                layoutProperties: StackLayoutProperties {
+                    verticalAlignment: VerticalAlignment.Center
+                }
                 // without this the image would be as large as possible
                 minHeight: 600
                 maxHeight: 600
@@ -83,23 +99,55 @@ Page {
                     recalculateValues(imageSource)
                 }
             }
-            TextArea {
-                id: filenameInfo
-                text: ""
-                topMargin: 25
-                enabled: false
-                backgroundVisible: false
-                textStyle {
-                    base: SystemDefaults.TextStyles.BodyText
-                    color: Color.Black
+            Container {
+                layout: StackLayout {
+                    layoutDirection: LayoutDirection.TopToBottom
+                    topPadding: 25
+                }
+                Label {
+                    id: titleLabel
+                    visible: false
+                    bottomMargin: 25
+                    textStyle {
+                        base: SystemDefaults.TextStyles.TitleText
+                        color: Color.Black
+                    }
+                }
+                TextArea {
+                    id: filenameInfo
+                    layoutProperties: StackLayoutProperties {
+                        verticalAlignment: VerticalAlignment.Fill
+                    }
+                    text: ""
+                    enabled: false
+                    backgroundVisible: false
+                    textStyle {
+                        base: SystemDefaults.TextStyles.BodyText
+                        color: Color.Black
+                    }
                 }
             }
         }
     }
-    function recalculateValues(name){
+    function recalculateValues(name) {
         titleBarId.title = fileInfo.getShortName(name);
+        titleLabel.text = titleBarId.title;
         filenameInfo.enabled = true;
-        filenameInfo.text = fileInfo.getDetailedInfo(ods.getCurrentLocale(), name);
+        filenameInfo.text = fileInfo.getDetailedInfo(ods.getCurrentLocale(), name) +"\n"; //workaround bug in landscape: last line not visible
         filenameInfo.enabled = false;
+    }
+    // TODO Landscape hide Actionbar if no activity
+    // in landscape we change the stack layout direction and hide the titlebar
+    onCreationCompleted: {
+        // initial setup for orientation
+        if (OrientationSupport.uiOrientation == UiOrientation.Landscape) {
+            titleBarId.visibility = ChromeVisibility.Hidden
+            titleLabel.visible = true
+            imageAndTextContainer.layout.layoutDirection = LayoutDirection.LeftToRight
+        } else {
+            imageAndTextContainer.layout.layoutDirection = LayoutDirection.TopToBottom
+            titleBarId.visibility = ChromeVisibility.Visible
+            titleLabel.visible = false
+        }
     }
 }

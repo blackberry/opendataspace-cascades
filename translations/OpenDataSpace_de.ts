@@ -194,12 +194,12 @@
         <translation type="obsolete">Schließen</translation>
     </message>
     <message>
-        <location filename="../assets/media/ImagePreviewPage.qml" line="43"/>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="56"/>
         <source>Share</source>
         <translation type="unfinished">Teilen</translation>
     </message>
     <message>
-        <location filename="../assets/media/ImagePreviewPage.qml" line="53"/>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="66"/>
         <source>Upload</source>
         <translation type="unfinished">Upload</translation>
     </message>
