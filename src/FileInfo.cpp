@@ -178,10 +178,10 @@ QString FileInfo::getDetailedInfo(QString locale, QString filePath) const {
 	// QString size = loc->toString(info->size());
 	//QString created = loc->toString(info->created(), QLocale::ShortFormat);
 	//QString modified = loc->toString(info->lastModified(), QLocale::ShortFormat);
-	QString ld = filePath + "\n" + (loc->toString(info->size())) + "\n"
-			+ tr("created") +": "
+	QString ld = filePath + "\n" + "\n" + (loc->toString(info->size())) + " Bytes\n"
+			+ tr("created") + ": "
 			+ (loc->toString(info->created(), QLocale::ShortFormat)) + "\n"
-			+ tr("modified") +": "
+			+ tr("modified") + ": "
 			+ (loc->toString(info->lastModified(), QLocale::ShortFormat));
 	return ld;
 }
