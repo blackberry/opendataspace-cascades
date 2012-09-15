@@ -18,17 +18,19 @@
 #include <QFileInfo>
 #include <QDateTime>
 #include <QLocale>
-
+#include <QDebug>
 
 /*
+ * Utility Class to get Informations from File
  *
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
  *
  */
 FileInfo::FileInfo() {
 	// TODO Auto-generated constructor stub
-
 }
+
+// HINT: we replace file:// - per ex. imageSource contains it
 
 /*
  * FileBrowseDialog gives us a path to the file
@@ -40,7 +42,8 @@ FileInfo::FileInfo() {
  *
  */
 QString FileInfo::getShortName(QString filePath) const {
-	QFileInfo *info = new QFileInfo(filePath);
+	qDebug() << "FILEINFO getShortName: " << filePath;
+	QFileInfo *info = new QFileInfo(filePath.replace("file://", ""));
 	return info->fileName();
 }
 
@@ -50,7 +53,8 @@ QString FileInfo::getShortName(QString filePath) const {
  *
  */
 QDateTime FileInfo::getLastModified(QString filePath) const {
-	QFileInfo *info = new QFileInfo(filePath);
+	qDebug() << "FILEINFO getLastModified: " << filePath;
+	QFileInfo *info = new QFileInfo(filePath.replace("file://", ""));
 	return info->lastModified();
 }
 
@@ -60,9 +64,10 @@ QDateTime FileInfo::getLastModified(QString filePath) const {
  * as String localized as short format
  *
  */
-QString FileInfo::getLastModifiedAsShortString(QString locale, QString filePath) const {
-	QFileInfo *info = new QFileInfo(filePath);
-
+QString FileInfo::getLastModifiedAsShortString(QString locale,
+		QString filePath) const {
+	qDebug() << "FILEINFO getLastModifiedAsShortString: " << filePath;
+	QFileInfo *info = new QFileInfo(filePath.replace("file://", ""));
 	QLocale *loc = new QLocale(locale);
 	QString ld = loc->toString(info->lastModified(), QLocale::ShortFormat);
 	return ld;
@@ -74,10 +79,53 @@ QString FileInfo::getLastModifiedAsShortString(QString locale, QString filePath)
  * as String localized as long format
  *
  */
-QString FileInfo::getLastModifiedAsLongString(QString locale, QString filePath) const {
-	QFileInfo *info = new QFileInfo(filePath);
+QString FileInfo::getLastModifiedAsLongString(QString locale,
+		QString filePath) const {
+	qDebug() << "FILEINFO getLastModifiedAsLongString: " << filePath;
+	QFileInfo *info = new QFileInfo(filePath.replace("file://", ""));
 	QLocale *loc = new QLocale(locale);
 	QString ld = loc->toString(info->lastModified(), QLocale::LongFormat);
+	return ld;
+}
+
+/*
+ *
+ * get the timestamp of creation
+ *
+ */
+QDateTime FileInfo::getCreated(QString filePath) const {
+	qDebug() << "FILEINFO getCreated: " << filePath;
+	QFileInfo *info = new QFileInfo(filePath.replace("file://", ""));
+	return info->created();
+}
+
+/*
+ *
+ * get the timestamp of creation
+ * as String localized as short format
+ *
+ */
+QString FileInfo::getCreatedAsShortString(QString locale,
+		QString filePath) const {
+	qDebug() << "FILEINFO getCreatedAsShortString: " << filePath;
+	QFileInfo *info = new QFileInfo(filePath.replace("file://", ""));
+	QLocale *loc = new QLocale(locale);
+	QString ld = loc->toString(info->created(), QLocale::ShortFormat);
+	return ld;
+}
+
+/*
+ *
+ * get the timestamp of creation
+ * as String localized as long format
+ *
+ */
+QString FileInfo::getCreatedAsLongString(QString locale,
+		QString filePath) const {
+	qDebug() << "FILEINFO getCreatedAsLongString: " << filePath;
+	QFileInfo *info = new QFileInfo(filePath.replace("file://", ""));
+	QLocale *loc = new QLocale(locale);
+	QString ld = loc->toString(info->created(), QLocale::LongFormat);
 	return ld;
 }
 
@@ -87,7 +135,8 @@ QString FileInfo::getLastModifiedAsLongString(QString locale, QString filePath) 
  *
  */
 QString FileInfo::getSuffix(QString filePath) const {
-	QFileInfo *info = new QFileInfo(filePath);
+	qDebug() << "FILEINFO getSuffix: " << filePath;
+	QFileInfo *info = new QFileInfo(filePath.replace("file://", ""));
 	return info->suffix();
 }
 
@@ -97,7 +146,8 @@ QString FileInfo::getSuffix(QString filePath) const {
  *
  */
 int FileInfo::getSize(QString filePath) const {
-	QFileInfo *info = new QFileInfo(filePath);
+	qDebug() << "FILEINFO getSize: " << filePath;
+	QFileInfo *info = new QFileInfo(filePath.replace("file://", ""));
 	return info->size();
 }
 
@@ -108,9 +158,31 @@ int FileInfo::getSize(QString filePath) const {
  *
  */
 QString FileInfo::getSizeAsString(QString locale, QString filePath) const {
-	QFileInfo *info = new QFileInfo(filePath);
+	qDebug() << "FILEINFO getSizeAsString: " << filePath;
+	QFileInfo *info = new QFileInfo(filePath.replace("file://", ""));
 	QLocale *loc = new QLocale(locale);
 	QString ld = loc->toString(info->size());
+	return ld;
+}
+
+/*
+ *
+ * get detailed Info from filename
+ * as localized multiline String
+ *
+ */
+QString FileInfo::getDetailedInfo(QString locale, QString filePath) const {
+	qDebug() << "FILEINFO getDetailedInfo: " << filePath;
+	QFileInfo *info = new QFileInfo(filePath.replace("file://", ""));
+	QLocale *loc = new QLocale(locale);
+	// QString size = loc->toString(info->size());
+	//QString created = loc->toString(info->created(), QLocale::ShortFormat);
+	//QString modified = loc->toString(info->lastModified(), QLocale::ShortFormat);
+	QString ld = filePath + "\n" + (loc->toString(info->size())) + "\n"
+			+ tr("created") +": "
+			+ (loc->toString(info->created(), QLocale::ShortFormat)) + "\n"
+			+ tr("modified") +": "
+			+ (loc->toString(info->lastModified(), QLocale::ShortFormat));
 	return ld;
 }
 

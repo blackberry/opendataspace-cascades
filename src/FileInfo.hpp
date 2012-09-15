@@ -72,6 +72,32 @@ public:
 
 	/*
 	 *
+	 * get the timestamp of creation
+	 *
+	 */
+	Q_INVOKABLE
+	QDateTime getCreated(QString filePath) const;
+
+	/*
+	 *
+	 * get the timestamp of creation
+	 * as String localized as short format
+	 *
+	 */
+	Q_INVOKABLE
+	QString getCreatedAsShortString(QString locale, QString filePath) const;
+
+	/*
+	 *
+	 * get the timestamp of creation
+	 * as String localized as long format
+	 *
+	 */
+	Q_INVOKABLE
+	QString getCreatedAsLongString(QString locale, QString filePath) const;
+
+	/*
+	 *
 	 * get the suffix from filename
 	 *
 	 */
@@ -94,6 +120,15 @@ public:
 	 */
 	Q_INVOKABLE
 	QString getSizeAsString(QString locale, QString filePath) const;
+
+	/*
+	 *
+	 * get detailed info of file
+	 * as multiline localized string
+	 *
+	 */
+	Q_INVOKABLE
+	QString getDetailedInfo(QString locale, QString filePath) const;
 
 };
 
