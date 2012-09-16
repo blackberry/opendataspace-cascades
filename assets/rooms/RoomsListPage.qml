@@ -15,6 +15,7 @@
  */import bb.cascades 1.0
 import Dialog.FileBrowse 1.0
 import FileInfo 1.0
+import DateUtil 1.0
 
 /*
  * 
@@ -27,7 +28,7 @@ Page {
     signal openCamera()
     signal openVideo()
     signal onOpenAddFolder()
-    property alias headerTitle : theBar.title
+    property alias headerTitle: theBar.title
     attachedObjects: [
         // native FileBrowsing Dialog
         FileBrowseDialog {
@@ -46,6 +47,10 @@ Page {
         // FileInfo
         FileInfo {
             id: fileInfo
+        },
+        // DateUtil
+        DateUtil {
+            id: dateUtil
         }
     ]
     actions: [
@@ -365,6 +370,7 @@ Page {
                         "timestamp": "",
                         "icon": "../images/folders-icon.png"
                     });
+                    // TODO dateUtil.getDateTimeStringLocalizedAsShortString(ods.getCurrentLocale(), "2012-07-25 12:11:13")
                 mockupModel.insert({
                         "name": "Orders",
                         "displayType": "L",
@@ -412,6 +418,7 @@ Page {
                 "icon": "../images/files-icon.png"
             })
     }
+    // TODO localization: loop thru datamodel and localize datetime strings
 
     // we need this and the entry in bar-descriptor to support all directions
     onCreationCompleted: {

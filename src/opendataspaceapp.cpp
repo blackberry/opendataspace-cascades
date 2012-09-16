@@ -16,6 +16,7 @@
 #include "opendataspaceapp.hpp"
 #include "FileBrowseDialog.hpp"
 #include "FileInfo.hpp"
+#include "DateUtil.hpp"
 
 #include <bb/system/InvokeManager.hpp>
 #include <bb/system/InvokeRequest.hpp>
@@ -64,6 +65,9 @@ OpenDataSpaceApp::OpenDataSpaceApp() :
 
 	// Register the FileInfo, so QML knows about
 	qmlRegisterType<FileInfo>("FileInfo", 1, 0, "FileInfo");
+
+	// Register the DateUtil, so QML knows about
+	qmlRegisterType<FileInfo>("DateUtil", 1, 0, "DateUtil");
 
 	// our main QML document: the HomeScreen with a custom Background Image
 	QmlDocument *qml = QmlDocument::create("main.qml");
