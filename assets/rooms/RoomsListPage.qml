@@ -348,6 +348,7 @@ Page {
                 mockupModel.insert({
                         "name": "Berlin",
                         "displayType": "S",
+                        "numberOfFiles": "3",
                         "lastEditedBy": "",
                         "fileSize": "",
                         "fileType": "",
@@ -357,6 +358,7 @@ Page {
                 mockupModel.insert({
                         "name": "Schwabing",
                         "displayType": "F",
+                        "numberOfFiles": "1",
                         "lastEditedBy": "",
                         "fileSize": "",
                         "fileType": "",
@@ -389,6 +391,7 @@ Page {
         mockupModel.insert({
                 "name": name,
                 "displayType": "F",
+                "numberOfFiles": "0",
                 "lastEditedBy": "",
                 "fileSize": "",
                 "fileType": "",

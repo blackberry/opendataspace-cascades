@@ -40,7 +40,7 @@ NavigationPane {
         actions: [
             //TODO only for Admins
             ActionItem {
-                title: qsTr("New User")
+                title: qsTr("New User") + Retranslate.onLanguageChanged
                 imageSource: "asset:///images/ics/6-social-add-person81.png"
                 ActionBar.placement: ActionBarPlacement.InOverflow
                 onTriggered: {
@@ -49,7 +49,7 @@ NavigationPane {
                 }
             },
             ActionItem {
-                title: qsTr("Refresh")
+                title: qsTr("Refresh") + Retranslate.onLanguageChanged
                 imageSource: "asset:///images/ics/1-navigation-refresh81.png"
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: { 
@@ -103,21 +103,21 @@ NavigationPane {
                                     title: ListItemData.name
                                     subtitle: "ODS User"
                                     ActionItem {
-                                        title: qsTr("Info")
+                                        title: qsTr("Info") + Retranslate.onLanguageChanged
                                         imageSource: "asset:///images/ics/2-action-about81.png"
                                         onTriggered: {
                                             // TODO
                                         }
                                     }
                                     ActionItem {
-                                        title: qsTr("MailTo")
+                                        title: qsTr("MailTo") + Retranslate.onLanguageChanged
                                         imageSource: "asset:///images/ics/5-content-email81.png"
                                         onTriggered: {
                                             // TODO
                                         }
                                     }
                                     ActionItem {
-                                        title: qsTr("Contact")
+                                        title: qsTr("Contact") + Retranslate.onLanguageChanged
                                         imageSource: "asset:///images/ics/6-social-person81.png"
                                         onTriggered: {
                                             // TODO
@@ -136,35 +136,35 @@ NavigationPane {
                                     title: ListItemData.name
                                     subtitle: "ODS Aministrator"
                                     ActionItem {
-                                        title: qsTr("Add Room")
+                                        title: qsTr("Add Room") + Retranslate.onLanguageChanged
                                         imageSource: "asset:///images/ics/5-content-new81.png"
                                         onTriggered: {
                                             // TODO
                                         }
                                     }
                                     ActionItem {
-                                        title: qsTr("Info")
+                                        title: qsTr("Info") + Retranslate.onLanguageChanged
                                         imageSource: "asset:///images/ics/2-action-about81.png"
                                         onTriggered: {
                                             // TODO
                                         }
                                     }
                                     ActionItem {
-                                        title: qsTr("MailTo")
+                                        title: qsTr("MailTo") + Retranslate.onLanguageChanged
                                         imageSource: "asset:///images/ics/5-content-email81.png"
                                         onTriggered: {
                                             // TODO
                                         }
                                     }
                                     ActionItem {
-                                        title: qsTr("Contact")
+                                        title: qsTr("Contact") + Retranslate.onLanguageChanged
                                         imageSource: "asset:///images/ics/6-social-person81.png"
                                         onTriggered: {
                                             // TODO
                                         }
                                     }
                                     deleteAction: DeleteActionItem {
-                                        title: qsTr("Delete")
+                                        title: qsTr("Delete") + Retranslate.onLanguageChanged
                                         onTriggered: {
                                             // TODO
                                         }

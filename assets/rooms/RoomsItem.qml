@@ -87,7 +87,7 @@ Container {
                 }
                 layoutProperties: StackLayoutProperties {
                     verticalAlignment: VerticalAlignment.Center
-                } 
+                }
                 leftMargin: 30
                 Label {
                     // name is a property from data model
@@ -98,10 +98,20 @@ Container {
                     }
                 }
                 Label {
-                    // should only be visible for Labels
+                    // should only be visible for Leafs (Files)
                     visible: ListItemData.displayType == "L"
-                    // lastEditedBy and timestamp are properties from data model
-                    text: ListItemData.lastEditedBy + " - " + ListItemData.timestamp + " (" +ListItemData.fileType +") " + ListItemData.fileSize + " Bytes"
+                    // lastEditedBy, timestamp, fileType, fileSize are properties from data model
+                    text: ListItemData.lastEditedBy + " - " + ListItemData.timestamp + " (" + ListItemData.fileType + ") " + ListItemData.fileSize + " Bytes"
+                    textStyle {
+                        base: SystemDefaults.TextStyles.SubtitleText
+                        color: Color.Black
+                    }
+                }
+                Label {
+                    // should only be visible for SubRooms ands Folder
+                    visible: ListItemData.displayType != "L"
+                    // numberOfFiles properties from data model
+                    text: qsTr("%1 file(s)","",n).arg(ListItemData.numberOfFiles)  + Retranslate.onLanguageChanged +  " (" + ListItemData.fileSize + " Bytes" + ")"
                     textStyle {
                         base: SystemDefaults.TextStyles.SubtitleText
                         color: Color.Black
