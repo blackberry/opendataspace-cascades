@@ -230,14 +230,34 @@
         <translation type="unfinished">Ihre Sprache</translation>
     </message>
     <message>
-        <location filename="../assets/common/LanguageSelection.qml" line="56"/>
+        <location filename="../assets/common/LanguageSelection.qml" line="58"/>
         <source>German</source>
         <translation type="unfinished">Deutsch</translation>
     </message>
     <message>
-        <location filename="../assets/common/LanguageSelection.qml" line="61"/>
+        <location filename="../assets/common/LanguageSelection.qml" line="63"/>
         <source>English</source>
         <translation type="unfinished">Englisch</translation>
+    </message>
+    <message>
+        <location filename="../assets/common/LanguageSelection.qml" line="68"/>
+        <source>Spanish</source>
+        <translation>Spanisch</translation>
+    </message>
+    <message>
+        <location filename="../assets/common/LanguageSelection.qml" line="73"/>
+        <source>French</source>
+        <translation>Französich</translation>
+    </message>
+    <message>
+        <location filename="../assets/common/LanguageSelection.qml" line="78"/>
+        <source>Italian</source>
+        <translation>Italienisch</translation>
+    </message>
+    <message>
+        <location filename="../assets/common/LanguageSelection.qml" line="83"/>
+        <source>Russian</source>
+        <translation>Russisch</translation>
     </message>
 </context>
 <context>
@@ -269,14 +289,12 @@
 <context>
     <name>OpenDataSpaceApp</name>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="199"/>
         <source>German</source>
-        <translation type="unfinished">Deutsch</translation>
+        <translation type="obsolete">Deutsch</translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="201"/>
         <source>English</source>
-        <translation type="unfinished">Englisch</translation>
+        <translation type="obsolete">Englisch</translation>
     </message>
     <message>
         <location filename="../src/opendataspaceapp.cpp" line="177"/>
@@ -361,6 +379,26 @@
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="188"/>
+        <source>French</source>
+        <translation type="unfinished">Französich</translation>
+    </message>
+    <message>
+        <location filename="../assets/PreferencesSheet.qml" line="190"/>
+        <source>Spanish</source>
+        <translation type="unfinished">Spanisch</translation>
+    </message>
+    <message>
+        <location filename="../assets/PreferencesSheet.qml" line="192"/>
+        <source>Italian</source>
+        <translation type="unfinished">Italienisch</translation>
+    </message>
+    <message>
+        <location filename="../assets/PreferencesSheet.qml" line="194"/>
+        <source>Russian</source>
+        <translation type="unfinished">Russisch</translation>
+    </message>
+    <message>
+        <location filename="../assets/PreferencesSheet.qml" line="196"/>
         <source>English</source>
         <translation type="unfinished">Englisch</translation>
     </message>

@@ -62,16 +62,16 @@ NavigationPane {
         resizeBehavior: PageResizeBehavior.Resize
         titleBar: TitleBar {
             id: theBar
-            title: qsTr("Preferences")+ Retranslate.onLanguageChanged
+            title: qsTr("Preferences") + Retranslate.onLanguageChanged
             visibility: ChromeVisibility.Visible
             dismissAction: ActionItem {
-                title: qsTr("Cancel")+ Retranslate.onLanguageChanged
+                title: qsTr("Cancel") + Retranslate.onLanguageChanged
                 onTriggered: {
                     navigationPane.done(false);
                 }
             }
             acceptAction: ActionItem {
-                title: qsTr("Save")+ Retranslate.onLanguageChanged
+                title: qsTr("Save") + Retranslate.onLanguageChanged
                 onTriggered: {
                     navigationPane.done(true);
                 }
@@ -93,7 +93,7 @@ NavigationPane {
                 }
                 TextField {
                     id: server
-                    hintText: qsTr("Server URL")+ Retranslate.onLanguageChanged
+                    hintText: qsTr("Server URL") + Retranslate.onLanguageChanged
                     inputMode: TextFieldInputMode.URL
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText
@@ -101,7 +101,7 @@ NavigationPane {
                 }
                 TextField {
                     id: email
-                    hintText: qsTr("User email address")+ Retranslate.onLanguageChanged
+                    hintText: qsTr("User email address") + Retranslate.onLanguageChanged
                     inputMode: TextFieldInputMode.EmailAddress
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText
@@ -127,7 +127,7 @@ NavigationPane {
                     id: languageLabel
                     //gets the actual language but too early, so its always english
                     // TODO
-                    text: ods.getCurrentLanguage() 
+                    text: ods.getCurrentLanguage()
                     leftMargin: 20
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText
@@ -145,7 +145,7 @@ NavigationPane {
                 // TODO data from server
                 Label {
                     id: memoryUsedLabel
-                    text: "257.0 MB " + qsTr("of")+ Retranslate.onLanguageChanged + " 2.0 GB " + qsTr("Memory used")+ Retranslate.onLanguageChanged
+                    text: "257.0 MB " + qsTr("of") + Retranslate.onLanguageChanged + " 2.0 GB " + qsTr("Memory used") + Retranslate.onLanguageChanged
                     leftMargin: 20
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText
@@ -157,7 +157,7 @@ NavigationPane {
                 }
                 Label {
                     id: uploadLabel
-                    text: "86.6 MB " + qsTr("Files to upload")+ Retranslate.onLanguageChanged
+                    text: "86.6 MB " + qsTr("Files to upload") + Retranslate.onLanguageChanged
                     leftMargin: 20
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText
@@ -168,7 +168,7 @@ NavigationPane {
                 }
                 Label {
                     id: versionLabel
-                    text: qsTr("Version %1").arg("1.3.2")  + Retranslate.onLanguageChanged
+                    text: qsTr("Version %1").arg("1.3.2") + Retranslate.onLanguageChanged
                     leftMargin: 20
                     textStyle {
                         base: SystemDefaults.TextStyles.SmallText
@@ -182,10 +182,18 @@ NavigationPane {
     function newLanguage(locale) {
         console.debug("new locale: " + locale)
         navigationPane.currentLanguage = locale
-        if (locale == "de") {
-            languageLabel.text = qsTr("German")+ Retranslate.onLanguageChanged
+        if (locale == "de" || locale == "de_DE") {
+            languageLabel.text = qsTr("German") + Retranslate.onLanguageChanged
+        } else if (locale == "fr") {
+            languageLabel.text = qsTr("French") + Retranslate.onLanguageChanged
+        } else if (locale == "es") {
+            languageLabel.text = qsTr("Spanish") + Retranslate.onLanguageChanged
+        } else if (locale == "it") {
+            languageLabel.text = qsTr("Italian") + Retranslate.onLanguageChanged
+        } else if (locale == "ru") {
+            languageLabel.text = qsTr("Russian") + Retranslate.onLanguageChanged
         } else {
-            languageLabel.text = qsTr("English")+ Retranslate.onLanguageChanged
+            languageLabel.text = qsTr("English") + Retranslate.onLanguageChanged
         }
     }
     function newCustomer(name) {

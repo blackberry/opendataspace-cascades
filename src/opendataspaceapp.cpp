@@ -193,13 +193,10 @@ void OpenDataSpaceApp::translateMenuItems() {
  * Retrieve the language name corresponding to the current locale.
  */
 QString OpenDataSpaceApp::getCurrentLanguage() {
-	qDebug() << "getCurrentLanguage: " << m_currentLocale;
-	if (m_currentLocale == "de" || m_currentLocale == "de_DE"
-			|| m_currentLocale == "de_AT" || m_currentLocale == "de_CH") {
-		return tr("German");
-	} else {
-		return tr("English");
-	}
+	// TODO get language name from QLocale - we have now more languages
+	qDebug() << "OpenDataSpaceApp getCurrentLanguage: " << m_currentLocale;
+	QLocale *loc = new QLocale(m_currentLocale);
+	return loc->languageToString(loc->language());
 }
 
 /**

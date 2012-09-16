@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="it_IT">
+<TS version="2.0" language="ru_RU">
 <context>
     <name>AddFolderPage</name>
     <message>
@@ -165,6 +165,7 @@
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
 </context>
@@ -186,37 +187,37 @@
     <message>
         <location filename="../assets/common/LanguageSelection.qml" line="31"/>
         <source>Your Language</source>
-        <translation>La tua lingua</translation>
+        <translation>Ваш язык</translation>
     </message>
     <message>
         <location filename="../assets/common/LanguageSelection.qml" line="58"/>
         <source>German</source>
-        <translation>tedesco</translation>
+        <translation>немецкий</translation>
     </message>
     <message>
         <location filename="../assets/common/LanguageSelection.qml" line="63"/>
         <source>English</source>
-        <translation>inglese</translation>
+        <translation>английский</translation>
     </message>
     <message>
         <location filename="../assets/common/LanguageSelection.qml" line="68"/>
         <source>Spanish</source>
-        <translation>spagnolo</translation>
+        <translation>испанский</translation>
     </message>
     <message>
         <location filename="../assets/common/LanguageSelection.qml" line="73"/>
         <source>French</source>
-        <translation>francese</translation>
+        <translation>французский</translation>
     </message>
     <message>
         <location filename="../assets/common/LanguageSelection.qml" line="78"/>
         <source>Italian</source>
-        <translation>italiano</translation>
+        <translation>итальянский</translation>
     </message>
     <message>
         <location filename="../assets/common/LanguageSelection.qml" line="83"/>
         <source>Russian</source>
-        <translation>russo</translation>
+        <translation>русский</translation>
     </message>
 </context>
 <context>
@@ -240,14 +241,6 @@
 <context>
     <name>OpenDataSpaceApp</name>
     <message>
-        <source>German</source>
-        <translation type="obsolete">tedesco</translation>
-    </message>
-    <message>
-        <source>English</source>
-        <translation type="obsolete">inglese</translation>
-    </message>
-    <message>
         <location filename="../src/opendataspaceapp.cpp" line="177"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
@@ -266,6 +259,14 @@
         <location filename="../src/opendataspaceapp.cpp" line="186"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>German</source>
+        <translation type="obsolete">немецкий</translation>
+    </message>
+    <message>
+        <source>English</source>
+        <translation type="obsolete">английский</translation>
     </message>
 </context>
 <context>
@@ -318,32 +319,32 @@
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="186"/>
         <source>German</source>
-        <translation type="unfinished">tedesco</translation>
+        <translation type="unfinished">немецкий</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="188"/>
         <source>French</source>
-        <translation type="unfinished">francese</translation>
+        <translation type="unfinished">французский</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="190"/>
         <source>Spanish</source>
-        <translation type="unfinished">spagnolo</translation>
+        <translation type="unfinished">испанский</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="192"/>
         <source>Italian</source>
-        <translation type="unfinished">italiano</translation>
+        <translation type="unfinished">итальянский</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="194"/>
         <source>Russian</source>
-        <translation type="unfinished">russo</translation>
+        <translation type="unfinished">русский</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="196"/>
         <source>English</source>
-        <translation type="unfinished">inglese</translation>
+        <translation type="unfinished">английский</translation>
     </message>
 </context>
 <context>
@@ -466,6 +467,7 @@
         <location filename="../assets/rooms/SubRoomsItem.qml" line="104"/>
         <source>%1 file(s)</source>
         <translation type="unfinished">
+            <numerusform></numerusform>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>

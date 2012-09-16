@@ -34,13 +34,17 @@
        Data Space
        <text xml:lang="de">Data Space</text>
        <text xml:lang="en">Data Space</text>
+       <text xml:lang="fr">Data Space</text>
+       <text xml:lang="it">Data Space</text>
+       <text xml:lang="ru">Data Space</text>
+       <text xml:lang="es">Data Space</text>
     </name>
     
     <!-- A string value of the format <0-999>.<0-999>.<0-999> that represents application version which can be used to check for application upgrade. 
          Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
          An updated version of application must have a versionNumber value higher than the previous version. Required. -->
     <versionNumber>0.8.0</versionNumber>
-    <packageLocale>de,en</packageLocale>
+    <packageLocale>de,en,fr,es,it,ru</packageLocale>
 
     <!-- Fourth digit segment of the package version. First three segments are taken from the 
          <versionNumber> element.  Must be an integer from 0 to 2^16-1 -->
@@ -55,6 +59,10 @@
        OpenDataSpace Client APP for Cascades. (Developer Preview)
        <text xml:lang="de">OpenDataSpace Client f&#xfc;r Cascades. (Developer Preview)</text>
        <text xml:lang="en">OpenDataSpace Client APP for Cascades. (Developer Preview)</text>
+       <text xml:lang="fr">APP client OpenDataSpace pour Cascades. (Developer Preview)</text>
+       <text xml:lang="it">OpenDataSpace APP Client per Cascades. (Developer Preview)</text>
+       <text xml:lang="ru">OpenDataSpace &#x43a;&#x43b;&#x438;&#x435;&#x43d;&#x442;&#x441;&#x43a;&#x43e;&#x435; &#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x435; &#x434;&#x43b;&#x44f; &#x43a;&#x430;&#x441;&#x43a;&#x430;&#x434;&#x43e;&#x432;. (Developer Preview)</text>
+       <text xml:lang="es">OpenDataSpace APP cliente para Cascades. (Developer Preview)</text>
     </description>
 
     <!-- Copyright information. Optional. -->

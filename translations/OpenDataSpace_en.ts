@@ -189,13 +189,33 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/LanguageSelection.qml" line="56"/>
+        <location filename="../assets/common/LanguageSelection.qml" line="58"/>
         <source>German</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/LanguageSelection.qml" line="61"/>
+        <location filename="../assets/common/LanguageSelection.qml" line="63"/>
         <source>English</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/common/LanguageSelection.qml" line="68"/>
+        <source>Spanish</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/common/LanguageSelection.qml" line="73"/>
+        <source>French</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/common/LanguageSelection.qml" line="78"/>
+        <source>Italian</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/common/LanguageSelection.qml" line="83"/>
+        <source>Russian</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -237,16 +257,6 @@
     <message>
         <location filename="../src/opendataspaceapp.cpp" line="186"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/opendataspaceapp.cpp" line="199"/>
-        <source>German</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/opendataspaceapp.cpp" line="201"/>
-        <source>English</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -304,6 +314,26 @@
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="188"/>
+        <source>French</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/PreferencesSheet.qml" line="190"/>
+        <source>Spanish</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/PreferencesSheet.qml" line="192"/>
+        <source>Italian</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/PreferencesSheet.qml" line="194"/>
+        <source>Russian</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/PreferencesSheet.qml" line="196"/>
         <source>English</source>
         <translation type="unfinished"></translation>
     </message>

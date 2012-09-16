@@ -28,53 +28,84 @@ Page {
     id: languagePage
     titleBar: TitleBar {
         id: addBar
-        title: qsTr("Your Language")+ Retranslate.onLanguageChanged
+        title: qsTr("Your Language") + Retranslate.onLanguageChanged
         visibility: ChromeVisibility.Visible
     }
-    Container {
-        id: mainContainer
-        layout: DockLayout {
-        }
+ //   ScrollView {
+     // BUG: if enabling ScrollView all Options are lost - only text visible
         Container {
-            id: languageContainer
-            layoutProperties: DockLayoutProperties {
-                horizontalAlignment: HorizontalAlignment.Center
-                verticalAlignment: VerticalAlignment.Center
+            id: mainContainer
+            layout: DockLayout {
             }
-            layout: StackLayout {
-                leftPadding: 100
-                rightPadding: 100
-            }
-            // The Radio Group to select the Language
-            // text is readbale for users
-            // value is locale used to translate
-            RadioGroup {
-                id: languageOptions
-                dividersVisible: false
-                Option {
-                    id: languageDe
-                    text: qsTr("German")+ Retranslate.onLanguageChanged
-                    value: "de"
+            Container {
+                id: languageContainer
+                layoutProperties: DockLayoutProperties {
+                    horizontalAlignment: HorizontalAlignment.Center
+                    verticalAlignment: VerticalAlignment.Center
                 }
-                Option {
-                    id: languageEn
-                    text: qsTr("English")+ Retranslate.onLanguageChanged
-                    value: "en"
+                layout: StackLayout {
+                    leftPadding: 100
+                    rightPadding: 100
                 }
-                onSelectedIndexChanged: {
-                    console.debug("New language selected: " + languageOptions.selectedValue());
-                    // SIGNAL
-                    languagePage.languageChanged(languageOptions.selectedValue());
-                    ods.updateLocale(languageOptions.selectedValue())
+                // The Radio Group to select the Language
+                // text is readbale for users
+                // value is locale used to translate
+                RadioGroup {
+                    id: languageOptions
+                    dividersVisible: false
+                    Option {
+                        id: languageDe
+                        text: qsTr("German") + Retranslate.onLanguageChanged
+                        value: "de"
+                    }
+                    Option {
+                        id: languageEn
+                        text: qsTr("English") + Retranslate.onLanguageChanged
+                        value: "en"
+                    }
+                    Option {
+                        id: languageEs
+                        text: qsTr("Spanish") + Retranslate.onLanguageChanged
+                        value: "es"
+                    }
+                    Option {
+                        id: languageFr
+                        text: qsTr("French") + Retranslate.onLanguageChanged
+                        value: "fr"
+                    }
+                    Option {
+                        id: languageIt
+                        text: qsTr("Italian") + Retranslate.onLanguageChanged
+                        value: "it"
+                    }
+                    Option {
+                        id: languageRu
+                        text: qsTr("Russian") + Retranslate.onLanguageChanged
+                        value: "ru"
+                    }
+                    onSelectedIndexChanged: {
+                        console.debug("New language selected: " + languageOptions.selectedValue());
+                        // SIGNAL
+                        languagePage.languageChanged(languageOptions.selectedValue());
+                        ods.updateLocale(languageOptions.selectedValue())
+                    }
                 }
-            }
-        } // end Container
-    } // end main container
+            } // end Container
+        } // end main container
+ //   } // end scroll view
     // this function will be used to set the initial value of the locale
     function setLanguage(locale) {
-        console.debug("initial value of language set: "+locale)
-        if (locale == "de") {
+        console.debug("initial value of language set: " + locale)
+        if (locale == "de" || locale == "de_DE") {
             languageOptions.selectedIndex = 0
+        } else if (locale == "es") {
+            languageOptions.selectedIndex = 2
+        } else if (locale == "fr") {
+            languageOptions.selectedIndex = 3
+        } else if (locale == "it") {
+            languageOptions.selectedIndex = 4
+        } else if (locale == "ru") {
+            languageOptions.selectedIndex = 5
         } else {
             languageOptions.selectedIndex = 1
         }

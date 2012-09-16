@@ -53,5 +53,6 @@ TRANSLATIONS = \
     $${TARGET}_de.ts \
     $${TARGET}_en.ts \
     $${TARGET}_es.ts \
+    $${TARGET}_ru.ts \
     $${TARGET}.ts
 
