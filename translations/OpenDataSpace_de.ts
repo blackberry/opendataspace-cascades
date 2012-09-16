@@ -181,6 +181,17 @@
     </message>
 </context>
 <context>
+    <name>FoldersItem</name>
+    <message numerus="yes">
+        <location filename="../assets/rooms/FoldersItem.qml" line="104"/>
+        <source>%1 file(s)</source>
+        <translation>
+            <numerusform>%1 Datei</numerusform>
+            <numerusform>%1 Dateien</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>HelpSheet</name>
     <message>
         <source>Close</source>
@@ -363,6 +374,16 @@
     </message>
 </context>
 <context>
+    <name>RoomsItem</name>
+    <message numerus="yes">
+        <source>%1 file(s)</source>
+        <translation type="obsolete">
+            <numerusform>%1 Datei</numerusform>
+            <numerusform>%1 Dateien</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>RoomsListPage</name>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="54"/>
@@ -474,6 +495,17 @@
         <location filename="../assets/rooms/RoomsListPage.qml" line="309"/>
         <source>Link</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SubRoomsItem</name>
+    <message numerus="yes">
+        <location filename="../assets/rooms/SubRoomsItem.qml" line="104"/>
+        <source>%1 file(s)</source>
+        <translation type="unfinished">
+            <numerusform>%1 Datei</numerusform>
+            <numerusform>%1 Dateien</numerusform>
+        </translation>
     </message>
 </context>
 <context>

@@ -48,10 +48,10 @@ suredelete.depends = distclean
 QMAKE_EXTRA_TARGETS += suredelete
 
 TRANSLATIONS = \
-    $${TARGET}_en_GB.ts \
     $${TARGET}_fr.ts \
     $${TARGET}_it.ts \    
     $${TARGET}_de.ts \
+    $${TARGET}_en.ts \
     $${TARGET}_es.ts \
     $${TARGET}.ts
 

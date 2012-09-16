@@ -158,6 +158,17 @@
     </message>
 </context>
 <context>
+    <name>FoldersItem</name>
+    <message numerus="yes">
+        <location filename="../assets/rooms/FoldersItem.qml" line="104"/>
+        <source>%1 file(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>ImagePreviewPage</name>
     <message>
         <location filename="../assets/media/ImagePreviewPage.qml" line="56"/>
@@ -409,6 +420,17 @@
         <location filename="../assets/rooms/RoomsListPage.qml" line="309"/>
         <source>Link</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SubRoomsItem</name>
+    <message numerus="yes">
+        <location filename="../assets/rooms/SubRoomsItem.qml" line="104"/>
+        <source>%1 file(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>

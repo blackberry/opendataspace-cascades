@@ -91,15 +91,22 @@ Container {
                 leftMargin: 30
                 // TITLE
                 Label {
-                    // name is a property from data model
-                    text: ListItemData.name
+                    // name, fileType are properties from data model
+                    text: ListItemData.name+ " (" + ListItemData.fileType + ") "
                     textStyle {
-                        base: SystemDefaults.TextStyles.TitleText
+                        base: SystemDefaults.TextStyles.TitleText 
                         color: Color.Black
                     }
                 }
                 // SUBTITLE
-                // not yet
+                Label {
+                    // lastEditedBy, timestamp, fileSize are properties from data model
+                    text: ListItemData.timestamp + " (" + ListItemData.fileSize + " Bytes)" 
+                    textStyle {
+                        base: SystemDefaults.TextStyles.SubtitleText
+                        color: Color.Black
+                    }
+                }
             }
         }
     }

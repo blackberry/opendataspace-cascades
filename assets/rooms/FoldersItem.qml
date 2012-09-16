@@ -99,7 +99,14 @@ Container {
                     }
                 }
                 // SUBTITLE
-                // not yet
+                Label {
+                    // numberOfFiles properties from data model
+                    text: qsTr("%1 file(s)","",ListItemData.numberOfFiles).arg(ListItemData.numberOfFiles)  + Retranslate.onLanguageChanged +  " (" + ListItemData.fileSize + " Bytes" + ")"
+                    textStyle {
+                        base: SystemDefaults.TextStyles.SubtitleText
+                        color: Color.Black
+                    }
+                }
             }
         }
     }

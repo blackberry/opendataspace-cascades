@@ -192,7 +192,7 @@ Page {
             listItemComponents: [
                 ListItemComponent {
                     type: "subroomsItem"
-                    RoomsItem {
+                    SubRoomsItem {
                         id: subroomsItem
                         contextActions: [
                             ActionSet {
@@ -211,7 +211,7 @@ Page {
                 },
                 ListItemComponent {
                     type: "foldersItem"
-                    RoomsItem {
+                    FoldersItem {
                         id: foldersItem
                         contextActions: [
                             ActionSet {
@@ -257,7 +257,7 @@ Page {
                 },
                 ListItemComponent {
                     type: "filesItem"
-                    RoomsItem {
+                    FilesItem {
                         id: filesItem
                         contextActions: [
                             ActionSet {
@@ -348,9 +348,9 @@ Page {
                 mockupModel.insert({
                         "name": "Berlin",
                         "displayType": "S",
-                        "numberOfFiles": "3",
+                        "numberOfFiles": 3,
                         "lastEditedBy": "",
-                        "fileSize": "",
+                        "fileSize": "2.320.412",
                         "fileType": "",
                         "timestamp": "",
                         "icon": "../images/subrooms-icon.png"
@@ -358,9 +358,9 @@ Page {
                 mockupModel.insert({
                         "name": "Schwabing",
                         "displayType": "F",
-                        "numberOfFiles": "1",
+                        "numberOfFiles": 1,
                         "lastEditedBy": "",
-                        "fileSize": "",
+                        "fileSize": "11.350.200",
                         "fileType": "",
                         "timestamp": "",
                         "icon": "../images/folders-icon.png"
@@ -391,9 +391,9 @@ Page {
         mockupModel.insert({
                 "name": name,
                 "displayType": "F",
-                "numberOfFiles": "0",
+                "numberOfFiles": 0,
                 "lastEditedBy": "",
-                "fileSize": "",
+                "fileSize": "0",
                 "fileType": "",
                 "timestamp": "",
                 "icon": "../images/folders-icon.png"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en_GB">
+<TS version="2.0" language="en_US">
 <context>
     <name>AddFolderPage</name>
     <message>
@@ -158,6 +158,17 @@
     </message>
 </context>
 <context>
+    <name>FoldersItem</name>
+    <message numerus="yes">
+        <location filename="../assets/rooms/FoldersItem.qml" line="104"/>
+        <source>%1 file(s)</source>
+        <translation>
+            <numerusform>%1 file</numerusform>
+            <numerusform>%1 files</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>ImagePreviewPage</name>
     <message>
         <location filename="../assets/media/ImagePreviewPage.qml" line="56"/>
@@ -209,16 +220,6 @@
 <context>
     <name>OpenDataSpaceApp</name>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="195"/>
-        <source>German</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/opendataspaceapp.cpp" line="197"/>
-        <source>English</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/opendataspaceapp.cpp" line="173"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
@@ -236,6 +237,16 @@
     <message>
         <location filename="../src/opendataspaceapp.cpp" line="182"/>
         <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/opendataspaceapp.cpp" line="195"/>
+        <source>German</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/opendataspaceapp.cpp" line="197"/>
+        <source>English</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -409,6 +420,17 @@
         <location filename="../assets/rooms/RoomsListPage.qml" line="309"/>
         <source>Link</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SubRoomsItem</name>
+    <message numerus="yes">
+        <location filename="../assets/rooms/SubRoomsItem.qml" line="104"/>
+        <source>%1 file(s)</source>
+        <translation>
+            <numerusform>%1 file</numerusform>
+            <numerusform>%1 files</numerusform>
+        </translation>
     </message>
 </context>
 <context>
