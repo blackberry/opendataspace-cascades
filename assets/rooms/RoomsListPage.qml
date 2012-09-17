@@ -28,6 +28,7 @@ Page {
     signal openCamera()
     signal openVideo()
     signal onOpenAddFolder()
+    signal previewImage(string path)
     property alias headerTitle: theBar.title
     attachedObjects: [
         // native FileBrowsing Dialog
@@ -36,9 +37,27 @@ Page {
             multiselect: false
             // filters set from ActionItem
             onSelectionCompleted: {
-                // TODO need more infos from file (size, timestamp, ...)
-                if (filebrowseDialog.filepaths.length > 0) addFile(filebrowseDialog.filepaths[0]); 
+                // something selected ?
+                if (filebrowseDialog.filepaths.length > 0) {
+                // is there a preview ?
+                // isImage ?
+                if (fileInfo.isImage(filebrowseDialog.filepaths[0])) {
+                    roomsListPage.previewImage(filebrowseDialog.filepaths[0]);
+                    return;
+                }
+                // isVideo ?
+                
+                // isPDF ?
+                
+                // isZIP ?
+                
+                // isDocument ?
+                
+                // else is unknown filytype
+                
+                // OLD addFile(filebrowseDialog.filepaths[0]); 
                 // else filebrowseDialogLabel.text = qsTr("no file selected") + Retranslate.onLanguageChanged;
+                }
             }
             onSelectionCancelled: {
                 // filebrowseDialogLabel.text = qsTr("browsing files cancelled") + Retranslate.onLanguageChanged;

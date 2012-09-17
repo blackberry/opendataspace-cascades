@@ -281,7 +281,9 @@ NavigationPane {
             //-- connect the RoomsList openCamera SIGNAL to the handler SLOT
             roomsListPage.openCamera.connect(openCameraPage)
             //-- connect the CameraCapturePage previewImage SIGNAL to the handler SLOT
+            // same for Roomslist
             cameraCapturePage.previewImage.connect(previewImage)
+            roomsListPage.previewImage.connect(previewImage)
             console.debug("CameraCapturePage CONNECTED")
             //-- connect the RoomsList openVideo SIGNAL to the handler SLOT
             roomsListPage.openVideo.connect(openVideoCameraPage)
