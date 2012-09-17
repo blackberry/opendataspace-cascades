@@ -115,6 +115,24 @@ public:
 
 	/*
 	 *
+	 * tests the suffix from filename
+	 * if it is a Video
+	 *
+	 */
+	Q_INVOKABLE
+	bool isVideo(QString filePath) const;
+
+	/*
+	 *
+	 * tests the suffix from filename
+	 * if it is a document
+	 *
+	 */
+	Q_INVOKABLE
+	bool isDocument(QString filePath) const;
+
+	/*
+	 *
 	 * get the size from filename
 	 *
 	 */

@@ -1,0 +1,10 @@
+You may use the materials in this file without restriction to develop your apps and to use in your apps.
+
+---------
+comment made by ekkehard gentz:
+All Icons inside /images/ics are Icons from Android 4.x.
+Downloaded from https://developer.android.com/design/downloads/index.html
+(ActionBar Icon Set) These Icons are free.
+
+I edited the Icons: 
+added some transparent pixels around to get the 81x81 Cascades size

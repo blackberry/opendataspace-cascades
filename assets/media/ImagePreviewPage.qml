@@ -28,7 +28,7 @@ Page {
     id: previewPage
     titleBar: TitleBar {
         id: titleBarId
-        title: "Preview"
+        title: qsTr("Preview") + Retranslate.onLanguageChanged
         visibility: ChromeVisibility.Visible
     }
     attachedObjects: [

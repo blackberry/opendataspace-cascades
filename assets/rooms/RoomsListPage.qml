@@ -29,6 +29,7 @@ Page {
     signal openVideo()
     signal onOpenAddFolder()
     signal previewImage(string path)
+    signal previewVideo(string path)
     property alias headerTitle: theBar.title
     attachedObjects: [
         // native FileBrowsing Dialog
@@ -39,24 +40,36 @@ Page {
             onSelectionCompleted: {
                 // something selected ?
                 if (filebrowseDialog.filepaths.length > 0) {
-                // is there a preview ?
-                // isImage ?
-                if (fileInfo.isImage(filebrowseDialog.filepaths[0])) {
-                    roomsListPage.previewImage(filebrowseDialog.filepaths[0]);
-                    return;
-                }
-                // isVideo ?
+                    // is there a preview ?
+                    // isImage ?
+                    if (fileInfo.isImage(filebrowseDialog.filepaths[0])) {
+                        roomsListPage.previewImage(filebrowseDialog.filepaths[0]);
+                        return;
+                    }
+                    // isVideo ?
+                    if (fileInfo.isVideo(filebrowseDialog.filepaths[0])) {
+                        roomsListPage.previewVideo(filebrowseDialog.filepaths[0]);
+                        return;
+                    }
+                    // isPDF ?
+                    if (fileInfo.getSuffix(filebrowseDialog.filepaths[0]) == "pdf") {
+                        // roomsListPage.previewImage(filebrowseDialog.filepaths[0]);
+                        return;
+                    }
+                    // isZIP ?
+                    if (fileInfo.getSuffix(filebrowseDialog.filepaths[0]) == "zip") {
+                        // roomsListPage.previewImage(filebrowseDialog.filepaths[0]);
+                        return;
+                    }
+                    // isDocument ?
+                    if (fileInfo.isDocument(filebrowseDialog.filepaths[0])) {
+                        // roomsListPage.previewImage(filebrowseDialog.filepaths[0]);
+                        return;
+                    }
+                    // else is unknown filytype
                 
-                // isPDF ?
-                
-                // isZIP ?
-                
-                // isDocument ?
-                
-                // else is unknown filytype
-                
-                // OLD addFile(filebrowseDialog.filepaths[0]); 
-                // else filebrowseDialogLabel.text = qsTr("no file selected") + Retranslate.onLanguageChanged;
+                    // OLD addFile(filebrowseDialog.filepaths[0]); 
+                    // else filebrowseDialogLabel.text = qsTr("no file selected") + Retranslate.onLanguageChanged;
                 }
             }
             onSelectionCancelled: {
@@ -110,7 +123,9 @@ Page {
                     "*.doc",
                     "*.ppt",
                     "*.txt",
-                    "*.ptx"
+                    "*.ptx",
+                    "*.pdf",
+                    "*.zip"
                 ]
                 filebrowseDialog.show();
             }
@@ -124,7 +139,8 @@ Page {
                 filebrowseDialog.filters = [
                     "*.jpg",
                     "*.jpeg",
-                    "*.png"
+                    "*.png",
+                    "*.gif"
                 ]
                 filebrowseDialog.show();
             }
@@ -389,7 +405,7 @@ Page {
                         "timestamp": "",
                         "icon": "../images/folders-icon.png"
                     });
-                    // TODO dateUtil.getDateTimeStringLocalizedAsShortString(ods.getCurrentLocale(), "2012-07-25 12:11:13")
+                // TODO dateUtil.getDateTimeStringLocalizedAsShortString(ods.getCurrentLocale(), "2012-07-25 12:11:13")
                 mockupModel.insert({
                         "name": "Orders",
                         "displayType": "L",

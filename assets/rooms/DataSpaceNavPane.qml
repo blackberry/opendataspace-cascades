@@ -264,6 +264,7 @@ NavigationPane {
         function previewVideo(path) {
             console.debug("got signal to preview video: " + path)
             videoPreviewPage.previewPath = path;
+            videoPreviewPage.recalculateValues(path);
             navigationPane.push(videoPreviewPage)
         }
         function openAddFolderPage() {
@@ -288,7 +289,9 @@ NavigationPane {
             //-- connect the RoomsList openVideo SIGNAL to the handler SLOT
             roomsListPage.openVideo.connect(openVideoCameraPage)
             //-- connect the VideoCameraCapturePage previewVideo SIGNAL to the handler SLOT
+            // same for Rooms List
             videoCapturePage.previewVideo.connect(previewVideo)
+            roomsListPage.previewVideo.connect(previewVideo)
             console.debug("VideoCapturePage CONNECTED")
             //-- connect the RoomsList onOpenAddFolder SIGNAL to the handler SLOT
             roomsListPage.onOpenAddFolder.connect(openAddFolderPage)

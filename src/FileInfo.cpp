@@ -140,6 +140,8 @@ QString FileInfo::getSuffix(QString filePath) const {
 	return info->suffix();
 }
 
+// TODO refactor filetypes - enum ?
+// wait for BBJam to see how to invoke apps for specific file types
 /*
  *
  * tests the suffix from filename
@@ -149,6 +151,34 @@ QString FileInfo::getSuffix(QString filePath) const {
 bool FileInfo::isImage(QString filePath) const {
 	QString s = getSuffix(filePath);
 	if (s == "png" || s == "jpg" || s == "jpeg" || s == "gif") {
+		return true;
+	}
+	return false;
+}
+
+/*
+ *
+ * tests the suffix from filename
+ * if it is a video
+ *
+ */
+bool FileInfo::isVideo(QString filePath) const {
+	QString s = getSuffix(filePath);
+	if (s == "mp4" || s == "mov") {
+		return true;
+	}
+	return false;
+}
+
+/*
+ *
+ * tests the suffix from filename
+ * if it is a document
+ *
+ */
+bool FileInfo::isDocument(QString filePath) const {
+	QString s = getSuffix(filePath);
+	if (s == "doc" || s == "ppt" || s == "txt" || s == "ptx" || s == "pdf" || s == "zip") {
 		return true;
 	}
 	return false;
