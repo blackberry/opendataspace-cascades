@@ -106,6 +106,15 @@ public:
 
 	/*
 	 *
+	 * tests the suffix from filename
+	 * if it is an image
+	 *
+	 */
+	Q_INVOKABLE
+	bool isImage(QString filePath) const;
+
+	/*
+	 *
 	 * get the size from filename
 	 *
 	 */
