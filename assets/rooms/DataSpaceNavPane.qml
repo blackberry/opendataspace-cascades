@@ -14,6 +14,7 @@
  * limitations under the License.
  */import bb.cascades 1.0
 import "../media"
+import "../documents"
 
 /*
  * 
@@ -76,6 +77,46 @@ NavigationPane {
                 }
             }
         },
+        DocumentsPreviewPage {
+            id: documentsPreviewPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
+        },
+        PdfPreviewPage {
+            id: pdfPreviewPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
+        },
+        ZipPreviewPage {
+            id: zipPreviewPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
+        },
+        UnknownPreviewPage {
+            id: unknownPreviewPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
+        },
         AddFolderPage {
             id: addFolderPage
             paneProperties: NavigationPaneProperties {
@@ -93,7 +134,7 @@ NavigationPane {
         actions: [
             //TODO only for Admins
             ActionItem {
-                title: qsTr("New Room")+ Retranslate.onLanguageChanged
+                title: qsTr("New Room") + Retranslate.onLanguageChanged
                 enabled: false
                 imageSource: "asset:///images/ics/4-collections-cloud_newLabel81.png"
                 ActionBar.placement: ActionBarPlacement.InOverflow
@@ -102,7 +143,7 @@ NavigationPane {
                 }
             },
             ActionItem {
-                title: qsTr("Refresh")+ Retranslate.onLanguageChanged
+                title: qsTr("Refresh") + Retranslate.onLanguageChanged
                 imageSource: "asset:///images/ics/1-navigation-refresh81.png"
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {
@@ -267,6 +308,30 @@ NavigationPane {
             videoPreviewPage.recalculateValues(path);
             navigationPane.push(videoPreviewPage)
         }
+        function previewDocuments(path) {
+            console.debug("got signal to preview documents: " + path)
+            documentsPreviewPage.previewPath = path;
+            documentsPreviewPage.recalculateValues(path);
+            navigationPane.push(documentsPreviewPage)
+        }
+        function previewPdf(path) {
+            console.debug("got signal to preview PDF: " + path)
+            pdfPreviewPage.previewPath = path;
+            pdfPreviewPage.recalculateValues(path);
+            navigationPane.push(pdfPreviewPage)
+        }
+        function previewZip(path) {
+            console.debug("got signal to preview video: " + path)
+            zipPreviewPage.previewPath = path;
+            zipPreviewPage.recalculateValues(path);
+            navigationPane.push(zipPreviewPage)
+        }
+        function previewUnknown(path) {
+            console.debug("got signal to preview video: " + path)
+            unknownPreviewPage.previewPath = path;
+            unknownPreviewPage.recalculateValues(path);
+            navigationPane.push(unknownPreviewPage)
+        }
         function openAddFolderPage() {
             console.debug("got signal to open AddFolderPage")
             navigationPane.push(addFolderPage)
@@ -285,19 +350,21 @@ NavigationPane {
             // same for Roomslist
             cameraCapturePage.previewImage.connect(previewImage)
             roomsListPage.previewImage.connect(previewImage)
-            console.debug("CameraCapturePage CONNECTED")
             //-- connect the RoomsList openVideo SIGNAL to the handler SLOT
             roomsListPage.openVideo.connect(openVideoCameraPage)
             //-- connect the VideoCameraCapturePage previewVideo SIGNAL to the handler SLOT
             // same for Rooms List
             videoCapturePage.previewVideo.connect(previewVideo)
             roomsListPage.previewVideo.connect(previewVideo)
-            console.debug("VideoCapturePage CONNECTED")
+            // some more previews:
+            roomsListPage.previewDocuments.connect(previewDocuments)
+            roomsListPage.previewPdf.connect(previewPdf)
+            roomsListPage.previewZip.connect(previewZip)
+            roomsListPage.previewUnknown.connect(previewUnknown)
             //-- connect the RoomsList onOpenAddFolder SIGNAL to the handler SLOT
             roomsListPage.onOpenAddFolder.connect(openAddFolderPage)
             //-- connect the onFolderAdded SIGNAL from AddFolderPage with SLOT folderAdded
             addFolderPage.onFolderAdded.connect(folderAdded)
-            console.debug("AddFolderPage CONNECTED")
         }
     } // end page
 }// end navigationpane

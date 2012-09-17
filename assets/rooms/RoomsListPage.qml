@@ -30,6 +30,10 @@ Page {
     signal onOpenAddFolder()
     signal previewImage(string path)
     signal previewVideo(string path)
+    signal previewDocuments(string path)
+    signal previewPdf(string path)
+    signal previewUnknown(string path)
+    signal previewZip(string path)
     property alias headerTitle: theBar.title
     attachedObjects: [
         // native FileBrowsing Dialog
@@ -53,21 +57,21 @@ Page {
                     }
                     // isPDF ?
                     if (fileInfo.getSuffix(filebrowseDialog.filepaths[0]) == "pdf") {
-                        // roomsListPage.previewImage(filebrowseDialog.filepaths[0]);
+                        roomsListPage.previewPdf(filebrowseDialog.filepaths[0]);
                         return;
                     }
                     // isZIP ?
                     if (fileInfo.getSuffix(filebrowseDialog.filepaths[0]) == "zip") {
-                        // roomsListPage.previewImage(filebrowseDialog.filepaths[0]);
+                        roomsListPage.previewZip(filebrowseDialog.filepaths[0]);
                         return;
                     }
                     // isDocument ?
                     if (fileInfo.isDocument(filebrowseDialog.filepaths[0])) {
-                        // roomsListPage.previewImage(filebrowseDialog.filepaths[0]);
+                        roomsListPage.previewDocuments(filebrowseDialog.filepaths[0]);
                         return;
                     }
                     // else is unknown filytype
-                
+                    roomsListPage.previewUnknown(filebrowseDialog.filepaths[0]);
                     // OLD addFile(filebrowseDialog.filepaths[0]); 
                     // else filebrowseDialogLabel.text = qsTr("no file selected") + Retranslate.onLanguageChanged;
                 }

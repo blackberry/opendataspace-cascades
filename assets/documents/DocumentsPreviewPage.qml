@@ -57,7 +57,7 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 // Calls a function that show's the image in the pictures app.
-                ods.showInVideosApp(previewPage.previewPath);
+                // ods.showInVideosApp(previewPage.previewPath);
                 console.debug("Calling function to launchvideosapp");
             }
         },
@@ -88,8 +88,8 @@ Page {
                 layoutProperties: StackLayoutProperties {
                     verticalAlignment: VerticalAlignment.Center
                 }
-                imageSource: "asset:///images/nuvola/video.png"
-                objectName: "previewVideo"
+                imageSource: "asset:///images/nuvola/document.png"
+                objectName: "previewDocument"
                 minWidth: 128
                 minHeight: 128
                 //scalingMethod: ScalingMethod.AspectFit
