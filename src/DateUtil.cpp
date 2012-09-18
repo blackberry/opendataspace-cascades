@@ -39,9 +39,9 @@ DateUtil::DateUtil() {
 QString DateUtil::getDateTimeStringLocalizedAsShortString(QString locale,
 		QString datetime) const {
 	qDebug() << "DATEUTIL getDateTimeStringLocalizedAsShortString: " << datetime;
-	QLocale *loc = new QLocale(locale);
+	QLocale loc(locale);
 	QDateTime dt = QDateTime::fromString(datetime,"YYYY-MM-dd hh:mm:ss");
-	QString ld = loc->toString(dt, QLocale::ShortFormat);
+	QString ld = loc.toString(dt, QLocale::ShortFormat);
 	return ld;
 }
 
@@ -54,8 +54,8 @@ QString DateUtil::getDateTimeStringLocalizedAsShortString(QString locale,
 QString DateUtil::getDateTimeStringLocalizedAsLongString(QString locale,
 		QString datetime) const {
 	qDebug() << "DATEUTIL getDateTimeStringLocalizedAsLongString: " << datetime;
-	QLocale *loc = new QLocale(locale);
+	QLocale loc(locale);
 	QDateTime dt = QDateTime::fromString(datetime,"YYYY-MM-dd hh:mm:ss");
-	QString ld = loc->toString(dt, QLocale::LongFormat);
+	QString ld = loc.toString(dt, QLocale::LongFormat);
 	return ld;
 }
