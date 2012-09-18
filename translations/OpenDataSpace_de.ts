@@ -188,12 +188,12 @@
 <context>
     <name>FileInfo</name>
     <message>
-        <location filename="../src/FileInfo.cpp" line="226"/>
+        <location filename="../src/FileInfo.cpp" line="223"/>
         <source>created</source>
         <translation>angelegt</translation>
     </message>
     <message>
-        <location filename="../src/FileInfo.cpp" line="228"/>
+        <location filename="../src/FileInfo.cpp" line="225"/>
         <source>modified</source>
         <translation>bearbeitet</translation>
     </message>
