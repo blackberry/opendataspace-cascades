@@ -292,14 +292,14 @@ void OpenDataSpaceApp::showInPicturesApp(QString fileName) {
 	// we could also ask the system what other applications can
 	// receive something of our mimeType.
 	// the pictures app will come pre-installed so it's a safe bet.
-	qDebug() << "ShowInPicturesApp called";
+	qDebug() << "ShowInPicturesApp called: " << fileName;
 	InvokeRequest invokeRequest;
 	invokeRequest.setAction("bb.action.OPEN");
 	invokeRequest.setTarget("sys.pictures.app");
 	invokeRequest.setMimeType("images/jpeg");
 	invokeRequest.setUri(
-			QString("%1%2").arg("photos:").arg(fileName.remove(0, 7)));
-
+			QString("%1%2").arg("photos:").arg(fileName.startsWith("file://") ? fileName.remove(0, 7) : fileName));
+	qDebug() << "ShowInPicturesApp URI: " << invokeRequest.uri();
 	InvokeManager invokeManager;
 	invokeManager.invoke(invokeRequest);
 }
@@ -312,11 +312,33 @@ void OpenDataSpaceApp::showInVideosApp(QString fileName) {
 	invokeRequest.setTarget("sys.videos.app");
 	invokeRequest.setMimeType("images/mp4");
 	invokeRequest.setUri(
-			QString("%1%2").arg("videos:").arg(fileName.remove(0, 7)));
-
+			QString("%1%2").arg("videos:").arg(fileName.startsWith("file://") ? fileName.remove(0, 7) : fileName));
+	qDebug() << "showInVideosApp URI: " << invokeRequest.uri();
 	InvokeManager invokeManager;
 	invokeManager.invoke(invokeRequest);
 }
 
-
+// Invoke other apps using MimeType
+void OpenDataSpaceApp::showInOtherApp(QString fileName) {
+	qDebug() << "showInOtherApp called: " + fileName;
+	FileInfo f;
+	QString m;
+	QString s(f.getSuffix(fileName));
+	// TODO guess a  MimeType from suffix
+	if (s == "zip") {
+		m = "application/zip";
+	}else if (s == "pdf") {
+		m = "application/pdf";
+	} else {
+		m = "text/plain";
+	}
+	InvokeRequest invokeRequest;
+	invokeRequest.setAction("bb.action.OPEN");
+	invokeRequest.setMimeType(m);
+	invokeRequest.setUri(
+			QString("%1").arg(fileName.startsWith("file://") ? fileName.remove(0, 7) : fileName));
+	qDebug() << "showInOtherApp URI: " << invokeRequest.uri() << " " << invokeRequest.mimeType();
+	InvokeManager invokeManager;
+	invokeManager.invoke(invokeRequest);
+}
 

@@ -56,9 +56,8 @@ Page {
             imageSource: "asset:///images/ics/6-social-share81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                // Calls a function that show's the image in the pictures app.
-                // ods.showInVideosApp(previewPage.previewPath);
-                console.debug("Calling function to launchvideosapp");
+                // Calls a function that show's the document in another app.
+                ods.showInOtherApp(previewPage.previewPath);
             }
         },
         ActionItem {

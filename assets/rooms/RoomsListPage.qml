@@ -134,7 +134,8 @@ Page {
                     "*.zip",
                     "*.tar",
                     "*.rar",
-                    "*.gz"
+                    "*.gz",
+                    "*.html"
                 ]
                 filebrowseDialog.show();
             }

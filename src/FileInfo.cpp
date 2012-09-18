@@ -178,7 +178,10 @@ bool FileInfo::isVideo(QString filePath) const {
  */
 bool FileInfo::isDocument(QString filePath) const {
 	QString s = getSuffix(filePath);
-	if (s == "doc" || s == "odt" || s == "ppt" || s == "txt" || s == "rtf" || s == "ptx" || s == "pdf" || s == "zip" || s == "tar" || s == "rar" || s == "gz") {
+	if (s == "doc" || s == "odt" || s == "ppt"
+			|| s == "txt" || s == "rtf" || s == "ptx"
+			|| s == "pdf" || s == "zip" || s == "tar"
+			|| s == "rar" || s == "gz" || s == "html") {
 		return true;
 	}
 	return false;

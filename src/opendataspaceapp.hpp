@@ -65,8 +65,12 @@ public:
 	void showInPicturesApp(QString fileName);
 
 	Q_INVOKABLE
-	// Function that uses the invoke framework to launch the picture in the pictures app.
+	// Function that uses the invoke framework to launch the video in the Videos app.
 	void showInVideosApp(QString fileName);
+
+	Q_INVOKABLE
+	// Function that uses the invoke framework to launch the file in another app
+	void showInOtherApp(QString fileName);
 
 public slots:
 	void logoutTriggered();
