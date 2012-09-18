@@ -118,7 +118,7 @@ TabbedPane {
     // FUNCTIONS for the complete TabbedPane called from the Sheets attached to TabbedPane
     // the handler SLOT if LogIn was done
     // SIGNALed from LoginSheet
-    function saveLogin(ok) {
+    function onSaveLogin(ok) {
         if (ok) {
             //-- when sheet is closed with success, login was OK
             // TODO
@@ -130,7 +130,7 @@ TabbedPane {
     }
     // the handler SLOT if Prefs were saved
     // SIGNALed from PrefrencesSheet
-    function savePreferences(ok) {
+    function onSavePreferences(ok) {
         if (ok) {
             //-- when sheet is closed with success, changes should be saved
             // TODO
@@ -139,7 +139,7 @@ TabbedPane {
     }
     // the handler SLOT if Prefs were saved
     // SIGNALed from PrefrencesSheet
-    function sendFeedback(ok) {
+    function onSendFeedback(ok) {
         if (ok) {
             //-- when sheet is closed with success, feedback should be sent
             // TODO
@@ -160,14 +160,15 @@ TabbedPane {
         // support all orientations
         OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
         //-- connect the sheet done SIGNAL to the handler SLOT
-        loginContent.done.connect(saveLogin)
+        loginContent.done.connect(onSaveLogin)
         //-- connect the help sheet close SIGNAL to the handler SLOT
         helpContent.helpDone.connect(closeHelp)
         //-- connect the preferences save SIGNAL to the handler SLOT
-        preferencesContent.done.connect(savePreferences)
+        preferencesContent.done.connect(onSavePreferences)
         //-- connect the preferences save SIGNAL to the handler SLOT
-        feedbackContent.send.connect(sendFeedback)
+        feedbackContent.send.connect(onSendFeedback)
         // at startup no Sheets should be visible
+        
         helpSheet.visible = false
         loginSheet.visible = false
         preferencesSheet.visible = false

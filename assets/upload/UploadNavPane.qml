@@ -60,11 +60,14 @@ NavigationPane {
             }
         }
     }
+    // SLOTS
+    function onQueueFileForUpload(path) {
+        console.debug("ADD TO QUEUE: "+path);
+    }
     
     // we need this and the entry in bar-descriptor to support all directions
     onCreationCompleted: {
         OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
-        //label5.text = "5555"
-        //t6.text = "sechs"
+        
     }
 }

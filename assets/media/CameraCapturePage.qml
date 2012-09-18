@@ -66,7 +66,7 @@ Page {
                     console.log("photoSaveFailed signal received with error " + error);
                 }
                 onPhotoSaved: {
-                    // we do a o preview             
+                    // we do a preview     
                     cameraCapturePage.previewImage(fileName)
                 }
             }

@@ -24,6 +24,7 @@ import FileInfo 1.0
 */
 
 Page {
+    signal fileToQueueForUpload(string filePath)
     property alias previewPath: previewImage.imageSource
     id: previewPage
     titleBar: TitleBar {
@@ -67,7 +68,7 @@ Page {
             imageSource: "asset:///images/ics/9-av-upload81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                // TODO  SIGNAL fileToUpload(path)
+                previewPage.fileToQueueForUpload(previewPage.previewPath);
             }
         }
     ]
@@ -96,7 +97,7 @@ Page {
                 scalingMethod: ScalingMethod.AspectFit
                 onImageSourceChanged: {
                     console.debug("IMAGESOURCE Changed:" + imageSource)
-                    recalculateValues(imageSource)
+                    recalculateValues(imageSource, previewPage.currentFolder)
                 }
             }
             Container {
@@ -129,8 +130,9 @@ Page {
             }
         }
     }
-    function recalculateValues(name) {
-        titleBarId.title = fileInfo.getShortName(name);
+    function recalculateValues(name, folder) {
+        console.debug("ImagePreviewPage recalculate for "+name)
+        titleBarId.title = fileInfo.getShortName(name)
         titleLabel.text = titleBarId.title;
         filenameInfo.enabled = true;
         filenameInfo.text = fileInfo.getDetailedInfo(ods.getCurrentLocale(), name) +"\n"; //workaround bug in landscape: last line not visible

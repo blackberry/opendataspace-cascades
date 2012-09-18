@@ -298,7 +298,7 @@ NavigationPane {
             console.debug("openedVIDEOCamera")
         }
         function previewImage(path) {
-            console.debug("got signal to preview image: " + path)
+            console.debug("got signal to preview image: " + path )
             imagePreviewPage.previewPath = path;
             navigationPane.push(imagePreviewPage)
         }
@@ -332,7 +332,7 @@ NavigationPane {
             unknownPreviewPage.recalculateValues(path);
             navigationPane.push(unknownPreviewPage)
         }
-        function openAddFolderPage() {
+        function onOpenAddFolder() {
             console.debug("got signal to open AddFolderPage")
             navigationPane.push(addFolderPage)
         }
@@ -362,7 +362,7 @@ NavigationPane {
             roomsListPage.previewZip.connect(previewZip)
             roomsListPage.previewUnknown.connect(previewUnknown)
             //-- connect the RoomsList onOpenAddFolder SIGNAL to the handler SLOT
-            roomsListPage.onOpenAddFolder.connect(openAddFolderPage)
+            roomsListPage.openAddFolder.connect(onOpenAddFolder)
             //-- connect the onFolderAdded SIGNAL from AddFolderPage with SLOT folderAdded
             addFolderPage.onFolderAdded.connect(folderAdded)
         }

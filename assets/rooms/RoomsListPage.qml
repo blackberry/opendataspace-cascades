@@ -27,8 +27,8 @@ Page {
     id: roomsListPage
     signal openCamera()
     signal openVideo()
-    signal onOpenAddFolder()
-    signal previewImage(string path)
+    signal openAddFolder()
+    signal previewImage(string filePath)
     signal previewVideo(string path)
     signal previewDocuments(string path)
     signal previewPdf(string path)
@@ -105,7 +105,7 @@ Page {
             imageSource: "asset:///images/ics/4-collections-collection_newlabel81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
-                roomsListPage.onOpenAddFolder()
+                roomsListPage.openAddFolder()
             }
         },
         ActionItem {
@@ -174,8 +174,7 @@ Page {
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // SIGNAL
-                console.debug("clicked open camera action")
-                roomsListPage.openCamera()
+                roomsListPage.openCamera();
             }
         },
         ActionItem {
@@ -293,6 +292,9 @@ Page {
                                     imageSource: "asset:///images/ics/5-content-edit81.png"
                                     onTriggered: {
                                         // TODO
+                                        console.debug("FOLDER: name to be renamed: "+ ListItemData.name)
+                                        // TODO
+                                        ListItemData.name = "renamed"
                                     }
                                 }
                                 deleteAction: DeleteActionItem {
@@ -452,7 +454,7 @@ Page {
     }
     // TODO must go to UPLOAD
     function addFile(name) {
-        console.debug("Now add new FILE to LISTMODEL on RoomsListPage")
+        console.debug("Now add new FILE to LISTMODEL on RoomsListPage") 
         mockupModel.insert({
                 "name": fileInfo.getShortName(name),
                 "displayType": "L",
