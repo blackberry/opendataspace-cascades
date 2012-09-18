@@ -178,7 +178,21 @@ bool FileInfo::isVideo(QString filePath) const {
  */
 bool FileInfo::isDocument(QString filePath) const {
 	QString s = getSuffix(filePath);
-	if (s == "doc" || s == "ppt" || s == "txt" || s == "ptx" || s == "pdf" || s == "zip") {
+	if (s == "doc" || s == "odt" || s == "ppt" || s == "txt" || s == "rtf" || s == "ptx" || s == "pdf" || s == "zip" || s == "tar" || s == "rar" || s == "gz") {
+		return true;
+	}
+	return false;
+}
+
+/*
+ *
+ * tests the suffix from filename
+ * if it is a compressed document
+ *
+ */
+bool FileInfo::isCompressed(QString filePath) const {
+	QString s = getSuffix(filePath);
+	if (s == "tar" || s == "rar" || s == "gz" || s == "zip") {
 		return true;
 	}
 	return false;

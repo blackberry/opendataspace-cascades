@@ -61,7 +61,7 @@ Page {
                         return;
                     }
                     // isZIP ?
-                    if (fileInfo.getSuffix(filebrowseDialog.filepaths[0]) == "zip") {
+                    if (fileInfo.isCompressed(filebrowseDialog.filepaths[0])) {
                         roomsListPage.previewZip(filebrowseDialog.filepaths[0]);
                         return;
                     }
@@ -125,11 +125,16 @@ Page {
                 // native FileDialog from c++
                 filebrowseDialog.filters = [
                     "*.doc",
+                    "*.odt",
                     "*.ppt",
                     "*.txt",
+                    "*.rtf",
                     "*.ptx",
                     "*.pdf",
-                    "*.zip"
+                    "*.zip",
+                    "*.tar",
+                    "*.rar",
+                    "*.gz"
                 ]
                 filebrowseDialog.show();
             }

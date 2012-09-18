@@ -88,7 +88,7 @@ Page {
                 layoutProperties: StackLayoutProperties {
                     verticalAlignment: VerticalAlignment.Center
                 }
-                imageSource: "asset:///images/nuvola/zip.png"
+                imageSource: "asset:///images/nuvola/tar.png"
                 objectName: "previewZip"
                 minWidth: 128
                 minHeight: 128

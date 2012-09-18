@@ -133,6 +133,15 @@ public:
 
 	/*
 	 *
+	 * tests the suffix from filename
+	 * if it is a compressed document
+	 *
+	 */
+	Q_INVOKABLE
+	bool isCompressed(QString filePath) const;
+
+	/*
+	 *
 	 * get the size from filename
 	 *
 	 */
