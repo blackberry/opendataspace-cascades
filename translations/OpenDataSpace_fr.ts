@@ -6,22 +6,22 @@
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="32"/>
         <source>Add Folder</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ajouter un dossier</translation>
     </message>
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="52"/>
         <source>Folder Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nom du dossier</translation>
     </message>
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="97"/>
         <source>another Foldername</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Un autre nom de dossier</translation>
     </message>
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="117"/>
         <source>Name of the new Folder</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nom du nouveau dossier</translation>
     </message>
 </context>
 <context>
@@ -29,17 +29,17 @@
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="48"/>
         <source>Add User</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ajouter un utilisateur</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="69"/>
         <source>User Data</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Données de l&apos;utilisateur</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="143"/>
         <source>User email address</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Adresse e-mail l&apos;utilisateur</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="163"/>
@@ -49,32 +49,32 @@
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="175"/>
         <source>Mr.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">M.</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="178"/>
         <source>Mrs.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mme</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="185"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Titre</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="194"/>
         <source>First Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Prénom</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="205"/>
         <source>Last Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nom de famille</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="226"/>
         <source>Administrator</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Administrateur</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="278"/>
@@ -87,7 +87,7 @@
     <message>
         <location filename="../assets/common/CustomerSelection.qml" line="31"/>
         <source>Customer Account</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Compte client</translation>
     </message>
 </context>
 <context>
@@ -95,12 +95,12 @@
     <message>
         <location filename="../assets/rooms/DataSpaceNavPane.qml" line="137"/>
         <source>New Room</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nouveau chambre</translation>
     </message>
     <message>
         <location filename="../assets/rooms/DataSpaceNavPane.qml" line="146"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mettre à jour</translation>
     </message>
 </context>
 <context>
@@ -108,12 +108,12 @@
     <message>
         <location filename="../assets/documents/DocumentsPreviewPage.qml" line="30"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avant-première</translation>
     </message>
     <message>
         <location filename="../assets/documents/DocumentsPreviewPage.qml" line="55"/>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Part</translation>
     </message>
     <message>
         <location filename="../assets/documents/DocumentsPreviewPage.qml" line="64"/>
@@ -126,7 +126,7 @@
     <message>
         <location filename="../assets/common/ErrorAssistant.qml" line="56"/>
         <source>please check entry</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">s&apos;il vous plaît vérifier l&apos;entrée</translation>
     </message>
 </context>
 <context>
@@ -134,32 +134,32 @@
     <message>
         <location filename="../assets/FeedbackSheet.qml" line="42"/>
         <source>Feedback</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Réaction</translation>
     </message>
     <message>
         <location filename="../assets/FeedbackSheet.qml" line="45"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Annuler</translation>
     </message>
     <message>
         <location filename="../assets/FeedbackSheet.qml" line="51"/>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Envoyer</translation>
     </message>
     <message>
         <location filename="../assets/FeedbackSheet.qml" line="68"/>
         <source>from</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">à partir de</translation>
     </message>
     <message>
         <location filename="../assets/FeedbackSheet.qml" line="76"/>
         <source>to</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">à</translation>
     </message>
     <message>
         <location filename="../assets/FeedbackSheet.qml" line="93"/>
         <source>Your Feedback</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Votre opinion</translation>
     </message>
 </context>
 <context>
@@ -167,12 +167,12 @@
     <message>
         <location filename="../src/FileInfo.cpp" line="240"/>
         <source>created</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">établi</translation>
     </message>
     <message>
         <location filename="../src/FileInfo.cpp" line="242"/>
         <source>modified</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Modifié</translation>
     </message>
 </context>
 <context>
@@ -181,8 +181,8 @@
         <location filename="../assets/rooms/FoldersItem.qml" line="104"/>
         <source>%1 file(s)</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%1 dossier</numerusform>
+            <numerusform>%1 fichiers</numerusform>
         </translation>
     </message>
 </context>
@@ -191,12 +191,12 @@
     <message>
         <location filename="../assets/media/ImagePreviewPage.qml" line="32"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avant-première</translation>
     </message>
     <message>
         <location filename="../assets/media/ImagePreviewPage.qml" line="57"/>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Part</translation>
     </message>
     <message>
         <location filename="../assets/media/ImagePreviewPage.qml" line="67"/>
@@ -247,12 +247,12 @@
     <message>
         <location filename="../assets/LoginSheet.qml" line="80"/>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nom d&apos;utilisateur</translation>
     </message>
     <message>
         <location filename="../assets/LoginSheet.qml" line="87"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mot de passe</translation>
     </message>
     <message>
         <location filename="../assets/LoginSheet.qml" line="93"/>
@@ -265,22 +265,22 @@
     <message>
         <location filename="../src/opendataspaceapp.cpp" line="177"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Aider</translation>
     </message>
     <message>
         <location filename="../src/opendataspaceapp.cpp" line="180"/>
         <source>Feedback</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Réaction</translation>
     </message>
     <message>
         <location filename="../src/opendataspaceapp.cpp" line="183"/>
         <source>Logout</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Déconnexion</translation>
     </message>
     <message>
         <location filename="../src/opendataspaceapp.cpp" line="186"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Réglages</translation>
     </message>
 </context>
 <context>
@@ -288,12 +288,12 @@
     <message>
         <location filename="../assets/documents/PdfPreviewPage.qml" line="30"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avant-première</translation>
     </message>
     <message>
         <location filename="../assets/documents/PdfPreviewPage.qml" line="55"/>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Part</translation>
     </message>
     <message>
         <location filename="../assets/documents/PdfPreviewPage.qml" line="64"/>
@@ -311,37 +311,37 @@
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="68"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Annuler</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="74"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sauver</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="96"/>
         <source>Server URL</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Serveur URL</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="104"/>
         <source>User email address</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Adresse e-mail l&apos;utilisateur</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="148"/>
         <source>of</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">de</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="148"/>
         <source>Memory used</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">La mémoire utilisée</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="160"/>
         <source>Files to upload</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fichiers à télécharger</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="171"/>
@@ -376,7 +376,7 @@
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="196"/>
         <source>English</source>
-        <translation type="unfinished">Anglais</translation>
+        <translation type="unfinished">anglais</translation>
     </message>
 </context>
 <context>
@@ -384,47 +384,47 @@
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="95"/>
         <source>New SubRoom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nouveau SubRoom</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="104"/>
         <source>New Folder</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nouveau dossier</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="113"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mettre à jour</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="121"/>
         <source>Select Document</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sélectionnez Document</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="144"/>
         <source>Select Image</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sélectionnez l&apos;image</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="159"/>
         <source>Select Video</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sélectionnez Vidéo</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="172"/>
         <source>Open Camera</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Caméra ouvert</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="181"/>
         <source>Record Video</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Enregistrer une vidéo</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="191"/>
         <source>Record Audio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Enregistrement audio</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="201"/>
@@ -441,7 +441,7 @@
         <location filename="../assets/rooms/RoomsListPage.qml" line="270"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="326"/>
         <source>Info</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Infos</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="268"/>
@@ -452,25 +452,25 @@
         <location filename="../assets/rooms/RoomsListPage.qml" line="277"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="333"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Copier</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="284"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="340"/>
         <source>Move</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Déplacer</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="291"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="347"/>
         <source>Rename</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rebaptiser</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="301"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="368"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Effacer</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="317"/>
@@ -480,7 +480,7 @@
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="319"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Voir</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="354"/>
@@ -499,8 +499,8 @@
         <location filename="../assets/rooms/SubRoomsItem.qml" line="104"/>
         <source>%1 file(s)</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%1 dossier</numerusform>
+            <numerusform>%1 fichiers</numerusform>
         </translation>
     </message>
 </context>
@@ -509,7 +509,7 @@
     <message>
         <location filename="../assets/common/TextFieldWithMarker.qml" line="48"/>
         <source>please enter your text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">s&apos;il vous plaît entrer votre texte</translation>
     </message>
 </context>
 <context>
@@ -517,12 +517,12 @@
     <message>
         <location filename="../assets/documents/UnknownPreviewPage.qml" line="30"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avant-première</translation>
     </message>
     <message>
         <location filename="../assets/documents/UnknownPreviewPage.qml" line="55"/>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Part</translation>
     </message>
     <message>
         <location filename="../assets/documents/UnknownPreviewPage.qml" line="64"/>
@@ -548,18 +548,18 @@
     <message>
         <location filename="../assets/users/UsersNavPane.qml" line="43"/>
         <source>New User</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nouvel utilisateur</translation>
     </message>
     <message>
         <location filename="../assets/users/UsersNavPane.qml" line="52"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">mettre à jour</translation>
     </message>
     <message>
         <location filename="../assets/users/UsersNavPane.qml" line="106"/>
         <location filename="../assets/users/UsersNavPane.qml" line="146"/>
         <source>Info</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Infos</translation>
     </message>
     <message>
         <location filename="../assets/users/UsersNavPane.qml" line="113"/>
@@ -571,17 +571,17 @@
         <location filename="../assets/users/UsersNavPane.qml" line="120"/>
         <location filename="../assets/users/UsersNavPane.qml" line="160"/>
         <source>Contact</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Contacter</translation>
     </message>
     <message>
         <location filename="../assets/users/UsersNavPane.qml" line="139"/>
         <source>Add Room</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ajouter une pièce</translation>
     </message>
     <message>
         <location filename="../assets/users/UsersNavPane.qml" line="167"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Effacer</translation>
     </message>
 </context>
 <context>
@@ -602,12 +602,12 @@
     <message>
         <location filename="../assets/media/VideoPreviewPage.qml" line="30"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avant-première</translation>
     </message>
     <message>
         <location filename="../assets/media/VideoPreviewPage.qml" line="55"/>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Part</translation>
     </message>
     <message>
         <location filename="../assets/media/VideoPreviewPage.qml" line="65"/>
@@ -620,12 +620,12 @@
     <message>
         <location filename="../assets/webpages/WebPageHelpSheet.qml" line="36"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Arrière</translation>
     </message>
     <message>
         <location filename="../assets/webpages/WebPageHelpSheet.qml" line="46"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fermer</translation>
     </message>
 </context>
 <context>
@@ -633,12 +633,12 @@
     <message>
         <location filename="../assets/documents/ZipPreviewPage.qml" line="30"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avant-première</translation>
     </message>
     <message>
         <location filename="../assets/documents/ZipPreviewPage.qml" line="55"/>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Part</translation>
     </message>
     <message>
         <location filename="../assets/documents/ZipPreviewPage.qml" line="64"/>
@@ -661,7 +661,7 @@
     <message>
         <location filename="../assets/main.qml" line="100"/>
         <source>Users</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">utilisateurs</translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="110"/>

@@ -6,22 +6,22 @@
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="32"/>
         <source>Add Folder</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добавить папку</translation>
     </message>
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="52"/>
         <source>Folder Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Имя папки</translation>
     </message>
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="97"/>
         <source>another Foldername</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">другое имя папки</translation>
     </message>
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="117"/>
         <source>Name of the new Folder</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Название новой папки</translation>
     </message>
 </context>
 <context>
@@ -29,52 +29,52 @@
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="48"/>
         <source>Add User</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добавить пользователя</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="69"/>
         <source>User Data</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Данные пользователя</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="143"/>
         <source>User email address</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Адрес электронной почты пользователя</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="163"/>
         <source>Salutation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">приветствие</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="175"/>
         <source>Mr.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Господин</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="178"/>
         <source>Mrs.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Миссис</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="185"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">название</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="194"/>
         <source>First Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Имя</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="205"/>
         <source>Last Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">фамилия</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="226"/>
         <source>Administrator</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">администратор</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="278"/>
@@ -87,7 +87,7 @@
     <message>
         <location filename="../assets/common/CustomerSelection.qml" line="31"/>
         <source>Customer Account</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">счет клиента</translation>
     </message>
 </context>
 <context>
@@ -95,12 +95,12 @@
     <message>
         <location filename="../assets/rooms/DataSpaceNavPane.qml" line="137"/>
         <source>New Room</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Новый номер</translation>
     </message>
     <message>
         <location filename="../assets/rooms/DataSpaceNavPane.qml" line="146"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">обновление</translation>
     </message>
 </context>
 <context>
@@ -108,17 +108,17 @@
     <message>
         <location filename="../assets/documents/DocumentsPreviewPage.qml" line="30"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">предварительный просмотр</translation>
     </message>
     <message>
         <location filename="../assets/documents/DocumentsPreviewPage.qml" line="55"/>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">доля</translation>
     </message>
     <message>
         <location filename="../assets/documents/DocumentsPreviewPage.qml" line="64"/>
         <source>Upload</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Пользователи</translation>
     </message>
 </context>
 <context>
@@ -126,7 +126,7 @@
     <message>
         <location filename="../assets/common/ErrorAssistant.qml" line="56"/>
         <source>please check entry</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">пожалуйста, проверьте запись</translation>
     </message>
 </context>
 <context>
@@ -134,32 +134,32 @@
     <message>
         <location filename="../assets/FeedbackSheet.qml" line="42"/>
         <source>Feedback</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">обратная связь</translation>
     </message>
     <message>
         <location filename="../assets/FeedbackSheet.qml" line="45"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">отменить</translation>
     </message>
     <message>
         <location filename="../assets/FeedbackSheet.qml" line="51"/>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">послать</translation>
     </message>
     <message>
         <location filename="../assets/FeedbackSheet.qml" line="68"/>
         <source>from</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">от</translation>
     </message>
     <message>
         <location filename="../assets/FeedbackSheet.qml" line="76"/>
         <source>to</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">к</translation>
     </message>
     <message>
         <location filename="../assets/FeedbackSheet.qml" line="93"/>
         <source>Your Feedback</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ваша обратная связь</translation>
     </message>
 </context>
 <context>
@@ -167,12 +167,12 @@
     <message>
         <location filename="../src/FileInfo.cpp" line="240"/>
         <source>created</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">созданный</translation>
     </message>
     <message>
         <location filename="../src/FileInfo.cpp" line="242"/>
         <source>modified</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">модифицированный</translation>
     </message>
 </context>
 <context>
@@ -181,8 +181,8 @@
         <location filename="../assets/rooms/FoldersItem.qml" line="104"/>
         <source>%1 file(s)</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%1 файл</numerusform>
+            <numerusform>%1 Файлы</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -192,17 +192,17 @@
     <message>
         <location filename="../assets/media/ImagePreviewPage.qml" line="32"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">предварительный просмотр</translation>
     </message>
     <message>
         <location filename="../assets/media/ImagePreviewPage.qml" line="57"/>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">доля</translation>
     </message>
     <message>
         <location filename="../assets/media/ImagePreviewPage.qml" line="67"/>
         <source>Upload</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Пользователи</translation>
     </message>
 </context>
 <context>
@@ -248,17 +248,17 @@
     <message>
         <location filename="../assets/LoginSheet.qml" line="80"/>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Имя пользователя</translation>
     </message>
     <message>
         <location filename="../assets/LoginSheet.qml" line="87"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">пароль</translation>
     </message>
     <message>
         <location filename="../assets/LoginSheet.qml" line="93"/>
         <source>Login</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Войти</translation>
     </message>
 </context>
 <context>
@@ -266,22 +266,22 @@
     <message>
         <location filename="../src/opendataspaceapp.cpp" line="177"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Помогите</translation>
     </message>
     <message>
         <location filename="../src/opendataspaceapp.cpp" line="180"/>
         <source>Feedback</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">обратная связь</translation>
     </message>
     <message>
         <location filename="../src/opendataspaceapp.cpp" line="183"/>
         <source>Logout</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выйти</translation>
     </message>
     <message>
         <location filename="../src/opendataspaceapp.cpp" line="186"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">настройки</translation>
     </message>
 </context>
 <context>
@@ -289,17 +289,17 @@
     <message>
         <location filename="../assets/documents/PdfPreviewPage.qml" line="30"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">предварительный просмотр</translation>
     </message>
     <message>
         <location filename="../assets/documents/PdfPreviewPage.qml" line="55"/>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">доля</translation>
     </message>
     <message>
         <location filename="../assets/documents/PdfPreviewPage.qml" line="64"/>
         <source>Upload</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Пользователи</translation>
     </message>
 </context>
 <context>
@@ -307,47 +307,47 @@
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="65"/>
         <source>Preferences</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Предпочтения</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="68"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">отменить</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="74"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">экономить</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="96"/>
         <source>Server URL</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">сервер URL</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="104"/>
         <source>User email address</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Адрес электронной почты пользователя</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="148"/>
         <source>of</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">из</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="148"/>
         <source>Memory used</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Память, используемая</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="160"/>
         <source>Files to upload</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Файлы для загрузки</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="171"/>
         <source>Version %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">версия %1</translation>
     </message>
     <message>
         <location filename="../assets/PreferencesSheet.qml" line="186"/>
@@ -390,42 +390,42 @@
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="104"/>
         <source>New Folder</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">новое папка</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="113"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">обновление</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="121"/>
         <source>Select Document</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выберите документ</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="144"/>
         <source>Select Image</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выберите изображение</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="159"/>
         <source>Select Video</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выберите Видео</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="172"/>
         <source>Open Camera</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Открытое камеры</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="181"/>
         <source>Record Video</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Запись видео</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="191"/>
         <source>Record Audio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Запись аудио</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="201"/>
@@ -442,7 +442,7 @@
         <location filename="../assets/rooms/RoomsListPage.qml" line="270"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="326"/>
         <source>Info</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">информация</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="268"/>
@@ -453,25 +453,25 @@
         <location filename="../assets/rooms/RoomsListPage.qml" line="277"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="333"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Скопировать</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="284"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="340"/>
         <source>Move</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">двигаться</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="291"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="347"/>
         <source>Rename</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">переименовать</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="301"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="368"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">удалять</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="317"/>
@@ -481,7 +481,7 @@
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="319"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">смотреть</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="354"/>
@@ -500,8 +500,8 @@
         <location filename="../assets/rooms/SubRoomsItem.qml" line="104"/>
         <source>%1 file(s)</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%1 файл</numerusform>
+            <numerusform>%1 Файлы</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -511,7 +511,7 @@
     <message>
         <location filename="../assets/common/TextFieldWithMarker.qml" line="48"/>
         <source>please enter your text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Пожалуйста, введите текст</translation>
     </message>
 </context>
 <context>
@@ -519,17 +519,17 @@
     <message>
         <location filename="../assets/documents/UnknownPreviewPage.qml" line="30"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">предварительный просмотр</translation>
     </message>
     <message>
         <location filename="../assets/documents/UnknownPreviewPage.qml" line="55"/>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">доля</translation>
     </message>
     <message>
         <location filename="../assets/documents/UnknownPreviewPage.qml" line="64"/>
         <source>Upload</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Пользователи</translation>
     </message>
 </context>
 <context>
@@ -550,18 +550,18 @@
     <message>
         <location filename="../assets/users/UsersNavPane.qml" line="43"/>
         <source>New User</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Новый Пользователь</translation>
     </message>
     <message>
         <location filename="../assets/users/UsersNavPane.qml" line="52"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">обновление</translation>
     </message>
     <message>
         <location filename="../assets/users/UsersNavPane.qml" line="106"/>
         <location filename="../assets/users/UsersNavPane.qml" line="146"/>
         <source>Info</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">информация</translation>
     </message>
     <message>
         <location filename="../assets/users/UsersNavPane.qml" line="113"/>
@@ -573,17 +573,17 @@
         <location filename="../assets/users/UsersNavPane.qml" line="120"/>
         <location filename="../assets/users/UsersNavPane.qml" line="160"/>
         <source>Contact</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">связаться</translation>
     </message>
     <message>
         <location filename="../assets/users/UsersNavPane.qml" line="139"/>
         <source>Add Room</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добавить номер</translation>
     </message>
     <message>
         <location filename="../assets/users/UsersNavPane.qml" line="167"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">удалять</translation>
     </message>
 </context>
 <context>
@@ -591,12 +591,12 @@
     <message>
         <location filename="../assets/media/VideoCapturePage.qml" line="37"/>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">начало</translation>
     </message>
     <message>
         <location filename="../assets/media/VideoCapturePage.qml" line="49"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Стоп</translation>
     </message>
 </context>
 <context>
@@ -604,17 +604,17 @@
     <message>
         <location filename="../assets/media/VideoPreviewPage.qml" line="30"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">предварительный просмотр</translation>
     </message>
     <message>
         <location filename="../assets/media/VideoPreviewPage.qml" line="55"/>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">доля</translation>
     </message>
     <message>
         <location filename="../assets/media/VideoPreviewPage.qml" line="65"/>
         <source>Upload</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Пользователи</translation>
     </message>
 </context>
 <context>
@@ -622,12 +622,12 @@
     <message>
         <location filename="../assets/webpages/WebPageHelpSheet.qml" line="36"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">назад</translation>
     </message>
     <message>
         <location filename="../assets/webpages/WebPageHelpSheet.qml" line="46"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">близко</translation>
     </message>
 </context>
 <context>
@@ -635,17 +635,17 @@
     <message>
         <location filename="../assets/documents/ZipPreviewPage.qml" line="30"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">предварительный просмотр</translation>
     </message>
     <message>
         <location filename="../assets/documents/ZipPreviewPage.qml" line="55"/>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">доля</translation>
     </message>
     <message>
         <location filename="../assets/documents/ZipPreviewPage.qml" line="64"/>
         <source>Upload</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Пользователи</translation>
     </message>
 </context>
 <context>
@@ -668,7 +668,7 @@
     <message>
         <location filename="../assets/main.qml" line="110"/>
         <source>Upload</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Пользователи</translation>
     </message>
 </context>
 </TS>
