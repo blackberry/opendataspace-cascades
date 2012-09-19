@@ -283,14 +283,6 @@
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>German</source>
-        <translation type="obsolete">немецкий</translation>
-    </message>
-    <message>
-        <source>English</source>
-        <translation type="obsolete">английский</translation>
-    </message>
 </context>
 <context>
     <name>PdfPreviewPage</name>
@@ -448,7 +440,7 @@
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="251"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="270"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="325"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="326"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
@@ -459,45 +451,45 @@
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="277"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="332"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="333"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="284"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="339"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="340"/>
         <source>Move</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="291"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="346"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="347"/>
         <source>Rename</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="300"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="367"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="301"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="368"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="316"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="317"/>
         <source>ODS File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="318"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="319"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="353"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="354"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="360"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="361"/>
         <source>Link</source>
         <translation type="unfinished"></translation>
     </message>
