@@ -54,7 +54,7 @@ TabbedPane {
             content: WebPageHelpSheet {
                 id: helpContent
                 // theURL is a custom property to allow setting the URL fro  outside or inside the QML file
-                theURL: "http://j.mp/ods-developer-preview"
+                theURL: "http://ods.io"
             }
         },
         Sheet {

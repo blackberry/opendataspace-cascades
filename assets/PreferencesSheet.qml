@@ -93,6 +93,7 @@ NavigationPane {
                 }
                 TextField {
                     id: server
+                    text: "https://bb.ods.io/"
                     hintText: qsTr("Server URL") + Retranslate.onLanguageChanged
                     inputMode: TextFieldInputMode.URL
                     textStyle {

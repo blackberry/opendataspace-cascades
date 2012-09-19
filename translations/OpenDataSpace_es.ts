@@ -323,62 +323,62 @@
         <translation type="unfinished">Asegurar</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="96"/>
+        <location filename="../assets/PreferencesSheet.qml" line="97"/>
         <source>Server URL</source>
         <translation type="unfinished">Servidor URL</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="104"/>
+        <location filename="../assets/PreferencesSheet.qml" line="105"/>
         <source>User email address</source>
         <translation type="unfinished">Dirección de correo electrónico del usuario</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="148"/>
+        <location filename="../assets/PreferencesSheet.qml" line="149"/>
         <source>of</source>
         <translation type="unfinished">de</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="148"/>
+        <location filename="../assets/PreferencesSheet.qml" line="149"/>
         <source>Memory used</source>
         <translation type="unfinished">Memoria utilizada</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="160"/>
+        <location filename="../assets/PreferencesSheet.qml" line="161"/>
         <source>Files to upload</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="171"/>
+        <location filename="../assets/PreferencesSheet.qml" line="172"/>
         <source>Version %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="186"/>
+        <location filename="../assets/PreferencesSheet.qml" line="187"/>
         <source>German</source>
         <translation type="unfinished">alemán</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="188"/>
+        <location filename="../assets/PreferencesSheet.qml" line="189"/>
         <source>French</source>
         <translation type="unfinished">francés</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="190"/>
+        <location filename="../assets/PreferencesSheet.qml" line="191"/>
         <source>Spanish</source>
         <translation type="unfinished">español</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="192"/>
+        <location filename="../assets/PreferencesSheet.qml" line="193"/>
         <source>Italian</source>
         <translation type="unfinished">italiano</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="194"/>
+        <location filename="../assets/PreferencesSheet.qml" line="195"/>
         <source>Russian</source>
         <translation type="unfinished">ruso</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="196"/>
+        <location filename="../assets/PreferencesSheet.qml" line="197"/>
         <source>English</source>
         <translation type="unfinished">Inglés</translation>
     </message>
@@ -622,14 +622,23 @@
 <context>
     <name>WebPageHelpSheet</name>
     <message>
-        <location filename="../assets/webpages/WebPageHelpSheet.qml" line="36"/>
         <source>Back</source>
-        <translation type="unfinished">espalda</translation>
+        <translation type="obsolete">espalda</translation>
     </message>
     <message>
-        <location filename="../assets/webpages/WebPageHelpSheet.qml" line="46"/>
+        <location filename="../assets/webpages/WebPageHelpSheet.qml" line="36"/>
+        <source>ODS Homepage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/webpages/WebPageHelpSheet.qml" line="57"/>
         <source>Close</source>
         <translation type="unfinished">cerrar</translation>
+    </message>
+    <message>
+        <location filename="../assets/webpages/WebPageHelpSheet.qml" line="47"/>
+        <source>Beta2</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

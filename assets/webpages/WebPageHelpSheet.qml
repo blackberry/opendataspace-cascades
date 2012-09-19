@@ -33,7 +33,7 @@ Page {
     actions: [
         ActionItem {
             id: backItem
-            title: qsTr("Back")+ Retranslate.onLanguageChanged
+            title: qsTr("ODS Homepage") + Retranslate.onLanguageChanged
             enabled: false
             ActionBar.placement: ActionBarPlacement.OnBar
             // we reset the URL
@@ -43,7 +43,18 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("Close")+ Retranslate.onLanguageChanged
+            id: ekke
+            title: qsTr("Beta2") + Retranslate.onLanguageChanged
+            enabled: true
+            ActionBar.placement: ActionBarPlacement.OnBar
+            // we reset the URL
+            onTriggered: {
+                // todo use internal goBack() and canGoBack() functions from C++
+                webView.url = "http://j.mp/ods-developer-preview"
+            }
+        },
+        ActionItem {
+            title: qsTr("Close") + Retranslate.onLanguageChanged
             ActionBar.placement: ActionBarPlacement.Default
             onTriggered: {
                 helpDone(true)
