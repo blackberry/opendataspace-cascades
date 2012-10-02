@@ -80,9 +80,7 @@ Page {
             layout: StackLayout {
                 orientation: LayoutOrientation.TopToBottom
             }
-            layoutProperties: DockLayoutProperties {
-                horizontalAlignment: HorizontalAlignment.Left
-            }
+            horizontalAlignment: HorizontalAlignment.Left
             ImageView {
                 id: previewImage
                 layoutProperties: StackLayoutProperties {

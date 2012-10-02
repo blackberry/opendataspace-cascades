@@ -37,10 +37,8 @@ Page {
         }
         Container {
             id: languageContainer
-            layoutProperties: DockLayoutProperties {
-                horizontalAlignment: HorizontalAlignment.Center
-                verticalAlignment: VerticalAlignment.Center
-            }
+            horizontalAlignment: HorizontalAlignment.Center
+            verticalAlignment: VerticalAlignment.Center
             layout: StackLayout {
             }
             leftPadding: 100

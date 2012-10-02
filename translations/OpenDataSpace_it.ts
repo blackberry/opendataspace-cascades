@@ -14,12 +14,12 @@
         <translation type="unfinished">Nome cartella</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="97"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="94"/>
         <source>another Foldername</source>
         <translation type="unfinished">un altro Nome cartella</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="117"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="114"/>
         <source>Name of the new Folder</source>
         <translation type="unfinished">Nome della nuova cartella</translation>
     </message>
@@ -37,47 +37,47 @@
         <translation type="unfinished">dati utente</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="143"/>
+        <location filename="../assets/users/AddUserPage.qml" line="141"/>
         <source>User email address</source>
         <translation type="unfinished">Utente indirizzo e-mail</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="163"/>
+        <location filename="../assets/users/AddUserPage.qml" line="161"/>
         <source>Salutation</source>
         <translation type="unfinished">saluto</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="175"/>
+        <location filename="../assets/users/AddUserPage.qml" line="173"/>
         <source>Mr.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="178"/>
+        <location filename="../assets/users/AddUserPage.qml" line="176"/>
         <source>Mrs.</source>
         <translation type="unfinished">La signora</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="185"/>
+        <location filename="../assets/users/AddUserPage.qml" line="183"/>
         <source>Title</source>
         <translation type="unfinished">titolo</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="194"/>
+        <location filename="../assets/users/AddUserPage.qml" line="192"/>
         <source>First Name</source>
         <translation type="unfinished">Nome</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="205"/>
+        <location filename="../assets/users/AddUserPage.qml" line="203"/>
         <source>Last Name</source>
         <translation type="unfinished">cognome</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="226"/>
+        <location filename="../assets/users/AddUserPage.qml" line="224"/>
         <source>Administrator</source>
         <translation type="unfinished">amministratore</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="278"/>
+        <location filename="../assets/users/AddUserPage.qml" line="276"/>
         <source>DataRoom</source>
         <translation type="unfinished"></translation>
     </message>
@@ -124,7 +124,7 @@
 <context>
     <name>ErrorAssistant</name>
     <message>
-        <location filename="../assets/common/ErrorAssistant.qml" line="56"/>
+        <location filename="../assets/common/ErrorAssistant.qml" line="54"/>
         <source>please check entry</source>
         <translation type="unfinished">si prega di iscrizione</translation>
     </message>
@@ -178,7 +178,7 @@
 <context>
     <name>FoldersItem</name>
     <message numerus="yes">
-        <location filename="../assets/rooms/FoldersItem.qml" line="104"/>
+        <location filename="../assets/rooms/FoldersItem.qml" line="98"/>
         <source>%1 file(s)</source>
         <translation type="unfinished">
             <numerusform>%1 file</numerusform>
@@ -507,7 +507,7 @@
 <context>
     <name>SubRoomsItem</name>
     <message numerus="yes">
-        <location filename="../assets/rooms/SubRoomsItem.qml" line="104"/>
+        <location filename="../assets/rooms/SubRoomsItem.qml" line="98"/>
         <source>%1 file(s)</source>
         <translation type="unfinished">
             <numerusform>%1 file</numerusform>
@@ -669,22 +669,22 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="81"/>
+        <location filename="../assets/main.qml" line="80"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="91"/>
+        <location filename="../assets/main.qml" line="90"/>
         <source>Data Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="100"/>
+        <location filename="../assets/main.qml" line="99"/>
         <source>Users</source>
         <translation type="unfinished">utenti</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="110"/>
+        <location filename="../assets/main.qml" line="109"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>

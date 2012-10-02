@@ -27,9 +27,7 @@ Container {
     Container {
         layout: DockLayout {
         }
-        layoutProperties: DockLayoutProperties {
-            horizontalAlignment: HorizontalAlignment.Center
-        }
+        horizontalAlignment: HorizontalAlignment.Center
         attachedObjects: [
             // application supports changing the Orientation
             OrientationHandler {
