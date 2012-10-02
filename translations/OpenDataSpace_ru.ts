@@ -262,26 +262,45 @@
     </message>
 </context>
 <context>
-    <name>OpenDataSpaceApp</name>
+    <name>OpenDataSpace</name>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="177"/>
+        <location filename="../src/OpenDataSpace.cpp" line="175"/>
         <source>Help</source>
         <translation type="unfinished">Помогите</translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="180"/>
+        <location filename="../src/OpenDataSpace.cpp" line="178"/>
         <source>Feedback</source>
         <translation type="unfinished">обратная связь</translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="183"/>
+        <location filename="../src/OpenDataSpace.cpp" line="181"/>
         <source>Logout</source>
         <translation type="unfinished">Выйти</translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="186"/>
+        <location filename="../src/OpenDataSpace.cpp" line="184"/>
         <source>Settings</source>
         <translation type="unfinished">настройки</translation>
+    </message>
+</context>
+<context>
+    <name>OpenDataSpaceApp</name>
+    <message>
+        <source>Help</source>
+        <translation type="obsolete">Помогите</translation>
+    </message>
+    <message>
+        <source>Feedback</source>
+        <translation type="obsolete">обратная связь</translation>
+    </message>
+    <message>
+        <source>Logout</source>
+        <translation type="obsolete">Выйти</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="obsolete">настройки</translation>
     </message>
 </context>
 <context>

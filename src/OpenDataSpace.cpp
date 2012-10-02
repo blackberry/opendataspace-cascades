@@ -13,24 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include "opendataspaceapp.hpp"
+#include "OpenDataSpace.hpp"
 #include "FileBrowseDialog.hpp"
 #include "FileInfo.hpp"
 #include "DateUtil.hpp"
 
 #include <bb/system/InvokeManager.hpp>
 #include <bb/system/InvokeRequest.hpp>
-#include <bb/system/locale/Notifier>
 
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/AbstractPane>
-#include <bb/cascades/TabbedPane>
+#include <bb/cascades/LocaleHandler>
 #include <bb/cascades/Menu>
 #include <bb/cascades/ActionItem>
 #include <bb/cascades/HelpActionItem>
 #include <bb/cascades/SettingsActionItem>
 #include <bb/cascades/multimedia/Camera>
+#include <bb/cascades/Sheet>
 
 #include <bps/soundplayer.h>
 #include <bps/virtualkeyboard.h>
@@ -38,26 +38,19 @@
 using namespace bb::cascades;
 using namespace bb::cascades::multimedia;
 using namespace bb::system;
-using namespace bb::system::locale;
 
 /*
  *
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
  *
  */
-OpenDataSpaceApp::OpenDataSpaceApp() :
-		m_app(NULL), m_currentLocale("en"), m_translator(NULL)
+OpenDataSpace::OpenDataSpace() {
 
-{
-
-	// we need a system menu:
-	Menu* menu = createApplicationMenu();
-
-	Application::setMenu(menu);
+	// register the MyListModel C++ type to be visible in QML
 
 	// We need to register the QML types in the multimedia-library,
 	// otherwise we will get an error from the QML.
-	Camera::registerQmlTypes();
+	// TODO Camera::registerQmlTypes();
 
 	// Register the FileDialog, so QML knows about
 	qmlRegisterType<FileBrowseDialog>("Dialog.FileBrowse", 1, 0,
@@ -69,22 +62,29 @@ OpenDataSpaceApp::OpenDataSpaceApp() :
 	// Register the DateUtil, so QML knows about
 	qmlRegisterType<FileInfo>("DateUtil", 1, 0, "DateUtil");
 
+	qDebug() << "registered types for QML";
+
 	// our main QML document: the HomeScreen with a custom Background Image
-	QmlDocument *qml = QmlDocument::create("main.qml");
+	QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
+	qDebug() << "created QML Document";
+
 	//-- setContextProperty expose C++ object in QML as an variable
-	//-- uncomment next line to introduce 'this' object to QML name space as an 'app' variable
 	qml->setContextProperty("ods", this);
 
-	// the ROOT Pane
-	root = qml->createRootNode<TabbedPane>();
+	// create root object for the UI
+	AbstractPane *root = qml->createRootObject<AbstractPane>();
+	qDebug() << "created root object";
 
-	// Open the HomeScreen
-	Application::setScene(root);
-	// at StartUp the LoginSheet should be displayed immediately
-	// so at first I tried it this way:
-	// root->setProperty("sheetVisible", true);
-	// but then the Sheet is so fast opened that the User doesn't notify what happened
-	// so I decided to use  a delayed animation
+	Application::instance()->setScene(root);
+	qDebug() << "set the scene";
+
+	// ApplicationMenu
+	// Hint: first set the scene - then set the menu
+	Menu* menu = createApplicationMenu();
+	qDebug() << "created ApplicartionMenu";
+
+	Application::instance()->setMenu(menu);
+	qDebug() << "set ApplicationMenu";
 
 	// initialize the camera
 	Camera *camera = root->findChild<Camera*>("odsCamera");
@@ -108,28 +108,35 @@ OpenDataSpaceApp::OpenDataSpaceApp() :
 		// TODO give some feedback to user
 		qDebug() << "odsVideo child N O T found";
 	}
-	// TODO collect problems in a healthyStatus list to be displayed from PreferencesPage
+	// first translation
+	translateMenuItems();
+	qDebug() << "did first translations";
+
+	qDebug() << "INIT done";
 
 }
 
-// INTERNATIONALIZATION
+// INTERNATIONALIZATION (i18n)
 /**
- * void App::setApplication(bb::cascades::Application* app, QTranslator* translator, QString currentLocale)
  *
- * This method allows to change translation engine basing on the given locale
+ * This method initializes translation engine based on current locale
  * at runtime.
  *
  */
-void OpenDataSpaceApp::setApplication(bb::cascades::Application* app,
-		QTranslator* translator, QString currentLocale) {
-	m_app = app;
+void OpenDataSpace::initLocalization(QTranslator* translator) {
+	// remember current locale set
+	m_currentLocale = QLocale().name();
+	qDebug() << "init with locale: " << m_currentLocale;
 	m_translator = translator;
-	m_currentLocale = currentLocale;
-	updateLocale(currentLocale);
 
 	// watch if user changes locale from device settings
-	Notifier* m_notifier = new Notifier();
-	connect(m_notifier, SIGNAL(changed()), this, SLOT(localeChanged()));
+	m_LocaleHandler = new LocaleHandler(this);
+
+	// connect the handler
+	connect(m_LocaleHandler, SIGNAL(systemLanguageChanged()), this,
+			SLOT(localeChanged()));
+	qDebug() << "connected systemLanguageChanged";
+
 }
 
 /**
@@ -138,29 +145,20 @@ void OpenDataSpaceApp::setApplication(bb::cascades::Application* app,
  * Update view content basing on the given locale.
  *
  */
-void OpenDataSpaceApp::updateLocale(QString locale) {
+void OpenDataSpace::updateLocale(QString locale) {
 	qDebug() << "updateLocale: " << locale;
-	if (!m_app) {
-		qDebug() << "updateLocale: app pointer not valid";
-		return;
-	}
-
-	if (!m_translator) {
-		qDebug() << "updateLocale: translator pointer not valid";
-		return;
-	}
 
 	// if locale is empty - refresh current. otherwise change the local
 	if (!locale.trimmed().isEmpty() && m_currentLocale != locale) {
 		m_currentLocale = locale;
 
 		qDebug() << "updating UI to language: " << m_currentLocale;
-		QString filename = QString("OpenDataSpace_%1").arg(m_currentLocale);
+		QString filename = QString("Conference2Go_%1").arg(m_currentLocale);
 		if (m_translator->load(filename, "app/native/qm")) {
 			// multiple translators can be installed but for this
 			// app we only use one translator instance for brevity
-			m_app->removeTranslator(m_translator);
-			m_app->installTranslator(m_translator);
+			Application::instance()->removeTranslator(m_translator);
+			Application::instance()->installTranslator(m_translator);
 			// retranslate System menu items
 			translateMenuItems();
 		}
@@ -172,7 +170,7 @@ void OpenDataSpaceApp::updateLocale(QString locale) {
  * (re)translates the titles of System menus
  *
  */
-void OpenDataSpaceApp::translateMenuItems() {
+void OpenDataSpace::translateMenuItems() {
 	if (m_helpItem) {
 		m_helpItem->setTitle(tr("Help"));
 	}
@@ -192,7 +190,7 @@ void OpenDataSpaceApp::translateMenuItems() {
  *
  * Retrieve the language name corresponding to the current locale.
  */
-QString OpenDataSpaceApp::getCurrentLanguage() {
+QString OpenDataSpace::getCurrentLanguage() {
 	// TODO get language name from QLocale - we have now more languages
 	qDebug() << "OpenDataSpaceApp getCurrentLanguage: " << m_currentLocale;
 	QLocale *loc = new QLocale(m_currentLocale);
@@ -204,7 +202,7 @@ QString OpenDataSpaceApp::getCurrentLanguage() {
  *
  * Retrieve the current locale.
  */
-QString OpenDataSpaceApp::getCurrentLocale() {
+QString OpenDataSpace::getCurrentLocale() {
 	qDebug() << "getCurrentLocale: " << m_currentLocale;
 	return m_currentLocale;
 }
@@ -214,7 +212,7 @@ QString OpenDataSpaceApp::getCurrentLocale() {
  *
  * A helper function to force the keyboard to hide
  */
-void OpenDataSpaceApp::suppressKeyboard() {
+void OpenDataSpace::suppressKeyboard() {
 	virtualkeyboard_request_events(0);
 	virtualkeyboard_hide();
 }
@@ -222,7 +220,7 @@ void OpenDataSpaceApp::suppressKeyboard() {
 // M E N U
 // ApplicationMenu is available on all Screens
 // opens using swipe-down
-Menu* OpenDataSpaceApp::createApplicationMenu() {
+Menu* OpenDataSpace::createApplicationMenu() {
 	// HELP will open a website with Help Instructions from OpenDataSpace
 	m_helpItem = new HelpActionItem();
 	// FEEDBACK will send an email to OpenDataSpace
@@ -255,39 +253,66 @@ Menu* OpenDataSpaceApp::createApplicationMenu() {
 // S L O T S
 
 // handles SLOT from Locale Chaned by user at Device
-void OpenDataSpaceApp::localeChanged() {
+void OpenDataSpace::localeChanged() {
 	updateLocale(QLocale().name());
 }
 
 // handles SLOT from logoutItem
-void OpenDataSpaceApp::logoutTriggered() {
-	root->setProperty("loginSheetVisible", true);
+void OpenDataSpace::logoutTriggered() {
+	Sheet *s = Application::instance()->scene()->findChild<Sheet*>(
+			"loginSheet");
+	if (s) {
+		qDebug() << "logout triggered and loginSheet found";
+		s->open();
+	} else {
+		qDebug() << "logout triggered, but no loginSheet found";
+	}
 }
 
 // handles SLOT from feedbackItem
-void OpenDataSpaceApp::feedbackTriggered() {
-	root->setProperty("feedbackSheetVisible", true);
+void OpenDataSpace::feedbackTriggered() {
+	Sheet *s = Application::instance()->scene()->findChild<Sheet*>(
+			"feedbackSheet");
+	if (s) {
+		qDebug() << "feedback triggered and Feedback Sheet found";
+		s->open();
+	} else {
+		qDebug() << "feedback triggered, but no Feedback Sheet found";
+	}
 }
 
 // handles SLOT from helpItem
-void OpenDataSpaceApp::helpTriggered() {
-	// en: http://www.ssp-europe.eu/en/products/secure-data-space.html
-	// de: http://www.ssp-europe.eu/produkte/secure-data-space.html
-	root->setProperty("helpSheetVisible", true);
+void OpenDataSpace::helpTriggered() {
+	Sheet *s = Application::instance()->scene()->findChild<Sheet*>("helpSheet");
+	if (s) {
+		qDebug() << "help triggered and helpSheet found";
+		s->open();
+	} else {
+		qDebug() << "help triggered, but no helpSheet found";
+	}
 }
 
 // handles SLOT from settingsItem
-void OpenDataSpaceApp::settingsTriggered() {
-	root->setProperty("preferencesSheetVisible", true);
+void OpenDataSpace::settingsTriggered() {
+	Sheet *s = Application::instance()->scene()->findChild<Sheet*>(
+			"preferencesSheet");
+	if (s) {
+		qDebug() << "preferences triggered and preferencesSheet found";
+
+		s->open();
+		s->setProperty("currentLanguage", getCurrentLanguage());
+	} else {
+		qDebug() << "preferences triggered, but no FpreferencesSheet found";
+	}
 }
 
-void OpenDataSpaceApp::onShutterFired() {
+void OpenDataSpace::onShutterFired() {
 	// A cool trick here to play a sound. There is legal requirements in many countries to have a shutter-sound when
 	// taking pictures and we need this is needed if you are planning to submit you're app to app world.
 	soundplayer_play_sound("event_camera_shutter");
 }
 
-void OpenDataSpaceApp::showInPicturesApp(QString fileName) {
+void OpenDataSpace::showInPicturesApp(QString fileName) {
 	// Here we create a invoke request to the pictures app.
 	// we could also ask the system what other applications can
 	// receive something of our mimeType.
@@ -298,13 +323,15 @@ void OpenDataSpaceApp::showInPicturesApp(QString fileName) {
 	invokeRequest.setTarget("sys.pictures.app");
 	invokeRequest.setMimeType("images/jpeg");
 	invokeRequest.setUri(
-			QString("%1%2").arg("photos:").arg(fileName.startsWith("file://") ? fileName.remove(0, 7) : fileName));
+			QString("%1%2").arg("photos:").arg(
+					fileName.startsWith("file://") ?
+							fileName.remove(0, 7) : fileName));
 	qDebug() << "ShowInPicturesApp URI: " << invokeRequest.uri();
 	InvokeManager invokeManager;
 	invokeManager.invoke(invokeRequest);
 }
 
-void OpenDataSpaceApp::showInVideosApp(QString fileName) {
+void OpenDataSpace::showInVideosApp(QString fileName) {
 	// TODO only guessing yet
 	qDebug() << "showInVideoApp called: " + fileName;
 	InvokeRequest invokeRequest;
@@ -312,14 +339,16 @@ void OpenDataSpaceApp::showInVideosApp(QString fileName) {
 	invokeRequest.setTarget("sys.videos.app");
 	invokeRequest.setMimeType("images/mp4");
 	invokeRequest.setUri(
-			QString("%1%2").arg("videos:").arg(fileName.startsWith("file://") ? fileName.remove(0, 7) : fileName));
+			QString("%1%2").arg("videos:").arg(
+					fileName.startsWith("file://") ?
+							fileName.remove(0, 7) : fileName));
 	qDebug() << "showInVideosApp URI: " << invokeRequest.uri();
 	InvokeManager invokeManager;
 	invokeManager.invoke(invokeRequest);
 }
 
 // Invoke other apps using MimeType
-void OpenDataSpaceApp::showInOtherApp(QString fileName) {
+void OpenDataSpace::showInOtherApp(QString fileName) {
 	qDebug() << "showInOtherApp called: " + fileName;
 	FileInfo f;
 	QString m;
@@ -327,7 +356,7 @@ void OpenDataSpaceApp::showInOtherApp(QString fileName) {
 	// TODO guess a  MimeType from suffix
 	if (s == "zip") {
 		m = "application/zip";
-	}else if (s == "pdf") {
+	} else if (s == "pdf") {
 		m = "application/pdf";
 	} else {
 		m = "text/plain";
@@ -336,8 +365,11 @@ void OpenDataSpaceApp::showInOtherApp(QString fileName) {
 	invokeRequest.setAction("bb.action.OPEN");
 	invokeRequest.setMimeType(m);
 	invokeRequest.setUri(
-			QString("%1").arg(fileName.startsWith("file://") ? fileName.remove(0, 7) : fileName));
-	qDebug() << "showInOtherApp URI: " << invokeRequest.uri() << " " << invokeRequest.mimeType();
+			QString("%1").arg(
+					fileName.startsWith("file://") ?
+							fileName.remove(0, 7) : fileName));
+	qDebug() << "showInOtherApp URI: " << invokeRequest.uri() << " "
+			<< invokeRequest.mimeType();
 	InvokeManager invokeManager;
 	invokeManager.invoke(invokeRequest);
 }

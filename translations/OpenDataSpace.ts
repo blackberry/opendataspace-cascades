@@ -260,24 +260,24 @@
     </message>
 </context>
 <context>
-    <name>OpenDataSpaceApp</name>
+    <name>OpenDataSpace</name>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="177"/>
+        <location filename="../src/OpenDataSpace.cpp" line="175"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="180"/>
+        <location filename="../src/OpenDataSpace.cpp" line="178"/>
         <source>Feedback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="183"/>
+        <location filename="../src/OpenDataSpace.cpp" line="181"/>
         <source>Logout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="186"/>
+        <location filename="../src/OpenDataSpace.cpp" line="184"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>

@@ -261,26 +261,45 @@
     </message>
 </context>
 <context>
+    <name>OpenDataSpace</name>
+    <message>
+        <location filename="../src/OpenDataSpace.cpp" line="175"/>
+        <source>Help</source>
+        <translation type="unfinished">Hilfe</translation>
+    </message>
+    <message>
+        <location filename="../src/OpenDataSpace.cpp" line="178"/>
+        <source>Feedback</source>
+        <translation type="unfinished">Kommentare</translation>
+    </message>
+    <message>
+        <location filename="../src/OpenDataSpace.cpp" line="181"/>
+        <source>Logout</source>
+        <translation type="unfinished">Abmelden</translation>
+    </message>
+    <message>
+        <location filename="../src/OpenDataSpace.cpp" line="184"/>
+        <source>Settings</source>
+        <translation type="unfinished">Einstellungen</translation>
+    </message>
+</context>
+<context>
     <name>OpenDataSpaceApp</name>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="177"/>
         <source>Help</source>
-        <translation>Hilfe</translation>
+        <translation type="obsolete">Hilfe</translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="180"/>
         <source>Feedback</source>
-        <translation>Kommentare</translation>
+        <translation type="obsolete">Kommentare</translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="183"/>
         <source>Logout</source>
-        <translation>Abmelden</translation>
+        <translation type="obsolete">Abmelden</translation>
     </message>
     <message>
-        <location filename="../src/opendataspaceapp.cpp" line="186"/>
         <source>Settings</source>
-        <translation>Einstellungen</translation>
+        <translation type="obsolete">Einstellungen</translation>
     </message>
 </context>
 <context>

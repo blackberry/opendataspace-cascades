@@ -1,12 +1,17 @@
-#ifndef OPENDATASPACEAPP_H
-#define OPENDATASPACEAPP_H
+#ifndef OPENDATASPACE_H
+#define OPENDATASPACE_H
 
 #include <QObject>
-#include <QtCore/QMetaType>
-#include <bb/cascades/TabbedPane>
 #include <bb/cascades/Menu>
 #include <bb/cascades/multimedia/Camera>
 #include <bb/cascades/Application>
+#include <bb/cascades/LocaleHandler>
+
+namespace bb {
+namespace cascades {
+class Application;
+}
+}
 
 using namespace bb::cascades;
 using namespace bb::cascades::multimedia;
@@ -14,21 +19,15 @@ using namespace bb::cascades::multimedia;
 /*!
  * @brief Application GUI object
  */
-class OpenDataSpaceApp: public QObject {
+class OpenDataSpace: public QObject {
 Q_OBJECT
 public:
-	OpenDataSpaceApp();
+	OpenDataSpace();
+	virtual ~OpenDataSpace() {
+	}
 
-	/*
-	 * Sets the cascades::Application pointer to allow translation to be
-	 * changed at runtime from the App class.
-	 *
-	 * @param app - the pointer to bb::cascades::Application
-	 * @param translator - pointer to the current translator
-	 * @param locale - the locale the application was launched with
-	 */
-	void setApplication(bb::cascades::Application* app, QTranslator* translator,
-			QString currentLocale);
+	Q_INVOKABLE
+		void initLocalization(QTranslator* translator);
 
 	/*
 	 * Refreshes the UI with the specified locale
@@ -81,10 +80,6 @@ public slots:
 	void localeChanged();
 
 private:
-	Application* m_app;
-
-	TabbedPane *root;
-
 	Camera *camera;
 	Camera *videocamera;
 
@@ -95,7 +90,7 @@ private:
 	ActionItem* m_logoutItem;
 
 	QString m_currentLocale;
-
+	LocaleHandler* m_LocaleHandler;
 	QTranslator* m_translator;
 
 	void translateMenuItems();
@@ -107,4 +102,4 @@ private slots:
 
 };
 
-#endif // ifndef OPENDATASPACEAPP_H
+#endif // ifndef OPENDATASPACE_H
