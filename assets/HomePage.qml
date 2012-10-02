@@ -39,11 +39,8 @@ Page {
         },
         // application supports changing the Orientation
         OrientationHandler {
-            onUiOrientationChanging: {
-                // perhaps an animation later
-            }
-            onUiOrientationChanged: {
-                if (uiOrientation == UiOrientation.Landscape) {
+            onOrientationAboutToChange: {
+                if (orientation == UIOrientation.Landscape) {
                     backgroundImage.image = backgroundLandscape.image
                 } else {
                     backgroundImage.image = backgroundPortrait.image
@@ -83,7 +80,7 @@ Page {
                 id: startupDelayToOpenSheetFirstTime
                 delay: 2000
                 onEnded: {
-                    loginSheet.visible = true
+                    loginSheet.open();
                 }
             }
         ]
@@ -97,9 +94,9 @@ Page {
         // Overlay ActionBar
         homePage.actionBarVisibility = ChromeVisibility.Overlay
         // support all orientations
-        OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
+        //OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
         // test current Orientation and set the Background Image
-        if (OrientationSupport.uiOrientation == UiOrientation.Landscape) {
+        if (OrientationSupport.orientation == UIOrientation.Landscape) {
             backgroundImage.image = backgroundLandscape.image
         } else {
             backgroundImage.image = backgroundPortrait.image

@@ -33,16 +33,12 @@ import "webpages"
 TabbedPane {
     id: rootNavigationPane
     showTabsOnActionBar: true
-    // allow setting these Sheets to visible from C++ (SystemMenu)
-    property alias loginSheetVisible: loginSheet.visible
-    property alias helpSheetVisible: helpSheet.visible
-    property alias preferencesSheetVisible: preferencesSheet.visible
-    property alias feedbackSheetVisible: feedbackSheet.visible
     // these objects have to be available on all tabs
     attachedObjects: [
         // SHEETS to be used by SYSTEM MENU
         Sheet {
             id: loginSheet
+            objectName: "loginSheet"
             //-- sheet GUI appearence component is defined in external LoginSheet.qml file
             content: LoginSheet {
                 id: loginContent
@@ -50,6 +46,7 @@ TabbedPane {
         },
         Sheet {
             id: helpSheet
+            objectName: "helpSheet"
             //-- sheet GUI appearence component is defined in external HelpSheet.qml file
             content: WebPageHelpSheet {
                 id: helpContent
@@ -59,6 +56,7 @@ TabbedPane {
         },
         Sheet {
             id: preferencesSheet
+            objectName: "preferencesSheet"
             //-- sheet GUI appearence component is defined in external PreferencesSheet.qml file
             content: PreferencesSheet {
                 id: preferencesContent
@@ -66,6 +64,7 @@ TabbedPane {
         },
         Sheet {
             id: feedbackSheet
+            objectName: "feedbackSheet"
             //-- sheet GUI appearence component is defined in external PreferencesSheet.qml file
             content: FeedbackSheet {
                 id: feedbackContent
@@ -126,7 +125,7 @@ TabbedPane {
             // TODO bring back the LogIn and perhaps a Dialog
         }
         rootNavigationPane.activeTab = homeTab
-        loginSheet.visible = false
+        loginSheet.close()
     }
     // the handler SLOT if Prefs were saved
     // SIGNALed from PrefrencesSheet
@@ -135,7 +134,7 @@ TabbedPane {
             //-- when sheet is closed with success, changes should be saved
             // TODO
         }
-        preferencesSheet.visible = false
+        preferencesSheet.close()
     }
     // the handler SLOT if Prefs were saved
     // SIGNALed from PrefrencesSheet
@@ -144,13 +143,13 @@ TabbedPane {
             //-- when sheet is closed with success, feedback should be sent
             // TODO
         }
-        feedbackSheet.visible = false
+        feedbackSheet.close()
     }
     
     // the handler  SLOT HELP done
     // SIGNALed from HelpSheet
     function closeHelp(ok) {
-        helpSheet.visible = false
+        helpSheet.close()
     }
     
     // the TabbedPane is initialized, lets do some work at startup
@@ -167,12 +166,7 @@ TabbedPane {
         preferencesContent.done.connect(onSavePreferences)
         //-- connect the preferences save SIGNAL to the handler SLOT
         feedbackContent.send.connect(onSendFeedback)
-        // at startup no Sheets should be visible
         
-        helpSheet.visible = false
-        loginSheet.visible = false
-        preferencesSheet.visible = false
-        feedbackSheet.visible = false
         // but we have to do LogIn at Startup
         // dont want to display the Shee immediately, so using a delayed animation
         // start the animation to open LoginSheet after 1 s

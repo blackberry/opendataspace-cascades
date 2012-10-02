@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2012 SSP Europe GmbH, Munich
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,8 +19,8 @@ import "common"
  * Preferences and Options set by the user
  * 
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
- *
-*/
+ * 
+ */
 
 // we're using a NavigationPane to be able to push/pop Pages with special editors like language selection
 
@@ -57,7 +57,7 @@ NavigationPane {
         }
     ]
     Page {
-        
+
         // seems not to work
         resizeBehavior: PageResizeBehavior.Resize
         titleBar: TitleBar {
@@ -77,7 +77,7 @@ NavigationPane {
                 }
             }
         }
-        // 
+        //
         Container {
             layout: DockLayout {
             }
@@ -86,16 +86,16 @@ NavigationPane {
             Container {
                 id: fieldsContainer
                 layout: StackLayout {
-                    topPadding: 25
-                    leftPadding: 25
-                    rightPadding: 25
-                    layoutDirection: LayoutDirection.TopToBottom
+                    orientation: LayoutOrientation.TopToBottom
                 }
+                topPadding: 25
+                leftPadding: 25
+                rightPadding: 25
                 TextField {
                     id: server
                     text: "https://bb.ods.io/"
                     hintText: qsTr("Server URL") + Retranslate.onLanguageChanged
-                    inputMode: TextFieldInputMode.URL
+                    inputMode: TextFieldInputMode.Url
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText
                     }
@@ -122,7 +122,7 @@ NavigationPane {
                         navigationPane.push(customerSelection)
                     }
                 }
-                
+
                 // Label displays the current Locale
                 Label {
                     id: languageLabel
