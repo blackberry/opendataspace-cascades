@@ -212,32 +212,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/LanguageSelection.qml" line="58"/>
+        <location filename="../assets/common/LanguageSelection.qml" line="56"/>
         <source>German</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/LanguageSelection.qml" line="63"/>
+        <location filename="../assets/common/LanguageSelection.qml" line="61"/>
         <source>English</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/LanguageSelection.qml" line="68"/>
+        <location filename="../assets/common/LanguageSelection.qml" line="66"/>
         <source>Spanish</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/LanguageSelection.qml" line="73"/>
+        <location filename="../assets/common/LanguageSelection.qml" line="71"/>
         <source>French</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/LanguageSelection.qml" line="78"/>
+        <location filename="../assets/common/LanguageSelection.qml" line="76"/>
         <source>Italian</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/LanguageSelection.qml" line="83"/>
+        <location filename="../assets/common/LanguageSelection.qml" line="81"/>
         <source>Russian</source>
         <translation type="unfinished"></translation>
     </message>

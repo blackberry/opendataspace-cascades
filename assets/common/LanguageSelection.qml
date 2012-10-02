@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2012 SSP Europe GmbH, Munich
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,10 +17,10 @@
  * Container to select the language
  * used from a NavigationPane
  * if selection changes a SIGNAL will be sent
- *
+ * 
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
- *
-*/
+ * 
+ */
 
 Page {
     // SIGNAL if language selection changed
@@ -31,68 +31,66 @@ Page {
         title: qsTr("Your Language") + Retranslate.onLanguageChanged
         visibility: ChromeVisibility.Visible
     }
- //   ScrollView {
-     // BUG: if enabling ScrollView all Options are lost - only text visible
+    //   ScrollView {
+    // BUG: if enabling ScrollView all Options are lost - only text visible
+    Container {
+        id: mainContainer
+        layout: DockLayout {
+        }
         Container {
-            id: mainContainer
-            layout: DockLayout {
+            id: languageContainer
+            horizontalAlignment: HorizontalAlignment.Center
+            verticalAlignment: VerticalAlignment.Center
+            layout: StackLayout {
             }
-            Container {
-                id: languageContainer
-                layoutProperties: DockLayoutProperties {
-                    horizontalAlignment: HorizontalAlignment.Center
-                    verticalAlignment: VerticalAlignment.Center
+            leftPadding: 100
+            rightPadding: 100
+            // The Radio Group to select the Language
+            // text is readbale for users
+            // value is locale used to translate
+            RadioGroup {
+                id: languageOptions
+                dividersVisible: false
+                Option {
+                    id: languageDe
+                    text: qsTr("German") + Retranslate.onLanguageChanged
+                    value: "de"
                 }
-                layout: StackLayout {
-                    leftPadding: 100
-                    rightPadding: 100
+                Option {
+                    id: languageEn
+                    text: qsTr("English") + Retranslate.onLanguageChanged
+                    value: "en"
                 }
-                // The Radio Group to select the Language
-                // text is readbale for users
-                // value is locale used to translate
-                RadioGroup {
-                    id: languageOptions
-                    dividersVisible: false
-                    Option {
-                        id: languageDe
-                        text: qsTr("German") + Retranslate.onLanguageChanged
-                        value: "de"
-                    }
-                    Option {
-                        id: languageEn
-                        text: qsTr("English") + Retranslate.onLanguageChanged
-                        value: "en"
-                    }
-                    Option {
-                        id: languageEs
-                        text: qsTr("Spanish") + Retranslate.onLanguageChanged
-                        value: "es"
-                    }
-                    Option {
-                        id: languageFr
-                        text: qsTr("French") + Retranslate.onLanguageChanged
-                        value: "fr"
-                    }
-                    Option {
-                        id: languageIt
-                        text: qsTr("Italian") + Retranslate.onLanguageChanged
-                        value: "it"
-                    }
-                    Option {
-                        id: languageRu
-                        text: qsTr("Russian") + Retranslate.onLanguageChanged
-                        value: "ru"
-                    }
-                    onSelectedIndexChanged: {
-                        console.debug("New language selected: " + languageOptions.selectedValue());
-                        // SIGNAL
-                        languagePage.languageChanged(languageOptions.selectedValue());
-                        ods.updateLocale(languageOptions.selectedValue())
-                    }
+                Option {
+                    id: languageEs
+                    text: qsTr("Spanish") + Retranslate.onLanguageChanged
+                    value: "es"
                 }
-            } // end Container
-        } // end main container
- //   } // end scroll view
+                Option {
+                    id: languageFr
+                    text: qsTr("French") + Retranslate.onLanguageChanged
+                    value: "fr"
+                }
+                Option {
+                    id: languageIt
+                    text: qsTr("Italian") + Retranslate.onLanguageChanged
+                    value: "it"
+                }
+                Option {
+                    id: languageRu
+                    text: qsTr("Russian") + Retranslate.onLanguageChanged
+                    value: "ru"
+                }
+                onSelectedIndexChanged: {
+                    console.debug("New language selected: " + languageOptions.selectedValue);
+                    // SIGNAL
+                    languagePage.languageChanged(languageOptions.selectedValue);
+                    ods.updateLocale(languageOptions.selectedValue)
+                }
+            }
+        } // end Container
+    } // end main container
+    //   } // end scroll view
     // this function will be used to set the initial value of the locale
     function setLanguage(locale) {
         console.debug("initial value of language set: " + locale)
@@ -110,4 +108,5 @@ Page {
             languageOptions.selectedIndex = 1
         }
     }
+    
 }

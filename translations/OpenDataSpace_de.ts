@@ -212,32 +212,32 @@
         <translation>Ihre Sprache</translation>
     </message>
     <message>
-        <location filename="../assets/common/LanguageSelection.qml" line="58"/>
+        <location filename="../assets/common/LanguageSelection.qml" line="56"/>
         <source>German</source>
         <translation>Deutsch</translation>
     </message>
     <message>
-        <location filename="../assets/common/LanguageSelection.qml" line="63"/>
+        <location filename="../assets/common/LanguageSelection.qml" line="61"/>
         <source>English</source>
         <translation>Englisch</translation>
     </message>
     <message>
-        <location filename="../assets/common/LanguageSelection.qml" line="68"/>
+        <location filename="../assets/common/LanguageSelection.qml" line="66"/>
         <source>Spanish</source>
         <translation>Spanisch</translation>
     </message>
     <message>
-        <location filename="../assets/common/LanguageSelection.qml" line="73"/>
+        <location filename="../assets/common/LanguageSelection.qml" line="71"/>
         <source>French</source>
         <translation>Französich</translation>
     </message>
     <message>
-        <location filename="../assets/common/LanguageSelection.qml" line="78"/>
+        <location filename="../assets/common/LanguageSelection.qml" line="76"/>
         <source>Italian</source>
         <translation>Italienisch</translation>
     </message>
     <message>
-        <location filename="../assets/common/LanguageSelection.qml" line="83"/>
+        <location filename="../assets/common/LanguageSelection.qml" line="81"/>
         <source>Russian</source>
         <translation>Russisch</translation>
     </message>
