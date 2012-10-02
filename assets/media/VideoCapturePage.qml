@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2012 SSP Europe GmbH, Munich
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,17 +15,17 @@
  */
 
 /* ideas got from sample PhotoBomber
-* 
-* We use the Camera control from cascades multimedia, it needs to be initiated from C++  
-* code before we can use it though.
-*/import bb.cascades 1.0
+ * 
+ * We use the Camera control from cascades multimedia, it needs to be initiated from C++
+ * code before we can use it though.
+ */import bb.cascades 1.0
 import bb.cascades.multimedia 1.0
 
 /*
  * 
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
- *
-*/
+ * 
+ */
 // WORK IN PROGRESS --- NOT WORKING YET
 
 Page {
@@ -34,7 +34,7 @@ Page {
     actions: [
         ActionItem {
             id: startId
-            title: qsTr("Start")+ Retranslate.onLanguageChanged
+            title: qsTr("Start") + Retranslate.onLanguageChanged
             enabled: true
             imageSource: "asset:///images/ics/9-av-play81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
@@ -46,7 +46,7 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("Stop")+ Retranslate.onLanguageChanged
+            title: qsTr("Stop") + Retranslate.onLanguageChanged
             id: stopId
             enabled: false
             imageSource: "asset:///images/ics/9-av-stop81.png"
@@ -63,10 +63,8 @@ Page {
         layout: DockLayout {
         }
         Container {
-            layoutProperties: DockLayoutProperties {
-                horizontalAlignment: HorizontalAlignment.Fill
-                verticalAlignment: VerticalAlignment.Fill
-            }
+            horizontalAlignment: HorizontalAlignment.Fill
+            verticalAlignment: VerticalAlignment.Fill
             // This is the camera control that is defined in the cascades multimedia library
             Camera {
                 id: videocamera
@@ -77,8 +75,8 @@ Page {
                         startId.enabled = false
                         stopId.enabled = true
                     }
-                } 
-        		             
+                }
+
                 // There are loads of messages we could listen to here
                 //onPhotoSaved and onShutterFired are taken care of in the C code
                 onCameraOpenFailed: {
@@ -96,11 +94,11 @@ Page {
                 onPhotoSaveFailed: {
                     console.log("VideoCapturePage photoSaveFailed signal received with error " + error);
                 }
-                onVideoCaptureFailed:{
+                onVideoCaptureFailed: {
                     console.log("VideoCapturePage videoCaptureFailed signal received with error " + error);
                 }
                 onPhotoSaved: {
-                    // we do a preview             
+                    // we do a preview
                     videocameraCapturePage.previewVideo(fileName)
                 }
             }

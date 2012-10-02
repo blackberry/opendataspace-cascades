@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2012 SSP Europe GmbH, Munich
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,17 +15,17 @@
  */
 
 /* ideas got from sample PhotoBomber
-* 
-* We use the Camera control from cascades multimedia, it needs to be initiated from C++  
-* code before we can use it though.
-*/import bb.cascades 1.0
+ * 
+ * We use the Camera control from cascades multimedia, it needs to be initiated from C++
+ * code before we can use it though.
+ */import bb.cascades 1.0
 import bb.cascades.multimedia 1.0
 
 /*
  * 
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
- *
-*/
+ * 
+ */
 
 Page {
     signal previewImage(string path)
@@ -34,10 +34,8 @@ Page {
         layout: DockLayout {
         }
         Container {
-            layoutProperties: DockLayoutProperties {
-                horizontalAlignment: HorizontalAlignment.Fill
-                verticalAlignment: VerticalAlignment.Fill
-            }
+            horizontalAlignment: HorizontalAlignment.Fill
+            verticalAlignment: VerticalAlignment.Fill
             // This is the camera control that is defined in the cascades multimedia library
             Camera {
                 id: camera
@@ -46,8 +44,8 @@ Page {
                     if (event.isDown()) {
                         capturePhoto();
                     }
-                } 
-        		             
+                }
+
                 // There are loads of messages we could listen to here
                 //onPhotoSaved and onShutterFired are taken care of in the C code
                 onCameraOpenFailed: {
@@ -66,7 +64,7 @@ Page {
                     console.log("photoSaveFailed signal received with error " + error);
                 }
                 onPhotoSaved: {
-                    // we do a preview     
+                    // we do a preview
                     cameraCapturePage.previewImage(fileName)
                 }
             }
@@ -87,7 +85,6 @@ Page {
         console.debug("CameraCapturePage stopODSCamera called")
         camera.stopViewfinder();
         camera.close();
-        
     }
     onCreationCompleted: {
         // the Image from Viewfinder should be visible

@@ -39,13 +39,13 @@ Page {
         },
         // application supports changing the Orientation
         OrientationHandler {
-            onUiOrientationChanged: {
+            onOrientationAboutToChange: {
                 if (uiOrientation == UiOrientation.Landscape) {
                     titleBarId.visibility = ChromeVisibility.Hidden
                     titleLabel.visible = true
-                    imageAndTextContainer.layout.layoutDirection = LayoutDirection.LeftToRight
+                    imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight
                 } else {
-                    imageAndTextContainer.layout.layoutDirection = LayoutDirection.TopToBottom
+                    imageAndTextContainer.layout.orientation = LayoutOrientation.TopToBottom
                     titleBarId.visibility = ChromeVisibility.Visible
                     titleLabel.visible = false
                 }
@@ -74,22 +74,20 @@ Page {
     ]
     Container {
         layout: DockLayout {
-            leftPadding: 25
-            topPadding: 25
         }
+        leftPadding: 25
+                    topPadding: 25
         Container {
             id: imageAndTextContainer
             layout: StackLayout {
-                layoutDirection: LayoutDirection.TopToBottom
+                orientation: LayoutOrientation.TopToBottom
             }
-            layoutProperties: DockLayoutProperties {
-                horizontalAlignment: HorizontalAlignment.Left
-            }
+            horizontalAlignment: HorizontalAlignment.Left
             ImageView {
                 id: previewImage
                 layoutProperties: StackLayoutProperties {
-                    verticalAlignment: VerticalAlignment.Center
                 }
+                verticalAlignment: VerticalAlignment.Center
                 // without this the image would be as large as possible
                 minHeight: 600
                 maxHeight: 600
@@ -102,9 +100,10 @@ Page {
             }
             Container {
                 layout: StackLayout {
-                    layoutDirection: LayoutDirection.TopToBottom
-                    topPadding: 25
+                    orientation: LayoutOrientation.TopToBottom
                 }
+                topPadding: 25
+                
                 Label {
                     id: titleLabel
                     visible: false
@@ -116,9 +115,9 @@ Page {
                 }
                 TextArea {
                     id: filenameInfo
-                    layoutProperties: StackLayoutProperties {
-                        verticalAlignment: VerticalAlignment.Fill
+                    layoutProperties: StackLayoutProperties {   
                     }
+                    verticalAlignment: VerticalAlignment.Fill
                     text: ""
                     enabled: false
                     backgroundVisible: false
@@ -145,9 +144,9 @@ Page {
         if (OrientationSupport.uiOrientation == UiOrientation.Landscape) {
             titleBarId.visibility = ChromeVisibility.Hidden
             titleLabel.visible = true
-            imageAndTextContainer.layout.layoutDirection = LayoutDirection.LeftToRight
+            imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight
         } else {
-            imageAndTextContainer.layout.layoutDirection = LayoutDirection.TopToBottom
+            imageAndTextContainer.layout.orientation = LayoutOrientation.TopToBottom
             titleBarId.visibility = ChromeVisibility.Visible
             titleLabel.visible = false
         }
