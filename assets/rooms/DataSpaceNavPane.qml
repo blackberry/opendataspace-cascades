@@ -181,7 +181,7 @@ NavigationPane {
                 // TODO get from Server
                 dataModel: mockupModel
                 // its the root, only single selction makes sense
-                selectionMode: SelectionMode.Single
+                // TODO selectionMode: SelectionMode.Single
                 
                 // define the appearance
                 listItemComponents: [
@@ -343,7 +343,7 @@ NavigationPane {
     
         // we need this and the entry in bar-descriptor to support all directions
         onCreationCompleted: {
-            OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
+            // OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
             //-- connect the RoomsList openCamera SIGNAL to the handler SLOT
             roomsListPage.openCamera.connect(openCameraPage)
             //-- connect the CameraCapturePage previewImage SIGNAL to the handler SLOT

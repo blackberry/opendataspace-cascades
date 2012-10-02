@@ -232,7 +232,7 @@ Page {
             // TODO get from Server
             dataModel: mockupModel
             // its the root, only single selction makes sense
-            selectionMode: SelectionMode.Single
+            //selectionMode: SelectionMode.Single
             leadingVisual: {
                 // TODO waiting for bugfix
             }
@@ -297,7 +297,7 @@ Page {
                                         ListItemData.name = "renamed"
                                     }
                                 }
-                                deleteAction: DeleteActionItem {
+                                DeleteActionItem {
                                     title: qsTr("Delete") + Retranslate.onLanguageChanged
                                     onTriggered: {
                                         // TODO
@@ -364,7 +364,7 @@ Page {
                                         // TODO
                                     }
                                 }
-                                deleteAction: DeleteActionItem {
+                                DeleteActionItem {
                                     title: qsTr("Delete") + Retranslate.onLanguageChanged
                                     onTriggered: {
                                         // TODO
@@ -467,8 +467,4 @@ Page {
     }
     // TODO localization: loop thru datamodel and localize datetime strings
 
-    // we need this and the entry in bar-descriptor to support all directions
-    onCreationCompleted: {
-        OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
-    }
 }// end page

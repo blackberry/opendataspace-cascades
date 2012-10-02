@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2012 SSP Europe GmbH, Munich
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,10 +16,10 @@
 
 /*
  * Idea based on Cascades Sample CookBook
- *
+ * 
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
- *
-*/
+ * 
+ */
 
 Container {
     layout: DockLayout {
@@ -33,8 +33,8 @@ Container {
         attachedObjects: [
             // application supports changing the Orientation
             OrientationHandler {
-                onUiOrientationChanged: {
-                    if (uiOrientation == UiOrientation.Landscape) {
+                onOrientationAboutToChange: {
+                    if (orientation == UIOrientation.Landscape) {
                         itemBackground.preferredWidth = 1280
                     } else {
                         itemBackground.preferredWidth = 768
@@ -42,7 +42,7 @@ Container {
                 }
             }
         ]
-        
+
         // Item background image.
         ImageView {
             id: itemBackground
@@ -56,38 +56,34 @@ Container {
             opacity: 0.0
             preferredWidth: 760
             preferredHeight: 168
-            layoutProperties: DockLayoutProperties {
-                horizontalAlignment: HorizontalAlignment.Center
-            }
+            horizontalAlignment: HorizontalAlignment.Center
         }
-        
+
         // The Item content an image and a text.
         Container {
             layout: StackLayout {
-                layoutDirection: LayoutDirection.LeftToRight
-                leftPadding: 6
+                orientation: LayoutOrientation.LeftToRight
             }
-            layoutProperties: DockLayoutProperties {
-                horizontalAlignment: HorizontalAlignment.Fill
-                verticalAlignment: VerticalAlignment.Center
-            }
+            leftPadding: 6
+            horizontalAlignment: HorizontalAlignment.Fill
+            verticalAlignment: VerticalAlignment.Center
             ImageView {
                 preferredWidth: 150
                 preferredHeight: 150
                 minWidth: 150
                 // datamodel knows the icon source
                 imageSource: ListItemData.icon
-                layoutProperties: StackLayoutProperties {
-                    verticalAlignment: VerticalAlignment.Center
+                layoutProperties: StackLayoutProperties {  
                 }
+                verticalAlignment: VerticalAlignment.Center
             }
             Container {
                 layout: StackLayout {
-                    layoutDirection: LayoutDirection.TopToBottom
+                    orientation: LayoutOrientation.TopToBottom
                 }
                 layoutProperties: StackLayoutProperties {
-                    verticalAlignment: VerticalAlignment.Center
                 }
+                verticalAlignment: VerticalAlignment.Center
                 leftMargin: 30
                 // TITLE
                 Label {
@@ -101,7 +97,7 @@ Container {
                 // SUBTITLE
                 Label {
                     // numberOfFiles properties from data model
-                    text: qsTr("%1 file(s)","",ListItemData.numberOfFiles).arg(ListItemData.numberOfFiles)  + Retranslate.onLanguageChanged +  " (" + ListItemData.fileSize + " Bytes" + ")"
+                    text: qsTr("%1 file(s)", "", ListItemData.numberOfFiles).arg(ListItemData.numberOfFiles) + Retranslate.onLanguageChanged + " (" + ListItemData.fileSize + " Bytes" + ")"
                     textStyle {
                         base: SystemDefaults.TextStyles.SubtitleText
                         color: Color.Black
@@ -126,7 +122,7 @@ Container {
     // init
     onCreationCompleted: {
         // set to Landscape if aklready in landscape while staring up
-        if (OrientationSupport.uiOrientation == UiOrientation.Landscape) {
+        if (OrientationSupport.orientation == UIOrientation.Landscape) {
             itemBackground.preferredWidth = 1280
         }
     }
