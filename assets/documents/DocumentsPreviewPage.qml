@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2012 SSP Europe GmbH, Munich
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,10 +17,10 @@ import FileInfo 1.0
 /*
  * Video Preview
  * can share the video, do nothing (go back) or upload the video
- *
+ * 
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
- *
-*/
+ * 
+ */
 
 Page {
     property string previewPath
@@ -37,13 +37,13 @@ Page {
         },
         // application supports changing the Orientation
         OrientationHandler {
-            onUiOrientationChanged: {
+            onOrientationAboutToChange: {
                 if (uiOrientation == UiOrientation.Landscape) {
                     titleBarId.visibility = ChromeVisibility.Hidden
                     titleLabel.visible = true
-                    imageAndTextContainer.layout.layoutDirection = LayoutDirection.LeftToRight
+                    imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight
                 } else {
-                    imageAndTextContainer.layout.layoutDirection = LayoutDirection.TopToBottom
+                    imageAndTextContainer.layout.orientation = LayoutOrientation.TopToBottom
                     titleBarId.visibility = ChromeVisibility.Visible
                     titleLabel.visible = false
                 }
@@ -71,13 +71,13 @@ Page {
     ]
     Container {
         layout: DockLayout {
-            leftPadding: 25
-            topPadding: 25
         }
+        leftPadding: 25
+        topPadding: 25
         Container {
             id: imageAndTextContainer
             layout: StackLayout {
-                layoutDirection: LayoutDirection.TopToBottom
+                orientation: LayoutOrientation.TopToBottom
             }
             layoutProperties: DockLayoutProperties {
                 horizontalAlignment: HorizontalAlignment.Left
@@ -85,8 +85,8 @@ Page {
             ImageView {
                 id: previewImage
                 layoutProperties: StackLayoutProperties {
-                    verticalAlignment: VerticalAlignment.Center
                 }
+                verticalAlignment: VerticalAlignment.Center
                 imageSource: "asset:///images/nuvola/document.png"
                 objectName: "previewDocument"
                 minWidth: 128
@@ -95,9 +95,9 @@ Page {
             }
             Container {
                 layout: StackLayout {
-                    layoutDirection: LayoutDirection.TopToBottom
-                    topPadding: 25
+                    orientation: LayoutOrientation.TopToBottom
                 }
+                topPadding: 25
                 Label {
                     id: titleLabel
                     visible: false
@@ -110,8 +110,8 @@ Page {
                 TextArea {
                     id: filenameInfo
                     layoutProperties: StackLayoutProperties {
-                        verticalAlignment: VerticalAlignment.Fill
                     }
+                    verticalAlignment: VerticalAlignment.Fill
                     text: ""
                     enabled: false
                     backgroundVisible: false
@@ -137,9 +137,9 @@ Page {
         if (OrientationSupport.uiOrientation == UiOrientation.Landscape) {
             titleBarId.visibility = ChromeVisibility.Hidden
             titleLabel.visible = true
-            imageAndTextContainer.layout.layoutDirection = LayoutDirection.LeftToRight
+            imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight
         } else {
-            imageAndTextContainer.layout.layoutDirection = LayoutDirection.TopToBottom
+            imageAndTextContainer.layout.orientation = LayoutOrientation.TopToBottom
             titleBarId.visibility = ChromeVisibility.Visible
             titleLabel.visible = false
         }
