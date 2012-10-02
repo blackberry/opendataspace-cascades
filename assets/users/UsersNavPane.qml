@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2012 SSP Europe GmbH, Munich
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,8 +17,8 @@
 /*
  * 
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
- *
-*/
+ * 
+ */
 
 NavigationPane {
     id: navigationPane
@@ -52,7 +52,7 @@ NavigationPane {
                 title: qsTr("Refresh") + Retranslate.onLanguageChanged
                 imageSource: "asset:///images/ics/1-navigation-refresh81.png"
                 ActionBar.placement: ActionBarPlacement.OnBar
-                onTriggered: { 
+                onTriggered: {
                     // TODO call server
                 }
             }
@@ -90,8 +90,8 @@ NavigationPane {
                 // TODO get from Server
                 dataModel: mockupUserModel
                 // its the root, only single selction makes sense
-                selectionMode: SelectionMode.Single
-                
+                // TODO selectionMode: SelectionMode.Single
+
                 // define the appearance
                 listItemComponents: [
                     ListItemComponent {
@@ -163,7 +163,7 @@ NavigationPane {
                                             // TODO
                                         }
                                     }
-                                    deleteAction: DeleteActionItem {
+                                    DeleteActionItem {
                                         title: qsTr("Delete") + Retranslate.onLanguageChanged
                                         onTriggered: {
                                             // TODO
@@ -189,7 +189,7 @@ NavigationPane {
                     }
                     return "header";
                 }
-                                    
+
                 // MOCKUP DATA
                 // After the list is created, add some mockup items
                 // A Admin U USer
@@ -239,7 +239,7 @@ NavigationPane {
         }
         // we need this and the entry in bar-descriptor to support all directions
         onCreationCompleted: {
-            OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
+            //OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
             //-- connect the onUserAdded SIGNAL from AddFolderPage with SLOT folderAdded
             addUserPage.onUserAdded.connect(addUser)
             console.debug("AddUserPage CONNECTED")

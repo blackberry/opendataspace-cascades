@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2012 SSP Europe GmbH, Munich
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,7 +20,7 @@ Page {
     signal onUserAdded(string name, string displayType)
     id: addUserPage
     resizeBehavior: PageResizeBehavior.Resize
-    // 
+    //
     attachedObjects: [
         // a red tile of 16x16 pixels
         ImagePaintDefinition {
@@ -30,10 +30,10 @@ Page {
         },
         // recalculate positions
         OrientationHandler {
-            onUiOrientationChanged: {
+            onOrientationAboutToChange: {
                 // in Landscape we extend the left and right padding
                 // then it'sd easier to scrill with the thumbs without tapping into a field
-                if (uiOrientation == UiOrientation.Landscape) {
+                if (orientation == UIOrientation.Landscape) {
                     userDataContainer.layout.rightPadding = 140
                     userDataContainer.layout.leftPadding = 140
                 } else {
@@ -71,7 +71,7 @@ Page {
     }
     Container {
         id: rootContainer
-        
+
         // Error Assistant
         ErrorAssistant {
             id: dataError
@@ -81,7 +81,7 @@ Page {
             topMargin: 25
             visible: false
         }
-    
+
         // using a ScrollView to manage the fields in Landscape
         ScrollView {
             id: scroll
@@ -127,16 +127,14 @@ Page {
                             }
                         }
                     ]
-                    layoutProperties: DockLayoutProperties {
-                        horizontalAlignment: HorizontalAlignment.Center
-                        verticalAlignment: VerticalAlignment.Center
-                    }
+                    horizontalAlignment: HorizontalAlignment.Center
+                    verticalAlignment: VerticalAlignment.Center
                     layout: StackLayout {
-                        topPadding: 25
-                        leftPadding: 25
-                        rightPadding: 25
-                        layoutDirection: LayoutDirection.TopToBottom
+                        orientation: LayoutOrientation.TopToBottom
                     }
+                    topPadding: 25
+                    leftPadding: 25
+                    rightPadding: 25
                     TextFieldWithMarker {
                         id: emailWithMarker
                         redBarImage: redTile.image
@@ -147,19 +145,19 @@ Page {
                     Container {
                         id: salutationContainer
                         layout: StackLayout {
-                            layoutDirection: LayoutDirection.LeftToRight
-                            leftPadding: 20
+                            orientation: LayoutOrientation.LeftToRight
                         }
+                        leftPadding: 20
                         layoutProperties: StackLayoutProperties {
-                            horizontalAlignment: HorizontalAlignment.Fill
-                            verticalAlignment: VerticalAlignment.Center
                         }
+                        horizontalAlignment: HorizontalAlignment.Fill
+                        verticalAlignment: VerticalAlignment.Center
                         Label {
                             id: salutationLabel
                             layoutProperties: StackLayoutProperties {
-                                verticalAlignment: VerticalAlignment.Center
                                 spaceQuota: 0.8
                             }
+                            verticalAlignment: VerticalAlignment.Center
                             text: qsTr("Salutation") + Retranslate.onLanguageChanged
                             textStyle {
                                 base: SystemDefaults.TextStyles.BodyText
@@ -168,9 +166,9 @@ Page {
                         DropDown {
                             id: saluation
                             layoutProperties: StackLayoutProperties {
-                                verticalAlignment: VerticalAlignment.Center
                                 spaceQuota: 1
                             }
+                            verticalAlignment: VerticalAlignment.Center
                             Option {
                                 text: qsTr("Mr.") + Retranslate.onLanguageChanged
                             }
@@ -196,9 +194,9 @@ Page {
                     }
                     Container {
                         layout: StackLayout {
-                            layoutDirection: LayoutDirection.LeftToRight
-                            topPadding: 20
+                            orientation: LayoutOrientation.LeftToRight
                         }
+                        topPadding: 20
                         TextFieldWithMarker {
                             id: lastNameWithMarker
                             redBarImage: redTile.image
@@ -209,20 +207,20 @@ Page {
                     Container {
                         id: contoTypeContainer
                         layout: StackLayout {
-                            layoutDirection: LayoutDirection.LeftToRight
-                            topPadding: 20
-                            leftPadding: 20
+                            orientation: LayoutOrientation.LeftToRight
                         }
+                        topPadding: 20
+                        leftPadding: 20
                         layoutProperties: StackLayoutProperties {
-                            horizontalAlignment: HorizontalAlignment.Fill
-                            verticalAlignment: VerticalAlignment.Center
                         }
+                        horizontalAlignment: HorizontalAlignment.Fill
+                        verticalAlignment: VerticalAlignment.Center
                         Label {
                             id: contoTypeLabel
                             layoutProperties: StackLayoutProperties {
-                                verticalAlignment: VerticalAlignment.Center
                                 spaceQuota: 0.8
                             }
+                            verticalAlignment: VerticalAlignment.Center
                             text: qsTr("Administrator") + Retranslate.onLanguageChanged
                             textStyle {
                                 base: SystemDefaults.TextStyles.BodyText
@@ -233,9 +231,9 @@ Page {
                             property string displayType: "U"
                             id: isAdmin
                             layoutProperties: StackLayoutProperties {
-                                verticalAlignment: VerticalAlignment.Center
                                 spaceQuota: 0.6
                             }
+                            verticalAlignment: VerticalAlignment.Center
                             checked: false
                             onCheckedChanged: {
                                 // set the custom property
@@ -251,9 +249,9 @@ Page {
                         ImageView {
                             id: contoTypeImage
                             layoutProperties: StackLayoutProperties {
-                                verticalAlignment: VerticalAlignment.Center
                                 spaceQuota: 0.4
                             }
+                            verticalAlignment: VerticalAlignment.Center
                             imageSource: "asset:///images/users-icon.png"
                             scalingMethod: ScalingMethod.AspectFill
                         }
@@ -261,20 +259,20 @@ Page {
                     Container {
                         id: dataRoomContainer
                         layout: StackLayout {
-                            layoutDirection: LayoutDirection.LeftToRight
-                            leftPadding: 20
-                            topPadding: 20
+                            orientation: LayoutOrientation.LeftToRight
                         }
+                        leftPadding: 20
+                        topPadding: 20
                         layoutProperties: StackLayoutProperties {
-                            horizontalAlignment: HorizontalAlignment.Fill
-                            verticalAlignment: VerticalAlignment.Center
                         }
+                        horizontalAlignment: HorizontalAlignment.Fill
+                        verticalAlignment: VerticalAlignment.Center
                         Label {
                             id: dataRoomLabel
                             layoutProperties: StackLayoutProperties {
-                                verticalAlignment: VerticalAlignment.Center
                                 spaceQuota: 0.8
                             }
+                            verticalAlignment: VerticalAlignment.Center
                             text: qsTr("DataRoom") + Retranslate.onLanguageChanged
                             textStyle {
                                 base: SystemDefaults.TextStyles.BodyText
@@ -283,9 +281,9 @@ Page {
                         DropDown {
                             id: dataRoom
                             layoutProperties: StackLayoutProperties {
-                                verticalAlignment: VerticalAlignment.Center
                                 spaceQuota: 1
                             }
+                            verticalAlignment: VerticalAlignment.Center
                             Option {
                                 text: "Berlin"
                             }
@@ -298,7 +296,7 @@ Page {
                             selectedIndex: 0
                         }
                     } // end dataRoomContainer
-            
+
                     // todo rights usermanagement
                 } // end Container
             } // end main container
@@ -312,7 +310,7 @@ Page {
     }
     onCreationCompleted: {
         // initialize positioning
-        if (OrientationSupport.uiOrientation == UiOrientation.Landscape) {
+        if (OrientationSupport.orientation == UIOrientation.Landscape) {
             userDataContainer.layout.rightPadding = 140
             userDataContainer.layout.leftPadding = 140
         } else {
