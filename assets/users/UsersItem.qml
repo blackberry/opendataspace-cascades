@@ -27,9 +27,7 @@ Container {
     Container {
         layout: DockLayout {
         }
-        layoutProperties: DockLayoutProperties {
-            horizontalAlignment: HorizontalAlignment.Center
-        }
+        horizontalAlignment: HorizontalAlignment.Center
         attachedObjects: [
             // application supports changing the Orientation
             OrientationHandler {
@@ -65,10 +63,8 @@ Container {
                 orientation: LayoutOrientation.LeftToRight
             }
             leftPadding: 6
-            layoutProperties: DockLayoutProperties {
-                horizontalAlignment: HorizontalAlignment.Fill
-                verticalAlignment: VerticalAlignment.Center
-            }
+            horizontalAlignment: HorizontalAlignment.Fill
+            verticalAlignment: VerticalAlignment.Center
             ImageView {
                 id: itemIcon
                 preferredWidth: 150

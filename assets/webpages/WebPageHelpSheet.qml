@@ -44,7 +44,7 @@ Page {
         },
         ActionItem {
             id: ekke
-            title: qsTr("Beta2") + Retranslate.onLanguageChanged
+            title: qsTr("Beta3") + Retranslate.onLanguageChanged
             enabled: true
             ActionBar.placement: ActionBarPlacement.OnBar
             // we reset the URL
@@ -55,7 +55,7 @@ Page {
         },
         ActionItem {
             title: qsTr("Close") + Retranslate.onLanguageChanged
-            ActionBar.placement: ActionBarPlacement.Default
+            ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 helpDone(true)
             }
