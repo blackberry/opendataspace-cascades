@@ -95,13 +95,13 @@ Page {
                 }
                 onLoadingChanged: {
                     // just started to load
-                    if (loadRequest.status == WebView.LoadStartedStatus) {
+                    if (loadRequest.status == WebLoadStatus.Started) {
                         // Show the ProgressBar when loading started.
                         myIndicator.visible = true
-                    } else if (loadRequest.status == WebView.LoadSucceededStatus) {
+                    } else if (loadRequest.status == WebLoadStatus.Succeeded) {
                         myIndicator.visible = false
                         // uuuups we failed  - give the user a notice
-                    } else if (loadRequest.status == WebView.LoadFailedStatus) {
+                    } else if (loadRequest.status == WebLoadStatus.Failed) {
                         // If loading failed fallback to inline HTML, by setting the HTML property.                     
                         html = "<html><head><title>Fallback HTML on Loading Failed</title><style>* { margin: 0px; padding 0px; }body { font-size: 48px; font-family: monospace; border: 1px solid #444; padding: 4px; }</style> </head> <body>Oh ooh, loading failed. Perhaps you are not connected to the Internet?.</body></html>"
                         myIndicator.visible = false
