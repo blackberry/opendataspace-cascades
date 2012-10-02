@@ -38,7 +38,7 @@ Page {
         // application supports changing the Orientation
         OrientationHandler {
             onOrientationAboutToChange: {
-                if (uiOrientation == UiOrientation.Landscape) {
+                if (orientation == UIOrientation.Landscape) {
                     titleBarId.visibility = ChromeVisibility.Hidden
                     titleLabel.visible = true
                     imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight
@@ -134,7 +134,7 @@ Page {
     // in landscape we change the stack layout direction and hide the titlebar
     onCreationCompleted: {
         // initial setup for orientation
-        if (OrientationSupport.uiOrientation == UiOrientation.Landscape) {
+        if (OrientationSupport.orientation == UIOrientation.Landscape) {
             titleBarId.visibility = ChromeVisibility.Hidden
             titleLabel.visible = true
             imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight

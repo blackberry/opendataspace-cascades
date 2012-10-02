@@ -38,7 +38,7 @@ Page {
         // application supports changing the Orientation
         OrientationHandler {
             onOrientationAboutToChange: {
-                if (uiOrientation == UiOrientation.Landscape) {
+                if (orientation == UIOrientation.Landscape) {
                     titleBarId.visibility = ChromeVisibility.Hidden
                     titleLabel.visible = true
                     imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight
@@ -86,7 +86,7 @@ Page {
                 id: previewImage
                 layoutProperties: StackLayoutProperties {
                 }
-                 verticalAlignment: VerticalAlignment.Center
+                verticalAlignment: VerticalAlignment.Center
                 imageSource: "asset:///images/nuvola/pdf.png"
                 objectName: "previewPdf"
                 minWidth: 128
@@ -96,7 +96,6 @@ Page {
             Container {
                 layout: StackLayout {
                     orientation: LayoutOrientation.TopToBottom
-                    
                 }
                 topPadding: 25
                 Label {
@@ -110,7 +109,7 @@ Page {
                 }
                 TextArea {
                     id: filenameInfo
-                    layoutProperties: StackLayoutProperties {   
+                    layoutProperties: StackLayoutProperties {
                     }
                     verticalAlignment: VerticalAlignment.Fill
                     text: ""
@@ -135,7 +134,7 @@ Page {
     // in landscape we change the stack layout direction and hide the titlebar
     onCreationCompleted: {
         // initial setup for orientation
-        if (OrientationSupport.uiOrientation == UiOrientation.Landscape) {
+        if (OrientationSupport.orientation == UIOrientation.Landscape) {
             titleBarId.visibility = ChromeVisibility.Hidden
             titleLabel.visible = true
             imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight
