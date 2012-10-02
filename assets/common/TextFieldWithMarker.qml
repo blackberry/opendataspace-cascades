@@ -29,7 +29,7 @@ Container {
     property alias textFieldInputMode : textField.inputMode
     id: textWithMarkerContainer
     layout: StackLayout {
-        layoutDirection: LayoutDirection.LeftToRight
+        orientation: LayoutOrientation.LeftToRight
     }
     // the Marker Image
     ImageView {
@@ -39,9 +39,9 @@ Container {
         minWidth: 16
         rightMargin: 0
         leftMargin: 0
-        layoutProperties: StackLayoutProperties {
-            verticalAlignment: VerticalAlignment.Fill
+        layoutProperties: StackLayoutProperties {  
         }
+        verticalAlignment: VerticalAlignment.Fill
     }
     TextField {
         id: textField
