@@ -38,15 +38,8 @@ Page {
         // application supports changing the Orientation
         OrientationHandler {
             onOrientationAboutToChange: {
-                if (orientation == UIOrientation.Landscape) {
-                    titleBarId.visibility = ChromeVisibility.Hidden
-                    titleLabel.visible = true
-                    imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight
-                } else {
-                    imageAndTextContainer.layout.orientation = LayoutOrientation.TopToBottom
-                    titleBarId.visibility = ChromeVisibility.Visible
-                    titleLabel.visible = false
-                }
+                console.debug("UnknownPreview: onOrientationAboutToChange")
+                previewPage.reLayout(orientation);
             }
         }
     ]
@@ -69,58 +62,62 @@ Page {
             }
         }
     ]
-    Container {
-        layout: DockLayout {
-        }
-        leftPadding: 25
-        topPadding: 25
+    ScrollView {
         Container {
-            id: imageAndTextContainer
-            layout: StackLayout {
-                orientation: LayoutOrientation.TopToBottom
+            layout: DockLayout {
             }
-            horizontalAlignment: HorizontalAlignment.Left
-            ImageView {
-                id: previewImage
-                layoutProperties: StackLayoutProperties {
-                }
-                verticalAlignment: VerticalAlignment.Center
-                imageSource: "asset:///images/nuvola/unknown.png"
-                objectName: "previewUnknown"
-                minWidth: 128
-                minHeight: 128
-                //scalingMethod: ScalingMethod.AspectFit
-            }
+            leftPadding: 25
+            topPadding: 25
+            bottomPadding: 25
             Container {
+                id: imageAndTextContainer
                 layout: StackLayout {
                     orientation: LayoutOrientation.TopToBottom
                 }
-                topPadding: 25
-                Label {
-                    id: titleLabel
-                    visible: false
-                    bottomMargin: 25
-                    textStyle {
-                        base: SystemDefaults.TextStyles.TitleText
-                        color: Color.Black
-                    }
-                }
-                TextArea {
-                    id: filenameInfo
+                horizontalAlignment: HorizontalAlignment.Left
+                ImageView {
+                    id: previewImage
+                    objectName: "previewUnknown"
                     layoutProperties: StackLayoutProperties {
                     }
-                    verticalAlignment: VerticalAlignment.Fill
-                    text: ""
-                    enabled: false
-                    backgroundVisible: false
-                    textStyle {
-                        base: SystemDefaults.TextStyles.BodyText
-                        color: Color.Black
+                    verticalAlignment: VerticalAlignment.Center
+                    imageSource: "asset:///images/nuvola/unknown.png"
+                    minWidth: 128
+                    minHeight: 128
+                    //scalingMethod: ScalingMethod.AspectFit
+                }
+                Container {
+                    layout: StackLayout {
+                        orientation: LayoutOrientation.TopToBottom
+                    }
+                    topPadding: 25
+                    rightPadding: 25
+                    Label {
+                        id: titleLabel
+                        visible: false
+                        bottomMargin: 25
+                        textStyle {
+                            base: SystemDefaults.TextStyles.TitleText
+                            color: Color.Black
+                        }
+                    }
+                    TextArea {
+                        id: filenameInfo
+                        layoutProperties: StackLayoutProperties {
+                        }
+                        verticalAlignment: VerticalAlignment.Fill
+                        text: ""
+                        enabled: false
+                        backgroundVisible: false
+                        textStyle {
+                            base: SystemDefaults.TextStyles.SmallText
+                            color: Color.Black
+                        }
                     }
                 }
             }
-        }
-    }
+        } // end main container
+    } // scroll view
     function recalculateValues(name) {
         titleBarId.title = fileInfo.getShortName(name);
         titleLabel.text = titleBarId.title;
@@ -128,18 +125,28 @@ Page {
         filenameInfo.text = fileInfo.getDetailedInfo(ods.getCurrentLocale(), name) + "\n"; //workaround bug in landscape: last line not visible
         filenameInfo.enabled = false;
     }
+    // redesign if orientation changed
+    function reLayout(orientation) {
+        if (orientation == UIOrientation.Landscape) {
+            console.debug("UnknownPreview: reLayout to LANDSCAPE")
+            titleBar.visibility = ChromeVisibility.Hidden
+            titleLabel.visible = true
+            imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight
+            previewImage.horizontalAlignment = HorizontalAlignment.Left
+            console.debug("UnknownPreview: reLayout to LANDSCAPE DONE")
+        } else {
+            console.debug("UnknownPreview: reLayout to PORTRAIT")
+            titleBar.visibility = ChromeVisibility.Visible
+            titleLabel.visible = false
+            imageAndTextContainer.layout.orientation = LayoutOrientation.TopToBottom
+            previewImage.horizontalAlignment = HorizontalAlignment.Center
+            console.debug("UnknownPreview: reLayout to PORTRAIT DONE")
+        }
+    }
     // TODO Landscape hide Actionbar if no activity
     // in landscape we change the stack layout direction and hide the titlebar
     onCreationCompleted: {
         // initial setup for orientation
-        if (OrientationSupport.orientation == UIOrientation.Landscape) {
-            titleBarId.visibility = ChromeVisibility.Hidden
-            titleLabel.visible = true
-            imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight
-        } else {
-            imageAndTextContainer.layout.orientation = LayoutOrientation.TopToBottom
-            titleBarId.visibility = ChromeVisibility.Visible
-            titleLabel.visible = false
-        }
+        reLayout(OrientationSupport.orientation);
     }
 }

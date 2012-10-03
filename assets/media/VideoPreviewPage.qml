@@ -38,15 +38,8 @@ Page {
         // application supports changing the Orientation
         OrientationHandler {
             onOrientationAboutToChange: {
-                if (orientation == UIOrientation.Landscape) {
-                    titleBarId.visibility = ChromeVisibility.Hidden
-                    titleLabel.visible = true
-                    imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight
-                } else {
-                    imageAndTextContainer.layout.orientation = LayoutOrientation.TopToBottom
-                    titleBarId.visibility = ChromeVisibility.Visible
-                    titleLabel.visible = false
-                }
+                console.debug("VideoPreview: onOrientationAboutToChange")
+                previewPage.reLayout(orientation);
             }
         }
     ]
@@ -70,11 +63,13 @@ Page {
             }
         }
     ]
+    ScrollView {
     Container {
         layout: DockLayout {
         }
         leftPadding: 25
         topPadding: 25
+        bottomPadding: 25
         Container {
             id: imageAndTextContainer
             layout: StackLayout {
@@ -83,11 +78,11 @@ Page {
             horizontalAlignment: HorizontalAlignment.Left
             ImageView {
                 id: previewImage
+                objectName: "previewVideo"
                 layoutProperties: StackLayoutProperties {
                 }
                 verticalAlignment: VerticalAlignment.Center
                 imageSource: "asset:///images/nuvola/video.png"
-                objectName: "previewVideo"
                 minWidth: 128
                 minHeight: 128
                 //scalingMethod: ScalingMethod.AspectFit
@@ -97,6 +92,7 @@ Page {
                     orientation: LayoutOrientation.TopToBottom
                 }
                 topPadding: 25
+                rightPadding: 25
                 Label {
                     id: titleLabel
                     visible: false
@@ -115,32 +111,49 @@ Page {
                     enabled: false
                     backgroundVisible: false
                     textStyle {
-                        base: SystemDefaults.TextStyles.BodyText
+                        base: SystemDefaults.TextStyles.SmallText
                         color: Color.Black
                     }
                 }
             }
         }
-    }
+    } // end maincontainer
+} // end scrollview
     function recalculateValues(name) {
-        titleBarId.title = fileInfo.getShortName(name);
-        titleLabel.text = titleBarId.title;
+        titleBar.title = fileInfo.getShortName(name);
+        titleLabel.text = titleBar.title;
         filenameInfo.enabled = true;
-        filenameInfo.text = fileInfo.getDetailedInfo(ods.getCurrentLocale(), name) + "\n"; //workaround bug in landscape: last line not visible
+        filenameInfo.text = fileInfo.getDetailedInfo(ods.getCurrentLocale(), name); 
         filenameInfo.enabled = false;
     }
+    // redesign if orientation changed
+        function reLayout(orientation) {
+            if (orientation == UIOrientation.Landscape) {
+                console.debug("ImagePreview: reLayout to LANDSCAPE")
+                titleBar.visibility = ChromeVisibility.Hidden
+                titleLabel.visible = true
+                imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight
+                previewImage.horizontalAlignment = HorizontalAlignment.Left
+                previewImage.minHeight = 580
+                previewImage.maxHeight = 580
+                previewImage.maxWidth = 640
+                console.debug("ImagePreview: reLayout to LANDSCAPE DONE")
+            } else {
+                console.debug("ImagePreview: reLayout to PORTRAIT")
+                titleBar.visibility = ChromeVisibility.Visible
+                titleLabel.visible = false
+                imageAndTextContainer.layout.orientation = LayoutOrientation.TopToBottom
+                previewImage.horizontalAlignment = HorizontalAlignment.Center
+                previewImage.minHeight = 620
+                previewImage.maxHeight = 620
+                previewImage.maxWidth = 720
+                console.debug("ImagePreview: reLayout to PORTRAIT DONE")
+            }
+        }
     // TODO Landscape hide Actionbar if no activity
     // in landscape we change the stack layout direction and hide the titlebar
     onCreationCompleted: {
         // initial setup for orientation
-        if (OrientationSupport.orientation == UIOrientation.Landscape) {
-            titleBarId.visibility = ChromeVisibility.Hidden
-            titleLabel.visible = true
-            imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight
-        } else {
-            imageAndTextContainer.layout.orientation = LayoutOrientation.TopToBottom
-            titleBarId.visibility = ChromeVisibility.Visible
-            titleLabel.visible = false
-        }
+        reLayout(OrientationSupport.orientation);
     }
 }

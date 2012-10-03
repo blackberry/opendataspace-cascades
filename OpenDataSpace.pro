@@ -2,7 +2,7 @@ TEMPLATE = app
 TARGET = OpenDataSpace
 
 CONFIG += qt warn_on debug_and_release cascades
-LIBS += -lcamapi -lscreen  -lbbcascadesmultimedia -lbbsystem -lbbsystemlocale -lbbplatform
+LIBS += -lcamapi -lscreen  -lbbcascadesmultimedia -lbbsystem -lbbsystemlocale -lbbplatform -lbbpim -lbbdata -lbbcascadespicker
 
 INCLUDEPATH += ../src
 SOURCES += ../src/*.cpp

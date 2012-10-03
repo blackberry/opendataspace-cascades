@@ -111,12 +111,12 @@
         <translation type="unfinished">anteprima</translation>
     </message>
     <message>
-        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="55"/>
+        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="48"/>
         <source>Share</source>
         <translation type="unfinished">quota</translation>
     </message>
     <message>
-        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="64"/>
+        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="57"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -194,12 +194,12 @@
         <translation type="unfinished">anteprima</translation>
     </message>
     <message>
-        <location filename="../assets/media/ImagePreviewPage.qml" line="57"/>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="50"/>
         <source>Share</source>
         <translation type="unfinished">quota</translation>
     </message>
     <message>
-        <location filename="../assets/media/ImagePreviewPage.qml" line="67"/>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="60"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -302,12 +302,12 @@
         <translation type="unfinished">anteprima</translation>
     </message>
     <message>
-        <location filename="../assets/documents/PdfPreviewPage.qml" line="55"/>
+        <location filename="../assets/documents/PdfPreviewPage.qml" line="48"/>
         <source>Share</source>
         <translation type="unfinished">quota</translation>
     </message>
     <message>
-        <location filename="../assets/documents/PdfPreviewPage.qml" line="64"/>
+        <location filename="../assets/documents/PdfPreviewPage.qml" line="57"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -536,12 +536,12 @@
         <translation type="unfinished">anteprima</translation>
     </message>
     <message>
-        <location filename="../assets/documents/UnknownPreviewPage.qml" line="55"/>
+        <location filename="../assets/documents/UnknownPreviewPage.qml" line="48"/>
         <source>Share</source>
         <translation type="unfinished">quota</translation>
     </message>
     <message>
-        <location filename="../assets/documents/UnknownPreviewPage.qml" line="64"/>
+        <location filename="../assets/documents/UnknownPreviewPage.qml" line="57"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -621,12 +621,12 @@
         <translation type="unfinished">anteprima</translation>
     </message>
     <message>
-        <location filename="../assets/media/VideoPreviewPage.qml" line="55"/>
+        <location filename="../assets/media/VideoPreviewPage.qml" line="48"/>
         <source>Share</source>
         <translation type="unfinished">quota</translation>
     </message>
     <message>
-        <location filename="../assets/media/VideoPreviewPage.qml" line="65"/>
+        <location filename="../assets/media/VideoPreviewPage.qml" line="58"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -661,12 +661,12 @@
         <translation type="unfinished">anteprima</translation>
     </message>
     <message>
-        <location filename="../assets/documents/ZipPreviewPage.qml" line="55"/>
+        <location filename="../assets/documents/ZipPreviewPage.qml" line="48"/>
         <source>Share</source>
         <translation type="unfinished">quota</translation>
     </message>
     <message>
-        <location filename="../assets/documents/ZipPreviewPage.qml" line="64"/>
+        <location filename="../assets/documents/ZipPreviewPage.qml" line="57"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>

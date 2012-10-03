@@ -34,11 +34,11 @@ Page {
                 // in Landscape we extend the left and right padding
                 // then it'sd easier to scrill with the thumbs without tapping into a field
                 if (orientation == UIOrientation.Landscape) {
-                    userDataContainer.layout.rightPadding = 140
-                    userDataContainer.layout.leftPadding = 140
+                    userDataContainer.rightPadding = 140
+                    userDataContainer.leftPadding = 140
                 } else {
-                    userDataContainer.layout.rightPadding = 25
-                    userDataContainer.layout.leftPadding = 25
+                    userDataContainer.rightPadding = 25
+                    userDataContainer.leftPadding = 25
                 }
             }
         }
@@ -311,11 +311,11 @@ Page {
     onCreationCompleted: {
         // initialize positioning
         if (OrientationSupport.orientation == UIOrientation.Landscape) {
-            userDataContainer.layout.rightPadding = 140
-            userDataContainer.layout.leftPadding = 140
+            userDataContainer.rightPadding = 140
+            userDataContainer.leftPadding = 140
         } else {
-            userDataContainer.layout.rightPadding = 25
-            userDataContainer.layout.leftPadding = 25
+            userDataContainer.rightPadding = 25
+            userDataContainer.leftPadding = 25
         }
         clearFields();
         console.debug("AddUserPage INIT done")
