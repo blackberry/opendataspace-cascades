@@ -264,22 +264,22 @@
 <context>
     <name>OpenDataSpace</name>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="175"/>
+        <location filename="../src/OpenDataSpace.cpp" line="174"/>
         <source>Help</source>
         <translation type="unfinished">Помогите</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="178"/>
+        <location filename="../src/OpenDataSpace.cpp" line="177"/>
         <source>Feedback</source>
         <translation type="unfinished">обратная связь</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="181"/>
+        <location filename="../src/OpenDataSpace.cpp" line="180"/>
         <source>Logout</source>
         <translation type="unfinished">Выйти</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="184"/>
+        <location filename="../src/OpenDataSpace.cpp" line="183"/>
         <source>Settings</source>
         <translation type="unfinished">настройки</translation>
     </message>
@@ -324,77 +324,82 @@
 <context>
     <name>PreferencesSheet</name>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="65"/>
+        <location filename="../assets/PreferencesSheet.qml" line="63"/>
         <source>Preferences</source>
         <translation type="unfinished">Предпочтения</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="68"/>
+        <location filename="../assets/PreferencesSheet.qml" line="66"/>
         <source>Cancel</source>
         <translation type="unfinished">отменить</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="74"/>
+        <location filename="../assets/PreferencesSheet.qml" line="72"/>
         <source>Save</source>
         <translation type="unfinished">экономить</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="97"/>
+        <location filename="../assets/PreferencesSheet.qml" line="95"/>
         <source>Server URL</source>
         <translation type="unfinished">сервер URL</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="105"/>
+        <location filename="../assets/PreferencesSheet.qml" line="103"/>
         <source>User email address</source>
         <translation type="unfinished">Адрес электронной почты пользователя</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="149"/>
+        <location filename="../assets/PreferencesSheet.qml" line="127"/>
+        <source>Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/PreferencesSheet.qml" line="145"/>
         <source>of</source>
         <translation type="unfinished">из</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="149"/>
+        <location filename="../assets/PreferencesSheet.qml" line="145"/>
         <source>Memory used</source>
         <translation type="unfinished">Память, используемая</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="161"/>
+        <location filename="../assets/PreferencesSheet.qml" line="157"/>
         <source>Files to upload</source>
         <translation type="unfinished">Файлы для загрузки</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="172"/>
+        <location filename="../assets/PreferencesSheet.qml" line="168"/>
         <source>Version %1</source>
         <translation type="unfinished">версия %1</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="187"/>
+        <location filename="../assets/PreferencesSheet.qml" line="182"/>
         <source>German</source>
         <translation type="unfinished">немецкий</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="189"/>
+        <location filename="../assets/PreferencesSheet.qml" line="184"/>
         <source>French</source>
         <translation type="unfinished">французский</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="191"/>
+        <location filename="../assets/PreferencesSheet.qml" line="186"/>
         <source>Spanish</source>
         <translation type="unfinished">испанский</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="193"/>
+        <location filename="../assets/PreferencesSheet.qml" line="188"/>
         <source>Italian</source>
         <translation type="unfinished">итальянский</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="195"/>
+        <location filename="../assets/PreferencesSheet.qml" line="190"/>
         <source>Russian</source>
         <translation type="unfinished">русский</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="197"/>
+        <location filename="../assets/PreferencesSheet.qml" line="192"/>
         <source>English</source>
         <translation type="unfinished">английский</translation>
     </message>

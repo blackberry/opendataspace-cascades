@@ -27,12 +27,12 @@ Page {
     signal languageChanged(string locale)
     id: languagePage
     titleBar: TitleBar {
-        id: addBar
+        id: titleBar
         title: qsTr("Your Language") + Retranslate.onLanguageChanged
         visibility: ChromeVisibility.Visible
     }
-    //   ScrollView {
-    // BUG: if enabling ScrollView all Options are lost - only text visible
+    // need a scrollview to be able to select all in landscape
+ScrollView {
     Container {
         id: mainContainer
         layout: DockLayout {
@@ -85,12 +85,13 @@ Page {
                     console.debug("New language selected: " + languageOptions.selectedValue);
                     // SIGNAL
                     languagePage.languageChanged(languageOptions.selectedValue);
+                    // trigger update locale
                     ods.updateLocale(languageOptions.selectedValue)
                 }
             }
         } // end Container
     } // end main container
-    //   } // end scroll view
+  } // end scroll view
     // this function will be used to set the initial value of the locale
     function setLanguage(locale) {
         console.debug("initial value of language set: " + locale)

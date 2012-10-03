@@ -27,8 +27,6 @@ import "common"
 NavigationPane {
     // SIGNAL
     signal done(bool ok)
-    // the current locale - can be set from outside
-    property string currentLanguage: "en"
     // the current customer - can be set from outside
     property string currentCustomer: "Musterfirma GmbH"
     id: navigationPane
@@ -126,16 +124,14 @@ NavigationPane {
                 // Label displays the current Locale
                 Label {
                     id: languageLabel
-                    //gets the actual language but too early, so its always english
-                    // TODO
-                    text: ods.getCurrentLanguage()
+                    text: qsTr("Language")  + Retranslate.onLanguageChanged
                     leftMargin: 20
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText
                     }
                     // open the language editor
                     onTouch: {
-                        languageSelection.setLanguage(navigationPane.currentLanguage)
+                        languageSelection.setLanguage(ods.getCurrentLocale())
                         navigationPane.push(languageSelection)
                     }
                 }
@@ -182,7 +178,6 @@ NavigationPane {
     // SLOTS
     function newLanguage(locale) {
         console.debug("new locale: " + locale)
-        navigationPane.currentLanguage = locale
         if (locale == "de" || locale == "de_DE") {
             languageLabel.text = qsTr("German") + Retranslate.onLanguageChanged
         } else if (locale == "fr") {
@@ -204,7 +199,6 @@ NavigationPane {
     }
     onCreationCompleted: {
         //-- connect the preferences save SIGNAL to the handler SLOT
-        languageSelection.languageChanged.connect(navigationPane.newLanguage)
         customerSelection.customerChanged.connect(navigationPane.newCustomer)
         // init values
         usedMem.setRedGreen(257, 2000);

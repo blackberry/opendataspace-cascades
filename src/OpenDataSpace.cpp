@@ -131,7 +131,6 @@ void OpenDataSpace::initLocalization(QTranslator* translator) {
 
 	// watch if user changes locale from device settings
 	m_LocaleHandler = new LocaleHandler(this);
-
 	// connect the handler
 	connect(m_LocaleHandler, SIGNAL(systemLanguageChanged()), this,
 			SLOT(localeChanged()));
@@ -298,9 +297,8 @@ void OpenDataSpace::settingsTriggered() {
 			"preferencesSheet");
 	if (s) {
 		qDebug() << "preferences triggered and preferencesSheet found";
-
 		s->open();
-		s->setProperty("currentLanguage", getCurrentLanguage());
+
 	} else {
 		qDebug() << "preferences triggered, but no FpreferencesSheet found";
 	}
