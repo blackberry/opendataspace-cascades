@@ -623,13 +623,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/webpages/WebPageHelpSheet.qml" line="57"/>
-        <source>Close</source>
+        <location filename="../assets/webpages/WebPageHelpSheet.qml" line="47"/>
+        <source>Beta3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/webpages/WebPageHelpSheet.qml" line="47"/>
-        <source>Beta2</source>
+        <location filename="../assets/webpages/WebPageHelpSheet.qml" line="57"/>
+        <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

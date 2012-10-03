@@ -153,7 +153,7 @@ void OpenDataSpace::updateLocale(QString locale) {
 		m_currentLocale = locale;
 
 		qDebug() << "updating UI to language: " << m_currentLocale;
-		QString filename = QString("Conference2Go_%1").arg(m_currentLocale);
+		QString filename = QString("OpenDataSpace_%1").arg(m_currentLocale);
 		if (m_translator->load(filename, "app/native/qm")) {
 			// multiple translators can be installed but for this
 			// app we only use one translator instance for brevity

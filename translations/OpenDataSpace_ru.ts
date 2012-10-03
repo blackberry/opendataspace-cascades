@@ -648,14 +648,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../assets/webpages/WebPageHelpSheet.qml" line="47"/>
+        <source>Beta3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../assets/webpages/WebPageHelpSheet.qml" line="57"/>
         <source>Close</source>
         <translation type="unfinished">близко</translation>
-    </message>
-    <message>
-        <location filename="../assets/webpages/WebPageHelpSheet.qml" line="47"/>
-        <source>Beta2</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

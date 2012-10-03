@@ -118,7 +118,7 @@
     <message>
         <location filename="../assets/documents/DocumentsPreviewPage.qml" line="64"/>
         <source>Upload</source>
-        <translation type="unfinished">Upload</translation>
+        <translation>Hochladen</translation>
     </message>
 </context>
 <context>
@@ -265,22 +265,22 @@
     <message>
         <location filename="../src/OpenDataSpace.cpp" line="175"/>
         <source>Help</source>
-        <translation type="unfinished">Hilfe</translation>
+        <translation>Hilfe</translation>
     </message>
     <message>
         <location filename="../src/OpenDataSpace.cpp" line="178"/>
         <source>Feedback</source>
-        <translation type="unfinished">Kommentare</translation>
+        <translation>Kommentar</translation>
     </message>
     <message>
         <location filename="../src/OpenDataSpace.cpp" line="181"/>
         <source>Logout</source>
-        <translation type="unfinished">Abmelden</translation>
+        <translation>Abmelden</translation>
     </message>
     <message>
         <location filename="../src/OpenDataSpace.cpp" line="184"/>
         <source>Settings</source>
-        <translation type="unfinished">Einstellungen</translation>
+        <translation>Einstellungen</translation>
     </message>
 </context>
 <context>
@@ -465,7 +465,7 @@
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="268"/>
         <source>ODS Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>ODS Ordner</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="277"/>
@@ -494,7 +494,7 @@
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="317"/>
         <source>ODS File</source>
-        <translation type="unfinished"></translation>
+        <translation>ODS Datei</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="319"/>
@@ -517,7 +517,7 @@
     <message numerus="yes">
         <location filename="../assets/rooms/SubRoomsItem.qml" line="98"/>
         <source>%1 file(s)</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1 Datei</numerusform>
             <numerusform>%1 Dateien</numerusform>
         </translation>
@@ -643,17 +643,17 @@
     <message>
         <location filename="../assets/webpages/WebPageHelpSheet.qml" line="36"/>
         <source>ODS Homepage</source>
+        <translation>ODS Webseite</translation>
+    </message>
+    <message>
+        <location filename="../assets/webpages/WebPageHelpSheet.qml" line="47"/>
+        <source>Beta3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/webpages/WebPageHelpSheet.qml" line="57"/>
         <source>Close</source>
         <translation>Schließen</translation>
-    </message>
-    <message>
-        <location filename="../assets/webpages/WebPageHelpSheet.qml" line="47"/>
-        <source>Beta2</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
