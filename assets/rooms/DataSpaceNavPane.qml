@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2012 SSP Europe GmbH, Munich
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,8 +19,8 @@ import "../documents"
 /*
  * 
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
- *
-*/
+ * 
+ */
 
 NavigationPane {
     id: navigationPane
@@ -52,6 +52,17 @@ NavigationPane {
                 backButton: ActionItem {
                     onTriggered: {
                         videoCapturePage.closeODSVideo();
+                        navigationPane.pop();
+                    }
+                }
+            }
+        },
+        AudioRecordPage {
+            id: audioRecordPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        audioRecordPage.closeODSAudio();
                         navigationPane.pop();
                     }
                 }
@@ -182,7 +193,7 @@ NavigationPane {
                 dataModel: mockupModel
                 // its the root, only single selction makes sense
                 // TODO selectionMode: SelectionMode.Single
-                
+
                 // define the appearance
                 listItemComponents: [
                     ListItemComponent {
@@ -297,8 +308,14 @@ NavigationPane {
             navigationPane.push(videoCapturePage)
             console.debug("openedVIDEOCamera")
         }
+        function openRecordAudioPage() {
+            console.debug("got signal to open Audiorecorder")
+            console.debug("push Audiorecorder")
+            navigationPane.push(audioRecordPage)
+            console.debug("opened Audiorecorder")
+        }
         function previewImage(path) {
-            console.debug("got signal to preview image: " + path )
+            console.debug("got signal to preview image: " + path)
             imagePreviewPage.previewPath = path;
             navigationPane.push(imagePreviewPage)
         }
@@ -340,7 +357,7 @@ NavigationPane {
             console.debug("got signal to add a new folder: " + name)
             roomsListPage.addFolder(name)
         }
-    
+
         // we need this and the entry in bar-descriptor to support all directions
         onCreationCompleted: {
             // OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
@@ -365,6 +382,8 @@ NavigationPane {
             roomsListPage.openAddFolder.connect(onOpenAddFolder)
             //-- connect the onFolderAdded SIGNAL from AddFolderPage with SLOT folderAdded
             addFolderPage.onFolderAdded.connect(folderAdded)
+            //-- connect the RoomsList recordAudio SIGNAL to the handler SLOT
+            roomsListPage.recordAudio.connect(openRecordAudioPage)
         }
     } // end page
 }// end navigationpane

@@ -27,6 +27,7 @@ Page {
     id: roomsListPage
     signal openCamera()
     signal openVideo()
+    signal recordAudio()
     signal openAddFolder()
     signal previewImage(string filePath)
     signal previewVideo(string path)
@@ -192,7 +193,9 @@ Page {
             imageSource: "asset:///images/ics/10-device-access-mic81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
-                // TODO
+                // SIGNAL
+                console.debug("clicked record Audio action")
+                roomsListPage.recordAudio()
             }
         }
     ]

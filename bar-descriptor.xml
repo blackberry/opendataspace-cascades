@@ -125,6 +125,9 @@
     <permission>access_led_control</permission>
     <permission>set_audio_volume</permission>
     <permission>access_shared</permission>
+    <permission>run_when_backgrounded</permission>
+    <permission>access_pimdomain_contacts</permission>
+    <permission>bbm_connect</permission>
     <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib"/>
 
     <!--  The permissions requested by your application. -->
