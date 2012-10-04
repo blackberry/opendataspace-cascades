@@ -57,7 +57,7 @@ Page {
     attachedObjects: [
         AudioRecorder {
             id: recorder
-            outputUrl: "/tmp/recording2.m4a" // 
+            outputUrl: "/tmp/recording2.m4a"
         }
     ]
     content: Container {
@@ -67,6 +67,7 @@ Page {
             horizontalAlignment: HorizontalAlignment.Fill
             verticalAlignment: VerticalAlignment.Fill
             Label {
+                id: label
                 text: "Recording"
             }
         }
