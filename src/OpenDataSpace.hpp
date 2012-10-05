@@ -3,7 +3,6 @@
 
 #include <QObject>
 #include <bb/cascades/Menu>
-#include <bb/cascades/multimedia/Camera>
 #include <bb/cascades/Application>
 #include <bb/cascades/LocaleHandler>
 
@@ -14,7 +13,6 @@ class Application;
 }
 
 using namespace bb::cascades;
-using namespace bb::cascades::multimedia;
 
 /*!
  * @brief Application GUI object
@@ -80,9 +78,6 @@ public slots:
 	void localeChanged();
 
 private:
-	Camera *camera;
-	Camera *videocamera;
-
 	Menu* createApplicationMenu();
 	HelpActionItem* m_helpItem;
 	ActionItem* m_feedbackItem;
@@ -94,11 +89,6 @@ private:
 	QTranslator* m_translator;
 
 	void translateMenuItems();
-
-private slots:
-
-	// When we get a ShutterFired event from the system, we play a shutter-sound.
-	void onShutterFired();
 
 };
 

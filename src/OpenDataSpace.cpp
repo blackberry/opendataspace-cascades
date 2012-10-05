@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 #include "OpenDataSpace.hpp"
-#include "FileBrowseDialog.hpp"
 #include "FileInfo.hpp"
 #include "DateUtil.hpp"
 
@@ -29,14 +28,18 @@
 #include <bb/cascades/ActionItem>
 #include <bb/cascades/HelpActionItem>
 #include <bb/cascades/SettingsActionItem>
-#include <bb/cascades/multimedia/Camera>
 #include <bb/cascades/Sheet>
 
-#include <bps/soundplayer.h>
+#include <bb/cascades/pickers/FilePicker>
+#include <bb/cascades/pickers/FilePickerMode>
+#include <bb/cascades/pickers/FilePickerSortFlag>
+#include <bb/cascades/pickers/FilePickerSortOrder>
+#include <bb/cascades/pickers/FileType>
+#include <bb/cascades/pickers/ViewMode>
+
 #include <bps/virtualkeyboard.h>
 
 using namespace bb::cascades;
-using namespace bb::cascades::multimedia;
 using namespace bb::system;
 
 /*
@@ -48,13 +51,19 @@ OpenDataSpace::OpenDataSpace() {
 
 	// register the MyListModel C++ type to be visible in QML
 
-	// We need to register the QML types in the multimedia-library,
-	// otherwise we will get an error from the QML.
-	// TODO Camera::registerQmlTypes();
-
-	// Register the FileDialog, so QML knows about
-	qmlRegisterType<FileBrowseDialog>("Dialog.FileBrowse", 1, 0,
-			"FileBrowseDialog");
+	// Register some classes for Filepicker for QML
+	qmlRegisterType<bb::cascades::pickers::FilePicker>("bb.cascades.pickers", 1,
+			0, "FilePicker");
+	qmlRegisterUncreatableType<bb::cascades::pickers::FilePickerMode>(
+			"bb.cascades.pickers", 1, 0, "FilePickerMode", "");
+	qmlRegisterUncreatableType<bb::cascades::pickers::FilePickerSortFlag>(
+			"bb.cascades.pickers", 1, 0, "FilePickerSortFlag", "");
+	qmlRegisterUncreatableType<bb::cascades::pickers::FilePickerSortOrder>(
+			"bb.cascades.pickers", 1, 0, "FilePickerSortOrder", "");
+	qmlRegisterUncreatableType<bb::cascades::pickers::FileType>(
+			"bb.cascades.pickers", 1, 0, "FileType", "");
+	qmlRegisterUncreatableType<bb::cascades::pickers::ViewMode>(
+			"bb.cascades.pickers", 1, 0, "ViewMode", "");
 
 	// Register the FileInfo, so QML knows about
 	qmlRegisterType<FileInfo>("FileInfo", 1, 0, "FileInfo");
@@ -86,28 +95,7 @@ OpenDataSpace::OpenDataSpace() {
 	Application::instance()->setMenu(menu);
 	qDebug() << "set ApplicationMenu";
 
-	// initialize the camera
-	Camera *camera = root->findChild<Camera*>("odsCamera");
-	if (camera) {
-		qDebug() << "odsCamera child found";
 
-		QObject::connect(camera, SIGNAL(shutterFired()), this,
-				SLOT(onShutterFired()));
-	} else {
-		// TODO give some feedback to user
-		qDebug() << "odsCamera child N O T  found";
-	}
-	// initialize the videocamera
-	Camera *videocamera = root->findChild<Camera*>("odsVideo");
-	if (videocamera) {
-		qDebug() << "odsVideo child found";
-
-		QObject::connect(videocamera, SIGNAL(shutterFired()), this,
-				SLOT(onShutterFired()));
-	} else {
-		// TODO give some feedback to user
-		qDebug() << "odsVideo child N O T found";
-	}
 	// first translation
 	translateMenuItems();
 	qDebug() << "did first translations";
@@ -304,11 +292,7 @@ void OpenDataSpace::settingsTriggered() {
 	}
 }
 
-void OpenDataSpace::onShutterFired() {
-	// A cool trick here to play a sound. There is legal requirements in many countries to have a shutter-sound when
-	// taking pictures and we need this is needed if you are planning to submit you're app to app world.
-	soundplayer_play_sound("event_camera_shutter");
-}
+
 
 void OpenDataSpace::showInPicturesApp(QString fileName) {
 	// Here we create a invoke request to the pictures app.

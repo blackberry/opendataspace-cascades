@@ -1,32 +1,30 @@
 /*
  * Copyright (c) 2012 SSP Europe GmbH, Munich
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */import bb.cascades 1.0
-import Dialog.FileBrowse 1.0
 import FileInfo 1.0
 import DateUtil 1.0
+import bb.cascades.pickers 1.0
 
 /*
  * 
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
- *
-*/
+ * 
+ */
 
 Page {
     id: roomsListPage
-    signal openCamera()
-    signal openVideo()
     signal recordAudio()
     signal openAddFolder()
     signal previewImage(string filePath)
@@ -37,48 +35,48 @@ Page {
     signal previewZip(string path)
     property alias headerTitle: theBar.title
     attachedObjects: [
-        // native FileBrowsing Dialog
-        FileBrowseDialog {
-            id: filebrowseDialog
-            multiselect: false
-            // filters set from ActionItem
-            onSelectionCompleted: {
-                // something selected ?
-                if (filebrowseDialog.filepaths.length > 0) {
-                    // is there a preview ?
-                    // isImage ?
-                    if (fileInfo.isImage(filebrowseDialog.filepaths[0])) {
-                        roomsListPage.previewImage(filebrowseDialog.filepaths[0]);
-                        return;
-                    }
-                    // isVideo ?
-                    if (fileInfo.isVideo(filebrowseDialog.filepaths[0])) {
-                        roomsListPage.previewVideo(filebrowseDialog.filepaths[0]);
-                        return;
-                    }
-                    // isPDF ?
-                    if (fileInfo.getSuffix(filebrowseDialog.filepaths[0]) == "pdf") {
-                        roomsListPage.previewPdf(filebrowseDialog.filepaths[0]);
-                        return;
-                    }
-                    // isZIP ?
-                    if (fileInfo.isCompressed(filebrowseDialog.filepaths[0])) {
-                        roomsListPage.previewZip(filebrowseDialog.filepaths[0]);
-                        return;
-                    }
-                    // isDocument ?
-                    if (fileInfo.isDocument(filebrowseDialog.filepaths[0])) {
-                        roomsListPage.previewDocuments(filebrowseDialog.filepaths[0]);
-                        return;
-                    }
-                    // else is unknown filytype
-                    roomsListPage.previewUnknown(filebrowseDialog.filepaths[0]);
-                    // OLD addFile(filebrowseDialog.filepaths[0]); 
-                    // else filebrowseDialogLabel.text = qsTr("no file selected") + Retranslate.onLanguageChanged;
+        // Cascades FilePicker
+        FilePicker {
+            id: picker
+            property string selectedFile
+            title: qsTr("File Picker")
+            mode: FilePickerMode.Picker // pickerMode.selectedValue
+            type: FileType.Other // pickerType.selectedValue
+            viewMode: ViewMode.Default // pickerViewMode.selectedValue
+            sortBy: FilePickerSortFlag.Default // pickerSortBy.selectedValue
+            sortOrder: FilePickerSortOrder.Default // pickerSortOrder.selectedValue
+            onFileSelected: {
+                selectedFile = selectedFiles[0]
+                // is there a preview ?
+                // isImage ?
+                if (fileInfo.isImage(picker.selectedFile)) {
+                    roomsListPage.previewImage(picker.selectedFile);
+                    return;
                 }
-            }
-            onSelectionCancelled: {
-                // filebrowseDialogLabel.text = qsTr("browsing files cancelled") + Retranslate.onLanguageChanged;
+                // isVideo ?
+                if (fileInfo.isVideo(picker.selectedFile)) {
+                    roomsListPage.previewVideo(picker.selectedFile);
+                    return;
+                }
+                // isPDF ?
+                if (fileInfo.getSuffix(picker.selectedFile) == "pdf") {
+                    roomsListPage.previewPdf(picker.selectedFile);
+                    return;
+                }
+                // isZIP ?
+                if (fileInfo.isCompressed(picker.selectedFile)) {
+                    roomsListPage.previewZip(picker.selectedFile);
+                    return;
+                }
+                // isDocument ?
+                if (fileInfo.isDocument(picker.selectedFile)) {
+                    roomsListPage.previewDocuments(picker.selectedFile);
+                    return;
+                }
+                // else is unknown filytype
+                roomsListPage.previewUnknown(picker.selectedFile);
+                // OLD addFile(filebrowseDialog.filepaths[0]);
+                // else filebrowseDialogLabel.text = qsTr("no file selected") + Retranslate.onLanguageChanged;
             }
         },
         // FileInfo
@@ -123,78 +121,53 @@ Page {
             imageSource: "asset:///images/ics/4-collections-view-as-list81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
-                // native FileDialog from c++
-                filebrowseDialog.filters = [
-                    "*.doc",
-                    "*.odt",
-                    "*.ppt",
-                    "*.txt",
-                    "*.rtf",
-                    "*.ptx",
-                    "*.pdf",
-                    "*.zip",
-                    "*.tar",
-                    "*.rar",
-                    "*.gz",
-                    "*.html"
-                ]
-                filebrowseDialog.show();
+                picker.type = FileType.Document
+                picker.open();
             }
         },
         ActionItem {
-            title: qsTr("Select Image") + Retranslate.onLanguageChanged
+            title: qsTr("Select | Capture Image") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/5-content-picture81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
-                // native FileDialog from c++
-                filebrowseDialog.filters = [
-                    "*.jpg",
-                    "*.jpeg",
-                    "*.png",
-                    "*.gif"
-                ]
-                filebrowseDialog.show();
+                picker.type = FileType.Picture
+                picker.open();
             }
         },
         ActionItem {
-            title: qsTr("Select Video") + Retranslate.onLanguageChanged
+            title: qsTr("Select | Capture Video") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/10-device-access-video81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
-                // native FileDialog from c++
-                filebrowseDialog.filters = [
-                    "*.mp4",
-                    "*.mov"
-                ]
-                filebrowseDialog.show();
+                picker.type = FileType.Video
+                picker.open();
             }
         },
         ActionItem {
-            title: qsTr("Open Camera") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/10-device-access-camera81.png"
-            ActionBar.placement: ActionBarPlacement.InOverflow
-            onTriggered: {
-                // SIGNAL
-                roomsListPage.openCamera();
-            }
-        },
-        ActionItem {
-            title: qsTr("Record Video") + Retranslate.onLanguageChanged
+            title: qsTr("Select Music") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/10-device-access-video81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
-                // SIGNAL
-                console.debug("clicked record Video action")
-                roomsListPage.openVideo()
+                picker.type = FileType.Music
+                picker.open();
             }
         },
         ActionItem {
-            title: qsTr("Record Audio") + Retranslate.onLanguageChanged
+            title: qsTr("Select Other") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/ics/10-device-access-video81.png"
+            ActionBar.placement: ActionBarPlacement.InOverflow
+            onTriggered: {
+                picker.type = FileType.Other
+                picker.open();
+            }
+        },
+        ActionItem {
+            title: qsTr("Dictaphone") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/10-device-access-mic81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // SIGNAL
-                console.debug("clicked record Audio action")
+                console.debug("clicked Dictaphone action")
                 roomsListPage.recordAudio()
             }
         }
@@ -226,7 +199,7 @@ Page {
                 }
             }
         ]
-        
+
         // V I E W
         ListView {
             id: dataspaceList
@@ -239,7 +212,7 @@ Page {
             leadingVisual: {
                 // TODO waiting for bugfix
             }
-            
+
             // define the appearance
             listItemComponents: [
                 ListItemComponent {
@@ -295,7 +268,7 @@ Page {
                                     imageSource: "asset:///images/ics/5-content-edit81.png"
                                     onTriggered: {
                                         // TODO
-                                        console.debug("FOLDER: name to be renamed: "+ ListItemData.name)
+                                        console.debug("FOLDER: name to be renamed: " + ListItemData.name)
                                         // TODO
                                         ListItemData.name = "renamed"
                                     }
@@ -396,7 +369,7 @@ Page {
                 }
                 return "header";
             }
-                                    
+
             // MOCKUP DATA
             // After the list is created, add some mockup items
             onCreationCompleted: {
@@ -457,7 +430,7 @@ Page {
     }
     // TODO must go to UPLOAD
     function addFile(name) {
-        console.debug("Now add new FILE to LISTMODEL on RoomsListPage") 
+        console.debug("Now add new FILE to LISTMODEL on RoomsListPage")
         mockupModel.insert({
                 "name": fileInfo.getShortName(name),
                 "displayType": "L",
@@ -469,5 +442,4 @@ Page {
             })
     }
     // TODO localization: loop thru datamodel and localize datetime strings
-
 }// end page

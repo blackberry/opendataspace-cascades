@@ -58,6 +58,7 @@ Page {
         AudioRecorder {
             id: recorder
             outputUrl: "/tmp/recording2.m4a"
+            
         }
     ]
     content: Container {

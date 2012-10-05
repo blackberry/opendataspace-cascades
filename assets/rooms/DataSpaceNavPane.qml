@@ -35,28 +35,6 @@ NavigationPane {
                 }
             }
         },
-        CameraCapturePage {
-            id: cameraCapturePage
-            paneProperties: NavigationPaneProperties {
-                backButton: ActionItem {
-                    onTriggered: {
-                        cameraCapturePage.closeODSCamera();
-                        navigationPane.pop();
-                    }
-                }
-            }
-        },
-        VideoCapturePage {
-            id: videoCapturePage
-            paneProperties: NavigationPaneProperties {
-                backButton: ActionItem {
-                    onTriggered: {
-                        videoCapturePage.closeODSVideo();
-                        navigationPane.pop();
-                    }
-                }
-            }
-        },
         AudioRecordPage {
             id: audioRecordPage
             paneProperties: NavigationPaneProperties {
@@ -294,20 +272,6 @@ NavigationPane {
             } // end ListView
         } // end Container
         // SLOTS
-        function openCameraPage() {
-            console.debug("got signal to open camera")
-            cameraCapturePage.openODSCamera()
-            console.debug("push CameraCapturePage")
-            navigationPane.push(cameraCapturePage)
-            console.debug("openedCamera")
-        }
-        function openVideoCameraPage() {
-            console.debug("got signal to open VIDEOcamera")
-            videoCapturePage.openODSVideo()
-            console.debug("push VideoCapturePage")
-            navigationPane.push(videoCapturePage)
-            console.debug("openedVIDEOCamera")
-        }
         function openRecordAudioPage() {
             console.debug("got signal to open Audiorecorder")
             console.debug("push Audiorecorder")
@@ -362,14 +326,9 @@ NavigationPane {
         onCreationCompleted: {
             // OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
             //-- connect the RoomsList openCamera SIGNAL to the handler SLOT
-            roomsListPage.openCamera.connect(openCameraPage)
-            //-- connect the CameraCapturePage previewImage SIGNAL to the handler SLOT
             // same for Roomslist
             cameraCapturePage.previewImage.connect(previewImage)
             roomsListPage.previewImage.connect(previewImage)
-            //-- connect the RoomsList openVideo SIGNAL to the handler SLOT
-            roomsListPage.openVideo.connect(openVideoCameraPage)
-            //-- connect the VideoCameraCapturePage previewVideo SIGNAL to the handler SLOT
             // same for Rooms List
             videoCapturePage.previewVideo.connect(previewVideo)
             roomsListPage.previewVideo.connect(previewVideo)
