@@ -32,6 +32,7 @@ import org.opendataspace.trackmanager 1.0
 Page {
     signal addAudiofile(string path)
     id: dictaphonePage
+    actionBarVisibility: ChromeVisibility.Overlay
     Container {
         layout: DockLayout {
         }
@@ -193,31 +194,35 @@ Page {
             console.debug("reLayout to LANDSCAPE")
             imageBackground.imageSource = "asset:///images/dictaphone/background_landscape.png"
             led.translationY = 40
-            tape.translationY = 120
+            tape.translationY = 35 // 120
             tape.translationX = -30
             tape.horizontalAlignment = HorizontalAlignment.Right
             label.verticalAlignment = VerticalAlignment.Top
             label.translationY = 50
-            label.translationX = 260
+            label.translationX = -360 // 260
             buttonBackground.horizontalAlignment = HorizontalAlignment.Right
             buttonBackground.translationX = -40
+            buttonBackground.translationY = -100
             buttonContainer.horizontalAlignment = HorizontalAlignment.Right
             buttonContainer.translationX = -40
+            buttonContainer.translationY = -100
             console.debug("reLayout to LANDSCAPE DONE")
         } else {
             console.debug("reLayout to PORTRAIT")
             imageBackground.imageSource = "asset:///images/dictaphone/background.png"
-            led.translationY = 500
-            tape.translationY = 570
+            led.translationY = 40
+            tape.translationY = 530
             tape.translationX = 0
             tape.horizontalAlignment = HorizontalAlignment.Center
             label.verticalAlignment = VerticalAlignment.Bottom
-            label.translationY = -205
-            label.translationX = 0
+            label.translationY = -20 //-205
+            label.translationX = 20
             buttonBackground.horizontalAlignment = HorizontalAlignment.Center
             buttonBackground.translationX = 0
+            buttonBackground.translationY = -140
             buttonContainer.horizontalAlignment = HorizontalAlignment.Center
             buttonContainer.translationX = 0
+            buttonContainer.translationY = -140
             console.debug("reLayout to PORTRAIT DONE")
         }
     }

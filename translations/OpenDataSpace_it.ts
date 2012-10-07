@@ -106,12 +106,12 @@
 <context>
     <name>DataSpaceNavPane</name>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="131"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="130"/>
         <source>New Room</source>
         <translation type="unfinished">Nuovo camera</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="140"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="139"/>
         <source>Refresh</source>
         <translation type="unfinished">aggiornare</translation>
     </message>
@@ -328,22 +328,22 @@
 <context>
     <name>PlayerListPage</name>
     <message>
-        <location filename="../assets/media/PlayerListPage.qml" line="44"/>
+        <location filename="../assets/media/PlayerListPage.qml" line="43"/>
         <source>Recorded Tracks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/media/PlayerListPage.qml" line="76"/>
+        <location filename="../assets/media/PlayerListPage.qml" line="75"/>
         <source>Play</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/media/PlayerListPage.qml" line="92"/>
+        <location filename="../assets/media/PlayerListPage.qml" line="91"/>
         <source>Back</source>
         <translation type="unfinished">indietro</translation>
     </message>
     <message>
-        <location filename="../assets/media/PlayerListPage.qml" line="99"/>
+        <location filename="../assets/media/PlayerListPage.qml" line="98"/>
         <source>Clear All Tracks</source>
         <translation type="unfinished"></translation>
     </message>
