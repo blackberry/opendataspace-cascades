@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */import bb.cascades 1.0
-import FileInfo 1.0
+import org.opendataspace.fileinfo 1.0
 /*
  * Image Overview
  * can share the image, do nothing (go back) or upload the image

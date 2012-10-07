@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */import bb.cascades 1.0
-import FileInfo 1.0
+import org.opendataspace.fileinfo 1.0
 /*
  * Video Preview
  * can share the video, do nothing (go back) or upload the video
