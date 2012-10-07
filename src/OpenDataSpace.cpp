@@ -16,6 +16,7 @@
 #include "OpenDataSpace.hpp"
 #include "FileInfo.hpp"
 #include "DateUtil.hpp"
+#include "TrackManager.hpp"
 
 #include <bb/system/InvokeManager.hpp>
 #include <bb/system/InvokeRequest.hpp>
@@ -66,10 +67,13 @@ OpenDataSpace::OpenDataSpace() {
 			"bb.cascades.pickers", 1, 0, "ViewMode", "");
 
 	// Register the FileInfo, so QML knows about
-	qmlRegisterType<FileInfo>("FileInfo", 1, 0, "FileInfo");
+	qmlRegisterType<FileInfo>("org.opendataspace.fileinfo", 1, 0, "FileInfo");
 
 	// Register the DateUtil, so QML knows about
-	qmlRegisterType<FileInfo>("DateUtil", 1, 0, "DateUtil");
+	qmlRegisterType<DateUtil>("org.opendataspace.dateutil", 1, 0, "DateUtil");
+
+	// Register the TrackManager, so QML knows about
+	qmlRegisterType<TrackManager>("org.opendataspace.trackmanager", 1, 0, "TrackManager");
 
 	qDebug() << "registered types for QML";
 
@@ -95,10 +99,14 @@ OpenDataSpace::OpenDataSpace() {
 	Application::instance()->setMenu(menu);
 	qDebug() << "set ApplicationMenu";
 
-
 	// first translation
 	translateMenuItems();
 	qDebug() << "did first translations";
+
+	//
+	Application *app = Application::instance();
+	connect(app, SIGNAL(thumbnail()), this, SLOT(onThumbnail()));
+
 
 	qDebug() << "INIT done";
 
@@ -292,8 +300,6 @@ void OpenDataSpace::settingsTriggered() {
 	}
 }
 
-
-
 void OpenDataSpace::showInPicturesApp(QString fileName) {
 	// Here we create a invoke request to the pictures app.
 	// we could also ask the system what other applications can
@@ -354,5 +360,13 @@ void OpenDataSpace::showInOtherApp(QString fileName) {
 			<< invokeRequest.mimeType();
 	InvokeManager invokeManager;
 	invokeManager.invoke(invokeRequest);
+}
+
+// triggered if Application was sent to back
+void OpenDataSpace::onThumbnail() {
+      // TODO set Cover()
+	qDebug() << "Application shrinks to thumbnail";
+	// AbstractCover *cover;
+	// Application::instance()->setCover(cover);
 }
 

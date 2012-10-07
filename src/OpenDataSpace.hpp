@@ -76,6 +76,7 @@ public slots:
 	void settingsTriggered();
 	// locale changed by user from device settings
 	void localeChanged();
+	void onThumbnail();
 
 private:
 	Menu* createApplicationMenu();

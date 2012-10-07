@@ -35,16 +35,20 @@ NavigationPane {
                 }
             }
         },
-        AudioRecordPage {
+        DictaphonePage {
             id: audioRecordPage
             paneProperties: NavigationPaneProperties {
                 backButton: ActionItem {
                     onTriggered: {
-                        audioRecordPage.closeODSAudio();
+                        // audioRecordPage.closeODSAudio();
                         navigationPane.pop();
                     }
                 }
             }
+        },
+        // page with recorded tracks
+        PlayerListPage {
+            id: playerListPage
         },
         ImagePreviewPage {
             id: imagePreviewPage
@@ -271,78 +275,82 @@ NavigationPane {
                 }
             } // end ListView
         } // end Container
-        
     } // end page
     // SLOTS
-            function openRecordAudioPage() {
-                console.debug("got signal to open Audiorecorder")
-                console.debug("push Audiorecorder")
-                navigationPane.push(audioRecordPage)
-                console.debug("opened Audiorecorder")
-            }
-            function previewImage(path) {
-                console.debug("got signal to preview image: " + path)
-                imagePreviewPage.previewPath = path;
-                navigationPane.push(imagePreviewPage)
-            }
-            function previewVideo(path) {
-                console.debug("got signal to preview video: " + path)
-                videoPreviewPage.previewPath = path;
-                videoPreviewPage.recalculateValues(path);
-                navigationPane.push(videoPreviewPage)
-            }
-            function previewDocuments(path) {
-                console.debug("got signal to preview documents: " + path)
-                documentsPreviewPage.previewPath = path;
-                documentsPreviewPage.recalculateValues(path);
-                navigationPane.push(documentsPreviewPage)
-            }
-            function previewPdf(path) {
-                console.debug("got signal to preview PDF: " + path)
-                pdfPreviewPage.previewPath = path;
-                pdfPreviewPage.recalculateValues(path);
-                navigationPane.push(pdfPreviewPage)
-            }
-            function previewZip(path) {
-                console.debug("got signal to preview video: " + path)
-                zipPreviewPage.previewPath = path;
-                zipPreviewPage.recalculateValues(path);
-                navigationPane.push(zipPreviewPage)
-            }
-            function previewUnknown(path) {
-                console.debug("got signal to preview video: " + path)
-                unknownPreviewPage.previewPath = path;
-                unknownPreviewPage.recalculateValues(path);
-                navigationPane.push(unknownPreviewPage)
-            }
-            function onOpenAddFolder() {
-                console.debug("got signal to open AddFolderPage")
-                navigationPane.push(addFolderPage)
-            }
-            function folderAdded(name) {
-                console.debug("got signal to add a new folder: " + name)
-                roomsListPage.addFolder(name)
-            }
-    
-            onCreationCompleted: {
-                //-- connect the RoomsList openCamera SIGNAL to the handler SLOT
-                // same for Roomslist
-                //cameraCapturePage.previewImage.connect(previewImage)
-                roomsListPage.previewImage.connect(previewImage)
-                // same for Rooms List
-                //videoCapturePage.previewVideo.connect(previewVideo)
-                roomsListPage.previewVideo.connect(previewVideo)
-                // some more previews:
-                roomsListPage.previewDocuments.connect(previewDocuments)
-                roomsListPage.previewPdf.connect(previewPdf)
-                roomsListPage.previewZip.connect(previewZip)
-                roomsListPage.previewUnknown.connect(previewUnknown)
-                //-- connect the RoomsList onOpenAddFolder SIGNAL to the handler SLOT
-                roomsListPage.openAddFolder.connect(onOpenAddFolder)
-                //-- connect the onFolderAdded SIGNAL from AddFolderPage with SLOT folderAdded
-                addFolderPage.onFolderAdded.connect(folderAdded)
-                //-- connect the RoomsList recordAudio SIGNAL to the handler SLOT
-                roomsListPage.recordAudio.connect(openRecordAudioPage)
-            }
-    
+    function openRecordAudioPage() {
+        console.debug("got signal to open Audiorecorder")
+        console.debug("push Audiorecorder")
+        navigationPane.push(audioRecordPage)
+        console.debug("opened Audiorecorder")
+    }
+    function previewImage(path) {
+        console.debug("got signal to preview image: " + path)
+        imagePreviewPage.previewPath = path;
+        navigationPane.push(imagePreviewPage)
+    }
+    function previewVideo(path) {
+        console.debug("got signal to preview video: " + path)
+        videoPreviewPage.previewPath = path;
+        videoPreviewPage.recalculateValues(path);
+        navigationPane.push(videoPreviewPage)
+    }
+    function previewDocuments(path) {
+        console.debug("got signal to preview documents: " + path)
+        documentsPreviewPage.previewPath = path;
+        documentsPreviewPage.recalculateValues(path);
+        navigationPane.push(documentsPreviewPage)
+    }
+    function previewPdf(path) {
+        console.debug("got signal to preview PDF: " + path)
+        pdfPreviewPage.previewPath = path;
+        pdfPreviewPage.recalculateValues(path);
+        navigationPane.push(pdfPreviewPage)
+    }
+    function previewZip(path) {
+        console.debug("got signal to preview video: " + path)
+        zipPreviewPage.previewPath = path;
+        zipPreviewPage.recalculateValues(path);
+        navigationPane.push(zipPreviewPage)
+    }
+    function previewUnknown(path) {
+        console.debug("got signal to preview video: " + path)
+        unknownPreviewPage.previewPath = path;
+        unknownPreviewPage.recalculateValues(path);
+        navigationPane.push(unknownPreviewPage)
+    }
+    function onOpenAddFolder() {
+        console.debug("got signal to open AddFolderPage")
+        navigationPane.push(addFolderPage)
+    }
+    function folderAdded(name) {
+        console.debug("got signal to add a new folder: " + name)
+        roomsListPage.addFolder(name)
+    }
+    function pushPlayerListPage(model) {
+        console.debug("playerListPage set the model")
+        playerListPage.datamodel = model
+        console.debug("playerListPage push the list")
+        push(playerListPage)
+    }
+    onCreationCompleted: {
+        //-- connect the RoomsList openCamera SIGNAL to the handler SLOT
+        // same for Roomslist
+        //cameraCapturePage.previewImage.connect(previewImage)
+        roomsListPage.previewImage.connect(previewImage)
+        // same for Rooms List
+        //videoCapturePage.previewVideo.connect(previewVideo)
+        roomsListPage.previewVideo.connect(previewVideo)
+        // some more previews:
+        roomsListPage.previewDocuments.connect(previewDocuments)
+        roomsListPage.previewPdf.connect(previewPdf)
+        roomsListPage.previewZip.connect(previewZip)
+        roomsListPage.previewUnknown.connect(previewUnknown)
+        //-- connect the RoomsList onOpenAddFolder SIGNAL to the handler SLOT
+        roomsListPage.openAddFolder.connect(onOpenAddFolder)
+        //-- connect the onFolderAdded SIGNAL from AddFolderPage with SLOT folderAdded
+        addFolderPage.onFolderAdded.connect(folderAdded)
+        //-- connect the RoomsList recordAudio SIGNAL to the handler SLOT
+        roomsListPage.recordAudio.connect(openRecordAudioPage)
+        console.debug("NavigationPane DtaSpaces created " + test)
+    }
 }// end navigationpane
