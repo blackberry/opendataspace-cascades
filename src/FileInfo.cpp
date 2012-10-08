@@ -173,6 +173,20 @@ bool FileInfo::isVideo(QString filePath) const {
 /*
  *
  * tests the suffix from filename
+ * if it is a video
+ *
+ */
+bool FileInfo::isRecordedVoice(QString filePath) const {
+	QString s = getSuffix(filePath);
+	if (s == "m4a") {
+		return true;
+	}
+	return false;
+}
+
+/*
+ *
+ * tests the suffix from filename
  * if it is a document
  *
  */

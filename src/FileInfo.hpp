@@ -125,6 +125,15 @@ public:
 	/*
 	 *
 	 * tests the suffix from filename
+	 * if it is recorded Voice
+	 *
+	 */
+	Q_INVOKABLE
+	bool isRecordedVoice(QString filePath) const;
+
+	/*
+	 *
+	 * tests the suffix from filename
 	 * if it is a document
 	 *
 	 */

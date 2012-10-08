@@ -59,6 +59,11 @@ Page {
                     roomsListPage.previewVideo(picker.selectedFile);
                     return;
                 }
+                // isRecordedVoice ?
+                if (fileInfo.isRecordedVoice(picker.selectedFile)) {
+                    navigationPane.previewRecordedVoice(picker.selectedFile)
+                    return;
+                }
                 // isPDF ?
                 if (fileInfo.getSuffix(picker.selectedFile) == "pdf") {
                     roomsListPage.previewPdf(picker.selectedFile);
@@ -154,11 +159,11 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("Select | Record Voice") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/10-device-access-mic81.png"
+            title: qsTr("Select Recorded Voice") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/ics/10-device-access-volume-on81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
-                picker.title = qsTr("Select Audio")
+                picker.title = qsTr("Select Recorded Voice")
                 picker.type = FileType.Other
                 picker.directories = [
                     "/accounts/1000/shared/voice",
@@ -170,7 +175,7 @@ Page {
         },
         ActionItem {
             title: qsTr("Select Music") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/10-device-access-video81.png"
+            imageSource: "asset:///images/ics/9-av-play81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 picker.title = qsTr("Select Music")
@@ -180,7 +185,7 @@ Page {
         },
         ActionItem {
             title: qsTr("Select Other File") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/10-device-access-video81.png"
+            imageSource: "asset:///images/ics/4-collections-view-as-list81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 picker.title = qsTr("Select File")

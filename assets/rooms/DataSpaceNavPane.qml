@@ -46,10 +46,6 @@ NavigationPane {
                 }
             }
         },
-        // page with recorded tracks
-        PlayerListPage {
-            id: playerListPage
-        },
         ImagePreviewPage {
             id: imagePreviewPage
             paneProperties: NavigationPaneProperties {
@@ -62,6 +58,16 @@ NavigationPane {
         },
         VideoPreviewPage {
             id: videoPreviewPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
+        },
+        VoicePreviewPage {
+            id: recordedVoicePreviewPage
             paneProperties: NavigationPaneProperties {
                 backButton: ActionItem {
                     onTriggered: {
@@ -294,6 +300,12 @@ NavigationPane {
         videoPreviewPage.recalculateValues(path);
         navigationPane.push(videoPreviewPage)
     }
+    function previewRecordedVoice(path) {
+        console.debug("got signal to preview recordedVoice: " + path)
+        recordedVoicePreviewPage.previewPath = path;
+        recordedVoicePreviewPage.recalculateValues(path);
+        navigationPane.push(recordedVoicePreviewPage)
+    }
     function previewDocuments(path) {
         console.debug("got signal to preview documents: " + path)
         documentsPreviewPage.previewPath = path;
@@ -325,12 +337,6 @@ NavigationPane {
     function folderAdded(name) {
         console.debug("got signal to add a new folder: " + name)
         roomsListPage.addFolder(name)
-    }
-    function pushPlayerListPage(model) {
-        console.debug("playerListPage set the model")
-        playerListPage.datamodel = model
-        console.debug("playerListPage push the list")
-        push(playerListPage)
     }
     onCreationCompleted: {
         //-- connect the RoomsList openCamera SIGNAL to the handler SLOT

@@ -16,7 +16,6 @@
 #include "OpenDataSpace.hpp"
 #include "FileInfo.hpp"
 #include "DateUtil.hpp"
-#include "TrackManager.hpp"
 
 #include <bb/system/InvokeManager.hpp>
 #include <bb/system/InvokeRequest.hpp>
@@ -71,9 +70,6 @@ OpenDataSpace::OpenDataSpace() {
 
 	// Register the DateUtil, so QML knows about
 	qmlRegisterType<DateUtil>("org.opendataspace.dateutil", 1, 0, "DateUtil");
-
-	// Register the TrackManager, so QML knows about
-	qmlRegisterType<TrackManager>("org.opendataspace.trackmanager", 1, 0, "TrackManager");
 
 	qDebug() << "registered types for QML";
 

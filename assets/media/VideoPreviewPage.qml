@@ -77,7 +77,7 @@ Page {
             }
             horizontalAlignment: HorizontalAlignment.Left
             ImageView {
-                id: previewImage
+                id: previewVideo
                 objectName: "previewVideo"
                 layoutProperties: StackLayoutProperties {
                 }
@@ -85,7 +85,7 @@ Page {
                 imageSource: "asset:///images/nuvola/video.png"
                 minWidth: 128
                 minHeight: 128
-                //scalingMethod: ScalingMethod.AspectFit
+                scalingMethod: ScalingMethod.AspectFit
             }
             Container {
                 layout: StackLayout {
@@ -129,25 +129,19 @@ Page {
     // redesign if orientation changed
         function reLayout(orientation) {
             if (orientation == UIOrientation.Landscape) {
-                console.debug("ImagePreview: reLayout to LANDSCAPE")
+                console.debug("previewVideo: reLayout to LANDSCAPE")
                 titleBar.visibility = ChromeVisibility.Hidden
                 titleLabel.visible = true
                 imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight
-                previewImage.horizontalAlignment = HorizontalAlignment.Left
-                previewImage.minHeight = 580
-                previewImage.maxHeight = 580
-                previewImage.maxWidth = 640
-                console.debug("ImagePreview: reLayout to LANDSCAPE DONE")
+                previewVideo.horizontalAlignment = HorizontalAlignment.Left
+                console.debug("previewVideo: reLayout to LANDSCAPE DONE")
             } else {
-                console.debug("ImagePreview: reLayout to PORTRAIT")
+                console.debug("previewVideo: reLayout to PORTRAIT")
                 titleBar.visibility = ChromeVisibility.Visible
                 titleLabel.visible = false
                 imageAndTextContainer.layout.orientation = LayoutOrientation.TopToBottom
-                previewImage.horizontalAlignment = HorizontalAlignment.Center
-                previewImage.minHeight = 620
-                previewImage.maxHeight = 620
-                previewImage.maxWidth = 720
-                console.debug("ImagePreview: reLayout to PORTRAIT DONE")
+                previewVideo.horizontalAlignment = HorizontalAlignment.Center
+                console.debug("previewVideo: reLayout to PORTRAIT DONE")
             }
         }
     // TODO Landscape hide Actionbar if no activity

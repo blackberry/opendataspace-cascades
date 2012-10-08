@@ -20,7 +20,6 @@
 
 import bb.cascades 1.0
 import bb.multimedia 1.0
-import org.opendataspace.trackmanager 1.0
 import bb.cascades.pickers 1.0
 
 /**
@@ -105,16 +104,9 @@ Page {
                     if (recorder.mediaState == MediaState.Started) {
                         // Stop the recorder
                         recorder.reset()
-
-                        // Update the internal track list
-                        trackmanager.update()
-
                         // Play the finished sound
                         recordStopSound.play()
                     } else {
-                        // Update the internal track list
-                        trackmanager.update()
-
                         // Configure the recorder to use a new URL
                         saver.open()
                         // TODO recorder.outputUrl = saver.selectedFile   // trackmanager.nextTrackUrl()
@@ -150,12 +142,11 @@ Page {
                 defaultImageSource: "asset:///images/dictaphone/play_button.png"
                 pressedImageSource: "asset:///images/dictaphone/play_button_pressed.png"
                 disabledImageSource: "asset:///images/dictaphone/play_button.png"
-                enabled: (trackmanager.hasRecordedTracks 
-                    && recorder.mediaState != MediaState.Started 
+                enabled: (recorder.mediaState != MediaState.Started 
                     && recorder.mediaState != MediaState.Paused)
                 onClicked: {
                     console.debug("PLAY clicked")
-                    navigationPane.pushPlayerListPage(trackmanager.model)
+                    // TODO filepicker navigationPane.pushPlayerListPage(trackmanager.model)
                 }
             }
         }
@@ -173,9 +164,6 @@ Page {
         SystemSound {
             id: recordStopSound
             sound: SystemSound.RecordingStopEvent
-        },
-        TrackManager {
-            id: trackmanager
         },
         FilePicker {
             id: saver
