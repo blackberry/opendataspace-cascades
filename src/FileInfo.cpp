@@ -173,12 +173,12 @@ bool FileInfo::isVideo(QString filePath) const {
 /*
  *
  * tests the suffix from filename
- * if it is a video
+ * if it is a audio file
  *
  */
-bool FileInfo::isRecordedVoice(QString filePath) const {
+bool FileInfo::isAudio(QString filePath) const {
 	QString s = getSuffix(filePath);
-	if (s == "m4a") {
+	if (s == "m4a" || s == "mp3" || s == "ogg" || s == "wav") {
 		return true;
 	}
 	return false;
@@ -192,10 +192,24 @@ bool FileInfo::isRecordedVoice(QString filePath) const {
  */
 bool FileInfo::isDocument(QString filePath) const {
 	QString s = getSuffix(filePath);
-	if (s == "doc" || s == "odt" || s == "ppt"
+	if (s == "doc" || s == "odt" || s == "ppt" || s == "pptx"
 			|| s == "txt" || s == "rtf" || s == "ptx"
 			|| s == "pdf" || s == "zip" || s == "tar"
 			|| s == "rar" || s == "gz" || s == "html") {
+		return true;
+	}
+	return false;
+}
+
+/*
+ *
+ * tests the suffix from filename
+ * if it is a book
+ *
+ */
+bool FileInfo::isBook(QString filePath) const {
+	QString s = getSuffix(filePath);
+	if (s == "epub") {
 		return true;
 	}
 	return false;

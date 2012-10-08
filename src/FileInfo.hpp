@@ -125,11 +125,11 @@ public:
 	/*
 	 *
 	 * tests the suffix from filename
-	 * if it is recorded Voice
+	 * if it is a audio file
 	 *
 	 */
 	Q_INVOKABLE
-	bool isRecordedVoice(QString filePath) const;
+	bool isAudio(QString filePath) const;
 
 	/*
 	 *
@@ -139,6 +139,15 @@ public:
 	 */
 	Q_INVOKABLE
 	bool isDocument(QString filePath) const;
+
+	/*
+	 *
+	 * tests the suffix from filename
+	 * if it is a book
+	 *
+	 */
+	Q_INVOKABLE
+	bool isBook(QString filePath) const;
 
 	/*
 	 *

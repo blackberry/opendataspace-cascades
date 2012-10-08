@@ -59,8 +59,8 @@ Page {
                     roomsListPage.previewVideo(picker.selectedFile);
                     return;
                 }
-                // isRecordedVoice ?
-                if (fileInfo.isRecordedVoice(picker.selectedFile)) {
+                // isAudio ?
+                if (fileInfo.isAudio(picker.selectedFile)) {
                     navigationPane.previewRecordedVoice(picker.selectedFile)
                     return;
                 }
@@ -76,6 +76,12 @@ Page {
                 }
                 // isDocument ?
                 if (fileInfo.isDocument(picker.selectedFile)) {
+                    roomsListPage.previewDocuments(picker.selectedFile);
+                    return;
+                }
+                // isBook ?
+                if (fileInfo.isBook(picker.selectedFile)) {
+                    // TODO previewBookPage
                     roomsListPage.previewDocuments(picker.selectedFile);
                     return;
                 }
