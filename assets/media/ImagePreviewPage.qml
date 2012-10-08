@@ -47,13 +47,13 @@ Page {
     ]
     actions: [
         ActionItem {
-            title: qsTr("Share") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/6-social-share81.png"
+            title: qsTr("View in...") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/ics/2-action-search81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                // Calls a function that show's the image in the pictures app.
-                ods.showInPicturesApp(previewPage.previewPath);
-                console.debug("Calling function to launchpicturesapp");
+                // Calls a function that show's the image in a View from InvocationFramework
+                ods.showInView(previewPage.previewPath);
+                console.debug("just called function to View from IF");
             }
         },
         ActionItem {
@@ -130,7 +130,7 @@ Page {
         titleBar.title = fileInfo.getShortName(name)
         titleLabel.text = titleBar.title;
         filenameInfo.enabled = true;
-        filenameInfo.text = fileInfo.getDetailedInfo(ods.getCurrentLocale(), name); 
+        filenameInfo.text = fileInfo.getDetailedInfo(ods.getCurrentLocale(), name);
         filenameInfo.enabled = false;
     }
     // redesign if orientation changed

@@ -139,11 +139,11 @@
     </message>
     <message>
         <location filename="../assets/documents/DocumentsPreviewPage.qml" line="48"/>
-        <source>Share</source>
+        <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="57"/>
+        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="58"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -221,7 +221,7 @@
     </message>
     <message>
         <location filename="../assets/media/ImagePreviewPage.qml" line="50"/>
-        <source>Share</source>
+        <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -318,11 +318,11 @@
     </message>
     <message>
         <location filename="../assets/documents/PdfPreviewPage.qml" line="48"/>
-        <source>Share</source>
+        <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/PdfPreviewPage.qml" line="57"/>
+        <location filename="../assets/documents/PdfPreviewPage.qml" line="58"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -579,11 +579,11 @@
     </message>
     <message>
         <location filename="../assets/documents/UnknownPreviewPage.qml" line="48"/>
-        <source>Share</source>
+        <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/UnknownPreviewPage.qml" line="57"/>
+        <location filename="../assets/documents/UnknownPreviewPage.qml" line="58"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -651,7 +651,7 @@
     </message>
     <message>
         <location filename="../assets/media/VideoPreviewPage.qml" line="48"/>
-        <source>Share</source>
+        <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -669,7 +669,7 @@
     </message>
     <message>
         <location filename="../assets/media/VoicePreviewPage.qml" line="52"/>
-        <source>Share</source>
+        <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -710,11 +710,11 @@
     </message>
     <message>
         <location filename="../assets/documents/ZipPreviewPage.qml" line="48"/>
-        <source>Share</source>
+        <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/ZipPreviewPage.qml" line="57"/>
+        <location filename="../assets/documents/ZipPreviewPage.qml" line="58"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>

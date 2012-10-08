@@ -49,13 +49,13 @@ Page {
     ]
     actions: [
         ActionItem {
-            title: qsTr("Share") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/6-social-share81.png"
+            title: qsTr("Hear in...") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/ics/2-action-search81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                // Calls a function that show's the image in the pictures app.
-                ods.showInVideosApp(previewPage.previewPath);
-                console.debug("Calling function to launchvideosapp");
+                // Calls a function that show's the image in a View from InvocationFramework
+                ods.showInView(previewPage.previewPath);
+                console.debug("just called function to View from IF");
             }
         },
         ActionItem {
@@ -98,9 +98,6 @@ Page {
                     minWidth: 128
                     minHeight: 128
                     scalingMethod: ScalingMethod.AspectFit
-                    onTouch: {
-                        playIt()
-                    }
                 }
                 Container {
                     layout: StackLayout {

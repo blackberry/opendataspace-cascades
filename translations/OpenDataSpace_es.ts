@@ -139,11 +139,15 @@
     </message>
     <message>
         <location filename="../assets/documents/DocumentsPreviewPage.qml" line="48"/>
-        <source>Share</source>
-        <translation>Participación</translation>
+        <source>View</source>
+        <translation type="unfinished">ver</translation>
     </message>
     <message>
-        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="57"/>
+        <source>Share</source>
+        <translation type="obsolete">Participación</translation>
+    </message>
+    <message>
+        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="58"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -226,8 +230,12 @@
     </message>
     <message>
         <location filename="../assets/media/ImagePreviewPage.qml" line="50"/>
+        <source>View</source>
+        <translation type="unfinished">ver</translation>
+    </message>
+    <message>
         <source>Share</source>
-        <translation type="unfinished">Participación</translation>
+        <translation type="obsolete">Participación</translation>
     </message>
     <message>
         <location filename="../assets/media/ImagePreviewPage.qml" line="60"/>
@@ -342,11 +350,15 @@
     </message>
     <message>
         <location filename="../assets/documents/PdfPreviewPage.qml" line="48"/>
-        <source>Share</source>
-        <translation type="unfinished">Participación</translation>
+        <source>View</source>
+        <translation type="unfinished">ver</translation>
     </message>
     <message>
-        <location filename="../assets/documents/PdfPreviewPage.qml" line="57"/>
+        <source>Share</source>
+        <translation type="obsolete">Participación</translation>
+    </message>
+    <message>
+        <location filename="../assets/documents/PdfPreviewPage.qml" line="58"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -630,11 +642,15 @@
     </message>
     <message>
         <location filename="../assets/documents/UnknownPreviewPage.qml" line="48"/>
-        <source>Share</source>
-        <translation type="unfinished">participación</translation>
+        <source>View</source>
+        <translation type="unfinished">ver</translation>
     </message>
     <message>
-        <location filename="../assets/documents/UnknownPreviewPage.qml" line="57"/>
+        <source>Share</source>
+        <translation type="obsolete">participación</translation>
+    </message>
+    <message>
+        <location filename="../assets/documents/UnknownPreviewPage.qml" line="58"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -713,8 +729,12 @@
     </message>
     <message>
         <location filename="../assets/media/VideoPreviewPage.qml" line="48"/>
+        <source>View</source>
+        <translation type="unfinished">ver</translation>
+    </message>
+    <message>
         <source>Share</source>
-        <translation type="unfinished">participación</translation>
+        <translation type="obsolete">participación</translation>
     </message>
     <message>
         <location filename="../assets/media/VideoPreviewPage.qml" line="58"/>
@@ -731,8 +751,8 @@
     </message>
     <message>
         <location filename="../assets/media/VoicePreviewPage.qml" line="52"/>
-        <source>Share</source>
-        <translation type="unfinished"></translation>
+        <source>View</source>
+        <translation type="unfinished">ver</translation>
     </message>
     <message>
         <location filename="../assets/media/VoicePreviewPage.qml" line="62"/>
@@ -776,11 +796,15 @@
     </message>
     <message>
         <location filename="../assets/documents/ZipPreviewPage.qml" line="48"/>
-        <source>Share</source>
-        <translation type="unfinished">participación</translation>
+        <source>View</source>
+        <translation type="unfinished">ver</translation>
     </message>
     <message>
-        <location filename="../assets/documents/ZipPreviewPage.qml" line="57"/>
+        <source>Share</source>
+        <translation type="obsolete">participación</translation>
+    </message>
+    <message>
+        <location filename="../assets/documents/ZipPreviewPage.qml" line="58"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>

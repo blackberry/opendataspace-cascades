@@ -296,64 +296,66 @@ void OpenDataSpace::settingsTriggered() {
 	}
 }
 
-void OpenDataSpace::showInPicturesApp(QString fileName) {
-	// Here we create a invoke request to the pictures app.
-	// we could also ask the system what other applications can
-	// receive something of our mimeType.
-	// the pictures app will come pre-installed so it's a safe bet.
-	qDebug() << "ShowInPicturesApp called: " << fileName;
+/**
+ * uses Invokation Framework to View the file from URI
+ *
+ */
+void OpenDataSpace::showInView(QString uri) {
+	qDebug() << "showInView called: " << uri;
 	InvokeRequest invokeRequest;
-	invokeRequest.setAction("bb.action.OPEN");
-	invokeRequest.setTarget("sys.pictures.app");
-	invokeRequest.setMimeType("images/jpeg");
-	invokeRequest.setUri(
-			QString("%1%2").arg("photos:").arg(
-					fileName.startsWith("file://") ?
-							fileName.remove(0, 7) : fileName));
-	qDebug() << "ShowInPicturesApp URI: " << invokeRequest.uri();
+	invokeRequest.setAction("bb.action.VIEW");
+	invokeRequest.setUri(uri);
+	qDebug() << "showInView URI: " << invokeRequest.uri();
 	InvokeManager invokeManager;
 	invokeManager.invoke(invokeRequest);
 }
 
-void OpenDataSpace::showInVideosApp(QString fileName) {
-	// TODO only guessing yet
-	qDebug() << "showInVideoApp called: " + fileName;
+/**
+ * uses Invokation Framework to View the file from URI
+ * for a specific MimeType
+ *
+ */
+void OpenDataSpace::showInViewForMimeType(QString uri, QString mimeType) {
+	qDebug() << "showInViewForMimeType called: " << uri;
 	InvokeRequest invokeRequest;
-	invokeRequest.setAction("bb.action.OPEN");
-	invokeRequest.setTarget("sys.videos.app");
-	invokeRequest.setMimeType("images/mp4");
-	invokeRequest.setUri(
-			QString("%1%2").arg("videos:").arg(
-					fileName.startsWith("file://") ?
-							fileName.remove(0, 7) : fileName));
-	qDebug() << "showInVideosApp URI: " << invokeRequest.uri();
+	invokeRequest.setAction("bb.action.VIEW");
+	invokeRequest.setUri(uri);
+	invokeRequest.setMimeType(mimeType);
+	qDebug() << "showInViewForMimeType URI: " << invokeRequest.uri() << " Mime:" << mimeType;
 	InvokeManager invokeManager;
 	invokeManager.invoke(invokeRequest);
 }
 
-// Invoke other apps using MimeType
-void OpenDataSpace::showInOtherApp(QString fileName) {
-	qDebug() << "showInOtherApp called: " + fileName;
-	FileInfo f;
-	QString m;
-	QString s(f.getSuffix(fileName));
-	// TODO guess a  MimeType from suffix
-	if (s == "zip") {
-		m = "application/zip";
-	} else if (s == "pdf") {
-		m = "application/pdf";
-	} else {
-		m = "text/plain";
-	}
+/**
+ * uses Invokation Framework to View the file from URI
+ * for a specific target like "sys.pictures.app"
+ *
+ */
+void OpenDataSpace::showInTarget(QString uri, QString target) {
+	qDebug() << "showInTarget called: " << uri;
 	InvokeRequest invokeRequest;
-	invokeRequest.setAction("bb.action.OPEN");
-	invokeRequest.setMimeType(m);
-	invokeRequest.setUri(
-			QString("%1").arg(
-					fileName.startsWith("file://") ?
-							fileName.remove(0, 7) : fileName));
-	qDebug() << "showInOtherApp URI: " << invokeRequest.uri() << " "
-			<< invokeRequest.mimeType();
+	invokeRequest.setAction("bb.action.VIEW");
+	invokeRequest.setUri(uri);
+	invokeRequest.setTarget(target);
+	qDebug() << "showInTarget URI: " << invokeRequest.uri();
+	InvokeManager invokeManager;
+	invokeManager.invoke(invokeRequest);
+}
+
+/**
+ * uses Invokation Framework to View the file from URI
+ * for a specific MimeType
+ * and for a specific target like "sys.pictures.app"
+ *
+ */
+void OpenDataSpace::showInTargetForMimeType(QString uri, QString mimeType, QString target) {
+	qDebug() << "showInTargetForMimeType called: " << uri;
+	InvokeRequest invokeRequest;
+	invokeRequest.setAction("bb.action.VIEW");
+	invokeRequest.setUri(uri);
+	invokeRequest.setTarget(target);
+	invokeRequest.setMimeType(mimeType);
+	qDebug() << "showInTargetForMimeType URI: " << invokeRequest.uri() << " MimeType:" << mimeType;
 	InvokeManager invokeManager;
 	invokeManager.invoke(invokeRequest);
 }

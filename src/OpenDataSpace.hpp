@@ -57,17 +57,37 @@ public:
 	Q_INVOKABLE
 	void suppressKeyboard();
 
+	/**
+	 * uses Invokation Framework to View the file from URI
+	 *
+	 */
 	Q_INVOKABLE
-	// Function that uses the invoke framework to launch the picture in the pictures app.
-	void showInPicturesApp(QString fileName);
+	void showInView(QString uri);
 
+	/**
+	 * uses Invokation Framework to View the file from URI
+	 * for a specific MimeType
+	 *
+	 */
 	Q_INVOKABLE
-	// Function that uses the invoke framework to launch the video in the Videos app.
-	void showInVideosApp(QString fileName);
+	void showInViewForMimeType(QString uri, QString mimeType);
 
+	/**
+	 * uses Invokation Framework to View the file from URI
+	 * for a specific target like "sys.pictures.app"
+	 *
+	 */
 	Q_INVOKABLE
-	// Function that uses the invoke framework to launch the file in another app
-	void showInOtherApp(QString fileName);
+	void showInTarget(QString uri, QString target);
+
+	/**
+	 * uses Invokation Framework to View the file from URI
+	 * for a specific MimeType
+	 * and for a specific target like "sys.pictures.app"
+	 *
+	 */
+	Q_INVOKABLE
+	void showInTargetForMimeType(QString uri, QString mimeType, QString target);
 
 public slots:
 	void logoutTriggered();
