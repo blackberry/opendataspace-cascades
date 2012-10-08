@@ -93,6 +93,8 @@ Page {
 
             // The 'Record' button
             ImageToggleButton {
+                signal recordAudio
+                id: recordButton
                 rightMargin: 2
                 imageSourceDefault: "asset:///images/dictaphone/rec_button.png"
                 imageSourcePressedUnchecked: "asset:///images/dictaphone/rec_button.png"
@@ -101,22 +103,10 @@ Page {
                 imageSourceDisabledChecked: "asset:///images/dictaphone/rec_button_pressed.png"
                 enabled: (recorder.mediaState != MediaState.Paused)
                 onCheckedChanged: {
-                    if (recorder.mediaState == MediaState.Started) {
-                        // Stop the recorder
-                        recorder.reset()
-                        // Play the finished sound
-                        recordStopSound.play()
+                    if (recordButton.checked) {
+                        recordAudio()
                     } else {
-                        // Configure the recorder to use a new URL
-                        saver.open()
-                        // TODO recorder.outputUrl = saver.selectedFile   // trackmanager.nextTrackUrl()
-                        //
-
-                        // Play the start sound
-                        // TODO recordStartSound.play()
-
-                        // Start the recorder
-                        // TODO recorder.record()
+                        stopRecording()
                     }
                 }
             }
@@ -137,16 +127,26 @@ Page {
             }
 
             // The 'Play' button
-            ImageButton {
+            ImageToggleButton {
+                signal playRecordedAudio()
+                id: playButton
                 leftMargin: 2
-                defaultImageSource: "asset:///images/dictaphone/play_button.png"
-                pressedImageSource: "asset:///images/dictaphone/play_button_pressed.png"
-                disabledImageSource: "asset:///images/dictaphone/play_button.png"
-                enabled: (recorder.mediaState != MediaState.Started 
-                    && recorder.mediaState != MediaState.Paused)
-                onClicked: {
-                    console.debug("PLAY clicked")
-                    // TODO filepicker navigationPane.pushPlayerListPage(trackmanager.model)
+                //defaultImageSource: "asset:///images/dictaphone/play_button.png"
+                //pressedImageSource: "asset:///images/dictaphone/play_button_pressed.png"
+                //disabledImageSource: "asset:///images/dictaphone/play_button.png"
+                imageSourceDefault: "asset:///images/dictaphone/play_button.png"
+                imageSourceDisabledUnchecked: "asset:///images/dictaphone/play_button.png"
+                imageSourcePressedUnchecked: "asset:///images/dictaphone/play_button.png"
+                imageSourceChecked: "asset:///images/dictaphone/play_button_pressed.png"
+                imageSourcePressedChecked: "asset:///images/dictaphone/play_button_pressed.png"
+                enabled: (recorder.mediaState != MediaState.Started && recorder.mediaState != MediaState.Paused)
+                //onClicked: {
+                onCheckedChanged: {
+                    if (playButton.checked) {
+                        playRecordedAudio()
+                    } else {
+                        stopPlaying()
+                    }
                 }
             }
         }
@@ -166,20 +166,44 @@ Page {
             sound: SystemSound.RecordingStopEvent
         },
         FilePicker {
-            id: saver
+            id: audioFilePicker
             property string selectedFile
+            property bool isRecording
             title: qsTr("Save Voice as...")
-            mode: FilePickerMode.Saver // pickerMode.selectedValue
-            type: FileType.Other // pickerType.selectedValue
-            viewMode: ViewMode.Default // pickerViewMode.selectedValue
-            sortBy: FilePickerSortFlag.Default // pickerSortBy.selectedValue
-            sortOrder: FilePickerSortOrder.Default // pickerSortOrder.selectedValue
-            directories : ["/accounts/1000/shared/voice"]
+            mode: FilePickerMode.Saver
+            type: FileType.Other
+            viewMode: ViewMode.Default
+            sortBy: FilePickerSortFlag.Default
+            sortOrder: FilePickerSortOrder.Default
+            directories: [
+                "/accounts/1000/shared/voice"
+            ]
             onFileSelected: {
                 selectedFile = selectedFiles[0]
-                recorder.outputUrl = selectedFile
-                recordStartSound.play()
-                recorder.record()
+                if (audioFilePicker.isRecording) {
+                    if (selectedFile.substr(selectedFile.length - 4) != ".m4a") {
+                        selectedFile = selectedFile + ".m4a"
+                    }
+                    startRecording(selectedFile)
+                } else {
+                    startPlaying(selectedFile)
+                }
+            }
+            onCanceled: {
+                if (audioFilePicker.isRecording) {
+                    stopRecording()
+                } else {
+                    stopPlaying()
+                }
+            }
+        },
+        MediaPlayer {
+            id: player
+            onPlaybackCompleted: {
+                stopPlaying()
+            }
+            onStop: {
+                stopPlaying()
             }
         },
         // application supports changing the Orientation
@@ -229,8 +253,64 @@ Page {
             console.debug("reLayout to PORTRAIT DONE")
         }
     }
+    // SLOT
+    function onPlayRecordedAudio() {
+        console.debug("lets play the recorded Audio")
+        audioFilePicker.title = qsTr("Select Recorded Audio")
+        audioFilePicker.mode = FilePickerMode.Picker
+        audioFilePicker.isRecording = false
+        audioFilePicker.open()
+    }
+    // called from FilePicker if a File was selected
+    function startPlaying(selectedFile) {
+        recordStartSound.play()
+        player.sourceUrl = ""
+        player.sourceUrl = selectedFile
+        player.play()
+    }
+    //
+    function stopPlaying() {
+        if (player.mediaState == MediaState.Started) {
+            player.stop()
+            // Play the finished sound
+            recordStopSound.play()
+        }
+        playButton.checked = false
+    }
+    // SLOT
+    function onRecordAudio() {
+        // stop a running player if there's one
+        stopPlaying()
+        // now start new recording
+        recordStartSound.play()
+        // we need the filename where audio should be persisted
+        audioFilePicker.title = qsTr("Save Voice as...")
+        audioFilePicker.mode = FilePickerMode.Saver
+        audioFilePicker.isRecording = true
+        // filepicker starts the recording after selecting the file
+        audioFilePicker.open()
+    }
+    //
+    function startRecording(selectedFile) {
+        recorder.outputUrl = selectedFile
+        recorder.record()
+    }
+    //
+    function stopRecording() {
+        if (recorder.mediaState == MediaState.Started) {
+            // Stop the recorder
+            recorder.reset()
+            // Play the finished sound
+            recordStopSound.play()
+        }
+        recordButton.checked = false
+    }
+    //
     onCreationCompleted: {
         // first layouting
         reLayout(OrientationSupport.orientation);
+        // connect signals and slots
+        recordButton.recordAudio.connect(onRecordAudio)
+        playButton.playRecordedAudio.connect(onPlayRecordedAudio)
     }
 }

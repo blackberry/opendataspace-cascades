@@ -119,8 +119,14 @@
 <context>
     <name>DictaphonePage</name>
     <message>
-        <location filename="../assets/media/DictaphonePage.qml" line="171"/>
+        <location filename="../assets/media/DictaphonePage.qml" line="172"/>
+        <location filename="../assets/media/DictaphonePage.qml" line="287"/>
         <source>Save Voice as...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/media/DictaphonePage.qml" line="259"/>
+        <source>Select Recorded Audio</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
