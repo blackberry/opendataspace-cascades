@@ -11,7 +11,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
+ * 
  * Initial Contribution from RIM: Dictaphone (Cascades Samples)
  * Integrated, changed and enhanced for OpenDataSpace by:
  * Copyright (c) 2012 SSP Europe GmbH, Munich
@@ -21,13 +21,14 @@
 import bb.cascades 1.0
 import bb.multimedia 1.0
 import org.opendataspace.trackmanager 1.0
+import bb.cascades.pickers 1.0
 
 /**
-*    added support for orientation Landscape / Portrait
-*    Ekkehard Gentz (ekke) @ekkescorner http://ekkes-corner.org
-*
-*    did some changes and enhancements to integrate Dictaphone functionality into this app
-*/
+ *    added support for orientation Landscape / Portrait
+ *    Ekkehard Gentz (ekke) @ekkescorner http://ekkes-corner.org
+ * 
+ *    did some changes and enhancements to integrate Dictaphone functionality into this app
+ */
 
 Page {
     signal addAudiofile(string path)
@@ -60,9 +61,7 @@ Page {
             id: tape
             horizontalAlignment: HorizontalAlignment.Center
             verticalAlignment: VerticalAlignment.Top
-
             translationY: 570
-            
             running: (recorder.mediaState == MediaState.Started)
         }
 
@@ -71,9 +70,7 @@ Page {
             id: label
             horizontalAlignment: HorizontalAlignment.Center
             verticalAlignment: VerticalAlignment.Top
-
             translationY: -205
-            
             imageSource: "asset:///images/dictaphone/dictaphone_label.png"
         }
 
@@ -82,7 +79,6 @@ Page {
             id: buttonBackground
             horizontalAlignment: HorizontalAlignment.Center
             verticalAlignment: VerticalAlignment.Bottom
-            
             imageSource: "asset:///images/dictaphone/buttons_background.png"
         }
 
@@ -91,7 +87,6 @@ Page {
             id: buttonContainer
             horizontalAlignment: HorizontalAlignment.Center
             verticalAlignment: VerticalAlignment.Bottom
-            
             preferredWidth: 670
             layout: StackLayout {
                 orientation: LayoutOrientation.LeftToRight
@@ -121,13 +116,15 @@ Page {
                         trackmanager.update()
 
                         // Configure the recorder to use a new URL
-                        recorder.outputUrl = trackmanager.nextTrackUrl()
+                        saver.open()
+                        // TODO recorder.outputUrl = saver.selectedFile   // trackmanager.nextTrackUrl()
+                        //
 
                         // Play the start sound
-                        recordStartSound.play()
+                        // TODO recordStartSound.play()
 
                         // Start the recorder
-                        recorder.record()
+                        // TODO recorder.record()
                     }
                 }
             }
@@ -153,7 +150,9 @@ Page {
                 defaultImageSource: "asset:///images/dictaphone/play_button.png"
                 pressedImageSource: "asset:///images/dictaphone/play_button_pressed.png"
                 disabledImageSource: "asset:///images/dictaphone/play_button.png"
-                enabled: (trackmanager.hasRecordedTracks && recorder.mediaState != MediaState.Started && recorder.mediaState != MediaState.Paused)
+                enabled: (trackmanager.hasRecordedTracks 
+                    && recorder.mediaState != MediaState.Started 
+                    && recorder.mediaState != MediaState.Paused)
                 onClicked: {
                     console.debug("PLAY clicked")
                     navigationPane.pushPlayerListPage(trackmanager.model)
@@ -161,7 +160,6 @@ Page {
             }
         }
     }
-
     attachedObjects: [
         // the recorder
         AudioRecorder {
@@ -179,9 +177,26 @@ Page {
         TrackManager {
             id: trackmanager
         },
+        FilePicker {
+            id: saver
+            property string selectedFile
+            title: qsTr("Save Voice as...")
+            mode: FilePickerMode.Saver // pickerMode.selectedValue
+            type: FileType.Other // pickerType.selectedValue
+            viewMode: ViewMode.Default // pickerViewMode.selectedValue
+            sortBy: FilePickerSortFlag.Default // pickerSortBy.selectedValue
+            sortOrder: FilePickerSortOrder.Default // pickerSortOrder.selectedValue
+            directories : ["/accounts/1000/shared/voice"]
+            onFileSelected: {
+                selectedFile = selectedFiles[0]
+                recorder.outputUrl = selectedFile
+                recordStartSound.play()
+                recorder.record()
+            }
+        },
         // application supports changing the Orientation
         OrientationHandler {
-            // onOrientationChanged: { should be this from docs, but onOrientationAboutToChange runs smoother 
+            // onOrientationChanged: { should be this from docs, but onOrientationAboutToChange runs smoother
             onOrientationAboutToChange: {
                 console.debug("onOrientationAboutToChange")
                 dictaphonePage.reLayout(orientation);

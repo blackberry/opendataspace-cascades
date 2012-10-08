@@ -122,7 +122,10 @@ Page {
             imageSource: "asset:///images/ics/4-collections-view-as-list81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
+                picker.title = qsTr("Select Document")
                 picker.type = FileType.Document
+                picker.directories = [
+                ]
                 picker.open();
             }
         },
@@ -131,7 +134,10 @@ Page {
             imageSource: "asset:///images/ics/5-content-picture81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
+                picker.title = qsTr("Select Image")
                 picker.type = FileType.Picture
+                picker.directories = [
+                ]
                 picker.open();
             }
         },
@@ -140,7 +146,25 @@ Page {
             imageSource: "asset:///images/ics/10-device-access-video81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
+                picker.title = qsTr("Select Video")
                 picker.type = FileType.Video
+                picker.directories = [
+                ]
+                picker.open();
+            }
+        },
+        ActionItem {
+            title: qsTr("Select | Record Voice") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/ics/10-device-access-mic81.png"
+            ActionBar.placement: ActionBarPlacement.InOverflow
+            onTriggered: {
+                picker.title = qsTr("Select Audio")
+                picker.type = FileType.Other
+                picker.directories = [
+                    "/accounts/1000/shared/voice",
+                    "/accounts/1000/shared/downloads"
+                ]
+                // picker.filter = ["*.m4a"]
                 picker.open();
             }
         },
@@ -149,16 +173,20 @@ Page {
             imageSource: "asset:///images/ics/10-device-access-video81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
+                picker.title = qsTr("Select Music")
                 picker.type = FileType.Music
                 picker.open();
             }
         },
         ActionItem {
-            title: qsTr("Select Other") + Retranslate.onLanguageChanged
+            title: qsTr("Select Other File") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/10-device-access-video81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
+                picker.title = qsTr("Select File")
                 picker.type = FileType.Other
+                picker.directories = [
+                ]
                 picker.open();
             }
         },
