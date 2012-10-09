@@ -288,17 +288,35 @@
 <context>
     <name>LoginSheet</name>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="80"/>
         <source>Username</source>
-        <translation type="unfinished">Nom d&apos;utilisateur</translation>
+        <translation type="obsolete">Nom d&apos;utilisateur</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="87"/>
         <source>Password</source>
-        <translation type="unfinished">Mot de passe</translation>
+        <translation type="obsolete">Mot de passe</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="93"/>
+        <location filename="../assets/LoginSheet.qml" line="46"/>
+        <source>ODS LogIn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/LoginSheet.qml" line="47"/>
+        <source>Enter Username and Password to log into your OpenDataSpace Cloud Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/LoginSheet.qml" line="50"/>
+        <source>Login now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/LoginSheet.qml" line="52"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Annuler</translation>
+    </message>
+    <message>
+        <location filename="../assets/LoginSheet.qml" line="101"/>
         <source>Login</source>
         <translation type="unfinished"></translation>
     </message>
@@ -306,22 +324,22 @@
 <context>
     <name>OpenDataSpace</name>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="166"/>
+        <location filename="../src/OpenDataSpace.cpp" line="189"/>
         <source>Help</source>
         <translation type="unfinished">Aider</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="169"/>
+        <location filename="../src/OpenDataSpace.cpp" line="192"/>
         <source>Feedback</source>
         <translation type="unfinished">Réaction</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="172"/>
+        <location filename="../src/OpenDataSpace.cpp" line="195"/>
         <source>Logout</source>
         <translation type="unfinished">Déconnexion</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="175"/>
+        <location filename="../src/OpenDataSpace.cpp" line="198"/>
         <source>Settings</source>
         <translation type="unfinished">Réglages</translation>
     </message>

@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import bb.cascades 1.0
+import bb.system 1.0
 
 /*
  * 
@@ -38,6 +39,27 @@ Page {
         ImageTracker {
             id: backgroundPortrait
             imageSource: "asset:///images/login-ods-768x1280.png"
+        },
+        SystemCredentialsPrompt {
+            id: credentialsPrompt
+            modality: SystemUiModality.Global
+            title: qsTr("ODS LogIn")
+            body: qsTr("Enter Username and Password to log into your OpenDataSpace Cloud Account")
+            includeShowPassword: true
+            includeRememberMe: true
+            confirmButton.label: qsTr("Login now")
+            confirmButton.enabled: true
+            cancelButton.label: qsTr("Cancel")
+            cancelButton.enabled: true
+            onFinished: {
+                if (result == SystemUiResult.ConfirmButtonSelection) {
+                    console.log("confirm");
+                    // TODO call C++ function to test if Login was OK
+                    done(true)
+                } else if (result == SystemUiResult.CancelButtonSelection) {
+                    console.log("cancel");
+                }
+            }
         },
         // recalculate positions
         OrientationHandler {
@@ -75,26 +97,11 @@ Page {
                 layout: StackLayout {
                     orientation: LayoutOrientation.TopToBottom
                 }
-                TextField {
-                    id: username
-                    hintText: qsTr("Username") + Retranslate.onLanguageChanged
-                    preferredWidth: 400.0
-                    opacity: 0.9
-                }
-                // we need password masking
-                TextField {
-                    id: password
-                    hintText: qsTr("Password") + Retranslate.onLanguageChanged
-                    preferredWidth: 400.0
-                    opacity: 0.9
-                    inputMode: TextFieldInputMode.Password
-                }
                 Button {
                     text: qsTr("Login") + Retranslate.onLanguageChanged
                     preferredWidth: 400.0
                     onClicked: {
-                        // TODO call C++ function to test if Login was OK
-                        done(true)
+                        credentialsPrompt.show()
                     }
                 }
             }

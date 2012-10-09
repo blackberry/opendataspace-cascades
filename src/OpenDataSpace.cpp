@@ -19,6 +19,16 @@
 
 #include <bb/system/InvokeManager.hpp>
 #include <bb/system/InvokeRequest.hpp>
+#include <bb/system/SystemCredentialsPrompt>
+#include <bb/system/SystemDialog>
+#include <bb/system/SystemPrompt>
+#include <bb/system/SystemToast>
+#include <bb/system/SystemUiButton>
+#include <bb/system/SystemUiError>
+#include <bb/system/SystemUiInputField>
+#include <bb/system/SystemUiInputMode>
+#include <bb/system/SystemUiPosition>
+#include <bb/system/SystemUiResult>
 
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
@@ -71,6 +81,20 @@ OpenDataSpace::OpenDataSpace() {
 	// Register the DateUtil, so QML knows about
 	qmlRegisterType<DateUtil>("org.opendataspace.dateutil", 1, 0, "DateUtil");
 
+	// register system dialogs
+	qmlRegisterType<SystemUiButton>("bb.system", 1, 0, "SystemUiButton");
+	qmlRegisterType<SystemUiInputField>("bb.system", 1, 0, "SystemUiInputField");
+	qmlRegisterType<SystemToast>("bb.system", 1, 0, "SystemToast");
+	qmlRegisterType<SystemPrompt>("bb.system", 1, 0, "SystemPrompt");
+	qmlRegisterType<SystemCredentialsPrompt>("bb.system", 1, 0, "SystemCredentialsPrompt");
+	qmlRegisterType<SystemDialog>("bb.system", 1, 0, "SystemDialog");
+	qmlRegisterUncreatableType<SystemUiError>("bb.system", 1, 0, "SystemUiError", "");
+	qmlRegisterUncreatableType<SystemUiResult>("bb.system", 1, 0, "SystemUiResult", "");
+	qmlRegisterUncreatableType<SystemUiPosition>("bb.system", 1, 0, "SystemUiPosition", "");
+	qmlRegisterUncreatableType<SystemUiInputMode>("bb.system", 1, 0, "SystemUiInputMode", "");
+	qmlRegisterUncreatableType<SystemUiModality>("bb.system", 1, 0, "SystemUiModality", "");
+	qRegisterMetaType<SystemUiResult::Type>( "bb::system::SystemUiResult::Type");
+
 	qDebug() << "registered types for QML";
 
 	// our main QML document: the HomeScreen with a custom Background Image
@@ -102,7 +126,6 @@ OpenDataSpace::OpenDataSpace() {
 	//
 	Application *app = Application::instance();
 	connect(app, SIGNAL(thumbnail()), this, SLOT(onThumbnail()));
-
 
 	qDebug() << "INIT done";
 
@@ -321,7 +344,8 @@ void OpenDataSpace::showInViewForMimeType(QString uri, QString mimeType) {
 	invokeRequest.setAction("bb.action.VIEW");
 	invokeRequest.setUri(uri);
 	invokeRequest.setMimeType(mimeType);
-	qDebug() << "showInViewForMimeType URI: " << invokeRequest.uri() << " Mime:" << mimeType;
+	qDebug() << "showInViewForMimeType URI: " << invokeRequest.uri() << " Mime:"
+			<< mimeType;
 	InvokeManager invokeManager;
 	invokeManager.invoke(invokeRequest);
 }
@@ -348,21 +372,23 @@ void OpenDataSpace::showInTarget(QString uri, QString target) {
  * and for a specific target like "sys.pictures.app"
  *
  */
-void OpenDataSpace::showInTargetForMimeType(QString uri, QString mimeType, QString target) {
+void OpenDataSpace::showInTargetForMimeType(QString uri, QString mimeType,
+		QString target) {
 	qDebug() << "showInTargetForMimeType called: " << uri;
 	InvokeRequest invokeRequest;
 	invokeRequest.setAction("bb.action.VIEW");
 	invokeRequest.setUri(uri);
 	invokeRequest.setTarget(target);
 	invokeRequest.setMimeType(mimeType);
-	qDebug() << "showInTargetForMimeType URI: " << invokeRequest.uri() << " MimeType:" << mimeType;
+	qDebug() << "showInTargetForMimeType URI: " << invokeRequest.uri()
+			<< " MimeType:" << mimeType;
 	InvokeManager invokeManager;
 	invokeManager.invoke(invokeRequest);
 }
 
 // triggered if Application was sent to back
 void OpenDataSpace::onThumbnail() {
-      // TODO set Cover()
+	// TODO set Cover()
 	qDebug() << "Application shrinks to thumbnail";
 	// AbstractCover *cover;
 	// Application::instance()->setCover(cover);
