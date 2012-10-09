@@ -143,6 +143,15 @@ public:
 	/*
 	 *
 	 * tests the suffix from filename
+	 * if it is a HTML file
+	 *
+	 */
+	Q_INVOKABLE
+	bool isHtml(QString filePath) const;
+
+	/*
+	 *
+	 * tests the suffix from filename
 	 * if it is a book
 	 *
 	 */

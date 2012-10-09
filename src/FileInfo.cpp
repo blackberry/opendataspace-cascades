@@ -204,6 +204,20 @@ bool FileInfo::isDocument(QString filePath) const {
 /*
  *
  * tests the suffix from filename
+ * if it is a html file
+ *
+ */
+bool FileInfo::isHtml(QString filePath) const {
+	QString s = getSuffix(filePath);
+	if (s == "html") {
+		return true;
+	}
+	return false;
+}
+
+/*
+ *
+ * tests the suffix from filename
  * if it is a book
  *
  */

@@ -123,7 +123,7 @@ Page {
         titleBarId.title = fileInfo.getShortName(name);
         titleLabel.text = titleBarId.title;
         filenameInfo.enabled = true;
-        filenameInfo.text = fileInfo.getDetailedInfo(ods.getCurrentLocale(), name) + "\n"; //workaround bug in landscape: last line not visible
+        filenameInfo.text = fileInfo.getDetailedInfo(ods.getCurrentLocale(), name);
         filenameInfo.enabled = false;
     }
     // redesign if orientation changed

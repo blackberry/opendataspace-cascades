@@ -38,14 +38,14 @@ Page {
         // application supports changing the Orientation
         OrientationHandler {
             onOrientationAboutToChange: {
-                console.debug("ZipPreview: onOrientationAboutToChange")
+                console.debug("DocumentsPreview: onOrientationAboutToChange")
                 previewPage.reLayout(orientation);
             }
         }
     ]
     actions: [
         ActionItem {
-            title: qsTr("Inspect in...") + Retranslate.onLanguageChanged
+            title: qsTr("View in...") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/2-action-search81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
@@ -78,11 +78,11 @@ Page {
                 horizontalAlignment: HorizontalAlignment.Left
                 ImageView {
                     id: previewImage
-                    objectName: "previewZip"
+                    objectName: "previewHtml"
                     layoutProperties: StackLayoutProperties {
                     }
                     verticalAlignment: VerticalAlignment.Center
-                    imageSource: "asset:///images/nuvola/tar.png"
+                    imageSource: "asset:///images/nuvola/www.png"
                     minWidth: 128
                     minHeight: 128
                     //scalingMethod: ScalingMethod.AspectFit
@@ -115,10 +115,19 @@ Page {
                             color: Color.Black
                         }
                     }
+                    Label {
+                        text: qsTr("content preview")
+                    }
+                    Divider {
+                    }
+                    WebView {
+                        id: webView
+                        url: previewPath
+                    }
                 }
             }
         } // end main container
-    } // end scroll view
+    } // end scvrollview
     function recalculateValues(name) {
         titleBarId.title = fileInfo.getShortName(name);
         titleLabel.text = titleBarId.title;
@@ -129,19 +138,19 @@ Page {
     // redesign if orientation changed
     function reLayout(orientation) {
         if (orientation == UIOrientation.Landscape) {
-            console.debug("ZIPPreview: reLayout to LANDSCAPE")
+            console.debug("HtmlPreview: reLayout to LANDSCAPE")
             titleBar.visibility = ChromeVisibility.Hidden
             titleLabel.visible = true
             imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight
             previewImage.horizontalAlignment = HorizontalAlignment.Left
-            console.debug("ZIPPreview: reLayout to LANDSCAPE DONE")
+            console.debug("HtmlPreview: reLayout to LANDSCAPE DONE")
         } else {
-            console.debug("ZIPPreview: reLayout to PORTRAIT")
+            console.debug("HtmlPreview: reLayout to PORTRAIT")
             titleBar.visibility = ChromeVisibility.Visible
             titleLabel.visible = false
             imageAndTextContainer.layout.orientation = LayoutOrientation.TopToBottom
             previewImage.horizontalAlignment = HorizontalAlignment.Center
-            console.debug("ZIPPreview: reLayout to PORTRAIT DONE")
+            console.debug("HtmlPreview: reLayout to PORTRAIT DONE")
         }
     }
     // TODO Landscape hide Actionbar if no activity

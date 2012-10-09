@@ -30,6 +30,7 @@ Page {
     signal previewImage(string filePath)
     signal previewVideo(string path)
     signal previewDocuments(string path)
+    signal previewHtml(string path)
     signal previewBooks(string path)
     signal previewPdf(string path)
     signal previewUnknown(string path)
@@ -68,6 +69,11 @@ Page {
                 // isPDF ?
                 if (fileInfo.getSuffix(picker.selectedFile) == "pdf") {
                     roomsListPage.previewPdf(picker.selectedFile);
+                    return;
+                }
+                // isHtml ?
+                if (fileInfo.isHtml(picker.selectedFile)) {
+                    roomsListPage.previewHtml(picker.selectedFile);
                     return;
                 }
                 // isZIP ?

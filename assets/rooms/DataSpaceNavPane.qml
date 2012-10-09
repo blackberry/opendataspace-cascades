@@ -86,6 +86,16 @@ NavigationPane {
                 }
             }
         },
+        HtmlPreviewPage {
+            id: htmlPreviewPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
+        },
         BooksPreviewPage {
             id: booksPreviewPage
             paneProperties: NavigationPaneProperties {
@@ -322,12 +332,18 @@ NavigationPane {
         documentsPreviewPage.recalculateValues(path);
         navigationPane.push(documentsPreviewPage)
     }
+    function previewHtml(path) {
+        console.debug("got signal to preview HTML: " + path)
+        htmlPreviewPage.previewPath = path;
+        htmlPreviewPage.recalculateValues(path);
+        navigationPane.push(htmlPreviewPage)
+    }
     function previewBooks(path) {
-            console.debug("got signal to preview books: " + path)
-            booksPreviewPage.previewPath = path;
-            booksPreviewPage.recalculateValues(path);
-            navigationPane.push(booksPreviewPage)
-        }
+        console.debug("got signal to preview books: " + path)
+        booksPreviewPage.previewPath = path;
+        booksPreviewPage.recalculateValues(path);
+        navigationPane.push(booksPreviewPage)
+    }
     function previewPdf(path) {
         console.debug("got signal to preview PDF: " + path)
         pdfPreviewPage.previewPath = path;
@@ -364,6 +380,7 @@ NavigationPane {
         roomsListPage.previewVideo.connect(previewVideo)
         // some more previews:
         roomsListPage.previewDocuments.connect(previewDocuments)
+        roomsListPage.previewHtml.connect(previewHtml)
         roomsListPage.previewBooks.connect(previewBooks)
         roomsListPage.previewPdf.connect(previewPdf)
         roomsListPage.previewZip.connect(previewZip)
