@@ -5,21 +5,30 @@
     <name>AddFolderPage</name>
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="32"/>
+        <source>Folder successfully added</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="42"/>
         <source>Add Folder</source>
         <translation type="unfinished">Добавить папку</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="52"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="53"/>
+        <source>Folder %1 successfully added</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="66"/>
         <source>Folder Name</source>
         <translation type="unfinished">Имя папки</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="94"/>
         <source>another Foldername</source>
-        <translation type="unfinished">другое имя папки</translation>
+        <translation type="obsolete">другое имя папки</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="114"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="127"/>
         <source>Name of the new Folder</source>
         <translation type="unfinished">Название новой папки</translation>
     </message>
@@ -27,57 +36,67 @@
 <context>
     <name>AddUserPage</name>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="48"/>
+        <location filename="../assets/users/AddUserPage.qml" line="34"/>
+        <source>User added to ODS Cloud</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/users/AddUserPage.qml" line="58"/>
         <source>Add User</source>
         <translation type="unfinished">Добавить пользователя</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="69"/>
+        <location filename="../assets/users/AddUserPage.qml" line="70"/>
+        <source>User %1 added to ODS Cloud</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/users/AddUserPage.qml" line="86"/>
         <source>User Data</source>
         <translation type="unfinished">Данные пользователя</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="141"/>
+        <location filename="../assets/users/AddUserPage.qml" line="155"/>
         <source>User email address</source>
         <translation type="unfinished">Адрес электронной почты пользователя</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="161"/>
+        <location filename="../assets/users/AddUserPage.qml" line="175"/>
         <source>Salutation</source>
         <translation type="unfinished">приветствие</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="173"/>
+        <location filename="../assets/users/AddUserPage.qml" line="187"/>
         <source>Mr.</source>
         <translation type="unfinished">Господин</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="176"/>
+        <location filename="../assets/users/AddUserPage.qml" line="190"/>
         <source>Mrs.</source>
         <translation type="unfinished">Миссис</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="183"/>
+        <location filename="../assets/users/AddUserPage.qml" line="197"/>
         <source>Title</source>
         <translation type="unfinished">название</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="192"/>
+        <location filename="../assets/users/AddUserPage.qml" line="206"/>
         <source>First Name</source>
         <translation type="unfinished">Имя</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="203"/>
+        <location filename="../assets/users/AddUserPage.qml" line="217"/>
         <source>Last Name</source>
         <translation type="unfinished">фамилия</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="224"/>
+        <location filename="../assets/users/AddUserPage.qml" line="238"/>
         <source>Administrator</source>
         <translation type="unfinished">администратор</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="276"/>
+        <location filename="../assets/users/AddUserPage.qml" line="290"/>
         <source>DataRoom</source>
         <translation type="unfinished"></translation>
     </message>
@@ -317,7 +336,12 @@
         <translation type="unfinished">отменить</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="101"/>
+        <location filename="../assets/LoginSheet.qml" line="73"/>
+        <source>You are now logged into OpenDataSpace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/LoginSheet.qml" line="110"/>
         <source>Login</source>
         <translation type="unfinished">Войти</translation>
     </message>

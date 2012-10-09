@@ -14,6 +14,7 @@
  * limitations under the License.
  */import bb.cascades 1.0
 import "../common"
+import bb.system 1.0
 
 Page {
     // SIGNAL if folder was added
@@ -25,6 +26,15 @@ Page {
             id: redTile
             repeatPattern: RepeatPattern.XY
             imageSource: "asset:///images/tiles/red16x16.png"
+        },
+        SystemToast {
+            id: addFolderToast
+            body: qsTr("Folder successfully added")
+            icon: "asset:///images/folders-icon.png"
+            position : SystemUiPosition.BottomCenter
+            onFinished: {
+                //
+            }
         }
     ]
     actions: [
@@ -36,9 +46,13 @@ Page {
                 if (folderName.textFieldText != "") {
                     addFolderPage.onFolderAdded(folderName.textFieldText)
                     dataError.containerVisible = false
-                    transport.value = 80
-                    transport.visible = true
-                    dummi.play()
+                    // perhaps animation while uploading
+                    //transport.value = 80
+                    //transport.visible = true
+                    //dummi.play()
+                    addFolderToast.body = qsTr("Folder %1 successfully added","").arg(folderName.textFieldText)
+                    clearFields()
+                    addFolderToast.show()
                 } else {
                     // animation to demonstrate that there are errors
                     dataError.animation.play()
@@ -90,8 +104,7 @@ Page {
                     onEnded: {
                         transport.value = 10
                         transport.visible = false
-                        folderName.textFieldText = ""
-                        folderName.textFieldHintText = qsTr("another Foldername") + Retranslate.onLanguageChanged
+                        clearFields()
                         folderName.enabled = true
                     }
                 }

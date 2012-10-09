@@ -14,6 +14,7 @@
  * limitations under the License.
  */import bb.cascades 1.0
 import "../common"
+import bb.system 1.0
 
 Page {
     // SIGNAL if user was added
@@ -27,6 +28,15 @@ Page {
             id: redTile
             repeatPattern: RepeatPattern.XY
             imageSource: "asset:///images/tiles/red16x16.png"
+        },
+        SystemToast {
+            id: adduserToast
+            body: qsTr("User added to ODS Cloud")
+            icon: "asset:///images/rooms-icon.png"
+            position : SystemUiPosition.BottomCenter
+            onFinished: {
+                //
+            }
         },
         // recalculate positions
         OrientationHandler {
@@ -53,9 +63,16 @@ Page {
                     addUserPage.onUserAdded(firstNameWithMarker.textFieldText + " " + lastNameWithMarker.textFieldText, isAdmin.displayType)
                     dataError.containerVisible = false
                     //TODO call CPP to send to the cloud
-                    transport.value = 80
-                    transport.visible = true
-                    dummi.play()
+                    // perhaps an abnimation while uploading
+                    //transport.value = 80
+                    //transport.visible = true
+                    //dummi.play()
+                    adduserToast.body= qsTr("User %1 added to ODS Cloud","").arg(
+                        firstNameWithMarker.textFieldText
+                        + " "
+                        + lastNameWithMarker.textFieldText)
+                    clearFields()
+                    adduserToast.show()
                 } else {
                     // animation to demonstrate that there are errors
                     dataError.animation.play()
@@ -119,10 +136,7 @@ Page {
                             onEnded: {
                                 transport.value = 10
                                 transport.visible = false
-                                emailWithMarker.textFieldText = ""
-                                firstNameWithMarker.textFieldText = ""
-                                lastNameWithMarker.textFieldText = ""
-                                userTitle.text = ""
+                                clearFields()
                                 userDataContainer.enabled = true
                             }
                         }

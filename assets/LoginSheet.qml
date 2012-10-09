@@ -42,7 +42,7 @@ Page {
         },
         SystemCredentialsPrompt {
             id: credentialsPrompt
-            modality: SystemUiModality.Global
+            modality: SystemUiModality.Application
             title: qsTr("ODS LogIn")
             body: qsTr("Enter Username and Password to log into your OpenDataSpace Cloud Account")
             includeShowPassword: true
@@ -52,25 +52,34 @@ Page {
             cancelButton.label: qsTr("Cancel")
             cancelButton.enabled: true
             onFinished: {
+                ods.suppressKeyboard()
                 if (result == SystemUiResult.ConfirmButtonSelection) {
                     console.log("confirm");
                     // TODO call C++ function to test if Login was OK
+                    if (OrientationSupport.orientation == UIOrientation.Landscape) {
+                        loginToast.position = SystemUiPosition.MiddleCenter
+                    } else {
+                        loginToast.position = SystemUiPosition.BottomCenter
+                    }
+                    loginToast.show()
                     done(true)
                 } else if (result == SystemUiResult.CancelButtonSelection) {
                     console.log("cancel");
                 }
             }
         },
+        SystemToast {
+            id: loginToast
+            body: qsTr("You are now logged into OpenDataSpace")
+            icon: "asset:///images/rooms-icon.png"
+            onFinished: {
+                //
+            }
+        },
         // recalculate positions
         OrientationHandler {
             onOrientationAboutToChange: {
-                if (orientation == UIOrientation.Landscape) {
-                    backgroundImage.image = backgroundLandscape.image
-                    mainContainer.layoutProperties.positionY = 380
-                } else {
-                    backgroundImage.image = backgroundPortrait.image
-                    mainContainer.layoutProperties.positionY = 900
-                }
+                reLayout(orientation)
             }
         }
     ]
@@ -107,15 +116,18 @@ Page {
             }
         }
     }
-    // watch the Orientation and reposition the controls
-    onCreationCompleted: {
-        // initialize positioning
-        if (OrientationSupport.orientation == UIOrientation.Landscape) {
+    function reLayout(orientation) {
+        if (orientation == UIOrientation.Landscape) {
             backgroundImage.image = backgroundLandscape.image
             mainContainer.layoutProperties.positionY = 380
         } else {
             backgroundImage.image = backgroundPortrait.image
-            mainContainer.layoutProperties.positionY = 900
+            mainContainer.layoutProperties.positionY = 1000
         }
+    }
+    // watch the Orientation and reposition the controls
+    onCreationCompleted: {
+        // initialize positioning
+        reLayout(OrientationSupport.orientation)
     }
 }
