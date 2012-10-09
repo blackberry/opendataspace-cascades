@@ -169,7 +169,7 @@ Page {
             id: audioFilePicker
             property string selectedFile
             property bool isRecording
-            title: qsTr("Save Voice as...")
+            title: qsTr("Save Voice as...") + Retranslate.onLanguageChanged
             mode: FilePickerMode.Saver
             type: FileType.Other
             viewMode: ViewMode.Default
@@ -256,7 +256,7 @@ Page {
     // SLOT
     function onPlayRecordedAudio() {
         console.debug("lets play the recorded Audio")
-        audioFilePicker.title = qsTr("Select Recorded Audio")
+        audioFilePicker.title = qsTr("Select Recorded Audio") + Retranslate.onLanguageChanged
         audioFilePicker.mode = FilePickerMode.Picker
         audioFilePicker.isRecording = false
         audioFilePicker.open()
@@ -284,7 +284,7 @@ Page {
         // now start new recording
         recordStartSound.play()
         // we need the filename where audio should be persisted
-        audioFilePicker.title = qsTr("Save Voice as...")
+        audioFilePicker.title = qsTr("Save Voice as...") + Retranslate.onLanguageChanged
         audioFilePicker.mode = FilePickerMode.Saver
         audioFilePicker.isRecording = true
         // filepicker starts the recording after selecting the file

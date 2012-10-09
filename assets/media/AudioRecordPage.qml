@@ -69,7 +69,7 @@ Page {
             verticalAlignment: VerticalAlignment.Fill
             Label {
                 id: label
-                text: "Recording"
+                text: qsTr("Recording")  + Retranslate.onLanguageChanged
             }
         }
     }

@@ -6,22 +6,22 @@
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="32"/>
         <source>Folder successfully added</source>
-        <translation type="unfinished"></translation>
+        <translation>Папка успешно добавлен</translation>
     </message>
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="42"/>
         <source>Add Folder</source>
-        <translation type="unfinished">Добавить папку</translation>
+        <translation>Добавить папку</translation>
     </message>
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="53"/>
         <source>Folder %1 successfully added</source>
-        <translation type="unfinished"></translation>
+        <translation>Папка %1 успешно добавлен</translation>
     </message>
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="66"/>
         <source>Folder Name</source>
-        <translation type="unfinished">Имя папки</translation>
+        <translation>Имя папки</translation>
     </message>
     <message>
         <source>another Foldername</source>
@@ -30,7 +30,7 @@
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="127"/>
         <source>Name of the new Folder</source>
-        <translation type="unfinished">Название новой папки</translation>
+        <translation>Название новой папки</translation>
     </message>
 </context>
 <context>
@@ -38,57 +38,57 @@
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="34"/>
         <source>User added to ODS Cloud</source>
-        <translation type="unfinished"></translation>
+        <translation>Пользователь добавлен в ODS облако</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="58"/>
         <source>Add User</source>
-        <translation type="unfinished">Добавить пользователя</translation>
+        <translation>Добавить пользователя</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="70"/>
         <source>User %1 added to ODS Cloud</source>
-        <translation type="unfinished"></translation>
+        <translation>Пользователь %1 добавлен в ODS облако</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="86"/>
         <source>User Data</source>
-        <translation type="unfinished">Данные пользователя</translation>
+        <translation>Данные пользователя</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="155"/>
         <source>User email address</source>
-        <translation type="unfinished">Адрес электронной почты пользователя</translation>
+        <translation>Адрес электронной почты пользователя</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="175"/>
         <source>Salutation</source>
-        <translation type="unfinished">приветствие</translation>
+        <translation>приветствие</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="187"/>
         <source>Mr.</source>
-        <translation type="unfinished">Господин</translation>
+        <translation>Господин</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="190"/>
         <source>Mrs.</source>
-        <translation type="unfinished">Миссис</translation>
+        <translation>Миссис</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="197"/>
         <source>Title</source>
-        <translation type="unfinished">название</translation>
+        <translation>название</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="206"/>
         <source>First Name</source>
-        <translation type="unfinished">Имя</translation>
+        <translation>Имя</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="217"/>
         <source>Last Name</source>
-        <translation type="unfinished">фамилия</translation>
+        <translation>фамилия</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="238"/>
@@ -113,6 +113,11 @@
         <source>Stop</source>
         <translation type="unfinished">Стоп</translation>
     </message>
+    <message>
+        <location filename="../assets/media/AudioRecordPage.qml" line="72"/>
+        <source>Recording</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BooksPreviewPage</name>
@@ -124,7 +129,7 @@
     <message>
         <location filename="../assets/documents/BooksPreviewPage.qml" line="48"/>
         <source>Read in...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Читайте дюйма...</translation>
     </message>
     <message>
         <location filename="../assets/documents/BooksPreviewPage.qml" line="58"/>
@@ -159,12 +164,12 @@
         <location filename="../assets/media/DictaphonePage.qml" line="172"/>
         <location filename="../assets/media/DictaphonePage.qml" line="287"/>
         <source>Save Voice as...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Сохранить голоса, как...</translation>
     </message>
     <message>
         <location filename="../assets/media/DictaphonePage.qml" line="259"/>
         <source>Select Recorded Audio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выбор записи аудио</translation>
     </message>
 </context>
 <context>
@@ -177,7 +182,7 @@
     <message>
         <location filename="../assets/documents/DocumentsPreviewPage.qml" line="48"/>
         <source>View in...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Посмотреть в...</translation>
     </message>
     <message>
         <source>View</source>
@@ -263,9 +268,8 @@
     <name>HomePage</name>
     <message>
         <location filename="../assets/HomePage.qml" line="44"/>
-        <source>This is a Developer Preview
-You can use any Name and Password
-Have Fun !</source>
+        <source>ODS Developer Preview
+Use any Name and Password</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -279,7 +283,7 @@ Have Fun !</source>
     <message>
         <location filename="../assets/documents/HtmlPreviewPage.qml" line="48"/>
         <source>View in...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Посмотреть в...</translation>
     </message>
     <message>
         <location filename="../assets/documents/HtmlPreviewPage.qml" line="58"/>
@@ -289,7 +293,7 @@ Have Fun !</source>
     <message>
         <location filename="../assets/documents/HtmlPreviewPage.qml" line="119"/>
         <source>content preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">содержание просмотр</translation>
     </message>
 </context>
 <context>
@@ -302,7 +306,7 @@ Have Fun !</source>
     <message>
         <location filename="../assets/media/ImagePreviewPage.qml" line="50"/>
         <source>View in...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Посмотреть в...</translation>
     </message>
     <message>
         <source>View</source>
@@ -374,12 +378,12 @@ Have Fun !</source>
     <message>
         <location filename="../assets/LoginSheet.qml" line="47"/>
         <source>Enter Username and Password to log into your OpenDataSpace Cloud Account</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Введите Имя пользователя и пароль для входа в свой аккаунт Облако OpenDataSpace</translation>
     </message>
     <message>
         <location filename="../assets/LoginSheet.qml" line="50"/>
         <source>Login now</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Войти сейчас</translation>
     </message>
     <message>
         <location filename="../assets/LoginSheet.qml" line="52"/>
@@ -389,7 +393,7 @@ Have Fun !</source>
     <message>
         <location filename="../assets/LoginSheet.qml" line="73"/>
         <source>ODS Login successfull</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ODS Вход успешным</translation>
     </message>
     <message>
         <location filename="../assets/LoginSheet.qml" line="110"/>
@@ -454,7 +458,7 @@ Have Fun !</source>
     <message>
         <location filename="../assets/documents/PdfPreviewPage.qml" line="48"/>
         <source>View in...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Посмотреть в...</translation>
     </message>
     <message>
         <source>View</source>
@@ -572,7 +576,7 @@ Have Fun !</source>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="44"/>
         <source>File Picker</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выбор файла</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="113"/>
@@ -761,7 +765,7 @@ Have Fun !</source>
     <message>
         <location filename="../assets/documents/UnknownPreviewPage.qml" line="48"/>
         <source>View in...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Посмотреть в...</translation>
     </message>
     <message>
         <source>View</source>
@@ -886,7 +890,7 @@ Have Fun !</source>
     <message>
         <location filename="../assets/media/VoicePreviewPage.qml" line="58"/>
         <source>Hear in...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Слушайте в...</translation>
     </message>
     <message>
         <location filename="../assets/media/VoicePreviewPage.qml" line="68"/>

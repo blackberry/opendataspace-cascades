@@ -44,12 +44,12 @@ Page {
             id: credentialsPrompt
             modality: SystemUiModality.Application
             title: qsTr("ODS LogIn")
-            body: qsTr("Enter Username and Password to log into your OpenDataSpace Cloud Account")
+            body: qsTr("Enter Username and Password to log into your OpenDataSpace Cloud Account") + Retranslate.onLanguageChanged
             includeShowPassword: true
             includeRememberMe: true
-            confirmButton.label: qsTr("Login now")
+            confirmButton.label: qsTr("Login now") + Retranslate.onLanguageChanged
             confirmButton.enabled: true
-            cancelButton.label: qsTr("Cancel")
+            cancelButton.label: qsTr("Cancel") + Retranslate.onLanguageChanged
             cancelButton.enabled: true
             onFinished: {
                 ods.suppressKeyboard()
@@ -70,7 +70,7 @@ Page {
         },
         SystemToast {
             id: loginToast
-            body: qsTr("ODS Login successfull")
+            body: qsTr("ODS Login successfull") + Retranslate.onLanguageChanged
             icon: "asset:///images/rooms-icon.png"
             onFinished: {
                 //

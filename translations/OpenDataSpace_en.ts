@@ -109,6 +109,11 @@
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../assets/media/AudioRecordPage.qml" line="72"/>
+        <source>Recording</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BooksPreviewPage</name>
@@ -250,9 +255,8 @@
     <name>HomePage</name>
     <message>
         <location filename="../assets/HomePage.qml" line="44"/>
-        <source>This is a Developer Preview
-You can use any Name and Password
-Have Fun !</source>
+        <source>ODS Developer Preview
+Use any Name and Password</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

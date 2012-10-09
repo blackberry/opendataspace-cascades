@@ -41,7 +41,7 @@ Page {
         // TODO remove in production
         SystemToast {
             id: devPreviewInfoToast
-            body: qsTr("ODS Developer Preview\nUse any Name and Password")
+            body: qsTr("ODS Developer Preview\nUse any Name and Password") + Retranslate.onLanguageChanged
             icon: "asset:///images/rooms-icon.png"
             onFinished: {
                 startupDelayToOpenSheetFirstTime.play();

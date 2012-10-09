@@ -6,7 +6,7 @@
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="32"/>
         <source>Folder successfully added</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordner erfolgreich hinzugefügt</translation>
     </message>
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="42"/>
@@ -16,7 +16,7 @@
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="53"/>
         <source>Folder %1 successfully added</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordner %1 erfolgreich hinzugefügt</translation>
     </message>
     <message>
         <source>another Foldername</source>
@@ -38,7 +38,7 @@
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="34"/>
         <source>User added to ODS Cloud</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzer hinzugefügt zur ODS Wolke</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="58"/>
@@ -48,7 +48,7 @@
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="70"/>
         <source>User %1 added to ODS Cloud</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzer %1 hinzugefügt zur ODS Wolke</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="86"/>
@@ -113,6 +113,11 @@
         <source>Stop</source>
         <translation type="unfinished">Stop</translation>
     </message>
+    <message>
+        <location filename="../assets/media/AudioRecordPage.qml" line="72"/>
+        <source>Recording</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BooksPreviewPage</name>
@@ -124,7 +129,7 @@
     <message>
         <location filename="../assets/documents/BooksPreviewPage.qml" line="48"/>
         <source>Read in...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lesen in...</translation>
     </message>
     <message>
         <location filename="../assets/documents/BooksPreviewPage.qml" line="58"/>
@@ -159,12 +164,12 @@
         <location filename="../assets/media/DictaphonePage.qml" line="172"/>
         <location filename="../assets/media/DictaphonePage.qml" line="287"/>
         <source>Save Voice as...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sprachaufnahme speichern als...</translation>
     </message>
     <message>
         <location filename="../assets/media/DictaphonePage.qml" line="259"/>
         <source>Select Recorded Audio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sprachnotiz wählen</translation>
     </message>
 </context>
 <context>
@@ -177,7 +182,7 @@
     <message>
         <location filename="../assets/documents/DocumentsPreviewPage.qml" line="48"/>
         <source>View in...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ansehen in...</translation>
     </message>
     <message>
         <source>View</source>
@@ -262,9 +267,8 @@
     <name>HomePage</name>
     <message>
         <location filename="../assets/HomePage.qml" line="44"/>
-        <source>This is a Developer Preview
-You can use any Name and Password
-Have Fun !</source>
+        <source>ODS Developer Preview
+Use any Name and Password</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -278,7 +282,7 @@ Have Fun !</source>
     <message>
         <location filename="../assets/documents/HtmlPreviewPage.qml" line="48"/>
         <source>View in...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ansehen in...</translation>
     </message>
     <message>
         <location filename="../assets/documents/HtmlPreviewPage.qml" line="58"/>
@@ -288,7 +292,7 @@ Have Fun !</source>
     <message>
         <location filename="../assets/documents/HtmlPreviewPage.qml" line="119"/>
         <source>content preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Inhaltsvorschau</translation>
     </message>
 </context>
 <context>
@@ -301,7 +305,7 @@ Have Fun !</source>
     <message>
         <location filename="../assets/media/ImagePreviewPage.qml" line="50"/>
         <source>View in...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ansehen in...</translation>
     </message>
     <message>
         <source>View</source>
@@ -373,12 +377,12 @@ Have Fun !</source>
     <message>
         <location filename="../assets/LoginSheet.qml" line="47"/>
         <source>Enter Username and Password to log into your OpenDataSpace Cloud Account</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Benutzernamen und Passwort zum Login in Ihr OpenDataSpace Konto</translation>
     </message>
     <message>
         <location filename="../assets/LoginSheet.qml" line="50"/>
         <source>Login now</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Jetzt einloggen</translation>
     </message>
     <message>
         <location filename="../assets/LoginSheet.qml" line="52"/>
@@ -388,7 +392,7 @@ Have Fun !</source>
     <message>
         <location filename="../assets/LoginSheet.qml" line="73"/>
         <source>ODS Login successfull</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ODS Login erfolgreich</translation>
     </message>
     <message>
         <location filename="../assets/LoginSheet.qml" line="110"/>
@@ -453,7 +457,7 @@ Have Fun !</source>
     <message>
         <location filename="../assets/documents/PdfPreviewPage.qml" line="48"/>
         <source>View in...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ansehen in...</translation>
     </message>
     <message>
         <source>View</source>
@@ -571,7 +575,7 @@ Have Fun !</source>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="44"/>
         <source>File Picker</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dateiauswahl</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="113"/>
@@ -759,7 +763,7 @@ Have Fun !</source>
     <message>
         <location filename="../assets/documents/UnknownPreviewPage.qml" line="48"/>
         <source>View in...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ansehen in...</translation>
     </message>
     <message>
         <source>View</source>
@@ -884,7 +888,7 @@ Have Fun !</source>
     <message>
         <location filename="../assets/media/VoicePreviewPage.qml" line="58"/>
         <source>Hear in...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Anhören in...</translation>
     </message>
     <message>
         <location filename="../assets/media/VoicePreviewPage.qml" line="68"/>

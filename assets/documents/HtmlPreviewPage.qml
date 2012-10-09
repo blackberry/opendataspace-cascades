@@ -116,7 +116,7 @@ Page {
                         }
                     }
                     Label {
-                        text: qsTr("content preview")
+                        text: qsTr("content preview") + Retranslate.onLanguageChanged
                     }
                     Divider {
                     }
