@@ -725,40 +725,40 @@
 <context>
     <name>UsersNavPane</name>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="226"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="47"/>
         <source>New User</source>
         <translation>Neuer Benutzer</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="235"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="56"/>
         <source>Refresh</source>
         <translation>Aktualisieren</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="84"/>
-        <location filename="../assets/users/UsersNavPane.qml" line="124"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="110"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="150"/>
         <source>Info</source>
         <translation>Information</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="91"/>
-        <location filename="../assets/users/UsersNavPane.qml" line="131"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="117"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="157"/>
         <source>MailTo</source>
         <translation>Email an</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="98"/>
-        <location filename="../assets/users/UsersNavPane.qml" line="138"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="124"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="164"/>
         <source>Contact</source>
         <translation>Kontakt</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="117"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="143"/>
         <source>Add Room</source>
         <translation>Raum hinzufügen</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="145"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="171"/>
         <source>Delete</source>
         <translation>Löschen</translation>
     </message>
@@ -882,22 +882,22 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="81"/>
+        <location filename="../assets/main.qml" line="93"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="94"/>
+        <location filename="../assets/main.qml" line="106"/>
         <source>Data Space</source>
         <translation>Daten Raum</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="105"/>
+        <location filename="../assets/main.qml" line="115"/>
         <source>Users</source>
         <translation>Benutzer</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="120"/>
+        <location filename="../assets/main.qml" line="129"/>
         <source>Upload</source>
         <translation>Upload</translation>
     </message>

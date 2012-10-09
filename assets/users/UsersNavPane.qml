@@ -36,185 +36,6 @@ NavigationPane {
         ComponentDefinition {
             id: usersPageComponentDefinition
             //
-            Container {
-                id: listContainer
-                layout: DockLayout {
-                }
-                // attached objects
-                attachedObjects: [
-                    // M O D E L
-                    // Mockup Datamodel
-                    // TODO from Server / JSON / MySQL
-                    GroupDataModel {
-                        id: mockupUserModel
-                        sortingKeys: [
-                            "displayType",
-                            "name"
-                        ]
-                        grouping: ItemGrouping.ByFullValue
-                        onItemAdded: {
-                        }
-                        onItemRemoved: {
-                        }
-                        onItemUpdated: {
-                        }
-                    }
-                ]
-                // V I E W
-                ListView {
-                    id: usersList
-                    objectName: "usersList"
-                    // The data model is defined in the attached object list below.
-                    // TODO get from Server
-                    dataModel: mockupUserModel
-                    // its the root, only single selction makes sense
-                    // TODO selectionMode: SelectionMode.Single
-
-                    // define the appearance
-                    listItemComponents: [
-                        ListItemComponent {
-                            type: "usersItem"
-                            UsersItem {
-                                id: usersItem
-                                contextActions: [
-                                    ActionSet {
-                                        title: ListItemData.name
-                                        subtitle: "ODS User"
-                                        ActionItem {
-                                            title: qsTr("Info") + Retranslate.onLanguageChanged
-                                            imageSource: "asset:///images/ics/2-action-about81.png"
-                                            onTriggered: {
-                                                // TODO
-                                            }
-                                        }
-                                        ActionItem {
-                                            title: qsTr("MailTo") + Retranslate.onLanguageChanged
-                                            imageSource: "asset:///images/ics/5-content-email81.png"
-                                            onTriggered: {
-                                                // TODO
-                                            }
-                                        }
-                                        ActionItem {
-                                            title: qsTr("Contact") + Retranslate.onLanguageChanged
-                                            imageSource: "asset:///images/ics/6-social-person81.png"
-                                            onTriggered: {
-                                                // TODO
-                                            }
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                        ListItemComponent {
-                            type: "adminItem"
-                            UsersItem {
-                                id: adminItem
-                                contextActions: [
-                                    ActionSet {
-                                        title: ListItemData.name
-                                        subtitle: "ODS Aministrator"
-                                        ActionItem {
-                                            title: qsTr("Add Room") + Retranslate.onLanguageChanged
-                                            imageSource: "asset:///images/ics/5-content-new81.png"
-                                            onTriggered: {
-                                                // TODO
-                                            }
-                                        }
-                                        ActionItem {
-                                            title: qsTr("Info") + Retranslate.onLanguageChanged
-                                            imageSource: "asset:///images/ics/2-action-about81.png"
-                                            onTriggered: {
-                                                // TODO
-                                            }
-                                        }
-                                        ActionItem {
-                                            title: qsTr("MailTo") + Retranslate.onLanguageChanged
-                                            imageSource: "asset:///images/ics/5-content-email81.png"
-                                            onTriggered: {
-                                                // TODO
-                                            }
-                                        }
-                                        ActionItem {
-                                            title: qsTr("Contact") + Retranslate.onLanguageChanged
-                                            imageSource: "asset:///images/ics/6-social-person81.png"
-                                            onTriggered: {
-                                                // TODO
-                                            }
-                                        }
-                                        DeleteActionItem {
-                                            title: qsTr("Delete") + Retranslate.onLanguageChanged
-                                            onTriggered: {
-                                                // TODO
-                                            }
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                        ListItemComponent {
-                            type: "header"
-                            UsersHeaderItem {
-                                //
-                            }
-                        }
-                    ]
-                    function itemType(data, indexPath) {
-                        if (data.displayType == "U") {
-                            return "usersItem";
-                        }
-                        if (data.displayType == "A") {
-                            return "adminItem";
-                        }
-                        return "header";
-                    }
-
-                    // MOCKUP DATA
-                    // After the list is created, add some mockup items
-                    // A Admin U USer
-                    onCreationCompleted: {
-                        mockupUserModel.insert({
-                                "name": "Max Mustermann",
-                                "displayType": "U",
-                                "icon": "../images/users-icon.png"
-                            });
-                        mockupUserModel.insert({
-                                "name": "Johnny Controletti",
-                                "displayType": "A",
-                                "icon": "../images/admin-icon.png"
-                            });
-                        mockupUserModel.insert({
-                                "name": "Jane Doe",
-                                "displayType": "U",
-                                "icon": "../images/users-icon.png"
-                            });
-                        mockupUserModel.insert({
-                                "name": "Homer Simpson",
-                                "displayType": "U",
-                                "icon": "../images/users-icon.png"
-                            });
-                        mockupUserModel.insert({
-                                "name": "Big Lebowsky",
-                                "displayType": "A",
-                                "icon": "../images/admin-icon.png"
-                            });
-                    }
-                    function addUser(name, displayType) {
-                        console.debug("Now add new USER to LISTMODEL on UserNavPage")
-                        mockupUserModel.insert({
-                                "name": name,
-                                "displayType": displayType,
-                                "icon": getDisplayIcon(displayType)
-                            });
-                    }
-                    function getDisplayIcon(displayType) {
-                        if (displayType == "U") {
-                            return "../images/users-icon.png"
-                        } else {
-                            return "../images/admin-icon.png"
-                        }
-                    }
-                } // end ListView
-            } // end Container
         }
     ]
     // the Root Page of this NavigationPane
@@ -241,26 +62,192 @@ NavigationPane {
             }
         ]
         //
-        content: ControlDelegate {
-            id: usersPageControlDelegate
-            sourceComponent: usersPageComponentDefinition
-            delegateActive: false
-        }
+        content: Container {
+            id: listContainer
+            layout: DockLayout {
+            }
+            // attached objects
+            attachedObjects: [
+                // M O D E L
+                // Mockup Datamodel
+                // TODO from Server / JSON / MySQL
+                GroupDataModel {
+                    id: mockupUserModel
+                    sortingKeys: [
+                        "displayType",
+                        "name"
+                    ]
+                    grouping: ItemGrouping.ByFullValue
+                    onItemAdded: {
+                    }
+                    onItemRemoved: {
+                    }
+                    onItemUpdated: {
+                    }
+                }
+            ]
+            // V I E W
+            ListView {
+                id: usersList
+                objectName: "usersList"
+                // The data model is defined in the attached object list below.
+                // TODO get from Server
+                dataModel: mockupUserModel
+                // its the root, only single selction makes sense
+                // TODO selectionMode: SelectionMode.Single
 
+                // define the appearance
+                listItemComponents: [
+                    ListItemComponent {
+                        type: "usersItem"
+                        UsersItem {
+                            id: usersItem
+                            contextActions: [
+                                ActionSet {
+                                    title: ListItemData.name
+                                    subtitle: "ODS User"
+                                    ActionItem {
+                                        title: qsTr("Info") + Retranslate.onLanguageChanged
+                                        imageSource: "asset:///images/ics/2-action-about81.png"
+                                        onTriggered: {
+                                            // TODO
+                                        }
+                                    }
+                                    ActionItem {
+                                        title: qsTr("MailTo") + Retranslate.onLanguageChanged
+                                        imageSource: "asset:///images/ics/5-content-email81.png"
+                                        onTriggered: {
+                                            // TODO
+                                        }
+                                    }
+                                    ActionItem {
+                                        title: qsTr("Contact") + Retranslate.onLanguageChanged
+                                        imageSource: "asset:///images/ics/6-social-person81.png"
+                                        onTriggered: {
+                                            // TODO
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    ListItemComponent {
+                        type: "adminItem"
+                        UsersItem {
+                            id: adminItem
+                            contextActions: [
+                                ActionSet {
+                                    title: ListItemData.name
+                                    subtitle: "ODS Aministrator"
+                                    ActionItem {
+                                        title: qsTr("Add Room") + Retranslate.onLanguageChanged
+                                        imageSource: "asset:///images/ics/5-content-new81.png"
+                                        onTriggered: {
+                                            // TODO
+                                        }
+                                    }
+                                    ActionItem {
+                                        title: qsTr("Info") + Retranslate.onLanguageChanged
+                                        imageSource: "asset:///images/ics/2-action-about81.png"
+                                        onTriggered: {
+                                            // TODO
+                                        }
+                                    }
+                                    ActionItem {
+                                        title: qsTr("MailTo") + Retranslate.onLanguageChanged
+                                        imageSource: "asset:///images/ics/5-content-email81.png"
+                                        onTriggered: {
+                                            // TODO
+                                        }
+                                    }
+                                    ActionItem {
+                                        title: qsTr("Contact") + Retranslate.onLanguageChanged
+                                        imageSource: "asset:///images/ics/6-social-person81.png"
+                                        onTriggered: {
+                                            // TODO
+                                        }
+                                    }
+                                    DeleteActionItem {
+                                        title: qsTr("Delete") + Retranslate.onLanguageChanged
+                                        onTriggered: {
+                                            // TODO
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    ListItemComponent {
+                        type: "header"
+                        UsersHeaderItem {
+                            //
+                        }
+                    }
+                ]
+                function itemType(data, indexPath) {
+                    if (data.displayType == "U") {
+                        return "usersItem";
+                    }
+                    if (data.displayType == "A") {
+                        return "adminItem";
+                    }
+                    return "header";
+                }
+
+                // MOCKUP DATA
+                // After the list is created, add some mockup items
+                // A Admin U USer
+                onCreationCompleted: {
+                    mockupUserModel.insert({
+                            "name": "Max Mustermann",
+                            "displayType": "U",
+                            "icon": "../images/users-icon.png"
+                        });
+                    mockupUserModel.insert({
+                            "name": "Johnny Controletti",
+                            "displayType": "A",
+                            "icon": "../images/admin-icon.png"
+                        });
+                    mockupUserModel.insert({
+                            "name": "Jane Doe",
+                            "displayType": "U",
+                            "icon": "../images/users-icon.png"
+                        });
+                    mockupUserModel.insert({
+                            "name": "Homer Simpson",
+                            "displayType": "U",
+                            "icon": "../images/users-icon.png"
+                        });
+                    mockupUserModel.insert({
+                            "name": "Big Lebowsky",
+                            "displayType": "A",
+                            "icon": "../images/admin-icon.png"
+                        });
+                }
+            } // end ListView
+        } // end Container
+        function addUser(name, displayType) {
+            console.debug("Now add new USER to LISTMODEL on UserNavPage")
+            mockupUserModel.insert({
+                    "name": name,
+                    "displayType": displayType,
+                    "icon": getDisplayIcon(displayType)
+                });
+        }
+        function getDisplayIcon(displayType) {
+            if (displayType == "U") {
+                return "../images/users-icon.png"
+            } else {
+                return "../images/admin-icon.png"
+            }
+        }
         // we need this and the entry in bar-descriptor to support all directions
         onCreationCompleted: {
+            addUserPage.onUserAdded.connect(addUser)
             console.debug("CREATED UsersPage")
         }
     } // end page
     //
-
-    // Control the Lazy Loading
-    function activateControl() {
-        usersPageControlDelegate.delegateActive = true
-    }
-    function deactivateControl() {
-        usersPageControlDelegate.delegateActive = false
-    }
     onCreationCompleted: {
         console.debug("CREATED USERS NavPane")
     }

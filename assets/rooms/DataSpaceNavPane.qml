@@ -357,6 +357,6 @@ NavigationPane {
         addFolderPage.onFolderAdded.connect(folderAdded)
         //-- connect the RoomsList recordAudio SIGNAL to the handler SLOT
         roomsListPage.recordAudio.connect(openRecordAudioPage)
-        console.debug("NavigationPane DtaSpaces created " + test)
+        console.debug("NavigationPane DtaSpaces created ")
     }
 }// end navigationpane

@@ -78,7 +78,7 @@ Page {
         animations: [
             TranslateTransition {
                 id: startupDelayToOpenSheetFirstTime
-                delay: 2000
+                delay: 1000
                 onEnded: {
                     loginSheet.open();
                 }

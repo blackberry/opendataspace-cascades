@@ -70,6 +70,18 @@ TabbedPane {
             content: FeedbackSheet {
                 id: feedbackContent
             }
+        },
+        ComponentDefinition {
+            id: lazyComponentDataSpaceNavPane
+            DataSpaceNavPane {
+                id: dataspacePane
+            }
+        },
+        ComponentDefinition {
+            id: onDemandComponentUsersNavPane
+            UsersNavPane {
+                id: usersPane
+            }
         }
     ]
 
@@ -83,7 +95,7 @@ TabbedPane {
             id: homePage
         }
         onTriggered: {
-            usersPane.deactivateControl()
+            destroyUserTabComponent()
         }
     }
     // Tab: DataSpace with List of Rooms (DataSpace)
@@ -92,11 +104,9 @@ TabbedPane {
         id: dataspaceTab
         imageSource: "asset:///images/ics/4-collections-cloud81.png"
         title: qsTr("Data Space") + Retranslate.onLanguageChanged
-        DataSpaceNavPane {
-            id: dataspacePane
-        }
+        // NO CONTENT .... will be lazy loaded after LogIn done
         onTriggered: {
-            usersPane.deactivateControl()
+            destroyUserTabComponent()
         }
     }
     // Tab: Users with List of Users
@@ -105,13 +115,12 @@ TabbedPane {
         title: qsTr("Users") + Retranslate.onLanguageChanged
         imageSource: "asset:///images/ics/6-social-group81.png"
         enabled: true // TODO onlyIfCurrentUserIsAdministrator()
-        UsersNavPane {
-            id: usersPane
-        }
+        // NO CONTENT
         // Users Pane only needed to manage Users
         // so we load it only on demand
-        // and as soon as other Tabs are triggered unload it
-        onTriggered: usersPane.activateControl()
+        onTriggered: {
+            createUserTabComponent()
+        }
     }
     // Tab: Uploads with List of Files prepared for Upload
     // disabled at startup if nothing to upload
@@ -120,11 +129,11 @@ TabbedPane {
         title: qsTr("Upload") + Retranslate.onLanguageChanged
         imageSource: "asset:///images/ics/4-collections-cloud-av-upload81.png"
         enabled: false
-        UsersNavPane {
+        UploadNavPane {
             id: uploadPane
         }
         onTriggered: {
-            usersPane.deactivateControl()
+            destroyUserTabComponent()
         }
     }
 
@@ -132,12 +141,11 @@ TabbedPane {
     // the handler SLOT if LogIn was done
     // SIGNALed from LoginSheet
     function onLoginDone() {
-        if (! asyncLoadingDone) {
-            // to speedup loadtime
-            //  after first Login done the dataspace Navigation Pane was instatiated
-        }
         rootNavigationPane.activeTab = homeTab
         loginSheet.close()
+        if (! asyncLoadingDone) {
+            createLazyComponents()
+        }
     }
     // the handler SLOT if Prefs were saved
     // SIGNALed from PrefrencesSheet
@@ -162,6 +170,24 @@ TabbedPane {
     // SIGNALed from HelpSheet
     function closeHelp(ok) {
         helpSheet.close()
+    }
+    // these components will be created async to spped up startup time
+    function createLazyComponents() {
+        console.debug("create LAZY components")
+        // to speedup loadtime
+        //  after first Login done the dataspace Navigation Pane was instatiated
+        dataspaceTab.content = lazyComponentDataSpaceNavPane.createObject()
+        asyncLoadingDone = true
+    }
+    function createUserTabComponent() {
+        console.debug("createUserTabComponent")
+        usersTab.content = onDemandComponentUsersNavPane.createObject()
+    }
+    function destroyUserTabComponent() {
+        if (usersTab.content) {
+            console.debug("destroyUserTabComponent")
+            usersTab.content = null
+        }
     }
 
     // the TabbedPane is initialized, lets do some work at startup

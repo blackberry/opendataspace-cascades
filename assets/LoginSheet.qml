@@ -54,7 +54,7 @@ Page {
             onFinished: {
                 ods.suppressKeyboard()
                 if (result == SystemUiResult.ConfirmButtonSelection) {
-                    console.log("confirm");
+                    console.debug("confirm");
                     // TODO call C++ function to test if Login was OK
                     if (OrientationSupport.orientation == UIOrientation.Landscape) {
                         loginToast.position = SystemUiPosition.MiddleCenter
@@ -64,13 +64,13 @@ Page {
                     loginToast.show()
                     done()
                 } else if (result == SystemUiResult.CancelButtonSelection) {
-                    console.log("cancel");
+                    console.debug("cancel");
                 }
             }
         },
         SystemToast {
             id: loginToast
-            body: qsTr("You are now logged into OpenDataSpace")
+            body: qsTr("ODS Login successfull")
             icon: "asset:///images/rooms-icon.png"
             onFinished: {
                 //
