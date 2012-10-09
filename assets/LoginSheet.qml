@@ -113,16 +113,23 @@ Page {
                         credentialsPrompt.show()
                     }
                 }
+                Button {
+                    text: qsTr("Preferences") + Retranslate.onLanguageChanged
+                    preferredWidth: 400.0
+                    onClicked: {
+                        rootNavigationPane.openPreferences()
+                    }
+                }
             }
         }
     }
     function reLayout(orientation) {
         if (orientation == UIOrientation.Landscape) {
             backgroundImage.image = backgroundLandscape.image
-            mainContainer.layoutProperties.positionY = 380
+            mainContainer.layoutProperties.positionY = 460
         } else {
             backgroundImage.image = backgroundPortrait.image
-            mainContainer.layoutProperties.positionY = 1000
+            mainContainer.layoutProperties.positionY = 900
         }
     }
     // watch the Orientation and reposition the controls

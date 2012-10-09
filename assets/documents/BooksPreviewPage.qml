@@ -14,7 +14,6 @@
  * limitations under the License.
  */import bb.cascades 1.0
 import org.opendataspace.fileinfo 1.0
-import bb.multimedia 1.0
 /*
  * Video Preview
  * can share the video, do nothing (go back) or upload the video
@@ -36,26 +35,17 @@ Page {
         FileInfo {
             id: fileInfo
         },
-        MediaPlayer {
-            id: player
-            onPlaybackCompleted: {
-                stopIt()
-            }
-            onStop: {
-                stopIt()
-            }
-        },
         // application supports changing the Orientation
         OrientationHandler {
             onOrientationAboutToChange: {
-                console.debug("VideoPreview: onOrientationAboutToChange")
+                console.debug("DocumentsPreview: onOrientationAboutToChange")
                 previewPage.reLayout(orientation);
             }
         }
     ]
     actions: [
         ActionItem {
-            title: qsTr("Hear in...") + Retranslate.onLanguageChanged
+            title: qsTr("Read in...") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/2-action-search81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
@@ -70,24 +60,6 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 // TODO  SIGNAL fileToUpload(path)
-            }
-        },
-        ActionItem {
-            title: qsTr("Play Audio") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/10-device-access-volume-on81.png"
-            ActionBar.placement: ActionBarPlacement.InOverflow
-            onTriggered: {
-                playIt()
-            }
-        },
-        ActionItem {
-            id: stopAction
-            title: qsTr("Stop Audio") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/9-av-stop81.png"
-            ActionBar.placement: ActionBarPlacement.InOverflow
-            enabled: false
-            onTriggered: {
-                stopIt()
             }
         }
     ]
@@ -105,15 +77,15 @@ Page {
                 }
                 horizontalAlignment: HorizontalAlignment.Left
                 ImageView {
-                    id: previewRecordedVoice
-                    objectName: "previewRecordedVoice"
+                    id: previewImage
+                    objectName: "previewBook"
                     layoutProperties: StackLayoutProperties {
                     }
                     verticalAlignment: VerticalAlignment.Center
-                    imageSource: "asset:///images/nuvola/krec_fileplay.png"
+                    imageSource: "asset:///images/nuvola/bookcase.png"
                     minWidth: 128
                     minHeight: 128
-                    scalingMethod: ScalingMethod.AspectFit
+                    //scalingMethod: ScalingMethod.AspectFit
                 }
                 Container {
                     layout: StackLayout {
@@ -145,50 +117,32 @@ Page {
                     }
                 }
             }
-        } // end maincontainer
-    } // end scrollview
+        } // end main container
+    } // end scvrollview
     function recalculateValues(name) {
-        titleBar.title = fileInfo.getShortName(name);
-        titleLabel.text = titleBar.title;
+        titleBarId.title = fileInfo.getShortName(name);
+        titleLabel.text = titleBarId.title;
         filenameInfo.enabled = true;
-        filenameInfo.text = fileInfo.getDetailedInfo(ods.getCurrentLocale(), name);
+        filenameInfo.text = fileInfo.getDetailedInfo(ods.getCurrentLocale(), name) + "\n"; //workaround bug in landscape: last line not visible
         filenameInfo.enabled = false;
     }
     // redesign if orientation changed
     function reLayout(orientation) {
         if (orientation == UIOrientation.Landscape) {
-            console.debug("previewRecordedVoice: reLayout to LANDSCAPE")
+            console.debug("BooksPreview: reLayout to LANDSCAPE")
             titleBar.visibility = ChromeVisibility.Hidden
             titleLabel.visible = true
             imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight
-            previewRecordedVoice.horizontalAlignment = HorizontalAlignment.Left
-            console.debug("previewRecordedVoice: reLayout to LANDSCAPE DONE")
+            previewImage.horizontalAlignment = HorizontalAlignment.Left
+            console.debug("BooksPreview: reLayout to LANDSCAPE DONE")
         } else {
-            console.debug("previewRecordedVoice: reLayout to PORTRAIT")
+            console.debug("BooksPreview: reLayout to PORTRAIT")
             titleBar.visibility = ChromeVisibility.Visible
             titleLabel.visible = false
             imageAndTextContainer.layout.orientation = LayoutOrientation.TopToBottom
-            previewRecordedVoice.horizontalAlignment = HorizontalAlignment.Center
-            console.debug("previewRecordedVoice: reLayout to PORTRAIT DONE")
+            previewImage.horizontalAlignment = HorizontalAlignment.Center
+            console.debug("BooksPreview: reLayout to PORTRAIT DONE")
         }
-    }
-    // play recorded voice
-    function playIt() {
-        // Reset URL of player
-        player.sourceUrl = ""
-        // Set the currently selected track as player source URL
-        player.sourceUrl = previewPath
-        // Start playback
-        player.play()
-        //
-        stopAction.enabled = true
-    }
-    // stop oplaying audio
-    function stopIt() {
-        if (player.mediaState == MediaState.Started) {
-            player.stop()
-        }
-        stopAction.enabled = false
     }
     // TODO Landscape hide Actionbar if no activity
     // in landscape we change the stack layout direction and hide the titlebar

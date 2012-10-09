@@ -115,6 +115,24 @@
     </message>
 </context>
 <context>
+    <name>BooksPreviewPage</name>
+    <message>
+        <location filename="../assets/documents/BooksPreviewPage.qml" line="30"/>
+        <source>Preview</source>
+        <translation type="unfinished">anteprima</translation>
+    </message>
+    <message>
+        <location filename="../assets/documents/BooksPreviewPage.qml" line="48"/>
+        <source>Read in...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/documents/BooksPreviewPage.qml" line="58"/>
+        <source>Upload</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CustomerSelection</name>
     <message>
         <location filename="../assets/common/CustomerSelection.qml" line="31"/>
@@ -125,12 +143,12 @@
 <context>
     <name>DataSpaceNavPane</name>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="136"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="146"/>
         <source>New Room</source>
         <translation type="unfinished">Nuovo camera</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="145"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="155"/>
         <source>Refresh</source>
         <translation type="unfinished">aggiornare</translation>
     </message>
@@ -332,13 +350,18 @@
     </message>
     <message>
         <location filename="../assets/LoginSheet.qml" line="73"/>
-        <source>You are now logged into OpenDataSpace</source>
+        <source>ODS Login successfull</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/LoginSheet.qml" line="110"/>
         <source>Login</source>
         <translation type="unfinished">accesso</translation>
+    </message>
+    <message>
+        <location filename="../assets/LoginSheet.qml" line="117"/>
+        <source>Preferences</source>
+        <translation type="unfinished">Preferenze</translation>
     </message>
 </context>
 <context>
@@ -501,38 +524,38 @@
 <context>
     <name>RoomsListPage</name>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="42"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="43"/>
         <source>File Picker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="106"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="107"/>
         <source>New SubRoom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="115"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="116"/>
         <source>New Folder</source>
         <translation type="unfinished">Nuova cartella</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="124"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="125"/>
         <source>Refresh</source>
         <translation type="unfinished">aggiornare</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="132"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="136"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="133"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="137"/>
         <source>Select Document</source>
         <translation type="unfinished">Selezionare Documento</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="148"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="149"/>
         <source>Select Image</source>
         <translation type="unfinished">Seleziona immagine</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="160"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="161"/>
         <source>Select Video</source>
         <translation type="unfinished">Selezionare Video</translation>
     </message>
@@ -545,105 +568,115 @@
         <translation type="obsolete">Audio Record</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="144"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="145"/>
         <source>Select | Capture Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="156"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="157"/>
         <source>Select | Capture Video</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="168"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="172"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="173"/>
         <source>Select Recorded Voice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="183"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="187"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="194"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="198"/>
         <source>Select Music</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="193"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="219"/>
         <source>Select Other File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="197"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="223"/>
         <source>Select File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="205"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="184"/>
         <source>Dictaphone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="217"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="169"/>
+        <source>Select Voice</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="206"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="210"/>
+        <source>Select Book</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="233"/>
         <source>DataRoom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="265"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="281"/>
         <source>ODS Subroom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="267"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="286"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="342"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="283"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="302"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="358"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="284"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="300"/>
         <source>ODS Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="293"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="349"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="309"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="365"/>
         <source>Copy</source>
         <translation type="unfinished">Copiare</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="300"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="356"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="316"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="372"/>
         <source>Move</source>
         <translation type="unfinished">spostare</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="307"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="363"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="323"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="379"/>
         <source>Rename</source>
         <translation type="unfinished">rinominare</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="317"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="384"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="333"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="400"/>
         <source>Delete</source>
         <translation type="unfinished">cancellare</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="333"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="349"/>
         <source>ODS File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="335"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="351"/>
         <source>View</source>
         <translation type="unfinished">vista</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="370"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="386"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="377"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="393"/>
         <source>Link</source>
         <translation type="unfinished"></translation>
     </message>
@@ -796,18 +829,23 @@
         <translation type="obsolete">vista</translation>
     </message>
     <message>
-        <location filename="../assets/media/VoicePreviewPage.qml" line="52"/>
+        <location filename="../assets/media/VoicePreviewPage.qml" line="58"/>
         <source>Hear in...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/media/VoicePreviewPage.qml" line="62"/>
+        <location filename="../assets/media/VoicePreviewPage.qml" line="68"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/media/VoicePreviewPage.qml" line="70"/>
-        <source>Play Recorded Voice</source>
+        <location filename="../assets/media/VoicePreviewPage.qml" line="76"/>
+        <source>Play Audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/media/VoicePreviewPage.qml" line="85"/>
+        <source>Stop Audio</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

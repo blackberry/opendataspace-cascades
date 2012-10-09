@@ -30,6 +30,7 @@ Page {
     signal previewImage(string filePath)
     signal previewVideo(string path)
     signal previewDocuments(string path)
+    signal previewBooks(string path)
     signal previewPdf(string path)
     signal previewUnknown(string path)
     signal previewZip(string path)
@@ -82,7 +83,7 @@ Page {
                 // isBook ?
                 if (fileInfo.isBook(picker.selectedFile)) {
                     // TODO previewBookPage
-                    roomsListPage.previewDocuments(picker.selectedFile);
+                    roomsListPage.previewBooks(picker.selectedFile);
                     return;
                 }
                 // else is unknown filytype
@@ -165,7 +166,7 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("Select Recorded Voice") + Retranslate.onLanguageChanged
+            title: qsTr("Select Voice") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/10-device-access-volume-on81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
@@ -180,12 +181,37 @@ Page {
             }
         },
         ActionItem {
+            title: qsTr("Dictaphone") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/ics/10-device-access-mic81.png"
+            ActionBar.placement: ActionBarPlacement.InOverflow
+            onTriggered: {
+                // SIGNAL
+                console.debug("clicked Dictaphone action")
+                roomsListPage.recordAudio()
+            }
+        },
+        ActionItem {
             title: qsTr("Select Music") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/9-av-play81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 picker.title = qsTr("Select Music")
                 picker.type = FileType.Music
+                picker.directories = [
+                ]
+                picker.open();
+            }
+        },
+        ActionItem {
+            title: qsTr("Select Book") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/ics/4-collections-view-as-list81.png"
+            ActionBar.placement: ActionBarPlacement.InOverflow
+            onTriggered: {
+                picker.title = qsTr("Select Book")
+                picker.type = FileType.Other
+                picker.directories = [
+                    "/accounts/1000/shared/books"
+                ]
                 picker.open();
             }
         },
@@ -199,16 +225,6 @@ Page {
                 picker.directories = [
                 ]
                 picker.open();
-            }
-        },
-        ActionItem {
-            title: qsTr("Dictaphone") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/10-device-access-mic81.png"
-            ActionBar.placement: ActionBarPlacement.InOverflow
-            onTriggered: {
-                // SIGNAL
-                console.debug("clicked Dictaphone action")
-                roomsListPage.recordAudio()
             }
         }
     ]

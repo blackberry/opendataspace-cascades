@@ -136,6 +136,9 @@ TabbedPane {
             destroyUserTabComponent()
         }
     }
+    function openPreferences(){
+        preferencesSheet.open()
+    }
 
     // FUNCTIONS for the complete TabbedPane called from the Sheets attached to TabbedPane
     // the handler SLOT if LogIn was done
