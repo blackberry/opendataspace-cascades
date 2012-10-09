@@ -23,7 +23,7 @@ import bb.system 1.0
  */
 
 Page {
-    signal done(bool ok)
+    signal done()
     // seems not to work
     resizeBehavior: PageResizeBehavior.Resize
     //
@@ -62,7 +62,7 @@ Page {
                         loginToast.position = SystemUiPosition.BottomCenter
                     }
                     loginToast.show()
-                    done(true)
+                    done()
                 } else if (result == SystemUiResult.CancelButtonSelection) {
                     console.log("cancel");
                 }
