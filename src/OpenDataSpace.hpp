@@ -25,7 +25,7 @@ public:
 	}
 
 	Q_INVOKABLE
-		void initLocalization(QTranslator* translator);
+	void initLocalization(QTranslator* translator);
 
 	/*
 	 * Refreshes the UI with the specified locale
@@ -56,6 +56,20 @@ public:
 	 */
 	Q_INVOKABLE
 	void suppressKeyboard();
+
+	/**
+	 * uses Invokation Framework to invoke unbound from URI
+	 *
+	 */
+	Q_INVOKABLE
+	void invokeUnbound(QString uri);
+
+	/**
+	 * uses Invokation Framework to Invoke bound to MediaPlayer from URI
+	 *
+	 */
+	Q_INVOKABLE
+	void invokeBoundMediaPlayer(QString uri);
 
 	/**
 	 * uses Invokation Framework to View the file from URI

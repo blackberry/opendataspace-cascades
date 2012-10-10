@@ -132,7 +132,7 @@
         <translation type="unfinished">Lire po...</translation>
     </message>
     <message>
-        <location filename="../assets/documents/BooksPreviewPage.qml" line="58"/>
+        <location filename="../assets/documents/BooksPreviewPage.qml" line="59"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -193,7 +193,7 @@
         <translation type="obsolete">Part</translation>
     </message>
     <message>
-        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="58"/>
+        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="59"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -285,12 +285,12 @@ Use any Name and Password</source>
         <translation type="unfinished">Voir dans...</translation>
     </message>
     <message>
-        <location filename="../assets/documents/HtmlPreviewPage.qml" line="58"/>
+        <location filename="../assets/documents/HtmlPreviewPage.qml" line="59"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/HtmlPreviewPage.qml" line="119"/>
+        <location filename="../assets/documents/HtmlPreviewPage.qml" line="120"/>
         <source>content preview</source>
         <translation type="unfinished">aperçu du contenu</translation>
     </message>
@@ -468,7 +468,7 @@ Use any Name and Password</source>
         <translation type="obsolete">Part</translation>
     </message>
     <message>
-        <location filename="../assets/documents/PdfPreviewPage.qml" line="58"/>
+        <location filename="../assets/documents/PdfPreviewPage.qml" line="59"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -774,7 +774,7 @@ Use any Name and Password</source>
         <translation type="obsolete">Part</translation>
     </message>
     <message>
-        <location filename="../assets/documents/UnknownPreviewPage.qml" line="58"/>
+        <location filename="../assets/documents/UnknownPreviewPage.qml" line="59"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -938,7 +938,7 @@ Use any Name and Password</source>
         <translation type="obsolete">Part</translation>
     </message>
     <message>
-        <location filename="../assets/documents/ZipPreviewPage.qml" line="58"/>
+        <location filename="../assets/documents/ZipPreviewPage.qml" line="59"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>

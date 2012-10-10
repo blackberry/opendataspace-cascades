@@ -49,8 +49,8 @@ Page {
             imageSource: "asset:///images/ics/2-action-search81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                // Calls a function that show's the image in a View from InvocationFramework
-                ods.showInView(previewPage.previewPath);
+                // Calls a function that show's the video in a View from InvocationFramework
+                ods.invokeBoundMediaPlayer(previewPage.previewPath);
                 console.debug("just called function to View from IF");
             }
         },

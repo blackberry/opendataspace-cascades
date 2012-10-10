@@ -319,6 +319,23 @@ void OpenDataSpace::settingsTriggered() {
 	}
 }
 
+// unbound Invokation
+void OpenDataSpace::invokeUnbound(QString uri) {
+	InvokeRequest cardRequest;
+	cardRequest.setUri(uri);
+	InvokeManager invokeManager;
+	invokeManager.invoke(cardRequest);
+}
+
+// invoke MediaPlayer
+void OpenDataSpace::invokeBoundMediaPlayer(QString uri) {
+	InvokeRequest cardRequest;
+	cardRequest.setUri(uri);
+	cardRequest.setTarget("sys.mediaplayer.previewer");
+	InvokeManager invokeManager;
+	invokeManager.invoke(cardRequest);
+}
+
 /**
  * uses Invokation Framework to View the file from URI
  *

@@ -132,7 +132,7 @@
         <translation type="unfinished">Читайте дюйма...</translation>
     </message>
     <message>
-        <location filename="../assets/documents/BooksPreviewPage.qml" line="58"/>
+        <location filename="../assets/documents/BooksPreviewPage.qml" line="59"/>
         <source>Upload</source>
         <translation type="unfinished">Пользователи</translation>
     </message>
@@ -193,7 +193,7 @@
         <translation type="obsolete">доля</translation>
     </message>
     <message>
-        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="58"/>
+        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="59"/>
         <source>Upload</source>
         <translation type="unfinished">Пользователи</translation>
     </message>
@@ -286,12 +286,12 @@ Use any Name and Password</source>
         <translation type="unfinished">Посмотреть в...</translation>
     </message>
     <message>
-        <location filename="../assets/documents/HtmlPreviewPage.qml" line="58"/>
+        <location filename="../assets/documents/HtmlPreviewPage.qml" line="59"/>
         <source>Upload</source>
         <translation type="unfinished">Пользователи</translation>
     </message>
     <message>
-        <location filename="../assets/documents/HtmlPreviewPage.qml" line="119"/>
+        <location filename="../assets/documents/HtmlPreviewPage.qml" line="120"/>
         <source>content preview</source>
         <translation type="unfinished">содержание просмотр</translation>
     </message>
@@ -469,7 +469,7 @@ Use any Name and Password</source>
         <translation type="obsolete">доля</translation>
     </message>
     <message>
-        <location filename="../assets/documents/PdfPreviewPage.qml" line="58"/>
+        <location filename="../assets/documents/PdfPreviewPage.qml" line="59"/>
         <source>Upload</source>
         <translation type="unfinished">Пользователи</translation>
     </message>
@@ -776,7 +776,7 @@ Use any Name and Password</source>
         <translation type="obsolete">доля</translation>
     </message>
     <message>
-        <location filename="../assets/documents/UnknownPreviewPage.qml" line="58"/>
+        <location filename="../assets/documents/UnknownPreviewPage.qml" line="59"/>
         <source>Upload</source>
         <translation type="unfinished">Пользователи</translation>
     </message>
@@ -951,7 +951,7 @@ Use any Name and Password</source>
         <translation type="obsolete">доля</translation>
     </message>
     <message>
-        <location filename="../assets/documents/ZipPreviewPage.qml" line="58"/>
+        <location filename="../assets/documents/ZipPreviewPage.qml" line="59"/>
         <source>Upload</source>
         <translation type="unfinished">Пользователи</translation>
     </message>
