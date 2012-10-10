@@ -14,6 +14,7 @@
  * limitations under the License.
  */import bb.cascades 1.0
 import org.opendataspace.fileinfo 1.0
+import bb.system 1.0
 /*
  * Video Preview
  * can share the video, do nothing (go back) or upload the video
@@ -34,6 +35,15 @@ Page {
         // FileInfo
         FileInfo {
             id: fileInfo
+        },
+        SystemToast {
+            id: queuedForUploadToast
+            body: qsTr("Queued for Upload to ODS Cloud")
+            icon: "asset:///images/ics/4-collections-cloud-av-upload81.png"
+            position: SystemUiPosition.BottomCenter
+            onFinished: {
+                //
+            }
         },
         // application supports changing the Orientation
         OrientationHandler {
@@ -60,7 +70,8 @@ Page {
             imageSource: "asset:///images/ics/9-av-upload81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                // TODO  SIGNAL fileToUpload(path)
+                queuedForUploadToast.show()
+                rootNavigationPane.addUpload(previewPage.previewPath)
             }
         }
     ]

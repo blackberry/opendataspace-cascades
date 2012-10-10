@@ -43,7 +43,7 @@
     <!-- A string value of the format <0-999>.<0-999>.<0-999> that represents application version which can be used to check for application upgrade. 
          Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
          An updated version of application must have a versionNumber value higher than the previous version. Required. -->
-    <versionNumber>0.8.7</versionNumber>
+    <versionNumber>0.9.0</versionNumber>
     <packageLocale>de,en,fr,es,it,ru</packageLocale>
 
     <!-- Fourth digit segment of the package version. First three segments are taken from the 
@@ -128,6 +128,7 @@
     <permission>run_when_backgrounded</permission>
     <permission>access_pimdomain_contacts</permission>
     <permission>bbm_connect</permission>
+    <permission>post_notification</permission>
     <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib"/>
 
     <!--  The permissions requested by your application. -->

@@ -54,6 +54,15 @@ Page {
                 ods.invokeBoundMediaPlayer(previewPage.previewPath);
             }
         },
+        SystemToast {
+            id: queuedForUploadToast
+            body: qsTr("Queued for Upload to ODS Cloud")
+            icon: "asset:///images/ics/4-collections-cloud-av-upload81.png"
+            position: SystemUiPosition.BottomCenter
+            onFinished: {
+                //
+            }
+        },
         // application supports changing the Orientation
         OrientationHandler {
             onOrientationAboutToChange: {
@@ -79,7 +88,8 @@ Page {
             imageSource: "asset:///images/ics/9-av-upload81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                // TODO  SIGNAL fileToUpload(path)
+                queuedForUploadToast.show()
+                rootNavigationPane.addUpload(previewPage.previewPath)
             }
         },
         ActionItem {

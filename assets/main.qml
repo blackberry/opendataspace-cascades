@@ -78,6 +78,12 @@ TabbedPane {
             }
         },
         ComponentDefinition {
+            id: lazyComponentUploadNavPane
+            UploadNavPane {
+            id: uploadPane
+        }
+        },
+        ComponentDefinition {
             id: onDemandComponentUsersNavPane
             UsersNavPane {
                 id: usersPane
@@ -129,14 +135,12 @@ TabbedPane {
         title: qsTr("Upload") + Retranslate.onLanguageChanged
         imageSource: "asset:///images/ics/4-collections-cloud-av-upload81.png"
         enabled: false
-        UploadNavPane {
-            id: uploadPane
-        }
+        // NO CONTENT .... will be lazy loaded after LogIn done
         onTriggered: {
             destroyUserTabComponent()
         }
     }
-    function openPreferences(){
+    function openPreferences() {
         preferencesSheet.open()
     }
 
@@ -180,6 +184,9 @@ TabbedPane {
         // to speedup loadtime
         //  after first Login done the dataspace Navigation Pane was instatiated
         dataspaceTab.content = lazyComponentDataSpaceNavPane.createObject()
+        // same for Upload NavPane
+        uploadTab.content = lazyComponentUploadNavPane.createObject()
+        // we're done
         asyncLoadingDone = true
     }
     function createUserTabComponent() {
@@ -191,6 +198,11 @@ TabbedPane {
             console.debug("destroyUserTabComponent")
             usersTab.content = null
         }
+    }
+    function addUpload(name) {
+        uploadTab.enabled = true
+        uploadTab.newContentAvailable = true
+        uploadTab.unreadContentCount = uploadTab.unreadContentCount + 1
     }
 
     // the TabbedPane is initialized, lets do some work at startup

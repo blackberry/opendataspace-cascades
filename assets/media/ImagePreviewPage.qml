@@ -14,6 +14,7 @@
  * limitations under the License.
  */import bb.cascades 1.0
 import org.opendataspace.fileinfo 1.0
+import bb.system 1.0
 /*
  * Image Overview
  * can share the image, do nothing (go back) or upload the image
@@ -24,7 +25,6 @@ import org.opendataspace.fileinfo 1.0
  */
 
 Page {
-    signal fileToQueueForUpload(string filePath)
     property alias previewPath: previewImage.imageSource
     id: previewPage
     titleBar: TitleBar {
@@ -36,6 +36,15 @@ Page {
         // FileInfo
         FileInfo {
             id: fileInfo
+        },
+        SystemToast {
+            id: queuedForUploadToast
+            body: qsTr("Queued for Upload to ODS Cloud")
+            icon: "asset:///images/ics/4-collections-cloud-av-upload81.png"
+            position: SystemUiPosition.BottomCenter
+            onFinished: {
+                //
+            }
         },
         // application supports changing the Orientation
         OrientationHandler {
@@ -61,7 +70,8 @@ Page {
             imageSource: "asset:///images/ics/9-av-upload81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                previewPage.fileToQueueForUpload(previewPage.previewPath);
+                queuedForUploadToast.show()
+                rootNavigationPane.addUpload(previewPage.previewPath)
             }
         }
     ]

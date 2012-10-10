@@ -37,6 +37,15 @@ Page {
             id: fileInfo
         },
         SystemToast {
+            id: queuedForUploadToast
+            body: qsTr("Queued for Upload to ODS Cloud")
+            icon: "asset:///images/ics/4-collections-cloud-av-upload81.png"
+            position: SystemUiPosition.BottomCenter
+            onFinished: {
+                //
+            }
+        },
+        SystemToast {
             id: betaBugToast
             body: qsTr("Beta3 Bug: MediaPlayer unstoppable.")
             icon: "asset:///images/nuvola/bug.png"
@@ -69,7 +78,8 @@ Page {
             imageSource: "asset:///images/ics/9-av-upload81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                // TODO  SIGNAL fileToUpload(path)
+                queuedForUploadToast.show()
+                rootNavigationPane.addUpload(previewPage.previewPath)
             }
         }
     ]

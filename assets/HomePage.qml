@@ -84,11 +84,12 @@ Page {
             }
             // place recently used Room here
         }
-        // a delayed-for-1000 ms Animation to open LoginSheet first time
+        // a delayed-for-500 ms Animation to open LoginSheet first time
+        // without delay the slide-in was too fast
         animations: [
             TranslateTransition {
                 id: startupDelayToOpenSheetFirstTime
-                delay: 1000
+                delay: 500
                 onEnded: {
                     loginSheet.open();
                 }

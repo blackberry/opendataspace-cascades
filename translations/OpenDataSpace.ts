@@ -118,17 +118,22 @@
 <context>
     <name>BooksPreviewPage</name>
     <message>
-        <location filename="../assets/documents/BooksPreviewPage.qml" line="30"/>
+        <location filename="../assets/documents/BooksPreviewPage.qml" line="31"/>
         <source>Preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/BooksPreviewPage.qml" line="48"/>
+        <location filename="../assets/documents/BooksPreviewPage.qml" line="41"/>
+        <source>Queued for Upload to ODS Cloud</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/documents/BooksPreviewPage.qml" line="58"/>
         <source>Read in...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/BooksPreviewPage.qml" line="59"/>
+        <location filename="../assets/documents/BooksPreviewPage.qml" line="69"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -171,17 +176,22 @@
 <context>
     <name>DocumentsPreviewPage</name>
     <message>
-        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="30"/>
+        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="31"/>
         <source>Preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="48"/>
+        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="41"/>
+        <source>Queued for Upload to ODS Cloud</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="58"/>
         <source>View in...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="59"/>
+        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="69"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -262,22 +272,27 @@ Use any Name and Password</source>
 <context>
     <name>HtmlPreviewPage</name>
     <message>
-        <location filename="../assets/documents/HtmlPreviewPage.qml" line="30"/>
+        <location filename="../assets/documents/HtmlPreviewPage.qml" line="31"/>
         <source>Preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/HtmlPreviewPage.qml" line="48"/>
+        <location filename="../assets/documents/HtmlPreviewPage.qml" line="41"/>
+        <source>Queued for Upload to ODS Cloud</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/documents/HtmlPreviewPage.qml" line="58"/>
         <source>View in...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/HtmlPreviewPage.qml" line="59"/>
+        <location filename="../assets/documents/HtmlPreviewPage.qml" line="69"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/HtmlPreviewPage.qml" line="120"/>
+        <location filename="../assets/documents/HtmlPreviewPage.qml" line="131"/>
         <source>content preview</source>
         <translation type="unfinished"></translation>
     </message>
@@ -290,12 +305,17 @@ Use any Name and Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/media/ImagePreviewPage.qml" line="50"/>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="42"/>
+        <source>Queued for Upload to ODS Cloud</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="59"/>
         <source>View in...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/media/ImagePreviewPage.qml" line="60"/>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="69"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -402,17 +422,22 @@ Use any Name and Password</source>
 <context>
     <name>PdfPreviewPage</name>
     <message>
-        <location filename="../assets/documents/PdfPreviewPage.qml" line="30"/>
+        <location filename="../assets/documents/PdfPreviewPage.qml" line="31"/>
         <source>Preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/PdfPreviewPage.qml" line="48"/>
+        <location filename="../assets/documents/PdfPreviewPage.qml" line="41"/>
+        <source>Queued for Upload to ODS Cloud</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/documents/PdfPreviewPage.qml" line="58"/>
         <source>View in...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/PdfPreviewPage.qml" line="59"/>
+        <location filename="../assets/documents/PdfPreviewPage.qml" line="69"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -673,17 +698,22 @@ Use any Name and Password</source>
 <context>
     <name>UnknownPreviewPage</name>
     <message>
-        <location filename="../assets/documents/UnknownPreviewPage.qml" line="30"/>
+        <location filename="../assets/documents/UnknownPreviewPage.qml" line="31"/>
         <source>Preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/UnknownPreviewPage.qml" line="48"/>
+        <location filename="../assets/documents/UnknownPreviewPage.qml" line="41"/>
+        <source>Queued for Upload to ODS Cloud</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/documents/UnknownPreviewPage.qml" line="58"/>
         <source>View in...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/UnknownPreviewPage.qml" line="59"/>
+        <location filename="../assets/documents/UnknownPreviewPage.qml" line="69"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -697,7 +727,7 @@ Use any Name and Password</source>
     </message>
     <message>
         <location filename="../assets/upload/UploadNavPane.qml" line="46"/>
-        <source>Uploads</source>
+        <source>Uploads (Work-in-Progress)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -751,16 +781,21 @@ Use any Name and Password</source>
     </message>
     <message>
         <location filename="../assets/media/VideoPreviewPage.qml" line="41"/>
+        <source>Queued for Upload to ODS Cloud</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/media/VideoPreviewPage.qml" line="50"/>
         <source>Beta3 Bug: MediaPlayer unstoppable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/media/VideoPreviewPage.qml" line="57"/>
+        <location filename="../assets/media/VideoPreviewPage.qml" line="66"/>
         <source>Watch in...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/media/VideoPreviewPage.qml" line="68"/>
+        <location filename="../assets/media/VideoPreviewPage.qml" line="77"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -768,27 +803,37 @@ Use any Name and Password</source>
 <context>
     <name>VoicePreviewPage</name>
     <message>
-        <location filename="../assets/media/VoicePreviewPage.qml" line="31"/>
+        <location filename="../assets/media/VoicePreviewPage.qml" line="32"/>
         <source>Preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/media/VoicePreviewPage.qml" line="58"/>
-        <source>Hear in...</source>
+        <location filename="../assets/media/VoicePreviewPage.qml" line="51"/>
+        <source>Beta3 Bug: MediaPlayer unstoppable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/media/VoicePreviewPage.qml" line="68"/>
-        <source>Upload</source>
+        <location filename="../assets/media/VoicePreviewPage.qml" line="59"/>
+        <source>Queued for Upload to ODS Cloud</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/media/VoicePreviewPage.qml" line="76"/>
+        <source>Hear in...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/media/VoicePreviewPage.qml" line="87"/>
+        <source>Upload</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/media/VoicePreviewPage.qml" line="96"/>
         <source>Play Audio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/media/VoicePreviewPage.qml" line="85"/>
+        <location filename="../assets/media/VoicePreviewPage.qml" line="105"/>
         <source>Stop Audio</source>
         <translation type="unfinished"></translation>
     </message>
@@ -814,17 +859,22 @@ Use any Name and Password</source>
 <context>
     <name>ZipPreviewPage</name>
     <message>
-        <location filename="../assets/documents/ZipPreviewPage.qml" line="30"/>
+        <location filename="../assets/documents/ZipPreviewPage.qml" line="31"/>
         <source>Preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/ZipPreviewPage.qml" line="48"/>
+        <location filename="../assets/documents/ZipPreviewPage.qml" line="41"/>
+        <source>Queued for Upload to ODS Cloud</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/documents/ZipPreviewPage.qml" line="58"/>
         <source>Inspect in...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/ZipPreviewPage.qml" line="59"/>
+        <location filename="../assets/documents/ZipPreviewPage.qml" line="69"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -832,22 +882,22 @@ Use any Name and Password</source>
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="93"/>
+        <location filename="../assets/main.qml" line="99"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="106"/>
+        <location filename="../assets/main.qml" line="112"/>
         <source>Data Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="115"/>
+        <location filename="../assets/main.qml" line="121"/>
         <source>Users</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="129"/>
+        <location filename="../assets/main.qml" line="135"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
