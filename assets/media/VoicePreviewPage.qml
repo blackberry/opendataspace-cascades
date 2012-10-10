@@ -15,6 +15,7 @@
  */import bb.cascades 1.0
 import org.opendataspace.fileinfo 1.0
 import bb.multimedia 1.0
+import bb.system 1.0
 /*
  * Video Preview
  * can share the video, do nothing (go back) or upload the video
@@ -45,6 +46,14 @@ Page {
                 stopIt()
             }
         },
+        SystemToast {
+            id: betaBugToast
+            body: qsTr("Beta3 Bug: MediaPlayer unstoppable.")
+            icon: "asset:///images/nuvola/bug.png"
+            onFinished: {
+                ods.invokeBoundMediaPlayer(previewPage.previewPath);
+            }
+        },
         // application supports changing the Orientation
         OrientationHandler {
             onOrientationAboutToChange: {
@@ -60,7 +69,8 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 // Calls a function that play thru Invokation Framework
-                ods.invokeBoundMediaPlayer(previewPage.previewPath);
+                betaBugToast.show()
+                //ods.invokeBoundMediaPlayer(previewPage.previewPath);
                 console.debug("just called function to View from IF");
             }
         },

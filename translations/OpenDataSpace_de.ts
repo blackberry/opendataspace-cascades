@@ -847,12 +847,17 @@ Use any Name and Password</source>
 <context>
     <name>VideoPreviewPage</name>
     <message>
-        <location filename="../assets/media/VideoPreviewPage.qml" line="30"/>
+        <location filename="../assets/media/VideoPreviewPage.qml" line="31"/>
         <source>Preview</source>
         <translation>Vorschau</translation>
     </message>
     <message>
-        <location filename="../assets/media/VideoPreviewPage.qml" line="48"/>
+        <location filename="../assets/media/VideoPreviewPage.qml" line="41"/>
+        <source>Beta3 Bug: MediaPlayer unstoppable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/media/VideoPreviewPage.qml" line="57"/>
         <source>Watch in...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -865,7 +870,7 @@ Use any Name and Password</source>
         <translation type="obsolete">Teilen</translation>
     </message>
     <message>
-        <location filename="../assets/media/VideoPreviewPage.qml" line="58"/>
+        <location filename="../assets/media/VideoPreviewPage.qml" line="68"/>
         <source>Upload</source>
         <translation>Upload</translation>
     </message>

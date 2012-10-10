@@ -14,6 +14,7 @@
  * limitations under the License.
  */import bb.cascades 1.0
 import org.opendataspace.fileinfo 1.0
+import bb.system 1.0
 /*
  * Video Preview
  * can share the video, do nothing (go back) or upload the video
@@ -35,6 +36,14 @@ Page {
         FileInfo {
             id: fileInfo
         },
+        SystemToast {
+            id: betaBugToast
+            body: qsTr("Beta3 Bug: MediaPlayer unstoppable.")
+            icon: "asset:///images/nuvola/bug.png"
+            onFinished: {
+                ods.invokeBoundMediaPlayer(previewPage.previewPath);
+            }
+        },
         // application supports changing the Orientation
         OrientationHandler {
             onOrientationAboutToChange: {
@@ -50,7 +59,8 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 // Calls a function that show's the video in a View from InvocationFramework
-                ods.invokeBoundMediaPlayer(previewPage.previewPath);
+                betaBugToast.show()
+                //ods.invokeBoundMediaPlayer(previewPage.previewPath);
                 console.debug("just called function to View from IF");
             }
         },
@@ -64,86 +74,86 @@ Page {
         }
     ]
     ScrollView {
-    Container {
-        layout: DockLayout {
-        }
-        leftPadding: 25
-        topPadding: 25
-        bottomPadding: 25
         Container {
-            id: imageAndTextContainer
-            layout: StackLayout {
-                orientation: LayoutOrientation.TopToBottom
+            layout: DockLayout {
             }
-            horizontalAlignment: HorizontalAlignment.Left
-            ImageView {
-                id: previewVideo
-                objectName: "previewVideo"
-                layoutProperties: StackLayoutProperties {
-                }
-                verticalAlignment: VerticalAlignment.Center
-                imageSource: "asset:///images/nuvola/video.png"
-                minWidth: 128
-                minHeight: 128
-                scalingMethod: ScalingMethod.AspectFit
-            }
+            leftPadding: 25
+            topPadding: 25
+            bottomPadding: 25
             Container {
+                id: imageAndTextContainer
                 layout: StackLayout {
                     orientation: LayoutOrientation.TopToBottom
                 }
-                topPadding: 25
-                rightPadding: 25
-                Label {
-                    id: titleLabel
-                    visible: false
-                    bottomMargin: 25
-                    textStyle {
-                        base: SystemDefaults.TextStyles.TitleText
-                        color: Color.Black
-                    }
-                }
-                TextArea {
-                    id: filenameInfo
+                horizontalAlignment: HorizontalAlignment.Left
+                ImageView {
+                    id: previewVideo
+                    objectName: "previewVideo"
                     layoutProperties: StackLayoutProperties {
                     }
-                    verticalAlignment: VerticalAlignment.Fill
-                    text: ""
-                    enabled: false
-                    backgroundVisible: false
-                    textStyle {
-                        base: SystemDefaults.TextStyles.SmallText
-                        color: Color.Black
+                    verticalAlignment: VerticalAlignment.Center
+                    imageSource: "asset:///images/nuvola/video.png"
+                    minWidth: 128
+                    minHeight: 128
+                    scalingMethod: ScalingMethod.AspectFit
+                }
+                Container {
+                    layout: StackLayout {
+                        orientation: LayoutOrientation.TopToBottom
+                    }
+                    topPadding: 25
+                    rightPadding: 25
+                    Label {
+                        id: titleLabel
+                        visible: false
+                        bottomMargin: 25
+                        textStyle {
+                            base: SystemDefaults.TextStyles.TitleText
+                            color: Color.Black
+                        }
+                    }
+                    TextArea {
+                        id: filenameInfo
+                        layoutProperties: StackLayoutProperties {
+                        }
+                        verticalAlignment: VerticalAlignment.Fill
+                        text: ""
+                        enabled: false
+                        backgroundVisible: false
+                        textStyle {
+                            base: SystemDefaults.TextStyles.SmallText
+                            color: Color.Black
+                        }
                     }
                 }
             }
-        }
-    } // end maincontainer
-} // end scrollview
+        } // end maincontainer
+    } // end scrollview
     function recalculateValues(name) {
         titleBar.title = fileInfo.getShortName(name);
         titleLabel.text = titleBar.title;
         filenameInfo.enabled = true;
-        filenameInfo.text = fileInfo.getDetailedInfo(ods.getCurrentLocale(), name); 
+        filenameInfo.text = fileInfo.getDetailedInfo(ods.getCurrentLocale(), name);
         filenameInfo.enabled = false;
     }
     // redesign if orientation changed
-        function reLayout(orientation) {
-            if (orientation == UIOrientation.Landscape) {
-                console.debug("previewVideo: reLayout to LANDSCAPE")
-                titleBar.visibility = ChromeVisibility.Hidden
-                titleLabel.visible = true
-                imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight
-                previewVideo.horizontalAlignment = HorizontalAlignment.Left
-                console.debug("previewVideo: reLayout to LANDSCAPE DONE")
-            } else {
-                console.debug("previewVideo: reLayout to PORTRAIT")
-                titleBar.visibility = ChromeVisibility.Visible
-                titleLabel.visible = false
-                imageAndTextContainer.layout.orientation = LayoutOrientation.TopToBottom
-                previewVideo.horizontalAlignment = HorizontalAlignment.Center
-                console.debug("previewVideo: reLayout to PORTRAIT DONE")
-            }
+    function reLayout(orientation) {
+        if (orientation == UIOrientation.Landscape) {
+            console.debug("previewVideo: reLayout to LANDSCAPE")
+            titleBar.visibility = ChromeVisibility.Hidden
+            titleLabel.visible = true
+            imageAndTextContainer.layout.orientation = LayoutOrientation.LeftToRight
+            previewVideo.horizontalAlignment = HorizontalAlignment.Left
+            console.debug("previewVideo: reLayout to LANDSCAPE DONE")
+        } else {
+            console.debug("previewVideo: reLayout to PORTRAIT")
+            titleBar.visibility = ChromeVisibility.Visible
+            titleLabel.visible = false
+            imageAndTextContainer.layout.orientation = LayoutOrientation.TopToBottom
+            previewVideo.horizontalAlignment = HorizontalAlignment.Center
+            console.debug("previewVideo: reLayout to PORTRAIT DONE")
         }
+    }
     // TODO Landscape hide Actionbar if no activity
     // in landscape we change the stack layout direction and hide the titlebar
     onCreationCompleted: {
