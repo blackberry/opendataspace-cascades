@@ -45,7 +45,7 @@
 #include <bb/cascades/pickers/FilePickerSortFlag>
 #include <bb/cascades/pickers/FilePickerSortOrder>
 #include <bb/cascades/pickers/FileType>
-#include <bb/cascades/pickers/ViewMode>
+#include <bb/cascades/pickers/FilePickerViewMode>
 
 #include <bps/virtualkeyboard.h>
 
@@ -72,8 +72,8 @@ OpenDataSpace::OpenDataSpace() {
 			"bb.cascades.pickers", 1, 0, "FilePickerSortOrder", "");
 	qmlRegisterUncreatableType<bb::cascades::pickers::FileType>(
 			"bb.cascades.pickers", 1, 0, "FileType", "");
-	qmlRegisterUncreatableType<bb::cascades::pickers::ViewMode>(
-			"bb.cascades.pickers", 1, 0, "ViewMode", "");
+	qmlRegisterUncreatableType<bb::cascades::pickers::FilePickerViewMode>(
+			"bb.cascades.pickers", 1, 0, "FilePickerViewMode", "");
 
 	// Register the FileInfo, so QML knows about
 	qmlRegisterType<FileInfo>("org.opendataspace.fileinfo", 1, 0, "FileInfo");
