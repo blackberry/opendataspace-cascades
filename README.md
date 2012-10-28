@@ -4,7 +4,6 @@ opendataspace-cascades
 OpenDataSpace client for BlackBerry 10 devices using Cascades.
 This is a sister project of opendataspace-bbjava for client apps running on BlackBerry OS 7+.
 
-OpenDataSpace client apps are accessing SecureDataSpace servers.
 
 License:
 ======================
@@ -14,18 +13,18 @@ The project is open sourced under the Apache 2.0 license
 Roadmap:
 ======================
 
-Development starts in august 2012, a first app will be presented at [BB Jam Americas 2012 Unconference Day](http://www.blackberryjamconference.com/americas/content/unconference-day) in San Jose.
-A full featured app will be submitted to AppWorld in the beginning of 2013, a developer preview will become available end of september 2012.
+Development startsed in august 2012, a first app was presented at [BB Jam Americas 2012 Unconference Day](http://www.blackberryjamconference.com/americas/content/unconference-day) in San Jose based on Cascades Beta 2.
+A new Developer Preview based on Cascades Beta 3 is avaialble at AppWorld for Dev Alpha Devices.
+These Developer Previews are focused on UI / UX / Invocation Framework etc.
+Access to the Server should be available at BBJam Asia End of November 2012.
+A full featured app will be available at AppWorld in January 2013: ready-to-go for BB10 Product Launch.
+This App is and will be FREE - also an Account with up to 2 GB Data and up to 5 Users (see below)
 
 Follow the project
 ======================
 
 * Twitter [@opendataspace](https://twitter.com/opendataspace)
 * Twitter [@ekkescorner]()
-
-TODO
-======================
-Informations about the server site of OpenDataSpace, the SDK and more will become public at [BB Jam Americas 2012 Conference](http://www.blackberryjamconference.com/americas/content/unconference-day).
 
 Repository Committers
 ======================
@@ -37,6 +36,13 @@ Bug Reporting and Feature Requests
 ======================
 
 If you find a bug or have an enhancement request, simply file an [Issue](https://github.com/blackberry/opendataspace-cascades/issues) and send a message (via github messages) to the Committers to the project to let them know that you have filed an [Issue](https://github.com/blackberry/opendataspace-cascades/issues).
+
+More from OpenDataSpace
+======================
+[More Open Source stuff from OpenDataSpace at Github](https://github.com/opendataspace)
+Need an Account ? 2 GB plus up to 5 Users are FREE. 
+[Register here](http://ods.io)
+
 
 Disclaimer
 ======================
