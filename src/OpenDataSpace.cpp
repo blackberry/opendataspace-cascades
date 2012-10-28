@@ -125,7 +125,28 @@ OpenDataSpace::OpenDataSpace() {
 
 	//
 	Application *app = Application::instance();
-	connect(app, SIGNAL(thumbnail()), this, SLOT(onThumbnail()));
+	bool ok = connect(app, SIGNAL(thumbnail()), this, SLOT(onThumbnail()));
+	if (!ok) {
+		qDebug() << "connect thumbnail failed";
+	}
+	// ODS is a Invocation Target
+	m_invokeManager = new InvokeManager(this);
+	ok = connect(m_invokeManager, SIGNAL(invoked(const InvokeRequest&)), this, SLOT(handleInvoke(const InvokeRequest&)));
+	if (!ok) {
+		qDebug() << "connect handleInvoke failed";
+	}
+
+	switch (m_invokeManager->startupMode()) {
+	    case ApplicationStartupMode::LaunchApplication:
+	    	qDebug() << "ApplicationStartupMode: Launched from homescreen";
+	        break;
+	    case ApplicationStartupMode::InvokeApplication:
+	        // Invocation. Anticipate a call to handleInvoke() slot
+	    	qDebug() << "ApplicationStartupMode: Launched from Invocation";
+	        break;
+	    default:
+	        break;
+	}
 
 	qDebug() << "INIT done";
 
@@ -323,8 +344,7 @@ void OpenDataSpace::settingsTriggered() {
 void OpenDataSpace::invokeUnbound(QString uri) {
 	InvokeRequest cardRequest;
 	cardRequest.setUri(uri);
-	InvokeManager invokeManager;
-	invokeManager.invoke(cardRequest);
+	m_invokeManager->invoke(cardRequest);
 }
 
 // invoke MediaPlayer
@@ -332,8 +352,7 @@ void OpenDataSpace::invokeBoundMediaPlayer(QString uri) {
 	InvokeRequest cardRequest;
 	cardRequest.setUri(uri);
 	cardRequest.setTarget("sys.mediaplayer.previewer");
-	InvokeManager invokeManager;
-	invokeManager.invoke(cardRequest);
+	m_invokeManager->invoke(cardRequest);
 }
 
 /**
@@ -346,8 +365,7 @@ void OpenDataSpace::showInView(QString uri) {
 	invokeRequest.setAction("bb.action.VIEW");
 	invokeRequest.setUri(uri);
 	qDebug() << "showInView URI: " << invokeRequest.uri();
-	InvokeManager invokeManager;
-	invokeManager.invoke(invokeRequest);
+	m_invokeManager->invoke(invokeRequest);
 }
 
 /**
@@ -363,8 +381,7 @@ void OpenDataSpace::showInViewForMimeType(QString uri, QString mimeType) {
 	invokeRequest.setMimeType(mimeType);
 	qDebug() << "showInViewForMimeType URI: " << invokeRequest.uri() << " Mime:"
 			<< mimeType;
-	InvokeManager invokeManager;
-	invokeManager.invoke(invokeRequest);
+	m_invokeManager->invoke(invokeRequest);
 }
 
 /**
@@ -379,8 +396,7 @@ void OpenDataSpace::showInTarget(QString uri, QString target) {
 	invokeRequest.setUri(uri);
 	invokeRequest.setTarget(target);
 	qDebug() << "showInTarget URI: " << invokeRequest.uri();
-	InvokeManager invokeManager;
-	invokeManager.invoke(invokeRequest);
+	m_invokeManager->invoke(invokeRequest);
 }
 
 /**
@@ -399,8 +415,7 @@ void OpenDataSpace::showInTargetForMimeType(QString uri, QString mimeType,
 	invokeRequest.setMimeType(mimeType);
 	qDebug() << "showInTargetForMimeType URI: " << invokeRequest.uri()
 			<< " MimeType:" << mimeType;
-	InvokeManager invokeManager;
-	invokeManager.invoke(invokeRequest);
+	m_invokeManager->invoke(invokeRequest);
 }
 
 // triggered if Application was sent to back
@@ -409,5 +424,14 @@ void OpenDataSpace::onThumbnail() {
 	qDebug() << "Application shrinks to thumbnail";
 	// AbstractCover *cover;
 	// Application::instance()->setCover(cover);
+}
+
+// triggered if Application was invoked by a client
+void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
+	// TODO
+	qDebug() << "Invoke Request";
+	qDebug() << "Invoke Request Mime:" << request.mimeType();
+	qDebug() << "Invoke Request URI:" << request.uri();
+
 }
 

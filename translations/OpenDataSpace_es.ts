@@ -432,22 +432,22 @@ Use any Name and Password</source>
 <context>
     <name>OpenDataSpace</name>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="189"/>
+        <location filename="../src/OpenDataSpace.cpp" line="210"/>
         <source>Help</source>
         <translation type="unfinished">Ayudar</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="192"/>
+        <location filename="../src/OpenDataSpace.cpp" line="213"/>
         <source>Feedback</source>
         <translation type="unfinished">Realimentación</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="195"/>
+        <location filename="../src/OpenDataSpace.cpp" line="216"/>
         <source>Logout</source>
         <translation type="unfinished">Cerrar sesión</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="198"/>
+        <location filename="../src/OpenDataSpace.cpp" line="219"/>
         <source>Settings</source>
         <translation type="unfinished">Configuración</translation>
     </message>

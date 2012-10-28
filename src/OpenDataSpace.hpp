@@ -5,6 +5,8 @@
 #include <bb/cascades/Menu>
 #include <bb/cascades/Application>
 #include <bb/cascades/LocaleHandler>
+#include <bb/system/InvokeManager.hpp>
+#include <bb/system/InvokeRequest.hpp>
 
 namespace bb {
 namespace cascades {
@@ -13,6 +15,7 @@ class Application;
 }
 
 using namespace bb::cascades;
+using namespace bb::system;
 
 /*!
  * @brief Application GUI object
@@ -103,7 +106,7 @@ public:
 	Q_INVOKABLE
 	void showInTargetForMimeType(QString uri, QString mimeType, QString target);
 
-public slots:
+public Q_SLOTS:
 	void logoutTriggered();
 	void feedbackTriggered();
 	void helpTriggered();
@@ -111,6 +114,10 @@ public slots:
 	// locale changed by user from device settings
 	void localeChanged();
 	void onThumbnail();
+
+private Q_SLOTS:
+	// ods as target for Invocation Queries
+	void handleInvoke(const InvokeRequest& request);
 
 private:
 	Menu* createApplicationMenu();
@@ -123,7 +130,10 @@ private:
 	LocaleHandler* m_LocaleHandler;
 	QTranslator* m_translator;
 
+	InvokeManager* m_invokeManager;
+
 	void translateMenuItems();
+
 
 };
 
