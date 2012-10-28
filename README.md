@@ -13,7 +13,7 @@ The project is open sourced under the Apache 2.0 license
 Roadmap:
 ======================
 
-Development startsed in august 2012, a first app was presented at [BB Jam Americas 2012 Unconference Day](http://www.blackberryjamconference.com/americas/content/unconference-day) in San Jose based on Cascades Beta 2.
+Development started in August 2012, a first app was presented at [BB Jam Americas 2012 Unconference Day](http://www.blackberryjamconference.com/americas/content/unconference-day) in San Jose based on Cascades Beta 2.
 A new Developer Preview based on Cascades Beta 3 is avaialble at AppWorld for Dev Alpha Devices.
 These Developer Previews are focused on UI / UX / Invocation Framework etc.
 Access to the Server should be available at BBJam Asia End of November 2012.
