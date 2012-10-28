@@ -17,8 +17,6 @@
 #include "FileInfo.hpp"
 #include "DateUtil.hpp"
 
-#include <bb/system/InvokeManager.hpp>
-#include <bb/system/InvokeRequest.hpp>
 #include <bb/system/SystemCredentialsPrompt>
 #include <bb/system/SystemDialog>
 #include <bb/system/SystemPrompt>
@@ -57,7 +55,26 @@ using namespace bb::system;
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
  *
  */
-OpenDataSpace::OpenDataSpace() {
+OpenDataSpace::OpenDataSpace(QObject *parent)
+	: QObject(parent), m_invokeManager(new InvokeManager(this)){
+
+	// ODS is a Invocation Target
+	bool ok = connect(m_invokeManager, SIGNAL(invoked(const bb::system::InvokeRequest&)), this, SLOT(handleInvoke(const bb::system::InvokeRequest&)));
+		if (!ok) {
+			qDebug() << "connect handleInvoke failed";
+		}
+
+		switch (m_invokeManager->startupMode()) {
+		    case ApplicationStartupMode::LaunchApplication:
+		    	qDebug() << "ApplicationStartupMode: Launched from homescreen";
+		        break;
+		    case ApplicationStartupMode::InvokeApplication:
+		        // Invocation. Anticipate a call to handleInvoke() slot
+		    	qDebug() << "ApplicationStartupMode: Launched from Invocation";
+		        break;
+		    default:
+		        break;
+		}
 
 	// register the MyListModel C++ type to be visible in QML
 
@@ -125,28 +142,11 @@ OpenDataSpace::OpenDataSpace() {
 
 	//
 	Application *app = Application::instance();
-	bool ok = connect(app, SIGNAL(thumbnail()), this, SLOT(onThumbnail()));
+	ok = connect(app, SIGNAL(thumbnail()), this, SLOT(onThumbnail()));
 	if (!ok) {
 		qDebug() << "connect thumbnail failed";
 	}
-	// ODS is a Invocation Target
-	m_invokeManager = new InvokeManager(this);
-	ok = connect(m_invokeManager, SIGNAL(invoked(const InvokeRequest&)), this, SLOT(handleInvoke(const InvokeRequest&)));
-	if (!ok) {
-		qDebug() << "connect handleInvoke failed";
-	}
 
-	switch (m_invokeManager->startupMode()) {
-	    case ApplicationStartupMode::LaunchApplication:
-	    	qDebug() << "ApplicationStartupMode: Launched from homescreen";
-	        break;
-	    case ApplicationStartupMode::InvokeApplication:
-	        // Invocation. Anticipate a call to handleInvoke() slot
-	    	qDebug() << "ApplicationStartupMode: Launched from Invocation";
-	        break;
-	    default:
-	        break;
-	}
 
 	qDebug() << "INIT done";
 

@@ -15,7 +15,7 @@ class Application;
 }
 
 using namespace bb::cascades;
-using namespace bb::system;
+
 
 /*!
  * @brief Application GUI object
@@ -23,7 +23,7 @@ using namespace bb::system;
 class OpenDataSpace: public QObject {
 Q_OBJECT
 public:
-	OpenDataSpace();
+	OpenDataSpace(QObject *parent = 0);
 	virtual ~OpenDataSpace() {
 	}
 
@@ -117,7 +117,7 @@ public Q_SLOTS:
 
 private Q_SLOTS:
 	// ods as target for Invocation Queries
-	void handleInvoke(const InvokeRequest& request);
+	void handleInvoke(const bb::system::InvokeRequest& request);
 
 private:
 	Menu* createApplicationMenu();
@@ -130,7 +130,7 @@ private:
 	LocaleHandler* m_LocaleHandler;
 	QTranslator* m_translator;
 
-	InvokeManager* m_invokeManager;
+	bb::system::InvokeManager *m_invokeManager;
 
 	void translateMenuItems();
 
