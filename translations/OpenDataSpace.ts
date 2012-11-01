@@ -253,7 +253,7 @@
 <context>
     <name>FoldersItem</name>
     <message numerus="yes">
-        <location filename="../assets/rooms/FoldersItem.qml" line="98"/>
+        <location filename="../assets/rooms/FoldersItem.qml" line="100"/>
         <source>%1 file(s)</source>
         <translation>
             <numerusform>%1 file</numerusform>
@@ -399,23 +399,43 @@ Use any Name and Password</source>
 <context>
     <name>OpenDataSpace</name>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="210"/>
+        <location filename="../src/OpenDataSpace.cpp" line="231"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="213"/>
+        <location filename="../src/OpenDataSpace.cpp" line="234"/>
         <source>Feedback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="216"/>
+        <location filename="../src/OpenDataSpace.cpp" line="237"/>
         <source>Logout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="219"/>
+        <location filename="../src/OpenDataSpace.cpp" line="240"/>
         <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/OpenDataSpace.cpp" line="474"/>
+        <source>Resized</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/OpenDataSpace.cpp" line="480"/>
+        <source>Pooled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/OpenDataSpace.cpp" line="488"/>
+        <source>Card: I am done. yay!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/OpenDataSpace.cpp" line="490"/>
+        <source>Success!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -680,7 +700,7 @@ Use any Name and Password</source>
 <context>
     <name>SubRoomsItem</name>
     <message numerus="yes">
-        <location filename="../assets/rooms/SubRoomsItem.qml" line="98"/>
+        <location filename="../assets/rooms/SubRoomsItem.qml" line="100"/>
         <source>%1 file(s)</source>
         <translation>
             <numerusform>%1 file</numerusform>

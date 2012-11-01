@@ -63,18 +63,15 @@ OpenDataSpace::OpenDataSpace(QObject *parent)
 		if (!ok) {
 			qDebug() << "connect handleInvoke failed";
 		}
-
-		switch (m_invokeManager->startupMode()) {
-		    case ApplicationStartupMode::LaunchApplication:
-		    	qDebug() << "ApplicationStartupMode: Launched from homescreen";
-		        break;
-		    case ApplicationStartupMode::InvokeApplication:
-		        // Invocation. Anticipate a call to handleInvoke() slot
-		    	qDebug() << "ApplicationStartupMode: Launched from Invocation";
-		        break;
-		    default:
-		        break;
+		ok = connect(m_invokeManager, SIGNAL(cardResizeRequested(const bb::system::CardResizeMessage&)), this, SLOT(handleCardResize(const bb::system::CardResizeMessage&)));
+		if (!ok) {
+			qDebug() << "connect handleCardResize failed";
 		}
+		ok = connect(m_invokeManager, SIGNAL(cardPooled(const bb::system::CardDoneMessage&)), this, SLOT(handleCardPooled(const bb::system::CardDoneMessage&)));
+		if (!ok) {
+			qDebug() << "connect handleCardPooled failed";
+		}
+
 
 	// register the MyListModel C++ type to be visible in QML
 
@@ -114,9 +111,33 @@ OpenDataSpace::OpenDataSpace(QObject *parent)
 
 	qDebug() << "registered types for QML";
 
+	QString qmlDocument = "asset:///main.qml";
+
+	switch (m_invokeManager->startupMode()) {
+		case ApplicationStartupMode::LaunchApplication:
+			// the normal Launch
+			qDebug() << "ApplicationStartupMode: LAUNCHED from homescreen";
+			break;
+		case ApplicationStartupMode::InvokeApplication:
+			// Invocation. Someone Opened the App thru Invocation
+			// Anticipate a call to handleInvoke() slot
+			qDebug() << "ApplicationStartupMode: LAUNCHED from Invocation";
+			break;
+		case ApplicationStartupMode::InvokeCard:
+			// Card Opened by another App
+			qmlDocument = "asset:///CardPage.qml";
+			qDebug() << "ApplicationStartupMode: LAUNCHED as CARD";
+			break;
+		default:
+
+			break;
+	}
+
 	// our main QML document: the HomeScreen with a custom Background Image
-	QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
+	QmlDocument *qml = QmlDocument::create(qmlDocument).parent(this);
 	qDebug() << "created QML Document";
+
+
 
 	//-- setContextProperty expose C++ object in QML as an variable
 	qml->setContextProperty("ods", this);
@@ -430,8 +451,45 @@ void OpenDataSpace::onThumbnail() {
 void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
 	// TODO
 	qDebug() << "Invoke Request";
+	qDebug() << "Invoke Request Action:" << request.action();
 	qDebug() << "Invoke Request Mime:" << request.mimeType();
 	qDebug() << "Invoke Request URI:" << request.uri();
+	m_invokationTarget = request.target();
+	m_invokationSource = QString::fromLatin1("%1 (%2)").arg(request.source().installId()).arg(request.source().groupId());
+	qDebug() << "Invoke Target ID: " << m_invokationTarget << " from Source: " << m_invokationSource;
+	if (m_invokationTarget == "io.ods.bb10.invoke"){
+		qDebug() << "Invoked";
+	} else if (m_invokationTarget == "io.ods.bb10.card.previewer") {
+		qDebug() << "Invoked for CardPreviewer";
+	} else if (m_invokationTarget == "io.ods.bb10.card.composer") {
+		qDebug() << "Invoked for CardComposer";
+	} else if (m_invokationTarget == "io.ods.bb10.card.picker") {
+		qDebug() << "Invoked for CardPicker";
+	}
 
+}
+
+void OpenDataSpace::handleCardResize(const bb::system::CardResizeMessage&)
+{
+    m_cardStatus = tr("Resized");
+    emit cardStatusChanged();
+}
+
+void OpenDataSpace::handleCardPooled(const bb::system::CardDoneMessage&)
+{
+    m_cardStatus = tr("Pooled");
+    emit cardStatusChanged();
+}
+
+void OpenDataSpace::cardDone()
+{
+    // Assemble message
+    CardDoneMessage message;
+    message.setData(tr("Card: I am done. yay!"));
+    message.setDataType("text/plain");
+    message.setReason(tr("Success!"));
+
+    // Send message
+    m_invokeManager->sendCardDone(message);
 }
 

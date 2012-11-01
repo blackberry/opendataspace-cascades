@@ -5,6 +5,7 @@
 #include <bb/cascades/Menu>
 #include <bb/cascades/Application>
 #include <bb/cascades/LocaleHandler>
+#include <bb/system/CardDoneMessage.hpp>
 #include <bb/system/InvokeManager.hpp>
 #include <bb/system/InvokeRequest.hpp>
 
@@ -22,6 +23,7 @@ using namespace bb::cascades;
  */
 class OpenDataSpace: public QObject {
 Q_OBJECT
+
 public:
 	OpenDataSpace(QObject *parent = 0);
 	virtual ~OpenDataSpace() {
@@ -107,6 +109,10 @@ public:
 	void showInTargetForMimeType(QString uri, QString mimeType, QString target);
 
 public Q_SLOTS:
+	// Invoaction
+	// This method is invoked to notify the invocation system that the action has been done
+    void cardDone();
+	// slots from AppMenu Sheets:
 	void logoutTriggered();
 	void feedbackTriggered();
 	void helpTriggered();
@@ -115,9 +121,15 @@ public Q_SLOTS:
 	void localeChanged();
 	void onThumbnail();
 
+Q_SIGNALS:
+	// The change notification signal of card status change
+	void cardStatusChanged();
+
 private Q_SLOTS:
 	// ods as target for Invocation Queries
 	void handleInvoke(const bb::system::InvokeRequest& request);
+	void handleCardResize(const bb::system::CardResizeMessage&);
+	void handleCardPooled(const bb::system::CardDoneMessage&);
 
 private:
 	Menu* createApplicationMenu();
@@ -130,6 +142,9 @@ private:
 	LocaleHandler* m_LocaleHandler;
 	QTranslator* m_translator;
 
+	QString m_cardStatus;
+	QString m_invokationTarget;
+	QString m_invokationSource;
 	bb::system::InvokeManager *m_invokeManager;
 
 	void translateMenuItems();
