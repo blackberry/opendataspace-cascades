@@ -34,8 +34,10 @@ Container {
                 onOrientationAboutToChange: {
                     if (orientation == UIOrientation.Landscape) {
                         itemBackground.preferredWidth = 1280
+                        highlightContainer.preferredWidth = 1272
                     } else {
                         itemBackground.preferredWidth = 768
+                        highlightContainer.preferredWidth = 760
                     }
                 }
             }
@@ -122,6 +124,7 @@ Container {
         // set to Landscape if aklready in landscape while staring up
         if (OrientationSupport.orientation == UIOrientation.Landscape) {
             itemBackground.preferredWidth = 1280
+            highlightContainer.preferredWidth = 1272
         }
     }
 }
