@@ -4,6 +4,7 @@ NavigationPane {
     id: cardNavPaneId
     objectName: cardNavPaneId
     property alias invokationMode : invocationModeLabelId.text
+    property alias counter : pageId.counter
     Page {
         property int counter: 0
         id: pageId

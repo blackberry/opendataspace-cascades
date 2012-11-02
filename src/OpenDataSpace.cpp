@@ -475,12 +475,13 @@ void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
 		qDebug() << "Invoked for CardPicker";
 	}
 	if (m_isCard) {
-		AbstractPane *n = Application::instance()->scene();
-		if (n) {
-			n->setProperty( "invokationMode", m_invokationTarget);
-		} else {
-			qDebug() << "cardNavPaneId not found";
+		AbstractPane *p = Application::instance()->scene();
+		bool ok = p->setProperty( "invokationMode", m_invokationTarget);
+		if (!ok) {
+			qDebug() << "Cannot set invokationMode";
 		}
+	} else {
+		// do what needed if Invoked, per ex. switch to Upload TAB
 	}
 }
 
@@ -491,23 +492,39 @@ void OpenDataSpace::handleCardResize(const bb::system::CardResizeMessage&)
     qDebug() << "handleCardResize";
 }
 
-void OpenDataSpace::handleCardPooled(const bb::system::CardDoneMessage&)
+void OpenDataSpace::handleCardPooled(const bb::system::CardDoneMessage& message)
 {
     m_cardStatus = tr("Pooled");
     emit cardStatusChanged();
-    qDebug() << "handleCardPooled";
+    if (!message.data().isEmpty() && !message.reason().isEmpty()) {
+    	qDebug() << "handleCardPooled data: " << message.data() << " reason: " << message.reason();
+	} else if (!message.reason().isEmpty()) {
+		qDebug() << "handleCardPooled reason: " << message.reason();
+	} else if (!message.data().isEmpty()) {
+		qDebug() << "handleCardPooled data: " << message.data();
+	} else {
+		qDebug() << "handleCardPooled (no data, no reason)";
+	}
+    // reset the values
+    AbstractPane *p = Application::instance()->scene();
+    bool ok = p->setProperty( "counter", 0);
+	if (ok) {
+		qDebug() << "reset counter to zero";
+	} else {
+		qDebug() << "cannot reset counter";
+	}
 }
 
 void OpenDataSpace::cardDone()
 {
-	qDebug() << "cardDone";
+	qDebug() << "cardDone: assemble message";
 	// Assemble message
     CardDoneMessage message;
-    message.setData(tr("Card: I am done. yay!"));
+    message.setData(tr("Card done"));
     message.setDataType("text/plain");
-    message.setReason(tr("Success!"));
-
+    message.setReason(tr("Success"));
     // Send message
     m_invokeManager->sendCardDone(message);
+    qDebug() << "cardDone: message sent via IvokeManager";
 }
 
