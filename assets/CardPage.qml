@@ -36,4 +36,7 @@ NavigationPane {
             calculateLabeltext();
         }
     }
+    onCreationCompleted: {
+        OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
+    }
 }
