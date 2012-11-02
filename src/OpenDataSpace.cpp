@@ -31,6 +31,7 @@
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/AbstractPane>
+#include <bb/cascades/controls/navigationpane.h>
 #include <bb/cascades/LocaleHandler>
 #include <bb/cascades/Menu>
 #include <bb/cascades/ActionItem>
@@ -117,16 +118,19 @@ OpenDataSpace::OpenDataSpace(QObject *parent)
 		case ApplicationStartupMode::LaunchApplication:
 			// the normal Launch
 			qDebug() << "ApplicationStartupMode: LAUNCHED from homescreen";
+			m_isCard = false;
 			break;
 		case ApplicationStartupMode::InvokeApplication:
 			// Invocation. Someone Opened the App thru Invocation
 			// Anticipate a call to handleInvoke() slot
 			qDebug() << "ApplicationStartupMode: LAUNCHED from Invocation";
+			m_isCard = false;
 			break;
 		case ApplicationStartupMode::InvokeCard:
 			// Card Opened by another App
 			qmlDocument = "asset:///CardPage.qml";
 			qDebug() << "ApplicationStartupMode: LAUNCHED as CARD";
+			m_isCard = true;
 			break;
 		default:
 
@@ -458,32 +462,46 @@ void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
 	m_invokationSource = QString::fromLatin1("%1 (%2)").arg(request.source().installId()).arg(request.source().groupId());
 	qDebug() << "Invoke Target ID: " << m_invokationTarget << " from Source: " << m_invokationSource;
 	if (m_invokationTarget == "io.ods.bb10.invoke"){
+		m_isCard = false;
 		qDebug() << "Invoked";
 	} else if (m_invokationTarget == "io.ods.bb10.card.previewer") {
+		m_isCard = true;
 		qDebug() << "Invoked for CardPreviewer";
 	} else if (m_invokationTarget == "io.ods.bb10.card.composer") {
+		m_isCard = true;
 		qDebug() << "Invoked for CardComposer";
 	} else if (m_invokationTarget == "io.ods.bb10.card.picker") {
+		m_isCard = true;
 		qDebug() << "Invoked for CardPicker";
 	}
-
+	if (m_isCard) {
+		AbstractPane *n = Application::instance()->scene();
+		if (n) {
+			n->setProperty( "invokationMode", m_invokationTarget);
+		} else {
+			qDebug() << "cardNavPaneId not found";
+		}
+	}
 }
 
 void OpenDataSpace::handleCardResize(const bb::system::CardResizeMessage&)
 {
     m_cardStatus = tr("Resized");
     emit cardStatusChanged();
+    qDebug() << "handleCardResize";
 }
 
 void OpenDataSpace::handleCardPooled(const bb::system::CardDoneMessage&)
 {
     m_cardStatus = tr("Pooled");
     emit cardStatusChanged();
+    qDebug() << "handleCardPooled";
 }
 
 void OpenDataSpace::cardDone()
 {
-    // Assemble message
+	qDebug() << "cardDone";
+	// Assemble message
     CardDoneMessage message;
     message.setData(tr("Card: I am done. yay!"));
     message.setDataType("text/plain");

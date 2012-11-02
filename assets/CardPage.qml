@@ -1,9 +1,9 @@
 import bb.cascades 1.0
 
 NavigationPane {
-    id: navPaneId
-    objectName: navPaneId
-    property string mode: "??"
+    id: cardNavPaneId
+    objectName: cardNavPaneId
+    property alias invokationMode : invocationModeLabelId.text
     Page {
         property int counter: 0
         id: pageId
@@ -13,21 +13,22 @@ NavigationPane {
             layout: StackLayout {
             }
             Label {
-                text: "Invoked as " + mode
+                id: invocationModeLabelId
+                text: "Invoked"
             }
             Label {
                 id: labelId
                 text: "--"
             }
             Button {
-                text: "Press Me"
+                text: "Press Me to count"
                 onClicked: {
-                    counter ++
                     pageId.calculateLabeltext()
                 }
             }
         }
         function calculateLabeltext(){
+            pageId.counter++
             labelId.text = "Pressed " + pageId.counter + " times"
         }
         onCreationCompleted: {

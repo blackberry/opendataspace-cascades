@@ -145,6 +145,7 @@ private:
 	QString m_cardStatus;
 	QString m_invokationTarget;
 	QString m_invokationSource;
+	bool m_isCard;
 	bb::system::InvokeManager *m_invokeManager;
 
 	void translateMenuItems();
