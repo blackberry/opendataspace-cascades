@@ -458,6 +458,7 @@ void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
 	qDebug() << "Invoke Request Action:" << request.action();
 	qDebug() << "Invoke Request Mime:" << request.mimeType();
 	qDebug() << "Invoke Request URI:" << request.uri();
+	qDebug() << "Invoke Request Data:" << request.data();
 	m_invokationTarget = request.target();
 	m_invokationSource = QString::fromLatin1("%1 (%2)").arg(request.source().installId()).arg(request.source().groupId());
 	qDebug() << "Invoke Target ID: " << m_invokationTarget << " from Source: " << m_invokationSource;
@@ -494,17 +495,8 @@ void OpenDataSpace::handleCardResize(const bb::system::CardResizeMessage&)
 
 void OpenDataSpace::handleCardPooled(const bb::system::CardDoneMessage& message)
 {
-    m_cardStatus = tr("Pooled");
-    emit cardStatusChanged();
-    if (!message.data().isEmpty() && !message.reason().isEmpty()) {
-    	qDebug() << "handleCardPooled data: " << message.data() << " reason: " << message.reason();
-	} else if (!message.reason().isEmpty()) {
-		qDebug() << "handleCardPooled reason: " << message.reason();
-	} else if (!message.data().isEmpty()) {
-		qDebug() << "handleCardPooled data: " << message.data();
-	} else {
-		qDebug() << "handleCardPooled (no data, no reason)";
-	}
+    // reason can be: "closed" or "Success"
+	qDebug() << "handleCardPooled data: "<< message.data() << " reason: " << message.reason();
     // reset the values
     AbstractPane *p = Application::instance()->scene();
     bool ok = p->setProperty( "counter", 0);
@@ -513,6 +505,9 @@ void OpenDataSpace::handleCardPooled(const bb::system::CardDoneMessage& message)
 	} else {
 		qDebug() << "cannot reset counter";
 	}
+	// TODO do we need this ?
+	m_cardStatus = tr("Pooled");
+	emit cardStatusChanged();
 }
 
 void OpenDataSpace::cardDone()
@@ -520,11 +515,12 @@ void OpenDataSpace::cardDone()
 	qDebug() << "cardDone: assemble message";
 	// Assemble message
     CardDoneMessage message;
-    message.setData(tr("Card done"));
+    message.setData(tr(":)"));
     message.setDataType("text/plain");
     message.setReason(tr("Success"));
     // Send message
+    qDebug() << "cardDone: sending message via IvokeManager data: "<< message.data() << " reason: " << message.reason();
     m_invokeManager->sendCardDone(message);
-    qDebug() << "cardDone: message sent via IvokeManager";
+
 }
 

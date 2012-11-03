@@ -2,13 +2,13 @@ import bb.cascades 1.0
 
 NavigationPane {
     id: cardNavPaneId
-    objectName: cardNavPaneId
+    objectName: "cardNavPaneId"
     property alias invokationMode : invocationModeLabelId.text
     property alias counter : pageId.counter
     Page {
         property int counter: 0
         id: pageId
-        objectName: pageId
+        objectName: "pageId"
         Container {
             id: containerId
             layout: StackLayout {
@@ -25,6 +25,9 @@ NavigationPane {
                 text: "Press Me to count"
                 onClicked: {
                     pageId.calculateLabeltext()
+                    if (counter > 3) {
+                        ods.cardDone()
+                    }
                 }
             }
         }
@@ -35,8 +38,10 @@ NavigationPane {
         onCreationCompleted: {
             calculateLabeltext();
         }
+        
     }
     onCreationCompleted: {
-        OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
+        // controlled  by host application !
+        // OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
     }
 }
