@@ -44,7 +44,8 @@ Page {
             title: qsTr("File Picker")
             mode: FilePickerMode.Picker // pickerMode.selectedValue
             type: FileType.Other // pickerType.selectedValue
-            viewMode: ViewMode.Default // pickerViewMode.selectedValue
+            // TODO got reference error
+            // viewMode: ViewMode.Default // pickerViewMode.selectedValue
             sortBy: FilePickerSortFlag.Default // pickerSortBy.selectedValue
             sortOrder: FilePickerSortOrder.Default // pickerSortOrder.selectedValue
             onFileSelected: {

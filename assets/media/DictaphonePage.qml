@@ -172,7 +172,8 @@ Page {
             title: qsTr("Save Voice as...") + Retranslate.onLanguageChanged
             mode: FilePickerMode.Saver
             type: FileType.Other
-            viewMode: ViewMode.Default
+            // TODO got reference error
+            // viewMode: ViewMode.Default
             sortBy: FilePickerSortFlag.Default
             sortOrder: FilePickerSortOrder.Default
             directories: [
