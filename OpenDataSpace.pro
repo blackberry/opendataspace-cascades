@@ -17,6 +17,7 @@ lupdate_inclusion {
     SOURCES += ../assets/media/*.qml
     SOURCES += ../assets/documents/*.qml
     SOURCES += ../assets/webpages/*.qml
+    SOURCES += ../assets/cards/*.qml
 }
 
 device {

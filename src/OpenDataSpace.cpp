@@ -462,19 +462,22 @@ void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
 	m_invokationTarget = request.target();
 	m_invokationSource = QString::fromLatin1("%1 (%2)").arg(request.source().installId()).arg(request.source().groupId());
 	qDebug() << "Invoke Target ID: " << m_invokationTarget << " from Source: " << m_invokationSource;
+	// Invoked as Application
 	if (m_invokationTarget == "io.ods.bb10.invoke"){
 		m_isCard = false;
 		qDebug() << "Invoked";
-	} else if (m_invokationTarget == "io.ods.bb10.card.previewer") {
-		m_isCard = true;
-		qDebug() << "Invoked for CardPreviewer";
-	} else if (m_invokationTarget == "io.ods.bb10.card.composer") {
-		m_isCard = true;
-		qDebug() << "Invoked for CardComposer";
-	} else if (m_invokationTarget == "io.ods.bb10.card.picker") {
-		m_isCard = true;
-		qDebug() << "Invoked for CardPicker";
 	}
+	// invoked as embedded Card (Previewer) from OPEN or SHARE
+	else if (m_invokationTarget == "io.ods.bb10.card.upload.previewer") {
+		m_isCard = true;
+		qDebug() << "Invoked for UploadCard as Previewer";
+	}
+	// invoked as embedded Card (Composer) from OPEN
+	else if (m_invokationTarget == "io.ods.bb10.upload.composer") {
+		m_isCard = true;
+		qDebug() << "Invoked for UploadCard as Composer";
+	}
+	// TODO work in progress
 	if (m_isCard) {
 		AbstractPane *p = Application::instance()->scene();
 		bool ok = p->setProperty( "invokationMode", m_invokationTarget);

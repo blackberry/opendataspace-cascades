@@ -432,43 +432,43 @@ Use any Name and Password</source>
 <context>
     <name>OpenDataSpace</name>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="231"/>
+        <location filename="../src/OpenDataSpace.cpp" line="235"/>
         <source>Help</source>
         <translation type="unfinished">Ayudar</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="234"/>
+        <location filename="../src/OpenDataSpace.cpp" line="238"/>
         <source>Feedback</source>
         <translation type="unfinished">Realimentación</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="237"/>
+        <location filename="../src/OpenDataSpace.cpp" line="241"/>
         <source>Logout</source>
         <translation type="unfinished">Cerrar sesión</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="240"/>
+        <location filename="../src/OpenDataSpace.cpp" line="244"/>
         <source>Settings</source>
         <translation type="unfinished">Configuración</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="474"/>
+        <location filename="../src/OpenDataSpace.cpp" line="494"/>
         <source>Resized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="480"/>
+        <location filename="../src/OpenDataSpace.cpp" line="512"/>
         <source>Pooled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="488"/>
-        <source>Card: I am done. yay!</source>
+        <location filename="../src/OpenDataSpace.cpp" line="521"/>
+        <source>:)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="490"/>
-        <source>Success!</source>
+        <location filename="../src/OpenDataSpace.cpp" line="523"/>
+        <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
