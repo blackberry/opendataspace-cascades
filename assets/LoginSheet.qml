@@ -54,9 +54,10 @@ Page {
                 // ods.suppressKeyboard()
                 if (result == SystemUiResult.ConfirmButtonSelection) {
                     console.debug("ConfirmButtonSelection done from SystemCredentialsPrompt");
-                    console.debug("User: "+ credentialsPrompt.usernameEntry)
+                    // TODO getting object instead of String with username
+                    console.debug("User: "+ usernameEntry)
                     // TODO call C++ function to test if Login was OK
-                    ods.login(credentialsPrompt.usernameEntry, credentialsPrompt.passwordEntry)
+                    ods.login(usernameEntry, passwordEntry)
                     if (OrientationSupport.orientation == UIOrientation.Landscape) {
                         loginToast.position = SystemUiPosition.MiddleCenter
                     } else {
