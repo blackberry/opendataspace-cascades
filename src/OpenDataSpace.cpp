@@ -323,10 +323,39 @@ void OpenDataSpace::logoutTriggered() {
 			"loginSheet");
 	if (s) {
 		qDebug() << "logout triggered and loginSheet found";
+		// reset old login credentials
+		login("","");
 		s->open();
 	} else {
 		qDebug() << "logout triggered, but no loginSheet found";
 	}
+}
+
+/*
+ * true if Login was done successfully
+ * and is still valid
+ */
+bool OpenDataSpace::loginDone() {
+	// TODO persist login state
+	qDebug() << "login Done ? " << m_login_ok;
+	return m_login_ok;
+}
+
+/*
+ * executes a new login
+ * true if credentials are ok
+ */
+bool OpenDataSpace::login(const QString user, const QString pw) {
+	// TODO test against server
+	// and persist thru Application and Card instances
+	if (!user.isEmpty() && !pw.isEmpty()) {
+		qDebug() << "login OK with user " << user << " pw *****";
+		m_login_ok = true;
+	} else {
+		qDebug() << "login FAILED: no user / pw";
+		m_login_ok = false;
+	}
+	return m_login_ok;
 }
 
 // handles SLOT from feedbackItem

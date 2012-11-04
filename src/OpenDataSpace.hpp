@@ -108,6 +108,19 @@ public:
 	Q_INVOKABLE
 	void showInTargetForMimeType(QString uri, QString mimeType, QString target);
 
+	/**
+	 * test if Login is already done and valid
+	 */
+	Q_INVOKABLE
+	bool loginDone();
+
+	/*
+	 * login with username and password
+	 * true if login credentials are ok
+	 */
+	Q_INVOKABLE
+	bool login(QString user, QString pw);
+
 public Q_SLOTS:
 	// Invoaction
 	// This method is invoked to notify the invocation system that the action has been done
@@ -137,6 +150,7 @@ private:
 	ActionItem* m_feedbackItem;
 	SettingsActionItem* m_settingsItem;
 	ActionItem* m_logoutItem;
+	bool m_login_ok;
 
 	QString m_currentLocale;
 	LocaleHandler* m_LocaleHandler;

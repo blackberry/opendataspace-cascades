@@ -24,7 +24,6 @@ import bb.system 1.0
 
 Page {
     signal done()
-    // seems not to work
     resizeBehavior: PageResizeBehavior.Resize
     //
     attachedObjects: [
@@ -52,10 +51,12 @@ Page {
             cancelButton.label: qsTr("Cancel") + Retranslate.onLanguageChanged
             cancelButton.enabled: true
             onFinished: {
-                ods.suppressKeyboard()
+                // ods.suppressKeyboard()
                 if (result == SystemUiResult.ConfirmButtonSelection) {
-                    console.debug("confirm");
+                    console.debug("ConfirmButtonSelection done from SystemCredentialsPrompt");
+                    console.debug("User: "+ credentialsPrompt.usernameEntry)
                     // TODO call C++ function to test if Login was OK
+                    ods.login(credentialsPrompt.usernameEntry, credentialsPrompt.passwordEntry)
                     if (OrientationSupport.orientation == UIOrientation.Landscape) {
                         loginToast.position = SystemUiPosition.MiddleCenter
                     } else {

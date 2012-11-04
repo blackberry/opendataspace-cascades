@@ -191,6 +191,7 @@ TabbedPane {
     }
     function createUserTabComponent() {
         console.debug("createUserTabComponent")
+        console.debug("Login Done ? "+ods.loginDone())
         usersTab.content = onDemandComponentUsersNavPane.createObject()
     }
     function destroyUserTabComponent() {
