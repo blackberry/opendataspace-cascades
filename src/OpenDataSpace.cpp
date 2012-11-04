@@ -112,69 +112,92 @@ OpenDataSpace::OpenDataSpace(QObject *parent)
 
 	qDebug() << "registered types for QML";
 
-	QString qmlDocument = "asset:///main.qml";
-
+	// we have different root objects
+	QString qmlDocument;
 	switch (m_invokeManager->startupMode()) {
 		case ApplicationStartupMode::LaunchApplication:
 			// the normal Launch
-			qDebug() << "ApplicationStartupMode: LAUNCHED from homescreen";
+			// our main QML document: the HomeScreen with a custom Background Image
+			m_isLaunchedEmbedded = false;
 			m_isCard = false;
+			qmlDocument = "asset:///main.qml";
+			qDebug() << "ApplicationStartupMode: LAUNCHED from homescreen";
 			break;
 		case ApplicationStartupMode::InvokeApplication:
 			// Invocation. Someone Opened the App thru Invocation
-			// Anticipate a call to handleInvoke() slot
-			qDebug() << "ApplicationStartupMode: LAUNCHED from Invocation";
+			// our main QML document: the HomeScreen with a custom Background Image
+			m_isLaunchedEmbedded = false;
 			m_isCard = false;
+			qmlDocument = "asset:///main.qml";
+			qDebug() << "ApplicationStartupMode: LAUNCHED from Invocation";
 			break;
 		case ApplicationStartupMode::InvokeCard:
 			// Card Opened by another App
+			// the APP is now running embedded and invisible for the user
+			// we only need a small part of the functionality,
+			// so we use a different root object
+			m_isLaunchedEmbedded = true;
+			m_isCard = true;
 			qmlDocument = "asset:///CardPage.qml";
 			qDebug() << "ApplicationStartupMode: LAUNCHED as CARD";
-			m_isCard = true;
 			break;
 		default:
-
+			// our main QML document: the HomeScreen with a custom Background Image
+			m_isLaunchedEmbedded = false;
+			m_isCard = false;
+			qmlDocument = "asset:///main.qml";
 			break;
 	}
 
-	// our main QML document: the HomeScreen with a custom Background Image
+
 	QmlDocument *qml = QmlDocument::create(qmlDocument).parent(this);
 	qDebug() << "created QML Document";
 
-
-
 	//-- setContextProperty expose C++ object in QML as an variable
+	// doesn't matter which root object - we always refer as 'ods' to this
 	qml->setContextProperty("ods", this);
 
 	// create root object for the UI
+	// all our root objects are a NavigationPane or a TabbedPane
 	AbstractPane *root = qml->createRootObject<AbstractPane>();
 	qDebug() << "created root object";
 
 	Application::instance()->setScene(root);
 	qDebug() << "set the scene";
 
-	// ApplicationMenu
-	// Hint: first set the scene - then set the menu
-	Menu* menu = createApplicationMenu();
-	qDebug() << "created ApplicartionMenu";
-
-	Application::instance()->setMenu(menu);
-	qDebug() << "set ApplicationMenu";
-
-	// first translation
-	translateMenuItems();
-	qDebug() << "did first translations";
-
-	//
-	Application *app = Application::instance();
-	ok = connect(app, SIGNAL(thumbnail()), this, SLOT(onThumbnail()));
-	if (!ok) {
-		qDebug() << "connect thumbnail failed";
+	if (!m_isLaunchedEmbedded) {
+		initTheApplication();
+	} else {
+		qDebug() << "we are running EMBEDDED";
 	}
-
-
 	qDebug() << "INIT done";
 
+}
+
+/**
+ * some stuff we only need if Opened from HomeScreen
+ * or Invoked as Application from another app thru Invocation Framework
+ */
+void OpenDataSpace::initTheApplication(){
+		qDebug() << "we are NOT running EMBEDDED, so do some APPLICATION stuff";
+		// ApplicationMenu
+		// Hint: first set the scene - then set the menu
+		Menu* menu = createApplicationMenu();
+		qDebug() << "created ApplicationMenu";
+
+		Application::instance()->setMenu(menu);
+		qDebug() << "set ApplicationMenu";
+
+		// first translation
+		translateMenuItems();
+		qDebug() << "did first translations";
+
+		//
+		Application *app = Application::instance();
+		bool ok = connect(app, SIGNAL(thumbnail()), this, SLOT(onThumbnail()));
+		if (!ok) {
+			qDebug() << "connect thumbnail failed";
+		}
 }
 
 // INTERNATIONALIZATION (i18n)
@@ -516,6 +539,24 @@ void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
 	} else {
 		// do what needed if Invoked, per ex. switch to Upload TAB
 	}
+}
+
+/**
+ * true if this Application was embedded as a Card
+ * from Invocation Framework
+ */
+bool OpenDataSpace::isCard()
+{
+	return m_isCard;
+}
+
+/**
+ * true if this Application is running embedded
+ * can be a Card, a Viewer or a Service
+ */
+bool OpenDataSpace::isEmbedded()
+{
+	return m_isLaunchedEmbedded;
 }
 
 void OpenDataSpace::handleCardResize(const bb::system::CardResizeMessage&)

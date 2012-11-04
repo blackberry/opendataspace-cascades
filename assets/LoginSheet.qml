@@ -61,16 +61,20 @@ Page {
                     } else {
                         loginToast.position = SystemUiPosition.BottomCenter
                     }
+                    loginToast.body = loginToast.bodyPrefix + usernameEntry()
                     loginToast.show()
-                    done()
+                    if (!ods.isEmbedded()) {
+                        done()
+                    }
                 } else if (result == SystemUiResult.CancelButtonSelection) {
                     console.debug("cancel");
                 }
             }
         },
         SystemToast {
+            property string bodyPrefix : qsTr("ODS Login successfull for ") + Retranslate.onLanguageChanged
             id: loginToast
-            body: qsTr("ODS Login successfull") + Retranslate.onLanguageChanged
+            body: ""
             icon: "asset:///images/rooms-icon.png"
             onFinished: {
                 //

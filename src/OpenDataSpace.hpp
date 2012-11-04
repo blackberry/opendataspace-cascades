@@ -17,7 +17,6 @@ class Application;
 
 using namespace bb::cascades;
 
-
 /*!
  * @brief Application GUI object
  */
@@ -121,10 +120,25 @@ public:
 	Q_INVOKABLE
 	bool login(QString user, QString pw);
 
+	/**
+	 * test if this application
+	 * is embedded into client as a Card
+	 * from Invocation Framework
+	 */
+	Q_INVOKABLE
+	bool isCard();
+
+	/**
+	 * test if this application is running embedded
+	 * as a Card, a Viewer or a Service
+	 */
+	Q_INVOKABLE
+	bool isEmbedded();
+
 public Q_SLOTS:
 	// Invoaction
 	// This method is invoked to notify the invocation system that the action has been done
-    void cardDone();
+	void cardDone();
 	// slots from AppMenu Sheets:
 	void logoutTriggered();
 	void feedbackTriggered();
@@ -160,11 +174,11 @@ private:
 	QString m_invokationTarget;
 	QString m_invokationSource;
 	bool m_isCard;
+	bool m_isLaunchedEmbedded;
 	bb::system::InvokeManager *m_invokeManager;
 
 	void translateMenuItems();
-
-
+	void initTheApplication();
 };
 
 #endif // ifndef OPENDATASPACE_H

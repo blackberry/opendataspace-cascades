@@ -53,7 +53,7 @@ Page {
                 // is there a preview ?
                 // isImage ?
                 if (fileInfo.isImage(picker.selectedFile)) {
-                    console.debug("an image was picked")
+                    console.debug("roomsListPage: an image was picked")
                     roomsListPage.previewImage(picker.selectedFile);
                     return;
                 }

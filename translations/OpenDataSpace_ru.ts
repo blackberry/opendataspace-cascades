@@ -167,12 +167,12 @@
     <name>DictaphonePage</name>
     <message>
         <location filename="../assets/media/DictaphonePage.qml" line="172"/>
-        <location filename="../assets/media/DictaphonePage.qml" line="287"/>
+        <location filename="../assets/media/DictaphonePage.qml" line="288"/>
         <source>Save Voice as...</source>
         <translation type="unfinished">Сохранить голоса, как...</translation>
     </message>
     <message>
-        <location filename="../assets/media/DictaphonePage.qml" line="259"/>
+        <location filename="../assets/media/DictaphonePage.qml" line="260"/>
         <source>Select Recorded Audio</source>
         <translation type="unfinished">Выбор записи аудио</translation>
     </message>
@@ -391,37 +391,41 @@ Use any Name and Password</source>
         <translation type="obsolete">пароль</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="46"/>
+        <location filename="../assets/LoginSheet.qml" line="45"/>
         <source>ODS LogIn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="47"/>
+        <location filename="../assets/LoginSheet.qml" line="46"/>
         <source>Enter Username and Password to log into your OpenDataSpace Cloud Account</source>
         <translation type="unfinished">Введите Имя пользователя и пароль для входа в свой аккаунт Облако OpenDataSpace</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="50"/>
+        <location filename="../assets/LoginSheet.qml" line="49"/>
         <source>Login now</source>
         <translation type="unfinished">Войти сейчас</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="52"/>
+        <location filename="../assets/LoginSheet.qml" line="51"/>
         <source>Cancel</source>
         <translation type="unfinished">отменить</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="73"/>
-        <source>ODS Login successfull</source>
-        <translation type="unfinished">ODS Вход успешным</translation>
+        <location filename="../assets/LoginSheet.qml" line="75"/>
+        <source>ODS Login successfull for </source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="110"/>
+        <source>ODS Login successfull</source>
+        <translation type="obsolete">ODS Вход успешным</translation>
+    </message>
+    <message>
+        <location filename="../assets/LoginSheet.qml" line="114"/>
         <source>Login</source>
         <translation type="unfinished">Войти</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="117"/>
+        <location filename="../assets/LoginSheet.qml" line="121"/>
         <source>Preferences</source>
         <translation type="unfinished">Предпочтения</translation>
     </message>
@@ -429,42 +433,42 @@ Use any Name and Password</source>
 <context>
     <name>OpenDataSpace</name>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="235"/>
+        <location filename="../src/OpenDataSpace.cpp" line="258"/>
         <source>Help</source>
         <translation type="unfinished">Помогите</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="238"/>
+        <location filename="../src/OpenDataSpace.cpp" line="261"/>
         <source>Feedback</source>
         <translation type="unfinished">обратная связь</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="241"/>
+        <location filename="../src/OpenDataSpace.cpp" line="264"/>
         <source>Logout</source>
         <translation type="unfinished">Выйти</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="244"/>
+        <location filename="../src/OpenDataSpace.cpp" line="267"/>
         <source>Settings</source>
         <translation type="unfinished">настройки</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="494"/>
+        <location filename="../src/OpenDataSpace.cpp" line="564"/>
         <source>Resized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="512"/>
+        <location filename="../src/OpenDataSpace.cpp" line="582"/>
         <source>Pooled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="521"/>
+        <location filename="../src/OpenDataSpace.cpp" line="591"/>
         <source>:)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="523"/>
+        <location filename="../src/OpenDataSpace.cpp" line="593"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
@@ -624,33 +628,33 @@ Use any Name and Password</source>
         <translation type="unfinished">Выбор файла</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="113"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="114"/>
         <source>New SubRoom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="122"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="123"/>
         <source>New Folder</source>
         <translation type="unfinished">новое папка</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="131"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="132"/>
         <source>Refresh</source>
         <translation type="unfinished">обновление</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="139"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="143"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="140"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="144"/>
         <source>Select Document</source>
         <translation type="unfinished">Выберите документ</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="155"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="156"/>
         <source>Select Image</source>
         <translation type="unfinished">Выберите изображение</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="167"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="168"/>
         <source>Select Video</source>
         <translation type="unfinished">Выберите Видео</translation>
     </message>
@@ -667,115 +671,115 @@ Use any Name and Password</source>
         <translation type="obsolete">Запись аудио</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="151"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="152"/>
         <source>Select | Capture Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="163"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="164"/>
         <source>Select | Capture Video</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="179"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="180"/>
         <source>Select Recorded Voice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="200"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="204"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="201"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="205"/>
         <source>Select Music</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="225"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="226"/>
         <source>Select Other File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="229"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="230"/>
         <source>Select File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="190"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="191"/>
         <source>Dictaphone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="175"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="176"/>
         <source>Select Voice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="212"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="216"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="213"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="217"/>
         <source>Select Book</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="239"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="240"/>
         <source>DataRoom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="287"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="288"/>
         <source>ODS Subroom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="289"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="308"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="364"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="290"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="309"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="365"/>
         <source>Info</source>
         <translation type="unfinished">информация</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="306"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="307"/>
         <source>ODS Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="315"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="371"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="316"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="372"/>
         <source>Copy</source>
         <translation type="unfinished">Скопировать</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="322"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="378"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="323"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="379"/>
         <source>Move</source>
         <translation type="unfinished">двигаться</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="329"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="385"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="330"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="386"/>
         <source>Rename</source>
         <translation type="unfinished">переименовать</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="339"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="406"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="340"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="407"/>
         <source>Delete</source>
         <translation type="unfinished">удалять</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="355"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="356"/>
         <source>ODS File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="357"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="358"/>
         <source>View</source>
         <translation type="unfinished">смотреть</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="392"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="393"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="399"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="400"/>
         <source>Link</source>
         <translation type="unfinished"></translation>
     </message>
