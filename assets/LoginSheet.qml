@@ -120,6 +120,7 @@ Page {
                 Button {
                     text: qsTr("Preferences") + Retranslate.onLanguageChanged
                     preferredWidth: 400.0
+                    visible: ods.isEmbedded() == false
                     onClicked: {
                         rootNavigationPane.openPreferences()
                     }

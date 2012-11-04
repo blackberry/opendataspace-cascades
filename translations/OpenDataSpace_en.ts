@@ -139,6 +139,14 @@
     </message>
 </context>
 <context>
+    <name>CardPage</name>
+    <message>
+        <location filename="../assets/CardPage.qml" line="33"/>
+        <source>SORRY: Login failed - you cannot upload the file</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CustomerSelection</name>
     <message>
         <location filename="../assets/common/CustomerSelection.qml" line="31"/>
@@ -400,42 +408,42 @@ Use any Name and Password</source>
 <context>
     <name>OpenDataSpace</name>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="258"/>
+        <location filename="../src/OpenDataSpace.cpp" line="272"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="261"/>
+        <location filename="../src/OpenDataSpace.cpp" line="275"/>
         <source>Feedback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="264"/>
+        <location filename="../src/OpenDataSpace.cpp" line="278"/>
         <source>Logout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="267"/>
+        <location filename="../src/OpenDataSpace.cpp" line="281"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="564"/>
+        <location filename="../src/OpenDataSpace.cpp" line="595"/>
         <source>Resized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="582"/>
+        <location filename="../src/OpenDataSpace.cpp" line="606"/>
         <source>Pooled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="591"/>
+        <location filename="../src/OpenDataSpace.cpp" line="617"/>
         <source>:)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="593"/>
+        <location filename="../src/OpenDataSpace.cpp" line="619"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>

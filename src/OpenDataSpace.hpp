@@ -137,8 +137,11 @@ public:
 
 public Q_SLOTS:
 	// Invoaction
-	// This method is invoked to notify the invocation system that the action has been done
+	// This method is invoked to notify the invocation system that the action has been done successfully
 	void cardDone();
+	// This method is invoked to notify the invocation system that the action has been done without success
+	// per ex. Login failed
+	void cardCanceled(QString reason);
 	// slots from AppMenu Sheets:
 	void logoutTriggered();
 	void feedbackTriggered();

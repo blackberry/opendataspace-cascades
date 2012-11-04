@@ -56,23 +56,28 @@ using namespace bb::system;
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
  *
  */
-OpenDataSpace::OpenDataSpace(QObject *parent)
-	: QObject(parent), m_invokeManager(new InvokeManager(this)){
+OpenDataSpace::OpenDataSpace(QObject *parent) :
+		QObject(parent), m_invokeManager(new InvokeManager(this)) {
 
 	// ODS is a Invocation Target
-	bool ok = connect(m_invokeManager, SIGNAL(invoked(const bb::system::InvokeRequest&)), this, SLOT(handleInvoke(const bb::system::InvokeRequest&)));
-		if (!ok) {
-			qDebug() << "connect handleInvoke failed";
-		}
-		ok = connect(m_invokeManager, SIGNAL(cardResizeRequested(const bb::system::CardResizeMessage&)), this, SLOT(handleCardResize(const bb::system::CardResizeMessage&)));
-		if (!ok) {
-			qDebug() << "connect handleCardResize failed";
-		}
-		ok = connect(m_invokeManager, SIGNAL(cardPooled(const bb::system::CardDoneMessage&)), this, SLOT(handleCardPooled(const bb::system::CardDoneMessage&)));
-		if (!ok) {
-			qDebug() << "connect handleCardPooled failed";
-		}
-
+	bool ok = connect(m_invokeManager,
+			SIGNAL(invoked(const bb::system::InvokeRequest&)), this,
+			SLOT(handleInvoke(const bb::system::InvokeRequest&)));
+	if (!ok) {
+		qDebug() << "connect handleInvoke failed";
+	}
+	ok = connect(m_invokeManager,
+			SIGNAL(cardResizeRequested(const bb::system::CardResizeMessage&)),
+			this, SLOT(handleCardResize(const bb::system::CardResizeMessage&)));
+	if (!ok) {
+		qDebug() << "connect handleCardResize failed";
+	}
+	ok = connect(m_invokeManager,
+			SIGNAL(cardPooled(const bb::system::CardDoneMessage&)), this,
+			SLOT(handleCardPooled(const bb::system::CardDoneMessage&)));
+	if (!ok) {
+		qDebug() << "connect handleCardPooled failed";
+	}
 
 	// register the MyListModel C++ type to be visible in QML
 
@@ -98,57 +103,63 @@ OpenDataSpace::OpenDataSpace(QObject *parent)
 
 	// register system dialogs
 	qmlRegisterType<SystemUiButton>("bb.system", 1, 0, "SystemUiButton");
-	qmlRegisterType<SystemUiInputField>("bb.system", 1, 0, "SystemUiInputField");
+	qmlRegisterType<SystemUiInputField>("bb.system", 1, 0,
+			"SystemUiInputField");
 	qmlRegisterType<SystemToast>("bb.system", 1, 0, "SystemToast");
 	qmlRegisterType<SystemPrompt>("bb.system", 1, 0, "SystemPrompt");
-	qmlRegisterType<SystemCredentialsPrompt>("bb.system", 1, 0, "SystemCredentialsPrompt");
+	qmlRegisterType<SystemCredentialsPrompt>("bb.system", 1, 0,
+			"SystemCredentialsPrompt");
 	qmlRegisterType<SystemDialog>("bb.system", 1, 0, "SystemDialog");
-	qmlRegisterUncreatableType<SystemUiError>("bb.system", 1, 0, "SystemUiError", "");
-	qmlRegisterUncreatableType<SystemUiResult>("bb.system", 1, 0, "SystemUiResult", "");
-	qmlRegisterUncreatableType<SystemUiPosition>("bb.system", 1, 0, "SystemUiPosition", "");
-	qmlRegisterUncreatableType<SystemUiInputMode>("bb.system", 1, 0, "SystemUiInputMode", "");
-	qmlRegisterUncreatableType<SystemUiModality>("bb.system", 1, 0, "SystemUiModality", "");
-	qRegisterMetaType<SystemUiResult::Type>( "bb::system::SystemUiResult::Type");
+	qmlRegisterUncreatableType<SystemUiError>("bb.system", 1, 0,
+			"SystemUiError", "");
+	qmlRegisterUncreatableType<SystemUiResult>("bb.system", 1, 0,
+			"SystemUiResult", "");
+	qmlRegisterUncreatableType<SystemUiPosition>("bb.system", 1, 0,
+			"SystemUiPosition", "");
+	qmlRegisterUncreatableType<SystemUiInputMode>("bb.system", 1, 0,
+			"SystemUiInputMode", "");
+	qmlRegisterUncreatableType<SystemUiModality>("bb.system", 1, 0,
+			"SystemUiModality", "");
+	qRegisterMetaType<SystemUiResult::Type>("bb::system::SystemUiResult::Type");
 
 	qDebug() << "registered types for QML";
 
 	// we have different root objects
 	QString qmlDocument;
 	switch (m_invokeManager->startupMode()) {
-		case ApplicationStartupMode::LaunchApplication:
-			// the normal Launch
-			// our main QML document: the HomeScreen with a custom Background Image
-			m_isLaunchedEmbedded = false;
-			m_isCard = false;
-			qmlDocument = "asset:///main.qml";
-			qDebug() << "ApplicationStartupMode: LAUNCHED from homescreen";
-			break;
-		case ApplicationStartupMode::InvokeApplication:
-			// Invocation. Someone Opened the App thru Invocation
-			// our main QML document: the HomeScreen with a custom Background Image
-			m_isLaunchedEmbedded = false;
-			m_isCard = false;
-			qmlDocument = "asset:///main.qml";
-			qDebug() << "ApplicationStartupMode: LAUNCHED from Invocation";
-			break;
-		case ApplicationStartupMode::InvokeCard:
-			// Card Opened by another App
-			// the APP is now running embedded and invisible for the user
-			// we only need a small part of the functionality,
-			// so we use a different root object
-			m_isLaunchedEmbedded = true;
-			m_isCard = true;
-			qmlDocument = "asset:///CardPage.qml";
-			qDebug() << "ApplicationStartupMode: LAUNCHED as CARD";
-			break;
-		default:
-			// our main QML document: the HomeScreen with a custom Background Image
-			m_isLaunchedEmbedded = false;
-			m_isCard = false;
-			qmlDocument = "asset:///main.qml";
-			break;
+	case ApplicationStartupMode::LaunchApplication:
+		// the normal Launch
+		// our main QML document: the HomeScreen with a custom Background Image
+		m_isLaunchedEmbedded = false;
+		m_isCard = false;
+		qmlDocument = "asset:///main.qml";
+		qDebug() << "ApplicationStartupMode: LAUNCHED from homescreen";
+		break;
+	case ApplicationStartupMode::InvokeApplication:
+		// Invocation. Someone Opened the App thru Invocation
+		// our main QML document: the HomeScreen with a custom Background Image
+		m_isLaunchedEmbedded = false;
+		m_isCard = false;
+		qmlDocument = "asset:///main.qml";
+		qDebug() << "ApplicationStartupMode: LAUNCHED from Invocation";
+		break;
+	case ApplicationStartupMode::InvokeCard:
+		// Card Opened by another App
+		// the APP is now running embedded and invisible for the user
+		// we only need a small part of the functionality,
+		// so we use a different root object
+		m_isLaunchedEmbedded = true;
+		m_isCard = true;
+		qmlDocument = "asset:///CardPage.qml";
+		qDebug() << "ApplicationStartupMode: LAUNCHED as CARD";
+		break;
+	default:
+		// our main QML document: the HomeScreen with a custom Background Image
+		m_isLaunchedEmbedded = false;
+		m_isCard = false;
+		qmlDocument = "asset:///main.qml";
+		break;
 	}
-
 
 	QmlDocument *qml = QmlDocument::create(qmlDocument).parent(this);
 	qDebug() << "created QML Document";
@@ -156,6 +167,9 @@ OpenDataSpace::OpenDataSpace(QObject *parent)
 	//-- setContextProperty expose C++ object in QML as an variable
 	// doesn't matter which root object - we always refer as 'ods' to this
 	qml->setContextProperty("ods", this);
+
+	// TODO test if already done and persisted local
+	m_login_ok = false;
 
 	// create root object for the UI
 	// all our root objects are a NavigationPane or a TabbedPane
@@ -178,26 +192,26 @@ OpenDataSpace::OpenDataSpace(QObject *parent)
  * some stuff we only need if Opened from HomeScreen
  * or Invoked as Application from another app thru Invocation Framework
  */
-void OpenDataSpace::initTheApplication(){
-		qDebug() << "we are NOT running EMBEDDED, so do some APPLICATION stuff";
-		// ApplicationMenu
-		// Hint: first set the scene - then set the menu
-		Menu* menu = createApplicationMenu();
-		qDebug() << "created ApplicationMenu";
+void OpenDataSpace::initTheApplication() {
+	qDebug() << "we are NOT running EMBEDDED, so do some APPLICATION stuff";
+	// ApplicationMenu
+	// Hint: first set the scene - then set the menu
+	Menu* menu = createApplicationMenu();
+	qDebug() << "created ApplicationMenu";
 
-		Application::instance()->setMenu(menu);
-		qDebug() << "set ApplicationMenu";
+	Application::instance()->setMenu(menu);
+	qDebug() << "set ApplicationMenu";
 
-		// first translation
-		translateMenuItems();
-		qDebug() << "did first translations";
+	// first translation
+	translateMenuItems();
+	qDebug() << "did first translations";
 
-		//
-		Application *app = Application::instance();
-		bool ok = connect(app, SIGNAL(thumbnail()), this, SLOT(onThumbnail()));
-		if (!ok) {
-			qDebug() << "connect thumbnail failed";
-		}
+	//
+	Application *app = Application::instance();
+	bool ok = connect(app, SIGNAL(thumbnail()), this, SLOT(onThumbnail()));
+	if (!ok) {
+		qDebug() << "connect thumbnail failed";
+	}
 }
 
 // INTERNATIONALIZATION (i18n)
@@ -347,7 +361,7 @@ void OpenDataSpace::logoutTriggered() {
 	if (s) {
 		qDebug() << "logout triggered and loginSheet found";
 		// reset old login credentials
-		login("","");
+		login("", "");
 		s->open();
 	} else {
 		qDebug() << "logout triggered, but no loginSheet found";
@@ -512,10 +526,12 @@ void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
 	qDebug() << "Invoke Request URI:" << request.uri();
 	qDebug() << "Invoke Request Data:" << request.data();
 	m_invokationTarget = request.target();
-	m_invokationSource = QString::fromLatin1("%1 (%2)").arg(request.source().installId()).arg(request.source().groupId());
-	qDebug() << "Invoke Target ID: " << m_invokationTarget << " from Source: " << m_invokationSource;
+	m_invokationSource = QString::fromLatin1("%1 (%2)").arg(
+			request.source().installId()).arg(request.source().groupId());
+	qDebug() << "Invoke Target ID: " << m_invokationTarget << " from Source: "
+			<< m_invokationSource;
 	// Invoked as Application
-	if (m_invokationTarget == "io.ods.bb10.invoke"){
+	if (m_invokationTarget == "io.ods.bb10.invoke") {
 		m_isCard = false;
 		qDebug() << "Invoked";
 	}
@@ -529,12 +545,30 @@ void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
 		m_isCard = true;
 		qDebug() << "Invoked for UploadCard as Composer";
 	}
-	// TODO work in progress
+	// do some preparing-stuff for a invoked Card
+	// reset values (can come from pool)
+	// set some infos
+	// tell the Card that its a new invocation
 	if (m_isCard) {
 		AbstractPane *p = Application::instance()->scene();
-		bool ok = p->setProperty( "invokationMode", m_invokationTarget);
+		bool ok = p->setProperty("invokationMode", m_invokationTarget);
 		if (!ok) {
 			qDebug() << "Cannot set invokationMode";
+		}
+		// reset the counter
+		ok = p->setProperty("counter", 0);
+		if (ok) {
+			qDebug() << "reset counter to zero";
+		} else {
+			qDebug() << "cannot reset counter";
+		}
+		// start a new Card Game ;-)
+		// setting newCard true causes testing if LogIn was needed before upload files
+		ok = p->setProperty("newCard", true);
+		if (ok) {
+			qDebug() << "set newCard to true";
+		} else {
+			qDebug() << "cannot set newCard";
 		}
 	} else {
 		// do what needed if Invoked, per ex. switch to Upload TAB
@@ -545,8 +579,7 @@ void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
  * true if this Application was embedded as a Card
  * from Invocation Framework
  */
-bool OpenDataSpace::isCard()
-{
+bool OpenDataSpace::isCard() {
 	return m_isCard;
 }
 
@@ -554,46 +587,59 @@ bool OpenDataSpace::isCard()
  * true if this Application is running embedded
  * can be a Card, a Viewer or a Service
  */
-bool OpenDataSpace::isEmbedded()
-{
+bool OpenDataSpace::isEmbedded() {
 	return m_isLaunchedEmbedded;
 }
 
-void OpenDataSpace::handleCardResize(const bb::system::CardResizeMessage&)
-{
-    m_cardStatus = tr("Resized");
-    emit cardStatusChanged();
-    qDebug() << "handleCardResize";
+void OpenDataSpace::handleCardResize(const bb::system::CardResizeMessage&) {
+	m_cardStatus = tr("Resized");
+	emit cardStatusChanged();
+	qDebug() << "handleCardResize";
 }
 
-void OpenDataSpace::handleCardPooled(const bb::system::CardDoneMessage& message)
-{
-    // reason can be: "closed" or "Success"
-	qDebug() << "handleCardPooled data: "<< message.data() << " reason: " << message.reason();
-    // reset the values
-    AbstractPane *p = Application::instance()->scene();
-    bool ok = p->setProperty( "counter", 0);
-	if (ok) {
-		qDebug() << "reset counter to zero";
-	} else {
-		qDebug() << "cannot reset counter";
-	}
+void OpenDataSpace::handleCardPooled(
+		const bb::system::CardDoneMessage& message) {
+	// reason can be: "closed" or "Success"
+	qDebug() << "handleCardPooled data: " << message.data() << " reason: "
+			<< message.reason();
 	// TODO do we need this ?
 	m_cardStatus = tr("Pooled");
 	emit cardStatusChanged();
 }
 
-void OpenDataSpace::cardDone()
-{
+/**
+ * the Card was processed with success
+ */
+void OpenDataSpace::cardDone() {
 	qDebug() << "cardDone: assemble message";
 	// Assemble message
-    CardDoneMessage message;
-    message.setData(tr(":)"));
-    message.setDataType("text/plain");
-    message.setReason(tr("Success"));
-    // Send message
-    qDebug() << "cardDone: sending message via IvokeManager data: "<< message.data() << " reason: " << message.reason();
-    m_invokeManager->sendCardDone(message);
+	CardDoneMessage message;
+	message.setData(tr(":)"));
+	message.setDataType("text/plain");
+	message.setReason(tr("Success"));
+	// Send message
+	qDebug() << "cardDone: sending message via IvokeManager data: "
+			<< message.data() << " reason: " << message.reason();
+	m_invokeManager->sendCardDone(message);
+
+}
+
+/**
+ * the Card couldn't be processed successfully
+ * so we're sending with reason cancel
+ * and add data to describe why
+ */
+void OpenDataSpace::cardCanceled(const QString data) {
+	qDebug() << "cardDone: assemble message";
+	// Assemble message
+	CardDoneMessage message;
+	message.setData(data);
+	message.setDataType("text/plain");
+	message.setReason("cancel");
+	// Send message
+	qDebug() << "cardDone: sending message via IvokeManager data: "
+			<< message.data() << " reason: " << message.reason();
+	m_invokeManager->sendCardDone(message);
 
 }
 
