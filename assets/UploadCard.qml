@@ -312,8 +312,9 @@ NavigationPane {
     // if login failed, Card will be closed (cancel)
     // if login ok, prepare content
     function onLoginDone(success) {
-        // we always pop the root page of this NavigationPane
-        cardNavPaneId.pop();
+        if (cardNavPaneId.top != pageId) {
+            cardNavPaneId.pop();
+        }
         // if login failed we have to cancel the Card
         if (! success || ods.loginDone() == false) {
             console.debug("coming back from Login: Login false");
@@ -328,16 +329,18 @@ NavigationPane {
     }
     // function called if user navigates back from preview without uploading
     function onBackFromPreviewTriggered() {
-        // we always pop the root page of this NavigationPane
-        cardNavPaneId.pop();
+        if (cardNavPaneId.top != pageId) {
+            cardNavPaneId.pop();
+        }
         backFromPreviewToast.show()
         // this will be done from toast onFinished():
         // ods.cardCanceled("Back")
     }
     // called if the user decided to upload the file to ODS
     function onUpload() {
-        // we always pop the root page of this NavigationPane
-        cardNavPaneId.pop();
+        if (cardNavPaneId.top != pageId) {
+            cardNavPaneId.pop();
+        }
         // TODO select the destination
         // if destination OK, then close card - if not cancel card
         queuedForUploadToast.show()
