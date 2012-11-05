@@ -27,6 +27,7 @@ import bb.system 1.0
 Page {
     property alias previewPath: previewImage.imageSource
     id: previewPage
+    signal uploadFromCard()
     titleBar: TitleBar {
         id: titleBarId
         title: qsTr("Preview") + Retranslate.onLanguageChanged
@@ -71,11 +72,12 @@ Page {
             imageSource: "asset:///images/ics/9-av-upload81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                queuedForUploadToast.show()
                 if (! ods.isEmbedded()) {
                     rootNavigationPane.addUpload(previewPage.previewPath)
+                    queuedForUploadToast.show()
                 } else {
-                    ods.cardDone()
+                    // SIGNAL
+                    uploadFromCard()
                 }
             }
         }

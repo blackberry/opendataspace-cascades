@@ -12,6 +12,18 @@ NavigationPane {
     property alias newCard: pageId.newCard
     property alias filePath: pageId.filePath
     attachedObjects: [
+        // we need this image as background for the HomeScreen
+        // because we toggle often we use an ImageTracker
+        // TODO: different background images for different sizes of smartphone or tablet
+        ImageTracker {
+            id: backgroundLandscape
+            imageSource: "asset:///images/login-ods-1280x768-o.png"
+        },
+        // the BackgroundImage
+        ImageTracker {
+            id: backgroundPortrait
+            imageSource: "asset:///images/login-ods-768x1280-o.png"
+        },
         LoginSheet {
             id: loginPage
             paneProperties: NavigationPaneProperties {
@@ -43,10 +55,81 @@ NavigationPane {
                 }
             }
         },
+        VideoPreviewPage {
+            id: videoPreviewPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        onBackFromPreviewTriggered()
+                    }
+                }
+            }
+        },
+        VoicePreviewPage {
+            id: recordedVoicePreviewPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        onBackFromPreviewTriggered()
+                    }
+                }
+            }
+        },
+        DocumentsPreviewPage {
+            id: documentsPreviewPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        onBackFromPreviewTriggered()
+                    }
+                }
+            }
+        },
+        HtmlPreviewPage {
+            id: htmlPreviewPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        onBackFromPreviewTriggered()
+                    }
+                }
+            }
+        },
+        BooksPreviewPage {
+            id: booksPreviewPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        onBackFromPreviewTriggered()
+                    }
+                }
+            }
+        },
+        PdfPreviewPage {
+            id: pdfPreviewPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        onBackFromPreviewTriggered()
+                    }
+                }
+            }
+        },
+        ZipPreviewPage {
+            id: zipPreviewPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        onBackFromPreviewTriggered()
+                    }
+                }
+            }
+        },
         SystemToast {
             id: loginFailedToast
             body: qsTr("SORRY: Login failed - you cannot upload the file") + Retranslate.onLanguageChanged
             icon: "asset:///images/upload-icon.png"
+            position: SystemUiPosition.BottomCenter
             onFinished: {
                 // we have to do this here - otherwise the user won't get it
                 // because the card is closed so fast
@@ -57,6 +140,7 @@ NavigationPane {
             id: backFromPreviewToast
             body: qsTr("Hitting BACK: File was not uploaded !") + Retranslate.onLanguageChanged
             icon: "asset:///images/upload-icon.png"
+            position: SystemUiPosition.BottomCenter
             onFinished: {
                 // we have to do this here - otherwise the user won't get it
                 // because the card is closed so fast
@@ -67,10 +151,31 @@ NavigationPane {
             id: filePathFailedToast
             body: "??"
             icon: "asset:///images/upload-icon.png"
+            position: SystemUiPosition.BottomCenter
             onFinished: {
                 // we have to do this here - otherwise the user won't get it
                 // because the card is closed so fast
                 ods.cardCanceled("wrong FilePath: " + filePath)
+            }
+        },
+        SystemToast {
+            id: queuedForUploadToast
+            body: qsTr("Queued for Upload to ODS Cloud")
+            icon: "asset:///images/ics/4-collections-cloud-av-upload81.png"
+            position: SystemUiPosition.BottomCenter
+            onFinished: {
+                //
+                ods.cardDone()
+            }
+        },
+        // application supports changing the Orientation
+        OrientationHandler {
+            onOrientationAboutToChange: {
+                if (orientation == UIOrientation.Landscape) {
+                    backgroundImage.image = backgroundLandscape.image
+                } else {
+                    backgroundImage.image = backgroundPortrait.image
+                }
             }
         },
         // FileInfo
@@ -88,15 +193,28 @@ NavigationPane {
         id: pageId
         objectName: "pageId"
         Container {
-            id: containerId
-            layout: StackLayout {
+            id: backgroundContainer
+            layout: AbsoluteLayout {
             }
-            Label {
-                id: filePathLabel
-                text: "Path"
+            // the background Image
+            ImageView {
+                id: backgroundImage
+                // image will be set:
+                // a: onCreationCompleted
+                // b: onUiOrientationChanged
             }
         }
         onCreationCompleted: {
+            // Overlay ActionBar
+            pageId.actionBarVisibility = ChromeVisibility.Overlay
+            // support all orientations
+            //OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
+            // test current Orientation and set the Background Image
+            if (OrientationSupport.orientation == UIOrientation.Landscape) {
+                backgroundImage.image = backgroundLandscape.image
+            } else {
+                backgroundImage.image = backgroundPortrait.image
+            }
             console.debug("CardPage created");
         }
         onNewCardChanged: {
@@ -112,7 +230,6 @@ NavigationPane {
                     // now we can prepare the content
                     prepareContent();
                 }
-                filePathLabel.text = filePath
             }
         }
     }
@@ -135,7 +252,56 @@ NavigationPane {
             cardNavPaneId.push(imagePreviewPage)
             return;
         }
-        // TODO
+        // isVideo ?
+        if (fileInfo.isVideo(filePath)) {
+            console.debug("got signal to preview Video: " + filePath)
+            videoPreviewPage.previewPath = filePath;
+            cardNavPaneId.push(videoPreviewPage)
+            return;
+        }
+        // isAudio ?
+        if (fileInfo.isAudio(filePath)) {
+            console.debug("got signal to preview audio: " + filePath)
+            recordedVoicePreviewPage.previewPath = filePath;
+            cardNavPaneId.push(recordedVoicePreviewPage)
+            return;
+        }
+        // isPDF ?
+        if (fileInfo.getSuffix(filePath) == "pdf") {
+            console.debug("got signal to preview pdf: " + filePath)
+            pdfPreviewPage.previewPath = filePath;
+            cardNavPaneId.push(pdfPreviewPage)
+            return;
+        }
+        // isHtml ?
+        if (fileInfo.isHtml(filePath)) {
+            console.debug("got signal to preview HTML: " + filePath)
+            htmlPreviewPage.previewPath = filePath;
+            cardNavPaneId.push(htmlPreviewPage)
+            return;
+        }
+        // isZIP ?
+        if (fileInfo.isCompressed(filePath)) {
+            console.debug("got signal to preview ZIP: " + filePath)
+            zipPreviewPage.previewPath = filePath;
+            cardNavPaneId.push(zipPreviewPage)
+            return;
+        }
+        // isDocument ?
+        if (fileInfo.isDocument(filePath)) {
+            console.debug("got signal to preview doc: " + filePath)
+            documentsPreviewPage.previewPath = filePath;
+            cardNavPaneId.push(documentsPreviewPage)
+            return;
+        }
+        // isBook ?
+        if (fileInfo.isBook(filePath)) {
+            // TODO previewBookPage
+            console.debug("got signal to preview book: " + filePath)
+            booksPreviewPage.previewPath = filePath;
+            cardNavPaneId.push(booksPreviewPage)
+            return;
+        }
         // else is unknown filytype
         console.debug("got signal to preview video: " + filePath)
         unknownPreviewPage.previewPath = filePath;
@@ -168,11 +334,29 @@ NavigationPane {
         // this will be done from toast onFinished():
         // ods.cardCanceled("Back")
     }
+    // called if the user decided to upload the file to ODS
+    function onUpload() {
+        // we always pop the root page of this NavigationPane
+        cardNavPaneId.pop();
+        // TODO select the destination
+        // if destination OK, then close card - if not cancel card
+        queuedForUploadToast.show()
+    }
     onCreationCompleted: {
         // controlled  by host application !
         // OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
         //-- connect the LoginPage done SIGNAL to the handler SLOT
         loginPage.loginDone.connect(onLoginDone)
+        // connect the preview pages
+        imagePreviewPage.uploadFromCard.connect(onUpload)
+        videoPreviewPage.uploadFromCard.connect(onUpload)
+        recordedVoicePreviewPage.uploadFromCard.connect(onUpload)
+        pdfPreviewPage.uploadFromCard.connect(onUpload)
+        htmlPreviewPage.uploadFromCard.connect(onUpload)
+        zipPreviewPage.uploadFromCard.connect(onUpload)
+        documentsPreviewPage.uploadFromCard.connect(onUpload)
+        imagePreviewPage.uploadFromCard.connect(onUpload)
+        booksPreviewPage.uploadFromCard.connect(onUpload)
         console.debug("NavigationPane created");
     }
 }

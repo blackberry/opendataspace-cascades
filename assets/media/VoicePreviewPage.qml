@@ -27,6 +27,7 @@ import bb.system 1.0
 Page {
     property string previewPath
     id: previewPage
+    signal uploadFromCard()
     titleBar: TitleBar {
         id: titleBarId
         title: qsTr("Preview") + Retranslate.onLanguageChanged
@@ -73,6 +74,7 @@ Page {
     ]
     actions: [
         ActionItem {
+            id: viewInAction
             title: qsTr("Hear in...") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/2-action-search81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
@@ -88,8 +90,13 @@ Page {
             imageSource: "asset:///images/ics/9-av-upload81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                queuedForUploadToast.show()
-                rootNavigationPane.addUpload(previewPage.previewPath)
+                if (! ods.isEmbedded()) {
+                    rootNavigationPane.addUpload(previewPage.previewPath)
+                    queuedForUploadToast.show()
+                } else {
+                    // SIGNAL
+                    uploadFromCard()
+                }
             }
         },
         ActionItem {
@@ -215,5 +222,8 @@ Page {
     onCreationCompleted: {
         // initial setup for orientation
         reLayout(OrientationSupport.orientation);
+        if (ods.isEmbedded()) {
+                    removeAction(viewInAction)
+                }
     }
 }

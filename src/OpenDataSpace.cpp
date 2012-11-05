@@ -551,7 +551,14 @@ void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
 	// tell the Card that its a new invocation
 	if (m_isCard) {
 		AbstractPane *p = Application::instance()->scene();
-		bool ok = p->setProperty("filePath", request.data());
+		bool ok = false;
+		// if there's a URI we take the URI
+		// else we take the data
+		if (request.uri().isEmpty()) {
+			ok = p->setProperty("filePath", request.data());
+		} else {
+			ok = p->setProperty("filePath", request.uri());
+		}
 		if (!ok) {
 			qDebug() << "Cannot set filePath";
 		}
