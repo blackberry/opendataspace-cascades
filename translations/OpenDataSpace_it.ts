@@ -143,14 +143,6 @@
     </message>
 </context>
 <context>
-    <name>CardPage</name>
-    <message>
-        <location filename="../assets/CardPage.qml" line="24"/>
-        <source>SORRY: Login failed - you cannot upload the file</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>CustomerSelection</name>
     <message>
         <location filename="../assets/common/CustomerSelection.qml" line="31"/>
@@ -227,32 +219,32 @@
 <context>
     <name>FeedbackSheet</name>
     <message>
-        <location filename="../assets/FeedbackSheet.qml" line="42"/>
+        <location filename="../assets/appmenu/FeedbackSheet.qml" line="42"/>
         <source>Feedback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/FeedbackSheet.qml" line="45"/>
+        <location filename="../assets/appmenu/FeedbackSheet.qml" line="45"/>
         <source>Cancel</source>
         <translation type="unfinished">annullare</translation>
     </message>
     <message>
-        <location filename="../assets/FeedbackSheet.qml" line="51"/>
+        <location filename="../assets/appmenu/FeedbackSheet.qml" line="51"/>
         <source>Send</source>
         <translation type="unfinished">inviare</translation>
     </message>
     <message>
-        <location filename="../assets/FeedbackSheet.qml" line="68"/>
+        <location filename="../assets/appmenu/FeedbackSheet.qml" line="68"/>
         <source>from</source>
         <translation type="unfinished">da</translation>
     </message>
     <message>
-        <location filename="../assets/FeedbackSheet.qml" line="76"/>
+        <location filename="../assets/appmenu/FeedbackSheet.qml" line="76"/>
         <source>to</source>
         <translation type="unfinished">a</translation>
     </message>
     <message>
-        <location filename="../assets/FeedbackSheet.qml" line="93"/>
+        <location filename="../assets/appmenu/FeedbackSheet.qml" line="93"/>
         <source>Your Feedback</source>
         <translation type="unfinished">Il tuo commento</translation>
     </message>
@@ -331,7 +323,7 @@ Use any Name and Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/media/ImagePreviewPage.qml" line="59"/>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="60"/>
         <source>View in...</source>
         <translation type="unfinished">Visualizza in...</translation>
     </message>
@@ -344,7 +336,7 @@ Use any Name and Password</source>
         <translation type="obsolete">quota</translation>
     </message>
     <message>
-        <location filename="../assets/media/ImagePreviewPage.qml" line="69"/>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="70"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -394,27 +386,27 @@ Use any Name and Password</source>
         <translation type="obsolete">nome utente</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="47"/>
+        <location filename="../assets/appmenu/LoginSheet.qml" line="47"/>
         <source>ODS LogIn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="48"/>
+        <location filename="../assets/appmenu/LoginSheet.qml" line="48"/>
         <source>Enter Username and Password to log into your OpenDataSpace Cloud Account</source>
         <translation type="unfinished">Inserisci username e password per accedere al tuo account OpenDataSpace cloud</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="51"/>
+        <location filename="../assets/appmenu/LoginSheet.qml" line="51"/>
         <source>Login now</source>
         <translation type="unfinished">Effettua il login</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="53"/>
+        <location filename="../assets/appmenu/LoginSheet.qml" line="53"/>
         <source>Cancel</source>
         <translation type="unfinished">annullare</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="81"/>
+        <location filename="../assets/appmenu/LoginSheet.qml" line="81"/>
         <source>ODS Login successfull for </source>
         <translation type="unfinished"></translation>
     </message>
@@ -423,12 +415,12 @@ Use any Name and Password</source>
         <translation type="obsolete">ODS Accedi successo</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="120"/>
+        <location filename="../assets/appmenu/LoginSheet.qml" line="120"/>
         <source>Login</source>
         <translation type="unfinished">accesso</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="127"/>
+        <location filename="../assets/appmenu/LoginSheet.qml" line="127"/>
         <source>Preferences</source>
         <translation type="unfinished">Preferenze</translation>
     </message>
@@ -456,22 +448,22 @@ Use any Name and Password</source>
         <translation type="unfinished">Impostazioni</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="595"/>
+        <location filename="../src/OpenDataSpace.cpp" line="588"/>
         <source>Resized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="606"/>
+        <location filename="../src/OpenDataSpace.cpp" line="599"/>
         <source>Pooled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="617"/>
+        <location filename="../src/OpenDataSpace.cpp" line="610"/>
         <source>:)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="619"/>
+        <location filename="../src/OpenDataSpace.cpp" line="612"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
@@ -535,82 +527,82 @@ Use any Name and Password</source>
 <context>
     <name>PreferencesSheet</name>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="63"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="63"/>
         <source>Preferences</source>
         <translation type="unfinished">Preferenze</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="66"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="66"/>
         <source>Cancel</source>
         <translation type="unfinished">annullare</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="72"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="72"/>
         <source>Save</source>
         <translation type="unfinished">salvare</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="95"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="95"/>
         <source>Server URL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="103"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="103"/>
         <source>User email address</source>
         <translation type="unfinished">Utente indirizzo e-mail</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="127"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="127"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="145"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="145"/>
         <source>of</source>
         <translation type="unfinished">di</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="145"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="145"/>
         <source>Memory used</source>
         <translation type="unfinished">memoria utilizzata</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="157"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="157"/>
         <source>Files to upload</source>
         <translation type="unfinished">I file da caricare</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="168"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="168"/>
         <source>Version %1</source>
         <translation type="unfinished">versione %1</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="182"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="182"/>
         <source>German</source>
         <translation type="unfinished">tedesco</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="184"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="184"/>
         <source>French</source>
         <translation type="unfinished">francese</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="186"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="186"/>
         <source>Spanish</source>
         <translation type="unfinished">spagnolo</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="188"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="188"/>
         <source>Italian</source>
         <translation type="unfinished">italiano</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="190"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="190"/>
         <source>Russian</source>
         <translation type="unfinished">russo</translation>
     </message>
     <message>
-        <location filename="../assets/PreferencesSheet.qml" line="192"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="192"/>
         <source>English</source>
         <translation type="unfinished">inglese</translation>
     </message>
@@ -807,7 +799,7 @@ Use any Name and Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/UnknownPreviewPage.qml" line="58"/>
+        <location filename="../assets/documents/UnknownPreviewPage.qml" line="59"/>
         <source>View in...</source>
         <translation type="unfinished">Visualizza in...</translation>
     </message>
@@ -820,8 +812,26 @@ Use any Name and Password</source>
         <translation type="obsolete">quota</translation>
     </message>
     <message>
-        <location filename="../assets/documents/UnknownPreviewPage.qml" line="69"/>
+        <location filename="../assets/documents/UnknownPreviewPage.qml" line="70"/>
         <source>Upload</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UploadCard</name>
+    <message>
+        <location filename="../assets/UploadCard.qml" line="48"/>
+        <source>SORRY: Login failed - you cannot upload the file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/UploadCard.qml" line="58"/>
+        <source>Hitting BACK: File was not uploaded !</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/UploadCard.qml" line="125"/>
+        <source>SORRY: no FilePath - you cannot upload the file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -975,17 +985,17 @@ Use any Name and Password</source>
         <translation type="obsolete">indietro</translation>
     </message>
     <message>
-        <location filename="../assets/webpages/WebPageHelpSheet.qml" line="36"/>
+        <location filename="../assets/appmenu/WebPageHelpSheet.qml" line="36"/>
         <source>ODS Homepage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/webpages/WebPageHelpSheet.qml" line="47"/>
+        <location filename="../assets/appmenu/WebPageHelpSheet.qml" line="47"/>
         <source>Beta3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/webpages/WebPageHelpSheet.qml" line="57"/>
+        <location filename="../assets/appmenu/WebPageHelpSheet.qml" line="57"/>
         <source>Close</source>
         <translation type="unfinished">chiudere</translation>
     </message>

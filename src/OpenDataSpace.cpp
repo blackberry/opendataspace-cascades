@@ -150,7 +150,7 @@ OpenDataSpace::OpenDataSpace(QObject *parent) :
 		// so we use a different root object
 		m_isLaunchedEmbedded = true;
 		m_isCard = true;
-		qmlDocument = "asset:///CardPage.qml";
+		qmlDocument = "asset:///UploadCard.qml";
 		qDebug() << "ApplicationStartupMode: LAUNCHED as CARD";
 		break;
 	default:
@@ -551,16 +551,9 @@ void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
 	// tell the Card that its a new invocation
 	if (m_isCard) {
 		AbstractPane *p = Application::instance()->scene();
-		bool ok = p->setProperty("invokationMode", m_invokationTarget);
+		bool ok = p->setProperty("filePath", request.data());
 		if (!ok) {
-			qDebug() << "Cannot set invokationMode";
-		}
-		// reset the counter
-		ok = p->setProperty("counter", 0);
-		if (ok) {
-			qDebug() << "reset counter to zero";
-		} else {
-			qDebug() << "cannot reset counter";
+			qDebug() << "Cannot set filePath";
 		}
 		// start a new Card Game ;-)
 		// setting newCard true causes testing if LogIn was needed before upload files

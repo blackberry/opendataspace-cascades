@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */import bb.cascades 1.0
-import "common"
+import "../common"
 
 /*
  * Preferences and Options set by the user

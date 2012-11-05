@@ -312,6 +312,7 @@ NavigationPane {
     function previewImage(path) {
         console.debug("got signal to preview image: " + path)
         imagePreviewPage.previewPath = path;
+        imagePreviewPage.recalculateValues(path);
         navigationPane.push(imagePreviewPage)
     }
     function previewVideo(path) {

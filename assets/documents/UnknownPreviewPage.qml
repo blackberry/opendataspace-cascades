@@ -55,6 +55,7 @@ Page {
     ]
     actions: [
         ActionItem {
+            id: viewInAction
             title: qsTr("View in...") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/2-action-search81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
@@ -71,7 +72,11 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 queuedForUploadToast.show()
-                rootNavigationPane.addUpload(previewPage.previewPath)
+                if (! ods.isEmbedded()) {
+                    rootNavigationPane.addUpload(previewPage.previewPath)
+                } else {
+                    ods.cardDone()
+                }
             }
         }
     ]
@@ -161,5 +166,8 @@ Page {
     onCreationCompleted: {
         // initial setup for orientation
         reLayout(OrientationSupport.orientation);
+        if (ods.isEmbedded()) {
+            removeAction(viewInAction)
+        }
     }
 }
