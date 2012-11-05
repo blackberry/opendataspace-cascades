@@ -145,7 +145,7 @@
 <context>
     <name>CardPage</name>
     <message>
-        <location filename="../assets/CardPage.qml" line="33"/>
+        <location filename="../assets/CardPage.qml" line="24"/>
         <source>SORRY: Login failed - you cannot upload the file</source>
         <translation type="unfinished"></translation>
     </message>
@@ -394,27 +394,27 @@ Use any Name and Password</source>
         <translation type="obsolete">nome utente</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="45"/>
+        <location filename="../assets/LoginSheet.qml" line="47"/>
         <source>ODS LogIn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="46"/>
+        <location filename="../assets/LoginSheet.qml" line="48"/>
         <source>Enter Username and Password to log into your OpenDataSpace Cloud Account</source>
         <translation type="unfinished">Inserisci username e password per accedere al tuo account OpenDataSpace cloud</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="49"/>
+        <location filename="../assets/LoginSheet.qml" line="51"/>
         <source>Login now</source>
         <translation type="unfinished">Effettua il login</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="51"/>
+        <location filename="../assets/LoginSheet.qml" line="53"/>
         <source>Cancel</source>
         <translation type="unfinished">annullare</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="75"/>
+        <location filename="../assets/LoginSheet.qml" line="81"/>
         <source>ODS Login successfull for </source>
         <translation type="unfinished"></translation>
     </message>
@@ -423,12 +423,12 @@ Use any Name and Password</source>
         <translation type="obsolete">ODS Accedi successo</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="114"/>
+        <location filename="../assets/LoginSheet.qml" line="120"/>
         <source>Login</source>
         <translation type="unfinished">accesso</translation>
     </message>
     <message>
-        <location filename="../assets/LoginSheet.qml" line="121"/>
+        <location filename="../assets/LoginSheet.qml" line="127"/>
         <source>Preferences</source>
         <translation type="unfinished">Preferenze</translation>
     </message>

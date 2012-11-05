@@ -147,7 +147,9 @@ TabbedPane {
     // FUNCTIONS for the complete TabbedPane called from the Sheets attached to TabbedPane
     // the handler SLOT if LogIn was done
     // SIGNALed from LoginSheet
-    function onLoginDone() {
+    // Application only gets the signal if login was done with success
+    // Card Pages also get success false to jump back to host
+    function onLoginDone(success) {
         rootNavigationPane.activeTab = homeTab
         loginSheet.close()
         if (! asyncLoadingDone) {
@@ -213,7 +215,7 @@ TabbedPane {
         // support all orientations
         OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
         //-- connect the sheet done SIGNAL to the handler SLOT
-        loginContent.done.connect(onLoginDone)
+        loginContent.loginDone.connect(onLoginDone)
         //-- connect the help sheet close SIGNAL to the handler SLOT
         helpContent.helpDone.connect(closeHelp)
         //-- connect the preferences save SIGNAL to the handler SLOT

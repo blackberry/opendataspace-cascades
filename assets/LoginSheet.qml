@@ -17,13 +17,15 @@ import bb.cascades 1.0
 import bb.system 1.0
 
 /*
+ * LoginSheet can be opened as Sheet from Application
+ * or as Page if running embedded and pushed from Card
  * 
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
  * 
  */
 
 Page {
-    signal done()
+    signal loginDone(bool success)
     resizeBehavior: PageResizeBehavior.Resize
     //
     attachedObjects: [
@@ -51,10 +53,13 @@ Page {
             cancelButton.label: qsTr("Cancel") + Retranslate.onLanguageChanged
             cancelButton.enabled: true
             onFinished: {
-                // ods.suppressKeyboard()
+                // we need this: if user enters name and password from keyboard
+                // and hits return instead of clicking a button
+                // the keyboard remains visible
+                ods.suppressKeyboard()
                 if (result == SystemUiResult.ConfirmButtonSelection) {
                     console.debug("ConfirmButtonSelection done from SystemCredentialsPrompt");
-                    // TODO call C++ function to test if Login was OK
+                    // TODO test if Login was OK
                     ods.login(usernameEntry(), passwordEntry())
                     if (OrientationSupport.orientation == UIOrientation.Landscape) {
                         loginToast.position = SystemUiPosition.MiddleCenter
@@ -63,16 +68,17 @@ Page {
                     }
                     loginToast.body = loginToast.bodyPrefix + usernameEntry()
                     loginToast.show()
-                    if (!ods.isEmbedded()) {
-                        done()
-                    }
+                    loginDone(true)
                 } else if (result == SystemUiResult.CancelButtonSelection) {
                     console.debug("cancel");
+                    if (ods.isEmbedded()) {
+                        loginDone(false)
+                    }
                 }
             }
         },
         SystemToast {
-            property string bodyPrefix : qsTr("ODS Login successfull for ") + Retranslate.onLanguageChanged
+            property string bodyPrefix: qsTr("ODS Login successfull for ") + Retranslate.onLanguageChanged
             id: loginToast
             body: ""
             icon: "asset:///images/rooms-icon.png"

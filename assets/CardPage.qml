@@ -12,18 +12,9 @@ NavigationPane {
             id: loginPage
             paneProperties: NavigationPaneProperties {
                 backButton: ActionItem {
+                    // hitting back button means: no login done
                     onTriggered: {
-                        // we always pop the root page of this NavigationPane
-                        cardNavPaneId.pop();
-                        // if login failed we have to cancel the Card
-                        if (ods.loginDone() == false) {
-                            console.debug("coming back from Login: Login false");
-                            loginFailedToast.show()
-                            ods.cardCanceled("Login failed")
-                        } else {
-                            // login was OK, the User can do the expected Card stuff
-                            console.debug("coming back from Login: Login true");
-                        }
+                        onLoginDone(false)
                     }
                 }
             }
@@ -33,7 +24,9 @@ NavigationPane {
             body: qsTr("SORRY: Login failed - you cannot upload the file") + Retranslate.onLanguageChanged
             icon: "asset:///images/upload-icon.png"
             onFinished: {
-                //
+                // we have to do this here - otherwise the user won't get it
+                // because the card is closed so fast
+                ods.cardCanceled("Login failed")
             }
         }
     ]
@@ -84,9 +77,25 @@ NavigationPane {
             }
         }
     }
+    function onLoginDone(success) {
+        // we always pop the root page of this NavigationPane
+        cardNavPaneId.pop();
+        // if login failed we have to cancel the Card
+        if (!success || ods.loginDone() == false) {
+            console.debug("coming back from Login: Login false");
+            loginFailedToast.show()
+            // this will be done from tast onFinished():
+            // ods.cardCanceled("Login failed")
+        } else {
+            // login was OK, the User can do the expected Card stuff
+            console.debug("coming back from Login: Login true");
+        }
+    }
     onCreationCompleted: {
         // controlled  by host application !
         // OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
+        //-- connect the LoginPage done SIGNAL to the handler SLOT
+        loginPage.loginDone.connect(onLoginDone)
         console.debug("NavigationPane created");
     }
 }
