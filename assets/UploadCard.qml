@@ -256,6 +256,7 @@ NavigationPane {
         if (fileInfo.isVideo(filePath)) {
             console.debug("got signal to preview Video: " + filePath)
             videoPreviewPage.previewPath = filePath;
+            videoPreviewPage.recalculateValues(filePath);
             cardNavPaneId.push(videoPreviewPage)
             return;
         }
@@ -263,6 +264,7 @@ NavigationPane {
         if (fileInfo.isAudio(filePath)) {
             console.debug("got signal to preview audio: " + filePath)
             recordedVoicePreviewPage.previewPath = filePath;
+            recordedVoicePreviewPage.recalculateValues(filePath);
             cardNavPaneId.push(recordedVoicePreviewPage)
             return;
         }
@@ -270,6 +272,7 @@ NavigationPane {
         if (fileInfo.getSuffix(filePath) == "pdf") {
             console.debug("got signal to preview pdf: " + filePath)
             pdfPreviewPage.previewPath = filePath;
+            pdfPreviewPage.recalculateValues(filePath);
             cardNavPaneId.push(pdfPreviewPage)
             return;
         }
@@ -277,6 +280,7 @@ NavigationPane {
         if (fileInfo.isHtml(filePath)) {
             console.debug("got signal to preview HTML: " + filePath)
             htmlPreviewPage.previewPath = filePath;
+            htmlPreviewPage.recalculateValues(filePath);
             cardNavPaneId.push(htmlPreviewPage)
             return;
         }
@@ -284,6 +288,7 @@ NavigationPane {
         if (fileInfo.isCompressed(filePath)) {
             console.debug("got signal to preview ZIP: " + filePath)
             zipPreviewPage.previewPath = filePath;
+            zipPreviewPage.recalculateValues(filePath);
             cardNavPaneId.push(zipPreviewPage)
             return;
         }
@@ -291,6 +296,7 @@ NavigationPane {
         if (fileInfo.isDocument(filePath)) {
             console.debug("got signal to preview doc: " + filePath)
             documentsPreviewPage.previewPath = filePath;
+            documentsPreviewPage.recalculateValues(filePath);
             cardNavPaneId.push(documentsPreviewPage)
             return;
         }
@@ -299,6 +305,7 @@ NavigationPane {
             // TODO previewBookPage
             console.debug("got signal to preview book: " + filePath)
             booksPreviewPage.previewPath = filePath;
+            booksPreviewPage.recalculateValues(filePath);
             cardNavPaneId.push(booksPreviewPage)
             return;
         }
