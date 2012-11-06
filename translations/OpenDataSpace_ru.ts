@@ -469,7 +469,7 @@ Use any Name and Password</source>
     </message>
     <message>
         <location filename="../src/OpenDataSpace.cpp" line="619"/>
-        <source>Success</source>
+        <source>save</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
