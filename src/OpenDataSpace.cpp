@@ -635,7 +635,7 @@ void OpenDataSpace::cardCanceled(const QString data) {
 	CardDoneMessage message;
 	message.setData(data);
 	message.setDataType("text/plain");
-	message.setReason("cancel");
+	message.setReason("Cancel");
 	// Send message
 	qDebug() << "cardDone: sending message via IvokeManager data: "
 			<< message.data() << " reason: " << message.reason();
