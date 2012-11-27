@@ -436,42 +436,42 @@ Use any Name and Password</source>
 <context>
     <name>OpenDataSpace</name>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="272"/>
+        <location filename="../src/OpenDataSpace.cpp" line="282"/>
         <source>Help</source>
         <translation type="unfinished">Ayudar</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="275"/>
+        <location filename="../src/OpenDataSpace.cpp" line="285"/>
         <source>Feedback</source>
         <translation type="unfinished">Realimentación</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="278"/>
+        <location filename="../src/OpenDataSpace.cpp" line="288"/>
         <source>Logout</source>
         <translation type="unfinished">Cerrar sesión</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="281"/>
+        <location filename="../src/OpenDataSpace.cpp" line="291"/>
         <source>Settings</source>
         <translation type="unfinished">Configuración</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="595"/>
+        <location filename="../src/OpenDataSpace.cpp" line="605"/>
         <source>Resized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="606"/>
+        <location filename="../src/OpenDataSpace.cpp" line="616"/>
         <source>Pooled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="617"/>
+        <location filename="../src/OpenDataSpace.cpp" line="627"/>
         <source>:)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="619"/>
+        <location filename="../src/OpenDataSpace.cpp" line="629"/>
         <source>save</source>
         <translation type="unfinished"></translation>
     </message>
@@ -876,40 +876,40 @@ Use any Name and Password</source>
 <context>
     <name>UsersNavPane</name>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="47"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="48"/>
         <source>New User</source>
         <translation type="unfinished">Nuevo usuario</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="56"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="57"/>
         <source>Refresh</source>
         <translation type="unfinished">actualizar</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="110"/>
-        <location filename="../assets/users/UsersNavPane.qml" line="150"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="112"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="152"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="117"/>
-        <location filename="../assets/users/UsersNavPane.qml" line="157"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="119"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="159"/>
         <source>MailTo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="124"/>
-        <location filename="../assets/users/UsersNavPane.qml" line="164"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="126"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="166"/>
         <source>Contact</source>
         <translation type="unfinished">contacto</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="143"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="145"/>
         <source>Add Room</source>
         <translation type="unfinished">Añadir sala</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="171"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="173"/>
         <source>Delete</source>
         <translation type="unfinished">borrar</translation>
     </message>

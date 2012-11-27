@@ -16,6 +16,8 @@ static const QString accountTypeValue = "account_type";
 // expiration_date
 // groups
 
+ODSUser::ODSUser(QObject *parent) {}
+
 ODSUser::ODSUser(QVariantMap userMap) :
 		QObject(), mUserMap(userMap) {
 

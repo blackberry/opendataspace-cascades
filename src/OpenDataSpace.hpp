@@ -8,6 +8,7 @@
 #include <bb/system/CardDoneMessage.hpp>
 #include <bb/system/InvokeManager.hpp>
 #include <bb/system/InvokeRequest.hpp>
+#include "ODSData.hpp"
 
 namespace bb {
 namespace cascades {
@@ -172,6 +173,8 @@ private:
 	QString m_currentLocale;
 	LocaleHandler* m_LocaleHandler;
 	QTranslator* m_translator;
+
+	ODSData* m_odsData;
 
 	QString m_cardStatus;
 	QString m_invokationTarget;

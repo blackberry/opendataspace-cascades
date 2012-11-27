@@ -16,6 +16,8 @@
 #include "OpenDataSpace.hpp"
 #include "FileInfo.hpp"
 #include "DateUtil.hpp"
+#include "ODSData.hpp"
+#include "ODSUser.hpp"
 
 #include <bb/system/SystemCredentialsPrompt>
 #include <bb/system/SystemDialog>
@@ -122,6 +124,10 @@ OpenDataSpace::OpenDataSpace(QObject *parent) :
 			"SystemUiModality", "");
 	qRegisterMetaType<SystemUiResult::Type>("bb::system::SystemUiResult::Type");
 
+	// now the data models and classes
+	// Register the FileInfo, so QML knows about
+	qmlRegisterType<ODSUser>("org.opendataspace.user", 1, 0, "ODSUser");
+
 	qDebug() << "registered types for QML";
 
 	// we have different root objects
@@ -167,6 +173,10 @@ OpenDataSpace::OpenDataSpace(QObject *parent) :
 	//-- setContextProperty expose C++ object in QML as an variable
 	// doesn't matter which root object - we always refer as 'ods' to this
 	qml->setContextProperty("ods", this);
+	// we need also access to the data
+
+	m_odsData = new ODSData();
+	qml->setContextProperty("odsdata", m_odsData);
 
 	// TODO test if already done and persisted local
 	m_login_ok = false;

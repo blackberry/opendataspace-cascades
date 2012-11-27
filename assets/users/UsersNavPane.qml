@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */import bb.cascades 1.0
+ import org.opendataspace.user 1.0
 
 /*
  * 
@@ -73,6 +74,7 @@ NavigationPane {
                 // TODO from Server / JSON / MySQL
                 GroupDataModel {
                     id: mockupUserModel
+                    objectName: "userGroupDataModel"
                     sortingKeys: [
                         "displayType",
                         "name"
@@ -249,6 +251,8 @@ NavigationPane {
     } // end page
     //
     onCreationCompleted: {
+        // do NOT init the DataModel here - odsdata will not found the objects
+        // do it from the calling page where this Page was initialized lazy !
         console.debug("CREATED USERS NavPane")
     }
 }// end navigationpane
