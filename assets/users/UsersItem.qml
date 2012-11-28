@@ -72,14 +72,14 @@ Container {
                 preferredWidth: 150
                 preferredHeight: 150
                 // datamodel knows the icon source
-                imageSource: ListItemData.icon
+                imageSource: ListItemData.displayIcon 
                 layoutProperties: StackLayoutProperties {
                 }
                 verticalAlignment: VerticalAlignment.Center
             }
             Label {
-                // name is a property from data model
-                text: ListItemData.name
+                // displayName is a property from data model
+                text: ListItemData.displayName
                 leftMargin: 30
                 textStyle {
                     base: SystemDefaults.TextStyles.TitleText

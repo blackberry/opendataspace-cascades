@@ -55,8 +55,10 @@ private:
 	QString mParentPath;
 	QString mComment;
 
-	GroupDataModel* m_UsersDataModel;
-	ListView* m_usersList;
+	GroupDataModel* mUsersDataModel;
+	// temp
+	QVariantList mListAllUser;
+	QVariantMap mMyUserMap;
 
 	bool mDelayedInitDone;
 

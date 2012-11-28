@@ -3,8 +3,9 @@
 #ifndef ODSUSER_HPP_
 #define ODSUSER_HPP_
 
-#include <qobject.h>
+#include <QObject>
 #include <qvariant.h>
+
 
 class ODSUser: public QObject {
 	Q_OBJECT
@@ -24,9 +25,9 @@ class ODSUser: public QObject {
 	 Q_PROPERTY(int userNumber READ userNumber WRITE setUserNumber NOTIFY userNumberChanged FINAL)
 	 Q_PROPERTY(int accountType READ accountType WRITE setAccountType NOTIFY accountTypeChanged FINAL)
 
-	 Q_PROPERTY(QString displayName READ displayName FINAL)
-	 Q_PROPERTY(QString displayType READ displayType FINAL)
-	 Q_PROPERTY(QString displayIcon READ displayIcon FINAL)
+	 Q_PROPERTY(QString displayName READ displayName NOTIFY displayNameChanged FINAL)
+	 Q_PROPERTY(QString displayType READ displayType NOTIFY displayTypeChanged FINAL)
+	 Q_PROPERTY(QString displayIcon READ displayIcon NOTIFY displayIconChanged FINAL)
 
 public:
 	ODSUser(QObject *parent = 0);
@@ -82,6 +83,10 @@ Q_SIGNALS:
 	void lastCustomerChanged(int lastCustomer);
 	void userNumberChanged(int userNumber);
 	void accountTypeChanged(int accountType);
+
+	void displayNameChanged(QString displayName);
+	void displayTypeChanged(QString displayType);
+	void displayIconChanged(QString displayIcon);
 
 private:
 	// TODO QMap UserGroups

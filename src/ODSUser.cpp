@@ -1,5 +1,6 @@
-
 #include "ODSUser.hpp"
+#include <QDebug>
+
 
 static const QString firstNameValue = "firstname";
 static const QString lastNameValue = "surname";
@@ -45,6 +46,7 @@ ODSUser::ODSUser(QVariantMap userMap) :
 			mDisplayIcon = "../images/users-icon.png";
 			break;
 	}
+	qDebug() << "user: " << mFirstName;
 }
 
 QString ODSUser::firstName() const {

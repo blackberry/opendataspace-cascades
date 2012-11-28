@@ -1,5 +1,6 @@
 
 #include "ODSData.hpp"
+#include "ODSUser.hpp"
 #include <bb/cascades/Application>
 #include <bb/data/JsonDataAccess>
 #include <bb/cascades/GroupDataModel>
@@ -143,39 +144,38 @@ void ODSData::initUserModel() {
 	// so we access the last one
 	// TODO Cascades BUG ???
 
-	//m_UsersDataModel = Application::instance()->scene()->findChild<GroupDataModel*>("userGroupDataModel");
-	//m_usersList = Application::instance()->scene()->findChild<ListView*>("usersList");
+	//mUsersDataModel = Application::instance()->scene()->findChild<GroupDataModel*>("userGroupDataModel");
+	//mUsersList = Application::instance()->scene()->findChild<ListView*>("usersList");
 
-	m_UsersDataModel = Application::instance()->scene()->findChildren<
-			GroupDataModel*>("userGroupDataModel").last();
-	m_usersList = Application::instance()->scene()->findChildren<ListView*>(
-			"usersList").last();
+	mUsersDataModel = Application::instance()->scene()->findChildren<
+	  		GroupDataModel*>("userGroupDataModel").last();
+	//mUsersList = Application::instance()->scene()->findChildren<ListView*>(
+	//		"usersList").last();
 
-	qDebug() << "Listview children: "
-			<< Application::instance()->scene()->findChildren<ListView*>(
-					"usersList").size();
+	//qDebug() << "Listview children: "
+	//		<< Application::instance()->scene()->findChildren<ListView*>(
+	//				"usersList").size();
 	qDebug() << "DataModel children: "
 			<< Application::instance()->scene()->findChildren<GroupDataModel*>(
 					"userGroupDataModel").size();
 
-	qDebug() << "initUserModel: ";
-	if (m_UsersDataModel) {
-		qDebug() << "found GroupDataModel: " << m_UsersDataModel->size();
-		QVariantMap map;
-		map["name"] = "ekke";
-		map["displayType"] = "A";
-		map["icon"] = "../images/admin-icon.png";
-		m_UsersDataModel->insert(map);
-		//m_usersList->resetDataModel();
-		//m_usersList->setDataModel(m_UsersDataModel);
+	// get all users
+	// TODO initiate all users and wait for response
 
+	qDebug() << "initUserModel: ";
+	if (mUsersDataModel) {
+		qDebug() << "found GroupDataModel: " << mUsersDataModel->size();
+		qDebug() << "and from all users: " << mListAllUser.size();
+		mUsersDataModel->clear();
+		if (!mMyUserMap.isEmpty()) {
+			mUsersDataModel->insert(new ODSUser(mMyUserMap));
+		}
+		for (int i = 0; i < mListAllUser.size(); ++i) {
+			QVariantMap map = mListAllUser.at(i).toMap();
+			mUsersDataModel->insert(new ODSUser(map));
+		}
 	} else {
 		qDebug() << "NOT found GroupDataModel :(";
-	}
-	if (m_usersList) {
-		qDebug() << "found ListView";
-	} else {
-		qDebug() << "NOT found ListView :(";
 	}
 
 }
@@ -284,6 +284,9 @@ void ODSData::initiateRequest(int usecase) {
 				+ "}";
 		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::FilesAll)));
 		if (isInitialization) {
+			// TODO TEST only
+			// add a special header
+			request.setRawHeader("nextUsecase", QByteArray::number(Usecase::UsersAll));
 			// TODO perhaps notify interested UI controls
 			qDebug() << "last step of initialization: filesAll";
 		}
@@ -546,6 +549,9 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			case Usecase::FilesAll:
 				initiateRequest(-4);
 				break;
+			case Usecase::UsersAll:
+				initiateRequest(usecase);
+				break;
 			// no init steps
 			default:
 				break;
@@ -609,6 +615,7 @@ void ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 	// number of users (created by me - without me)
 	int users;
 	QVariantList list;
+	QVariantMap map;
 	switch (usecase) {
 		// only for tests
 		case Usecase::UsersTestGet:
@@ -624,12 +631,15 @@ void ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 			// do UsersAuth, then get Users data to know what is allowed, get customer_no etc
 		case Usecase::UsersUser:
 			mCustomerNumber = bodyMap.value("last_customer", "").toInt();
+			mMyUserMap = bodyMap;
 			qDebug() << "cust no:" << mCustomerNumber;
 			break;
 		case Usecase::UsersAll:
-			//
+			// TODO TEMP
+			mListAllUser = bodyMap.value("users", "").toList();
 			users = bodyMap.value("users", "").toList().size();
 			qDebug() << "Users: " << users;
+
 			break;
 		case Usecase::FilesAll:
 			// need customernumber

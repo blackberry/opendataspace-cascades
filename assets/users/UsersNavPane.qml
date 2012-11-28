@@ -69,15 +69,12 @@ NavigationPane {
             }
             // attached objects
             attachedObjects: [
-                // M O D E L
-                // Mockup Datamodel
-                // TODO from Server / JSON / MySQL
                 GroupDataModel {
-                    id: mockupUserModel
+                    id: userGroupDataModel
                     objectName: "userGroupDataModel"
                     sortingKeys: [
                         "displayType",
-                        "name"
+                        "displayName"
                     ]
                     grouping: ItemGrouping.ByFullValue
                     onItemAdded: {
@@ -92,9 +89,7 @@ NavigationPane {
             ListView {
                 id: usersList
                 objectName: "usersList"
-                // The data model is defined in the attached object list below.
-                // TODO get from Server
-                dataModel: mockupUserModel
+                dataModel: userGroupDataModel
                 // its the root, only single selction makes sense
                 // TODO selectionMode: SelectionMode.Single
 
@@ -106,7 +101,7 @@ NavigationPane {
                             id: usersItem
                             contextActions: [
                                 ActionSet {
-                                    title: ListItemData.name
+                                    title: ListItemData.displayName
                                     subtitle: "ODS User"
                                     ActionItem {
                                         title: qsTr("Info") + Retranslate.onLanguageChanged
@@ -139,7 +134,7 @@ NavigationPane {
                             id: adminItem
                             contextActions: [
                                 ActionSet {
-                                    title: ListItemData.name
+                                    title: ListItemData.displayName
                                     subtitle: "ODS Aministrator"
                                     ActionItem {
                                         title: qsTr("Add Room") + Retranslate.onLanguageChanged
@@ -196,44 +191,17 @@ NavigationPane {
                     return "header";
                 }
 
-                // MOCKUP DATA
-                // After the list is created, add some mockup items
-                // A Admin U USer
                 onCreationCompleted: {
-                    mockupUserModel.insert({
-                            "name": "Max Mustermann",
-                            "displayType": "U",
-                            "icon": "../images/users-icon.png"
-                        });
-                    mockupUserModel.insert({
-                            "name": "Johnny Controletti",
-                            "displayType": "A",
-                            "icon": "../images/admin-icon.png"
-                        });
-                    mockupUserModel.insert({
-                            "name": "Jane Doe",
-                            "displayType": "U",
-                            "icon": "../images/users-icon.png"
-                        });
-                    mockupUserModel.insert({
-                            "name": "Homer Simpson",
-                            "displayType": "U",
-                            "icon": "../images/users-icon.png"
-                        });
-                    mockupUserModel.insert({
-                            "name": "Big Lebowsky",
-                            "displayType": "A",
-                            "icon": "../images/admin-icon.png"
-                        });
                 }
             } // end ListView
         } // end Container
         function addUser(name, displayType) {
             console.debug("Now add new USER to LISTMODEL on UserNavPage")
-            mockupUserModel.insert({
+            // TODO from SERVER
+            userGroupDataModel.insert({
                     "name": name,
                     "displayType": displayType,
-                    "icon": getDisplayIcon(displayType)
+                    "displayIcon": getDisplayIcon(displayType)
                 });
         }
         function getDisplayIcon(displayType) {
