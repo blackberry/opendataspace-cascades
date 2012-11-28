@@ -381,17 +381,17 @@ Use any Name and Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/LoginSheet.qml" line="81"/>
+        <location filename="../assets/appmenu/LoginSheet.qml" line="89"/>
         <source>ODS Login successfull for </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/LoginSheet.qml" line="120"/>
+        <location filename="../assets/appmenu/LoginSheet.qml" line="128"/>
         <source>Login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/LoginSheet.qml" line="127"/>
+        <location filename="../assets/appmenu/LoginSheet.qml" line="138"/>
         <source>Preferences</source>
         <translation type="unfinished"></translation>
     </message>
@@ -399,42 +399,42 @@ Use any Name and Password</source>
 <context>
     <name>OpenDataSpace</name>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="282"/>
+        <location filename="../src/OpenDataSpace.cpp" line="285"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="285"/>
+        <location filename="../src/OpenDataSpace.cpp" line="288"/>
         <source>Feedback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="288"/>
+        <location filename="../src/OpenDataSpace.cpp" line="291"/>
         <source>Logout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="291"/>
+        <location filename="../src/OpenDataSpace.cpp" line="294"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="605"/>
+        <location filename="../src/OpenDataSpace.cpp" line="608"/>
         <source>Resized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="616"/>
+        <location filename="../src/OpenDataSpace.cpp" line="619"/>
         <source>Pooled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="627"/>
+        <location filename="../src/OpenDataSpace.cpp" line="630"/>
         <source>:)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="629"/>
+        <location filename="../src/OpenDataSpace.cpp" line="632"/>
         <source>save</source>
         <translation type="unfinished"></translation>
     </message>

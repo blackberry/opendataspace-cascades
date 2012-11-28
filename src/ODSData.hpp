@@ -7,8 +7,7 @@
 #include <bb/cascades/GroupDataModel>
 #include <bb/cascades/controls/listview.h>
 
-namespace bb {
-namespace cascades {
+using namespace bb::cascades;
 
 class ODSData: public QObject {
 	Q_OBJECT
@@ -24,6 +23,5 @@ private:
 	ListView* m_usersList;
 };
 
-} /* namespace cascades */
-} /* namespace bb */
+
 #endif /* ODSDATA_HPP_ */

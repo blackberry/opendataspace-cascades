@@ -9,6 +9,7 @@
 #include <bb/system/InvokeManager.hpp>
 #include <bb/system/InvokeRequest.hpp>
 #include "ODSData.hpp"
+#include "ODSSettings.hpp"
 
 namespace bb {
 namespace cascades {
@@ -175,6 +176,7 @@ private:
 	QTranslator* m_translator;
 
 	ODSData* m_odsData;
+	ODSSettings* m_odsSettings;
 
 	QString m_cardStatus;
 	QString m_invokationTarget;

@@ -52,6 +52,9 @@ Page {
             confirmButton.enabled: true
             cancelButton.label: qsTr("Cancel") + Retranslate.onLanguageChanged
             cancelButton.enabled: true
+            // don't set username and password last values here
+            // will not change to actual settings
+            // so these values are set at button click triggered to show credentials
             onFinished: {
                 // we need this: if user enters name and password from keyboard
                 // and hits return instead of clicking a button
@@ -59,6 +62,11 @@ Page {
                 ods.suppressKeyboard()
                 if (result == SystemUiResult.ConfirmButtonSelection) {
                     console.debug("ConfirmButtonSelection done from SystemCredentialsPrompt");
+                    // save settings if remember me was checked
+                    if (rememberMeSelection()) {
+                        odssettings.saveValueFor("login/user",usernameEntry())
+                        odssettings.saveValueFor("login/password",passwordEntry())
+                    }
                     // TODO test if Login was OK
                     ods.login(usernameEntry(), passwordEntry())
                     if (OrientationSupport.orientation == UIOrientation.Landscape) {
@@ -120,6 +128,9 @@ Page {
                     text: qsTr("Login") + Retranslate.onLanguageChanged
                     preferredWidth: 400.0
                     onClicked: {
+                        // set last values from settings
+                        credentialsPrompt.usernameField.defaultText = odssettings.getValueFor("login/user","")
+                        credentialsPrompt.passwordField.defaultText = odssettings.getValueFor("login/password","")
                         credentialsPrompt.show()
                     }
                 }
@@ -148,4 +159,5 @@ Page {
         // initialize positioning
         reLayout(OrientationSupport.orientation)
     }
+
 }

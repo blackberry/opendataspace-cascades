@@ -18,6 +18,7 @@
 #include "DateUtil.hpp"
 #include "ODSData.hpp"
 #include "ODSUser.hpp"
+#include "ODSSettings.hpp"
 
 #include <bb/system/SystemCredentialsPrompt>
 #include <bb/system/SystemDialog>
@@ -174,9 +175,11 @@ OpenDataSpace::OpenDataSpace(QObject *parent) :
 	// doesn't matter which root object - we always refer as 'ods' to this
 	qml->setContextProperty("ods", this);
 	// we need also access to the data
-
 	m_odsData = new ODSData();
 	qml->setContextProperty("odsdata", m_odsData);
+	// and the settings
+	m_odsSettings = new ODSSettings();
+	qml->setContextProperty("odssettings", m_odsSettings);
 
 	// TODO test if already done and persisted local
 	m_login_ok = false;
