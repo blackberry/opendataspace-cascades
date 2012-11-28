@@ -431,6 +431,114 @@ Use any Name and Password</source>
     </message>
 </context>
 <context>
+    <name>ODSData</name>
+    <message>
+        <location filename="../src/ODSData.cpp" line="98"/>
+        <source>Code 0: No Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="99"/>
+        <source>Code 1 JSON Error: Server was unable to parse the request.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="100"/>
+        <source>Code 2 Invalid Credentials: Invalid user or password specified during login.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="101"/>
+        <source>Code 3: Account has expired.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="102"/>
+        <source>Code 4: Account locked due to lost mobile device.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="103"/>
+        <source>Code 5: Mobile access locked for this account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="104"/>
+        <source>Code 6: Account locked by admin.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="105"/>
+        <source>Code 7 Token expired: Session ID has expired. Login has to be invoked again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="106"/>
+        <source>Code 8: User already exists.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="107"/>
+        <source>Code 9: Customer not found during AllFilesRequest.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="108"/>
+        <source>Code 10: Invalid path.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="109"/>
+        <source>Code 11: File write error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="110"/>
+        <source>Code 12 Invalid File: Attempted a file operation using an invalid ID.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="111"/>
+        <source>Code 13 File exists: Attempt to copy or move to an existing file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="112"/>
+        <source>Code 14 Folder not empty: Attempted to delete a non-emty folder.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="113"/>
+        <source>Code 15: Failed to create a download link.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="114"/>
+        <source>Code 16: Maximum number of users reached.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="115"/>
+        <source>Code 17: Disk quota was reached.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="116"/>
+        <source>Code 18: DeleteAll could not delete all files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="117"/>
+        <source>Code 19: MoveAll could not move all files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="118"/>
+        <source>Code 20: CopyAll could not copy all files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OpenDataSpace</name>
     <message>
         <location filename="../src/OpenDataSpace.cpp" line="286"/>

@@ -183,7 +183,7 @@ TabbedPane {
     function closeHelp(ok) {
         helpSheet.close()
     }
-    // these components will be created async to spped up startup time
+    // these components will be created async to speed up startup time
     function createLazyComponents() {
         console.debug("create LAZY components")
         // to speedup loadtime
