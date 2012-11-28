@@ -3,10 +3,8 @@
 #include <QSettings>
 
 ODSSettings::ODSSettings() {
-	// Set the application organization and name, which is used by QSettings
-	// when saving values to the persistent store.
-	QCoreApplication::setOrganizationName("SSPE Europe");
-	QCoreApplication::setApplicationName("OpenDataSpace Developer Preview");
+	// don't need to set Organization and Application
+	// will be used from bar-descriptor.xml
 	QString serverUrl;
 	getValueFor("server/url", "");
 	if (serverUrl.isNull() || serverUrl.isEmpty()) {
