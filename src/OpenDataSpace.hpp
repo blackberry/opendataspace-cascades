@@ -165,25 +165,25 @@ private Q_SLOTS:
 
 private:
 	Menu* createApplicationMenu();
-	HelpActionItem* m_helpItem;
-	ActionItem* m_feedbackItem;
-	SettingsActionItem* m_settingsItem;
-	ActionItem* m_logoutItem;
-	bool m_login_ok;
+	HelpActionItem* mHelpItem;
+	ActionItem* mFeedbackItem;
+	SettingsActionItem* mSettingsItem;
+	ActionItem* mLogoutItem;
+	bool mLogin_ok;
 
-	QString m_currentLocale;
-	LocaleHandler* m_LocaleHandler;
-	QTranslator* m_translator;
+	QString mCurrentLocale;
+	LocaleHandler* mLocaleHandler;
+	QTranslator* mTranslator;
 
-	ODSData* m_odsData;
-	ODSSettings* m_odsSettings;
+	ODSData* mOdsData;
+	ODSSettings* mOdsSettings;
 
-	QString m_cardStatus;
-	QString m_invokationTarget;
-	QString m_invokationSource;
-	bool m_isCard;
-	bool m_isLaunchedEmbedded;
-	bb::system::InvokeManager *m_invokeManager;
+	QString mCardStatus;
+	QString mInvokationTarget;
+	QString mInvokationSource;
+	bool mIsCard;
+	bool mIsLaunchedEmbedded;
+	bb::system::InvokeManager *mInvokeManager;
 
 	void translateMenuItems();
 	void initTheApplication();

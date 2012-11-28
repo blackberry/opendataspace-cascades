@@ -8,7 +8,7 @@ ODSSettings::ODSSettings() {
 	QString serverUrl;
 	getValueFor("server/url", "");
 	if (serverUrl.isNull() || serverUrl.isEmpty()) {
-		saveValueFor("server/url", "https://bb.ods.io");
+		saveValueFor("server/url", "https://bb.ods.io/mobile");
 	}
 
 }

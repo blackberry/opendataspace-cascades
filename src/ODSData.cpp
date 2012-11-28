@@ -5,6 +5,8 @@
 #include <bb/cascades/GroupDataModel>
 #include <bb/cascades/AbstractPane>
 
+#include <Usecase.hpp>
+
 using namespace bb::cascades;
 using namespace bb::data;
 
@@ -25,6 +27,9 @@ ODSData::ODSData() {
 	bool connectOK = connect(mNetworkAccessManager,
 			SIGNAL(finished(QNetworkReply*)), this,
 			SLOT(requestFinished(QNetworkReply*)));
+
+	// access to the settings
+	mOdsSettings = new ODSSettings();
 
 	// Displays a warning message if there's an issue connecting the signal
 	// and slot. This is a good practice with signals and slots as it can
@@ -73,15 +78,23 @@ void ODSData::delayedInit() {
 	if (!exists) {
 		dir.mkpath(dataPath("ods/upload"));
 	}
+	exists = dir.exists(dataPath("ods/download"));
+	if (!exists) {
+		dir.mkpath(dataPath("ods/download"));
+	}
 	Q_UNUSED(exists);
 }
 
 // login to the server:
-// auth-user-settings-files
 void ODSData::loginToServer() {
 	if (!mDelayedInitDone) {
 		delayedInit();
 	}
+	mUser = mOdsSettings->getValueFor("login/user","");
+	mPassword = mOdsSettings->getValueFor("login/password","");
+	mBaseUrl = mOdsSettings->getValueFor("server/url","");
+	// auth-user-settings-files
+	initiateRequest(-1);
 }
 
 void ODSData::initPathes() {
@@ -119,6 +132,11 @@ void ODSData::initErrors() {
 				;
 }
 
+
+
+
+
+//  M O D E L     F O R    L I S T V I E W S
 void ODSData::initUserModel() {
 
 	// seems that ListView and GroupDataModel will be found after Component was destroyed
@@ -163,13 +181,505 @@ void ODSData::initUserModel() {
 }
 
 void ODSData::initiateRequest(int usecase) {
+	// Start the activity indicator
+	startActivityIndicator();
 
+	bool isJsonContent;
+	bool isInitialization;
+	bool ok;
+
+	QNetworkRequest request = QNetworkRequest();
+	QByteArray postDataSize;
+	//
+	QHttpPart fileLengthPart;
+	QHttpPart groupPkPart;
+	QHttpPart parentPathPart;
+	QHttpPart commentPart;
+	QHttpPart logUcPart;
+	QHttpPart expirationDatePart;
+	QHttpPart tokenPart;
+	QHttpPart overWritePart;
+	QHttpPart fileAttachementPart;
+	//QString formdata;
+	// test if initialization
+	switch (usecase) {
+	case -1:
+		isInitialization = true;
+		usecase = Usecase::UsersAuth;
+		break;
+	case -2:
+		isInitialization = true;
+		usecase = Usecase::UsersUser;
+		break;
+	case -3:
+		isInitialization = true;
+		usecase = Usecase::SettingsUser;
+		break;
+	case -4:
+		isInitialization = true;
+		usecase = Usecase::FilesAll;
+		break;
+	default:
+		isInitialization = false;
+		break;
+	}
+	switch (usecase) {
+	// only for tests
+	case Usecase::UsersTestGet:
+		isJsonContent = true;
+		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::UsersTestGet)));
+		// GET Request
+		mNetworkAccessManager->get(request);
+		return;
+		// only for tests
+	case Usecase::UsersTestPost:
+		isJsonContent = true;
+		mRequestJson.clear();
+		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::UsersTestPost)));
+		break;
+		// always at first
+	case Usecase::UsersAuth:
+		isJsonContent = true;
+		mRequestJson =
+				"{\"username\":\""
+				+ mUser.toUtf8()
+				+ "\",\"password\":\""
+				+ mPassword.toUtf8()
+				+"\"}";
+		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::UsersAuth)));
+		if (isInitialization) {
+			// add a special header
+			request.setRawHeader("nextUsecase", QByteArray::number(Usecase::UsersUser));
+		}
+		break;
+		// do UsersAuth, then get Users data to know what is allowed, get customer_no etc
+	case Usecase::UsersUser:
+		isJsonContent = true;
+		mRequestJson =
+				"{\"token\":\""
+				+ mToken.toUtf8()
+				+ "\"}";
+		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::UsersUser)));
+		if (isInitialization) {
+			// add a special header
+			request.setRawHeader("nextUsecase", QByteArray::number(Usecase::SettingsUser));
+		}
+		break;
+	case Usecase::UsersAll:
+		isJsonContent = true;
+		mRequestJson =
+				"{\"token\":\""
+				+ mToken.toUtf8()
+				+ "\"}";
+		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::UsersAll)));
+		break;
+	case Usecase::FilesAll:
+		isJsonContent = true;
+		// need customernumber
+		mRequestJson =
+				"{\"token\":\""
+				+ mToken.toUtf8()
+				+ "\",\"customer_nr\":"
+				+ QByteArray::number(mCustomerNumber)
+				+ "}";
+		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::FilesAll)));
+		if (isInitialization) {
+			// TODO perhaps notify interested UI controls
+			qDebug() << "last step of initialization: filesAll";
+		}
+		break;
+	case Usecase::FilesDownload:
+		isJsonContent = true;
+		// need fileId
+		mFileId = 67;
+		mFileName = "ekke.png";
+		mRequestJson =
+				"{\"token\":\""
+				+ mToken.toUtf8()
+				+ "\",\"fileID\":"
+				+ QByteArray::number(mFileId)
+				+ "}";
+		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::FilesDownload)));
+		break;
+	case Usecase::FilesDownloadThumbnail:
+		isJsonContent = true;
+		// need fileId
+		mFileId = 67;
+		mFileName = "ekkeThumb.png";
+		mRequestJson =
+				"{\"token\":\""
+				+ mToken.toUtf8()
+				+ "\",\"fileID\":"
+				+ QByteArray::number(mFileId)
+				+ "}";
+		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::FilesDownloadThumbnail)));
+		break;
+	case Usecase::FilesUpload:
+		isJsonContent = false;
+		mFileName = "bb-ods-io.png";
+		mFileToUpload = new QFile(uploadPath(mFileName));
+		ok = mFileToUpload->open(QIODevice::ReadOnly);
+		if (!ok) {
+			// TODO notify UI
+			qDebug() << "cannot open file to upload: " << mFileName;
+			stopActivityIndicator();
+			return;
+		}
+		mFileLength = mFileToUpload->size();
+		qDebug() << "uploading file " << mFileName << " size: " << mFileLength << "\npath: " << mFileToUpload->fileName();
+		mGroupPk = 19;
+		mParentPath= "";
+		mComment="ekkes test from QHttpMultiPart";
+
+		mRequestMultipart = new QHttpMultiPart(QHttpMultiPart::FormDataType, this);
+		fileLengthPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"file_length\""));
+		fileLengthPart.setBody(QString::number(mFileLength).toUtf8());
+		mRequestMultipart->append(fileLengthPart);
+		groupPkPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"group_pk\""));
+		groupPkPart.setBody(QString::number(mGroupPk).toUtf8());
+		mRequestMultipart->append(groupPkPart);
+		parentPathPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"parent_path\""));
+		parentPathPart.setBody(mParentPath.toUtf8());
+		mRequestMultipart->append(parentPathPart);
+		commentPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"comment\""));
+		commentPart.setBody(mComment.toUtf8());
+		mRequestMultipart->append(commentPart);
+		logUcPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"log_uc\""));
+		logUcPart.setBody(mUser.toUtf8());
+		mRequestMultipart->append(logUcPart);
+		expirationDatePart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"expiration_date\""));
+		expirationDatePart.setBody("");
+		mRequestMultipart->append(expirationDatePart);
+		tokenPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"token\""));
+		tokenPart.setBody(mToken.toUtf8());
+		mRequestMultipart->append(tokenPart);
+		overWritePart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"overwrite\""));
+		overWritePart.setBody(QString::number(0).toUtf8());
+		mRequestMultipart->append(overWritePart);
+
+		fileAttachementPart.setHeader(QNetworkRequest::ContentTypeHeader, "application/octet-stream");
+		fileAttachementPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"file_attachment\"; filename=\""+mFileName+"\""));
+		fileAttachementPart.setBodyDevice(mFileToUpload);
+		mRequestMultipart->append(fileAttachementPart);
+
+		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::FilesUpload)));
+		break;
+	case Usecase::TexteAll:
+		isJsonContent = true;
+		mRequestJson =
+				"{\"token\":\""
+				+ mToken.toUtf8()
+				+ "\"}";
+		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::TexteAll)));
+		break;
+	case Usecase::SettingsUser:
+		isJsonContent = true;
+		mRequestJson =
+				"{\"token\":\""
+				+ mToken.toUtf8()
+				+ "\"}";
+		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::SettingsUser)));
+		if (isInitialization) {
+			// add a special header
+			request.setRawHeader("nextUsecase", QByteArray::number(Usecase::FilesAll));
+		}
+		break;
+	case Usecase::SettingsInfoListe:
+		isJsonContent = true;
+		mRequestJson =
+				"{\"token\":\""
+				+ mToken.toUtf8()
+				+ "\"}";
+		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::SettingsInfoListe)));
+		break;
+	default:
+		// TODO mResultText->setText("unknown: " + usecase);
+		// TODO mActivityIndicator->stop();
+		// TODO mActivityIndicator->setVisible(false);
+		return;
+		break;
+	}
+	// POST Request
+	if (isJsonContent) {
+		qDebug() << "POST JSON";
+		if (!mRequestJson.isEmpty()) {
+			postDataSize = QByteArray::number(mRequestJson.size());
+			request.setHeader(QNetworkRequest::ContentLengthHeader, postDataSize);
+		} else {
+			request.setHeader(QNetworkRequest::ContentLengthHeader, 0);
+		}
+		setRequestheader(request, usecase);
+		mNetworkAccessManager->post(request, mRequestJson);
+	} else {
+		qDebug() << "POST MultiPart ";
+		setRequestheader(request, usecase);
+
+		mNetworkAccessManager->post(request, mRequestMultipart);
+	}
+
+	// don't stop the Activity Indicator ! Response will be async
+	// response processed in SLOT requestFinished
+}
+
+/*
+ * Header accepts and requests JSON, Charset is UTF-8
+ */
+void ODSData::setRequestheader(QNetworkRequest &request, int usecase) {
+	switch (usecase) {
+		case Usecase::FilesUpload:
+			request.setRawHeader("Accept", "application/json");
+			request.setHeader(QNetworkRequest::ContentTypeHeader, "multipart/form-data");
+
+			break;
+		case Usecase::FilesDownload:
+			request.setRawHeader("Accept", "application/octet-stream");
+			request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+			// responses are coming in async, so I need to know the filename
+			// perhaps also store the destination path - in this case we have a default downloads folder
+			request.setRawHeader("FileName2Download", mFileName.toUtf8());
+			break;
+		case Usecase::FilesDownloadThumbnail:
+			request.setRawHeader("Accept", "application/octet-stream");
+			request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+			// responses are coming in async, so I need to know the filename
+			// perhaps also store the destination path - in this case we have a default downloads folder
+			request.setRawHeader("FileName2Download", mFileName.toUtf8());
+			break;
+		default:
+			request.setRawHeader("Accept", "application/json");
+			request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+			break;
+	}
+	request.setRawHeader("charset", "utf-8");
 }
 
 // S L O T
 // async getting info that request was finished
 void ODSData::requestFinished(QNetworkReply* reply) {
+	// Check the network reply for errors
+	if (reply->error() == QNetworkReply::NoError) {
+		qDebug() << "NO error from QNetworkReply";
 
+		QString replyUrl(reply->url().toString(QUrl::None));
+		qDebug() << "reply URL" << replyUrl;
+
+		QByteArray replyBytes = reply->readAll();
+
+		qDebug() << "reply Content" << reply->header(QNetworkRequest::ContentTypeHeader).toString();
+		bool isJsonContent;
+		bool isStreamContent;
+		if (reply->header(QNetworkRequest::ContentTypeHeader).toString() == "application/json") {
+			isJsonContent = true;
+			isStreamContent = false;
+		} else if (reply->header(QNetworkRequest::ContentTypeHeader).toString() == "application/octet-stream") {
+			isJsonContent = false;
+			isStreamContent = true;
+		} else {
+			isJsonContent = false;
+			isStreamContent = false;
+		}
+
+		QString replyPath;
+		QString filename;
+		filename = "ods";
+
+		if (isJsonContent) {
+			filename += "/json";
+			qDebug() << "we got a JSON content";
+			int r = replyUrl.length()-mBaseUrl.length();
+			if (r > 0) {
+				replyPath = replyUrl.right(r);
+				filename += replyPath;
+			}
+			filename += ".json";
+		}
+
+		if (isStreamContent) {
+			qDebug() << "we got a STREAM content for file: " << reply->request().rawHeader("FileName2Download");
+			// using a downloads folder inside the app sandbox, so files are secure stored
+			filename += "/download/";
+			filename += reply->request().rawHeader("FileName2Download");
+		}
+
+		if (isJsonContent || isStreamContent) {
+			qDebug() << "filename: " << filename;
+			// to make tests easy we not only write files we downloaded
+			// but also write the JSON content to a file in app data directory
+			// in a real app you won't do this
+			writeReplyToFile(replyBytes, filename);
+			// display the reply in the UI
+			// TODO mResultText->setText(replyBytes);
+		} else {
+			qDebug() << "wrong content: " << reply->header(QNetworkRequest::ContentTypeHeader).toString();
+			// TODO mResultError->setText("wrong content: " + reply->header(QNetworkRequest::ContentTypeHeader).toString());
+		}
+
+		if (isJsonContent) {
+			// process the JSON usecases
+			bool validUsecase = false;
+			for (int i = 0; i < mUsecasePathes.size(); ++i) {
+				if (mUsecasePathes.at(i) == replyPath) {
+					processResponse(replyBytes,  i);
+					validUsecase = true;
+					break;
+				}
+			}
+			if (!validUsecase) {
+				qDebug()  << "couldn't process response path: " << replyPath;
+				// TODO mResultError->setText("unknown Path from reply URL" + replyPath);
+			}
+		}
+
+		// initialization - steps ?
+		// test for specific header
+		int usecase = reply->request().rawHeader("nextUsecase").toInt();
+		switch (usecase) {
+			// usersAuth done - go on with users user
+			case Usecase::UsersUser:
+				initiateRequest(-2);
+				break;
+			// auth and users user done, go on with users settings
+			case Usecase::SettingsUser:
+				initiateRequest(-3);
+				break;
+			// auth, users user, settings user done, go on with all files
+			case Usecase::FilesAll:
+				initiateRequest(-4);
+				break;
+			// no init steps
+			default:
+				break;
+		}
+
+	} else {
+		// uuuups - there was a network error
+		qDebug() << "Problem with the network:" << reply->errorString();
+		// TODO mResultText->setText(reply->errorString());
+		// TODO mResultBody->setText("Network Problem");
+		// TODO mResultError->setText(reply->url().toString(QUrl::None));
+	}
+	stopActivityIndicator();
+	reply->deleteLater();
+}
+
+void ODSData::writeReplyToFile(QByteArray &replyBytes, QString &filename) {
+	QFile file(dataPath(filename));
+	bool ok = file.open(QIODevice::WriteOnly);
+	if (ok) {
+		file.write(replyBytes);
+		file.flush();
+		file.close();
+	} else {
+		qDebug()  << "cannot open file";
+	}
+}
+
+
+void ODSData::processResponse(QByteArray &replyBytes, int usecase) {
+
+	JsonDataAccess jda;
+	// we load a JSON with root is Object
+	const QVariantMap rootObject(jda.loadFromBuffer(replyBytes).toMap());
+	// exists root object body ?
+	QVariantMap bodyMap;
+	if (rootObject.contains("body")) {
+		bodyMap = rootObject.value("body").toMap();
+		QStringList keyList;
+		keyList = bodyMap.keys();
+		// TODO mResultBody->setText(keyList.join(", "));
+
+		// more
+	} else {
+		// TODO mResultBody->setText("no body object in JSON");
+		qDebug() << "no body";
+	}
+	if (rootObject.contains("error")) {
+		QString errorString = rootObject.value("error", "").toString();
+		if (errorString.isEmpty()) {
+			// TODO mResultError->setText("no error text");
+			qDebug() << "no error text";
+		} else {
+			qDebug() << "error:" << errorString;
+			// TODO mResultError->setText(errorString);
+		}
+	} else {
+		qDebug() << "no error";
+		// TODO mResultError->setText("no error object in JSON");
+	}
+	// number of users (created by me - without me)
+	int users;
+	QVariantList list;
+	switch (usecase) {
+		// only for tests
+		case Usecase::UsersTestGet:
+			return;
+			// only for tests
+		case Usecase::UsersTestPost:
+			break;
+			// always at first
+		case Usecase::UsersAuth:
+			mToken = bodyMap.value("token", "").toString();
+			qDebug() << "token:" << mToken;
+			break;
+			// do UsersAuth, then get Users data to know what is allowed, get customer_no etc
+		case Usecase::UsersUser:
+			mCustomerNumber = bodyMap.value("last_customer", "").toInt();
+			qDebug() << "cust no:" << mCustomerNumber;
+			break;
+		case Usecase::UsersAll:
+			//
+			users = bodyMap.value("users", "").toList().size();
+			qDebug() << "Users: " << users;
+			break;
+		case Usecase::FilesAll:
+			// need customernumber
+			break;
+		case Usecase::FilesDownload:
+			// need fileID
+			break;
+		case Usecase::FilesDownloadThumbnail:
+			// need fileID
+			break;
+		case Usecase::FilesUpload:
+			// returns 200 if OK
+			break;
+		case Usecase::SettingsUser:
+			//
+			//list = bodyMap.value("languages", "").toList();
+			//mLanguageNumber = list.at(0).toMap().value("lnr", "").toInt();
+			if (bodyMap.value("languages", "").toList().size() > 0) {
+				mLanguageNumber = bodyMap.value("languages", "").toList().at(0).toMap().value("lnr", "").toInt();
+			} else {
+				mLanguageNumber = 0;
+			}
+			qDebug() << "Language Number: " << mLanguageNumber;
+			break;
+		case Usecase::SettingsInfoListe:
+			//
+			break;
+		case Usecase::TexteAll:
+			//
+			break;
+		default:
+			// TODO mResultText->setText("unknown response: " + usecase);
+
+			return;
+		}
+}
+
+void ODSData::startActivityIndicator(){
+	// TODO
+	qDebug() << "START ActivityIndicator";
+}
+
+void ODSData::stopActivityIndicator(){
+	// TODO
+	qDebug() << "STOP ActivityIndicator";
+}
+
+void ODSData::progressActivityIndicator(int value) {
+	// TODO
+	qDebug() << "Progress ActivityIndicator 1...100: " << value;
 }
 
 ODSData::~ODSData() {

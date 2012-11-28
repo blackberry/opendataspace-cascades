@@ -61,22 +61,22 @@ using namespace bb::system;
  *
  */
 OpenDataSpace::OpenDataSpace(QObject *parent) :
-		QObject(parent), m_invokeManager(new InvokeManager(this)) {
+		QObject(parent), mInvokeManager(new InvokeManager(this)) {
 
 	// ODS is a Invocation Target
-	bool ok = connect(m_invokeManager,
+	bool ok = connect(mInvokeManager,
 			SIGNAL(invoked(const bb::system::InvokeRequest&)), this,
 			SLOT(handleInvoke(const bb::system::InvokeRequest&)));
 	if (!ok) {
 		qDebug() << "connect handleInvoke failed";
 	}
-	ok = connect(m_invokeManager,
+	ok = connect(mInvokeManager,
 			SIGNAL(cardResizeRequested(const bb::system::CardResizeMessage&)),
 			this, SLOT(handleCardResize(const bb::system::CardResizeMessage&)));
 	if (!ok) {
 		qDebug() << "connect handleCardResize failed";
 	}
-	ok = connect(m_invokeManager,
+	ok = connect(mInvokeManager,
 			SIGNAL(cardPooled(const bb::system::CardDoneMessage&)), this,
 			SLOT(handleCardPooled(const bb::system::CardDoneMessage&)));
 	if (!ok) {
@@ -134,20 +134,20 @@ OpenDataSpace::OpenDataSpace(QObject *parent) :
 
 	// we have different root objects
 	QString qmlDocument;
-	switch (m_invokeManager->startupMode()) {
+	switch (mInvokeManager->startupMode()) {
 	case ApplicationStartupMode::LaunchApplication:
 		// the normal Launch
 		// our main QML document: the HomeScreen with a custom Background Image
-		m_isLaunchedEmbedded = false;
-		m_isCard = false;
+		mIsLaunchedEmbedded = false;
+		mIsCard = false;
 		qmlDocument = "asset:///main.qml";
 		qDebug() << "ApplicationStartupMode: LAUNCHED from homescreen";
 		break;
 	case ApplicationStartupMode::InvokeApplication:
 		// Invocation. Someone Opened the App thru Invocation
 		// our main QML document: the HomeScreen with a custom Background Image
-		m_isLaunchedEmbedded = false;
-		m_isCard = false;
+		mIsLaunchedEmbedded = false;
+		mIsCard = false;
 		qmlDocument = "asset:///main.qml";
 		qDebug() << "ApplicationStartupMode: LAUNCHED from Invocation";
 		break;
@@ -156,15 +156,15 @@ OpenDataSpace::OpenDataSpace(QObject *parent) :
 		// the APP is now running embedded and invisible for the user
 		// we only need a small part of the functionality,
 		// so we use a different root object
-		m_isLaunchedEmbedded = true;
-		m_isCard = true;
+		mIsLaunchedEmbedded = true;
+		mIsCard = true;
 		qmlDocument = "asset:///UploadCard.qml";
 		qDebug() << "ApplicationStartupMode: LAUNCHED as CARD";
 		break;
 	default:
 		// our main QML document: the HomeScreen with a custom Background Image
-		m_isLaunchedEmbedded = false;
-		m_isCard = false;
+		mIsLaunchedEmbedded = false;
+		mIsCard = false;
 		qmlDocument = "asset:///main.qml";
 		break;
 	}
@@ -175,15 +175,16 @@ OpenDataSpace::OpenDataSpace(QObject *parent) :
 	//-- setContextProperty expose C++ object in QML as an variable
 	// doesn't matter which root object - we always refer as 'ods' to this
 	qml->setContextProperty("ods", this);
+	// access to the settings
+	mOdsSettings = new ODSSettings();
+	qml->setContextProperty("odssettings", mOdsSettings);
 	// we need also access to the data
-	m_odsData = new ODSData();
-	qml->setContextProperty("odsdata", m_odsData);
-	// and the settings
-	m_odsSettings = new ODSSettings();
-	qml->setContextProperty("odssettings", m_odsSettings);
+	mOdsData = new ODSData();
+	qml->setContextProperty("odsdata", mOdsData);
+
 
 	// TODO test if already done and persisted local
-	m_login_ok = false;
+	mLogin_ok = false;
 
 	// create root object for the UI
 	// all our root objects are a NavigationPane or a TabbedPane
@@ -193,7 +194,7 @@ OpenDataSpace::OpenDataSpace(QObject *parent) :
 	Application::instance()->setScene(root);
 	qDebug() << "set the scene";
 
-	if (!m_isLaunchedEmbedded) {
+	if (!mIsLaunchedEmbedded) {
 		initTheApplication();
 	} else {
 		qDebug() << "we are running EMBEDDED";
@@ -237,14 +238,14 @@ void OpenDataSpace::initTheApplication() {
  */
 void OpenDataSpace::initLocalization(QTranslator* translator) {
 	// remember current locale set
-	m_currentLocale = QLocale().name();
-	qDebug() << "init with locale: " << m_currentLocale;
-	m_translator = translator;
+	mCurrentLocale = QLocale().name();
+	qDebug() << "init with locale: " << mCurrentLocale;
+	mTranslator = translator;
 
 	// watch if user changes locale from device settings
-	m_LocaleHandler = new LocaleHandler(this);
+	mLocaleHandler = new LocaleHandler(this);
 	// connect the handler
-	connect(m_LocaleHandler, SIGNAL(systemLanguageChanged()), this,
+	connect(mLocaleHandler, SIGNAL(systemLanguageChanged()), this,
 			SLOT(localeChanged()));
 	qDebug() << "connected systemLanguageChanged";
 
@@ -260,16 +261,16 @@ void OpenDataSpace::updateLocale(QString locale) {
 	qDebug() << "updateLocale: " << locale;
 
 	// if locale is empty - refresh current. otherwise change the local
-	if (!locale.trimmed().isEmpty() && m_currentLocale != locale) {
-		m_currentLocale = locale;
+	if (!locale.trimmed().isEmpty() && mCurrentLocale != locale) {
+		mCurrentLocale = locale;
 
-		qDebug() << "updating UI to language: " << m_currentLocale;
-		QString filename = QString("OpenDataSpace_%1").arg(m_currentLocale);
-		if (m_translator->load(filename, "app/native/qm")) {
+		qDebug() << "updating UI to language: " << mCurrentLocale;
+		QString filename = QString("OpenDataSpace_%1").arg(mCurrentLocale);
+		if (mTranslator->load(filename, "app/native/qm")) {
 			// multiple translators can be installed but for this
 			// app we only use one translator instance for brevity
-			Application::instance()->removeTranslator(m_translator);
-			Application::instance()->installTranslator(m_translator);
+			Application::instance()->removeTranslator(mTranslator);
+			Application::instance()->installTranslator(mTranslator);
 			// retranslate System menu items
 			translateMenuItems();
 		}
@@ -282,17 +283,17 @@ void OpenDataSpace::updateLocale(QString locale) {
  *
  */
 void OpenDataSpace::translateMenuItems() {
-	if (m_helpItem) {
-		m_helpItem->setTitle(tr("Help"));
+	if (mHelpItem) {
+		mHelpItem->setTitle(tr("Help"));
 	}
-	if (m_feedbackItem) {
-		m_feedbackItem->setTitle(tr("Feedback"));
+	if (mFeedbackItem) {
+		mFeedbackItem->setTitle(tr("Feedback"));
 	}
-	if (m_logoutItem) {
-		m_logoutItem->setTitle(tr("Logout"));
+	if (mLogoutItem) {
+		mLogoutItem->setTitle(tr("Logout"));
 	}
-	if (m_settingsItem) {
-		m_settingsItem->setTitle(tr("Settings"));
+	if (mSettingsItem) {
+		mSettingsItem->setTitle(tr("Settings"));
 	}
 }
 
@@ -303,8 +304,8 @@ void OpenDataSpace::translateMenuItems() {
  */
 QString OpenDataSpace::getCurrentLanguage() {
 	// TODO get language name from QLocale - we have now more languages
-	qDebug() << "OpenDataSpaceApp getCurrentLanguage: " << m_currentLocale;
-	QLocale *loc = new QLocale(m_currentLocale);
+	qDebug() << "OpenDataSpaceApp getCurrentLanguage: " << mCurrentLocale;
+	QLocale *loc = new QLocale(mCurrentLocale);
 	return loc->languageToString(loc->language());
 }
 
@@ -314,8 +315,8 @@ QString OpenDataSpace::getCurrentLanguage() {
  * Retrieve the current locale.
  */
 QString OpenDataSpace::getCurrentLocale() {
-	qDebug() << "getCurrentLocale: " << m_currentLocale;
-	return m_currentLocale;
+	qDebug() << "getCurrentLocale: " << mCurrentLocale;
+	return mCurrentLocale;
 }
 
 /**
@@ -333,30 +334,30 @@ void OpenDataSpace::suppressKeyboard() {
 // opens using swipe-down
 Menu* OpenDataSpace::createApplicationMenu() {
 	// HELP will open a website with Help Instructions from OpenDataSpace
-	m_helpItem = new HelpActionItem();
+	mHelpItem = new HelpActionItem();
 	// FEEDBACK will send an email to OpenDataSpace
-	m_feedbackItem = new ActionItem();
-	m_feedbackItem->setImageSource(
+	mFeedbackItem = new ActionItem();
+	mFeedbackItem->setImageSource(
 			QString("asset:///images/ics/5-content-email81.png"));
 	// LOGOUT will do a LogOut and jump back to HomeScreen and open the LogIn Sheet
-	m_logoutItem = new ActionItem();
-	m_logoutItem->setImageSource(
+	mLogoutItem = new ActionItem();
+	mLogoutItem->setImageSource(
 			QString("asset:///images/ics/10-device-access-accounts81.png"));
 	// SETTINGS will open the User Settings
-	m_settingsItem = new SettingsActionItem();
+	mSettingsItem = new SettingsActionItem();
 	// set the translated Titles
 	translateMenuItems();
 	// plug it all together
-	Menu* menu = Menu::create().addAction(m_feedbackItem).addAction(
-			m_logoutItem).help(m_helpItem).settings(m_settingsItem);
+	Menu* menu = Menu::create().addAction(mFeedbackItem).addAction(
+			mLogoutItem).help(mHelpItem).settings(mSettingsItem);
 	// Connect SIGNALS and SLOTS
-	QObject::connect(m_logoutItem, SIGNAL(triggered()), this,
+	QObject::connect(mLogoutItem, SIGNAL(triggered()), this,
 			SLOT(logoutTriggered()));
-	QObject::connect(m_feedbackItem, SIGNAL(triggered()), this,
+	QObject::connect(mFeedbackItem, SIGNAL(triggered()), this,
 			SLOT(feedbackTriggered()));
-	QObject::connect(m_helpItem, SIGNAL(triggered()), this,
+	QObject::connect(mHelpItem, SIGNAL(triggered()), this,
 			SLOT(helpTriggered()));
-	QObject::connect(m_settingsItem, SIGNAL(triggered()), this,
+	QObject::connect(mSettingsItem, SIGNAL(triggered()), this,
 			SLOT(settingsTriggered()));
 	return menu;
 }
@@ -386,8 +387,8 @@ void OpenDataSpace::logoutTriggered() {
  */
 bool OpenDataSpace::loginDone() {
 	// TODO persist login state
-	qDebug() << "login Done ? " << m_login_ok;
-	return m_login_ok;
+	qDebug() << "login Done ? " << mLogin_ok;
+	return mLogin_ok;
 }
 
 /*
@@ -401,19 +402,21 @@ bool OpenDataSpace::login(const QString user, const QString pw) {
 	if (!user.isEmpty() && !pw.isEmpty()) {
 		// login at Server
 		// play animation
+		mOdsData->loginToServer();
+		// TODO signal / slot
 		// set m_login_ok to true or false if login successfull
-		m_login_ok = true;
+		mLogin_ok = true;
 	} else {
 		qDebug() << "login FAILED: no user / pw";
-		m_login_ok = false;
+		mLogin_ok = false;
 	}
 	// close login sheet if success
 	if (r) {
-		r->setProperty("login", m_login_ok? 1:0);
+		r->setProperty("login", mLogin_ok? 1:0);
 	} else {
 		qDebug() << "object rootpane NOT found";
 	}
-	return m_login_ok;
+	return mLogin_ok;
 }
 
 // handles SLOT from feedbackItem
@@ -456,7 +459,7 @@ void OpenDataSpace::settingsTriggered() {
 void OpenDataSpace::invokeUnbound(QString uri) {
 	InvokeRequest cardRequest;
 	cardRequest.setUri(uri);
-	m_invokeManager->invoke(cardRequest);
+	mInvokeManager->invoke(cardRequest);
 }
 
 // invoke MediaPlayer
@@ -464,7 +467,7 @@ void OpenDataSpace::invokeBoundMediaPlayer(QString uri) {
 	InvokeRequest cardRequest;
 	cardRequest.setUri(uri);
 	cardRequest.setTarget("sys.mediaplayer.previewer");
-	m_invokeManager->invoke(cardRequest);
+	mInvokeManager->invoke(cardRequest);
 }
 
 /**
@@ -477,7 +480,7 @@ void OpenDataSpace::showInView(QString uri) {
 	invokeRequest.setAction("bb.action.VIEW");
 	invokeRequest.setUri(uri);
 	qDebug() << "showInView URI: " << invokeRequest.uri();
-	m_invokeManager->invoke(invokeRequest);
+	mInvokeManager->invoke(invokeRequest);
 }
 
 /**
@@ -493,7 +496,7 @@ void OpenDataSpace::showInViewForMimeType(QString uri, QString mimeType) {
 	invokeRequest.setMimeType(mimeType);
 	qDebug() << "showInViewForMimeType URI: " << invokeRequest.uri() << " Mime:"
 			<< mimeType;
-	m_invokeManager->invoke(invokeRequest);
+	mInvokeManager->invoke(invokeRequest);
 }
 
 /**
@@ -508,7 +511,7 @@ void OpenDataSpace::showInTarget(QString uri, QString target) {
 	invokeRequest.setUri(uri);
 	invokeRequest.setTarget(target);
 	qDebug() << "showInTarget URI: " << invokeRequest.uri();
-	m_invokeManager->invoke(invokeRequest);
+	mInvokeManager->invoke(invokeRequest);
 }
 
 /**
@@ -527,7 +530,7 @@ void OpenDataSpace::showInTargetForMimeType(QString uri, QString mimeType,
 	invokeRequest.setMimeType(mimeType);
 	qDebug() << "showInTargetForMimeType URI: " << invokeRequest.uri()
 			<< " MimeType:" << mimeType;
-	m_invokeManager->invoke(invokeRequest);
+	mInvokeManager->invoke(invokeRequest);
 }
 
 // triggered if Application was sent to back
@@ -546,31 +549,31 @@ void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
 	qDebug() << "Invoke Request Mime:" << request.mimeType();
 	qDebug() << "Invoke Request URI:" << request.uri();
 	qDebug() << "Invoke Request Data:" << request.data();
-	m_invokationTarget = request.target();
-	m_invokationSource = QString::fromLatin1("%1 (%2)").arg(
+	mInvokationTarget = request.target();
+	mInvokationSource = QString::fromLatin1("%1 (%2)").arg(
 			request.source().installId()).arg(request.source().groupId());
-	qDebug() << "Invoke Target ID: " << m_invokationTarget << " from Source: "
-			<< m_invokationSource;
+	qDebug() << "Invoke Target ID: " << mInvokationTarget << " from Source: "
+			<< mInvokationSource;
 	// Invoked as Application
-	if (m_invokationTarget == "io.ods.bb10.invoke") {
-		m_isCard = false;
+	if (mInvokationTarget == "io.ods.bb10.invoke") {
+		mIsCard = false;
 		qDebug() << "Invoked";
 	}
 	// invoked as embedded Card (Previewer) from OPEN or SHARE
-	else if (m_invokationTarget == "io.ods.bb10.card.upload.previewer") {
-		m_isCard = true;
+	else if (mInvokationTarget == "io.ods.bb10.card.upload.previewer") {
+		mIsCard = true;
 		qDebug() << "Invoked for UploadCard as Previewer";
 	}
 	// invoked as embedded Card (Composer) from OPEN
-	else if (m_invokationTarget == "io.ods.bb10.upload.composer") {
-		m_isCard = true;
+	else if (mInvokationTarget == "io.ods.bb10.upload.composer") {
+		mIsCard = true;
 		qDebug() << "Invoked for UploadCard as Composer";
 	}
 	// do some preparing-stuff for a invoked Card
 	// reset values (can come from pool)
 	// set some infos
 	// tell the Card that its a new invocation
-	if (m_isCard) {
+	if (mIsCard) {
 		AbstractPane *p = Application::instance()->scene();
 		bool ok = false;
 		// if there's a URI we take the URI
@@ -601,7 +604,7 @@ void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
  * from Invocation Framework
  */
 bool OpenDataSpace::isCard() {
-	return m_isCard;
+	return mIsCard;
 }
 
 /**
@@ -609,11 +612,11 @@ bool OpenDataSpace::isCard() {
  * can be a Card, a Viewer or a Service
  */
 bool OpenDataSpace::isEmbedded() {
-	return m_isLaunchedEmbedded;
+	return mIsLaunchedEmbedded;
 }
 
 void OpenDataSpace::handleCardResize(const bb::system::CardResizeMessage&) {
-	m_cardStatus = tr("Resized");
+	mCardStatus = tr("Resized");
 	emit cardStatusChanged();
 	qDebug() << "handleCardResize";
 }
@@ -624,7 +627,7 @@ void OpenDataSpace::handleCardPooled(
 	qDebug() << "handleCardPooled data: " << message.data() << " reason: "
 			<< message.reason();
 	// TODO do we need this ?
-	m_cardStatus = tr("Pooled");
+	mCardStatus = tr("Pooled");
 	emit cardStatusChanged();
 }
 
@@ -641,7 +644,7 @@ void OpenDataSpace::cardDone() {
 	// Send message
 	qDebug() << "cardDone: sending message via IvokeManager data: "
 			<< message.data() << " reason: " << message.reason();
-	m_invokeManager->sendCardDone(message);
+	mInvokeManager->sendCardDone(message);
 
 }
 
@@ -660,7 +663,7 @@ void OpenDataSpace::cardCanceled(const QString data) {
 	// Send message
 	qDebug() << "cardDone: sending message via IvokeManager data: "
 			<< message.data() << " reason: " << message.reason();
-	m_invokeManager->sendCardDone(message);
+	mInvokeManager->sendCardDone(message);
 
 }
 
