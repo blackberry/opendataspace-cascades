@@ -91,11 +91,15 @@ NavigationPane {
                 rightPadding: 25
                 TextField {
                     id: server
-                    text: "https://bb.ods.io/"
+                    text: odssettings.getValueFor("server/url","")
                     hintText: qsTr("Server URL") + Retranslate.onLanguageChanged
                     inputMode: TextFieldInputMode.Url
                     textStyle {
                         base: SystemDefaults.TextStyles.BodyText
+                    }
+                    onTextChanged: {
+                        // TODO ask new login ?
+                        odssettings.saveValueFor("server/url",server.text)
                     }
                 }
                 TextField {

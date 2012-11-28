@@ -67,16 +67,7 @@ Page {
                         odssettings.saveValueFor("login/user",usernameEntry())
                         odssettings.saveValueFor("login/password",passwordEntry())
                     }
-                    // TODO test if Login was OK
                     ods.login(usernameEntry(), passwordEntry())
-                    if (OrientationSupport.orientation == UIOrientation.Landscape) {
-                        loginToast.position = SystemUiPosition.MiddleCenter
-                    } else {
-                        loginToast.position = SystemUiPosition.BottomCenter
-                    }
-                    loginToast.body = loginToast.bodyPrefix + usernameEntry()
-                    loginToast.show()
-                    loginDone(true)
                 } else if (result == SystemUiResult.CancelButtonSelection) {
                     console.debug("cancel");
                     if (ods.isEmbedded()) {

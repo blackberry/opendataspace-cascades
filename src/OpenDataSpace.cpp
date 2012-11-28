@@ -35,6 +35,7 @@
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/AbstractPane>
 #include <bb/cascades/controls/navigationpane.h>
+#include <bb/cascades/controls/tabbedpane.h>
 #include <bb/cascades/LocaleHandler>
 #include <bb/cascades/Menu>
 #include <bb/cascades/ActionItem>
@@ -373,8 +374,6 @@ void OpenDataSpace::logoutTriggered() {
 			"loginSheet");
 	if (s) {
 		qDebug() << "logout triggered and loginSheet found";
-		// reset old login credentials
-		login("", "");
 		s->open();
 	} else {
 		qDebug() << "logout triggered, but no loginSheet found";
@@ -398,12 +397,21 @@ bool OpenDataSpace::loginDone() {
 bool OpenDataSpace::login(const QString user, const QString pw) {
 	// TODO test against server
 	// and persist thru Application and Card instances
+	AbstractPane *r = Application::instance()->scene();
 	if (!user.isEmpty() && !pw.isEmpty()) {
-		qDebug() << "login OK with user " << user << " pw *****";
+		// login at Server
+		// play animation
+		// set m_login_ok to true or false if login successfull
 		m_login_ok = true;
 	} else {
 		qDebug() << "login FAILED: no user / pw";
 		m_login_ok = false;
+	}
+	// close login sheet if success
+	if (r) {
+		r->setProperty("login", m_login_ok? 1:0);
+	} else {
+		qDebug() << "object rootpane NOT found";
 	}
 	return m_login_ok;
 }

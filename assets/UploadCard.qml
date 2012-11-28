@@ -7,6 +7,8 @@ import "../media"
 import "../documents"
 
 NavigationPane {
+    // login property triggered from C++ when login to server done
+    property int login: -1
     id: cardNavPaneId
     objectName: "cardNavPaneId"
     property alias newCard: pageId.newCard
@@ -351,6 +353,15 @@ NavigationPane {
         // TODO select the destination
         // if destination OK, then close card - if not cancel card
         queuedForUploadToast.show()
+    }
+    // triggered from C++
+    onLoginChanged: {
+        console.debug("login changed: " + login);
+        if (login == 1) {
+            onLoginDone(true)
+        } else if (login == 0) {
+            onLoginDone(false)
+        }
     }
     onCreationCompleted: {
         // controlled  by host application !

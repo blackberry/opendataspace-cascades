@@ -32,6 +32,8 @@ import "appmenu"
 
 TabbedPane {
     property bool asyncLoadingDone: false
+    // login property triggered from C++ when login to server done
+    property int login: -1
     id: rootNavigationPane
     showTabsOnActionBar: true
     // these objects have to be available on all tabs
@@ -80,8 +82,8 @@ TabbedPane {
         ComponentDefinition {
             id: lazyComponentUploadNavPane
             UploadNavPane {
-            id: uploadPane
-        }
+                id: uploadPane
+            }
         },
         ComponentDefinition {
             id: onDemandComponentUsersNavPane
@@ -146,14 +148,15 @@ TabbedPane {
 
     // FUNCTIONS for the complete TabbedPane called from the Sheets attached to TabbedPane
     // the handler SLOT if LogIn was done
-    // SIGNALed from LoginSheet
-    // Application only gets the signal if login was done with success
+    // SIGNALed from LoginSheet or called from Application
     // Card Pages also get success false to jump back to host
     function onLoginDone(success) {
-        rootNavigationPane.activeTab = homeTab
-        loginSheet.close()
-        if (! asyncLoadingDone) {
-            createLazyComponents()
+        if (success) {
+            rootNavigationPane.activeTab = homeTab
+            loginSheet.close()
+            if (! asyncLoadingDone) {
+                createLazyComponents()
+            }
         }
     }
     // the handler SLOT if Prefs were saved
@@ -193,7 +196,7 @@ TabbedPane {
     }
     function createUserTabComponent() {
         console.debug("createUserTabComponent")
-        console.debug("Login Done ? "+ods.loginDone())
+        console.debug("Login Done ? " + ods.loginDone())
         usersTab.content = onDemandComponentUsersNavPane.createObject()
         // Now the component is cvreated and we can do some stuff from C++
         // Now the objects will be found from findChild()
@@ -230,6 +233,15 @@ TabbedPane {
         // dont want to display the Shee immediately, so using a delayed animation
         // start the animation to open LoginSheet after 1 s
         homePage.loginDelayed()
+    }
+    // triggered from C++
+    onLoginChanged: {
+        console.debug("login changed: " + login);
+        if (login == 1) {
+            onLoginDone(true)
+        } else if (login == 0) {
+            onLoginDone(false)
+        }
     }
 
     // special things to be happened if user changes the Tab
