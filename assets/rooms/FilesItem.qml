@@ -48,14 +48,14 @@ Container {
             id: itemBackground
             imageSource: "asset:///images/white_photo.png"
             preferredWidth: 768
-            preferredHeight: 173
+            preferredHeight: 137
         }
         Container {
             id: highlightContainer
             background: Color.create("#75b5d3")
             opacity: 0.0
             preferredWidth: 760
-            preferredHeight: 168
+            preferredHeight: 132
             horizontalAlignment: HorizontalAlignment.Center
         }
 
@@ -68,9 +68,9 @@ Container {
             horizontalAlignment: HorizontalAlignment.Fill
             verticalAlignment: VerticalAlignment.Center
             ImageView {
-                preferredWidth: 150
-                preferredHeight: 150
-                minWidth: 150
+                preferredWidth: 114
+                preferredHeight: 114
+                minWidth: 114
                 // datamodel knows the icon source
                 imageSource: ListItemData.icon
                 layoutProperties: StackLayoutProperties {
