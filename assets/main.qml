@@ -135,7 +135,7 @@ TabbedPane {
     Tab {
         id: uploadTab
         title: qsTr("Upload") + Retranslate.onLanguageChanged
-        imageSource: "asset:///images/ics/4-collections-cloud-av-upload81.png"
+        imageSource: "asset:///images/upload81.png"
         enabled: false
         // NO CONTENT .... will be lazy loaded after LogIn done
         onTriggered: {
