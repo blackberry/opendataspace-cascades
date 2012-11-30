@@ -368,6 +368,8 @@ NavigationPane {
         // OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
         //-- connect the LoginPage done SIGNAL to the handler SLOT
         loginPage.loginDone.connect(onLoginDone)
+        // connect server-login
+        odsdata.loginFinished.connect(onLoginDone)
         // connect the preview pages
         imagePreviewPage.uploadFromCard.connect(onUpload)
         videoPreviewPage.uploadFromCard.connect(onUpload)

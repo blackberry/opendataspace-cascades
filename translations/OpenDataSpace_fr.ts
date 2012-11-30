@@ -540,42 +540,42 @@ Use any Name and Password</source>
 <context>
     <name>OpenDataSpace</name>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="287"/>
+        <location filename="../src/OpenDataSpace.cpp" line="283"/>
         <source>Help</source>
         <translation type="unfinished">Aider</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="290"/>
+        <location filename="../src/OpenDataSpace.cpp" line="286"/>
         <source>Feedback</source>
         <translation type="unfinished">Réaction</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="293"/>
+        <location filename="../src/OpenDataSpace.cpp" line="289"/>
         <source>Logout</source>
         <translation type="unfinished">Déconnexion</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="296"/>
+        <location filename="../src/OpenDataSpace.cpp" line="292"/>
         <source>Settings</source>
         <translation type="unfinished">Réglages</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="619"/>
+        <location filename="../src/OpenDataSpace.cpp" line="592"/>
         <source>Resized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="630"/>
+        <location filename="../src/OpenDataSpace.cpp" line="603"/>
         <source>Pooled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="641"/>
+        <location filename="../src/OpenDataSpace.cpp" line="614"/>
         <source>:)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="643"/>
+        <location filename="../src/OpenDataSpace.cpp" line="616"/>
         <source>save</source>
         <translation type="unfinished"></translation>
     </message>

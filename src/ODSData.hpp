@@ -25,6 +25,9 @@ public:
 	Q_INVOKABLE
 	void initUserModel();
 
+	Q_SIGNALS:
+		void loginFinished(bool success);
+
 private slots:
     /*!
      * Handles the network reply.

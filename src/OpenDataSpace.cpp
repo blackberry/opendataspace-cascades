@@ -182,10 +182,6 @@ OpenDataSpace::OpenDataSpace(QObject *parent) :
 	mOdsData = new ODSData();
 	qml->setContextProperty("odsdata", mOdsData);
 
-
-	// TODO test if already done and persisted local
-	mLogin_ok = false;
-
 	// create root object for the UI
 	// all our root objects are a NavigationPane or a TabbedPane
 	AbstractPane *root = qml->createRootObject<AbstractPane>();
@@ -382,41 +378,18 @@ void OpenDataSpace::logoutTriggered() {
 }
 
 /*
- * true if Login was done successfully
- * and is still valid
+ * executes login from Credentials Dialog
  */
-bool OpenDataSpace::loginDone() {
-	// TODO persist login state
-	qDebug() << "login Done ? " << mLogin_ok;
-	return mLogin_ok;
-}
-
-/*
- * executes a new login
- * true if credentials are ok
- */
-bool OpenDataSpace::login(const QString user, const QString pw) {
-	// TODO test against server
-	// and persist thru Application and Card instances
-	AbstractPane *r = Application::instance()->scene();
+void OpenDataSpace::login(const QString user, const QString pw) {
 	if (!user.isEmpty() && !pw.isEmpty()) {
-		// login at Server
-		// play animation
+		// save values
+		mOdsSettings->saveValueFor("server/current/user", user);
+		mOdsSettings->saveValueFor("server/current/password", pw);
+		// do server stuff for logging into dataspace
 		mOdsData->loginToServer();
-		// TODO signal / slot
-		// set m_login_ok to true or false if login successfull
-		mLogin_ok = true;
 	} else {
 		qDebug() << "login FAILED: no user / pw";
-		mLogin_ok = false;
 	}
-	// close login sheet if success
-	if (r) {
-		r->setProperty("login", mLogin_ok? 1:0);
-	} else {
-		qDebug() << "object rootpane NOT found";
-	}
-	return mLogin_ok;
 }
 
 // handles SLOT from feedbackItem

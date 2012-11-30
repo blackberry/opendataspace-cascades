@@ -109,18 +109,12 @@ public:
 	Q_INVOKABLE
 	void showInTargetForMimeType(QString uri, QString mimeType, QString target);
 
-	/**
-	 * test if Login is already done and valid
-	 */
-	Q_INVOKABLE
-	bool loginDone();
-
 	/*
 	 * login with username and password
 	 * true if login credentials are ok
 	 */
 	Q_INVOKABLE
-	bool login(QString user, QString pw);
+	void login(QString user, QString pw);
 
 	/**
 	 * test if this application
@@ -169,7 +163,6 @@ private:
 	ActionItem* mFeedbackItem;
 	SettingsActionItem* mSettingsItem;
 	ActionItem* mLogoutItem;
-	bool mLogin_ok;
 
 	QString mCurrentLocale;
 	LocaleHandler* mLocaleHandler;

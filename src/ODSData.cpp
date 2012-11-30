@@ -91,8 +91,8 @@ void ODSData::loginToServer() {
 	if (!mDelayedInitDone) {
 		delayedInit();
 	}
-	mUser = mOdsSettings->getValueFor("login/user","");
-	mPassword = mOdsSettings->getValueFor("login/password","");
+	mUser = mOdsSettings->getValueFor("server/current/user","");
+	mPassword = mOdsSettings->getValueFor("server/current/password","");
 	mBaseUrl = mOdsSettings->getValueFor("server/url","");
 	// auth-user-settings-files
 	initiateRequest(-1);
@@ -182,6 +182,7 @@ void ODSData::initUserModel() {
 
 void ODSData::initiateRequest(int usecase) {
 	// Start the activity indicator
+	// if not in login-sequence
 	startActivityIndicator();
 
 	bool isJsonContent;
@@ -218,6 +219,10 @@ void ODSData::initiateRequest(int usecase) {
 	case -4:
 		isInitialization = true;
 		usecase = Usecase::FilesAll;
+		break;
+	case -5:
+		isInitialization = true;
+		usecase = Usecase::UsersAll;
 		break;
 	default:
 		isInitialization = false;
@@ -272,6 +277,10 @@ void ODSData::initiateRequest(int usecase) {
 				+ mToken.toUtf8()
 				+ "\"}";
 		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::UsersAll)));
+		if (isInitialization) {
+			// add a special header
+			request.setRawHeader("nextUsecase", QByteArray::number(-9999));
+		}
 		break;
 	case Usecase::FilesAll:
 		isJsonContent = true;
@@ -284,10 +293,8 @@ void ODSData::initiateRequest(int usecase) {
 				+ "}";
 		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::FilesAll)));
 		if (isInitialization) {
-			// TODO TEST only
 			// add a special header
 			request.setRawHeader("nextUsecase", QByteArray::number(Usecase::UsersAll));
-			// TODO perhaps notify interested UI controls
 			qDebug() << "last step of initialization: filesAll";
 		}
 		break;
@@ -550,7 +557,11 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 				initiateRequest(-4);
 				break;
 			case Usecase::UsersAll:
-				initiateRequest(usecase);
+				initiateRequest(-5);
+				break;
+			case -9999:
+				// signal
+				emit loginFinished(true);
 				break;
 			// no init steps
 			default:

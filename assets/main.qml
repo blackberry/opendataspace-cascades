@@ -96,7 +96,7 @@ TabbedPane {
     // first Tab: HomePage with custom Image as Background
     Tab {
         id: homeTab
-        imageSource: "asset:///images/ics/10-device-access-location-found81.png"
+        imageSource: "asset:///images/home81.png"
         objectName: "homeTab"
         title: qsTr("Home") + Retranslate.onLanguageChanged
         HomePage {
@@ -110,7 +110,7 @@ TabbedPane {
     // SubRooms and Folders are in Pages
     Tab {
         id: dataspaceTab
-        imageSource: "asset:///images/ics/4-collections-cloud81.png"
+        imageSource: "asset:///images/dataspaces81.png"
         title: qsTr("Data Space") + Retranslate.onLanguageChanged
         // NO CONTENT .... will be lazy loaded after LogIn done
         onTriggered: {
@@ -121,7 +121,7 @@ TabbedPane {
     Tab {
         id: usersTab
         title: qsTr("Users") + Retranslate.onLanguageChanged
-        imageSource: "asset:///images/ics/6-social-group81.png"
+        imageSource: "asset:///images/users81.png"
         enabled: true // TODO onlyIfCurrentUserIsAdministrator()
         // NO CONTENT
         // Users Pane only needed to manage Users
@@ -228,6 +228,8 @@ TabbedPane {
         preferencesContent.done.connect(onSavePreferences)
         //-- connect the preferences save SIGNAL to the handler SLOT
         feedbackContent.send.connect(onSendFeedback)
+        // connect server-login
+        odsdata.loginFinished.connect(onLoginDone)
 
         // but we have to do LogIn at Startup
         // dont want to display the Shee immediately, so using a delayed animation
