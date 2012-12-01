@@ -8,6 +8,7 @@
 #include <bb/cascades/AbstractPane>
 #include <bb/system/SystemProgressDialog.hpp>
 #include <bb/system/SystemUiButton.hpp>
+#include <bb/system/SystemUiProgressState>
 
 #include <Usecase.hpp>
 
@@ -29,12 +30,15 @@ ODSData::ODSData() {
 	// finished signal
 	mNetworkAccessManager = new QNetworkAccessManager(this);
 
+	mProgressDialog = new SystemProgressDialog();
+
 	bool connectOK = connect(mNetworkAccessManager,
 			SIGNAL(finished(QNetworkReply*)), this,
 			SLOT(requestFinished(QNetworkReply*)));
 
 	// access to the settings
 	mOdsSettings = new ODSSettings();
+	mCustomerNumber = -1;
 
 	// Displays a warning message if there's an issue connecting the signal
 	// and slot. This is a good practice with signals and slots as it can
@@ -97,14 +101,14 @@ void ODSData::loginToServer() {
 	}
 	mBaseUrl = mOdsSettings->getValueFor("server/url","");
 
-	mProgressDialog = new SystemProgressDialog();
+	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle("Sync with OpenDataSpace");
 	mProgressDialog->setStatusMessage(mBaseUrl);
 	mProgressDialog->setIcon(QUrl("asset:///images/download-icon.png"));
 	mProgressDialog->cancelButton()->setLabel("connect later");
 	mProgressDialog->confirmButton()->setLabel(QString::null);
-	mProgressDialog->setProgress(1);
+	mProgressDialog->setProgress(15);
 	mProgressDialog->setBody("connect Server, authenticate user...");
 	mProgressDialog->show();
 
@@ -562,17 +566,17 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 
 		if (isJsonContent) {
 			// process the JSON usecases
-			bool validUsecase = false;
+			bool responseOk = false;
 			for (int i = 0; i < mUsecasePathes.size(); ++i) {
 				if (mUsecasePathes.at(i) == replyPath) {
-					processResponse(replyBytes,  i);
-					validUsecase = true;
+					responseOk = processResponse(replyBytes,  i);
 					break;
 				}
 			}
-			if (!validUsecase) {
+			if (!responseOk) {
 				qDebug()  << "couldn't process response path: " << replyPath;
-				// TODO mResultError->setText("unknown Path from reply URL" + replyPath);
+				// S T O P   I T
+				return;
 			}
 		}
 
@@ -582,14 +586,14 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 		switch (usecase) {
 			// usersAuth done - go on with users user
 			case Usecase::UsersUser:
-				mProgressDialog->setProgress(20);
+				mProgressDialog->setProgress(30);
 				mProgressDialog->setBody("Authentication done, getting User...");
 				mProgressDialog->show();
 				initiateRequest(-2);
 				break;
 			// auth and users user done, go on with users settings
 			case Usecase::SettingsUser:
-				mProgressDialog->setProgress(40);
+				mProgressDialog->setProgress(45);
 				mProgressDialog->setBody("User received, getting Settings...");
 				mProgressDialog->show();
 				initiateRequest(-3);
@@ -602,14 +606,16 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 				initiateRequest(-4);
 				break;
 			case Usecase::UsersAll:
-				mProgressDialog->setProgress(80);
+				mProgressDialog->setProgress(90);
 				mProgressDialog->setBody("Files received, getting Userlist...");
 				mProgressDialog->show();
 				initiateRequest(-5);
 				break;
 			case -9999:
 				mProgressDialog->setProgress(100);
+				mProgressDialog->setState(SystemUiProgressState::Inactive);
 				mProgressDialog->setBody("Synchronization with Server done :)");
+				mProgressDialog->setIcon(QUrl("asset:///images/online-icon.png"));
 				mProgressDialog->confirmButton()->setLabel("OK");
 				mProgressDialog->cancelButton()->setLabel(QString::null);
 				mProgressDialog->show();
@@ -647,7 +653,7 @@ void ODSData::writeReplyToFile(QByteArray &replyBytes, QString &filename) {
 }
 
 
-void ODSData::processResponse(QByteArray &replyBytes, int usecase) {
+bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 
 	JsonDataAccess jda;
 	// we load a JSON with root is Object
@@ -671,8 +677,16 @@ void ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 			// TODO mResultError->setText("no error text");
 			qDebug() << "no error text";
 		} else {
-			qDebug() << "error:" << errorString;
-			// TODO mResultError->setText(errorString);
+			qDebug() << "STOP Process response. we got an error:" << errorString;
+			if (errorString.toInt()) {
+				int i = errorString.toInt();
+				if (i < mResponseErrorTexts.size()) {
+					errorString = mResponseErrorTexts.at(i);
+				}
+			}
+			reportError(errorString);
+			// S T O P
+			return false;
 		}
 	} else {
 		qDebug() << "no error";
@@ -685,7 +699,7 @@ void ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 	switch (usecase) {
 		// only for tests
 		case Usecase::UsersTestGet:
-			return;
+			return true;
 			// only for tests
 		case Usecase::UsersTestPost:
 			break;
@@ -738,9 +752,22 @@ void ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 			break;
 		default:
 			// TODO mResultText->setText("unknown response: " + usecase);
-
-			return;
+			break;
 		}
+	return true;
+}
+
+void ODSData::reportError(QString& errorText){
+	if (mProgressDialog->progress() > 0 && mProgressDialog->progress() < 100) {
+		// we have a running dialog
+		mProgressDialog->setBody(errorText);
+		mProgressDialog->setState(SystemUiProgressState::Error);
+		// switch button
+		mProgressDialog->confirmButton()->setLabel("No valid result from Server");
+		mProgressDialog->cancelButton()->setLabel(QString::null);
+		mProgressDialog->setIcon(QUrl("asset:///images/offline-icon.png"));
+		mProgressDialog->show();
+	}
 }
 
 void ODSData::startActivityIndicator(){

@@ -75,7 +75,7 @@ private:
 	void initPathes();
 	void initErrors();
 	void setRequestheader(QNetworkRequest &request, int usecase);
-	void processResponse(QByteArray &replyBytes, int usecase);
+	bool processResponse(QByteArray &replyBytes, int usecase);
 	void writeReplyToFile(QByteArray &replyBytes, QString &filename);
 
 	/**
@@ -97,6 +97,8 @@ private:
 	 * progress of the Activity 1-100
 	 */
 	void progressActivityIndicator(int value);
+
+	void reportError(QString &errorText);
 
 };
 
