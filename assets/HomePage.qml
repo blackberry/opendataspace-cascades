@@ -38,15 +38,6 @@ Page {
             id: backgroundPortrait
             imageSource: "asset:///images/login-ods-768x1280-o.png"
         },
-        // TODO remove in production
-        SystemToast {
-            id: devPreviewInfoToast
-            body: qsTr("ODS Developer Preview\nUse any Name and Password") + Retranslate.onLanguageChanged
-            icon: "asset:///images/rooms-icon.png"
-            onFinished: {
-                startupDelayToOpenSheetFirstTime.play();
-            }
-        },
         // application supports changing the Orientation
         OrientationHandler {
             onOrientationAboutToChange: {
@@ -98,11 +89,7 @@ Page {
     }
     // starts the LoginSheet with some delay
     function loginDelayed() {
-        // deactivate in production TODO
-        devPreviewInfoToast.show();
-        // -----
-        // activate in production
-        // startupDelayToOpenSheetFirstTime.play();
+        startupDelayToOpenSheetFirstTime.play();
     }
     onCreationCompleted: {
         // Overlay ActionBar

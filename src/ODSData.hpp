@@ -5,8 +5,10 @@
 #include <bb/cascades/GroupDataModel>
 #include <bb/cascades/controls/listview.h>
 #include "ODSSettings.hpp"
+#include <bb/system/SystemProgressDialog.hpp>
 
 using namespace bb::cascades;
+using namespace bb::system;
 
 class ODSData: public QObject {
 Q_OBJECT
@@ -15,6 +17,9 @@ public:
 	virtual ~ODSData();
 
 	void loginToServer();
+
+	Q_INVOKABLE
+	bool loginValid();
 
 	/*!
 	 * Initiates the network request.
@@ -37,6 +42,8 @@ private slots:
 
 private:
     ODSSettings* mOdsSettings;
+
+    SystemProgressDialog* mProgressDialog;
 
 	QNetworkAccessManager *mNetworkAccessManager;
     QStringList mResponseErrorTexts;

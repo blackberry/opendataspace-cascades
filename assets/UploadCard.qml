@@ -128,17 +128,6 @@ NavigationPane {
             }
         },
         SystemToast {
-            id: loginFailedToast
-            body: qsTr("SORRY: Login failed - you cannot upload the file") + Retranslate.onLanguageChanged
-            icon: "asset:///images/upload-icon.png"
-            position: SystemUiPosition.BottomCenter
-            onFinished: {
-                // we have to do this here - otherwise the user won't get it
-                // because the card is closed so fast
-                ods.cardCanceled("Login failed")
-            }
-        },
-        SystemToast {
             id: backFromPreviewToast
             body: qsTr("Hitting BACK: File was not uploaded !") + Retranslate.onLanguageChanged
             icon: "asset:///images/upload-icon.png"
@@ -222,15 +211,18 @@ NavigationPane {
         onNewCardChanged: {
             if (newCard == true) {
                 newCard = false;
-                if (ods.loginDone() == false) {
-                    console.debug("Login not valid");
-                    // in this case we push the login page
-                    push(loginPage)
-                    // if login done successfully content can be prepared
-                } else {
+                if (odsdata.loginValid()) {
                     console.debug("Login valid");
                     // now we can prepare the content
                     prepareContent();
+                    
+                } else {
+                    console.debug("UPLOAD-CARD: Login not valid");
+                    // in this case we connect to server signal
+                    connectToLoginFinished()
+                    // ... and push login page
+                    push(loginPage)
+                    // if login done successfully content can be prepared
                 }
             }
         }
@@ -325,15 +317,14 @@ NavigationPane {
             cardNavPaneId.pop();
         }
         // if login failed we have to cancel the Card
-        if (! success || ods.loginDone() == false) {
-            console.debug("coming back from Login: Login false");
-            loginFailedToast.show()
-            // this will be done from toast onFinished():
-            // ods.cardCanceled("Login failed")
-        } else {
+        if (success) {
             // login was OK, the User can do the expected Card stuff
             console.debug("coming back from Login: Login true");
             prepareContent();
+        } else {
+            // cancel the CARD
+            console.debug("Login failed - CANCEL the CARD");
+            ods.cardCanceled("Login failed")
         }
     }
     // function called if user navigates back from preview without uploading
@@ -363,13 +354,17 @@ NavigationPane {
             onLoginDone(false)
         }
     }
+    function connectToLoginFinished() {
+        console.debug("UPLOAD CARD connect with loginFinished");
+        odsdata.loginFinished.connect(onLoginDone)
+    }
     onCreationCompleted: {
         // controlled  by host application !
         // OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
         //-- connect the LoginPage done SIGNAL to the handler SLOT
         loginPage.loginDone.connect(onLoginDone)
         // connect server-login
-        odsdata.loginFinished.connect(onLoginDone)
+        // odsdata.loginFinished.connect(onLoginDone)
         // connect the preview pages
         imagePreviewPage.uploadFromCard.connect(onUpload)
         videoPreviewPage.uploadFromCard.connect(onUpload)
@@ -380,6 +375,6 @@ NavigationPane {
         documentsPreviewPage.uploadFromCard.connect(onUpload)
         imagePreviewPage.uploadFromCard.connect(onUpload)
         booksPreviewPage.uploadFromCard.connect(onUpload)
-        console.debug("NavigationPane created");
+        console.debug("UPLOAD CARD NavigationPane created");
     }
 }

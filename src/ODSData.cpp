@@ -1,15 +1,19 @@
 
 #include "ODSData.hpp"
 #include "ODSUser.hpp"
+ #include <QUrl>
 #include <bb/cascades/Application>
 #include <bb/data/JsonDataAccess>
 #include <bb/cascades/GroupDataModel>
 #include <bb/cascades/AbstractPane>
+#include <bb/system/SystemProgressDialog.hpp>
+#include <bb/system/SystemUiButton.hpp>
 
 #include <Usecase.hpp>
 
 using namespace bb::cascades;
 using namespace bb::data;
+using namespace bb::system;
 
 static QString dataPath(const QString& fileName) {
 	return QDir::currentPath() + "/data/" + fileName;
@@ -91,11 +95,43 @@ void ODSData::loginToServer() {
 	if (!mDelayedInitDone) {
 		delayedInit();
 	}
+	mBaseUrl = mOdsSettings->getValueFor("server/url","");
+
+	mProgressDialog = new SystemProgressDialog();
+	mProgressDialog->setEmoticonsEnabled(true);
+	mProgressDialog->setTitle("Sync with OpenDataSpace");
+	mProgressDialog->setStatusMessage(mBaseUrl);
+	mProgressDialog->setIcon(QUrl("asset:///images/download-icon.png"));
+	mProgressDialog->cancelButton()->setLabel("connect later");
+	mProgressDialog->confirmButton()->setLabel(QString::null);
+	mProgressDialog->setProgress(1);
+	mProgressDialog->setBody("connect Server, authenticate user...");
+	mProgressDialog->show();
+
 	mUser = mOdsSettings->getValueFor("server/current/user","");
 	mPassword = mOdsSettings->getValueFor("server/current/password","");
-	mBaseUrl = mOdsSettings->getValueFor("server/url","");
+
 	// auth-user-settings-files
 	initiateRequest(-1);
+
+}
+
+bool ODSData::loginValid() {
+	// TODO add check last login time
+	// if from today: OK
+	if (mCustomerNumber <= 0) {
+		qDebug() << "customer number missing ";
+		return false;
+	}
+	if (mUser.isNull() || mUser.isEmpty()) {
+		qDebug() << "user missing ";
+		return false;
+	}
+	if (mToken.isNull() || mToken.isEmpty()) {
+		qDebug() << "token missing ";
+		return false;
+	}
+	return true;
 }
 
 void ODSData::initPathes() {
@@ -546,20 +582,38 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 		switch (usecase) {
 			// usersAuth done - go on with users user
 			case Usecase::UsersUser:
+				mProgressDialog->setProgress(20);
+				mProgressDialog->setBody("Authentication done, getting User...");
+				mProgressDialog->show();
 				initiateRequest(-2);
 				break;
 			// auth and users user done, go on with users settings
 			case Usecase::SettingsUser:
+				mProgressDialog->setProgress(40);
+				mProgressDialog->setBody("User received, getting Settings...");
+				mProgressDialog->show();
 				initiateRequest(-3);
 				break;
 			// auth, users user, settings user done, go on with all files
 			case Usecase::FilesAll:
+				mProgressDialog->setProgress(60);
+				mProgressDialog->setBody("Settings received, getting Files...");
+				mProgressDialog->show();
 				initiateRequest(-4);
 				break;
 			case Usecase::UsersAll:
+				mProgressDialog->setProgress(80);
+				mProgressDialog->setBody("Files received, getting Userlist...");
+				mProgressDialog->show();
 				initiateRequest(-5);
 				break;
 			case -9999:
+				mProgressDialog->setProgress(100);
+				mProgressDialog->setBody("Synchronization with Server done :)");
+				mProgressDialog->confirmButton()->setLabel("OK");
+				mProgressDialog->cancelButton()->setLabel(QString::null);
+				mProgressDialog->show();
+				// TODO wait for OK before signal
 				// signal
 				emit loginFinished(true);
 				break;
@@ -567,6 +621,7 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			default:
 				break;
 		}
+
 
 	} else {
 		// uuuups - there was a network error

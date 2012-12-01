@@ -262,15 +262,6 @@
     </message>
 </context>
 <context>
-    <name>HomePage</name>
-    <message>
-        <location filename="../assets/HomePage.qml" line="44"/>
-        <source>ODS Developer Preview
-Use any Name and Password</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>HtmlPreviewPage</name>
     <message>
         <location filename="../assets/documents/HtmlPreviewPage.qml" line="32"/>
@@ -400,107 +391,107 @@ Use any Name and Password</source>
 <context>
     <name>ODSData</name>
     <message>
-        <location filename="../src/ODSData.cpp" line="112"/>
+        <location filename="../src/ODSData.cpp" line="148"/>
         <source>Code 0: No Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="113"/>
+        <location filename="../src/ODSData.cpp" line="149"/>
         <source>Code 1 JSON Error: Server was unable to parse the request.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="114"/>
+        <location filename="../src/ODSData.cpp" line="150"/>
         <source>Code 2 Invalid Credentials: Invalid user or password specified during login.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="115"/>
+        <location filename="../src/ODSData.cpp" line="151"/>
         <source>Code 3: Account has expired.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="116"/>
+        <location filename="../src/ODSData.cpp" line="152"/>
         <source>Code 4: Account locked due to lost mobile device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="117"/>
+        <location filename="../src/ODSData.cpp" line="153"/>
         <source>Code 5: Mobile access locked for this account.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="118"/>
+        <location filename="../src/ODSData.cpp" line="154"/>
         <source>Code 6: Account locked by admin.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="119"/>
+        <location filename="../src/ODSData.cpp" line="155"/>
         <source>Code 7 Token expired: Session ID has expired. Login has to be invoked again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="120"/>
+        <location filename="../src/ODSData.cpp" line="156"/>
         <source>Code 8: User already exists.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="121"/>
+        <location filename="../src/ODSData.cpp" line="157"/>
         <source>Code 9: Customer not found during AllFilesRequest.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="122"/>
+        <location filename="../src/ODSData.cpp" line="158"/>
         <source>Code 10: Invalid path.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="123"/>
+        <location filename="../src/ODSData.cpp" line="159"/>
         <source>Code 11: File write error.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="124"/>
+        <location filename="../src/ODSData.cpp" line="160"/>
         <source>Code 12 Invalid File: Attempted a file operation using an invalid ID.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="125"/>
+        <location filename="../src/ODSData.cpp" line="161"/>
         <source>Code 13 File exists: Attempt to copy or move to an existing file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="126"/>
+        <location filename="../src/ODSData.cpp" line="162"/>
         <source>Code 14 Folder not empty: Attempted to delete a non-emty folder.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="127"/>
+        <location filename="../src/ODSData.cpp" line="163"/>
         <source>Code 15: Failed to create a download link.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="128"/>
+        <location filename="../src/ODSData.cpp" line="164"/>
         <source>Code 16: Maximum number of users reached.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="129"/>
+        <location filename="../src/ODSData.cpp" line="165"/>
         <source>Code 17: Disk quota was reached.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="130"/>
+        <location filename="../src/ODSData.cpp" line="166"/>
         <source>Code 18: DeleteAll could not delete all files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="131"/>
+        <location filename="../src/ODSData.cpp" line="167"/>
         <source>Code 19: MoveAll could not move all files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="132"/>
+        <location filename="../src/ODSData.cpp" line="168"/>
         <source>Code 20: CopyAll could not copy all files.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -852,21 +843,16 @@ Use any Name and Password</source>
     <name>UploadCard</name>
     <message>
         <location filename="../assets/UploadCard.qml" line="132"/>
-        <source>SORRY: Login failed - you cannot upload the file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/UploadCard.qml" line="143"/>
         <source>Hitting BACK: File was not uploaded !</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/UploadCard.qml" line="165"/>
+        <location filename="../assets/UploadCard.qml" line="154"/>
         <source>Queued for Upload to ODS Cloud</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/UploadCard.qml" line="244"/>
+        <location filename="../assets/UploadCard.qml" line="236"/>
         <source>SORRY: no FilePath - you cannot upload the file</source>
         <translation type="unfinished"></translation>
     </message>
