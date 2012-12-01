@@ -196,7 +196,6 @@ TabbedPane {
     }
     function createUserTabComponent() {
         console.debug("createUserTabComponent")
-        console.debug("Login Done ? " + ods.loginDone())
         usersTab.content = onDemandComponentUsersNavPane.createObject()
         // Now the component is cvreated and we can do some stuff from C++
         // Now the objects will be found from findChild()

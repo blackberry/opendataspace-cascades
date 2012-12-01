@@ -103,13 +103,13 @@ void ODSData::loginToServer() {
 
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
-	mProgressDialog->setTitle("Sync with OpenDataSpace");
+	mProgressDialog->setTitle(tr("Sync with OpenDataSpace"));
 	mProgressDialog->setStatusMessage(mBaseUrl);
 	mProgressDialog->setIcon(QUrl("asset:///images/download-icon.png"));
-	mProgressDialog->cancelButton()->setLabel("connect later");
+	mProgressDialog->cancelButton()->setLabel(tr("Stop synchronization"));
 	mProgressDialog->confirmButton()->setLabel(QString::null);
 	mProgressDialog->setProgress(15);
-	mProgressDialog->setBody("connect Server, authenticate user...");
+	mProgressDialog->setBody(tr("connect Server, authenticate user..."));
 	mProgressDialog->show();
 
 	mUser = mOdsSettings->getValueFor("server/current/user","");
@@ -173,10 +173,6 @@ void ODSData::initErrors() {
 				;
 }
 
-
-
-
-
 //  M O D E L     F O R    L I S T V I E W S
 void ODSData::initUserModel() {
 
@@ -228,6 +224,7 @@ void ODSData::initiateRequest(int usecase) {
 	bool isJsonContent;
 	bool isInitialization;
 	bool ok;
+	QString errorString;
 
 	QNetworkRequest request = QNetworkRequest();
 	QByteArray postDataSize;
@@ -370,9 +367,12 @@ void ODSData::initiateRequest(int usecase) {
 		mFileToUpload = new QFile(uploadPath(mFileName));
 		ok = mFileToUpload->open(QIODevice::ReadOnly);
 		if (!ok) {
-			// TODO notify UI
 			qDebug() << "cannot open file to upload: " << mFileName;
+			errorString = tr("Cannot read file to upload: ");
+			errorString += mFileName;
+			reportError(errorString);
 			stopActivityIndicator();
+			// S T O P   I T
 			return;
 		}
 		mFileLength = mFileToUpload->size();
@@ -443,9 +443,10 @@ void ODSData::initiateRequest(int usecase) {
 		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::SettingsInfoListe)));
 		break;
 	default:
-		// TODO mResultText->setText("unknown: " + usecase);
-		// TODO mActivityIndicator->stop();
-		// TODO mActivityIndicator->setVisible(false);
+		errorString = tr("unknown Usecase: ");
+		errorString += QString::number(usecase);
+		reportError(errorString);
+		// S T O P   I T
 		return;
 		break;
 	}
@@ -463,10 +464,8 @@ void ODSData::initiateRequest(int usecase) {
 	} else {
 		qDebug() << "POST MultiPart ";
 		setRequestheader(request, usecase);
-
 		mNetworkAccessManager->post(request, mRequestMultipart);
 	}
-
 	// don't stop the Activity Indicator ! Response will be async
 	// response processed in SLOT requestFinished
 }
@@ -479,7 +478,6 @@ void ODSData::setRequestheader(QNetworkRequest &request, int usecase) {
 		case Usecase::FilesUpload:
 			request.setRawHeader("Accept", "application/json");
 			request.setHeader(QNetworkRequest::ContentTypeHeader, "multipart/form-data");
-
 			break;
 		case Usecase::FilesDownload:
 			request.setRawHeader("Accept", "application/octet-stream");
@@ -507,14 +505,11 @@ void ODSData::setRequestheader(QNetworkRequest &request, int usecase) {
 // async getting info that request was finished
 void ODSData::requestFinished(QNetworkReply* reply) {
 	// Check the network reply for errors
+	QString errorString;
 	if (reply->error() == QNetworkReply::NoError) {
-		qDebug() << "NO error from QNetworkReply";
-
 		QString replyUrl(reply->url().toString(QUrl::None));
 		qDebug() << "reply URL" << replyUrl;
-
 		QByteArray replyBytes = reply->readAll();
-
 		qDebug() << "reply Content" << reply->header(QNetworkRequest::ContentTypeHeader).toString();
 		bool isJsonContent;
 		bool isStreamContent;
@@ -528,11 +523,9 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			isJsonContent = false;
 			isStreamContent = false;
 		}
-
 		QString replyPath;
 		QString filename;
 		filename = "ods";
-
 		if (isJsonContent) {
 			filename += "/json";
 			qDebug() << "we got a JSON content";
@@ -543,27 +536,32 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			}
 			filename += ".json";
 		}
-
 		if (isStreamContent) {
 			qDebug() << "we got a STREAM content for file: " << reply->request().rawHeader("FileName2Download");
 			// using a downloads folder inside the app sandbox, so files are secure stored
 			filename += "/download/";
 			filename += reply->request().rawHeader("FileName2Download");
 		}
-
 		if (isJsonContent || isStreamContent) {
 			qDebug() << "filename: " << filename;
-			// to make tests easy we not only write files we downloaded
-			// but also write the JSON content to a file in app data directory
-			// in a real app you won't do this
-			writeReplyToFile(replyBytes, filename);
-			// display the reply in the UI
-			// TODO mResultText->setText(replyBytes);
+			// write the JSON content to a file in app data directory
+			// so wen use it for data models
+			bool success = writeReplyToFile(replyBytes, filename);
+			if (!success) {
+				errorString = tr("Error: could not write to file: ");
+				errorString += filename;
+				reportError(errorString);
+				// S T O P   I T
+				return;
+			}
 		} else {
 			qDebug() << "wrong content: " << reply->header(QNetworkRequest::ContentTypeHeader).toString();
-			// TODO mResultError->setText("wrong content: " + reply->header(QNetworkRequest::ContentTypeHeader).toString());
+			errorString = tr("wrong content ");
+			errorString += reply->header(QNetworkRequest::ContentTypeHeader).toString();
+			reportError(errorString);
+			// S T O P   I T
+			return;
 		}
-
 		if (isJsonContent) {
 			// process the JSON usecases
 			bool responseOk = false;
@@ -579,7 +577,6 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 				return;
 			}
 		}
-
 		// initialization - steps ?
 		// test for specific header
 		int usecase = reply->request().rawHeader("nextUsecase").toInt();
@@ -587,60 +584,57 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			// usersAuth done - go on with users user
 			case Usecase::UsersUser:
 				mProgressDialog->setProgress(30);
-				mProgressDialog->setBody("Authentication done, getting User...");
+				mProgressDialog->setBody(tr("Authentication done, getting User..."));
 				mProgressDialog->show();
 				initiateRequest(-2);
 				break;
 			// auth and users user done, go on with users settings
 			case Usecase::SettingsUser:
 				mProgressDialog->setProgress(45);
-				mProgressDialog->setBody("User received, getting Settings...");
+				mProgressDialog->setBody(tr("User received, getting Settings..."));
 				mProgressDialog->show();
 				initiateRequest(-3);
 				break;
 			// auth, users user, settings user done, go on with all files
 			case Usecase::FilesAll:
 				mProgressDialog->setProgress(60);
-				mProgressDialog->setBody("Settings received, getting Files...");
+				mProgressDialog->setBody(tr("Settings received, getting Files..."));
 				mProgressDialog->show();
 				initiateRequest(-4);
 				break;
 			case Usecase::UsersAll:
 				mProgressDialog->setProgress(90);
-				mProgressDialog->setBody("Files received, getting Userlist...");
+				mProgressDialog->setBody(tr("Files received, getting Userlist..."));
 				mProgressDialog->show();
 				initiateRequest(-5);
 				break;
 			case -9999:
 				mProgressDialog->setProgress(100);
 				mProgressDialog->setState(SystemUiProgressState::Inactive);
-				mProgressDialog->setBody("Synchronization with Server done :)");
+				mProgressDialog->setBody(tr("Synchronization with Server done :)"));
 				mProgressDialog->setIcon(QUrl("asset:///images/online-icon.png"));
-				mProgressDialog->confirmButton()->setLabel("OK");
+				mProgressDialog->confirmButton()->setLabel(tr("Synchronization done"));
 				mProgressDialog->cancelButton()->setLabel(QString::null);
 				mProgressDialog->show();
 				// TODO wait for OK before signal
-				// signal
+				// signal   O K
 				emit loginFinished(true);
 				break;
 			// no init steps
 			default:
 				break;
 		}
-
-
 	} else {
 		// uuuups - there was a network error
 		qDebug() << "Problem with the network:" << reply->errorString();
-		// TODO mResultText->setText(reply->errorString());
-		// TODO mResultBody->setText("Network Problem");
-		// TODO mResultError->setText(reply->url().toString(QUrl::None));
+		errorString = reply->errorString();
+		reportError(errorString);
 	}
 	stopActivityIndicator();
 	reply->deleteLater();
 }
 
-void ODSData::writeReplyToFile(QByteArray &replyBytes, QString &filename) {
+bool ODSData::writeReplyToFile(QByteArray &replyBytes, QString &filename) {
 	QFile file(dataPath(filename));
 	bool ok = file.open(QIODevice::WriteOnly);
 	if (ok) {
@@ -648,8 +642,9 @@ void ODSData::writeReplyToFile(QByteArray &replyBytes, QString &filename) {
 		file.flush();
 		file.close();
 	} else {
-		qDebug()  << "cannot open file";
+		qDebug()  << "cannot open file to write: " << filename;
 	}
+	return ok;
 }
 
 
@@ -660,22 +655,25 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 	const QVariantMap rootObject(jda.loadFromBuffer(replyBytes).toMap());
 	// exists root object body ?
 	QVariantMap bodyMap;
+	QString errorString;
 	if (rootObject.contains("body")) {
 		bodyMap = rootObject.value("body").toMap();
-		QStringList keyList;
-		keyList = bodyMap.keys();
+		// QStringList keyList;
+		// keyList = bodyMap.keys();
 		// TODO mResultBody->setText(keyList.join(", "));
-
 		// more
 	} else {
 		// TODO mResultBody->setText("no body object in JSON");
 		qDebug() << "no body";
+		errorString = tr("Response without Body-part");
+		reportError(errorString);
+		// S T O P
+		return false;
 	}
 	if (rootObject.contains("error")) {
-		QString errorString = rootObject.value("error", "").toString();
+		errorString = rootObject.value("error", "").toString();
 		if (errorString.isEmpty()) {
-			// TODO mResultError->setText("no error text");
-			qDebug() << "no error text";
+			qDebug() << "this is OK: no text in error part";
 		} else {
 			qDebug() << "STOP Process response. we got an error:" << errorString;
 			if (errorString.toInt()) {
@@ -689,8 +687,7 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 			return false;
 		}
 	} else {
-		qDebug() << "no error";
-		// TODO mResultError->setText("no error object in JSON");
+		qDebug() << "no error part - we ignore this";
 	}
 	// number of users (created by me - without me)
 	int users;
@@ -751,8 +748,10 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 			//
 			break;
 		default:
-			// TODO mResultText->setText("unknown response: " + usecase);
-			break;
+			errorString = tr("Unknown Response Usecase");
+			reportError(errorString);
+			// S T O P
+			return false;
 		}
 	return true;
 }
@@ -760,10 +759,10 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 void ODSData::reportError(QString& errorText){
 	if (mProgressDialog->progress() > 0 && mProgressDialog->progress() < 100) {
 		// we have a running dialog
-		mProgressDialog->setBody(errorText);
+		mProgressDialog->setBody(errorText+" :(");
 		mProgressDialog->setState(SystemUiProgressState::Error);
 		// switch button
-		mProgressDialog->confirmButton()->setLabel("No valid result from Server");
+		mProgressDialog->confirmButton()->setLabel(tr("No valid result from Server"));
 		mProgressDialog->cancelButton()->setLabel(QString::null);
 		mProgressDialog->setIcon(QUrl("asset:///images/offline-icon.png"));
 		mProgressDialog->show();

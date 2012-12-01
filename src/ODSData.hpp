@@ -76,7 +76,7 @@ private:
 	void initErrors();
 	void setRequestheader(QNetworkRequest &request, int usecase);
 	bool processResponse(QByteArray &replyBytes, int usecase);
-	void writeReplyToFile(QByteArray &replyBytes, QString &filename);
+	bool writeReplyToFile(QByteArray &replyBytes, QString &filename);
 
 	/**
 	 * some parts of initialization will be done delayed

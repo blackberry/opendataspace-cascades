@@ -424,6 +424,21 @@
 <context>
     <name>ODSData</name>
     <message>
+        <location filename="../src/ODSData.cpp" line="106"/>
+        <source>Sync with OpenDataSpace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="109"/>
+        <source>Stop synchronization</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="112"/>
+        <source>connect Server, authenticate user...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/ODSData.cpp" line="152"/>
         <source>Code 0: No Error</source>
         <translation type="unfinished"></translation>
@@ -526,6 +541,71 @@
     <message>
         <location filename="../src/ODSData.cpp" line="172"/>
         <source>Code 20: CopyAll could not copy all files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="371"/>
+        <source>Cannot read file to upload: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="446"/>
+        <source>unknown Usecase: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="551"/>
+        <source>Error: could not write to file: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="559"/>
+        <source>wrong content </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="587"/>
+        <source>Authentication done, getting User...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="594"/>
+        <source>User received, getting Settings...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="601"/>
+        <source>Settings received, getting Files...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="607"/>
+        <source>Files received, getting Userlist...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="614"/>
+        <source>Synchronization with Server done :)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="616"/>
+        <source>Synchronization done</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="668"/>
+        <source>Response without Body-part</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="751"/>
+        <source>Unknown Response Usecase</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="765"/>
+        <source>No valid result from Server</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
