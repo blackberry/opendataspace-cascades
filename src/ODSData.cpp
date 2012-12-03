@@ -1,7 +1,8 @@
 
 #include "ODSData.hpp"
 #include "ODSUser.hpp"
- #include <QUrl>
+#include "ODSFile.hpp"
+#include <QUrl>
 #include <bb/cascades/Application>
 #include <bb/data/JsonDataAccess>
 #include <bb/cascades/GroupDataModel>
@@ -250,6 +251,10 @@ void ODSData::initUserModel() {
 		qDebug() << "NOT found GroupDataModel :(";
 		// TODO Dialog Error
 	}
+
+}
+
+void ODSData::initFilesModel() {
 
 }
 

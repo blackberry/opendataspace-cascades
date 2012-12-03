@@ -30,6 +30,9 @@ public:
 	Q_INVOKABLE
 	void initUserModel();
 
+	Q_INVOKABLE
+	void initFilesModel();
+
 	Q_SIGNALS:
 		void loginFinished(bool success);
 
