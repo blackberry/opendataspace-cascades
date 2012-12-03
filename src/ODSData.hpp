@@ -66,9 +66,6 @@ private:
 	QString mComment;
 
 	GroupDataModel* mUsersDataModel;
-	// temp
-	QVariantList mListAllUser;
-	QVariantMap mMyUserMap;
 
 	bool mDelayedInitDone;
 
@@ -77,6 +74,7 @@ private:
 	void setRequestheader(QNetworkRequest &request, int usecase);
 	bool processResponse(QByteArray &replyBytes, int usecase);
 	bool writeReplyToFile(QByteArray &replyBytes, QString &filename);
+	QVariantMap readDataFromJson (int usecase);
 
 	/**
 	 * some parts of initialization will be done delayed

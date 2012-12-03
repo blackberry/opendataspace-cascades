@@ -197,16 +197,26 @@ void ODSData::initUserModel() {
 
 	qDebug() << "initUserModel: ";
 	if (mUsersDataModel) {
-		qDebug() << "found GroupDataModel: " << mUsersDataModel->size();
-		qDebug() << "and from all users: " << mListAllUser.size();
 		mUsersDataModel->clear();
-		if (!mMyUserMap.isEmpty()) {
-			mUsersDataModel->insert(new ODSUser(mMyUserMap));
+		QVariantMap dataMap;
+		QVariantList dataList;
+
+		// get my own users data
+		dataMap = readDataFromJson(Usecase::UsersUser);
+		if (!dataMap.isEmpty()) {
+			mUsersDataModel->insert(new ODSUser(dataMap));
 		}
 
-		for (int i = 0; i < mListAllUser.size(); ++i) {
-			QVariantMap map = mListAllUser.at(i).toMap();
-			mUsersDataModel->insert(new ODSUser(map));
+		// all the other users
+		dataMap = readDataFromJson(Usecase::UsersAll);
+		if (!dataMap.isEmpty()) {
+			dataList = dataMap.value("users", "").toList();
+			if (!dataList.isEmpty()) {
+				for (int i = 0; i < dataList.size(); ++i) {
+					QVariantMap map = dataList.at(i).toMap();
+					mUsersDataModel->insert(new ODSUser(map));
+				}
+			}
 		}
 
 		// some debug logs
@@ -238,8 +248,36 @@ void ODSData::initUserModel() {
 		}
 	} else {
 		qDebug() << "NOT found GroupDataModel :(";
+		// TODO Dialog Error
 	}
 
+}
+
+QVariantMap ODSData::readDataFromJson (int usecase) {
+	// all data is in JSON format
+	JsonDataAccess jda;
+	QVariantMap rootObject;
+	// we process data from body part
+	QVariantMap bodyMap;
+	QString filename;
+	// read from users/user file
+	filename = "ods/json";
+	filename += mUsecasePathes.at(usecase);
+	filename += ".json";
+	QFile file(dataPath(filename));
+	bool ok = file.open(QIODevice::ReadOnly);
+	if (ok) {
+		rootObject = jda.loadFromBuffer(file.readAll()).toMap();
+		file.close();
+	} else {
+		qDebug()  << "cannot open file to write: " << filename;
+		// TODO SystemDialog
+	}
+	// get my own users data
+	if (rootObject.contains("body")) {
+		bodyMap = rootObject.value("body").toMap();
+	}
+	return bodyMap;
 }
 
 void ODSData::initiateRequest(int usecase) {
@@ -734,12 +772,10 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 			// do UsersAuth, then get Users data to know what is allowed, get customer_no etc
 		case Usecase::UsersUser:
 			mCustomerNumber = bodyMap.value("last_customer", "").toInt();
-			mMyUserMap = bodyMap;
+			// mMyUserMap = bodyMap;
 			qDebug() << "cust no:" << mCustomerNumber;
 			break;
 		case Usecase::UsersAll:
-			// TODO TEMP
-			mListAllUser = bodyMap.value("users", "").toList();
 			users = bodyMap.value("users", "").toList().size();
 			qDebug() << "Users: " << users;
 

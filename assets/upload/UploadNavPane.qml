@@ -50,7 +50,7 @@ NavigationPane {
             }
             ImageView {
                 id: imgTab1
-                imageSource: "asset:///images/app-ods-150x150.png"
+                imageSource: "asset:///images/upload-icon.png"
                 layoutProperties: StackLayoutProperties {
                     spaceQuota: 1.0
                 }
