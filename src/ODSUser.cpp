@@ -112,14 +112,18 @@ QString ODSUser::displayIcon() const {
 void ODSUser::setFirstName(QString newFirstName) {
 	if (newFirstName != mFirstName) {
 		mFirstName = newFirstName;
+		mDisplayName = mFirstName + " " + mLastName;
 		emit firstNameChanged(newFirstName);
+		emit displayNameChanged(mDisplayName);
 	}
 }
 
 void ODSUser::setLastName(QString newLastName) {
 	if (newLastName != mLastName) {
 		mLastName = newLastName;
+		mDisplayName = mFirstName + " " + mLastName;
 		emit lastNameChanged(newLastName);
+		emit displayNameChanged(mDisplayName);
 	}
 }
 

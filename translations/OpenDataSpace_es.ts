@@ -547,67 +547,67 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="371"/>
+        <location filename="../src/ODSData.cpp" line="399"/>
         <source>Cannot read file to upload: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="446"/>
+        <location filename="../src/ODSData.cpp" line="474"/>
         <source>unknown Usecase: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="551"/>
+        <location filename="../src/ODSData.cpp" line="579"/>
         <source>Error: could not write to file: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="559"/>
+        <location filename="../src/ODSData.cpp" line="587"/>
         <source>wrong content </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="587"/>
+        <location filename="../src/ODSData.cpp" line="615"/>
         <source>Authentication done, getting User...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="594"/>
+        <location filename="../src/ODSData.cpp" line="622"/>
         <source>User received, getting Settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="601"/>
+        <location filename="../src/ODSData.cpp" line="629"/>
         <source>Settings received, getting Files...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="607"/>
+        <location filename="../src/ODSData.cpp" line="635"/>
         <source>Files received, getting Userlist...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="614"/>
+        <location filename="../src/ODSData.cpp" line="642"/>
         <source>Synchronization with Server done :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="616"/>
+        <location filename="../src/ODSData.cpp" line="644"/>
         <source>Synchronization done</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="668"/>
+        <location filename="../src/ODSData.cpp" line="696"/>
         <source>Response without Body-part</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="751"/>
+        <location filename="../src/ODSData.cpp" line="779"/>
         <source>Unknown Response Usecase</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="765"/>
+        <location filename="../src/ODSData.cpp" line="793"/>
         <source>No valid result from Server</source>
         <translation type="unfinished"></translation>
     </message>

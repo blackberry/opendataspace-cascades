@@ -110,10 +110,9 @@ private:
     QString mDisplayType;
     QString mDisplayIcon;
 
-
-
 Q_DISABLE_COPY(ODSUser)
 
 };
+Q_DECLARE_METATYPE(ODSUser*)
 
 #endif /* ODSUSER_HPP_ */

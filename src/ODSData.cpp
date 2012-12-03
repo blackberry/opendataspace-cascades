@@ -30,7 +30,7 @@ ODSData::ODSData() {
 	// finished signal
 	mNetworkAccessManager = new QNetworkAccessManager(this);
 
-	mProgressDialog = new SystemProgressDialog();
+	mProgressDialog = new SystemProgressDialog(this);
 
 	bool connectOK = connect(mNetworkAccessManager,
 			SIGNAL(finished(QNetworkReply*)), this,
@@ -176,10 +176,7 @@ void ODSData::initErrors() {
 //  M O D E L     F O R    L I S T V I E W S
 void ODSData::initUserModel() {
 
-	// seems that ListView and GroupDataModel will be found after Component was destroyed
-	// so we access the last one
 	// TODO Cascades BUG ???
-
 	//mUsersDataModel = Application::instance()->scene()->findChild<GroupDataModel*>("userGroupDataModel");
 	//mUsersList = Application::instance()->scene()->findChild<ListView*>("usersList");
 
@@ -206,9 +203,38 @@ void ODSData::initUserModel() {
 		if (!mMyUserMap.isEmpty()) {
 			mUsersDataModel->insert(new ODSUser(mMyUserMap));
 		}
+
 		for (int i = 0; i < mListAllUser.size(); ++i) {
 			QVariantMap map = mListAllUser.at(i).toMap();
 			mUsersDataModel->insert(new ODSUser(map));
+		}
+
+		// some debug logs
+		// map of sort values: 'displayName' and 'displaytype'
+		QList<QVariantMap> mylist = mUsersDataModel->toListOfMaps();
+		for (int i = 0; i < mylist.size(); ++i) {
+		   QMap<QString, QVariant> myMap = mylist[i];
+		   QMapIterator<QString, QVariant> j(myMap);
+		   while (j.hasNext()) {
+		      j.next();
+		      qDebug() << "myIndex: " << i << " Key: " << j.key() << " Value: " << j.value();
+		   }
+		}
+		// the ODSUser data check the users: get ODSUser out
+		// find an object exactly, take a look at the indexPathes
+		// and again find now using the index path and update item
+		QList<QObject*> myuli =  mUsersDataModel->toListOfObjects();
+		for (int i = 0; i < myuli.size(); ++i) {
+			ODSUser *u = (ODSUser*) myuli.at(i);
+			if (u) {
+				qDebug() << "YEP user" << u->userName() << u->displayType();
+				QVariantList indexPath = mUsersDataModel->find(u);
+				for (int ip = 0; ip < indexPath.size(); ++ip) {
+					qDebug() << "path level:" << indexPath.at(ip).toInt();
+				}
+				u->setLastName(u->lastName()+" *");
+				mUsersDataModel->updateItem(indexPath, u);
+			}
 		}
 	} else {
 		qDebug() << "NOT found GroupDataModel :(";
