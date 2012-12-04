@@ -30,6 +30,8 @@
 #include <bb/system/SystemUiInputMode>
 #include <bb/system/SystemUiPosition>
 #include <bb/system/SystemUiResult>
+#include <bb/system/InvokeManager.hpp>
+#include <bb/system/InvokeRequest.hpp>
 
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
@@ -65,20 +67,20 @@ OpenDataSpace::OpenDataSpace(QObject *parent) :
 
 	// ODS is a Invocation Target
 	bool ok = connect(mInvokeManager,
-			SIGNAL(invoked(const bb::system::InvokeRequest&)), this,
-			SLOT(handleInvoke(const bb::system::InvokeRequest&)));
+			SIGNAL(invoked(const InvokeRequest&)), this,
+			SLOT(handleInvoke(const InvokeRequest&)));
 	if (!ok) {
 		qDebug() << "connect handleInvoke failed";
 	}
 	ok = connect(mInvokeManager,
-			SIGNAL(cardResizeRequested(const bb::system::CardResizeMessage&)),
-			this, SLOT(handleCardResize(const bb::system::CardResizeMessage&)));
+			SIGNAL(cardResizeRequested(const CardResizeMessage&)),
+			this, SLOT(handleCardResize(const CardResizeMessage&)));
 	if (!ok) {
 		qDebug() << "connect handleCardResize failed";
 	}
 	ok = connect(mInvokeManager,
-			SIGNAL(cardPooled(const bb::system::CardDoneMessage&)), this,
-			SLOT(handleCardPooled(const bb::system::CardDoneMessage&)));
+			SIGNAL(cardPooled(const CardDoneMessage&)), this,
+			SLOT(handleCardPooled(const CardDoneMessage&)));
 	if (!ok) {
 		qDebug() << "connect handleCardPooled failed";
 	}

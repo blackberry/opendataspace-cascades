@@ -236,16 +236,20 @@ void ODSData::initUserModel() {
 		// and again find now using the index path and update item
 		QList<QObject*> myuli =  mUsersDataModel->toListOfObjects();
 		for (int i = 0; i < myuli.size(); ++i) {
-			ODSUser *u = (ODSUser*) myuli.at(i);
-			if (u) {
-				qDebug() << "YEP user" << u->userName() << u->displayType();
+			if (qobject_cast<ODSUser*>(myuli.at(i))) {
+				ODSUser *u = (ODSUser*) myuli.at(i);
+				qDebug() << "found user: " << u->userName() << u->displayType();
 				QVariantList indexPath = mUsersDataModel->find(u);
 				for (int ip = 0; ip < indexPath.size(); ++ip) {
 					qDebug() << "path level:" << indexPath.at(ip).toInt();
 				}
+				// try to modify the name
 				u->setLastName(u->lastName()+" *");
 				mUsersDataModel->updateItem(indexPath, u);
+			} else {
+				qDebug() << "cast says: no ODSUser :(";
 			}
+
 		}
 	} else {
 		qDebug() << "NOT found GroupDataModel :(";
