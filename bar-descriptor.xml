@@ -193,7 +193,6 @@
   		<icon>assets/images/upload-icon.png</icon>
         <filter>
             <action>bb.action.OPEN</action>
-            <action>bb.action.SHARE</action>
             <mime-type>application/gzip</mime-type>		
       		<mime-type>application/msexcel</mime-type>	
       		<mime-type>application/mspowerpoint</mime-type>	
