@@ -1,11 +1,20 @@
 
 
 #include "ODSSubRoom.hpp"
+#include <QDebug>
 
-ODSSubRoom::ODSSubRoom() {
-	// TODO Auto-generated constructor stub
+ODSSubRoom::ODSSubRoom(QObject *parent) {}
+
+ODSSubRoom::ODSSubRoom(QVariantMap subRoomMap) :
+				QObject() {
 
 }
+
+
+
+
+
+
 
 ODSSubRoom::~ODSSubRoom() {
 	// TODO Auto-generated destructor stub
