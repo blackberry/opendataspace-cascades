@@ -3,20 +3,22 @@
 #include "ODSSubRoom.hpp"
 #include <QDebug>
 
-static const QString isGroupValue = "is_group";
-static const QString fileSizeValue = "file_size";
-static const QString nodesValue = "nodes";
+//static const QString isGroupValue = "is_group";
+//static const QString fileSizeValue = "file_size";
+//static const QString nodesValue = "nodes";
 static const QString nameValue = "name";
-static const QString isAssignedValue = "is_assigned";
+//static const QString isAssignedValue = "is_assigned";
 static const QString parentValue = "parent";
-static const QString typeValue = "type";
+//static const QString typeValue = "type";
 static const QString groupPkValue = "group_pk";
 
 ODSSubRoom::ODSSubRoom(QObject *parent) {}
 
 ODSSubRoom::ODSSubRoom(QVariantMap subRoomMap) :
-				QObject() {
-
+				QObject(), mSubRoomsMap(subRoomMap) {
+	mName = mSubRoomsMap.value(nameValue, "").toString();
+	mId = mSubRoomsMap.value(groupPkValue, 0).toInt();
+	mRoomId = mSubRoomsMap.value(parentValue, 0).toInt();
 }
 
 QString ODSSubRoom::name() const {

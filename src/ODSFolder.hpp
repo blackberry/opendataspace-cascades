@@ -44,7 +44,7 @@ Q_SIGNALS:
 
 private:
 
-	QVariantMap mFilesMap;
+	QVariantMap mFoldersMap;
 	QString mName;
 	QString mPath;
 

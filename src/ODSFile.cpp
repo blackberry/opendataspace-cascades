@@ -4,7 +4,7 @@
 #include <QDebug>
 
 static const QString nameValue = "name";
-static const QString typeValue = "type";
+//static const QString typeValue = "type";
 static const QString groupPkValue = "group_pk";
 static const QString fileSizeValue = "file_size";
 static const QString fileIdValue = "fileID";
@@ -18,8 +18,16 @@ static const QString logDeValue = "log_de";
 ODSFile::ODSFile(QObject *parent) {}
 
 ODSFile::ODSFile(QVariantMap fileMap) :
-				QObject() {
-
+				QObject(), mFilesMap(fileMap) {
+	mName = mFilesMap.value(nameValue, "").toString();
+	mId = mFilesMap.value(fileIdValue, 0).toInt();
+	mComment = mFilesMap.value(commentValue, "").toString();
+	mContainerId = mFilesMap.value(groupPkValue, 0).toInt();
+	mFileSize = mFilesMap.value(fileSizeValue, 0).toInt();
+	mClassification = mFilesMap.value(classificationValue, 1).toInt();
+	mExpires = mFilesMap.value(expirationDateValue, "").toString();
+	mCreatedBy = mFilesMap.value(logMeValue, "").toString();
+	mCreatedAt = mFilesMap.value(logDeValue, "").toString();
 }
 
 QString ODSFile::name() const {
