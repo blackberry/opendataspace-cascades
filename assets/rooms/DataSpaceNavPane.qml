@@ -151,16 +151,6 @@ NavigationPane {
     Page {
         id: dataspacePage
         actions: [
-            //TODO only for Admins
-            ActionItem {
-                title: qsTr("New Room") + Retranslate.onLanguageChanged
-                enabled: false
-                imageSource: "asset:///images/ics/4-collections-cloud_newLabel81.png"
-                ActionBar.placement: ActionBarPlacement.InOverflow
-                onTriggered: {
-                    // TODO push NewRoom Sheet
-                }
-            },
             ActionItem {
                 title: qsTr("Refresh") + Retranslate.onLanguageChanged
                 imageSource: "asset:///images/ics/1-navigation-refresh81.png"
@@ -176,11 +166,9 @@ NavigationPane {
             }
             // attached objects
             attachedObjects: [
-                // M O D E L
-                // Mockup Datamodel
-                // TODO from Server / JSON / MySQL
                 GroupDataModel {
-                    id: mockupModel
+                    id: roomGroupDataModel
+                    objectName: "roomGroupDataModel"
                     sortingKeys: [
                         "name"
                     ]
@@ -196,12 +184,9 @@ NavigationPane {
             ListView {
                 id: dataspaceList
                 objectName: "dataspaceList"
-                // The data model is defined in the attached object list below.
-                // TODO get from Server
-                dataModel: mockupModel
+                dataModel: roomGroupDataModel
                 // its the root, only single selction makes sense
                 // TODO selectionMode: SelectionMode.Single
-
                 // define the appearance
                 listItemComponents: [
                     ListItemComponent {
@@ -227,78 +212,14 @@ NavigationPane {
                 onTriggered: {
                     // TODO set the datamodel depending on path
                     if (selected) {
-                        roomsListPage.headerTitle = mockupModel.data(indexPath).name
+                        roomsListPage.headerTitle = roomGroupDataModel.data(indexPath).name
                         navigationPane.push(roomsListPage)
                     }
                 }
 
                 // MOCKUP DATA
                 // After the list is created, add some mockup items
-                onCreationCompleted: {
-                    mockupModel.insert({
-                            "name": "Department Italy",
-                            "displayType": "R",
-                            "lastEditedBy": "",
-                            "fileSize": "",
-                            "fileType": "",
-                            "timestamp": "",
-                            "icon": "../images/rooms-icon.png"
-                        });
-                    mockupModel.insert({
-                            "name": "Department Spain",
-                            "displayType": "R",
-                            "lastEditedBy": "",
-                            "fileSize": "",
-                            "fileType": "",
-                            "timestamp": "",
-                            "icon": "../images/rooms-icon.png"
-                        });
-                    mockupModel.insert({
-                            "name": "Department Canada",
-                            "displayType": "R",
-                            "lastEditedBy": "",
-                            "fileSize": "",
-                            "fileType": "",
-                            "timestamp": "",
-                            "icon": "../images/rooms-icon.png"
-                        });
-                    mockupModel.insert({
-                            "name": "Department Germany",
-                            "displayType": "R",
-                            "lastEditedBy": "",
-                            "fileSize": "",
-                            "fileType": "",
-                            "timestamp": "",
-                            "icon": "../images/rooms-icon.png"
-                        });
-                    mockupModel.insert({
-                            "name": "Department Austria",
-                            "displayType": "R",
-                            "lastEditedBy": "",
-                            "fileSize": "",
-                            "fileType": "",
-                            "timestamp": "",
-                            "icon": "../images/rooms-icon.png"
-                        });
-                    mockupModel.insert({
-                            "name": "Department Denmark",
-                            "displayType": "R",
-                            "lastEditedBy": "",
-                            "fileSize": "",
-                            "fileType": "",
-                            "timestamp": "",
-                            "icon": "../images/rooms-icon.png"
-                        });
-                    mockupModel.insert({
-                            "name": "Department France",
-                            "displayType": "R",
-                            "lastEditedBy": "",
-                            "fileSize": "",
-                            "fileType": "",
-                            "timestamp": "",
-                            "icon": "../images/rooms-icon.png"
-                        });
-                }
+                onCreationCompleted: {}
             } // end ListView
         } // end Container
     } // end page

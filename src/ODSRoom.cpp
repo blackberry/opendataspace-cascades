@@ -19,6 +19,8 @@ ODSRoom::ODSRoom(QVariantMap roomMap) :
 				QObject(), mRoomsMap(roomMap) {
 	mName = mRoomsMap.value(nameValue, "").toString();
 	mId = mRoomsMap.value(groupPkValue, 0).toInt();
+	mDisplayType = "R";
+	mDisplayIcon = "../images/rooms-icon.png";
 }
 
 QString ODSRoom::name() const {
@@ -51,7 +53,13 @@ void ODSRoom::setLevel(int level) {
 	}
 }
 
+QString ODSRoom::displayType() const {
+	return mDisplayType;
+}
 
+QString ODSRoom::displayIcon() const {
+	return mDisplayIcon;
+}
 
 
 ODSRoom::~ODSRoom() {

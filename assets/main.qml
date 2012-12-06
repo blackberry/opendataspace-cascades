@@ -189,6 +189,9 @@ TabbedPane {
         // to speedup loadtime
         //  after first Login done the dataspace Navigation Pane was instatiated
         dataspaceTab.content = lazyComponentDataSpaceNavPane.createObject()
+        // Now the component is cvreated and we can do some stuff from C++
+        // Now the objects will be found from findChild()
+        odsdata.initRoomsModel()
         // same for Upload NavPane
         uploadTab.content = lazyComponentUploadNavPane.createObject()
         // we're done

@@ -28,6 +28,8 @@ ODSFile::ODSFile(QVariantMap fileMap) :
 	mExpires = mFilesMap.value(expirationDateValue, "").toString();
 	mCreatedBy = mFilesMap.value(logMeValue, "").toString();
 	mCreatedAt = mFilesMap.value(logDeValue, "").toString();
+	mDisplayType = "L";
+	mDisplayIcon = "../images/files-icon.png";
 }
 
 QString ODSFile::name() const {
@@ -128,6 +130,14 @@ void ODSFile::setClassification(int classification) {
 		mClassification = classification;
 		emit classificationChanged(classification);
 	}
+}
+
+QString ODSFile::displayType() const {
+	return mDisplayType;
+}
+
+QString ODSFile::displayIcon() const {
+	return mDisplayIcon;
 }
 
 

@@ -14,12 +14,17 @@ Q_PROPERTY(int containerId READ containerId WRITE setContainerId NOTIFY containe
 Q_PROPERTY(int level READ level WRITE setLevel NOTIFY levelChanged FINAL)
 Q_PROPERTY(int roomId READ roomId WRITE setRoomId NOTIFY roomIdChanged FINAL)
 
+Q_PROPERTY(QString displayType READ displayType NOTIFY displayTypeChanged FINAL)
+Q_PROPERTY(QString displayIcon READ displayIcon NOTIFY displayIconChanged FINAL)
+
 public:
 	ODSFolder(QObject *parent = 0);
 	virtual ~ODSFolder();
 	ODSFolder(QVariantMap folderMap);
 
 	QString name() const;
+	QString displayType() const;
+	QString displayIcon() const;
 	QString path() const;
 
 	int containerId() const;
@@ -42,6 +47,9 @@ Q_SIGNALS:
 	void levelChanged(int level);
 	void roomIdChanged(int roomId);
 
+	void displayTypeChanged(QString displayType);
+	void displayIconChanged(QString displayIcon);
+
 private:
 
 	QVariantMap mFoldersMap;
@@ -51,6 +59,9 @@ private:
 	int mContainerId;
 	int mLevel;
 	int mRoomId;
+
+	QString mDisplayType;
+	QString mDisplayIcon;
 
 	Q_DISABLE_COPY(ODSFolder)
 };

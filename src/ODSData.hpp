@@ -31,6 +31,9 @@ public:
 	void initUserModel();
 
 	Q_INVOKABLE
+	void initRoomsModel();
+
+	Q_INVOKABLE
 	void initFilesModel();
 
 	Q_SIGNALS:
@@ -69,6 +72,8 @@ private:
 	QString mComment;
 
 	GroupDataModel* mUsersDataModel;
+	GroupDataModel* mRoomsDataModel;
+	GroupDataModel* mFilesDataModel;
 
 	bool mDelayedInitDone;
 

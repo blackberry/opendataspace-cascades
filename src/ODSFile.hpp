@@ -21,12 +21,17 @@ class ODSFile: public QObject {
 	Q_PROPERTY(int fileSize READ fileSize WRITE setFileSize NOTIFY fileSizeChanged FINAL)
 	Q_PROPERTY(int classification READ classification WRITE setClassification NOTIFY classificationChanged FINAL)
 
+	Q_PROPERTY(QString displayType READ displayType NOTIFY displayTypeChanged FINAL)
+	Q_PROPERTY(QString displayIcon READ displayIcon NOTIFY displayIconChanged FINAL)
+
 public:
 	ODSFile(QObject *parent = 0);
 	virtual ~ODSFile();
 	ODSFile(QVariantMap fileMap);
 
 	QString name() const;
+	QString displayType() const;
+	QString displayIcon() const;
 	QString comment() const;
 	QString createdBy() const;
 	QString createdAt() const;
@@ -65,6 +70,9 @@ Q_SIGNALS:
 	void fileSizeChanged(int fileSize);
 	void classificationChanged(int classification);
 
+	void displayTypeChanged(QString displayType);
+	void displayIconChanged(QString displayIcon);
+
 private:
 
 	QVariantMap mFilesMap;
@@ -79,6 +87,9 @@ private:
 	int mContainerId;
 	int mFileSize;
 	int mClassification;
+
+	QString mDisplayType;
+	QString mDisplayIcon;
 
 Q_DISABLE_COPY(ODSFile)
 };

@@ -1,6 +1,9 @@
 
 #include "ODSData.hpp"
 #include "ODSUser.hpp"
+#include "ODSRoom.hpp"
+#include "ODSSubRoom.hpp"
+#include "ODSFolder.hpp"
 #include "ODSFile.hpp"
 #include <QUrl>
 #include <bb/cascades/Application>
@@ -256,6 +259,28 @@ void ODSData::initUserModel() {
 		// TODO Dialog Error
 	}
 
+}
+
+void ODSData::initRoomsModel() {
+	mRoomsDataModel = Application::instance()->scene()->findChildren<
+		  		GroupDataModel*>("roomGroupDataModel").last();
+	if (mRoomsDataModel) {
+		mRoomsDataModel->clear();
+		QVariantMap dataMap;
+		QVariantList dataList;
+		// all rooms
+		dataMap = readDataFromJson(Usecase::FilesAll);
+		if (!dataMap.isEmpty()) {
+			dataList = dataMap.value("nodes", "").toList();
+			if (!dataList.isEmpty()) {
+				for (int i = 0; i < dataList.size(); ++i) {
+					QVariantMap map = dataList.at(i).toMap();
+					mRoomsDataModel->insert(new ODSRoom(map));
+				}
+			}
+		}
+
+	}
 }
 
 void ODSData::initFilesModel() {

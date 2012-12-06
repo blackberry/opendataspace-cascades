@@ -20,6 +20,8 @@ ODSFolder::ODSFolder(QVariantMap folderMap) :
 	mPath = mFoldersMap.value(parentValue, "").toString();
 	mContainerId = mFoldersMap.value(groupPkValue, 0).toInt();
 	mRoomId = mFoldersMap.value(parentValue, 0).toInt();
+	mDisplayType = "F";
+	mDisplayIcon = "../images/folders-icon.png";
 }
 
 QString ODSFolder::name() const {
@@ -72,7 +74,13 @@ void ODSFolder::setRoomId(int roomId) {
 	}
 }
 
+QString ODSFolder::displayType() const {
+	return mDisplayType;
+}
 
+QString ODSFolder::displayIcon() const {
+	return mDisplayIcon;
+}
 
 
 

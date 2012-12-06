@@ -19,6 +19,8 @@ ODSSubRoom::ODSSubRoom(QVariantMap subRoomMap) :
 	mName = mSubRoomsMap.value(nameValue, "").toString();
 	mId = mSubRoomsMap.value(groupPkValue, 0).toInt();
 	mRoomId = mSubRoomsMap.value(parentValue, 0).toInt();
+	mDisplayType = "S";
+	mDisplayIcon = "../images/subrooms-icon.png";
 }
 
 QString ODSSubRoom::name() const {
@@ -61,7 +63,13 @@ void ODSSubRoom::setRoomId(int roomId) {
 	}
 }
 
+QString ODSSubRoom::displayType() const {
+	return mDisplayType;
+}
 
+QString ODSSubRoom::displayIcon() const {
+	return mDisplayIcon;
+}
 
 ODSSubRoom::~ODSSubRoom() {
 	// TODO Auto-generated destructor stub

@@ -72,7 +72,7 @@ Container {
                 preferredHeight: 114
                 minWidth: 114
                 // datamodel knows the icon source
-                imageSource: ListItemData.icon
+                imageSource: ListItemData.displayIcon
                 layoutProperties: StackLayoutProperties {
                 }
                 verticalAlignment: VerticalAlignment.Center
