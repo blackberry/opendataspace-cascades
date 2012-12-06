@@ -36,7 +36,7 @@ Q_SIGNALS:
 
 private:
 
-	QVariantMap mFilesMap;
+	QVariantMap mRoomsMap;
 	QString mName;
 
 	int mId;
