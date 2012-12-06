@@ -3,6 +3,18 @@
 #include "ODSFile.hpp"
 #include <QDebug>
 
+static const QString nameValue = "name";
+static const QString typeValue = "type";
+static const QString groupPkValue = "group_pk";
+static const QString fileSizeValue = "file_size";
+static const QString fileIdValue = "fileID";
+static const QString expirationDateValue = "expiration_date";
+static const QString classificationValue = "classification";
+static const QString logMeValue = "log_me";
+static const QString commentValue = "comment";
+static const QString logDeValue = "log_de";
+
+
 ODSFile::ODSFile(QObject *parent) {}
 
 ODSFile::ODSFile(QVariantMap fileMap) :
