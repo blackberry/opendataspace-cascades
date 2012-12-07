@@ -26,6 +26,8 @@ static QString dataPath(const QString& fileName) {
 static QString uploadPath(const QString& fileName) {
 	return QDir::currentPath() + "/data/ods/upload/" + fileName;
 }
+static const QString isGroupValue = "is_group";
+static const QString typeValue = "type";
 
 ODSData::ODSData() {
 	// prepare all for the work with ODS Servers
@@ -279,12 +281,39 @@ void ODSData::initRoomsModel() {
 				}
 			}
 		}
-
 	}
 }
 
-void ODSData::initFilesModel() {
-
+void ODSData::initFilesModel(QVariantList nodes) {
+	mFilesDataModel = Application::instance()->scene()->findChildren<
+	  		GroupDataModel*>("fileGroupDataModel").last();
+	if (mFilesDataModel) {
+		mFilesDataModel->clear();
+		// all files, folders, subrooms of these nodes
+		if (!nodes.isEmpty()) {
+			for (int i = 0; i < nodes.size(); ++i) {
+				QVariantMap map = nodes.at(i).toMap();
+				if (map.value(isGroupValue, 42).toInt() == 1) {
+					mFilesDataModel->insert(new ODSSubRoom(map));
+					continue;
+				}
+				if (map.value(isGroupValue, 42).toInt() == 0) {
+					mFilesDataModel->insert(new ODSFolder(map));
+					continue;
+				}
+				if (map.value(typeValue, 42).toInt() == 2) {
+					mFilesDataModel->insert(new ODSFile(map));
+					continue;
+				}
+				qDebug() << "unknown ItemType from nodes list";
+				qDebug() << "size of nodes: " << nodes.size();
+				qDebug() << "name: " << map.value("name").toString();
+				qDebug() << "keys: " << map.keys();
+			}
+		} else {
+			qDebug() << "empty nodes list ?";
+		}
+	}
 }
 
 QVariantMap ODSData::readDataFromJson (int usecase) {

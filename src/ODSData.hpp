@@ -34,7 +34,7 @@ public:
 	void initRoomsModel();
 
 	Q_INVOKABLE
-	void initFilesModel();
+	void initFilesModel(QVariantList nodes);
 
 	Q_SIGNALS:
 		void loginFinished(bool success);

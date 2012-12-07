@@ -72,7 +72,7 @@ Container {
                 preferredHeight: 114
                 minWidth: 114
                 // datamodel knows the icon source
-                imageSource: ListItemData.icon
+                imageSource: ListItemData.displayIcon
                 layoutProperties: StackLayoutProperties {
                 }
                 verticalAlignment: VerticalAlignment.Center
@@ -88,7 +88,7 @@ Container {
                 // TITLE
                 Label {
                     // name, fileType are properties from data model
-                    text: ListItemData.name + " (" + ListItemData.fileType + ") "
+                    text: ListItemData.name // + " (" + ListItemData.fileType + ") "
                     textStyle {
                         base: SystemDefaults.TextStyles.TitleText
                         color: Color.Black
@@ -97,7 +97,7 @@ Container {
                 // SUBTITLE
                 Label {
                     // lastEditedBy, timestamp, fileSize are properties from data model
-                    text: ListItemData.timestamp + " (" + ListItemData.fileSize + " Bytes)"
+                    text: "file" // ListItemData.timestamp + " (" + ListItemData.fileSize + " Bytes)"
                     textStyle {
                         base: SystemDefaults.TextStyles.SubtitleText
                         color: Color.Black

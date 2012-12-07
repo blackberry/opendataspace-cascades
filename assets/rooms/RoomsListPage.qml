@@ -109,16 +109,6 @@ Page {
         }
     ]
     actions: [
-        //TODO only for Admins
-        ActionItem {
-            title: qsTr("New SubRoom") + Retranslate.onLanguageChanged
-            enabled: false
-            imageSource: "asset:///images/ics/4-collections-cloud_newLabel81.png"
-            ActionBar.placement: ActionBarPlacement.InOverflow
-            onTriggered: {
-                // TODO push NewSubRoom Sheet
-            }
-        },
         ActionItem {
             title: qsTr("New Folder") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/4-collections-collection_newlabel81.png"
@@ -246,11 +236,9 @@ Page {
         }
         // attached objects
         attachedObjects: [
-            // M O D E L
-            // Mockup Datamodel
-            // TODO from Server / JSON / MySQL
             GroupDataModel {
-                id: mockupModel
+                id: fileGroupDataModel
+                objectName: "fileGroupDataModel"
                 sortingKeys: [
                     "name"
                 ]
@@ -265,17 +253,24 @@ Page {
 
         // V I E W
         ListView {
-            id: dataspaceList
+            id: roomsList
             objectName: "roomsList"
-            // The data model is defined in the attached object list below.
-            // TODO get from Server
-            dataModel: mockupModel
+            dataModel: fileGroupDataModel
             // its the root, only single selction makes sense
             //selectionMode: SelectionMode.Single
             leadingVisual: {
                 // TODO waiting for bugfix
             }
-
+            onTriggered: {
+                if (selected) {
+                    if (fileGroupDataModel.data(indexPath).displayType != "L") {
+                        roomsListPage.headerTitle = fileGroupDataModel.data(indexPath).name
+                        // fill the model with the nodes
+                        odsdata.initFilesModel(fileGroupDataModel.data(indexPath).nodes)
+                        // navigationPane.push(roomsListPage)
+                    }
+                }
+            }
             // define the appearance
             listItemComponents: [
                 ListItemComponent {
@@ -433,49 +428,7 @@ Page {
                 return "header";
             }
 
-            // MOCKUP DATA
-            // After the list is created, add some mockup items
-            onCreationCompleted: {
-                mockupModel.insert({
-                        "name": "Berlin",
-                        "displayType": "S",
-                        "numberOfFiles": 3,
-                        "lastEditedBy": "",
-                        "fileSize": "2.320.412",
-                        "fileType": "",
-                        "timestamp": "",
-                        "icon": "../images/subrooms-icon.png"
-                    });
-                mockupModel.insert({
-                        "name": "Schwabing",
-                        "displayType": "F",
-                        "numberOfFiles": 1,
-                        "lastEditedBy": "",
-                        "fileSize": "11.350.200",
-                        "fileType": "",
-                        "timestamp": "",
-                        "icon": "../images/folders-icon.png"
-                    });
-                // TODO dateUtil.getDateTimeStringLocalizedAsShortString(ods.getCurrentLocale(), "2012-07-25 12:11:13")
-                mockupModel.insert({
-                        "name": "Orders",
-                        "displayType": "L",
-                        "lastEditedBy": "Max Mustermann",
-                        "fileSize": "12.234.000",
-                        "fileType": "zip",
-                        "timestamp": "2012-07-25 12:11:13",
-                        "icon": "../images/files-icon.png"
-                    });
-                mockupModel.insert({
-                        "name": "Offers",
-                        "displayType": "L",
-                        "lastEditedBy": "Jane Doe",
-                        "fileSize": "1.650.000",
-                        "fileType": "pdf",
-                        "timestamp": "2012-08-13 10:01:00",
-                        "icon": "../images/files-icon.png"
-                    });
-            }
+            onCreationCompleted: {}
         } // end ListView
     } // end Container
     function addFolder(name) {

@@ -5,7 +5,7 @@
 
 //static const QString isGroupValue = "is_group";
 //static const QString fileSizeValue = "file_size";
-//static const QString nodesValue = "nodes";
+static const QString nodesValue = "nodes";
 static const QString nameValue = "name";
 //static const QString isAssignedValue = "is_assigned";
 static const QString parentValue = "parent";
@@ -21,6 +21,7 @@ ODSSubRoom::ODSSubRoom(QVariantMap subRoomMap) :
 	mRoomId = mSubRoomsMap.value(parentValue, 0).toInt();
 	mDisplayType = "S";
 	mDisplayIcon = "../images/subrooms-icon.png";
+	mNodes = mSubRoomsMap.value(nodesValue).toList();
 }
 
 QString ODSSubRoom::name() const {
@@ -70,6 +71,11 @@ QString ODSSubRoom::displayType() const {
 QString ODSSubRoom::displayIcon() const {
 	return mDisplayIcon;
 }
+
+QVariantList ODSSubRoom::nodes() const {
+	return mNodes;
+}
+
 
 ODSSubRoom::~ODSSubRoom() {
 	// TODO Auto-generated destructor stub

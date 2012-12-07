@@ -160,6 +160,11 @@ NavigationPane {
                 }
             }
         ]
+        titleBar: TitleBar {
+            id: theBar
+            title: qsTr("DataRoom")
+            visibility: ChromeVisibility.Visible
+        }
         content: Container {
             id: listContainer
             layout: DockLayout {
@@ -210,9 +215,10 @@ NavigationPane {
                     }
                 }
                 onTriggered: {
-                    // TODO set the datamodel depending on path
                     if (selected) {
                         roomsListPage.headerTitle = roomGroupDataModel.data(indexPath).name
+                        // fill the model with the nodes
+                        odsdata.initFilesModel(roomGroupDataModel.data(indexPath).nodes)
                         navigationPane.push(roomsListPage)
                     }
                 }

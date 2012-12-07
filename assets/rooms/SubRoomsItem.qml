@@ -72,7 +72,7 @@ Container {
                 preferredHeight: 114
                 minWidth: 114
                 // datamodel knows the icon source
-                imageSource: ListItemData.icon
+                imageSource: ListItemData.displayIcon
                 layoutProperties: StackLayoutProperties {
                 }
                 verticalAlignment: VerticalAlignment.Center
@@ -97,7 +97,7 @@ Container {
                 // SUBTITLE
                 Label {
                     // numberOfFiles properties from data model
-                    text: qsTr("%1 file(s)", "", ListItemData.numberOfFiles).arg(ListItemData.numberOfFiles) + Retranslate.onLanguageChanged + " (" + ListItemData.fileSize + " Bytes" + ")"
+                    text: "subroom" // qsTr("%1 file(s)", "", ListItemData.numberOfFiles).arg(ListItemData.numberOfFiles) + Retranslate.onLanguageChanged + " (" + ListItemData.fileSize + " Bytes" + ")"
                     textStyle {
                         base: SystemDefaults.TextStyles.SubtitleText
                         color: Color.Black

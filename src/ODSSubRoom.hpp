@@ -16,10 +16,13 @@ Q_PROPERTY(int roomId READ roomId WRITE setRoomId NOTIFY roomIdChanged FINAL)
 Q_PROPERTY(QString displayType READ displayType NOTIFY displayTypeChanged FINAL)
 Q_PROPERTY(QString displayIcon READ displayIcon NOTIFY displayIconChanged FINAL)
 
+Q_PROPERTY(QVariantList nodes READ nodes NOTIFY nodesChanged FINAL)
+
 public:
 	ODSSubRoom(QObject *parent = 0);
 	virtual ~ODSSubRoom();
 	ODSSubRoom(QVariantMap subRoomMap);
+	QVariantList nodes() const;
 
 	QString name() const;
 	QString displayType() const;
@@ -46,9 +49,12 @@ Q_SIGNALS:
 	void displayTypeChanged(QString displayType);
 	void displayIconChanged(QString displayIcon);
 
+	void nodesChanged(QVariantList nodes);
+
 private:
 
 	QVariantMap mSubRoomsMap;
+	QVariantList mNodes;
 	QString mName;
 
 	int mId;

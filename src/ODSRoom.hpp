@@ -15,10 +15,13 @@ Q_PROPERTY(int level READ level WRITE setLevel NOTIFY levelChanged FINAL)
 Q_PROPERTY(QString displayType READ displayType NOTIFY displayTypeChanged FINAL)
 Q_PROPERTY(QString displayIcon READ displayIcon NOTIFY displayIconChanged FINAL)
 
+Q_PROPERTY(QVariantList nodes READ nodes NOTIFY nodesChanged FINAL)
+
 public:
 	ODSRoom(QObject *parent = 0);
 	virtual ~ODSRoom();
 	ODSRoom(QVariantMap roomMap);
+	QVariantList nodes() const;
 
 	QString name() const;
 	QString displayType() const;
@@ -42,9 +45,12 @@ Q_SIGNALS:
 	void displayTypeChanged(QString displayType);
 	void displayIconChanged(QString displayIcon);
 
+	void nodesChanged(QVariantList nodes);
+
 private:
 
 	QVariantMap mRoomsMap;
+	QVariantList mNodes;
 	QString mName;
 
 	int mId;

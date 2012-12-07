@@ -5,7 +5,7 @@
 
 //static const QString isGroupValue = "is_group";
 //static const QString fileSizeValue = "file_size";
-//static const QString nodesValue = "nodes";
+static const QString nodesValue = "nodes";
 static const QString nameValue = "name";
 //static const QString isAssignedValue = "is_assigned";
 static const QString parentValue = "parent";
@@ -22,6 +22,7 @@ ODSFolder::ODSFolder(QVariantMap folderMap) :
 	mRoomId = mFoldersMap.value(parentValue, 0).toInt();
 	mDisplayType = "F";
 	mDisplayIcon = "../images/folders-icon.png";
+	mNodes = mFoldersMap.value(nodesValue).toList();
 }
 
 QString ODSFolder::name() const {
@@ -82,6 +83,9 @@ QString ODSFolder::displayIcon() const {
 	return mDisplayIcon;
 }
 
+QVariantList ODSFolder::nodes() const {
+	return mNodes;
+}
 
 
 ODSFolder::~ODSFolder() {

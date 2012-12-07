@@ -5,7 +5,7 @@
 
 //static const QString isGroupValue = "is_group";
 //static const QString fileSizeValue = "file_size";
-//static const QString nodesValue = "nodes";
+static const QString nodesValue = "nodes";
 static const QString nameValue = "name";
 //static const QString isAssignedValue = "is_assigned";
 //static const QString parentValue = "parent";
@@ -21,6 +21,7 @@ ODSRoom::ODSRoom(QVariantMap roomMap) :
 	mId = mRoomsMap.value(groupPkValue, 0).toInt();
 	mDisplayType = "R";
 	mDisplayIcon = "../images/rooms-icon.png";
+	mNodes = mRoomsMap.value(nodesValue).toList();
 }
 
 QString ODSRoom::name() const {
@@ -59,6 +60,10 @@ QString ODSRoom::displayType() const {
 
 QString ODSRoom::displayIcon() const {
 	return mDisplayIcon;
+}
+
+QVariantList ODSRoom::nodes() const {
+	return mNodes;
 }
 
 
