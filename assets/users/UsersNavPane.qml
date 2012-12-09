@@ -42,6 +42,11 @@ NavigationPane {
     // the Root Page of this NavigationPane
     Page {
         id: usersPage
+        titleBar: TitleBar {
+            id: theBar
+            title: qsTr("Users")
+            visibility: ChromeVisibility.Visible
+        }
         actions: [
             //TODO only for Admins
             ActionItem {
