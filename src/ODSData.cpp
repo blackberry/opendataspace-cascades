@@ -253,8 +253,8 @@ void ODSData::initUserModel() {
 					qDebug() << "path level:" << indexPath.at(ip).toInt();
 				}
 				// try to modify the name
-				u->setLastName(u->lastName()+" *");
-				mUsersDataModel->updateItem(indexPath, u);
+				// u->setLastName(u->lastName()+" *");
+				// mUsersDataModel->updateItem(indexPath, u);
 			} else {
 				qDebug() << "cast says: no ODSUser :(";
 			}
@@ -316,7 +316,6 @@ void ODSData::showFilesFromNode(QVariantList nodes) {
 			qDebug() << "empty nodes list ?";
 		}
 	}
-
 }
 
 /**
@@ -329,8 +328,10 @@ bool ODSData::showPreviousNode() {
 		mNodeNames->removeAt(mFilesLevel);
 		mFilesLevel--;
 		showFilesFromNode(mCache->at(mFilesLevel).toList());
+		qDebug() << "showPreviousNode caches: " << mFilesLevel;
 		return true;
 	}
+	qDebug() << "showPreviousNode caches: " << mFilesLevel;
 	return false;
 }
 
@@ -339,15 +340,18 @@ void ODSData::showNextNode(QVariantList nodes, QString name){
 	mFilesLevel++;
 	mCache->insert(mFilesLevel, nodes);
 	mNodeNames->insert(mFilesLevel, name);
-	qDebug() << "caches: " << mFilesLevel;
+	qDebug() << "showNextNode caches: " << mFilesLevel;
 }
 
 void ODSData::resetLevel() {
 	mFilesLevel = -1;
 	mCache->clear();
+	mNodeNames->clear();
+	qDebug() << "resetLevel done";
 }
 
 QString ODSData::nodeTitleName() {
+	qDebug() << mNodeNames->join("::");
 	return mNodeNames->at(mFilesLevel);
 }
 

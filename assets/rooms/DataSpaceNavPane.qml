@@ -37,7 +37,7 @@ NavigationPane {
                         }
                     }
                 }
-            }
+            } 
         },
         DictaphonePage {
             id: audioRecordPage
@@ -302,6 +302,11 @@ NavigationPane {
     function folderAdded(name) {
         console.debug("got signal to add a new folder: " + name)
         roomsListPage.addFolder(name)
+    }
+    onTopChanged: {
+        if (navigationPane.top == dataspacePage) {
+            odsdata.resetLevel();
+        }
     }
     onCreationCompleted: {
         //-- connect the RoomsList openCamera SIGNAL to the handler SLOT
