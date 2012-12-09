@@ -245,6 +245,7 @@ Page {
                 onItemAdded: {
                 }
                 onItemRemoved: {
+                    console.debug("Item removed from Roomslist")
                 }
                 onItemUpdated: {
                 }
@@ -266,7 +267,7 @@ Page {
                     if (fileGroupDataModel.data(indexPath).displayType != "L") {
                         roomsListPage.headerTitle = fileGroupDataModel.data(indexPath).name
                         // fill the model with the nodes
-                        odsdata.initFilesModel(fileGroupDataModel.data(indexPath).nodes)
+                        odsdata.showNextNode(fileGroupDataModel.data(indexPath).nodes)
                         // navigationPane.push(roomsListPage)
                     }
                 }

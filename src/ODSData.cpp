@@ -28,6 +28,7 @@ static QString uploadPath(const QString& fileName) {
 }
 static const QString isGroupValue = "is_group";
 static const QString typeValue = "type";
+static const QString nameValue = "name";
 
 ODSData::ODSData() {
 	// prepare all for the work with ODS Servers
@@ -45,6 +46,8 @@ ODSData::ODSData() {
 	// access to the settings
 	mOdsSettings = new ODSSettings();
 	mCustomerNumber = -1;
+	mFilesLevel = 0;
+	mCache = new QVariantList;
 
 	// Displays a warning message if there's an issue connecting the signal
 	// and slot. This is a good practice with signals and slots as it can
@@ -281,10 +284,11 @@ void ODSData::initRoomsModel() {
 				}
 			}
 		}
+		resetLevel();
 	}
 }
 
-void ODSData::initFilesModel(QVariantList nodes) {
+void ODSData::showFilesFromNode(QVariantList nodes) {
 	mFilesDataModel = Application::instance()->scene()->findChildren<
 	  		GroupDataModel*>("fileGroupDataModel").last();
 	if (mFilesDataModel) {
@@ -306,15 +310,39 @@ void ODSData::initFilesModel(QVariantList nodes) {
 					continue;
 				}
 				qDebug() << "unknown ItemType from nodes list";
-				qDebug() << "size of nodes: " << nodes.size();
-				qDebug() << "name: " << map.value("name").toString();
-				qDebug() << "keys: " << map.keys();
 			}
 		} else {
 			qDebug() << "empty nodes list ?";
 		}
 	}
+
 }
+
+/**
+ * returns true if level can be increased
+ * if already at root level - return false
+ */
+bool ODSData::showPreviousNode() {
+	if (mFilesLevel > 0) {
+		mFilesLevel--;
+		showFilesFromNode(mCache->at(mFilesLevel).toList());
+		return true;
+	}
+	return false;
+}
+
+void ODSData::showNextNode(QVariantList nodes){
+	showFilesFromNode (nodes);
+	mCache->insert(mFilesLevel, nodes);
+	mFilesLevel++;
+	qDebug() << "caches: " << mFilesLevel;
+}
+
+void ODSData::resetLevel() {
+	mFilesLevel = 0;
+	mCache->clear();
+}
+
 
 QVariantMap ODSData::readDataFromJson (int usecase) {
 	// all data is in JSON format

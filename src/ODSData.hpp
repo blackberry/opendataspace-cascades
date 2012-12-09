@@ -21,6 +21,9 @@ public:
 	Q_INVOKABLE
 	bool loginValid();
 
+	Q_INVOKABLE
+	void resetLevel();
+
 	/*!
 	 * Initiates the network request.
 	 */
@@ -34,39 +37,41 @@ public:
 	void initRoomsModel();
 
 	Q_INVOKABLE
-	void initFilesModel(QVariantList nodes);
+	void showNextNode(QVariantList nodes);
 
-	Q_SIGNALS:
-		void loginFinished(bool success);
+	Q_INVOKABLE
+	bool showPreviousNode();
+
+Q_SIGNALS:
+	void loginFinished(bool success);
 
 private slots:
-    /*!
-     * Handles the network reply.
-     */
-    void requestFinished(QNetworkReply* reply);
-
+	/*!
+	 * Handles the network reply.
+	 */
+	void requestFinished(QNetworkReply* reply);
 
 private:
-    ODSSettings* mOdsSettings;
+	ODSSettings* mOdsSettings;
 
-    SystemProgressDialog* mProgressDialog;
+	SystemProgressDialog* mProgressDialog;
 
 	QNetworkAccessManager *mNetworkAccessManager;
-    QStringList mResponseErrorTexts;
-    QStringList mUsecasePathes;
+	QStringList mResponseErrorTexts;
+	QStringList mUsecasePathes;
 
-    QString mToken;
-    QString mUser;
-    QString mPassword;
-    QString mBaseUrl;
-    QString mFileName;
-    QByteArray mRequestJson;
-    QHttpMultiPart *mRequestMultipart;
-    QFile *mFileToUpload;
-    int mCustomerNumber;
-    int mLanguageNumber;
-    int mFileId;
-    qint64 mFileLength;
+	QString mToken;
+	QString mUser;
+	QString mPassword;
+	QString mBaseUrl;
+	QString mFileName;
+	QByteArray mRequestJson;
+	QHttpMultiPart *mRequestMultipart;
+	QFile *mFileToUpload;
+	int mCustomerNumber;
+	int mLanguageNumber;
+	int mFileId;
+	qint64 mFileLength;
 	qint64 mGroupPk;
 	QString mParentPath;
 	QString mComment;
@@ -74,6 +79,9 @@ private:
 	GroupDataModel* mUsersDataModel;
 	GroupDataModel* mRoomsDataModel;
 	GroupDataModel* mFilesDataModel;
+	ListView* mRoomsListView;
+	int mFilesLevel;
+	QVariantList* mCache;
 
 	bool mDelayedInitDone;
 
@@ -82,7 +90,9 @@ private:
 	void setRequestheader(QNetworkRequest &request, int usecase);
 	bool processResponse(QByteArray &replyBytes, int usecase);
 	bool writeReplyToFile(QByteArray &replyBytes, QString &filename);
-	QVariantMap readDataFromJson (int usecase);
+	QVariantMap readDataFromJson(int usecase);
+
+	void showFilesFromNode(QVariantList nodes);
 
 	/**
 	 * some parts of initialization will be done delayed
