@@ -267,7 +267,7 @@ Page {
                     if (fileGroupDataModel.data(indexPath).displayType != "L") {
                         roomsListPage.headerTitle = fileGroupDataModel.data(indexPath).name
                         // fill the model with the nodes
-                        odsdata.showNextNode(fileGroupDataModel.data(indexPath).nodes)
+                        odsdata.showNextNode(fileGroupDataModel.data(indexPath).nodes, fileGroupDataModel.data(indexPath).name)
                         // navigationPane.push(roomsListPage)
                     }
                 }

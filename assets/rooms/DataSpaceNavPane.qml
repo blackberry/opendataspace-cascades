@@ -30,8 +30,10 @@ NavigationPane {
             paneProperties: NavigationPaneProperties {
                 backButton: ActionItem {
                     onTriggered: {
-                        if (!odsdata.showPreviousNode()) {
-                            navigationPane.pop();
+                        if (odsdata.showPreviousNode()) {
+                            roomsListPage.headerTitle = odsdata.nodeTitleName()
+                        } else {
+                            navigationPane.pop(); 
                         }
                     }
                 }
@@ -221,7 +223,7 @@ NavigationPane {
                         roomsListPage.headerTitle = roomGroupDataModel.data(indexPath).name
                         // fill the model with the nodes
                         odsdata.resetLevel();
-                        odsdata.showNextNode(roomGroupDataModel.data(indexPath).nodes)
+                        odsdata.showNextNode(roomGroupDataModel.data(indexPath).nodes, roomGroupDataModel.data(indexPath).name)
                         navigationPane.push(roomsListPage)
                     }
                 }

@@ -48,6 +48,7 @@ ODSData::ODSData() {
 	mCustomerNumber = -1;
 	mFilesLevel = 0;
 	mCache = new QVariantList;
+	mNodeNames = new QStringList;
 
 	// Displays a warning message if there's an issue connecting the signal
 	// and slot. This is a good practice with signals and slots as it can
@@ -324,6 +325,8 @@ void ODSData::showFilesFromNode(QVariantList nodes) {
  */
 bool ODSData::showPreviousNode() {
 	if (mFilesLevel > 0) {
+		mCache->removeAt(mFilesLevel);
+		mNodeNames->removeAt(mFilesLevel);
 		mFilesLevel--;
 		showFilesFromNode(mCache->at(mFilesLevel).toList());
 		return true;
@@ -331,16 +334,21 @@ bool ODSData::showPreviousNode() {
 	return false;
 }
 
-void ODSData::showNextNode(QVariantList nodes){
+void ODSData::showNextNode(QVariantList nodes, QString name){
 	showFilesFromNode (nodes);
-	mCache->insert(mFilesLevel, nodes);
 	mFilesLevel++;
+	mCache->insert(mFilesLevel, nodes);
+	mNodeNames->insert(mFilesLevel, name);
 	qDebug() << "caches: " << mFilesLevel;
 }
 
 void ODSData::resetLevel() {
-	mFilesLevel = 0;
+	mFilesLevel = -1;
 	mCache->clear();
+}
+
+QString ODSData::nodeTitleName() {
+	return mNodeNames->at(mFilesLevel);
 }
 
 

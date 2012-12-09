@@ -37,10 +37,13 @@ public:
 	void initRoomsModel();
 
 	Q_INVOKABLE
-	void showNextNode(QVariantList nodes);
+	void showNextNode(QVariantList nodes, QString name);
 
 	Q_INVOKABLE
 	bool showPreviousNode();
+
+	Q_INVOKABLE
+	QString nodeTitleName();
 
 Q_SIGNALS:
 	void loginFinished(bool success);
@@ -82,6 +85,7 @@ private:
 	ListView* mRoomsListView;
 	int mFilesLevel;
 	QVariantList* mCache;
+	QStringList* mNodeNames;
 
 	bool mDelayedInitDone;
 
