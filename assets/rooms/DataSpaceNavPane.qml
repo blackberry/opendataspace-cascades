@@ -33,11 +33,11 @@ NavigationPane {
                         if (odsdata.showPreviousNode()) {
                             roomsListPage.headerTitle = odsdata.nodeTitleName()
                         } else {
-                            navigationPane.pop(); 
+                            navigationPane.pop();
                         }
                     }
                 }
-            } 
+            }
         },
         DictaphonePage {
             id: audioRecordPage
@@ -149,6 +149,17 @@ NavigationPane {
                     }
                 }
             }
+        },
+        // FileInfo
+        FileInfoPage {
+            id: fileInfoPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
         }
     ]
     // the ROOT Page of this NavigationPane
@@ -230,7 +241,8 @@ NavigationPane {
 
                 // MOCKUP DATA
                 // After the list is created, add some mockup items
-                onCreationCompleted: {}
+                onCreationCompleted: {
+                }
             } // end ListView
         } // end Container
     } // end page
@@ -303,6 +315,11 @@ NavigationPane {
         console.debug("got signal to add a new folder: " + name)
         roomsListPage.addFolder(name)
     }
+    function openFileInfoPage(id) {
+            console.debug("got signal to open FileInfoPage")
+            fileInfoPage.refreshData(id)
+            navigationPane.push(fileInfoPage)
+        }
     onTopChanged: {
         if (navigationPane.top == dataspacePage) {
             odsdata.resetLevel();
@@ -325,6 +342,8 @@ NavigationPane {
         roomsListPage.previewUnknown.connect(previewUnknown)
         //-- connect the RoomsList onOpenAddFolder SIGNAL to the handler SLOT
         roomsListPage.openAddFolder.connect(onOpenAddFolder)
+        //
+        roomsListPage.openFileInfoPage.connect(openFileInfoPage)
         //-- connect the onFolderAdded SIGNAL from AddFolderPage with SLOT folderAdded
         addFolderPage.onFolderAdded.connect(folderAdded)
         //-- connect the RoomsList recordAudio SIGNAL to the handler SLOT

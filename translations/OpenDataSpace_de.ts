@@ -157,12 +157,12 @@
         <translation type="obsolete">Neuer Datenraum</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="159"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="170"/>
         <source>Refresh</source>
         <translation type="unfinished">Aktualisieren</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="169"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="180"/>
         <source>DataRoom</source>
         <translation type="unfinished">Datenraum</translation>
     </message>
@@ -264,6 +264,19 @@
         <location filename="../src/FileInfo.cpp" line="284"/>
         <source>modified</source>
         <translation>bearbeitet</translation>
+    </message>
+</context>
+<context>
+    <name>FileInfoPage</name>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="21"/>
+        <source>File Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="48"/>
+        <source>File not found</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -426,187 +439,187 @@
 <context>
     <name>ODSData</name>
     <message>
-        <location filename="../src/ODSData.cpp" line="116"/>
+        <location filename="../src/ODSData.cpp" line="117"/>
         <source>Sync with OpenDataSpace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="119"/>
+        <location filename="../src/ODSData.cpp" line="120"/>
         <source>Stop synchronization</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="122"/>
+        <location filename="../src/ODSData.cpp" line="123"/>
         <source>connect Server, authenticate user...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="162"/>
+        <location filename="../src/ODSData.cpp" line="163"/>
         <source>Code 0: No Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="163"/>
+        <location filename="../src/ODSData.cpp" line="164"/>
         <source>Code 1 JSON Error: Server was unable to parse the request.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="164"/>
+        <location filename="../src/ODSData.cpp" line="165"/>
         <source>Code 2 Invalid Credentials: Invalid user or password specified during login.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="165"/>
+        <location filename="../src/ODSData.cpp" line="166"/>
         <source>Code 3: Account has expired.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="166"/>
+        <location filename="../src/ODSData.cpp" line="167"/>
         <source>Code 4: Account locked due to lost mobile device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="167"/>
+        <location filename="../src/ODSData.cpp" line="168"/>
         <source>Code 5: Mobile access locked for this account.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="168"/>
+        <location filename="../src/ODSData.cpp" line="169"/>
         <source>Code 6: Account locked by admin.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="169"/>
+        <location filename="../src/ODSData.cpp" line="170"/>
         <source>Code 7 Token expired: Session ID has expired. Login has to be invoked again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="170"/>
+        <location filename="../src/ODSData.cpp" line="171"/>
         <source>Code 8: User already exists.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="171"/>
+        <location filename="../src/ODSData.cpp" line="172"/>
         <source>Code 9: Customer not found during AllFilesRequest.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="172"/>
+        <location filename="../src/ODSData.cpp" line="173"/>
         <source>Code 10: Invalid path.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="173"/>
+        <location filename="../src/ODSData.cpp" line="174"/>
         <source>Code 11: File write error.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="174"/>
+        <location filename="../src/ODSData.cpp" line="175"/>
         <source>Code 12 Invalid File: Attempted a file operation using an invalid ID.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="175"/>
+        <location filename="../src/ODSData.cpp" line="176"/>
         <source>Code 13 File exists: Attempt to copy or move to an existing file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="176"/>
+        <location filename="../src/ODSData.cpp" line="177"/>
         <source>Code 14 Folder not empty: Attempted to delete a non-emty folder.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="177"/>
+        <location filename="../src/ODSData.cpp" line="178"/>
         <source>Code 15: Failed to create a download link.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="178"/>
+        <location filename="../src/ODSData.cpp" line="179"/>
         <source>Code 16: Maximum number of users reached.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="179"/>
+        <location filename="../src/ODSData.cpp" line="180"/>
         <source>Code 17: Disk quota was reached.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="180"/>
+        <location filename="../src/ODSData.cpp" line="181"/>
         <source>Code 18: DeleteAll could not delete all files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="181"/>
+        <location filename="../src/ODSData.cpp" line="182"/>
         <source>Code 19: MoveAll could not move all files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="182"/>
+        <location filename="../src/ODSData.cpp" line="183"/>
         <source>Code 20: CopyAll could not copy all files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="538"/>
+        <location filename="../src/ODSData.cpp" line="555"/>
         <source>Cannot read file to upload: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="613"/>
+        <location filename="../src/ODSData.cpp" line="630"/>
         <source>unknown Usecase: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="718"/>
+        <location filename="../src/ODSData.cpp" line="735"/>
         <source>Error: could not write to file: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="726"/>
+        <location filename="../src/ODSData.cpp" line="743"/>
         <source>wrong content </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="754"/>
+        <location filename="../src/ODSData.cpp" line="771"/>
         <source>Authentication done, getting User...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="761"/>
+        <location filename="../src/ODSData.cpp" line="778"/>
         <source>User received, getting Settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="768"/>
+        <location filename="../src/ODSData.cpp" line="785"/>
         <source>Settings received, getting Files...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="774"/>
+        <location filename="../src/ODSData.cpp" line="791"/>
         <source>Files received, getting Userlist...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="781"/>
+        <location filename="../src/ODSData.cpp" line="798"/>
         <source>Synchronization with Server done :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="783"/>
+        <location filename="../src/ODSData.cpp" line="800"/>
         <source>Synchronization done</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="835"/>
+        <location filename="../src/ODSData.cpp" line="852"/>
         <source>Response without Body-part</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="916"/>
+        <location filename="../src/ODSData.cpp" line="933"/>
         <source>Unknown Response Usecase</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="930"/>
+        <location filename="../src/ODSData.cpp" line="947"/>
         <source>No valid result from Server</source>
         <translation type="unfinished"></translation>
     </message>
@@ -804,7 +817,7 @@
 <context>
     <name>RoomsListPage</name>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="44"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="45"/>
         <source>File Picker</source>
         <translation type="unfinished">Dateiauswahl</translation>
     </message>
@@ -813,28 +826,28 @@
         <translation type="obsolete">Neuer Raum</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="113"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="114"/>
         <source>New Folder</source>
         <translation>Neuer Ordner</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="122"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="123"/>
         <source>Refresh</source>
         <translation>Aktualisieren</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="130"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="134"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="131"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="135"/>
         <source>Select Document</source>
         <translation>Dokument wählen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="146"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="147"/>
         <source>Select Image</source>
         <translation type="unfinished">Bild wählen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="158"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="159"/>
         <source>Select Video</source>
         <translation type="unfinished">Video wählen</translation>
     </message>
@@ -851,115 +864,115 @@
         <translation type="obsolete">Audio aufnehmen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="142"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="143"/>
         <source>Select | Capture Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="154"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="155"/>
         <source>Select | Capture Video</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="170"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="171"/>
         <source>Select Recorded Voice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="191"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="195"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="192"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="196"/>
         <source>Select Music</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="216"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="217"/>
         <source>Select Other File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="220"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="221"/>
         <source>Select File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="181"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="182"/>
         <source>Dictaphone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="166"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="167"/>
         <source>Select Voice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="203"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="207"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="204"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="208"/>
         <source>Select Book</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="230"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="231"/>
         <source>DataRoom</source>
         <translation>Datenraum</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="284"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="285"/>
         <source>ODS Subroom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="286"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="305"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="361"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="287"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="306"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="362"/>
         <source>Info</source>
         <translation>Information</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="303"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="304"/>
         <source>ODS Folder</source>
         <translation>ODS Ordner</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="312"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="368"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="313"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="373"/>
         <source>Copy</source>
         <translation>Kopieren</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="319"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="375"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="320"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="380"/>
         <source>Move</source>
         <translation>Verschieben</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="326"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="382"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="327"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="387"/>
         <source>Rename</source>
         <translation>Umbenennen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="336"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="403"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="337"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="408"/>
         <source>Delete</source>
         <translation>Löschen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="352"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="353"/>
         <source>ODS File</source>
         <translation>ODS Datei</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="354"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="355"/>
         <source>View</source>
         <translation>Betrachten</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="389"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="394"/>
         <source>Download</source>
         <translation>Download</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="396"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="401"/>
         <source>Link</source>
         <translation>Link</translation>
     </message>

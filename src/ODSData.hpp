@@ -45,6 +45,9 @@ public:
 	Q_INVOKABLE
 	QString nodeTitleName();
 
+	Q_INVOKABLE
+	QObject* fileFromId(int fileId);
+
 Q_SIGNALS:
 	void loginFinished(bool success);
 

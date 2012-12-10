@@ -29,6 +29,7 @@ static QString uploadPath(const QString& fileName) {
 static const QString isGroupValue = "is_group";
 static const QString typeValue = "type";
 static const QString nameValue = "name";
+static const QString fileIdValue = "fileID";
 
 ODSData::ODSData() {
 	// prepare all for the work with ODS Servers
@@ -341,6 +342,22 @@ void ODSData::showNextNode(QVariantList nodes, QString name){
 	mCache->insert(mFilesLevel, nodes);
 	mNodeNames->insert(mFilesLevel, name);
 	qDebug() << "showNextNode caches: " << mFilesLevel;
+}
+
+QObject* ODSData::fileFromId(int fileId) {
+	QVariantList nodes = mCache->at(mFilesLevel).toList();
+	if (!nodes.isEmpty()) {
+		for (int i = 0; i < nodes.size(); ++i) {
+			QVariantMap map = nodes.at(i).toMap();
+			if (map.value(typeValue, 42).toInt() == 2 && map.value(fileIdValue, 0).toInt() == fileId) {
+				return new ODSFile(map);
+			}
+		}
+	} else {
+		qDebug() << "file id not found: " << fileId;
+		// TODO DIalog Warning
+	}
+	return new ODSFile();
 }
 
 void ODSData::resetLevel() {

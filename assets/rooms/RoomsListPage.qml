@@ -27,6 +27,7 @@ Page {
     id: roomsListPage
     signal recordAudio()
     signal openAddFolder()
+    signal openFileInfoPage(int fileId)
     signal previewImage(string filePath)
     signal previewVideo(string path)
     signal previewDocuments(string path)
@@ -361,7 +362,11 @@ Page {
                                     title: qsTr("Info") + Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/2-action-about81.png"
                                     onTriggered: {
-                                        // TODO
+                                        // we're only transmitting the id to avoid complex data
+                                        // (ODSFile* in this case)
+                                        // to be transported between sgnals, slots, pages, c++
+                                        // current level of files tree is cached at c++ so we get fast access
+                                        filesItem.ListItem.view.pushFileInfoPage(ListItemData.id)
                                     }
                                 }
                                 ActionItem {
@@ -428,8 +433,12 @@ Page {
                 }
                 return "header";
             }
-
-            onCreationCompleted: {}
+            onCreationCompleted: {
+            }
+            // ListView functions
+            function pushFileInfoPage(id) {
+                openFileInfoPage(id)
+            }
         } // end ListView
     } // end Container
     function addFolder(name) {
@@ -458,5 +467,6 @@ Page {
                 "icon": "../images/files-icon.png"
             })
     }
+
     // TODO localization: loop thru datamodel and localize datetime strings
 }// end page
