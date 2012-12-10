@@ -111,7 +111,7 @@ Page {
     actions: [
         ActionItem {
             title: qsTr("New Folder") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/4-collections-collection_newlabel81.png"
+            imageSource: "asset:///images/new-folder81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 roomsListPage.openAddFolder()
@@ -128,7 +128,7 @@ Page {
         },
         ActionItem {
             title: qsTr("Select Document") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/4-collections-view-as-list81.png"
+            imageSource: "asset:///images/file81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 picker.title = qsTr("Select Document")
@@ -140,7 +140,7 @@ Page {
         },
         ActionItem {
             title: qsTr("Select | Capture Image") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/5-content-picture81.png"
+            imageSource: "asset:///images/image81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 picker.title = qsTr("Select Image")
@@ -152,7 +152,7 @@ Page {
         },
         ActionItem {
             title: qsTr("Select | Capture Video") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/10-device-access-video81.png"
+            imageSource: "asset:///images/video81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 picker.title = qsTr("Select Video")
@@ -164,7 +164,7 @@ Page {
         },
         ActionItem {
             title: qsTr("Select Voice") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/10-device-access-volume-on81.png"
+            imageSource: "asset:///images/audio81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 picker.title = qsTr("Select Recorded Voice")
@@ -179,7 +179,7 @@ Page {
         },
         ActionItem {
             title: qsTr("Dictaphone") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/10-device-access-mic81.png"
+            imageSource: "asset:///images/recording81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // SIGNAL
@@ -189,7 +189,7 @@ Page {
         },
         ActionItem {
             title: qsTr("Select Music") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/9-av-play81.png"
+            imageSource: "asset:///images/musicplayer81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 picker.title = qsTr("Select Music")
@@ -201,7 +201,7 @@ Page {
         },
         ActionItem {
             title: qsTr("Select Book") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/4-collections-view-as-list81.png"
+            imageSource: "asset:///images/ebook81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 picker.title = qsTr("Select Book")
@@ -214,7 +214,7 @@ Page {
         },
         ActionItem {
             title: qsTr("Select Other File") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/4-collections-view-as-list81.png"
+            imageSource: "asset:///images/file81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 picker.title = qsTr("Select File")
@@ -387,7 +387,7 @@ Page {
                                 }
                                 ActionItem {
                                     title: qsTr("Download") + Retranslate.onLanguageChanged
-                                    imageSource: "asset:///images/ics/9-av-download81.png"
+                                    imageSource: "asset:///images/download81.png"
                                     onTriggered: {
                                         // TODO
                                     }

@@ -1,6 +1,7 @@
 
 
 #include "ODSFile.hpp"
+#include "FileInfo.hpp"
 #include <QDebug>
 
 static const QString nameValue = "name";
@@ -29,7 +30,25 @@ ODSFile::ODSFile(QVariantMap fileMap) :
 	mCreatedBy = mFilesMap.value(logMeValue, "").toString();
 	mCreatedAt = mFilesMap.value(logDeValue, "").toString();
 	mDisplayType = "L";
-	mDisplayIcon = "../images/files-icon.png";
+	FileInfo fi;
+	if (fi.isImage(mName)) {
+		mDisplayIcon = "../images/image114.png";
+	} else if (fi.isVideo(mName)) {
+		mDisplayIcon = "../images/video114.png";
+	} else if (fi.isAudio(mName)) {
+		mDisplayIcon = "../images/audio114.png";
+	} else if (fi.getSuffix(mName) == "pdf") {
+		mDisplayIcon = "../images/pdf114.png";
+	} else if (fi.isCompressed(mName)) {
+		mDisplayIcon = "../images/zip114.png";
+	} else if (fi.isDocument(mName)) {
+		mDisplayIcon = "../images/files-icon.png";
+	} else if (fi.isBook(mName)) {
+		mDisplayIcon = "../images/ebook114.png";
+	} else {
+		mDisplayIcon = "../images/other114.png";
+	}
+
 }
 
 QString ODSFile::name() const {

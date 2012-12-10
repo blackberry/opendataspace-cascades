@@ -51,7 +51,7 @@ NavigationPane {
             //TODO only for Admins
             ActionItem {
                 title: qsTr("New User") + Retranslate.onLanguageChanged
-                imageSource: "asset:///images/ics/6-social-add-person81.png"
+                imageSource: "asset:///images/new-user81.png"
                 ActionBar.placement: ActionBarPlacement.InOverflow
                 onTriggered: {
                     console.debug("now pushing AddUserPage")
@@ -143,7 +143,7 @@ NavigationPane {
                                     subtitle: "ODS Aministrator"
                                     ActionItem {
                                         title: qsTr("Add Room") + Retranslate.onLanguageChanged
-                                        imageSource: "asset:///images/ics/5-content-new81.png"
+                                        imageSource: "asset:///images/new-folder81.png"
                                         onTriggered: {
                                             // TODO
                                         }
