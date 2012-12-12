@@ -167,7 +167,7 @@ NavigationPane {
         id: dataspacePage
         actions: [
             ActionItem {
-                title: qsTr("Refresh") + Retranslate.onLanguageChanged
+                title: qsTr("Sync with Server") + Retranslate.onLanguageChanged
                 imageSource: "asset:///images/ics/1-navigation-refresh81.png"
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {

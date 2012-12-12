@@ -157,9 +157,13 @@
         <translation type="obsolete">Nuevo habitación</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="170"/>
         <source>Refresh</source>
-        <translation type="unfinished">Actualizar</translation>
+        <translation type="obsolete">Actualizar</translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="170"/>
+        <source>Sync with Server</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/rooms/DataSpaceNavPane.qml" line="180"/>
@@ -278,42 +282,77 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="62"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="26"/>
+        <source>View</source>
+        <translation type="unfinished">ver</translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="34"/>
+        <source>Copy</source>
+        <translation type="unfinished">Copiar</translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="42"/>
+        <source>Move</source>
+        <translation type="unfinished">Mover</translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="50"/>
+        <source>Rename</source>
+        <translation type="unfinished">Rebautizar</translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="58"/>
+        <source>Download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="66"/>
+        <source>Link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="74"/>
+        <source>Delete</source>
+        <translation type="unfinished">borrar</translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="129"/>
         <source>Id</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="75"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="161"/>
         <source>Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="88"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="193"/>
         <source>Created by user</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="101"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="225"/>
         <source>Classification</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="114"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="257"/>
         <source>Date created</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="127"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="289"/>
         <source>Expiration date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="137"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="321"/>
         <source>Comment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="157"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="351"/>
         <source>File not found</source>
         <translation type="unfinished"></translation>
     </message>
@@ -952,9 +991,8 @@
         <translation type="unfinished">Nueva carpeta</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="123"/>
         <source>Refresh</source>
-        <translation type="unfinished">Actualizar</translation>
+        <translation type="obsolete">Actualizar</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="131"/>
@@ -1021,6 +1059,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="123"/>
+        <source>Sync with Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="167"/>
         <source>Select Voice</source>
         <translation type="unfinished"></translation>
@@ -1037,63 +1080,63 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="285"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="291"/>
         <source>ODS Subroom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="295"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="322"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="386"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="301"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="328"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="392"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="312"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="318"/>
         <source>ODS Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="329"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="397"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="335"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="403"/>
         <source>Copy</source>
         <translation type="unfinished">Copiar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="336"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="404"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="342"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="410"/>
         <source>Move</source>
         <translation type="unfinished">Mover</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="343"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="411"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="349"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="417"/>
         <source>Rename</source>
         <translation type="unfinished">Rebautizar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="353"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="432"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="359"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="438"/>
         <source>Delete</source>
         <translation type="unfinished">borrar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="369"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="375"/>
         <source>ODS File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="379"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="385"/>
         <source>View</source>
         <translation type="unfinished">ver</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="418"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="424"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="425"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="431"/>
         <source>Link</source>
         <translation type="unfinished"></translation>
     </message>

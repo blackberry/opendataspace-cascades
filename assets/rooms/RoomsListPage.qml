@@ -113,16 +113,16 @@ Page {
         ActionItem {
             title: qsTr("New Folder") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/new-folder81.png"
-            ActionBar.placement: ActionBarPlacement.InOverflow
+            ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 roomsListPage.openAddFolder()
             }
         },
         ActionItem {
             id: refreshAction
-            title: qsTr("Refresh") + Retranslate.onLanguageChanged
+            title: qsTr("Sync with Server") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/1-navigation-refresh81.png"
-            ActionBar.placement: ActionBarPlacement.OnBar
+            ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // TODO call server
             }
@@ -270,6 +270,12 @@ Page {
                         // fill the model with the nodes
                         odsdata.showNextNode(fileGroupDataModel.data(indexPath).nodes, fileGroupDataModel.data(indexPath).name)
                         // navigationPane.push(roomsListPage)
+                    } else {
+                        // we're only transmitting the id to avoid complex data
+                        // (ODSFile* in this case)
+                        // to be transported between sgnals, slots, pages, c++
+                        // current level of files tree is cached at c++ so we get fast access
+                        pushFileInfoPage(fileGroupDataModel.data(indexPath).id)
                     }
                 }
             }
