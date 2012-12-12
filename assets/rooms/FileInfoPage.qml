@@ -28,7 +28,7 @@ Page {
 
         //
         Container {
-            id: folderNameContainer
+            id: fileInfoContainer
             horizontalAlignment: HorizontalAlignment.Center
             verticalAlignment: VerticalAlignment.Center
             layout: StackLayout {
@@ -37,6 +37,10 @@ Page {
             rightPadding: 40
             TextField {
                 id: fileName
+                text: ""
+            }
+            TextField {
+                id: fileId
                 text: ""
             }
         } // end Container
@@ -49,6 +53,7 @@ Page {
             return;
         }
         fileName.text = data.name
+        fileId.text = data.id
     }
     // the fileId we got from context action of ListItem
     function refreshData(id) {

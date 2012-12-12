@@ -278,7 +278,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="48"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="52"/>
         <source>File not found</source>
         <translation type="unfinished"></translation>
     </message>
@@ -629,6 +629,60 @@
     </message>
 </context>
 <context>
+    <name>ODSFolder</name>
+    <message>
+        <location filename="../src/ODSFolder.cpp" line="29"/>
+        <source>contains </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSFolder.cpp" line="29"/>
+        <source> Files / Folders</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSFolder.cpp" line="31"/>
+        <source>empty Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ODSRoom</name>
+    <message>
+        <location filename="../src/ODSRoom.cpp" line="28"/>
+        <source>contains </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSRoom.cpp" line="28"/>
+        <source> Files / Folders</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSRoom.cpp" line="30"/>
+        <source>empty Room</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ODSSubRoom</name>
+    <message>
+        <location filename="../src/ODSSubRoom.cpp" line="28"/>
+        <source>contains </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSSubRoom.cpp" line="29"/>
+        <source> Files / Folders</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSSubRoom.cpp" line="31"/>
+        <source>empty SubRoom</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OpenDataSpace</name>
     <message>
         <location filename="../src/OpenDataSpace.cpp" line="285"/>
@@ -925,58 +979,58 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="287"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="306"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="362"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="295"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="322"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="386"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="304"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="312"/>
         <source>ODS Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="313"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="373"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="329"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="397"/>
         <source>Copy</source>
         <translation type="unfinished">Copiar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="320"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="380"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="336"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="404"/>
         <source>Move</source>
         <translation type="unfinished">Mover</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="327"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="387"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="343"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="411"/>
         <source>Rename</source>
         <translation type="unfinished">Rebautizar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="337"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="408"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="353"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="432"/>
         <source>Delete</source>
         <translation type="unfinished">borrar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="353"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="369"/>
         <source>ODS File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="355"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="379"/>
         <source>View</source>
         <translation type="unfinished">ver</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="394"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="418"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="401"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="425"/>
         <source>Link</source>
         <translation type="unfinished"></translation>
     </message>

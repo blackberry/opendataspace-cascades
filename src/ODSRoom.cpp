@@ -22,6 +22,14 @@ ODSRoom::ODSRoom(QVariantMap roomMap) :
 	mDisplayType = "R";
 	mDisplayIcon = "../images/rooms-icon.png";
 	mNodes = mRoomsMap.value(nodesValue).toList();
+	mChildren = mNodes.size();
+	mDisplayTitle = mName;
+	if (mChildren > 0) {
+		mDisplaySubtitle = tr("contains ") + QString::number(mChildren) + tr(" Files / Folders");
+	} else {
+		mDisplaySubtitle = tr("empty Room");
+	}
+
 }
 
 QString ODSRoom::name() const {
@@ -54,12 +62,24 @@ void ODSRoom::setLevel(int level) {
 	}
 }
 
+int ODSRoom::children() const {
+	return mChildren;
+}
+
 QString ODSRoom::displayType() const {
 	return mDisplayType;
 }
 
 QString ODSRoom::displayIcon() const {
 	return mDisplayIcon;
+}
+
+QString ODSRoom::displayTitle() const {
+	return mDisplayTitle;
+}
+
+QString ODSRoom::displaySubtitle() const {
+	return mDisplaySubtitle;
 }
 
 QVariantList ODSRoom::nodes() const {

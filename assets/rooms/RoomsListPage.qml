@@ -284,6 +284,14 @@ Page {
                                 title: ListItemData.name
                                 subtitle: qsTr("ODS Subroom") + Retranslate.onLanguageChanged
                                 ActionItem {
+                                    title: "RepairListItem"
+                                    onTriggered: {
+                                        // TODO
+                                        // workaround
+                                        subroomsItem.workaround()
+                                    }
+                                }
+                                ActionItem {
                                     title: qsTr("Info") + Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/2-action-about81.png"
                                     onTriggered: {
@@ -302,6 +310,14 @@ Page {
                             ActionSet {
                                 title: ListItemData.name
                                 subtitle: qsTr("ODS Folder") + Retranslate.onLanguageChanged
+                                ActionItem {
+                                    title: "RepairListItem"
+                                    onTriggered: {
+                                        // TODO
+                                        // workaround
+                                        foldersItem.workaround()
+                                    }
+                                }
                                 ActionItem {
                                     title: qsTr("Info") + Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/2-action-about81.png"
@@ -351,6 +367,14 @@ Page {
                             ActionSet {
                                 title: ListItemData.name
                                 subtitle: qsTr("ODS File") + Retranslate.onLanguageChanged
+                                ActionItem {
+                                    title: "RepairListItem"
+                                    onTriggered: {
+                                        // TODO
+                                        // workaround
+                                        filesItem.workaround()
+                                    }
+                                }
                                 ActionItem {
                                     title: qsTr("View") + Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/2-action-search81.png"

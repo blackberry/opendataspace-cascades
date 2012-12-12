@@ -68,6 +68,7 @@ Container {
             horizontalAlignment: HorizontalAlignment.Fill
             verticalAlignment: VerticalAlignment.Center
             ImageView {
+                id: itemImage
                 preferredWidth: 114
                 preferredHeight: 114
                 minWidth: 114
@@ -87,8 +88,9 @@ Container {
                 leftMargin: 30
                 // TITLE
                 Label {
+                    id: titleLabel
                     // name, fileType are properties from data model
-                    text: ListItemData.name // + " (" + ListItemData.fileType + ") "
+                    text: ListItemData.displayTitle 
                     textStyle {
                         base: SystemDefaults.TextStyles.TitleText
                         color: Color.Black
@@ -96,8 +98,9 @@ Container {
                 }
                 // SUBTITLE
                 Label {
+                    id: subtitleLabel
                     // lastEditedBy, timestamp, fileSize are properties from data model
-                    text: "file" // ListItemData.timestamp + " (" + ListItemData.fileSize + " Bytes)"
+                    text: ListItemData.displaySubtitle
                     textStyle {
                         base: SystemDefaults.TextStyles.SubtitleText
                         color: Color.Black
@@ -113,6 +116,11 @@ Container {
             highlightContainer.opacity = 0.0;
         }
     }
+    function workaround() {
+        itemImage.imageSource = ListItemData.displayIcon
+        titleLabel.text = ListItemData.displayTitle
+        subtitleLabel.text = ListItemData.displaySubtitle
+	}
     ListItem.onActivationChanged: {
         setHighlight(ListItem.active);
     }

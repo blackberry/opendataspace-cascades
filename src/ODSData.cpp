@@ -28,7 +28,7 @@ static QString uploadPath(const QString& fileName) {
 }
 static const QString isGroupValue = "is_group";
 static const QString typeValue = "type";
-static const QString nameValue = "name";
+static const QString nodesValue = "nodes";
 static const QString fileIdValue = "fileID";
 
 ODSData::ODSData() {
@@ -278,7 +278,7 @@ void ODSData::initRoomsModel() {
 		// all rooms
 		dataMap = readDataFromJson(Usecase::FilesAll);
 		if (!dataMap.isEmpty()) {
-			dataList = dataMap.value("nodes", "").toList();
+			dataList = dataMap.value(nodesValue, "").toList();
 			if (!dataList.isEmpty()) {
 				for (int i = 0; i < dataList.size(); ++i) {
 					QVariantMap map = dataList.at(i).toMap();

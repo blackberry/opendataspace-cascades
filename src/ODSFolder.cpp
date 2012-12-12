@@ -23,6 +23,13 @@ ODSFolder::ODSFolder(QVariantMap folderMap) :
 	mDisplayType = "F";
 	mDisplayIcon = "../images/folders-icon.png";
 	mNodes = mFoldersMap.value(nodesValue).toList();
+	mChildren = mNodes.size();
+	mDisplayTitle = mName;
+	if (mChildren > 0) {
+			mDisplaySubtitle = tr("contains ") + QString::number(mChildren) + tr(" Files / Folders");
+		} else {
+			mDisplaySubtitle = tr("empty Folder");
+		}
 }
 
 QString ODSFolder::name() const {
@@ -75,12 +82,24 @@ void ODSFolder::setRoomId(int roomId) {
 	}
 }
 
+int ODSFolder::children() const {
+	return mChildren;
+}
+
 QString ODSFolder::displayType() const {
 	return mDisplayType;
 }
 
 QString ODSFolder::displayIcon() const {
 	return mDisplayIcon;
+}
+
+QString ODSFolder::displayTitle() const {
+	return mDisplayTitle;
+}
+
+QString ODSFolder::displaySubtitle() const {
+	return mDisplaySubtitle;
 }
 
 QVariantList ODSFolder::nodes() const {

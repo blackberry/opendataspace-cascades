@@ -1,5 +1,4 @@
 
-
 #include "ODSSubRoom.hpp"
 #include <QDebug>
 
@@ -12,16 +11,25 @@ static const QString parentValue = "parent";
 //static const QString typeValue = "type";
 static const QString groupPkValue = "group_pk";
 
-ODSSubRoom::ODSSubRoom(QObject *parent) {}
+ODSSubRoom::ODSSubRoom(QObject *parent) {
+}
 
 ODSSubRoom::ODSSubRoom(QVariantMap subRoomMap) :
-				QObject(), mSubRoomsMap(subRoomMap) {
+		QObject(), mSubRoomsMap(subRoomMap) {
 	mName = mSubRoomsMap.value(nameValue, "").toString();
 	mId = mSubRoomsMap.value(groupPkValue, 0).toInt();
 	mRoomId = mSubRoomsMap.value(parentValue, 0).toInt();
 	mDisplayType = "S";
 	mDisplayIcon = "../images/subrooms-icon.png";
 	mNodes = mSubRoomsMap.value(nodesValue).toList();
+	mChildren = mNodes.size();
+	mDisplayTitle = mName;
+	if (mChildren > 0) {
+		mDisplaySubtitle = tr("contains ") + QString::number(mChildren)
+				+ tr(" Files / Folders");
+	} else {
+		mDisplaySubtitle = tr("empty SubRoom");
+	}
 }
 
 QString ODSSubRoom::name() const {
@@ -64,6 +72,10 @@ void ODSSubRoom::setRoomId(int roomId) {
 	}
 }
 
+int ODSSubRoom::children() const {
+	return mChildren;
+}
+
 QString ODSSubRoom::displayType() const {
 	return mDisplayType;
 }
@@ -72,10 +84,17 @@ QString ODSSubRoom::displayIcon() const {
 	return mDisplayIcon;
 }
 
+QString ODSSubRoom::displayTitle() const {
+	return mDisplayTitle;
+}
+
+QString ODSSubRoom::displaySubtitle() const {
+	return mDisplaySubtitle;
+}
+
 QVariantList ODSSubRoom::nodes() const {
 	return mNodes;
 }
-
 
 ODSSubRoom::~ODSSubRoom() {
 	// TODO Auto-generated destructor stub

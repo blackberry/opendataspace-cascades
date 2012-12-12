@@ -68,6 +68,7 @@ Container {
             horizontalAlignment: HorizontalAlignment.Fill
             verticalAlignment: VerticalAlignment.Center
             ImageView {
+                id: itemImage
                 preferredWidth: 114
                 preferredHeight: 114
                 minWidth: 114
@@ -87,8 +88,8 @@ Container {
                 leftMargin: 30
                 // TITLE
                 Label {
-                    // name is a property from data model
-                    text: ListItemData.name
+                    id: titleLabel
+                    text: ListItemData.displayTitle
                     textStyle {
                         base: SystemDefaults.TextStyles.TitleText
                         color: Color.Black
@@ -96,8 +97,8 @@ Container {
                 }
                 // SUBTITLE
                 Label {
-                    // numberOfFiles properties from data model
-                    text: "subroom" // qsTr("%1 file(s)", "", ListItemData.numberOfFiles).arg(ListItemData.numberOfFiles) + Retranslate.onLanguageChanged + " (" + ListItemData.fileSize + " Bytes" + ")"
+                    id: subtitleLabel
+                    text: ListItemData.displaySubtitle
                     textStyle {
                         base: SystemDefaults.TextStyles.SubtitleText
                         color: Color.Black
@@ -119,6 +120,11 @@ Container {
     ListItem.onSelectionChanged: {
         setHighlight(ListItem.selected);
     }
+    function workaround() {
+        itemImage.imageSource = ListItemData.displayIcon
+        titleLabel.text = ListItemData.displayTitle
+        subtitleLabel.text = ListItemData.displaySubtitle
+	}
     // init
     onCreationCompleted: {
         // set to Landscape if aklready in landscape while staring up

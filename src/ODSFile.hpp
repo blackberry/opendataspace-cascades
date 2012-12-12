@@ -23,6 +23,8 @@ class ODSFile: public QObject {
 
 	Q_PROPERTY(QString displayType READ displayType NOTIFY displayTypeChanged FINAL)
 	Q_PROPERTY(QString displayIcon READ displayIcon NOTIFY displayIconChanged FINAL)
+	Q_PROPERTY(QString displayTitle READ displayTitle NOTIFY displayTitleChanged FINAL)
+	Q_PROPERTY(QString displaySubtitle READ displaySubtitle NOTIFY displaySubtitleChanged FINAL)
 
 public:
 	ODSFile(QObject *parent = 0);
@@ -32,6 +34,9 @@ public:
 	QString name() const;
 	QString displayType() const;
 	QString displayIcon() const;
+	QString displayTitle() const;
+	QString displaySubtitle() const;
+
 	QString comment() const;
 	QString createdBy() const;
 	QString createdAt() const;
@@ -72,6 +77,8 @@ Q_SIGNALS:
 
 	void displayTypeChanged(QString displayType);
 	void displayIconChanged(QString displayIcon);
+	void displayTitleChanged(QString displayTitle);
+	void displaySubtitleChanged(QString displaySubtitle);
 
 private:
 
@@ -90,6 +97,8 @@ private:
 
 	QString mDisplayType;
 	QString mDisplayIcon;
+	QString mDisplayTitle;
+	QString mDisplaySubtitle;
 
 Q_DISABLE_COPY(ODSFile)
 };

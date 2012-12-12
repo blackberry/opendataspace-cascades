@@ -87,15 +87,20 @@ Container {
                 leftMargin: 30
                 // TITLE
                 Label {
-                    // name is a property from data model
-                    text: ListItemData.name
+                    text: ListItemData.displayTitle
                     textStyle {
                         base: SystemDefaults.TextStyles.TitleText
                         color: Color.Black
                     }
                 }
-                // SUBTITLE
-                // not yet
+                /// SUBTITLE
+                Label {
+                    text: ListItemData.displaySubtitle
+                    textStyle {
+                        base: SystemDefaults.TextStyles.SubtitleText
+                        color: Color.Black
+                    }
+                }
             }
         }
     }
