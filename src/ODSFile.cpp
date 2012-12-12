@@ -132,11 +132,11 @@ void ODSFile::setContainerId(int containerId) {
 }
 
 int ODSFile::fileSize() const {
-	return mContainerId;
+	return mFileSize;
 }
 void ODSFile::setFileSize(int fileSize) {
-	if (fileSize != mContainerId) {
-		mContainerId = fileSize;
+	if (fileSize != mFileSize) {
+		mFileSize = fileSize;
 		emit fileSizeChanged(fileSize);
 	}
 }
