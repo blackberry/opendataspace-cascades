@@ -18,6 +18,7 @@ ODSFolder::ODSFolder(QVariantMap folderMap) :
 				QObject(), mFoldersMap(folderMap) {
 	mName = mFoldersMap.value(nameValue, "").toString();
 	mPath = mFoldersMap.value(parentValue, "").toString();
+
 	mContainerId = mFoldersMap.value(groupPkValue, 0).toInt();
 	mRoomId = mFoldersMap.value(parentValue, 0).toInt();
 	mDisplayType = "F";
@@ -26,10 +27,10 @@ ODSFolder::ODSFolder(QVariantMap folderMap) :
 	mChildren = mNodes.size();
 	mDisplayTitle = mName;
 	if (mChildren > 0) {
-			mDisplaySubtitle = tr("contains ") + QString::number(mChildren) + tr(" Files / Folders");
-		} else {
-			mDisplaySubtitle = tr("empty Folder");
-		}
+		mDisplaySubtitle = tr("contains ") + QString::number(mChildren) + tr(" Files / Folders");
+	} else {
+		mDisplaySubtitle = tr("empty Folder");
+	}
 }
 
 QString ODSFolder::name() const {
