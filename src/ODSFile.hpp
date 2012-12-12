@@ -14,12 +14,13 @@ class ODSFile: public QObject {
 	Q_PROPERTY(QString createdBy READ createdBy WRITE setCreatedBy NOTIFY createdByChanged FINAL)
 	Q_PROPERTY(QString createdAt READ createdAt WRITE setCreatedAt NOTIFY createdAtChanged FINAL)
 	Q_PROPERTY(QString expires READ expires WRITE setExpires NOTIFY expiresChanged FINAL)
+	Q_PROPERTY(QString classification READ classification WRITE setClassification NOTIFY classificationChanged FINAL)
 
 	Q_PROPERTY(int id READ id WRITE setId NOTIFY idChanged FINAL)
 	Q_PROPERTY(int level READ level WRITE setLevel NOTIFY levelChanged FINAL)
 	Q_PROPERTY(int containerId READ containerId WRITE setContainerId NOTIFY containerIdChanged FINAL)
 	Q_PROPERTY(int fileSize READ fileSize WRITE setFileSize NOTIFY fileSizeChanged FINAL)
-	Q_PROPERTY(int classification READ classification WRITE setClassification NOTIFY classificationChanged FINAL)
+
 
 	Q_PROPERTY(QString displayType READ displayType NOTIFY displayTypeChanged FINAL)
 	Q_PROPERTY(QString displayIcon READ displayIcon NOTIFY displayIconChanged FINAL)
@@ -46,7 +47,7 @@ public:
 	int level() const;
 	int containerId() const;
 	int fileSize() const;
-	int classification() const;
+	QString classification() const;
 
 	void setName(QString newName);
 	void setComment(QString newComment);
@@ -58,7 +59,7 @@ public:
 	void setLevel(int level);
 	void setContainerId(int containerId);
 	void setFileSize(int fileSize);
-	void setClassification(int classification);
+	void setClassification(QString classification);
 
 
 Q_SIGNALS:
@@ -73,7 +74,7 @@ Q_SIGNALS:
 	void levelChanged(int level);
 	void containerIdChanged(int containerId);
 	void fileSizeChanged(int fileSize);
-	void classificationChanged(int classification);
+	void classificationChanged(QString classification);
 
 	void displayTypeChanged(QString displayType);
 	void displayIconChanged(QString displayIcon);
@@ -93,7 +94,7 @@ private:
 	int mLevel;
 	int mContainerId;
 	int mFileSize;
-	int mClassification;
+	QString mClassification;
 
 	QString mDisplayType;
 	QString mDisplayIcon;

@@ -25,7 +25,24 @@ ODSFile::ODSFile(QVariantMap fileMap) :
 	mComment = mFilesMap.value(commentValue, "").toString();
 	mContainerId = mFilesMap.value(groupPkValue, 0).toInt();
 	mFileSize = mFilesMap.value(fileSizeValue, 0).toInt();
-	mClassification = mFilesMap.value(classificationValue, 1).toInt();
+	int classification = mFilesMap.value(classificationValue, -1).toInt();
+	switch (classification) {
+		case 0:
+			mClassification = tr("public");
+			break;
+		case 1:
+			mClassification = tr("for internal usage only");
+			break;
+		case 2:
+			mClassification = tr("confidentiaL");
+			break;
+		case 3:
+			mClassification = tr("strictly confidential");
+			break;
+		default:
+			mClassification = tr("unknown");
+			break;
+	}
 	mExpires = mFilesMap.value(expirationDateValue, "").toString();
 	mCreatedBy = mFilesMap.value(logMeValue, "").toString();
 	mCreatedAt = mFilesMap.value(logDeValue, "").toString();
@@ -149,10 +166,10 @@ void ODSFile::setFileSize(int fileSize) {
 	}
 }
 
-int ODSFile::classification() const {
+QString ODSFile::classification() const {
 	return mClassification;
 }
-void ODSFile::setClassification(int classification) {
+void ODSFile::setClassification(QString classification) {
 	if (classification != mClassification) {
 		mClassification = classification;
 		emit classificationChanged(classification);
