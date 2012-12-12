@@ -66,13 +66,16 @@ ODSFile::ODSFile(QVariantMap fileMap) :
 		mDisplayIcon = "../images/other114.png";
 	}
 	mDisplayTitle = mName;
-	if (mFileSize > 1000000) {
-		mDisplaySubtitle = mCreatedAt +" ("+ QString::number(mFileSize/1000000) + " MB) id: "+ QString::number(mId);
+	if (mFileSize > 1000000000) {
+		mDisplayFileSize = QString::number(mFileSize/1000000000) + " GB";
+	} else if (mFileSize > 1000000) {
+		mDisplayFileSize = QString::number(mFileSize/1000000) + " MB";
 	} else if (mFileSize > 1000) {
-		mDisplaySubtitle = mCreatedAt +" ("+ QString::number(mFileSize/1000) + " KB) id: "+ QString::number(mId);
+		mDisplayFileSize = QString::number(mFileSize/1000) + " KB";
 	} else {
-		mDisplaySubtitle = mCreatedAt +" ("+ QString::number(mFileSize) + " Bytes) id: "+ QString::number(mId);
+		mDisplayFileSize = QString::number(mFileSize) + " Bytes";
 	}
+	mDisplaySubtitle = mCreatedAt +" ("+ mDisplayFileSize + ") id: "+ QString::number(mId);
 
 }
 
@@ -190,6 +193,10 @@ QString ODSFile::displayTitle() const {
 
 QString ODSFile::displaySubtitle() const {
 	return mDisplaySubtitle;
+}
+
+QString ODSFile::displayFileSize() const {
+	return mDisplayFileSize;
 }
 
 
