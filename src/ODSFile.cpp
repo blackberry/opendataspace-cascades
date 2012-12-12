@@ -27,16 +27,16 @@ ODSFile::ODSFile(QVariantMap fileMap) :
 	mFileSize = mFilesMap.value(fileSizeValue, 0).toInt();
 	int classification = mFilesMap.value(classificationValue, -1).toInt();
 	switch (classification) {
-		case 0:
+		case 1:
 			mClassification = tr("public");
 			break;
-		case 1:
+		case 2:
 			mClassification = tr("for internal usage only");
 			break;
-		case 2:
+		case 3:
 			mClassification = tr("confidentiaL");
 			break;
-		case 3:
+		case 4:
 			mClassification = tr("strictly confidential");
 			break;
 		default:

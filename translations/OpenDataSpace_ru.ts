@@ -274,7 +274,42 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="52"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="62"/>
+        <source>Id</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="75"/>
+        <source>Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="88"/>
+        <source>Created by user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="101"/>
+        <source>Classification</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="114"/>
+        <source>Date created</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="127"/>
+        <source>Expiration date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="137"/>
+        <source>Comment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="157"/>
         <source>File not found</source>
         <translation type="unfinished"></translation>
     </message>
@@ -626,19 +661,47 @@
     </message>
 </context>
 <context>
+    <name>ODSFile</name>
+    <message>
+        <location filename="../src/ODSFile.cpp" line="31"/>
+        <source>public</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSFile.cpp" line="34"/>
+        <source>for internal usage only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSFile.cpp" line="37"/>
+        <source>confidentiaL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSFile.cpp" line="40"/>
+        <source>strictly confidential</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSFile.cpp" line="43"/>
+        <source>unknown</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ODSFolder</name>
     <message>
-        <location filename="../src/ODSFolder.cpp" line="29"/>
+        <location filename="../src/ODSFolder.cpp" line="30"/>
         <source>contains </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSFolder.cpp" line="29"/>
+        <location filename="../src/ODSFolder.cpp" line="30"/>
         <source> Files / Folders</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSFolder.cpp" line="31"/>
+        <location filename="../src/ODSFolder.cpp" line="32"/>
         <source>empty Folder</source>
         <translation type="unfinished"></translation>
     </message>
