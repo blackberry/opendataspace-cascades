@@ -273,82 +273,82 @@
 <context>
     <name>FileInfoPage</name>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="21"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="22"/>
         <source>File Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="26"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="39"/>
         <source>View</source>
         <translation type="unfinished">vista</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="34"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="47"/>
         <source>Copy</source>
         <translation type="unfinished">Copiare</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="42"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="55"/>
         <source>Move</source>
         <translation type="unfinished">spostare</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="50"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="63"/>
         <source>Rename</source>
         <translation type="unfinished">rinominare</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="58"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="71"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="66"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="79"/>
         <source>Link</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="74"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="87"/>
         <source>Delete</source>
         <translation type="unfinished">cancellare</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="129"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="115"/>
         <source>Id</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="161"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="119"/>
         <source>Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="193"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="123"/>
         <source>Created by user</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="225"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="127"/>
         <source>Classification</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="257"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="131"/>
         <source>Date created</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="289"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="135"/>
         <source>Expiration date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="321"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="139"/>
         <source>Comment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="351"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="148"/>
         <source>File not found</source>
         <translation type="unfinished"></translation>
     </message>
