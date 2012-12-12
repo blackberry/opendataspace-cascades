@@ -46,6 +46,9 @@ public:
 	QString nodeTitleName();
 
 	Q_INVOKABLE
+	QString nodePath();
+
+	Q_INVOKABLE
 	QObject* fileFromId(int fileId);
 
 Q_SIGNALS:

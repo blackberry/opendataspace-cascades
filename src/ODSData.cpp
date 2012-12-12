@@ -368,8 +368,13 @@ void ODSData::resetLevel() {
 }
 
 QString ODSData::nodeTitleName() {
-	qDebug() << mNodeNames->join("::");
+	qDebug() << mNodeNames->at(mFilesLevel) << " at Level: " << mFilesLevel;
 	return mNodeNames->at(mFilesLevel);
+}
+
+QString ODSData::nodePath() {
+	qDebug() << mNodeNames->join("::");
+	return mNodeNames->join("::");
 }
 
 

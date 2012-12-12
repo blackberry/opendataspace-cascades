@@ -109,11 +109,9 @@ Page {
                 ImageAndLabel {
                     id: headerId
                 }
-                // body
-                LabelAndLabel {
-                    id: fileId
-                    labelText: qsTr("Id") + Retranslate.onLanguageChanged
+                Divider {
                 }
+                // body
                 LabelAndLabel {
                     id: fileSize
                     labelText: qsTr("Size") + Retranslate.onLanguageChanged
@@ -138,6 +136,28 @@ Page {
                     id: comment
                     labelText: qsTr("Comment") + Retranslate.onLanguageChanged
                 }
+                Divider {
+                }
+                Label {
+                    text: qsTr("OpenDataSpace Cloud Informations:") + Retranslate.onLanguageChanged
+                    textStyle {
+                        base: SystemDefaults.TextStyles.SubtitleText
+                    }
+                }
+                Label {
+                    id: cloudPath
+                    textStyle {
+                        base: SystemDefaults.TextStyles.SubtitleText
+                        color: Color.Gray
+                    }
+                }
+                Label {
+                    id: cloudFileId
+                    textStyle {
+                        base: SystemDefaults.TextStyles.SubtitleText
+                        color: Color.Gray
+                    }
+                }
             } // end fileInfoContainer
         } // end scroll view
     } // end main container
@@ -150,13 +170,14 @@ Page {
         }
         headerId.imageSource = data.displayIcon
         headerId.valueText = data.name
-        fileId.valueText = data.id
-        fileSize.valueText = data.fileSize + " Bytes"
+        fileSize.valueText = data.displayFileSize
         createdBy.valueText = data.createdBy
         classification.valueText = data.classification
         createdAt.valueText = data.createdAt
         expires.valueText = data.expires
         comment.valueText = data.comment
+        cloudPath.text = odsdata.nodePath
+        cloudFileId.text = "ID #" + data.id
     }
     // the fileId we got from context action of ListItem
     function refreshData(id) {
