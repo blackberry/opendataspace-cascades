@@ -25,7 +25,7 @@ Q_PROPERTY(QVariantList nodes READ nodes NOTIFY nodesChanged FINAL)
 public:
 	ODSFolder(QObject *parent = 0);
 	virtual ~ODSFolder();
-	ODSFolder(QVariantMap folderMap);
+	ODSFolder(QVariantMap folderMap, QString path);
 	QVariantList nodes() const;
 
 	QString name() const;
@@ -50,7 +50,7 @@ public:
 Q_SIGNALS:
 
 	void nameChanged(QString name);
-	void pathChanged(QString name);
+	void pathChanged(QString path);
 
 	void containerIdChanged(int containerId);
 	void levelChanged(int level);

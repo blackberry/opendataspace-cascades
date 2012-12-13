@@ -158,6 +158,13 @@ Page {
                         color: Color.Gray
                     }
                 }
+                Label {
+                    id: folderPath
+                    textStyle {
+                        base: SystemDefaults.TextStyles.SubtitleText
+                        color: Color.Gray
+                    }
+                }
             } // end fileInfoContainer
         } // end scroll view
     } // end main container
@@ -178,6 +185,7 @@ Page {
         comment.valueText = data.comment
         cloudPath.text = odsdata.nodePath
         cloudFileId.text = "ID #" + data.id
+        folderPath.text = data.path
     }
     // the fileId we got from context action of ListItem
     function refreshData(id) {

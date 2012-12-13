@@ -14,11 +14,9 @@ static const QString groupPkValue = "group_pk";
 
 ODSFolder::ODSFolder(QObject *parent) {}
 
-ODSFolder::ODSFolder(QVariantMap folderMap) :
-				QObject(), mFoldersMap(folderMap) {
+ODSFolder::ODSFolder(QVariantMap folderMap, QString path) :
+				QObject(), mFoldersMap(folderMap), mPath(path) {
 	mName = mFoldersMap.value(nameValue, "").toString();
-	mPath = mFoldersMap.value(parentValue, "").toString();
-
 	mContainerId = mFoldersMap.value(groupPkValue, 0).toInt();
 	mRoomId = mFoldersMap.value(parentValue, 0).toInt();
 	mDisplayType = "F";

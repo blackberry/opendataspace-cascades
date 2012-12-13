@@ -92,6 +92,7 @@ private:
 	int mFilesLevel;
 	QVariantList* mCache;
 	QStringList* mNodeNames;
+	int mFolderLevel;
 
 	bool mDelayedInitDone;
 
@@ -102,7 +103,8 @@ private:
 	bool writeReplyToFile(QByteArray &replyBytes, QString &filename);
 	QVariantMap readDataFromJson(int usecase);
 
-	void showFilesFromNode(QVariantList nodes);
+	void showFilesFromNode(QVariantList nodes, bool isBackNavigation);
+	QString folderPath(bool isBackNavigation);
 
 	/**
 	 * some parts of initialization will be done delayed

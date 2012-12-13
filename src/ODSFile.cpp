@@ -18,8 +18,8 @@ static const QString logDeValue = "log_de";
 
 ODSFile::ODSFile(QObject *parent) {}
 
-ODSFile::ODSFile(QVariantMap fileMap) :
-				QObject(), mFilesMap(fileMap) {
+ODSFile::ODSFile(QVariantMap fileMap, QString path) :
+				QObject(), mFilesMap(fileMap), mPath(path) {
 	mName = mFilesMap.value(nameValue, "").toString();
 	mId = mFilesMap.value(fileIdValue, 0).toInt();
 	mComment = mFilesMap.value(commentValue, "").toString();
@@ -86,6 +86,16 @@ void ODSFile::setName(QString newName) {
 	if (newName != mName) {
 		mName = newName;
 		emit nameChanged(newName);
+	}
+}
+
+QString ODSFile::path() const {
+	return mPath;
+}
+void ODSFile::setPath(QString newPath) {
+	if (newPath != mPath) {
+		mPath = newPath;
+		emit pathChanged(newPath);
 	}
 }
 

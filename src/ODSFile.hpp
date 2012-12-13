@@ -10,6 +10,7 @@ class ODSFile: public QObject {
 	Q_OBJECT
 
 	Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged FINAL)
+	Q_PROPERTY(QString path READ path WRITE setPath NOTIFY pathChanged FINAL)
 	Q_PROPERTY(QString comment READ comment WRITE setComment NOTIFY commentChanged FINAL)
 	Q_PROPERTY(QString createdBy READ createdBy WRITE setCreatedBy NOTIFY createdByChanged FINAL)
 	Q_PROPERTY(QString createdAt READ createdAt WRITE setCreatedAt NOTIFY createdAtChanged FINAL)
@@ -31,9 +32,10 @@ class ODSFile: public QObject {
 public:
 	ODSFile(QObject *parent = 0);
 	virtual ~ODSFile();
-	ODSFile(QVariantMap fileMap);
+	ODSFile(QVariantMap fileMap, QString path);
 
 	QString name() const;
+	QString path() const;
 	QString displayType() const;
 	QString displayIcon() const;
 	QString displayTitle() const;
@@ -52,6 +54,7 @@ public:
 	QString classification() const;
 
 	void setName(QString newName);
+	void setPath(QString newPath);
 	void setComment(QString newComment);
 	void setCreatedBy(QString newCreatedBy);
 	void setCreatedAt(QString newCreatedAt);
@@ -67,6 +70,7 @@ public:
 Q_SIGNALS:
 
 	void nameChanged(QString name);
+	void pathChanged(QString path);
 	void commentChanged(QString comment);
 	void createdByChanged(QString createdBy);
 	void createdAtChanged(QString createdAt);
@@ -88,6 +92,7 @@ private:
 
 	QVariantMap mFilesMap;
 	QString mName;
+	QString mPath;
 	QString mComment;
 	QString mCreatedBy;
 	QString mCreatedAt;

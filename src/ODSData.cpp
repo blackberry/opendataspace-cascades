@@ -1,4 +1,3 @@
-
 #include "ODSData.hpp"
 #include "ODSUser.hpp"
 #include "ODSRoom.hpp"
@@ -30,6 +29,7 @@ static const QString isGroupValue = "is_group";
 static const QString typeValue = "type";
 static const QString nodesValue = "nodes";
 static const QString fileIdValue = "fileID";
+static const QString nameValue = "name";
 
 ODSData::ODSData() {
 	// prepare all for the work with ODS Servers
@@ -47,7 +47,8 @@ ODSData::ODSData() {
 	// access to the settings
 	mOdsSettings = new ODSSettings();
 	mCustomerNumber = -1;
-	mFilesLevel = 0;
+	mFilesLevel = -1;
+	mFolderLevel = -1;
 	mCache = new QVariantList;
 	mNodeNames = new QStringList;
 
@@ -110,7 +111,7 @@ void ODSData::loginToServer() {
 	if (!mDelayedInitDone) {
 		delayedInit();
 	}
-	mBaseUrl = mOdsSettings->getValueFor("server/url","");
+	mBaseUrl = mOdsSettings->getValueFor("server/url", "");
 
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
@@ -123,8 +124,8 @@ void ODSData::loginToServer() {
 	mProgressDialog->setBody(tr("connect Server, authenticate user..."));
 	mProgressDialog->show();
 
-	mUser = mOdsSettings->getValueFor("server/current/user","");
-	mPassword = mOdsSettings->getValueFor("server/current/password","");
+	mUser = mOdsSettings->getValueFor("server/current/user", "");
+	mPassword = mOdsSettings->getValueFor("server/current/password", "");
 
 	// auth-user-settings-files
 	initiateRequest(-1);
@@ -150,38 +151,44 @@ bool ODSData::loginValid() {
 }
 
 void ODSData::initPathes() {
-	mUsecasePathes << "/users/testget" << "/users/testpost" << "/users/auth" << "/users/user"
-				<< "/users/all" << "/users/insert" << "/files/all" << "/files/upload" << "/files/copy" << "/files/copyAllFiles"
-				<< "/files/rename" << "/files/move" << "/files/update" << "/files/delete" << "/files/download" << "/files/downloadThumbnail"
-				<< "/files/createfolder" << "/files/createlink" << "/files/renamefolder" << "/files/deletefolder" << "/files/movefolder"
-				<< "/files/getMetadata" << "/files/setMetadata" << "/settings/user" << "/settings/infoliste"
-				<< "/texte/all" << "/texte/language";
+	mUsecasePathes << "/users/testget" << "/users/testpost" << "/users/auth"
+			<< "/users/user" << "/users/all" << "/users/insert" << "/files/all"
+			<< "/files/upload" << "/files/copy" << "/files/copyAllFiles"
+			<< "/files/rename" << "/files/move" << "/files/update"
+			<< "/files/delete" << "/files/download"
+			<< "/files/downloadThumbnail" << "/files/createfolder"
+			<< "/files/createlink" << "/files/renamefolder"
+			<< "/files/deletefolder" << "/files/movefolder"
+			<< "/files/getMetadata" << "/files/setMetadata" << "/settings/user"
+			<< "/settings/infoliste" << "/texte/all" << "/texte/language";
 }
 
 void ODSData::initErrors() {
-	mResponseErrorTexts
-				<< tr("Code 0: No Error")
-				<< tr("Code 1 JSON Error: Server was unable to parse the request.")
-				<< tr("Code 2 Invalid Credentials: Invalid user or password specified during login.")
-				<< tr("Code 3: Account has expired.")
-				<< tr("Code 4: Account locked due to lost mobile device.")
-				<< tr("Code 5: Mobile access locked for this account.")
-				<< tr("Code 6: Account locked by admin.")
-				<< tr("Code 7 Token expired: Session ID has expired. Login has to be invoked again.")
-				<< tr("Code 8: User already exists.")
-				<< tr("Code 9: Customer not found during AllFilesRequest.")
-				<< tr("Code 10: Invalid path.")
-				<< tr("Code 11: File write error.")
-				<< tr("Code 12 Invalid File: Attempted a file operation using an invalid ID.")
-				<< tr("Code 13 File exists: Attempt to copy or move to an existing file.")
-				<< tr("Code 14 Folder not empty: Attempted to delete a non-emty folder.")
-				<< tr("Code 15: Failed to create a download link.")
-				<< tr("Code 16: Maximum number of users reached.")
-				<< tr("Code 17: Disk quota was reached.")
-				<< tr("Code 18: DeleteAll could not delete all files.")
-				<< tr("Code 19: MoveAll could not move all files.")
-				<< tr("Code 20: CopyAll could not copy all files.")
-				;
+	mResponseErrorTexts << tr("Code 0: No Error")
+			<< tr("Code 1 JSON Error: Server was unable to parse the request.")
+			<< tr(
+					"Code 2 Invalid Credentials: Invalid user or password specified during login.")
+			<< tr("Code 3: Account has expired.")
+			<< tr("Code 4: Account locked due to lost mobile device.")
+			<< tr("Code 5: Mobile access locked for this account.")
+			<< tr("Code 6: Account locked by admin.")
+			<< tr(
+					"Code 7 Token expired: Session ID has expired. Login has to be invoked again.")
+			<< tr("Code 8: User already exists.")
+			<< tr("Code 9: Customer not found during AllFilesRequest.")
+			<< tr("Code 10: Invalid path.") << tr("Code 11: File write error.")
+			<< tr(
+					"Code 12 Invalid File: Attempted a file operation using an invalid ID.")
+			<< tr(
+					"Code 13 File exists: Attempt to copy or move to an existing file.")
+			<< tr(
+					"Code 14 Folder not empty: Attempted to delete a non-emty folder.")
+			<< tr("Code 15: Failed to create a download link.")
+			<< tr("Code 16: Maximum number of users reached.")
+			<< tr("Code 17: Disk quota was reached.")
+			<< tr("Code 18: DeleteAll could not delete all files.")
+			<< tr("Code 19: MoveAll could not move all files.")
+			<< tr("Code 20: CopyAll could not copy all files.");
 }
 
 //  M O D E L     F O R    L I S T V I E W S
@@ -192,7 +199,7 @@ void ODSData::initUserModel() {
 	//mUsersList = Application::instance()->scene()->findChild<ListView*>("usersList");
 
 	mUsersDataModel = Application::instance()->scene()->findChildren<
-	  		GroupDataModel*>("userGroupDataModel").last();
+			GroupDataModel*>("userGroupDataModel").last();
 	//mUsersList = Application::instance()->scene()->findChildren<ListView*>(
 	//		"usersList").last();
 
@@ -234,17 +241,18 @@ void ODSData::initUserModel() {
 		// map of sort values: 'displayName' and 'displaytype'
 		QList<QVariantMap> mylist = mUsersDataModel->toListOfMaps();
 		for (int i = 0; i < mylist.size(); ++i) {
-		   QMap<QString, QVariant> myMap = mylist[i];
-		   QMapIterator<QString, QVariant> j(myMap);
-		   while (j.hasNext()) {
-		      j.next();
-		      qDebug() << "myIndex: " << i << " Key: " << j.key() << " Value: " << j.value();
-		   }
+			QMap<QString, QVariant> myMap = mylist[i];
+			QMapIterator<QString, QVariant> j(myMap);
+			while (j.hasNext()) {
+				j.next();
+				qDebug() << "myIndex: " << i << " Key: " << j.key()
+						<< " Value: " << j.value();
+			}
 		}
 		// the ODSUser data check the users: get ODSUser out
 		// find an object exactly, take a look at the indexPathes
 		// and again find now using the index path and update item
-		QList<QObject*> myuli =  mUsersDataModel->toListOfObjects();
+		QList<QObject*> myuli = mUsersDataModel->toListOfObjects();
 		for (int i = 0; i < myuli.size(); ++i) {
 			if (qobject_cast<ODSUser*>(myuli.at(i))) {
 				ODSUser *u = (ODSUser*) myuli.at(i);
@@ -270,7 +278,7 @@ void ODSData::initUserModel() {
 
 void ODSData::initRoomsModel() {
 	mRoomsDataModel = Application::instance()->scene()->findChildren<
-		  		GroupDataModel*>("roomGroupDataModel").last();
+			GroupDataModel*>("roomGroupDataModel").last();
 	if (mRoomsDataModel) {
 		mRoomsDataModel->clear();
 		QVariantMap dataMap;
@@ -290,12 +298,19 @@ void ODSData::initRoomsModel() {
 	}
 }
 
-void ODSData::showFilesFromNode(QVariantList nodes) {
+void ODSData::showFilesFromNode(QVariantList nodes, bool isBackNavigation) {
 	mFilesDataModel = Application::instance()->scene()->findChildren<
-	  		GroupDataModel*>("fileGroupDataModel").last();
+			GroupDataModel*>("fileGroupDataModel").last();
 	if (mFilesDataModel) {
 		mFilesDataModel->clear();
 		// all files, folders, subrooms of these nodes
+		if (isBackNavigation) {
+			if (mFolderLevel >= 0) {
+				mFolderLevel--;
+			}
+		}
+		qDebug() << "FolderPath for this node: " << folderPath(isBackNavigation);
+		bool hasFolder = false;
 		if (!nodes.isEmpty()) {
 			for (int i = 0; i < nodes.size(); ++i) {
 				QVariantMap map = nodes.at(i).toMap();
@@ -304,11 +319,12 @@ void ODSData::showFilesFromNode(QVariantList nodes) {
 					continue;
 				}
 				if (map.value(isGroupValue, 42).toInt() == 0) {
-					mFilesDataModel->insert(new ODSFolder(map));
+					hasFolder = true;
+					mFilesDataModel->insert(new ODSFolder(map, folderPath(isBackNavigation)));
 					continue;
 				}
 				if (map.value(typeValue, 42).toInt() == 2) {
-					mFilesDataModel->insert(new ODSFile(map));
+					mFilesDataModel->insert(new ODSFile(map, folderPath(isBackNavigation)));
 					continue;
 				}
 				qDebug() << "unknown ItemType from nodes list";
@@ -316,6 +332,12 @@ void ODSData::showFilesFromNode(QVariantList nodes) {
 		} else {
 			qDebug() << "empty nodes list ?";
 		}
+		if (!isBackNavigation) {
+			if (hasFolder || mFolderLevel >= 0) {
+				mFolderLevel++;
+			}
+		}
+			qDebug() << "Node processed, now Folder Level: " << mFolderLevel << " Files Level: " << mFilesLevel;
 	}
 }
 
@@ -328,7 +350,7 @@ bool ODSData::showPreviousNode() {
 		mCache->removeAt(mFilesLevel);
 		mNodeNames->removeAt(mFilesLevel);
 		mFilesLevel--;
-		showFilesFromNode(mCache->at(mFilesLevel).toList());
+		showFilesFromNode(mCache->at(mFilesLevel).toList(), true);
 		qDebug() << "showPreviousNode caches: " << mFilesLevel;
 		return true;
 	}
@@ -336,11 +358,11 @@ bool ODSData::showPreviousNode() {
 	return false;
 }
 
-void ODSData::showNextNode(QVariantList nodes, QString name){
-	showFilesFromNode (nodes);
+void ODSData::showNextNode(QVariantList nodes, QString name) {
 	mFilesLevel++;
 	mCache->insert(mFilesLevel, nodes);
 	mNodeNames->insert(mFilesLevel, name);
+	showFilesFromNode(nodes, false);
 	qDebug() << "showNextNode caches: " << mFilesLevel;
 }
 
@@ -349,8 +371,9 @@ QObject* ODSData::fileFromId(int fileId) {
 	if (!nodes.isEmpty()) {
 		for (int i = 0; i < nodes.size(); ++i) {
 			QVariantMap map = nodes.at(i).toMap();
-			if (map.value(typeValue, 42).toInt() == 2 && map.value(fileIdValue, 0).toInt() == fileId) {
-				return new ODSFile(map);
+			if (map.value(typeValue, 42).toInt() == 2
+					&& map.value(fileIdValue, 0).toInt() == fileId) {
+				return new ODSFile(map, folderPath(true));
 			}
 		}
 	} else {
@@ -362,6 +385,7 @@ QObject* ODSData::fileFromId(int fileId) {
 
 void ODSData::resetLevel() {
 	mFilesLevel = -1;
+	mFolderLevel = -1;
 	mCache->clear();
 	mNodeNames->clear();
 	qDebug() << "resetLevel done";
@@ -377,8 +401,27 @@ QString ODSData::nodePath() {
 	return mNodeNames->join("::");
 }
 
+QString ODSData::folderPath(bool isBackNavigation) {
+	QString path;
+	int start = mFilesLevel - mFolderLevel;
+	if (isBackNavigation) {
+		start ++;
+	}
 
-QVariantMap ODSData::readDataFromJson (int usecase) {
+	if (mFolderLevel >= 0) {
+		for (int floop = start; floop < mNodeNames->size();
+				++floop) {
+			if (!path.isEmpty()) {
+				path += "/";
+			}
+			path += mNodeNames->at(floop);
+		}
+	}
+	qDebug() << "Folder Path: " << path;
+	return path;
+}
+
+QVariantMap ODSData::readDataFromJson(int usecase) {
 	// all data is in JSON format
 	JsonDataAccess jda;
 	QVariantMap rootObject;
@@ -395,7 +438,7 @@ QVariantMap ODSData::readDataFromJson (int usecase) {
 		rootObject = jda.loadFromBuffer(file.readAll()).toMap();
 		file.close();
 	} else {
-		qDebug()  << "cannot open file to write: " << filename;
+		qDebug() << "cannot open file to write: " << filename;
 		// TODO SystemDialog
 	}
 	// get my own users data
@@ -458,7 +501,8 @@ void ODSData::initiateRequest(int usecase) {
 	// only for tests
 	case Usecase::UsersTestGet:
 		isJsonContent = true;
-		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::UsersTestGet)));
+		request.setUrl(
+				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::UsersTestGet)));
 		// GET Request
 		mNetworkAccessManager->get(request);
 		return;
@@ -466,43 +510,36 @@ void ODSData::initiateRequest(int usecase) {
 	case Usecase::UsersTestPost:
 		isJsonContent = true;
 		mRequestJson.clear();
-		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::UsersTestPost)));
+		request.setUrl(
+				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::UsersTestPost)));
 		break;
 		// always at first
 	case Usecase::UsersAuth:
 		isJsonContent = true;
-		mRequestJson =
-				"{\"username\":\""
-				+ mUser.toUtf8()
-				+ "\",\"password\":\""
-				+ mPassword.toUtf8()
-				+"\"}";
-		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::UsersAuth)));
+		mRequestJson = "{\"username\":\"" + mUser.toUtf8()
+				+ "\",\"password\":\"" + mPassword.toUtf8() + "\"}";
+		request.setUrl(QUrl(mBaseUrl + mUsecasePathes.at(Usecase::UsersAuth)));
 		if (isInitialization) {
 			// add a special header
-			request.setRawHeader("nextUsecase", QByteArray::number(Usecase::UsersUser));
+			request.setRawHeader("nextUsecase",
+					QByteArray::number(Usecase::UsersUser));
 		}
 		break;
 		// do UsersAuth, then get Users data to know what is allowed, get customer_no etc
 	case Usecase::UsersUser:
 		isJsonContent = true;
-		mRequestJson =
-				"{\"token\":\""
-				+ mToken.toUtf8()
-				+ "\"}";
-		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::UsersUser)));
+		mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
+		request.setUrl(QUrl(mBaseUrl + mUsecasePathes.at(Usecase::UsersUser)));
 		if (isInitialization) {
 			// add a special header
-			request.setRawHeader("nextUsecase", QByteArray::number(Usecase::SettingsUser));
+			request.setRawHeader("nextUsecase",
+					QByteArray::number(Usecase::SettingsUser));
 		}
 		break;
 	case Usecase::UsersAll:
 		isJsonContent = true;
-		mRequestJson =
-				"{\"token\":\""
-				+ mToken.toUtf8()
-				+ "\"}";
-		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::UsersAll)));
+		mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
+		request.setUrl(QUrl(mBaseUrl + mUsecasePathes.at(Usecase::UsersAll)));
 		if (isInitialization) {
 			// add a special header
 			request.setRawHeader("nextUsecase", QByteArray::number(-9999));
@@ -511,16 +548,13 @@ void ODSData::initiateRequest(int usecase) {
 	case Usecase::FilesAll:
 		isJsonContent = true;
 		// need customernumber
-		mRequestJson =
-				"{\"token\":\""
-				+ mToken.toUtf8()
-				+ "\",\"customer_nr\":"
-				+ QByteArray::number(mCustomerNumber)
-				+ "}";
-		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::FilesAll)));
+		mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\",\"customer_nr\":"
+				+ QByteArray::number(mCustomerNumber) + "}";
+		request.setUrl(QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesAll)));
 		if (isInitialization) {
 			// add a special header
-			request.setRawHeader("nextUsecase", QByteArray::number(Usecase::UsersAll));
+			request.setRawHeader("nextUsecase",
+					QByteArray::number(Usecase::UsersAll));
 			qDebug() << "last step of initialization: filesAll";
 		}
 		break;
@@ -529,26 +563,23 @@ void ODSData::initiateRequest(int usecase) {
 		// need fileId
 		mFileId = 67;
 		mFileName = "ekke.png";
-		mRequestJson =
-				"{\"token\":\""
-				+ mToken.toUtf8()
-				+ "\",\"fileID\":"
-				+ QByteArray::number(mFileId)
-				+ "}";
-		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::FilesDownload)));
+		mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\",\"fileID\":"
+				+ QByteArray::number(mFileId) + "}";
+		request.setUrl(
+				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesDownload)));
 		break;
 	case Usecase::FilesDownloadThumbnail:
 		isJsonContent = true;
 		// need fileId
 		mFileId = 67;
 		mFileName = "ekkeThumb.png";
-		mRequestJson =
-				"{\"token\":\""
-				+ mToken.toUtf8()
-				+ "\",\"fileID\":"
-				+ QByteArray::number(mFileId)
-				+ "}";
-		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::FilesDownloadThumbnail)));
+		mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\",\"fileID\":"
+				+ QByteArray::number(mFileId) + "}";
+		request.setUrl(
+				QUrl(
+						mBaseUrl
+								+ mUsecasePathes.at(
+										Usecase::FilesDownloadThumbnail)));
 		break;
 	case Usecase::FilesUpload:
 		isJsonContent = false;
@@ -565,71 +596,80 @@ void ODSData::initiateRequest(int usecase) {
 			return;
 		}
 		mFileLength = mFileToUpload->size();
-		qDebug() << "uploading file " << mFileName << " size: " << mFileLength << "\npath: " << mFileToUpload->fileName();
+		qDebug() << "uploading file " << mFileName << " size: " << mFileLength
+				<< "\npath: " << mFileToUpload->fileName();
 		mGroupPk = 19;
-		mParentPath= "";
-		mComment="ekkes test from QHttpMultiPart";
+		mParentPath = "";
+		mComment = "ekkes test from QHttpMultiPart";
 
-		mRequestMultipart = new QHttpMultiPart(QHttpMultiPart::FormDataType, this);
-		fileLengthPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"file_length\""));
+		mRequestMultipart = new QHttpMultiPart(QHttpMultiPart::FormDataType,
+				this);
+		fileLengthPart.setHeader(QNetworkRequest::ContentDispositionHeader,
+				QVariant("form-data; name=\"file_length\""));
 		fileLengthPart.setBody(QString::number(mFileLength).toUtf8());
 		mRequestMultipart->append(fileLengthPart);
-		groupPkPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"group_pk\""));
+		groupPkPart.setHeader(QNetworkRequest::ContentDispositionHeader,
+				QVariant("form-data; name=\"group_pk\""));
 		groupPkPart.setBody(QString::number(mGroupPk).toUtf8());
 		mRequestMultipart->append(groupPkPart);
-		parentPathPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"parent_path\""));
+		parentPathPart.setHeader(QNetworkRequest::ContentDispositionHeader,
+				QVariant("form-data; name=\"parent_path\""));
 		parentPathPart.setBody(mParentPath.toUtf8());
 		mRequestMultipart->append(parentPathPart);
-		commentPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"comment\""));
+		commentPart.setHeader(QNetworkRequest::ContentDispositionHeader,
+				QVariant("form-data; name=\"comment\""));
 		commentPart.setBody(mComment.toUtf8());
 		mRequestMultipart->append(commentPart);
-		logUcPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"log_uc\""));
+		logUcPart.setHeader(QNetworkRequest::ContentDispositionHeader,
+				QVariant("form-data; name=\"log_uc\""));
 		logUcPart.setBody(mUser.toUtf8());
 		mRequestMultipart->append(logUcPart);
-		expirationDatePart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"expiration_date\""));
+		expirationDatePart.setHeader(QNetworkRequest::ContentDispositionHeader,
+				QVariant("form-data; name=\"expiration_date\""));
 		expirationDatePart.setBody("");
 		mRequestMultipart->append(expirationDatePart);
-		tokenPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"token\""));
+		tokenPart.setHeader(QNetworkRequest::ContentDispositionHeader,
+				QVariant("form-data; name=\"token\""));
 		tokenPart.setBody(mToken.toUtf8());
 		mRequestMultipart->append(tokenPart);
-		overWritePart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"overwrite\""));
+		overWritePart.setHeader(QNetworkRequest::ContentDispositionHeader,
+				QVariant("form-data; name=\"overwrite\""));
 		overWritePart.setBody(QString::number(0).toUtf8());
 		mRequestMultipart->append(overWritePart);
 
-		fileAttachementPart.setHeader(QNetworkRequest::ContentTypeHeader, "application/octet-stream");
-		fileAttachementPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"file_attachment\"; filename=\""+mFileName+"\""));
+		fileAttachementPart.setHeader(QNetworkRequest::ContentTypeHeader,
+				"application/octet-stream");
+		fileAttachementPart.setHeader(QNetworkRequest::ContentDispositionHeader,
+				QVariant(
+						"form-data; name=\"file_attachment\"; filename=\""
+								+ mFileName + "\""));
 		fileAttachementPart.setBodyDevice(mFileToUpload);
 		mRequestMultipart->append(fileAttachementPart);
 
-		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::FilesUpload)));
+		request.setUrl(
+				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesUpload)));
 		break;
 	case Usecase::TexteAll:
 		isJsonContent = true;
-		mRequestJson =
-				"{\"token\":\""
-				+ mToken.toUtf8()
-				+ "\"}";
-		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::TexteAll)));
+		mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
+		request.setUrl(QUrl(mBaseUrl + mUsecasePathes.at(Usecase::TexteAll)));
 		break;
 	case Usecase::SettingsUser:
 		isJsonContent = true;
-		mRequestJson =
-				"{\"token\":\""
-				+ mToken.toUtf8()
-				+ "\"}";
-		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::SettingsUser)));
+		mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
+		request.setUrl(
+				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::SettingsUser)));
 		if (isInitialization) {
 			// add a special header
-			request.setRawHeader("nextUsecase", QByteArray::number(Usecase::FilesAll));
+			request.setRawHeader("nextUsecase",
+					QByteArray::number(Usecase::FilesAll));
 		}
 		break;
 	case Usecase::SettingsInfoListe:
 		isJsonContent = true;
-		mRequestJson =
-				"{\"token\":\""
-				+ mToken.toUtf8()
-				+ "\"}";
-		request.setUrl(QUrl(mBaseUrl+mUsecasePathes.at(Usecase::SettingsInfoListe)));
+		mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
+		request.setUrl(
+				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::SettingsInfoListe)));
 		break;
 	default:
 		errorString = tr("unknown Usecase: ");
@@ -644,7 +684,8 @@ void ODSData::initiateRequest(int usecase) {
 		qDebug() << "POST JSON";
 		if (!mRequestJson.isEmpty()) {
 			postDataSize = QByteArray::number(mRequestJson.size());
-			request.setHeader(QNetworkRequest::ContentLengthHeader, postDataSize);
+			request.setHeader(QNetworkRequest::ContentLengthHeader,
+					postDataSize);
 		} else {
 			request.setHeader(QNetworkRequest::ContentLengthHeader, 0);
 		}
@@ -664,28 +705,32 @@ void ODSData::initiateRequest(int usecase) {
  */
 void ODSData::setRequestheader(QNetworkRequest &request, int usecase) {
 	switch (usecase) {
-		case Usecase::FilesUpload:
-			request.setRawHeader("Accept", "application/json");
-			request.setHeader(QNetworkRequest::ContentTypeHeader, "multipart/form-data");
-			break;
-		case Usecase::FilesDownload:
-			request.setRawHeader("Accept", "application/octet-stream");
-			request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-			// responses are coming in async, so I need to know the filename
-			// perhaps also store the destination path - in this case we have a default downloads folder
-			request.setRawHeader("FileName2Download", mFileName.toUtf8());
-			break;
-		case Usecase::FilesDownloadThumbnail:
-			request.setRawHeader("Accept", "application/octet-stream");
-			request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-			// responses are coming in async, so I need to know the filename
-			// perhaps also store the destination path - in this case we have a default downloads folder
-			request.setRawHeader("FileName2Download", mFileName.toUtf8());
-			break;
-		default:
-			request.setRawHeader("Accept", "application/json");
-			request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-			break;
+	case Usecase::FilesUpload:
+		request.setRawHeader("Accept", "application/json");
+		request.setHeader(QNetworkRequest::ContentTypeHeader,
+				"multipart/form-data");
+		break;
+	case Usecase::FilesDownload:
+		request.setRawHeader("Accept", "application/octet-stream");
+		request.setHeader(QNetworkRequest::ContentTypeHeader,
+				"application/json");
+		// responses are coming in async, so I need to know the filename
+		// perhaps also store the destination path - in this case we have a default downloads folder
+		request.setRawHeader("FileName2Download", mFileName.toUtf8());
+		break;
+	case Usecase::FilesDownloadThumbnail:
+		request.setRawHeader("Accept", "application/octet-stream");
+		request.setHeader(QNetworkRequest::ContentTypeHeader,
+				"application/json");
+		// responses are coming in async, so I need to know the filename
+		// perhaps also store the destination path - in this case we have a default downloads folder
+		request.setRawHeader("FileName2Download", mFileName.toUtf8());
+		break;
+	default:
+		request.setRawHeader("Accept", "application/json");
+		request.setHeader(QNetworkRequest::ContentTypeHeader,
+				"application/json");
+		break;
 	}
 	request.setRawHeader("charset", "utf-8");
 }
@@ -699,13 +744,16 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 		QString replyUrl(reply->url().toString(QUrl::None));
 		qDebug() << "reply URL" << replyUrl;
 		QByteArray replyBytes = reply->readAll();
-		qDebug() << "reply Content" << reply->header(QNetworkRequest::ContentTypeHeader).toString();
+		qDebug() << "reply Content"
+				<< reply->header(QNetworkRequest::ContentTypeHeader).toString();
 		bool isJsonContent;
 		bool isStreamContent;
-		if (reply->header(QNetworkRequest::ContentTypeHeader).toString() == "application/json") {
+		if (reply->header(QNetworkRequest::ContentTypeHeader).toString()
+				== "application/json") {
 			isJsonContent = true;
 			isStreamContent = false;
-		} else if (reply->header(QNetworkRequest::ContentTypeHeader).toString() == "application/octet-stream") {
+		} else if (reply->header(QNetworkRequest::ContentTypeHeader).toString()
+				== "application/octet-stream") {
 			isJsonContent = false;
 			isStreamContent = true;
 		} else {
@@ -718,7 +766,7 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 		if (isJsonContent) {
 			filename += "/json";
 			qDebug() << "we got a JSON content";
-			int r = replyUrl.length()-mBaseUrl.length();
+			int r = replyUrl.length() - mBaseUrl.length();
 			if (r > 0) {
 				replyPath = replyUrl.right(r);
 				filename += replyPath;
@@ -726,7 +774,8 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			filename += ".json";
 		}
 		if (isStreamContent) {
-			qDebug() << "we got a STREAM content for file: " << reply->request().rawHeader("FileName2Download");
+			qDebug() << "we got a STREAM content for file: "
+					<< reply->request().rawHeader("FileName2Download");
 			// using a downloads folder inside the app sandbox, so files are secure stored
 			filename += "/download/";
 			filename += reply->request().rawHeader("FileName2Download");
@@ -744,9 +793,11 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 				return;
 			}
 		} else {
-			qDebug() << "wrong content: " << reply->header(QNetworkRequest::ContentTypeHeader).toString();
+			qDebug() << "wrong content: "
+					<< reply->header(QNetworkRequest::ContentTypeHeader).toString();
 			errorString = tr("wrong content ");
-			errorString += reply->header(QNetworkRequest::ContentTypeHeader).toString();
+			errorString +=
+					reply->header(QNetworkRequest::ContentTypeHeader).toString();
 			reportError(errorString);
 			// S T O P   I T
 			return;
@@ -756,12 +807,12 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			bool responseOk = false;
 			for (int i = 0; i < mUsecasePathes.size(); ++i) {
 				if (mUsecasePathes.at(i) == replyPath) {
-					responseOk = processResponse(replyBytes,  i);
+					responseOk = processResponse(replyBytes, i);
 					break;
 				}
 			}
 			if (!responseOk) {
-				qDebug()  << "couldn't process response path: " << replyPath;
+				qDebug() << "couldn't process response path: " << replyPath;
 				// S T O P   I T
 				return;
 			}
@@ -770,48 +821,50 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 		// test for specific header
 		int usecase = reply->request().rawHeader("nextUsecase").toInt();
 		switch (usecase) {
-			// usersAuth done - go on with users user
-			case Usecase::UsersUser:
-				mProgressDialog->setProgress(30);
-				mProgressDialog->setBody(tr("Authentication done, getting User..."));
-				mProgressDialog->show();
-				initiateRequest(-2);
-				break;
+		// usersAuth done - go on with users user
+		case Usecase::UsersUser:
+			mProgressDialog->setProgress(30);
+			mProgressDialog->setBody(
+					tr("Authentication done, getting User..."));
+			mProgressDialog->show();
+			initiateRequest(-2);
+			break;
 			// auth and users user done, go on with users settings
-			case Usecase::SettingsUser:
-				mProgressDialog->setProgress(45);
-				mProgressDialog->setBody(tr("User received, getting Settings..."));
-				mProgressDialog->show();
-				initiateRequest(-3);
-				break;
+		case Usecase::SettingsUser:
+			mProgressDialog->setProgress(45);
+			mProgressDialog->setBody(tr("User received, getting Settings..."));
+			mProgressDialog->show();
+			initiateRequest(-3);
+			break;
 			// auth, users user, settings user done, go on with all files
-			case Usecase::FilesAll:
-				mProgressDialog->setProgress(60);
-				mProgressDialog->setBody(tr("Settings received, getting Files..."));
-				mProgressDialog->show();
-				initiateRequest(-4);
-				break;
-			case Usecase::UsersAll:
-				mProgressDialog->setProgress(90);
-				mProgressDialog->setBody(tr("Files received, getting Userlist..."));
-				mProgressDialog->show();
-				initiateRequest(-5);
-				break;
-			case -9999:
-				mProgressDialog->setProgress(100);
-				mProgressDialog->setState(SystemUiProgressState::Inactive);
-				mProgressDialog->setBody(tr("Synchronization with Server done :)"));
-				mProgressDialog->setIcon(QUrl("asset:///images/online-icon.png"));
-				mProgressDialog->confirmButton()->setLabel(tr("Synchronization done"));
-				mProgressDialog->cancelButton()->setLabel(QString::null);
-				mProgressDialog->show();
-				// TODO wait for OK before signal
-				// signal   O K
-				emit loginFinished(true);
-				break;
+		case Usecase::FilesAll:
+			mProgressDialog->setProgress(60);
+			mProgressDialog->setBody(tr("Settings received, getting Files..."));
+			mProgressDialog->show();
+			initiateRequest(-4);
+			break;
+		case Usecase::UsersAll:
+			mProgressDialog->setProgress(90);
+			mProgressDialog->setBody(tr("Files received, getting Userlist..."));
+			mProgressDialog->show();
+			initiateRequest(-5);
+			break;
+		case -9999:
+			mProgressDialog->setProgress(100);
+			mProgressDialog->setState(SystemUiProgressState::Inactive);
+			mProgressDialog->setBody(tr("Synchronization with Server done :)"));
+			mProgressDialog->setIcon(QUrl("asset:///images/online-icon.png"));
+			mProgressDialog->confirmButton()->setLabel(
+					tr("Synchronization done"));
+			mProgressDialog->cancelButton()->setLabel(QString::null);
+			mProgressDialog->show();
+			// TODO wait for OK before signal
+			// signal   O K
+			emit loginFinished(true);
+			break;
 			// no init steps
-			default:
-				break;
+		default:
+			break;
 		}
 	} else {
 		// uuuups - there was a network error
@@ -831,11 +884,10 @@ bool ODSData::writeReplyToFile(QByteArray &replyBytes, QString &filename) {
 		file.flush();
 		file.close();
 	} else {
-		qDebug()  << "cannot open file to write: " << filename;
+		qDebug() << "cannot open file to write: " << filename;
 	}
 	return ok;
 }
-
 
 bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 
@@ -864,7 +916,8 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 		if (errorString.isEmpty()) {
 			qDebug() << "this is OK: no text in error part";
 		} else {
-			qDebug() << "STOP Process response. we got an error:" << errorString;
+			qDebug() << "STOP Process response. we got an error:"
+					<< errorString;
 			if (errorString.toInt()) {
 				int i = errorString.toInt();
 				if (i < mResponseErrorTexts.size()) {
@@ -883,85 +936,88 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 	QVariantList list;
 	QVariantMap map;
 	switch (usecase) {
+	// only for tests
+	case Usecase::UsersTestGet:
+		return true;
 		// only for tests
-		case Usecase::UsersTestGet:
-			return true;
-			// only for tests
-		case Usecase::UsersTestPost:
-			break;
-			// always at first
-		case Usecase::UsersAuth:
-			mToken = bodyMap.value("token", "").toString();
-			qDebug() << "token:" << mToken;
-			break;
-			// do UsersAuth, then get Users data to know what is allowed, get customer_no etc
-		case Usecase::UsersUser:
-			mCustomerNumber = bodyMap.value("last_customer", "").toInt();
-			// mMyUserMap = bodyMap;
-			qDebug() << "cust no:" << mCustomerNumber;
-			break;
-		case Usecase::UsersAll:
-			users = bodyMap.value("users", "").toList().size();
-			qDebug() << "Users: " << users;
+	case Usecase::UsersTestPost:
+		break;
+		// always at first
+	case Usecase::UsersAuth:
+		mToken = bodyMap.value("token", "").toString();
+		qDebug() << "token:" << mToken;
+		break;
+		// do UsersAuth, then get Users data to know what is allowed, get customer_no etc
+	case Usecase::UsersUser:
+		mCustomerNumber = bodyMap.value("last_customer", "").toInt();
+		// mMyUserMap = bodyMap;
+		qDebug() << "cust no:" << mCustomerNumber;
+		break;
+	case Usecase::UsersAll:
+		users = bodyMap.value("users", "").toList().size();
+		qDebug() << "Users: " << users;
 
-			break;
-		case Usecase::FilesAll:
-			// need customernumber
-			break;
-		case Usecase::FilesDownload:
-			// need fileID
-			break;
-		case Usecase::FilesDownloadThumbnail:
-			// need fileID
-			break;
-		case Usecase::FilesUpload:
-			// returns 200 if OK
-			break;
-		case Usecase::SettingsUser:
-			//
-			//list = bodyMap.value("languages", "").toList();
-			//mLanguageNumber = list.at(0).toMap().value("lnr", "").toInt();
-			if (bodyMap.value("languages", "").toList().size() > 0) {
-				mLanguageNumber = bodyMap.value("languages", "").toList().at(0).toMap().value("lnr", "").toInt();
-			} else {
-				mLanguageNumber = 0;
-			}
-			qDebug() << "Language Number: " << mLanguageNumber;
-			break;
-		case Usecase::SettingsInfoListe:
-			//
-			break;
-		case Usecase::TexteAll:
-			//
-			break;
-		default:
-			errorString = tr("Unknown Response Usecase");
-			reportError(errorString);
-			// S T O P
-			return false;
+		break;
+	case Usecase::FilesAll:
+		// need customernumber
+		break;
+	case Usecase::FilesDownload:
+		// need fileID
+		break;
+	case Usecase::FilesDownloadThumbnail:
+		// need fileID
+		break;
+	case Usecase::FilesUpload:
+		// returns 200 if OK
+		break;
+	case Usecase::SettingsUser:
+		//
+		//list = bodyMap.value("languages", "").toList();
+		//mLanguageNumber = list.at(0).toMap().value("lnr", "").toInt();
+		if (bodyMap.value("languages", "").toList().size() > 0) {
+			mLanguageNumber =
+					bodyMap.value("languages", "").toList().at(0).toMap().value(
+							"lnr", "").toInt();
+		} else {
+			mLanguageNumber = 0;
 		}
+		qDebug() << "Language Number: " << mLanguageNumber;
+		break;
+	case Usecase::SettingsInfoListe:
+		//
+		break;
+	case Usecase::TexteAll:
+		//
+		break;
+	default:
+		errorString = tr("Unknown Response Usecase");
+		reportError(errorString);
+		// S T O P
+		return false;
+	}
 	return true;
 }
 
-void ODSData::reportError(QString& errorText){
+void ODSData::reportError(QString& errorText) {
 	if (mProgressDialog->progress() > 0 && mProgressDialog->progress() < 100) {
 		// we have a running dialog
-		mProgressDialog->setBody(errorText+" :(");
+		mProgressDialog->setBody(errorText + " :(");
 		mProgressDialog->setState(SystemUiProgressState::Error);
 		// switch button
-		mProgressDialog->confirmButton()->setLabel(tr("No valid result from Server"));
+		mProgressDialog->confirmButton()->setLabel(
+				tr("No valid result from Server"));
 		mProgressDialog->cancelButton()->setLabel(QString::null);
 		mProgressDialog->setIcon(QUrl("asset:///images/offline-icon.png"));
 		mProgressDialog->show();
 	}
 }
 
-void ODSData::startActivityIndicator(){
+void ODSData::startActivityIndicator() {
 	// TODO
 	qDebug() << "START ActivityIndicator";
 }
 
-void ODSData::stopActivityIndicator(){
+void ODSData::stopActivityIndicator() {
 	// TODO
 	qDebug() << "STOP ActivityIndicator";
 }
