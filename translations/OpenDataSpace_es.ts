@@ -393,38 +393,48 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="63"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="64"/>
+        <source>contains</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="74"/>
         <source>Node</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="67"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="78"/>
         <source>Room ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="71"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="82"/>
         <source>Room Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="75"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="86"/>
         <source>Subroom ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="79"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="90"/>
         <source>Subroom Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="83"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="94"/>
         <source>In Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="94"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="105"/>
         <source>Folder not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="110"/>
+        <source> Files / Folders</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -708,67 +718,67 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="629"/>
+        <location filename="../src/ODSData.cpp" line="639"/>
         <source>Cannot read file to upload: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="713"/>
+        <location filename="../src/ODSData.cpp" line="723"/>
         <source>unknown Usecase: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="827"/>
+        <location filename="../src/ODSData.cpp" line="837"/>
         <source>Error: could not write to file: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="836"/>
+        <location filename="../src/ODSData.cpp" line="846"/>
         <source>wrong content </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="866"/>
+        <location filename="../src/ODSData.cpp" line="876"/>
         <source>Authentication done, getting User...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="873"/>
+        <location filename="../src/ODSData.cpp" line="883"/>
         <source>User received, getting Settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="880"/>
+        <location filename="../src/ODSData.cpp" line="890"/>
         <source>Settings received, getting Files...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="886"/>
+        <location filename="../src/ODSData.cpp" line="896"/>
         <source>Files received, getting Userlist...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="893"/>
+        <location filename="../src/ODSData.cpp" line="903"/>
         <source>Synchronization with Server done :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="896"/>
+        <location filename="../src/ODSData.cpp" line="906"/>
         <source>Synchronization done</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="947"/>
+        <location filename="../src/ODSData.cpp" line="957"/>
         <source>Response without Body-part</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1031"/>
+        <location filename="../src/ODSData.cpp" line="1041"/>
         <source>Unknown Response Usecase</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1046"/>
+        <location filename="../src/ODSData.cpp" line="1056"/>
         <source>No valid result from Server</source>
         <translation type="unfinished"></translation>
     </message>

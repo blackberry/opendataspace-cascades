@@ -306,7 +306,8 @@ void ODSData::initRoomsModel() {
 			if (!dataList.isEmpty()) {
 				for (int i = 0; i < dataList.size(); ++i) {
 					QVariantMap map = dataList.at(i).toMap();
-					mRoomGroups->insert(map.value(groupPkValue, 0).toInt(), map.value(nameValue,"").toString());
+					mRoomGroups->insert(map.value(groupPkValue, 0).toInt(),
+							map.value(nameValue, "").toString());
 				}
 			}
 			qDebug() << "got asome roomGroups:" << mRoomGroups->size();
@@ -326,7 +327,8 @@ void ODSData::showFilesFromNode(QVariantList nodes, bool isBackNavigation) {
 				mFolderLevel--;
 			}
 		}
-		qDebug() << "FolderPath for this node: " << folderPath(isBackNavigation);
+		qDebug() << "FolderPath for this node: "
+				<< folderPath(isBackNavigation);
 		bool hasFolder = false;
 		if (!nodes.isEmpty()) {
 			for (int i = 0; i < nodes.size(); ++i) {
@@ -337,11 +339,13 @@ void ODSData::showFilesFromNode(QVariantList nodes, bool isBackNavigation) {
 				}
 				if (map.value(isGroupValue, 42).toInt() == 0) {
 					hasFolder = true;
-					mFilesDataModel->insert(new ODSFolder(map, folderPath(isBackNavigation)));
+					mFilesDataModel->insert(
+							new ODSFolder(map, folderPath(isBackNavigation)));
 					continue;
 				}
 				if (map.value(typeValue, 42).toInt() == 2) {
-					mFilesDataModel->insert(new ODSFile(map, folderPath(isBackNavigation)));
+					mFilesDataModel->insert(
+							new ODSFile(map, folderPath(isBackNavigation)));
 					continue;
 				}
 				qDebug() << "unknown ItemType from nodes list";
@@ -354,7 +358,8 @@ void ODSData::showFilesFromNode(QVariantList nodes, bool isBackNavigation) {
 				mFolderLevel++;
 			}
 		}
-			qDebug() << "Node processed, now Folder Level: " << mFolderLevel << " Files Level: " << mFilesLevel;
+		qDebug() << "Node processed, now Folder Level: " << mFolderLevel
+				<< " Files Level: " << mFilesLevel;
 	}
 }
 
@@ -443,16 +448,21 @@ QString ODSData::folderPath(bool isBackNavigation) {
 	QString path;
 	int start = mFilesLevel - mFolderLevel;
 	if (isBackNavigation) {
-		start ++;
+		start++;
 	}
 
 	if (mFolderLevel >= 0) {
-		for (int floop = start; floop < mNodeNames->size();
-				++floop) {
-			if (!path.isEmpty()) {
-				path += "/";
+		for (int floop = start; floop < mNodeNames->size(); ++floop) {
+			// if its at first level test for subroom and ignore
+			if (!mRoomGroups->values().contains(mNodeNames->at(floop))) {
+				// add '/' if its not the leading value
+				if (!path.isEmpty()) {
+					path += "/";
+				}
+				// concatenate the path
+				path += mNodeNames->at(floop);
 			}
-			path += mNodeNames->at(floop);
+
 		}
 	}
 	qDebug() << "Folder Path: " << path;

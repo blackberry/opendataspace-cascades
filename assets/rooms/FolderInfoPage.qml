@@ -58,6 +58,17 @@ Page {
                 }
                 Divider {
                 }
+                // body
+                LabelAndLabel {
+                    id: containsFilesAndFolders
+                    labelText: qsTr("contains") + Retranslate.onLanguageChanged
+                }
+                Divider {
+                }
+                CloudInfoHeader {
+                }
+                Divider {
+                }
                 LabelAndLabel {
                     id: cloudPath
                     labelText: qsTr("Node") + Retranslate.onLanguageChanged
@@ -96,6 +107,7 @@ Page {
         }
         headerId.imageSource = data.displayIcon
         headerId.valueText = data.name
+        containsFilesAndFolders.valueText = data.children + qsTr(" Files / Folders") + Retranslate.onLanguageChanged
         if (data.roomId == 0) {
             // no subroom - directly into the Room
             roomId.valueText = data.containerId
@@ -109,7 +121,7 @@ Page {
             subroomName.visible = true
             roomId.valueText = data.roomId
             roomName.valueText = odsdata.roomGroupName(data.roomId)
-        }  
+        }
         folderPath.valueText = data.path
         cloudPath.valueText = odsdata.nodePath
     }
@@ -122,6 +134,7 @@ Page {
     // relayout if orientation changes
     function relayout(landscape) {
         if (landscape == true) {
+            containsFilesAndFolders.landscape = true
             cloudPath.landscape = true
             roomId.landscape = true
             roomName.landscape = true
@@ -129,6 +142,7 @@ Page {
             subroomName.landscape = true
             folderPath.landscape = true
         } else {
+            containsFilesAndFolders.landscape = true
             cloudPath.landscape = false
             roomId.landscape = false
             roomName.landscape = false
