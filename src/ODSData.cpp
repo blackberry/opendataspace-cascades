@@ -30,6 +30,8 @@ static const QString typeValue = "type";
 static const QString nodesValue = "nodes";
 static const QString fileIdValue = "fileID";
 static const QString nameValue = "name";
+static const QString groupsValue = "groups";
+static const QString groupPkValue = "group_pk";
 
 ODSData::ODSData() {
 	// prepare all for the work with ODS Servers
@@ -51,6 +53,7 @@ ODSData::ODSData() {
 	mFolderLevel = -1;
 	mCache = new QVariantList;
 	mNodeNames = new QStringList;
+	mRoomGroups = new QMap<int, QString>;
 
 	// Displays a warning message if there's an issue connecting the signal
 	// and slot. This is a good practice with signals and slots as it can
@@ -286,6 +289,9 @@ void ODSData::initRoomsModel() {
 		// all rooms
 		dataMap = readDataFromJson(Usecase::FilesAll);
 		if (!dataMap.isEmpty()) {
+			// first level are always Rooms
+			// next levels will be get thru showNext / showPrevious Level
+			// from UI tapping on Room, SubRoom, Folder
 			dataList = dataMap.value(nodesValue, "").toList();
 			if (!dataList.isEmpty()) {
 				for (int i = 0; i < dataList.size(); ++i) {
@@ -293,6 +299,17 @@ void ODSData::initRoomsModel() {
 					mRoomsDataModel->insert(new ODSRoom(map));
 				}
 			}
+			// group informations stored to get the name of thew rooms easy
+			// later on subrooms and folders will reference to the group they belong to
+			mRoomGroups->clear();
+			dataList = dataMap.value(groupsValue, "").toList();
+			if (!dataList.isEmpty()) {
+				for (int i = 0; i < dataList.size(); ++i) {
+					QVariantMap map = dataList.at(i).toMap();
+					mRoomGroups->insert(map.value(groupPkValue, 0).toInt(), map.value(nameValue,"").toString());
+				}
+			}
+			qDebug() << "got asome roomGroups:" << mRoomGroups->size();
 		}
 		resetLevel();
 	}
@@ -397,8 +414,13 @@ QString ODSData::nodeTitleName() {
 }
 
 QString ODSData::nodePath() {
-	qDebug() << mNodeNames->join("::");
-	return mNodeNames->join("::");
+	qDebug() << mNodeNames->join("/");
+	return mNodeNames->join("/");
+}
+
+QString ODSData::roomGroupName(int groupId) {
+	qDebug() << "group name for id: " << groupId << mRoomGroups->value(groupId);
+	return mRoomGroups->value(groupId);
 }
 
 QString ODSData::folderPath(bool isBackNavigation) {

@@ -16,53 +16,36 @@
 import bb.cascades 1.0
 
 /*
- * Container with 2 Label:
- * first Label as Label, 2nd as Value
- * both multiline
- * spacequota 1:1 in portrait and 1:2 in landscape
- * useful for info pages with read-only content
  * 
  * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
  * 
  */
 
 Container {
-    property alias labelText: labelId.text
-    property alias valueText: valueId.text
-    property bool landscape: false
     layout: StackLayout {
         orientation: LayoutOrientation.LeftToRight
     }
-    topPadding: 14
-    bottomPadding: 14
-    Label {
-        id: labelId
-        multiline: true
-        textStyle {
-            base: SystemDefaults.TextStyles.TitleText
-        }
-        verticalAlignment: VerticalAlignment.Top
-        layoutProperties: StackLayoutProperties {
-            spaceQuota: 1
-        }
+    topPadding: 6
+    bottomPadding: 6
+    horizontalAlignment: HorizontalAlignment.Fill
+    verticalAlignment: VerticalAlignment.Center
+    ImageView {
+        id: imageId
+        imageSource: "../images/rooms-icon.png"
+        preferredWidth: 114
+        preferredHeight: 114
+        minWidth: 114
     }
     Label {
         id: valueId
+        text: qsTr("ODS Cloud Info") + Retranslate.onLanguageChanged
         multiline: true
         textStyle {
             base: SystemDefaults.TextStyles.TitleText
-            color: Color.Gray
         }
-        verticalAlignment: VerticalAlignment.Top
+        verticalAlignment: VerticalAlignment.Center
         layoutProperties: StackLayoutProperties {
             spaceQuota: 1
-        }
-    }
-    onLandscapeChanged: {
-        if (landscape == true) {
-            valueId.layoutProperties.spaceQuota = 2.0
-        } else {
-            valueId.layoutProperties.spaceQuota = 1.0
         }
     }
 }

@@ -49,6 +49,9 @@ public:
 	QString nodePath();
 
 	Q_INVOKABLE
+	QString roomGroupName(int groupId);
+
+	Q_INVOKABLE
 	QObject* fileFromId(int fileId);
 
 Q_SIGNALS:
@@ -93,6 +96,7 @@ private:
 	QVariantList* mCache;
 	QStringList* mNodeNames;
 	int mFolderLevel;
+	QMap<int, QString>* mRoomGroups;
 
 	bool mDelayedInitDone;
 

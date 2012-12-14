@@ -139,6 +139,14 @@
     </message>
 </context>
 <context>
+    <name>CloudInfoHeader</name>
+    <message>
+        <location filename="../assets/common/CloudInfoHeader.qml" line="41"/>
+        <source>ODS Cloud Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CustomerSelection</name>
     <message>
         <location filename="../assets/common/CustomerSelection.qml" line="31"/>
@@ -293,42 +301,62 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="117"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="119"/>
         <source>Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="121"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="123"/>
         <source>Created by user</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="125"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="127"/>
         <source>Classification</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="129"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="131"/>
         <source>Date created</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="133"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="135"/>
         <source>Expiration date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="137"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="139"/>
         <source>Comment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="142"/>
-        <source>OpenDataSpace Cloud Informations:</source>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="157"/>
+        <source>Room ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="175"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="161"/>
+        <source>Room Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="165"/>
+        <source>In Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="149"/>
+        <source>File ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="153"/>
+        <source>Node</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="176"/>
         <source>File not found</source>
         <translation type="unfinished"></translation>
     </message>
@@ -473,187 +501,187 @@
 <context>
     <name>ODSData</name>
     <message>
-        <location filename="../src/ODSData.cpp" line="118"/>
+        <location filename="../src/ODSData.cpp" line="121"/>
         <source>Sync with OpenDataSpace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="121"/>
+        <location filename="../src/ODSData.cpp" line="124"/>
         <source>Stop synchronization</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="124"/>
+        <location filename="../src/ODSData.cpp" line="127"/>
         <source>connect Server, authenticate user...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="167"/>
+        <location filename="../src/ODSData.cpp" line="170"/>
         <source>Code 0: No Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="168"/>
+        <location filename="../src/ODSData.cpp" line="171"/>
         <source>Code 1 JSON Error: Server was unable to parse the request.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="169"/>
+        <location filename="../src/ODSData.cpp" line="172"/>
         <source>Code 2 Invalid Credentials: Invalid user or password specified during login.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="171"/>
+        <location filename="../src/ODSData.cpp" line="174"/>
         <source>Code 3: Account has expired.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="172"/>
+        <location filename="../src/ODSData.cpp" line="175"/>
         <source>Code 4: Account locked due to lost mobile device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="173"/>
+        <location filename="../src/ODSData.cpp" line="176"/>
         <source>Code 5: Mobile access locked for this account.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="174"/>
+        <location filename="../src/ODSData.cpp" line="177"/>
         <source>Code 6: Account locked by admin.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="175"/>
+        <location filename="../src/ODSData.cpp" line="178"/>
         <source>Code 7 Token expired: Session ID has expired. Login has to be invoked again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="177"/>
+        <location filename="../src/ODSData.cpp" line="180"/>
         <source>Code 8: User already exists.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="178"/>
+        <location filename="../src/ODSData.cpp" line="181"/>
         <source>Code 9: Customer not found during AllFilesRequest.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="179"/>
+        <location filename="../src/ODSData.cpp" line="182"/>
         <source>Code 10: Invalid path.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="179"/>
+        <location filename="../src/ODSData.cpp" line="182"/>
         <source>Code 11: File write error.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="180"/>
+        <location filename="../src/ODSData.cpp" line="183"/>
         <source>Code 12 Invalid File: Attempted a file operation using an invalid ID.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="182"/>
+        <location filename="../src/ODSData.cpp" line="185"/>
         <source>Code 13 File exists: Attempt to copy or move to an existing file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="184"/>
+        <location filename="../src/ODSData.cpp" line="187"/>
         <source>Code 14 Folder not empty: Attempted to delete a non-emty folder.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="186"/>
+        <location filename="../src/ODSData.cpp" line="189"/>
         <source>Code 15: Failed to create a download link.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="187"/>
+        <location filename="../src/ODSData.cpp" line="190"/>
         <source>Code 16: Maximum number of users reached.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="188"/>
+        <location filename="../src/ODSData.cpp" line="191"/>
         <source>Code 17: Disk quota was reached.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="189"/>
+        <location filename="../src/ODSData.cpp" line="192"/>
         <source>Code 18: DeleteAll could not delete all files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="190"/>
+        <location filename="../src/ODSData.cpp" line="193"/>
         <source>Code 19: MoveAll could not move all files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="191"/>
+        <location filename="../src/ODSData.cpp" line="194"/>
         <source>Code 20: CopyAll could not copy all files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="591"/>
+        <location filename="../src/ODSData.cpp" line="613"/>
         <source>Cannot read file to upload: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="675"/>
+        <location filename="../src/ODSData.cpp" line="697"/>
         <source>unknown Usecase: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="789"/>
+        <location filename="../src/ODSData.cpp" line="811"/>
         <source>Error: could not write to file: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="798"/>
+        <location filename="../src/ODSData.cpp" line="820"/>
         <source>wrong content </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="828"/>
+        <location filename="../src/ODSData.cpp" line="850"/>
         <source>Authentication done, getting User...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="835"/>
+        <location filename="../src/ODSData.cpp" line="857"/>
         <source>User received, getting Settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="842"/>
+        <location filename="../src/ODSData.cpp" line="864"/>
         <source>Settings received, getting Files...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="848"/>
+        <location filename="../src/ODSData.cpp" line="870"/>
         <source>Files received, getting Userlist...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="855"/>
+        <location filename="../src/ODSData.cpp" line="877"/>
         <source>Synchronization with Server done :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="858"/>
+        <location filename="../src/ODSData.cpp" line="880"/>
         <source>Synchronization done</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="909"/>
+        <location filename="../src/ODSData.cpp" line="931"/>
         <source>Response without Body-part</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="993"/>
+        <location filename="../src/ODSData.cpp" line="1015"/>
         <source>Unknown Response Usecase</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1008"/>
+        <location filename="../src/ODSData.cpp" line="1030"/>
         <source>No valid result from Server</source>
         <translation type="unfinished"></translation>
     </message>

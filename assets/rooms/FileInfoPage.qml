@@ -106,6 +106,8 @@ Page {
                 leftPadding: 40
                 rightPadding: 40
                 // header
+                Divider {
+                                }
                 ImageAndLabel {
                     id: headerId
                 }
@@ -138,32 +140,31 @@ Page {
                 }
                 Divider {
                 }
-                Label {
-                    text: qsTr("OpenDataSpace Cloud Informations:") + Retranslate.onLanguageChanged
-                    textStyle {
-                        base: SystemDefaults.TextStyles.SubtitleText
-                    }
+                CloudInfoHeader {
                 }
-                Label {
-                    id: cloudPath
-                    textStyle {
-                        base: SystemDefaults.TextStyles.SubtitleText
-                        color: Color.Gray
-                    }
-                }
-                Label {
+                Divider {
+                                }
+                LabelAndLabel {
                     id: cloudFileId
-                    textStyle {
-                        base: SystemDefaults.TextStyles.SubtitleText
-                        color: Color.Gray
-                    }
+                    labelText: qsTr("File ID") + Retranslate.onLanguageChanged
                 }
-                Label {
+                LabelAndLabel {
+                    id: cloudPath
+                    labelText: qsTr("Node") + Retranslate.onLanguageChanged
+                }
+                LabelAndLabel {
+                    id: groupId
+                    labelText: qsTr("Room ID") + Retranslate.onLanguageChanged
+                }
+                LabelAndLabel {
+                    id: groupName
+                    labelText: qsTr("Room Name") + Retranslate.onLanguageChanged
+                }
+                LabelAndLabel {
                     id: folderPath
-                    textStyle {
-                        base: SystemDefaults.TextStyles.SubtitleText
-                        color: Color.Gray
-                    }
+                    labelText: qsTr("In Folder") + Retranslate.onLanguageChanged
+                }
+                Divider {
                 }
             } // end fileInfoContainer
         } // end scroll view
@@ -183,9 +184,11 @@ Page {
         createdAt.valueText = data.createdAt
         expires.valueText = data.expires
         comment.valueText = data.comment
-        cloudPath.text = odsdata.nodePath
-        cloudFileId.text = "ID #" + data.id
-        folderPath.text = data.path
+        cloudPath.valueText = odsdata.nodePath
+        cloudFileId.valueText = data.id
+        groupId.valueText = data.containerId
+        groupName.valueText = odsdata.roomGroupName(data.containerId)
+        folderPath.valueText = data.path
     }
     // the fileId we got from context action of ListItem
     function refreshData(id) {
@@ -203,6 +206,11 @@ Page {
             createdAt.landscape = true
             expires.landscape = true
             comment.landscape = true
+            cloudPath.landscape = true
+            cloudFileId.landscape = true
+            groupId.landscape = true
+            groupName.landscape = true
+            folderPath.landscape = true
         } else {
             fileId.landscape = false
             fileSize.landscape = false
@@ -211,6 +219,11 @@ Page {
             createdAt.landscape = false
             expires.landscape = false
             comment.landscape = false
+            cloudPath.landscape = false
+            cloudFileId.landscape = false
+            groupId.landscape = false
+            groupName.landscape = false
+            folderPath.landscape = false
         }
     }
     onCreationCompleted: {
