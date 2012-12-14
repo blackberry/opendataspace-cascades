@@ -3,6 +3,7 @@
 #include "ODSFile.hpp"
 #include "FileInfo.hpp"
 #include <QDebug>
+#include <qlocale.h>
 
 static const QString nameValue = "name";
 //static const QString typeValue = "type";
@@ -67,11 +68,11 @@ ODSFile::ODSFile(QVariantMap fileMap, QString path) :
 	}
 	mDisplayTitle = mName;
 	if (mFileSize > 1000000000) {
-		mDisplayFileSize = QString::number(mFileSize/1000000000) + " GB";
+		mDisplayFileSize = QLocale().system().toString(mFileSize/1000000000.0, 'f',3) + " GB";
 	} else if (mFileSize > 1000000) {
-		mDisplayFileSize = QString::number(mFileSize/1000000) + " MB";
+		mDisplayFileSize = QLocale().system().toString(mFileSize/1000000.0, 'f',3) + " MB";
 	} else if (mFileSize > 1000) {
-		mDisplayFileSize = QString::number(mFileSize/1000) + " KB";
+		mDisplayFileSize = QLocale().system().toString(mFileSize/1000.0, 'f',3) + " KB";
 	} else {
 		mDisplayFileSize = QString::number(mFileSize) + " Bytes";
 	}
