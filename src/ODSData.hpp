@@ -54,6 +54,9 @@ public:
 	Q_INVOKABLE
 	QObject* fileFromId(int fileId);
 
+	Q_INVOKABLE
+	QObject* folderFromName(QString folderName);
+
 Q_SIGNALS:
 	void loginFinished(bool success);
 

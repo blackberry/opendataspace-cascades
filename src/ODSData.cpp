@@ -400,6 +400,22 @@ QObject* ODSData::fileFromId(int fileId) {
 	return new ODSFile();
 }
 
+QObject* ODSData::folderFromName(QString folderName) {
+	QVariantList nodes = mCache->at(mFilesLevel).toList();
+	if (!nodes.isEmpty()) {
+		for (int i = 0; i < nodes.size(); ++i) {
+			QVariantMap map = nodes.at(i).toMap();
+			if (map.value(nameValue, "").toString() == folderName) {
+				return new ODSFolder(map, folderPath(true));
+			}
+		}
+	} else {
+		qDebug() << "folder id not found: " << folderName;
+		// TODO DIalog Warning
+	}
+	return new ODSFolder();
+}
+
 void ODSData::resetLevel() {
 	mFilesLevel = -1;
 	mFolderLevel = -1;

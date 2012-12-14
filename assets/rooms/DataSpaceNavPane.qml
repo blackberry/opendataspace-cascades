@@ -160,6 +160,17 @@ NavigationPane {
                     }
                 }
             }
+        },
+        // FolderInfo
+        FolderInfoPage {
+            id: folderInfoPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
         }
     ]
     // the ROOT Page of this NavigationPane
@@ -316,10 +327,15 @@ NavigationPane {
         roomsListPage.addFolder(name)
     }
     function openFileInfoPage(id) {
-            console.debug("got signal to open FileInfoPage")
-            fileInfoPage.refreshData(id)
-            navigationPane.push(fileInfoPage)
-        }
+        console.debug("got signal to open FileInfoPage")
+        fileInfoPage.refreshData(id)
+        navigationPane.push(fileInfoPage)
+    }
+    function openFolderInfoPage(name) {
+        console.debug("got signal to open FolderInfoPage")
+        folderInfoPage.refreshData(name)
+        navigationPane.push(folderInfoPage)
+    }
     onTopChanged: {
         if (navigationPane.top == dataspacePage) {
             odsdata.resetLevel();
@@ -344,6 +360,7 @@ NavigationPane {
         roomsListPage.openAddFolder.connect(onOpenAddFolder)
         //
         roomsListPage.openFileInfoPage.connect(openFileInfoPage)
+        roomsListPage.openFolderInfoPage.connect(openFolderInfoPage)
         //-- connect the onFolderAdded SIGNAL from AddFolderPage with SLOT folderAdded
         addFolderPage.onFolderAdded.connect(folderAdded)
         //-- connect the RoomsList recordAudio SIGNAL to the handler SLOT
