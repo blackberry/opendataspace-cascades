@@ -57,6 +57,12 @@ public:
 	Q_INVOKABLE
 	QObject* folderFromName(QString folderName);
 
+	Q_INVOKABLE
+	QObject* subroomFromId(int subroomId);
+
+	Q_INVOKABLE
+	QObject* roomFromId(int roomId);
+
 Q_SIGNALS:
 	void loginFinished(bool success);
 
@@ -96,6 +102,7 @@ private:
 	GroupDataModel* mFilesDataModel;
 	ListView* mRoomsListView;
 	int mFilesLevel;
+	QVariantList* mRooms;
 	QVariantList* mCache;
 	QStringList* mNodeNames;
 	int mFolderLevel;

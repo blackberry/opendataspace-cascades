@@ -32,6 +32,7 @@ static const QString fileIdValue = "fileID";
 static const QString nameValue = "name";
 static const QString groupsValue = "groups";
 static const QString groupPkValue = "group_pk";
+static const QString parentValue = "parent";
 
 ODSData::ODSData() {
 	// prepare all for the work with ODS Servers
@@ -51,6 +52,7 @@ ODSData::ODSData() {
 	mCustomerNumber = -1;
 	mFilesLevel = -1;
 	mFolderLevel = -1;
+	mRooms = new QVariantList;
 	mCache = new QVariantList;
 	mNodeNames = new QStringList;
 	mRoomGroups = new QMap<int, QString>;
@@ -285,23 +287,24 @@ void ODSData::initRoomsModel() {
 	if (mRoomsDataModel) {
 		mRoomsDataModel->clear();
 		QVariantMap dataMap;
-		QVariantList dataList;
+		mRooms->clear();
 		// all rooms
 		dataMap = readDataFromJson(Usecase::FilesAll);
 		if (!dataMap.isEmpty()) {
 			// first level are always Rooms
 			// next levels will be get thru showNext / showPrevious Level
 			// from UI tapping on Room, SubRoom, Folder
-			dataList = dataMap.value(nodesValue, "").toList();
-			if (!dataList.isEmpty()) {
-				for (int i = 0; i < dataList.size(); ++i) {
-					QVariantMap map = dataList.at(i).toMap();
+			mRooms->append(dataMap.value(nodesValue, "").toList())    ;
+			if (!mRooms->isEmpty()) {
+				for (int i = 0; i < mRooms->size(); ++i) {
+					QVariantMap map = mRooms->at(i).toMap();
 					mRoomsDataModel->insert(new ODSRoom(map));
 				}
 			}
 			// group informations stored to get the name of thew rooms easy
 			// later on subrooms and folders will reference to the group they belong to
 			mRoomGroups->clear();
+			QVariantList dataList;
 			dataList = dataMap.value(groupsValue, "").toList();
 			if (!dataList.isEmpty()) {
 				for (int i = 0; i < dataList.size(); ++i) {
@@ -419,6 +422,43 @@ QObject* ODSData::folderFromName(QString folderName) {
 		// TODO DIalog Warning
 	}
 	return new ODSFolder();
+}
+
+QObject* ODSData::subroomFromId(int subroomId){
+	QVariantList nodes = mCache->at(mFilesLevel).toList();
+	if (!nodes.isEmpty()) {
+		for (int i = 0; i < nodes.size(); ++i) {
+			QVariantMap map = nodes.at(i).toMap();
+			if (map.value(typeValue, 42).toInt() == 1
+					&& map.value(parentValue, 0).toInt() > 0
+					&& map.value(groupPkValue, 0).toInt() == subroomId) {
+				return new ODSSubRoom(map);
+			}
+		}
+	} else {
+		qDebug() << "subroom id not found: " << subroomId;
+		// TODO DIalog Warning
+	}
+	return new ODSSubRoom();
+}
+
+QObject* ODSData::roomFromId(int roomId){
+	qDebug() << "Room from ID: " << roomId;
+	if (!mRooms->isEmpty()) {
+		qDebug() << "Rooms List with # Rooms: " << mRooms->size();
+		for (int i = 0; i < mRooms->size(); ++i) {
+			QVariantMap map = mRooms->at(i).toMap();
+			if (map.value(typeValue, 42).toInt() == 1
+					&& map.value(parentValue, 0).toInt() == 0
+					&& map.value(groupPkValue, 0).toInt() == roomId) {
+				return new ODSRoom(map);
+			}
+		}
+	} else {
+		qDebug() << "room id not found: " << roomId;
+		// TODO DIalog Warning
+	}
+	return new ODSRoom();
 }
 
 void ODSData::resetLevel() {

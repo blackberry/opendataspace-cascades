@@ -29,6 +29,7 @@ Page {
     signal openAddFolder()
     signal openFileInfoPage(int fileId)
     signal openFolderInfoPage(string name)
+    signal openSubRoomInfoPage(int subroomId)
     signal previewImage(string filePath)
     signal previewVideo(string path)
     signal previewDocuments(string path)
@@ -302,7 +303,7 @@ Page {
                                     title: qsTr("Info") + Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/2-action-about81.png"
                                     onTriggered: {
-                                        // TODO
+                                        subroomsItem.ListItem.view.pushSubRoomInfoPage(ListItemData.id)
                                     }
                                 }
                             }
@@ -472,6 +473,9 @@ Page {
             }
             function pushFolderInfoPage(name) {
                 openFolderInfoPage(name)
+            }
+            function pushSubRoomInfoPage(id) {
+                openSubRoomInfoPage(id)
             }
         } // end ListView
     } // end Container

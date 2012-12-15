@@ -171,6 +171,28 @@ NavigationPane {
                     }
                 }
             }
+        },
+        // SubRoomInfo
+        SubRoomInfoPage {
+            id: subRoomInfoPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
+        },
+        // RoomInfo
+        RoomInfoPage {
+            id: roomInfoPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
         }
     ]
     // the ROOT Page of this NavigationPane
@@ -224,6 +246,23 @@ NavigationPane {
                         type: "roomsItem"
                         RoomsItem {
                             id: roomsItem
+                            contextActions: [
+                                ActionSet {
+                                    title: ListItemData.name
+                                    subtitle: qsTr("ODS Data Room") + Retranslate.onLanguageChanged
+                                    ActionItem {
+                                        title: qsTr("Info") + Retranslate.onLanguageChanged
+                                        imageSource: "asset:///images/ics/2-action-about81.png"
+                                        onTriggered: {
+                                            // we're only transmitting the id to avoid complex data
+                                            // (ODSFile* in this case)
+                                            // to be transported between sgnals, slots, pages, c++
+                                            // current level of files tree is cached at c++ so we get fast access
+                                            roomsItem.ListItem.view.pushRoomInfoPage(ListItemData.id)
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     },
                     ListItemComponent {
@@ -249,9 +288,10 @@ NavigationPane {
                         navigationPane.push(roomsListPage)
                     }
                 }
-
-                // MOCKUP DATA
-                // After the list is created, add some mockup items
+                // ListView functions
+                function pushRoomInfoPage(id) {
+                    openRoomInfoPage(id)
+                }
                 onCreationCompleted: {
                 }
             } // end ListView
@@ -336,6 +376,16 @@ NavigationPane {
         folderInfoPage.refreshData(name)
         navigationPane.push(folderInfoPage)
     }
+    function openSubRoomInfoPage(id) {
+        console.debug("got signal to open SubRoomInfoPage")
+        subRoomInfoPage.refreshData(id)
+        navigationPane.push(subRoomInfoPage)
+    }
+    function openRoomInfoPage(id) {
+        console.debug("want to open RoomInfoPage for id: " + id)
+        roomInfoPage.refreshData(id)
+        navigationPane.push(roomInfoPage)
+    }
     onTopChanged: {
         if (navigationPane.top == dataspacePage) {
             odsdata.resetLevel();
@@ -361,6 +411,7 @@ NavigationPane {
         //
         roomsListPage.openFileInfoPage.connect(openFileInfoPage)
         roomsListPage.openFolderInfoPage.connect(openFolderInfoPage)
+        roomsListPage.openSubRoomInfoPage.connect(openSubRoomInfoPage)
         //-- connect the onFolderAdded SIGNAL from AddFolderPage with SLOT folderAdded
         addFolderPage.onFolderAdded.connect(folderAdded)
         //-- connect the RoomsList recordAudio SIGNAL to the handler SLOT
