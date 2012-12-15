@@ -18,7 +18,7 @@ import "../common"
 Page {
     // SIGNAL if folder was added
     signal onFolderAdded()
-    property string parentType: "R"
+    property string currentPath : ""
     id: addFolderPage
     resizeBehavior: PageResizeBehavior.Resize
     attachedObjects: [
@@ -99,7 +99,10 @@ Page {
                     textFieldInputMode: TextFieldInputMode.Text
                     textFieldText: ""
                     onRedBarVisibleChanged: {
-                        createNowAction.enabled = !folderName.redBarVisible
+                        createNowAction.enabled = ! folderName.redBarVisible
+                    }
+                    onTextFieldTextChanged: {
+                        folderPath.valueText = currentPath+folderName.textFieldText
                     }
                 }
                 LabelAndLabel {
@@ -122,46 +125,53 @@ Page {
         folderName.textFieldText = ""
     }
     // set the field values from ODSFolder* data
-    function setValuesFromFolder(data, name) {
-        if (data.name != name) {
-            // if the name isn't equal the folder was not found
-            roomName.valueText = qsTr("Folder not found") + Retranslate.onLanguageChanged
+    function setValues(data) {
+        if (data.displayType == "R") {
+            roomName.valueText = data.name
+            roomId.valueText = data.id
+            subroomName.visible = false
+            subroomId.visible = false
+            currentPath = "/"
+            folderPath.valueText = currentPath
+        } else if (data.displayType == "S") {
+            subroomName.visible = true
+            subroomId.visible = true
+            subroomName.valueText = data.name
+            subroomId.valueText = data.id
+            currentPath = "/"
+            folderPath.valueText = currentPath
+        } else if (data.displayType == "F") {
+            if (data.roomId == 0) {
+                // no subroom - directly into the Room
+                roomId.valueText = data.containerId
+                roomName.valueText = odsdata.roomGroupName(data.containerId)
+                subroomId.visible = false
+                subroomName.visible = false
+            } else {
+                subroomId.valueText = data.containerId
+                subroomName.valueText = odsdata.roomGroupName(data.containerId)
+                subroomId.visible = true
+                subroomName.visible = true
+                roomId.valueText = data.roomId
+                roomName.valueText = odsdata.roomGroupName(data.roomId)
+            }
+            currentPath = data.path +  "/"
+            folderPath.valueText = currentPath
+        } else {
+            roomName.valueText = qsTr("File Type wrong, cannot create Folder") + Retranslate.onLanguageChanged
             return;
         }
-        roomName.imageSource = data.displayIcon
-        roomName.valueText = data.name // TODO Room name
-        containsFilesAndFolders.valueText = data.children + qsTr(" Files / Folders") + Retranslate.onLanguageChanged
-        if (data.roomId == 0) {
-            // no subroom - directly into the Room
-            roomId.valueText = data.containerId
-            roomName.valueText = odsdata.roomGroupName(data.containerId)
-            subroomId.visible = false
-            subroomName.visible = false
-        } else {
-            subroomId.valueText = data.containerId
-            subroomName.valueText = odsdata.roomGroupName(data.containerId)
-            subroomId.visible = true
-            subroomName.visible = true
-            roomId.valueText = data.roomId
-            roomName.valueText = odsdata.roomGroupName(data.roomId)
-        }
-        folderPath.valueText = data.path
-        cloudPath.valueText = odsdata.nodePath
     }
-    function refreshDataFromFolder(name) {
+    function refreshData() {
         // we get the ODSFile data from current node (from cache)
         // result is an empty ODSFile* or the correct one
-        setValuesFromFolder(odsdata.folderFromName(name), name)
+        setValues(odsdata.parentData())
     }
     // TODO refresh fromRoom with id
     // TODO refresh fromSubRoom with Id
     // relayout if orientation changes
     function relayout(landscape) {
         // TODO
-    }
-    onParentTypeChanged: {
-        roomName.valueText = parentType
-        folderName.textFieldText = ""
     }
     onCreationCompleted: {
         // initialize positioning

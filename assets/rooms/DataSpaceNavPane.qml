@@ -282,7 +282,6 @@ NavigationPane {
                 onTriggered: {
                     if (selected) {
                         roomsListPage.headerTitle = roomGroupDataModel.data(indexPath).name
-                        roomsListPage.displayType = "R"
                         // fill the model with the nodes
                         odsdata.resetLevel();
                         odsdata.showNextNode(roomGroupDataModel.data(indexPath).nodes, roomGroupDataModel.data(indexPath).name)
@@ -359,9 +358,9 @@ NavigationPane {
         unknownPreviewPage.recalculateValues(path);
         navigationPane.push(unknownPreviewPage)
     }
-    function onOpenAddFolder(displayType) {
+    function onOpenAddFolder() {
         console.debug("got signal to open AddFolderPage")
-        addFolderPage.parentType = displayType
+        addFolderPage.refreshData()
         navigationPane.push(addFolderPage)
     }
     function folderAdded() {

@@ -64,6 +64,9 @@ public:
 	QObject* roomFromId(int roomId);
 
 	Q_INVOKABLE
+	QObject* parentData();
+
+	Q_INVOKABLE
 	void createFolder(int roomId, QString path);
 
 Q_SIGNALS:

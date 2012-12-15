@@ -26,7 +26,7 @@ import bb.cascades.pickers 1.0
 Page {
     id: roomsListPage
     signal recordAudio()
-    signal openAddFolder(string displayType)
+    signal openAddFolder()
     signal openFileInfoPage(int fileId)
     signal openFolderInfoPage(string name)
     signal openSubRoomInfoPage(int subroomId)
@@ -39,7 +39,6 @@ Page {
     signal previewUnknown(string path)
     signal previewZip(string path)
     property alias headerTitle: theBar.title
-    property string displayType: "R"
     attachedObjects: [
         // Cascades FilePicker
         FilePicker {
@@ -118,7 +117,7 @@ Page {
             imageSource: "asset:///images/new-folder81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                roomsListPage.openAddFolder(roomsListPage.displayType)
+                roomsListPage.openAddFolder()
             }
         },
         ActionItem {
@@ -271,9 +270,6 @@ Page {
                     if (fileGroupDataModel.data(indexPath).displayType != "L") {
                         // name of current Room, SubRoom, Folder
                         roomsListPage.headerTitle = fileGroupDataModel.data(indexPath).name
-                        // information of type of parent
-                        // per ex. used from 'createFolder'
-                        roomsListPage.displayType = fileGroupDataModel.data(indexPath).displayType
                         // fill the model with the nodes
                         odsdata.showNextNode(fileGroupDataModel.data(indexPath).nodes, fileGroupDataModel.data(indexPath).name)
                         // navigationPane.push(roomsListPage)

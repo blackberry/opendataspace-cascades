@@ -294,7 +294,7 @@ void ODSData::initRoomsModel() {
 			// first level are always Rooms
 			// next levels will be get thru showNext / showPrevious Level
 			// from UI tapping on Room, SubRoom, Folder
-			mRooms->append(dataMap.value(nodesValue, "").toList())    ;
+			mRooms->append(dataMap.value(nodesValue, "").toList());
 			if (!mRooms->isEmpty()) {
 				for (int i = 0; i < mRooms->size(); ++i) {
 					QVariantMap map = mRooms->at(i).toMap();
@@ -424,7 +424,7 @@ QObject* ODSData::folderFromName(QString folderName) {
 	return new ODSFolder();
 }
 
-QObject* ODSData::subroomFromId(int subroomId){
+QObject* ODSData::subroomFromId(int subroomId) {
 	QVariantList nodes = mCache->at(mFilesLevel).toList();
 	if (!nodes.isEmpty()) {
 		for (int i = 0; i < nodes.size(); ++i) {
@@ -442,7 +442,7 @@ QObject* ODSData::subroomFromId(int subroomId){
 	return new ODSSubRoom();
 }
 
-QObject* ODSData::roomFromId(int roomId){
+QObject* ODSData::roomFromId(int roomId) {
 	qDebug() << "Room from ID: " << roomId;
 	if (!mRooms->isEmpty()) {
 		qDebug() << "Rooms List with # Rooms: " << mRooms->size();
@@ -459,6 +459,46 @@ QObject* ODSData::roomFromId(int roomId){
 		// TODO DIalog Warning
 	}
 	return new ODSRoom();
+}
+
+QObject* ODSData::parentData() {
+	qDebug() << "cache: " << mCache->size() << "level: " << mFilesLevel;
+	if (mFilesLevel == 0) {
+		// root level - we're inside a data room
+		if (!mRooms->isEmpty() && !mNodeNames->isEmpty()) {
+			for (int i = 0; i < mRooms->size(); ++i) {
+				QVariantMap map = mRooms->at(i).toMap();
+				if (map.value(nameValue, "").toString() == mNodeNames->at(0)) {
+					return new ODSRoom(map);
+				}
+			}
+			qDebug() << "rooms not found for: " << mNodeNames->at(0);
+		} else {
+			qDebug() << "rooms or nodenames empty";
+		}
+		return new ODSRoom();
+	} else {
+		// deeper level: parent can be Room, SubRoom, Folder
+		if (!mCache->isEmpty() && !mNodeNames->isEmpty() && mNodeNames->size() > mFilesLevel && mCache->size() >= mFilesLevel) {
+			QVariantList dataList = mCache->at(mFilesLevel-1).toList();
+			for (int i = 0; i < dataList.size(); ++i) {
+				QVariantMap map = dataList.at(i).toMap();
+				qDebug() << "getting name: " << map.value(nameValue, "").toString();
+				if (map.value(nameValue, "").toString() == mNodeNames->at(mFilesLevel)) {
+					if (map.value(isGroupValue, 42).toInt() == 1) {
+						return new ODSSubRoom(map);
+					}
+					if (map.value(isGroupValue, 42).toInt() == 0) {
+						return new ODSFolder(map, folderPath(false));
+					}
+				}
+			}
+			qDebug() << "subroom or folder not found for: " << mNodeNames->at(mFilesLevel);
+		} else {
+			qDebug() << "cache or nodenames empty";
+		}
+	}
+	return new QObject();
 }
 
 void ODSData::resetLevel() {
