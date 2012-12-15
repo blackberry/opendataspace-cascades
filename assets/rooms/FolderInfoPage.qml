@@ -35,6 +35,36 @@ Page {
         }
     ]
     actions: [
+        ActionItem {
+            title: qsTr("Copy") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/ics/5-content-copy81.png"
+            onTriggered: {
+                // TODO
+            }
+        },
+        ActionItem {
+            title: qsTr("Move") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/ics/5-content-import-export81.png"
+            onTriggered: {
+                // TODO
+            }
+        },
+        ActionItem {
+            title: qsTr("Rename") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/ics/5-content-edit81.png"
+            onTriggered: {
+                // TODO
+                console.debug("FOLDER: name to be renamed: " + ListItemData.name)
+                // TODO
+                ListItemData.name = "renamed"
+            }
+        },
+        DeleteActionItem {
+            title: qsTr("Delete") + Retranslate.onLanguageChanged
+            onTriggered: {
+                // TODO
+            }
+        }
     ]
     Container {
         id: mainContainer

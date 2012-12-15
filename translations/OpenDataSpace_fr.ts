@@ -399,47 +399,67 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="64"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="39"/>
+        <source>Copy</source>
+        <translation type="unfinished">Copier</translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="46"/>
+        <source>Move</source>
+        <translation type="unfinished">Déplacer</translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="53"/>
+        <source>Rename</source>
+        <translation type="unfinished">Rebaptiser</translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="63"/>
+        <source>Delete</source>
+        <translation type="unfinished">Effacer</translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="94"/>
         <source>contains</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="74"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="104"/>
         <source>Node</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="78"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="108"/>
         <source>Room ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="82"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="112"/>
         <source>Room Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="86"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="116"/>
         <source>Subroom ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="90"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="120"/>
         <source>Subroom Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="94"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="124"/>
         <source>In Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="105"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="135"/>
         <source>Folder not found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="110"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="140"/>
         <source> Files / Folders</source>
         <translation type="unfinished"></translation>
     </message>
