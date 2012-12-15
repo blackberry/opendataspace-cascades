@@ -26,7 +26,7 @@ import bb.cascades.pickers 1.0
 Page {
     id: roomsListPage
     signal recordAudio()
-    signal openAddFolder()
+    signal openAddFolder(string displayType)
     signal openFileInfoPage(int fileId)
     signal openFolderInfoPage(string name)
     signal openSubRoomInfoPage(int subroomId)
@@ -39,6 +39,7 @@ Page {
     signal previewUnknown(string path)
     signal previewZip(string path)
     property alias headerTitle: theBar.title
+    property string displayType: "R"
     attachedObjects: [
         // Cascades FilePicker
         FilePicker {
@@ -113,11 +114,11 @@ Page {
     ]
     actions: [
         ActionItem {
-            title: qsTr("New Folder") + Retranslate.onLanguageChanged
+            title: qsTr("Create Folder") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/new-folder81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                roomsListPage.openAddFolder()
+                roomsListPage.openAddFolder(roomsListPage.displayType)
             }
         },
         ActionItem {
@@ -268,7 +269,11 @@ Page {
             onTriggered: {
                 if (selected) {
                     if (fileGroupDataModel.data(indexPath).displayType != "L") {
+                        // name of current Room, SubRoom, Folder
                         roomsListPage.headerTitle = fileGroupDataModel.data(indexPath).name
+                        // information of type of parent
+                        // per ex. used from 'createFolder'
+                        roomsListPage.displayType = fileGroupDataModel.data(indexPath).displayType
                         // fill the model with the nodes
                         odsdata.showNextNode(fileGroupDataModel.data(indexPath).nodes, fileGroupDataModel.data(indexPath).name)
                         // navigationPane.push(roomsListPage)
@@ -479,19 +484,6 @@ Page {
             }
         } // end ListView
     } // end Container
-    function addFolder(name) {
-        console.debug("Now add new FOLDER to LISTMODEL on RoomsListPage")
-        mockupModel.insert({
-                "name": name,
-                "displayType": "F",
-                "numberOfFiles": 0,
-                "lastEditedBy": "",
-                "fileSize": "0",
-                "fileType": "",
-                "timestamp": "",
-                "icon": "../images/folders-icon.png"
-            })
-    }
     // TODO must go to UPLOAD
     function addFile(name) {
         console.debug("Now add new FILE to LISTMODEL on RoomsListPage")

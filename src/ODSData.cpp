@@ -536,6 +536,24 @@ QVariantMap ODSData::readDataFromJson(int usecase) {
 	return bodyMap;
 }
 
+/**
+ * sync all files, persist JSON, refresh caches
+ */
+void ODSData::refreshCaches() {
+
+}
+
+/**
+ * create a new Folder inside a Room or SubRoom:
+ * path == name of the folder
+ *
+ * create inside another Folder:
+ * path == anotherFolder/newNameOfFolder
+ */
+void ODSData::createFolder(int roomId, QString path) {
+	//
+}
+
 void ODSData::initiateRequest(int usecase) {
 	// Start the activity indicator
 	// if not in login-sequence

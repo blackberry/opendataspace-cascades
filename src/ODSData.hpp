@@ -63,6 +63,9 @@ public:
 	Q_INVOKABLE
 	QObject* roomFromId(int roomId);
 
+	Q_INVOKABLE
+	void createFolder(int roomId, QString path);
+
 Q_SIGNALS:
 	void loginFinished(bool success);
 
@@ -119,6 +122,8 @@ private:
 
 	void showFilesFromNode(QVariantList nodes, bool isBackNavigation);
 	QString folderPath(bool isBackNavigation);
+
+	void refreshCaches();
 
 	/**
 	 * some parts of initialization will be done delayed

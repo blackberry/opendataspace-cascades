@@ -55,4 +55,7 @@ Container {
             redBar.visible = textField.text == ""
         }
     }
+    onCreationCompleted: {
+        redBar.visible = textField.text == ""
+    }
 }

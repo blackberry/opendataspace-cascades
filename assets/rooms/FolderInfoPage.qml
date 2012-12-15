@@ -128,7 +128,7 @@ Page {
             } // end fileInfoContainer
         } // end scroll view
     } // end main container
-    // set the field values from ODSFile* data
+    // set the field values from ODSFolder* data
     function setValues(data, name) {
         if (data.name != name) {
             // if the name isn't equal the folder was not found

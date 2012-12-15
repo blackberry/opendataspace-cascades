@@ -14,12 +14,13 @@
  * limitations under the License.
  */import bb.cascades 1.0
 import "../common"
-import bb.system 1.0
 
 Page {
     // SIGNAL if folder was added
-    signal onFolderAdded(string name)
+    signal onFolderAdded()
+    property string parentType: "R"
     id: addFolderPage
+    resizeBehavior: PageResizeBehavior.Resize
     attachedObjects: [
         // a red tile of 16x16 pixels
         ImagePaintDefinition {
@@ -27,113 +28,146 @@ Page {
             repeatPattern: RepeatPattern.XY
             imageSource: "asset:///images/tiles/red16x16.png"
         },
-        SystemToast {
-            id: addFolderToast
-            body: qsTr("Folder successfully added")
-            icon: "asset:///images/folders-icon.png"
-            position : SystemUiPosition.BottomCenter
-            onFinished: {
-                //
+        // recalculate positions
+        OrientationHandler {
+            onOrientationAboutToChange: {
+                if (orientation == UIOrientation.Landscape) {
+                    relayout(true)
+                } else {
+                    relayout(false)
+                }
             }
         }
     ]
     actions: [
         ActionItem {
-            title: qsTr("Add Folder") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/5-content-new81.png"
+            id: createNowAction
+            title: qsTr("Create now") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/upload81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 if (folderName.textFieldText != "") {
-                    addFolderPage.onFolderAdded(folderName.textFieldText)
-                    dataError.containerVisible = false
-                    // perhaps animation while uploading
-                    //transport.value = 80
-                    //transport.visible = true
-                    //dummi.play()
-                    addFolderToast.body = qsTr("Folder %1 successfully added","").arg(folderName.textFieldText)
+                    odsdata.createFolder(roomId, folderPath)
                     clearFields()
-                    addFolderToast.show()
+                    addFolderPage.onFolderAdded()
                 } else {
-                    // animation to demonstrate that there are errors
-                    dataError.animation.play()
-                    dataError.containerVisible = true
+                    // TODO dialog
                 }
             }
         }
     ]
     titleBar: TitleBar {
         id: addBar
-        title: qsTr("Folder Name") + Retranslate.onLanguageChanged
+        title: qsTr("Create Folder") + Retranslate.onLanguageChanged
         visibility: ChromeVisibility.Visible
     }
     Container {
         id: mainContainer
         layout: DockLayout {
         }
-
-        //
-        Container {
-            id: folderNameContainer
-            horizontalAlignment: HorizontalAlignment.Center
-            verticalAlignment: VerticalAlignment.Center
-            layout: StackLayout {
-            }
-            leftPadding: 40
-            rightPadding: 40
-            // Animate the data transport
-            // TODO animate while transmitting
-            animations: [
-                SequentialAnimation {
-                    onStarted: {
-                        folderName.enabled = false
-                    }
-                    id: dummi
-                    FadeTransition {
-                        duration: 1000
-                        fromOpacity: 1.0
-                        toOpacity: 0.4
-                        onEnded: {
-                            transport.value = 40
-                        }
-                    }
-                    FadeTransition {
-                        duration: 1000
-                        fromOpacity: 0.4
-                        toOpacity: 1.0
-                    }
-                    onEnded: {
-                        transport.value = 10
-                        transport.visible = false
-                        clearFields()
-                        folderName.enabled = true
+        ScrollView {
+            //
+            //
+            Container {
+                id: folderNameContainer
+                horizontalAlignment: HorizontalAlignment.Center
+                verticalAlignment: VerticalAlignment.Top
+                layout: StackLayout {
+                }
+                leftPadding: 40
+                rightPadding: 40
+                Divider {
+                }
+                ImageAndLabel {
+                    id: roomName
+                    imageSource: "../images/rooms-icon.png"
+                }
+                ImageAndLabel {
+                    id: subroomName
+                    imageSource: "../images/subrooms-icon.png"
+                }
+                ImageAndLabel {
+                    id: folderPath
+                    imageSource: "../images/folders-icon.png"
+                }
+                TextFieldWithMarker {
+                    id: folderName
+                    topPadding: 20
+                    bottomPadding: 20
+                    redBarImage: redTile.image
+                    textFieldHintText: qsTr("Name of the new Folder") + Retranslate.onLanguageChanged
+                    textFieldInputMode: TextFieldInputMode.Text
+                    textFieldText: ""
+                    onRedBarVisibleChanged: {
+                        createNowAction.enabled = !folderName.redBarVisible
                     }
                 }
-            ]
-            // Error Assistant
-            ErrorAssistant {
-                id: dataError
-            }
-            ProgressIndicator {
-                id: transport
-                topMargin: 25
-                fromValue: 100
-                toValue: 0
-                value: 80
-                visible: false
-            }
-            TextFieldWithMarker {
-                id: folderName
-                redBarImage: redTile.image
-                textFieldHintText: qsTr("Name of the new Folder") + Retranslate.onLanguageChanged
-                textFieldInputMode: TextFieldInputMode.Text
-                textFieldText: ""
-            }
-        } // end Container
+                LabelAndLabel {
+                    id: roomId
+                    labelText: qsTr("Room ID") + Retranslate.onLanguageChanged
+                }
+                LabelAndLabel {
+                    id: subroomId
+                    labelText: qsTr("Subroom ID") + Retranslate.onLanguageChanged
+                }
+                Divider {
+                }
+            } // end Container
+        } // end scroll view
     } // end main container
     function clearFields() {
+        roomName.valueText = parentType
+        subroomName.valueText = "subby"
+        folderPath.valueText = "folder/"
+        folderName.textFieldText = ""
+    }
+    // set the field values from ODSFolder* data
+    function setValuesFromFolder(data, name) {
+        if (data.name != name) {
+            // if the name isn't equal the folder was not found
+            roomName.valueText = qsTr("Folder not found") + Retranslate.onLanguageChanged
+            return;
+        }
+        roomName.imageSource = data.displayIcon
+        roomName.valueText = data.name // TODO Room name
+        containsFilesAndFolders.valueText = data.children + qsTr(" Files / Folders") + Retranslate.onLanguageChanged
+        if (data.roomId == 0) {
+            // no subroom - directly into the Room
+            roomId.valueText = data.containerId
+            roomName.valueText = odsdata.roomGroupName(data.containerId)
+            subroomId.visible = false
+            subroomName.visible = false
+        } else {
+            subroomId.valueText = data.containerId
+            subroomName.valueText = odsdata.roomGroupName(data.containerId)
+            subroomId.visible = true
+            subroomName.visible = true
+            roomId.valueText = data.roomId
+            roomName.valueText = odsdata.roomGroupName(data.roomId)
+        }
+        folderPath.valueText = data.path
+        cloudPath.valueText = odsdata.nodePath
+    }
+    function refreshDataFromFolder(name) {
+        // we get the ODSFile data from current node (from cache)
+        // result is an empty ODSFile* or the correct one
+        setValuesFromFolder(odsdata.folderFromName(name), name)
+    }
+    // TODO refresh fromRoom with id
+    // TODO refresh fromSubRoom with Id
+    // relayout if orientation changes
+    function relayout(landscape) {
+        // TODO
+    }
+    onParentTypeChanged: {
+        roomName.valueText = parentType
         folderName.textFieldText = ""
     }
     onCreationCompleted: {
+        // initialize positioning
+        if (OrientationSupport.orientation == UIOrientation.Landscape) {
+            relayout(true)
+        }
         clearFields();
     }
 }

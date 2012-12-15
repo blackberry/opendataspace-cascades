@@ -282,6 +282,7 @@ NavigationPane {
                 onTriggered: {
                     if (selected) {
                         roomsListPage.headerTitle = roomGroupDataModel.data(indexPath).name
+                        roomsListPage.displayType = "R"
                         // fill the model with the nodes
                         odsdata.resetLevel();
                         odsdata.showNextNode(roomGroupDataModel.data(indexPath).nodes, roomGroupDataModel.data(indexPath).name)
@@ -358,13 +359,13 @@ NavigationPane {
         unknownPreviewPage.recalculateValues(path);
         navigationPane.push(unknownPreviewPage)
     }
-    function onOpenAddFolder() {
+    function onOpenAddFolder(displayType) {
         console.debug("got signal to open AddFolderPage")
+        addFolderPage.parentType = displayType
         navigationPane.push(addFolderPage)
     }
-    function folderAdded(name) {
-        console.debug("got signal to add a new folder: " + name)
-        roomsListPage.addFolder(name)
+    function folderAdded() {
+        navigationPane.pop();
     }
     function openFileInfoPage(id) {
         console.debug("got signal to open FileInfoPage")
@@ -389,6 +390,7 @@ NavigationPane {
     onTopChanged: {
         if (navigationPane.top == dataspacePage) {
             odsdata.resetLevel();
+            roomsListPage.displayType = "R"
         }
     }
     onCreationCompleted: {
