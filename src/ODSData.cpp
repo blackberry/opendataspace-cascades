@@ -591,7 +591,7 @@ void ODSData::refreshCaches() {
  * path == anotherFolder/newNameOfFolder
  */
 void ODSData::createFolder(int roomId, QString path) {
-	//
+	qDebug() << "CREATE FOLDER for groupPk: " << roomId << "and folderpath: " << path;
 }
 
 void ODSData::initiateRequest(int usecase) {

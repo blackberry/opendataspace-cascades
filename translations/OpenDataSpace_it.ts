@@ -24,32 +24,32 @@
         <translation type="obsolete">un altro Nome cartella</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="45"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="47"/>
         <source>Create now</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="61"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="70"/>
         <source>Create Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="110"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="119"/>
         <source>Room ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="114"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="123"/>
         <source>Subroom ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="161"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="183"/>
         <source>File Type wrong, cannot create Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="98"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="107"/>
         <source>Name of the new Folder</source>
         <translation>Nome della nuova cartella</translation>
     </message>

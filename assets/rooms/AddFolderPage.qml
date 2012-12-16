@@ -18,7 +18,9 @@ import "../common"
 Page {
     // SIGNAL if folder was added
     signal onFolderAdded()
-    property string currentPath : ""
+    property string currentPath: ""
+    property int targetRoomId: -1
+    property bool isRootFolder: true
     id: addFolderPage
     resizeBehavior: PageResizeBehavior.Resize
     attachedObjects: [
@@ -43,16 +45,23 @@ Page {
         ActionItem {
             id: createNowAction
             title: qsTr("Create now") + Retranslate.onLanguageChanged
+            // dynamically changed if enabled onRedBarVisible
+            enabled: ! folderName.redBarVisible
             imageSource: "asset:///images/upload81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
+            // only triggered if enabled if foldertext was entered
             onTriggered: {
-                if (folderName.textFieldText != "") {
-                    odsdata.createFolder(roomId, folderPath)
-                    clearFields()
-                    addFolderPage.onFolderAdded()
+                // create the folder in the cloud
+                if (isRootFolder) {
+                    odsdata.createFolder(targetRoomId, folderName.textFieldText)
                 } else {
-                    // TODO dialog
+                    odsdata.createFolder(targetRoomId, currentPath+"/"+folderName.textFieldText)
                 }
+                // reset fields
+                clearFields()
+                // signal folder was added
+                // causes navigation pane to pop()
+                addFolderPage.onFolderAdded()
             }
         }
     ]
@@ -102,7 +111,7 @@ Page {
                         createNowAction.enabled = ! folderName.redBarVisible
                     }
                     onTextFieldTextChanged: {
-                        folderPath.valueText = currentPath+folderName.textFieldText
+                        folderPath.valueText = currentPath + "/" + folderName.textFieldText
                     }
                 }
                 LabelAndLabel {
@@ -119,27 +128,38 @@ Page {
         } // end scroll view
     } // end main container
     function clearFields() {
-        roomName.valueText = parentType
-        subroomName.valueText = "subby"
-        folderPath.valueText = "folder/"
+        roomName.valueText = ""
+        subroomName.valueText = ""
+        folderPath.valueText = ""
         folderName.textFieldText = ""
+        targetRoomId = -1
+        currentPath = ""
     }
     // set the field values from ODSFolder* data
     function setValues(data) {
         if (data.displayType == "R") {
+            // Folder directly inside a DataRoom
             roomName.valueText = data.name
             roomId.valueText = data.id
+            subroomName.valueText = ""
+            subroomId.valueText = -1
             subroomName.visible = false
             subroomId.visible = false
-            currentPath = "/"
-            folderPath.valueText = currentPath
+            currentPath = ""
+            folderPath.valueText = currentPath + "/"
+            targetRoomId = data.id
+            isRootFolder = true
         } else if (data.displayType == "S") {
             subroomName.visible = true
             subroomId.visible = true
             subroomName.valueText = data.name
             subroomId.valueText = data.id
-            currentPath = "/"
-            folderPath.valueText = currentPath
+            roomName.valueText = odsdata.roomGroupName(data.roomId)
+            roomId.valueText = data.roomId
+            currentPath = ""
+            folderPath.valueText = currentPath + "/"
+            targetRoomId = data.id
+            isRootFolder = true
         } else if (data.displayType == "F") {
             if (data.roomId == 0) {
                 // no subroom - directly into the Room
@@ -155,8 +175,10 @@ Page {
                 roomId.valueText = data.roomId
                 roomName.valueText = odsdata.roomGroupName(data.roomId)
             }
-            currentPath = data.path +  "/"
-            folderPath.valueText = currentPath
+            currentPath = data.path
+            folderPath.valueText = currentPath + "/"
+            targetRoomId = data.containerId
+            isRootFolder = false
         } else {
             roomName.valueText = qsTr("File Type wrong, cannot create Folder") + Retranslate.onLanguageChanged
             return;
@@ -167,11 +189,21 @@ Page {
         // result is an empty ODSFile* or the correct one
         setValues(odsdata.parentData())
     }
-    // TODO refresh fromRoom with id
-    // TODO refresh fromSubRoom with Id
     // relayout if orientation changes
     function relayout(landscape) {
-        // TODO
+        if (landscape == true) {
+            roomId.landscape = true
+            roomName.landscape = true
+            subroomId.landscape = true
+            subroomName.landscape = true
+            folderPath.landscape = true
+        } else {
+            roomId.landscape = false
+            roomName.landscape = false
+            subroomId.landscape = false
+            subroomName.landscape = false
+            folderPath.landscape = false
+        }
     }
     onCreationCompleted: {
         // initialize positioning
