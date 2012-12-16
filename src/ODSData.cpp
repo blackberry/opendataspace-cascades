@@ -601,7 +601,8 @@ void ODSData::refreshCaches() {
 	mProgressDialog->confirmButton()->setLabel(
 				tr("OK"));
 	mProgressDialog->cancelButton()->setLabel(QString::null);
-	mProgressDialog->show();
+	// wait for USER
+	mProgressDialog->exec();
 }
 
 /**
@@ -615,6 +616,9 @@ void ODSData::createFolder(int roomId, QString path) {
 	qDebug() << "CREATE FOLDER for groupPk: " << roomId << "and folderpath: "
 			<< path;
 	// start progress
+	// some problems with reusing SystemProgressDialog
+	// so we create a new one, but still sometimes disappears
+	mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Create a new folder"));
@@ -627,7 +631,7 @@ void ODSData::createFolder(int roomId, QString path) {
 	mProgressDialog->show();
 	//
 	mGroupPk = roomId;
-	mPath = path;
+	mPath = path.trimmed();
 	initiateRequest(Usecase::FilesCreateFolder);
 }
 
@@ -1071,7 +1075,7 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			mProgressDialog->confirmButton()->setLabel(
 					tr("Synchronization done"));
 			mProgressDialog->cancelButton()->setLabel(QString::null);
-			mProgressDialog->show();
+			mProgressDialog->exec();
 			// TODO wait for OK before signal
 			// signal   O K
 			emit loginFinished(true);
@@ -1225,7 +1229,8 @@ void ODSData::reportError(QString& errorText) {
 				tr("No valid result from Server"));
 		mProgressDialog->cancelButton()->setLabel(QString::null);
 		mProgressDialog->setIcon(QUrl("asset:///images/offline-icon.png"));
-		mProgressDialog->show();
+		mProgressDialog->exec();
+		// wait for user
 	}
 }
 
