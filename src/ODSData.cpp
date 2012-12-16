@@ -583,9 +583,25 @@ QVariantMap ODSData::readDataFromJson(int usecase) {
 
 /**
  * sync all files, persist JSON, refresh caches
+ * called from successfully executed commands
  */
 void ODSData::refreshCaches() {
 
+	mProgressDialog->setProgress(50);
+	mProgressDialog->setBody(tr("work on server done, now sync..."));
+	mProgressDialog->setIcon(QUrl("asset:///images/download-icon.png"));
+	mProgressDialog->show();
+	// TODO get all files
+
+	// finished
+	mProgressDialog->setProgress(100);
+	mProgressDialog->setState(SystemUiProgressState::Inactive);
+	mProgressDialog->setBody(tr("Cache refreshed :)"));
+	mProgressDialog->setIcon(QUrl("asset:///images/online-icon.png"));
+	mProgressDialog->confirmButton()->setLabel(
+				tr("OK"));
+	mProgressDialog->cancelButton()->setLabel(QString::null);
+	mProgressDialog->show();
 }
 
 /**
@@ -598,16 +614,24 @@ void ODSData::refreshCaches() {
 void ODSData::createFolder(int roomId, QString path) {
 	qDebug() << "CREATE FOLDER for groupPk: " << roomId << "and folderpath: "
 			<< path;
+	// start progress
+	mProgressDialog->setState(SystemUiProgressState::Active);
+	mProgressDialog->setEmoticonsEnabled(true);
+	mProgressDialog->setTitle(tr("Create a new folder"));
+	mProgressDialog->setStatusMessage(mBaseUrl);
+	mProgressDialog->setIcon(QUrl("asset:///images/upload-icon.png"));
+	mProgressDialog->cancelButton()->setLabel(tr("Stop upload"));
+	mProgressDialog->confirmButton()->setLabel(QString::null);
+	mProgressDialog->setProgress(15);
+	mProgressDialog->setBody(tr("send request to server..."));
+	mProgressDialog->show();
+	//
 	mGroupPk = roomId;
 	mPath = path;
 	initiateRequest(Usecase::FilesCreateFolder);
 }
 
 void ODSData::initiateRequest(int usecase) {
-	// Start the activity indicator
-	// if not in login-sequence
-	startActivityIndicator();
-
 	bool isJsonContent;
 	bool isInitialization;
 	bool ok;
@@ -732,7 +756,8 @@ void ODSData::initiateRequest(int usecase) {
 		mRequestJson.append("\"");
 
 		mRequestJson.append("}");
-		request.setUrl(QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesCreateFolder)));
+		request.setUrl(
+				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesCreateFolder)));
 		qDebug() << "JSON for CreateFolder: " << mRequestJson;
 		break;
 	case Usecase::FilesAll:
@@ -781,7 +806,6 @@ void ODSData::initiateRequest(int usecase) {
 			errorString = tr("Cannot read file to upload: ");
 			errorString += mFileName;
 			reportError(errorString);
-			stopActivityIndicator();
 			// S T O P   I T
 			return;
 		}
@@ -1039,9 +1063,6 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			mProgressDialog->show();
 			initiateRequest(-5);
 			break;
-		case Usecase::FilesCreateFolder:
-			qDebug() << "Y E P  Folder Created !";
-			break;
 		case -9999:
 			mProgressDialog->setProgress(100);
 			mProgressDialog->setState(SystemUiProgressState::Inactive);
@@ -1055,8 +1076,9 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			// signal   O K
 			emit loginFinished(true);
 			break;
-			// no init steps
 		default:
+			// no init steps
+			refreshCaches();
 			break;
 		}
 	} else {
@@ -1065,7 +1087,6 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 		errorString = reply->errorString();
 		reportError(errorString);
 	}
-	stopActivityIndicator();
 	reply->deleteLater();
 }
 
@@ -1154,6 +1175,9 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 	case Usecase::FilesAll:
 		// need customernumber
 		break;
+	case Usecase::FilesCreateFolder:
+		qDebug() << "Y E P  Folder Created !";
+		break;
 	case Usecase::FilesDownload:
 		// need fileID
 		break;
@@ -1203,21 +1227,6 @@ void ODSData::reportError(QString& errorText) {
 		mProgressDialog->setIcon(QUrl("asset:///images/offline-icon.png"));
 		mProgressDialog->show();
 	}
-}
-
-void ODSData::startActivityIndicator() {
-	// TODO
-	qDebug() << "START ActivityIndicator";
-}
-
-void ODSData::stopActivityIndicator() {
-	// TODO
-	qDebug() << "STOP ActivityIndicator";
-}
-
-void ODSData::progressActivityIndicator(int value) {
-	// TODO
-	qDebug() << "Progress ActivityIndicator 1...100: " << value;
 }
 
 ODSData::~ODSData() {

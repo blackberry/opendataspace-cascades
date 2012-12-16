@@ -142,20 +142,6 @@ private:
 	 */
 	void delayedInit();
 
-	/**
-	 * starts the Activity Indicator
-	 * can be a progress indicator or dialog window
-	 */
-	void startActivityIndicator();
-	/**
-	 * stops the Activity Indicator
-	 */
-	void stopActivityIndicator();
-	/**
-	 * progress of the Activity 1-100
-	 */
-	void progressActivityIndicator(int value);
-
 	void reportError(QString &errorText);
 
 };
