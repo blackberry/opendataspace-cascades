@@ -72,7 +72,7 @@ Page {
             imageSource: "asset:///images/download81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                // TODO
+                odsdata.downloadFile(cloudFileId.valueText, headerId.valueText)
             }
         },
         ActionItem {

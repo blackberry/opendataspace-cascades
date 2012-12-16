@@ -72,6 +72,9 @@ public:
 	Q_INVOKABLE
 	void deleteFolder(int roomId, QString path);
 
+	Q_INVOKABLE
+	void downloadFile(int fileId, QString fileName);
+
 Q_SIGNALS:
 	void loginFinished(bool success);
 

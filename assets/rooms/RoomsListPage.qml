@@ -428,7 +428,7 @@ Page {
                                     title: qsTr("Download") + Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/download81.png"
                                     onTriggered: {
-                                        // TODO
+                                        filesItem.ListItem.view.downloadFile(ListItemData.id, ListItemData.name)
                                     }
                                 }
                                 ActionItem {
@@ -481,6 +481,9 @@ Page {
             }
             function pushDeleteFolderPage(name) {
                 openDeleteFolderPage(name)
+            }
+            function downloadFile(id, name) {
+                odsdata.downloadFile(id, name)
             }
         } // end ListView
     } // end Container

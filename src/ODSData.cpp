@@ -25,6 +25,9 @@ static QString dataPath(const QString& fileName) {
 static QString uploadPath(const QString& fileName) {
 	return QDir::currentPath() + "/data/ods/upload/" + fileName;
 }
+static QString downloadPath(const QString& fileName) {
+	return QDir::currentPath() + "/data/ods/download/" + fileName;
+}
 static const QString isGroupValue = "is_group";
 static const QString typeValue = "type";
 static const QString nodesValue = "nodes";
@@ -37,6 +40,9 @@ static const QString parentValue = "parent";
 static const QString tokenValue = "token";
 static const QString pathValue = "path";
 static const QString contentValue = "content";
+static const QString usernameValue = "username";
+static const QString passwordValue = "password";
+static const QString customerNumberValue = "customer_nr";
 
 static const int deleteNotEmpty = 1;
 
@@ -298,42 +304,42 @@ void ODSData::initRoomsModel() {
 	resetLevel();
 }
 
-void ODSData::createRoomsModel(){
+void ODSData::createRoomsModel() {
 	mRoomsDataModel = Application::instance()->scene()->findChildren<
-				GroupDataModel*>("roomGroupDataModel").last();
-		if (mRoomsDataModel) {
-			mRoomsDataModel->clear();
-			QVariantMap dataMap;
-			mRooms->clear();
-			// all rooms
-			dataMap = readDataFromJson(Usecase::FilesAll);
-			if (!dataMap.isEmpty()) {
-				// first level are always Rooms
-				// next levels will be get thru showNext / showPrevious Level
-				// from UI tapping on Room, SubRoom, Folder
-				mRooms->append(dataMap.value(nodesValue, "").toList());
-				if (!mRooms->isEmpty()) {
-					for (int i = 0; i < mRooms->size(); ++i) {
-						QVariantMap map = mRooms->at(i).toMap();
-						mRoomsDataModel->insert(new ODSRoom(map));
-					}
+			GroupDataModel*>("roomGroupDataModel").last();
+	if (mRoomsDataModel) {
+		mRoomsDataModel->clear();
+		QVariantMap dataMap;
+		mRooms->clear();
+		// all rooms
+		dataMap = readDataFromJson(Usecase::FilesAll);
+		if (!dataMap.isEmpty()) {
+			// first level are always Rooms
+			// next levels will be get thru showNext / showPrevious Level
+			// from UI tapping on Room, SubRoom, Folder
+			mRooms->append(dataMap.value(nodesValue, "").toList());
+			if (!mRooms->isEmpty()) {
+				for (int i = 0; i < mRooms->size(); ++i) {
+					QVariantMap map = mRooms->at(i).toMap();
+					mRoomsDataModel->insert(new ODSRoom(map));
 				}
-				// group informations stored to get the name of thew rooms easy
-				// later on subrooms and folders will reference to the group they belong to
-				mRoomGroups->clear();
-				QVariantList dataList;
-				dataList = dataMap.value(groupsValue, "").toList();
-				if (!dataList.isEmpty()) {
-					for (int i = 0; i < dataList.size(); ++i) {
-						QVariantMap map = dataList.at(i).toMap();
-						mRoomGroups->insert(map.value(groupPkValue, 0).toInt(),
-								map.value(nameValue, "").toString());
-					}
-				}
-				qDebug() << "got asome roomGroups:" << mRoomGroups->size();
 			}
-
+			// group informations stored to get the name of thew rooms easy
+			// later on subrooms and folders will reference to the group they belong to
+			mRoomGroups->clear();
+			QVariantList dataList;
+			dataList = dataMap.value(groupsValue, "").toList();
+			if (!dataList.isEmpty()) {
+				for (int i = 0; i < dataList.size(); ++i) {
+					QVariantMap map = dataList.at(i).toMap();
+					mRoomGroups->insert(map.value(groupPkValue, 0).toInt(),
+							map.value(nameValue, "").toString());
+				}
+			}
+			qDebug() << "got asome roomGroups:" << mRoomGroups->size();
 		}
+
+	}
 }
 
 void ODSData::showFilesFromNode(QVariantList nodes, bool isBackNavigation) {
@@ -598,7 +604,6 @@ QVariantMap ODSData::readDataFromJson(int usecase) {
 	return bodyMap;
 }
 
-
 /**
  * refresh caches
  * called from successfully executed commands
@@ -622,9 +627,10 @@ void ODSData::refreshCaches() {
 		QVariantMap dataMap = mRooms->at(r).toMap();
 		if (dataMap.value(nameValue, "") == mNodeNames->at(0)) {
 			// we found the Data Room
-			qDebug() << "refresh caches found the Data Room" << mNodeNames->at(0);
+			qDebug() << "refresh caches found the Data Room"
+					<< mNodeNames->at(0);
 			nodes = dataMap.value(nodesValue).toList();
-			mCache->replace(0,nodes);
+			mCache->replace(0, nodes);
 			break;
 		}
 	}
@@ -635,9 +641,10 @@ void ODSData::refreshCaches() {
 				QVariantMap dataMap = nodes.at(n).toMap();
 				if (dataMap.value(nameValue, "") == mNodeNames->at(loop)) {
 					// we found the Node
-					qDebug() << "refresh caches found the Node:" << mNodeNames->at(loop);
+					qDebug() << "refresh caches found the Node:"
+							<< mNodeNames->at(loop);
 					nodes = dataMap.value(nodesValue).toList();
-					mCache->replace(loop,nodes);
+					mCache->replace(loop, nodes);
 					break;
 				}
 			}
@@ -653,13 +660,11 @@ void ODSData::refreshCaches() {
 				continue;
 			}
 			if (map.value(isGroupValue, 42).toInt() == 0) {
-				mFilesDataModel->insert(
-						new ODSFolder(map, folderPath(false)));
+				mFilesDataModel->insert(new ODSFolder(map, folderPath(false)));
 				continue;
 			}
 			if (map.value(typeValue, 42).toInt() == 2) {
-				mFilesDataModel->insert(
-						new ODSFile(map, folderPath(false)));
+				mFilesDataModel->insert(new ODSFile(map, folderPath(false)));
 				continue;
 			}
 			qDebug() << "unknown ItemType from nodes list";
@@ -670,8 +675,7 @@ void ODSData::refreshCaches() {
 	mProgressDialog->setState(SystemUiProgressState::Inactive);
 	mProgressDialog->setBody(tr("Cache refreshed :)"));
 	mProgressDialog->setIcon(QUrl("asset:///images/online-icon.png"));
-	mProgressDialog->confirmButton()->setLabel(
-				tr("OK"));
+	mProgressDialog->confirmButton()->setLabel(tr("OK"));
 	mProgressDialog->cancelButton()->setLabel(QString::null);
 	// wait for USER
 	mProgressDialog->exec();
@@ -735,6 +739,28 @@ void ODSData::deleteFolder(int roomId, QString path) {
 	mPath = path.trimmed();
 	initiateRequest(Usecase::FilesDeleteFolder);
 	// if request went well: reloadFiles is called
+}
+
+void ODSData::downloadFile(int fileId, QString fileName) {
+	qDebug() << "start download File #" << fileId << " " << fileName;
+	// start progress
+	// some problems with reusing SystemProgressDialog
+	// so we create a new one, but still sometimes disappears
+	mProgressDialog = new SystemProgressDialog(this);
+	mProgressDialog->setState(SystemUiProgressState::Active);
+	mProgressDialog->setEmoticonsEnabled(true);
+	mProgressDialog->setTitle(tr("Download a file"));
+	mProgressDialog->setStatusMessage(mBaseUrl);
+	mProgressDialog->setIcon(QUrl("asset:///images/download-icon.png"));
+	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
+	mProgressDialog->confirmButton()->setLabel(QString::null);
+	mProgressDialog->setProgress(15);
+	mProgressDialog->setBody(tr("send request to server..."));
+	mProgressDialog->show();
+	//
+	mFileId = fileId;
+	mFileName = fileName;
+	initiateRequest(Usecase::FilesDownload);
 }
 
 void ODSData::initiateRequest(int usecase) {
@@ -801,8 +827,30 @@ void ODSData::initiateRequest(int usecase) {
 		// always at first
 	case Usecase::UsersAuth:
 		isJsonContent = true;
-		mRequestJson = "{\"username\":\"" + mUser.toUtf8()
-				+ "\",\"password\":\"" + mPassword.toUtf8() + "\"}";
+		// mRequestJson = "{\"username\":\"" + mUser.toUtf8()
+		// 		+ "\",\"password\":\"" + mPassword.toUtf8() + "\"}";
+		mRequestJson.clear();
+		// START
+		mRequestJson.append(jsonStart);
+		// USERNAME
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(usernameValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mUser.toUtf8());
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(comma);
+		// PASSWORD
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(passwordValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mPassword.toUtf8());
+		mRequestJson.append(quotationMark);
+		// END
+		mRequestJson.append(jsonEnd);
 		request.setUrl(QUrl(mBaseUrl + mUsecasePathes.at(Usecase::UsersAuth)));
 		if (isInitialization) {
 			// add a special header
@@ -813,7 +861,20 @@ void ODSData::initiateRequest(int usecase) {
 		// do UsersAuth, then get Users data to know what is allowed, get customer_no etc
 	case Usecase::UsersUser:
 		isJsonContent = true;
-		mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
+		// mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
+		mRequestJson.clear();
+		// START
+		mRequestJson.append(jsonStart);
+		// TOKEN
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(tokenValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mToken.toUtf8());
+		mRequestJson.append(quotationMark);
+		// END
+		mRequestJson.append(jsonEnd);
 		request.setUrl(QUrl(mBaseUrl + mUsecasePathes.at(Usecase::UsersUser)));
 		if (isInitialization) {
 			// add a special header
@@ -823,7 +884,20 @@ void ODSData::initiateRequest(int usecase) {
 		break;
 	case Usecase::UsersAll:
 		isJsonContent = true;
-		mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
+		// mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
+		mRequestJson.clear();
+		// START
+		mRequestJson.append(jsonStart);
+		// TOKEN
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(tokenValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mToken.toUtf8());
+		mRequestJson.append(quotationMark);
+		// END
+		mRequestJson.append(jsonEnd);
 		request.setUrl(QUrl(mBaseUrl + mUsecasePathes.at(Usecase::UsersAll)));
 		if (isInitialization) {
 			// add a special header
@@ -918,8 +992,28 @@ void ODSData::initiateRequest(int usecase) {
 	case Usecase::FilesAll:
 		isJsonContent = true;
 		// need customernumber
-		mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\",\"customer_nr\":"
-				+ QByteArray::number(mCustomerNumber) + "}";
+		// mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\",\"customer_nr\":"
+		// 		+ QByteArray::number(mCustomerNumber) + "}";
+		mRequestJson.clear();
+		// START
+		mRequestJson.append(jsonStart);
+		// TOKEN
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(tokenValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mToken.toUtf8());
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(comma);
+		// CUSTOMER NR
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(customerNumberValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(QByteArray::number(mCustomerNumber));
+		// END
+		mRequestJson.append(jsonEnd);
 		request.setUrl(QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesAll)));
 		if (isInitialization) {
 			// add a special header
@@ -930,11 +1024,28 @@ void ODSData::initiateRequest(int usecase) {
 		break;
 	case Usecase::FilesDownload:
 		isJsonContent = true;
-		// need fileId
-		mFileId = 67;
-		mFileName = "ekke.png";
-		mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\",\"fileID\":"
-				+ QByteArray::number(mFileId) + "}";
+		// mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\",\"fileID\":"
+		// 		+ QByteArray::number(mFileId) + "}";
+		mRequestJson.clear();
+		// START
+		mRequestJson.append(jsonStart);
+		// TOKEN
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(tokenValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mToken.toUtf8());
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(comma);
+		// FILE ID
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(fileIdValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(QByteArray::number(mFileId));
+		// END
+		mRequestJson.append(jsonEnd);
 		request.setUrl(
 				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesDownload)));
 		break;
@@ -943,8 +1054,28 @@ void ODSData::initiateRequest(int usecase) {
 		// need fileId
 		mFileId = 67;
 		mFileName = "ekkeThumb.png";
-		mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\",\"fileID\":"
-				+ QByteArray::number(mFileId) + "}";
+		// mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\",\"fileID\":"
+		// 		+ QByteArray::number(mFileId) + "}";
+		mRequestJson.clear();
+		// START
+		mRequestJson.append(jsonStart);
+		// TOKEN
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(tokenValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mToken.toUtf8());
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(comma);
+		// FILE ID
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(fileIdValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(QByteArray::number(mFileId));
+		// END
+		mRequestJson.append(jsonEnd);
 		request.setUrl(
 				QUrl(
 						mBaseUrl
@@ -1020,12 +1151,38 @@ void ODSData::initiateRequest(int usecase) {
 		break;
 	case Usecase::TexteAll:
 		isJsonContent = true;
-		mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
+		// mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
+		mRequestJson.clear();
+		// START
+		mRequestJson.append(jsonStart);
+		// TOKEN
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(tokenValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mToken.toUtf8());
+		mRequestJson.append(quotationMark);
+		// END
+		mRequestJson.append(jsonEnd);
 		request.setUrl(QUrl(mBaseUrl + mUsecasePathes.at(Usecase::TexteAll)));
 		break;
 	case Usecase::SettingsUser:
 		isJsonContent = true;
-		mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
+		// mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
+		mRequestJson.clear();
+		// START
+		mRequestJson.append(jsonStart);
+		// TOKEN
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(tokenValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mToken.toUtf8());
+		mRequestJson.append(quotationMark);
+		// END
+		mRequestJson.append(jsonEnd);
 		request.setUrl(
 				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::SettingsUser)));
 		if (isInitialization) {
@@ -1036,7 +1193,20 @@ void ODSData::initiateRequest(int usecase) {
 		break;
 	case Usecase::SettingsInfoListe:
 		isJsonContent = true;
-		mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
+		// mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
+		mRequestJson.clear();
+		// START
+		mRequestJson.append(jsonStart);
+		// TOKEN
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(tokenValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mToken.toUtf8());
+		mRequestJson.append(quotationMark);
+		// END
+		mRequestJson.append(jsonEnd);
 		request.setUrl(
 				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::SettingsInfoListe)));
 		break;
@@ -1235,16 +1405,17 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			// now test if we have to do a reload
 			int reloadUsecase = reply->request().rawHeader("reload").toInt();
 			switch (reloadUsecase) {
-				case Usecase::FilesAll:
-					mProgressDialog->setProgress(60);
-					mProgressDialog->setBody(tr("Work done, sync Filestructure..."));
-					mProgressDialog->show();
-					initiateRequest(Usecase::FilesAll);
-					break;
-				default:
-					// nothing else to do - then refresh cache
-					refreshCaches();
-					break;
+			case Usecase::FilesAll:
+				mProgressDialog->setProgress(60);
+				mProgressDialog->setBody(
+						tr("Work done, sync Filestructure..."));
+				mProgressDialog->show();
+				initiateRequest(Usecase::FilesAll);
+				break;
+			default:
+				// nothing else to do - then refresh cache
+				refreshCaches();
+				break;
 			}
 
 			break;
@@ -1350,7 +1521,7 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 		qDebug() << "Folder successfully Deleted !";
 		break;
 	case Usecase::FilesDownload:
-		// need fileID
+		qDebug() << "File successfully done !";
 		break;
 	case Usecase::FilesDownloadThumbnail:
 		// need fileID
