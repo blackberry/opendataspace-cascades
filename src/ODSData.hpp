@@ -69,6 +69,9 @@ public:
 	Q_INVOKABLE
 	void createFolder(int roomId, QString path);
 
+	Q_INVOKABLE
+	void deleteFolder(int roomId, QString path);
+
 Q_SIGNALS:
 	void loginFinished(bool success);
 

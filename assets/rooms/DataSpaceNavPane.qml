@@ -150,6 +150,16 @@ NavigationPane {
                 }
             }
         },
+        DeleteFolderPage {
+            id: deleteFolderPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
+        },
         // FileInfo
         FileInfoPage {
             id: fileInfoPage
@@ -363,7 +373,15 @@ NavigationPane {
         addFolderPage.refreshData()
         navigationPane.push(addFolderPage)
     }
+    function onOpenDeleteFolder(name) {
+        console.debug("got signal to open DeleteFolderPage")
+        deleteFolderPage.refreshData(name)
+        navigationPane.push(deleteFolderPage)
+    }
     function folderAdded() {
+        navigationPane.pop();
+    }
+    function folderDeleted() {
         navigationPane.pop();
     }
     function openFileInfoPage(id) {
@@ -408,12 +426,14 @@ NavigationPane {
         roomsListPage.previewUnknown.connect(previewUnknown)
         //-- connect the RoomsList onOpenAddFolder SIGNAL to the handler SLOT
         roomsListPage.openAddFolder.connect(onOpenAddFolder)
+        roomsListPage.openDeleteFolderPage.connect(onOpenDeleteFolder)
         //
         roomsListPage.openFileInfoPage.connect(openFileInfoPage)
         roomsListPage.openFolderInfoPage.connect(openFolderInfoPage)
         roomsListPage.openSubRoomInfoPage.connect(openSubRoomInfoPage)
         //-- connect the onFolderAdded SIGNAL from AddFolderPage with SLOT folderAdded
         addFolderPage.onFolderAdded.connect(folderAdded)
+        deleteFolderPage.onFolderDeleted.connect(folderDeleted)
         //-- connect the RoomsList recordAudio SIGNAL to the handler SLOT
         roomsListPage.recordAudio.connect(openRecordAudioPage)
         console.debug("NavigationPane DtaSpaces created ")

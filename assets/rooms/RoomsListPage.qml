@@ -27,6 +27,7 @@ Page {
     id: roomsListPage
     signal recordAudio()
     signal openAddFolder()
+    signal openDeleteFolderPage(string name)
     signal openFileInfoPage(int fileId)
     signal openFolderInfoPage(string name)
     signal openSubRoomInfoPage(int subroomId)
@@ -361,7 +362,7 @@ Page {
                                 DeleteActionItem {
                                     title: qsTr("Delete") + Retranslate.onLanguageChanged
                                     onTriggered: {
-                                        // TODO
+                                        foldersItem.ListItem.view.pushDeleteFolderPage(ListItemData.name)
                                     }
                                 }
                             }
@@ -477,6 +478,9 @@ Page {
             }
             function pushSubRoomInfoPage(id) {
                 openSubRoomInfoPage(id)
+            }
+            function pushDeleteFolderPage(name) {
+                openDeleteFolderPage(name)
             }
         } // end ListView
     } // end Container

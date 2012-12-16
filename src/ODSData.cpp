@@ -34,6 +34,18 @@ static const QString groupsValue = "groups";
 static const QString groupPkValue = "group_pk";
 static const QString parentValue = "parent";
 
+static const QString tokenValue = "token";
+static const QString pathValue = "path";
+static const QString contentValue = "content";
+
+static const int deleteNotEmpty = 1;
+
+static const QChar jsonStart = '{';
+static const QChar jsonEnd = '}';
+static const QString quotationMark = "\"";
+static const QChar colon = ':';
+static const QChar comma = ',';
+
 ODSData::ODSData() {
 	// prepare all for the work with ODS Servers
 	mDelayedInitDone = false;
@@ -684,7 +696,7 @@ void ODSData::createFolder(int roomId, QString path) {
 	mProgressDialog->setTitle(tr("Create a new folder"));
 	mProgressDialog->setStatusMessage(mBaseUrl);
 	mProgressDialog->setIcon(QUrl("asset:///images/upload-icon.png"));
-	mProgressDialog->cancelButton()->setLabel(tr("Stop upload"));
+	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
 	mProgressDialog->confirmButton()->setLabel(QString::null);
 	mProgressDialog->setProgress(15);
 	mProgressDialog->setBody(tr("send request to server..."));
@@ -693,6 +705,35 @@ void ODSData::createFolder(int roomId, QString path) {
 	mGroupPk = roomId;
 	mPath = path.trimmed();
 	initiateRequest(Usecase::FilesCreateFolder);
+	// if request went well: reloadFiles is called
+}
+
+/**
+ * deletes a Folder
+ * UI shows content of folders
+ * so user is responsible that folder with content can be deleted
+ */
+void ODSData::deleteFolder(int roomId, QString path) {
+	qDebug() << "DELETE FOLDER for groupPk: " << roomId << "and folderpath: "
+			<< path;
+	// start progress
+	// some problems with reusing SystemProgressDialog
+	// so we create a new one, but still sometimes disappears
+	mProgressDialog = new SystemProgressDialog(this);
+	mProgressDialog->setState(SystemUiProgressState::Active);
+	mProgressDialog->setEmoticonsEnabled(true);
+	mProgressDialog->setTitle(tr("Delete a folder"));
+	mProgressDialog->setStatusMessage(mBaseUrl);
+	mProgressDialog->setIcon(QUrl("asset:///images/upload-icon.png"));
+	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
+	mProgressDialog->confirmButton()->setLabel(QString::null);
+	mProgressDialog->setProgress(15);
+	mProgressDialog->setBody(tr("send request to server..."));
+	mProgressDialog->show();
+	//
+	mGroupPk = roomId;
+	mPath = path.trimmed();
+	initiateRequest(Usecase::FilesDeleteFolder);
 	// if request went well: reloadFiles is called
 }
 
@@ -792,37 +833,82 @@ void ODSData::initiateRequest(int usecase) {
 	case Usecase::FilesCreateFolder:
 		isJsonContent = true;
 		mRequestJson.clear();
-		mRequestJson.append("{");
-
-		mRequestJson.append("\"");
-		mRequestJson.append("token");
-		mRequestJson.append("\"");
-		mRequestJson.append(":");
-		mRequestJson.append("\"");
+		// START
+		mRequestJson.append(jsonStart);
+		// TOKEN
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(tokenValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
 		mRequestJson.append(mToken.toUtf8());
-		mRequestJson.append("\"");
-
-		mRequestJson.append(",");
-
-		mRequestJson.append("\"");
-		mRequestJson.append("group_pk");
-		mRequestJson.append("\"");
-		mRequestJson.append(":");
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(comma);
+		// GROUP_PK
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(groupPkValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
 		mRequestJson.append(QByteArray::number(mGroupPk));
-
-		mRequestJson.append(",");
-
-		mRequestJson.append("\"");
-		mRequestJson.append("path");
-		mRequestJson.append("\"");
-		mRequestJson.append(":");
-		mRequestJson.append("\"");
+		mRequestJson.append(comma);
+		// PATH
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(pathValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
 		mRequestJson.append(mPath.toUtf8());
-		mRequestJson.append("\"");
-
-		mRequestJson.append("}");
+		mRequestJson.append(quotationMark);
+		// END
+		mRequestJson.append(jsonEnd);
 		request.setUrl(
 				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesCreateFolder)));
+		if (!isInitialization) {
+			// add a special header to reload all files as next step
+			request.setRawHeader("reload",
+					QByteArray::number(Usecase::FilesAll));
+		}
+		break;
+	case Usecase::FilesDeleteFolder:
+		isJsonContent = true;
+		mRequestJson.clear();
+		// START
+		mRequestJson.append(jsonStart);
+		// TOKEN
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(tokenValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mToken.toUtf8());
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(comma);
+		// GROUP_PK
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(groupPkValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(QByteArray::number(mGroupPk));
+		mRequestJson.append(comma);
+		// PATH
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(pathValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mPath.toUtf8());
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(comma);
+		// CONTENT
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(contentValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(QByteArray::number(deleteNotEmpty));
+		// END
+		mRequestJson.append(jsonEnd);
+		request.setUrl(
+				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesDeleteFolder)));
 		if (!isInitialization) {
 			// add a special header to reload all files as next step
 			request.setRawHeader("reload",
@@ -1258,7 +1344,10 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 		// need customernumber
 		break;
 	case Usecase::FilesCreateFolder:
-		qDebug() << "Y E P  Folder Created !";
+		qDebug() << "Folder successfully Created !";
+		break;
+	case Usecase::FilesDeleteFolder:
+		qDebug() << "Folder successfully Deleted !";
 		break;
 	case Usecase::FilesDownload:
 		// need fileID
