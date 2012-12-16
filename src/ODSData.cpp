@@ -282,41 +282,46 @@ void ODSData::initUserModel() {
 }
 
 void ODSData::initRoomsModel() {
+	createRoomsModel();
+	resetLevel();
+}
+
+void ODSData::createRoomsModel(){
 	mRoomsDataModel = Application::instance()->scene()->findChildren<
-			GroupDataModel*>("roomGroupDataModel").last();
-	if (mRoomsDataModel) {
-		mRoomsDataModel->clear();
-		QVariantMap dataMap;
-		mRooms->clear();
-		// all rooms
-		dataMap = readDataFromJson(Usecase::FilesAll);
-		if (!dataMap.isEmpty()) {
-			// first level are always Rooms
-			// next levels will be get thru showNext / showPrevious Level
-			// from UI tapping on Room, SubRoom, Folder
-			mRooms->append(dataMap.value(nodesValue, "").toList());
-			if (!mRooms->isEmpty()) {
-				for (int i = 0; i < mRooms->size(); ++i) {
-					QVariantMap map = mRooms->at(i).toMap();
-					mRoomsDataModel->insert(new ODSRoom(map));
+				GroupDataModel*>("roomGroupDataModel").last();
+		if (mRoomsDataModel) {
+			mRoomsDataModel->clear();
+			QVariantMap dataMap;
+			mRooms->clear();
+			// all rooms
+			dataMap = readDataFromJson(Usecase::FilesAll);
+			if (!dataMap.isEmpty()) {
+				// first level are always Rooms
+				// next levels will be get thru showNext / showPrevious Level
+				// from UI tapping on Room, SubRoom, Folder
+				mRooms->append(dataMap.value(nodesValue, "").toList());
+				if (!mRooms->isEmpty()) {
+					for (int i = 0; i < mRooms->size(); ++i) {
+						QVariantMap map = mRooms->at(i).toMap();
+						mRoomsDataModel->insert(new ODSRoom(map));
+					}
 				}
-			}
-			// group informations stored to get the name of thew rooms easy
-			// later on subrooms and folders will reference to the group they belong to
-			mRoomGroups->clear();
-			QVariantList dataList;
-			dataList = dataMap.value(groupsValue, "").toList();
-			if (!dataList.isEmpty()) {
-				for (int i = 0; i < dataList.size(); ++i) {
-					QVariantMap map = dataList.at(i).toMap();
-					mRoomGroups->insert(map.value(groupPkValue, 0).toInt(),
-							map.value(nameValue, "").toString());
+				// group informations stored to get the name of thew rooms easy
+				// later on subrooms and folders will reference to the group they belong to
+				mRoomGroups->clear();
+				QVariantList dataList;
+				dataList = dataMap.value(groupsValue, "").toList();
+				if (!dataList.isEmpty()) {
+					for (int i = 0; i < dataList.size(); ++i) {
+						QVariantMap map = dataList.at(i).toMap();
+						mRoomGroups->insert(map.value(groupPkValue, 0).toInt(),
+								map.value(nameValue, "").toString());
+					}
 				}
+				qDebug() << "got asome roomGroups:" << mRoomGroups->size();
 			}
-			qDebug() << "got asome roomGroups:" << mRoomGroups->size();
+
 		}
-		resetLevel();
-	}
 }
 
 void ODSData::showFilesFromNode(QVariantList nodes, bool isBackNavigation) {
@@ -590,10 +595,23 @@ QVariantMap ODSData::readDataFromJson(int usecase) {
 void ODSData::refreshCaches() {
 	mProgressDialog->setProgress(70);
 	mProgressDialog->setBody(tr("got new structure, now refresh cache..."));
+	mProgressDialog->setStatusMessage(tr("refresh Data Rooms"));
 	mProgressDialog->setIcon(QUrl("asset:///images/download-icon.png"));
 	mProgressDialog->show();
-	// get all files
-
+	// recreate rooms
+	createRoomsModel();
+	mProgressDialog->setProgress(75);
+	mProgressDialog->setStatusMessage(tr("refresh Nodes"));
+	mProgressDialog->show();
+	// recreate nodes
+	for (int loop = 0; loop < mNodeNames->size(); ++loop) {
+		if (loop == 0) {
+			// its a Data Room
+			qDebug() << "loop thru room:" << mNodeNames->at(loop);
+		} else {
+			qDebug() << "loop thru node:" << mNodeNames->at(loop);
+		}
+	}
 	// finished
 	mProgressDialog->setProgress(100);
 	mProgressDialog->setState(SystemUiProgressState::Inactive);

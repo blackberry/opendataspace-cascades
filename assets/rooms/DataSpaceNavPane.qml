@@ -389,7 +389,6 @@ NavigationPane {
     onTopChanged: {
         if (navigationPane.top == dataspacePage) {
             odsdata.resetLevel();
-            roomsListPage.displayType = "R"
         }
     }
     onCreationCompleted: {

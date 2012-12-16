@@ -136,6 +136,7 @@ private:
 
 	void refreshCaches();
 	void reloadFiles();
+	void createRoomsModel();
 
 	/**
 	 * some parts of initialization will be done delayed
