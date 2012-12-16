@@ -581,17 +581,18 @@ QVariantMap ODSData::readDataFromJson(int usecase) {
 	return bodyMap;
 }
 
+
 /**
- * sync all files, persist JSON, refresh caches
+ * refresh caches
  * called from successfully executed commands
+ * followed by a reload of all files to get the new structure from server
  */
 void ODSData::refreshCaches() {
-
-	mProgressDialog->setProgress(50);
-	mProgressDialog->setBody(tr("work on server done, now sync..."));
+	mProgressDialog->setProgress(70);
+	mProgressDialog->setBody(tr("got new structure, now refresh cache..."));
 	mProgressDialog->setIcon(QUrl("asset:///images/download-icon.png"));
 	mProgressDialog->show();
-	// TODO get all files
+	// get all files
 
 	// finished
 	mProgressDialog->setProgress(100);
@@ -633,6 +634,7 @@ void ODSData::createFolder(int roomId, QString path) {
 	mGroupPk = roomId;
 	mPath = path.trimmed();
 	initiateRequest(Usecase::FilesCreateFolder);
+	// if request went well: reloadFiles is called
 }
 
 void ODSData::initiateRequest(int usecase) {
@@ -762,7 +764,11 @@ void ODSData::initiateRequest(int usecase) {
 		mRequestJson.append("}");
 		request.setUrl(
 				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesCreateFolder)));
-		qDebug() << "JSON for CreateFolder: " << mRequestJson;
+		if (!isInitialization) {
+			// add a special header to reload all files as next step
+			request.setRawHeader("reload",
+					QByteArray::number(Usecase::FilesAll));
+		}
 		break;
 	case Usecase::FilesAll:
 		isJsonContent = true;
@@ -1081,8 +1087,21 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			emit loginFinished(true);
 			break;
 		default:
-			// no init steps
-			refreshCaches();
+			// now test if we have to do a reload
+			int reloadUsecase = reply->request().rawHeader("reload").toInt();
+			switch (reloadUsecase) {
+				case Usecase::FilesAll:
+					mProgressDialog->setProgress(60);
+					mProgressDialog->setBody(tr("Work done, sync Filestructure..."));
+					mProgressDialog->show();
+					initiateRequest(Usecase::FilesAll);
+					break;
+				default:
+					// nothing else to do - then refresh cache
+					refreshCaches();
+					break;
+			}
+
 			break;
 		}
 	} else {

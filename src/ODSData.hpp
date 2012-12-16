@@ -135,6 +135,7 @@ private:
 	QString folderPath(bool isBackNavigation);
 
 	void refreshCaches();
+	void reloadFiles();
 
 	/**
 	 * some parts of initialization will be done delayed

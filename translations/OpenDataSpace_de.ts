@@ -765,97 +765,102 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="591"/>
-        <source>work on server done, now sync...</source>
+        <location filename="../src/ODSData.cpp" line="592"/>
+        <source>got new structure, now refresh cache...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="599"/>
+        <location filename="../src/ODSData.cpp" line="600"/>
         <source>Cache refreshed :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="602"/>
+        <location filename="../src/ODSData.cpp" line="603"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="622"/>
+        <location filename="../src/ODSData.cpp" line="625"/>
         <source>Create a new folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="625"/>
+        <location filename="../src/ODSData.cpp" line="628"/>
         <source>Stop upload</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="628"/>
+        <location filename="../src/ODSData.cpp" line="631"/>
         <source>send request to server...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="808"/>
+        <location filename="../src/ODSData.cpp" line="816"/>
         <source>Cannot read file to upload: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="891"/>
+        <location filename="../src/ODSData.cpp" line="899"/>
         <source>unknown Usecase: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1005"/>
+        <location filename="../src/ODSData.cpp" line="1013"/>
         <source>Error: could not write to file: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1014"/>
+        <location filename="../src/ODSData.cpp" line="1022"/>
         <source>wrong content </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1044"/>
+        <location filename="../src/ODSData.cpp" line="1052"/>
         <source>Authentication done, getting User...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1051"/>
+        <location filename="../src/ODSData.cpp" line="1059"/>
         <source>User received, getting Settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1058"/>
+        <location filename="../src/ODSData.cpp" line="1066"/>
         <source>Settings received, getting Files...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1064"/>
+        <location filename="../src/ODSData.cpp" line="1072"/>
         <source>Files received, getting Userlist...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1071"/>
+        <location filename="../src/ODSData.cpp" line="1079"/>
         <source>Synchronization with Server done :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1074"/>
+        <location filename="../src/ODSData.cpp" line="1082"/>
         <source>Synchronization done</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1125"/>
+        <location filename="../src/ODSData.cpp" line="1095"/>
+        <source>Work done, sync Filestructure...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="1146"/>
         <source>Response without Body-part</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1212"/>
+        <location filename="../src/ODSData.cpp" line="1233"/>
         <source>Unknown Response Usecase</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1227"/>
+        <location filename="../src/ODSData.cpp" line="1248"/>
         <source>No valid result from Server</source>
         <translation type="unfinished"></translation>
     </message>
