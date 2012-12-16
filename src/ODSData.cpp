@@ -604,12 +604,53 @@ void ODSData::refreshCaches() {
 	mProgressDialog->setStatusMessage(tr("refresh Nodes"));
 	mProgressDialog->show();
 	// recreate nodes
-	for (int loop = 0; loop < mNodeNames->size(); ++loop) {
-		if (loop == 0) {
-			// its a Data Room
-			qDebug() << "loop thru room:" << mNodeNames->at(loop);
-		} else {
-			qDebug() << "loop thru node:" << mNodeNames->at(loop);
+	QVariantList nodes;
+	// root level (Data Rooms)
+	for (int r = 0; r < mRooms->size(); ++r) {
+		QVariantMap dataMap = mRooms->at(r).toMap();
+		if (dataMap.value(nameValue, "") == mNodeNames->at(0)) {
+			// we found the Data Room
+			qDebug() << "refresh caches found the Data Room" << mNodeNames->at(0);
+			nodes = dataMap.value(nodesValue).toList();
+			mCache->replace(0,nodes);
+			break;
+		}
+	}
+	// deeper levels (SubRooms, Folders)
+	if (!nodes.isEmpty()) {
+		for (int loop = 1; loop < mNodeNames->size(); ++loop) {
+			for (int n = 0; n < nodes.size(); ++n) {
+				QVariantMap dataMap = nodes.at(n).toMap();
+				if (dataMap.value(nameValue, "") == mNodeNames->at(loop)) {
+					// we found the Node
+					qDebug() << "refresh caches found the Node:" << mNodeNames->at(loop);
+					nodes = dataMap.value(nodesValue).toList();
+					mCache->replace(loop,nodes);
+					break;
+				}
+			}
+		}
+	}
+	// show actual node in ListView
+	mFilesDataModel->clear();
+	if (!nodes.isEmpty()) {
+		for (int i = 0; i < nodes.size(); ++i) {
+			QVariantMap map = nodes.at(i).toMap();
+			if (map.value(isGroupValue, 42).toInt() == 1) {
+				mFilesDataModel->insert(new ODSSubRoom(map));
+				continue;
+			}
+			if (map.value(isGroupValue, 42).toInt() == 0) {
+				mFilesDataModel->insert(
+						new ODSFolder(map, folderPath(false)));
+				continue;
+			}
+			if (map.value(typeValue, 42).toInt() == 2) {
+				mFilesDataModel->insert(
+						new ODSFile(map, folderPath(false)));
+				continue;
+			}
+			qDebug() << "unknown ItemType from nodes list";
 		}
 	}
 	// finished
