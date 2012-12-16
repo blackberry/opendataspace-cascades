@@ -79,30 +79,39 @@ private slots:
 	void requestFinished(QNetworkReply* reply);
 
 private:
+	bool mDelayedInitDone;
+
 	ODSSettings* mOdsSettings;
 
 	SystemProgressDialog* mProgressDialog;
 
+	// network access
 	QNetworkAccessManager *mNetworkAccessManager;
+	QByteArray mRequestJson;
+	QHttpMultiPart *mRequestMultipart;
+
+	// maps ODS server parameters and error codes
 	QStringList mResponseErrorTexts;
 	QStringList mUsecasePathes;
 
-	QString mToken;
+	//
 	QString mUser;
 	QString mPassword;
 	QString mBaseUrl;
-	QString mFileName;
-	QByteArray mRequestJson;
-	QHttpMultiPart *mRequestMultipart;
-	QFile *mFileToUpload;
+
+	// some vars used for ods server calls
+	QString mToken;
 	int mCustomerNumber;
 	int mLanguageNumber;
+	QFile *mFileToUpload;
+	QString mFileName;
 	int mFileId;
-	qint64 mFileLength;
-	qint64 mGroupPk;
-	QString mParentPath;
+	int mFileLength;
+	int mGroupPk;
+	QString mPath;
 	QString mComment;
 
+	// models and caches
 	GroupDataModel* mUsersDataModel;
 	GroupDataModel* mRoomsDataModel;
 	GroupDataModel* mFilesDataModel;
@@ -114,7 +123,6 @@ private:
 	int mFolderLevel;
 	QMap<int, QString>* mRoomGroups;
 
-	bool mDelayedInitDone;
 
 	void initPathes();
 	void initErrors();

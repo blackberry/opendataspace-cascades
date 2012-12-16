@@ -479,12 +479,16 @@ QObject* ODSData::parentData() {
 		return new ODSRoom();
 	} else {
 		// deeper level: parent can be Room, SubRoom, Folder
-		if (!mCache->isEmpty() && !mNodeNames->isEmpty() && mNodeNames->size() > mFilesLevel && mCache->size() >= mFilesLevel) {
-			QVariantList dataList = mCache->at(mFilesLevel-1).toList();
+		if (!mCache->isEmpty() && !mNodeNames->isEmpty()
+				&& mNodeNames->size() > mFilesLevel
+				&& mCache->size() >= mFilesLevel) {
+			QVariantList dataList = mCache->at(mFilesLevel - 1).toList();
 			for (int i = 0; i < dataList.size(); ++i) {
 				QVariantMap map = dataList.at(i).toMap();
-				qDebug() << "getting name: " << map.value(nameValue, "").toString();
-				if (map.value(nameValue, "").toString() == mNodeNames->at(mFilesLevel)) {
+				qDebug() << "getting name: "
+						<< map.value(nameValue, "").toString();
+				if (map.value(nameValue, "").toString()
+						== mNodeNames->at(mFilesLevel)) {
 					if (map.value(isGroupValue, 42).toInt() == 1) {
 						return new ODSSubRoom(map);
 					}
@@ -493,7 +497,8 @@ QObject* ODSData::parentData() {
 					}
 				}
 			}
-			qDebug() << "subroom or folder not found for: " << mNodeNames->at(mFilesLevel);
+			qDebug() << "subroom or folder not found for: "
+					<< mNodeNames->at(mFilesLevel);
 		} else {
 			qDebug() << "cache or nodenames empty";
 		}
@@ -591,7 +596,11 @@ void ODSData::refreshCaches() {
  * path == anotherFolder/newNameOfFolder
  */
 void ODSData::createFolder(int roomId, QString path) {
-	qDebug() << "CREATE FOLDER for groupPk: " << roomId << "and folderpath: " << path;
+	qDebug() << "CREATE FOLDER for groupPk: " << roomId << "and folderpath: "
+			<< path;
+	mGroupPk = roomId;
+	mPath = path;
+	initiateRequest(Usecase::FilesCreateFolder);
 }
 
 void ODSData::initiateRequest(int usecase) {
@@ -691,6 +700,41 @@ void ODSData::initiateRequest(int usecase) {
 			request.setRawHeader("nextUsecase", QByteArray::number(-9999));
 		}
 		break;
+	case Usecase::FilesCreateFolder:
+		isJsonContent = true;
+		mRequestJson.clear();
+		mRequestJson.append("{");
+
+		mRequestJson.append("\"");
+		mRequestJson.append("token");
+		mRequestJson.append("\"");
+		mRequestJson.append(":");
+		mRequestJson.append("\"");
+		mRequestJson.append(mToken.toUtf8());
+		mRequestJson.append("\"");
+
+		mRequestJson.append(",");
+
+		mRequestJson.append("\"");
+		mRequestJson.append("group_pk");
+		mRequestJson.append("\"");
+		mRequestJson.append(":");
+		mRequestJson.append(QByteArray::number(mGroupPk));
+
+		mRequestJson.append(",");
+
+		mRequestJson.append("\"");
+		mRequestJson.append("path");
+		mRequestJson.append("\"");
+		mRequestJson.append(":");
+		mRequestJson.append("\"");
+		mRequestJson.append(mPath.toUtf8());
+		mRequestJson.append("\"");
+
+		mRequestJson.append("}");
+		request.setUrl(QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesCreateFolder)));
+		qDebug() << "JSON for CreateFolder: " << mRequestJson;
+		break;
 	case Usecase::FilesAll:
 		isJsonContent = true;
 		// need customernumber
@@ -745,7 +789,7 @@ void ODSData::initiateRequest(int usecase) {
 		qDebug() << "uploading file " << mFileName << " size: " << mFileLength
 				<< "\npath: " << mFileToUpload->fileName();
 		mGroupPk = 19;
-		mParentPath = "";
+		mPath = "";
 		mComment = "ekkes test from QHttpMultiPart";
 
 		mRequestMultipart = new QHttpMultiPart(QHttpMultiPart::FormDataType,
@@ -760,7 +804,7 @@ void ODSData::initiateRequest(int usecase) {
 		mRequestMultipart->append(groupPkPart);
 		parentPathPart.setHeader(QNetworkRequest::ContentDispositionHeader,
 				QVariant("form-data; name=\"parent_path\""));
-		parentPathPart.setBody(mParentPath.toUtf8());
+		parentPathPart.setBody(mPath.toUtf8());
 		mRequestMultipart->append(parentPathPart);
 		commentPart.setHeader(QNetworkRequest::ContentDispositionHeader,
 				QVariant("form-data; name=\"comment\""));
@@ -994,6 +1038,9 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			mProgressDialog->setBody(tr("Files received, getting Userlist..."));
 			mProgressDialog->show();
 			initiateRequest(-5);
+			break;
+		case Usecase::FilesCreateFolder:
+			qDebug() << "Y E P  Folder Created !";
 			break;
 		case -9999:
 			mProgressDialog->setProgress(100);
