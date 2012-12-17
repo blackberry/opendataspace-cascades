@@ -605,6 +605,24 @@ QVariantMap ODSData::readDataFromJson(int usecase) {
 	return bodyMap;
 }
 
+void ODSData::syncWithServer() {
+	// start progress
+	// some problems with reusing SystemProgressDialog
+	// so we create a new one, but still sometimes disappears
+	mProgressDialog = new SystemProgressDialog(this);
+	mProgressDialog->setState(SystemUiProgressState::Active);
+	mProgressDialog->setEmoticonsEnabled(true);
+	mProgressDialog->setTitle(tr("Sync with Server"));
+	mProgressDialog->setStatusMessage(mBaseUrl);
+	mProgressDialog->setIcon(QUrl("asset:///images/download-icon.png"));
+	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
+	mProgressDialog->confirmButton()->setLabel(QString::null);
+	mProgressDialog->setProgress(15);
+	mProgressDialog->setBody(tr("get new file structure from server..."));
+	mProgressDialog->show();
+	initiateRequest(Usecase::FilesAll);
+}
+
 /**
  * refresh caches
  * called from successfully executed commands
@@ -623,52 +641,54 @@ void ODSData::refreshCaches() {
 	mProgressDialog->show();
 	// recreate nodes
 	QVariantList nodes;
-	// root level (Data Rooms)
-	for (int r = 0; r < mRooms->size(); ++r) {
-		QVariantMap dataMap = mRooms->at(r).toMap();
-		if (dataMap.value(nameValue, "") == mNodeNames->at(0)) {
-			// we found the Data Room
-			qDebug() << "refresh caches found the Data Room"
-					<< mNodeNames->at(0);
-			nodes = dataMap.value(nodesValue).toList();
-			mCache->replace(0, nodes);
-			break;
+	// root level (get selected Data Room)
+	if (mNodeNames->size() > 0) {
+		for (int r = 0; r < mRooms->size(); ++r) {
+			QVariantMap dataMap = mRooms->at(r).toMap();
+			if (dataMap.value(nameValue, "") == mNodeNames->at(0)) {
+				// we found the Data Room
+				qDebug() << "refresh caches found the Data Room"
+						<< mNodeNames->at(0);
+				nodes = dataMap.value(nodesValue).toList();
+				mCache->replace(0, nodes);
+				break;
+			}
 		}
-	}
-	// deeper levels (SubRooms, Folders)
-	if (!nodes.isEmpty()) {
-		for (int loop = 1; loop < mNodeNames->size(); ++loop) {
-			for (int n = 0; n < nodes.size(); ++n) {
-				QVariantMap dataMap = nodes.at(n).toMap();
-				if (dataMap.value(nameValue, "") == mNodeNames->at(loop)) {
-					// we found the Node
-					qDebug() << "refresh caches found the Node:"
-							<< mNodeNames->at(loop);
-					nodes = dataMap.value(nodesValue).toList();
-					mCache->replace(loop, nodes);
-					break;
+		// deeper levels (SubRooms, Folders)
+		if (!nodes.isEmpty()) {
+			for (int loop = 1; loop < mNodeNames->size(); ++loop) {
+				for (int n = 0; n < nodes.size(); ++n) {
+					QVariantMap dataMap = nodes.at(n).toMap();
+					if (dataMap.value(nameValue, "") == mNodeNames->at(loop)) {
+						// we found the Node
+						qDebug() << "refresh caches found the Node:"
+								<< mNodeNames->at(loop);
+						nodes = dataMap.value(nodesValue).toList();
+						mCache->replace(loop, nodes);
+						break;
+					}
 				}
 			}
 		}
-	}
-	// show actual node in ListView
-	mFilesDataModel->clear();
-	if (!nodes.isEmpty()) {
-		for (int i = 0; i < nodes.size(); ++i) {
-			QVariantMap map = nodes.at(i).toMap();
-			if (map.value(isGroupValue, 42).toInt() == 1) {
-				mFilesDataModel->insert(new ODSSubRoom(map));
-				continue;
+		// show actual node in ListView
+		mFilesDataModel->clear();
+		if (!nodes.isEmpty()) {
+			for (int i = 0; i < nodes.size(); ++i) {
+				QVariantMap map = nodes.at(i).toMap();
+				if (map.value(isGroupValue, 42).toInt() == 1) {
+					mFilesDataModel->insert(new ODSSubRoom(map));
+					continue;
+				}
+				if (map.value(isGroupValue, 42).toInt() == 0) {
+					mFilesDataModel->insert(new ODSFolder(map, folderPath(false)));
+					continue;
+				}
+				if (map.value(typeValue, 42).toInt() == 2) {
+					mFilesDataModel->insert(new ODSFile(map, folderPath(false)));
+					continue;
+				}
+				qDebug() << "unknown ItemType from nodes list";
 			}
-			if (map.value(isGroupValue, 42).toInt() == 0) {
-				mFilesDataModel->insert(new ODSFolder(map, folderPath(false)));
-				continue;
-			}
-			if (map.value(typeValue, 42).toInt() == 2) {
-				mFilesDataModel->insert(new ODSFile(map, folderPath(false)));
-				continue;
-			}
-			qDebug() << "unknown ItemType from nodes list";
 		}
 	}
 	// finished
@@ -806,8 +826,8 @@ void ODSData::uploadFile(int roomId, QString sourceFileName, QString path, QStri
 	mProgressDialog->setIcon(QUrl("asset:///images/upload-icon.png"));
 	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
 	mProgressDialog->confirmButton()->setLabel(QString::null);
-	mProgressDialog->setProgress(15);
-	mProgressDialog->setBody(tr("send request to server..."));
+	mProgressDialog->setProgress(-1); // 15
+	mProgressDialog->setBody(tr("send file to server..."));
 	mProgressDialog->show();
 	//
 	mGroupPk = roomId;

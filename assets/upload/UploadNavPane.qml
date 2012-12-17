@@ -43,7 +43,8 @@ NavigationPane {
                 layoutProperties: StackLayoutProperties {
                 }
                 horizontalAlignment: HorizontalAlignment.Center
-                text: qsTr("Uploads (Work-in-Progress)") + Retranslate.onLanguageChanged
+                multiline: true
+                text: qsTr("Queued Uploads (Work-in-Progress) - at the moment all single files will be uploaded immediately - stay tuned for bulk background uploads coming soon") + Retranslate.onLanguageChanged
                 textStyle {
                     base: SystemDefaults.TextStyles.TitleText
                 }

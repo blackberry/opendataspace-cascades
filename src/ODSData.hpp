@@ -81,6 +81,9 @@ public:
 	Q_INVOKABLE
 	void simpleUpload(QString fileName);
 
+	Q_INVOKABLE
+	void syncWithServer();
+
 Q_SIGNALS:
 	void loginFinished(bool success);
 

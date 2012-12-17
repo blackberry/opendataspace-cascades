@@ -214,7 +214,7 @@ NavigationPane {
                 imageSource: "asset:///images/ics/1-navigation-refresh81.png"
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {
-                    // TODO call server
+                    odsdata.syncWithServer()
                 }
             }
         ]

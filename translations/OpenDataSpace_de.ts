@@ -804,132 +804,147 @@
     </message>
     <message>
         <location filename="../src/ODSData.cpp" line="615"/>
+        <source>Sync with Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="621"/>
+        <source>get new file structure from server...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="633"/>
         <source>got new structure, now refresh cache...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="616"/>
+        <location filename="../src/ODSData.cpp" line="634"/>
         <source>refresh Data Rooms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="622"/>
+        <location filename="../src/ODSData.cpp" line="640"/>
         <source>refresh Nodes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="677"/>
+        <location filename="../src/ODSData.cpp" line="697"/>
         <source>Cache refreshed :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="679"/>
+        <location filename="../src/ODSData.cpp" line="699"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="701"/>
+        <location filename="../src/ODSData.cpp" line="721"/>
         <source>Create a new folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="704"/>
-        <location filename="../src/ODSData.cpp" line="733"/>
-        <location filename="../src/ODSData.cpp" line="756"/>
-        <location filename="../src/ODSData.cpp" line="807"/>
+        <location filename="../src/ODSData.cpp" line="618"/>
+        <location filename="../src/ODSData.cpp" line="724"/>
+        <location filename="../src/ODSData.cpp" line="753"/>
+        <location filename="../src/ODSData.cpp" line="776"/>
+        <location filename="../src/ODSData.cpp" line="827"/>
         <source>STOP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="707"/>
-        <location filename="../src/ODSData.cpp" line="736"/>
-        <location filename="../src/ODSData.cpp" line="759"/>
-        <location filename="../src/ODSData.cpp" line="810"/>
+        <location filename="../src/ODSData.cpp" line="727"/>
+        <location filename="../src/ODSData.cpp" line="756"/>
+        <location filename="../src/ODSData.cpp" line="779"/>
         <source>send request to server...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="730"/>
+        <location filename="../src/ODSData.cpp" line="750"/>
         <source>Delete a folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="753"/>
+        <location filename="../src/ODSData.cpp" line="773"/>
         <source>Download a file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="804"/>
+        <location filename="../src/ODSData.cpp" line="824"/>
         <source>Upload a file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1149"/>
+        <location filename="../src/ODSData.cpp" line="830"/>
+        <source>send file to server...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="1169"/>
         <source>Cannot read file to upload: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1270"/>
+        <location filename="../src/ODSData.cpp" line="1290"/>
         <source>unknown Usecase: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1384"/>
+        <location filename="../src/ODSData.cpp" line="1404"/>
         <source>Error: could not write to file: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1393"/>
+        <location filename="../src/ODSData.cpp" line="1413"/>
         <source>wrong content </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1423"/>
+        <location filename="../src/ODSData.cpp" line="1443"/>
         <source>Authentication done, getting User...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1430"/>
+        <location filename="../src/ODSData.cpp" line="1450"/>
         <source>User received, getting Settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1437"/>
+        <location filename="../src/ODSData.cpp" line="1457"/>
         <source>Settings received, getting Files...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1443"/>
+        <location filename="../src/ODSData.cpp" line="1463"/>
         <source>Files received, getting Userlist...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1450"/>
+        <location filename="../src/ODSData.cpp" line="1470"/>
         <source>Synchronization with Server done :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1453"/>
+        <location filename="../src/ODSData.cpp" line="1473"/>
         <source>Synchronization done</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1467"/>
+        <location filename="../src/ODSData.cpp" line="1487"/>
         <source>Work done, sync Filestructure...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1518"/>
+        <location filename="../src/ODSData.cpp" line="1538"/>
         <source>Response without Body-part</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1608"/>
+        <location filename="../src/ODSData.cpp" line="1628"/>
         <source>Unknown Response Usecase</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1623"/>
+        <location filename="../src/ODSData.cpp" line="1643"/>
         <source>No valid result from Server</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1518,8 +1533,8 @@
         <translation>Platzhalter</translation>
     </message>
     <message>
-        <location filename="../assets/upload/UploadNavPane.qml" line="46"/>
-        <source>Uploads (Work-in-Progress)</source>
+        <location filename="../assets/upload/UploadNavPane.qml" line="47"/>
+        <source>Queued Uploads (Work-in-Progress) - at the moment all single files will be uploaded immediately - stay tuned for bulk background uploads coming soon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
