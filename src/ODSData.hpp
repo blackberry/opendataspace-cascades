@@ -117,6 +117,7 @@ private:
 	int mLanguageNumber;
 	QFile *mFileToUpload;
 	QString mFileName;
+	QString mSourceFileName;
 	int mFileId;
 	int mFileLength;
 	int mGroupPk;

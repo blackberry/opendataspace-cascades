@@ -12,6 +12,7 @@
 #include <bb/system/SystemProgressDialog.hpp>
 #include <bb/system/SystemUiButton.hpp>
 #include <bb/system/SystemUiProgressState>
+#include "FileInfo.hpp"
 
 #include <Usecase.hpp>
 
@@ -763,17 +764,17 @@ void ODSData::downloadFile(int fileId, QString fileName) {
 	initiateRequest(Usecase::FilesDownload);
 }
 
-void ODSData::simpleUpload(QString fileName){
+void ODSData::simpleUpload(QString sourceFileName){
 	QObject* container = parentData();
 	if (qobject_cast<ODSRoom*>(container)) {
 		ODSRoom* room = (ODSRoom*)container;
 		qDebug() << "upload into Room";
-		uploadFile(room->id(),fileName,"","");
+		uploadFile(room->id(),sourceFileName,"","BB10");
 	} else {
 		if (qobject_cast<ODSSubRoom*>(container)) {
 			ODSSubRoom* subroom = (ODSSubRoom*)container;
 			qDebug() << "upload into SubRoom";
-			uploadFile(subroom->id(), fileName, "", "");
+			uploadFile(subroom->id(), sourceFileName, "", "BB10");
 		} else {
 			if (qobject_cast<ODSFolder*>(container)) {
 				ODSFolder* folder = (ODSFolder*)container;
@@ -784,15 +785,15 @@ void ODSData::simpleUpload(QString fileName){
 //				}
 //				uploadPath += folder->name();
 				// TODO check parent code for path - name is included yet
-				uploadFile(folder->containerId(), fileName, uploadPath, "");
+				uploadFile(folder->containerId(), sourceFileName, uploadPath, "BB10");
 			}
 		}
 	}
 	// TODO error dialog
 }
 
-void ODSData::uploadFile(int roomId, QString fileName, QString path, QString comment) {
-	qDebug() << "start upload File: " << fileName << " path: " << path << "into Room: " << roomId;
+void ODSData::uploadFile(int roomId, QString sourceFileName, QString path, QString comment) {
+	qDebug() << "start upload File: " << sourceFileName << " path: " << path << "into Room: " << roomId;
 
 	// start progress
 	// some problems with reusing SystemProgressDialog
@@ -810,7 +811,9 @@ void ODSData::uploadFile(int roomId, QString fileName, QString path, QString com
 	mProgressDialog->show();
 	//
 	mGroupPk = roomId;
-	mFileName = fileName;
+	mSourceFileName = sourceFileName;
+	FileInfo* fi = new FileInfo();
+	mFileName = fi->getShortName(sourceFileName);
 	mPath = path;
 	mComment = comment;
 	initiateRequest(Usecase::FilesUpload);
@@ -1101,6 +1104,7 @@ void ODSData::initiateRequest(int usecase) {
 		mRequestJson.append(jsonEnd);
 		request.setUrl(
 				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesDownload)));
+		// TODO reload
 		break;
 	case Usecase::FilesDownloadThumbnail:
 		isJsonContent = true;
@@ -1138,19 +1142,19 @@ void ODSData::initiateRequest(int usecase) {
 	case Usecase::FilesUpload:
 		isJsonContent = false;
 		// mFileToUpload = new QFile(uploadPath(mFileName));
-		mFileToUpload = new QFile(mFileName);
+		mFileToUpload = new QFile(mSourceFileName);
 		ok = mFileToUpload->open(QIODevice::ReadOnly);
 		if (!ok) {
-			qDebug() << "cannot open file to upload: " << mFileName;
+			qDebug() << "cannot open file to upload: " << mSourceFileName;
 			errorString = tr("Cannot read file to upload: ");
-			errorString += mFileName;
+			errorString += mSourceFileName;
 			reportError(errorString);
 			// S T O P   I T
 			return;
 		}
 		mFileLength = mFileToUpload->size();
-		qDebug() << "create multipart to upload file " << mFileName << " size: " << mFileLength
-				<< "\npath: " << mFileToUpload->fileName();
+		qDebug() << "create multipart to upload file " << mSourceFileName << " as " << mFileName << " size: " << mFileLength
+				<< "\npath: " << mPath;
 		mRequestMultipart = new QHttpMultiPart(QHttpMultiPart::FormDataType,
 				this);
 		fileLengthPart.setHeader(QNetworkRequest::ContentDispositionHeader,
@@ -1197,6 +1201,9 @@ void ODSData::initiateRequest(int usecase) {
 
 		request.setUrl(
 				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesUpload)));
+		// add a special header to reload all files as next step
+					request.setRawHeader("reload",
+							QByteArray::number(Usecase::FilesAll));
 		break;
 	case Usecase::TexteAll:
 		isJsonContent = true;
