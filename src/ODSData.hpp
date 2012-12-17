@@ -73,6 +73,9 @@ public:
 	void deleteFolder(int roomId, QString path);
 
 	Q_INVOKABLE
+	void deleteFile(int fileId);
+
+	Q_INVOKABLE
 	void downloadFile(int fileId, QString fileName);
 
 	Q_INVOKABLE

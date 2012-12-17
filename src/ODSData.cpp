@@ -769,6 +769,28 @@ void ODSData::deleteFolder(int roomId, QString path) {
 	// if request went well: reloadFiles is called
 }
 
+void ODSData::deleteFile(int fileId){
+	qDebug() << "DELETE File: " << fileId;
+	// start progress
+	// some problems with reusing SystemProgressDialog
+	// so we create a new one, but still sometimes disappears
+	mProgressDialog = new SystemProgressDialog(this);
+	mProgressDialog->setState(SystemUiProgressState::Active);
+	mProgressDialog->setEmoticonsEnabled(true);
+	mProgressDialog->setTitle(tr("Delete a file"));
+	mProgressDialog->setStatusMessage(mBaseUrl);
+	mProgressDialog->setIcon(QUrl("asset:///images/upload-icon.png"));
+	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
+	mProgressDialog->confirmButton()->setLabel(QString::null);
+	mProgressDialog->setProgress(15);
+	mProgressDialog->setBody(tr("send request to server..."));
+	mProgressDialog->show();
+	//
+	mFileId = fileId;
+	initiateRequest(Usecase::FilesDelete);
+	// if request went well: reloadFiles is called
+}
+
 void ODSData::downloadFile(int fileId, QString fileName) {
 	qDebug() << "start download File #" << fileId << " " << fileName;
 	// start progress
@@ -928,8 +950,6 @@ void ODSData::initiateRequest(int usecase) {
 		// always at first
 	case Usecase::UsersAuth:
 		isJsonContent = true;
-		// mRequestJson = "{\"username\":\"" + mUser.toUtf8()
-		// 		+ "\",\"password\":\"" + mPassword.toUtf8() + "\"}";
 		mRequestJson.clear();
 		// START
 		mRequestJson.append(jsonStart);
@@ -962,7 +982,6 @@ void ODSData::initiateRequest(int usecase) {
 		// do UsersAuth, then get Users data to know what is allowed, get customer_no etc
 	case Usecase::UsersUser:
 		isJsonContent = true;
-		// mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
 		mRequestJson.clear();
 		// START
 		mRequestJson.append(jsonStart);
@@ -985,7 +1004,6 @@ void ODSData::initiateRequest(int usecase) {
 		break;
 	case Usecase::UsersAll:
 		isJsonContent = true;
-		// mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
 		mRequestJson.clear();
 		// START
 		mRequestJson.append(jsonStart);
@@ -1044,6 +1062,33 @@ void ODSData::initiateRequest(int usecase) {
 					QByteArray::number(Usecase::FilesAll));
 		}
 		break;
+	case Usecase::FilesDelete:
+		isJsonContent = true;
+		mRequestJson.clear();
+		// START
+		mRequestJson.append(jsonStart);
+		// TOKEN
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(tokenValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mToken.toUtf8());
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(comma);
+		// FILE ID
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(fileIdValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(QByteArray::number(mFileId));
+		// END
+		mRequestJson.append(jsonEnd);
+		request.setUrl(QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesDelete)));
+		// add a special header to reload all files as next step
+		request.setRawHeader("reload",
+				QByteArray::number(Usecase::FilesAll));
+		break;
 	case Usecase::FilesDeleteFolder:
 		isJsonContent = true;
 		mRequestJson.clear();
@@ -1092,9 +1137,6 @@ void ODSData::initiateRequest(int usecase) {
 		break;
 	case Usecase::FilesAll:
 		isJsonContent = true;
-		// need customernumber
-		// mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\",\"customer_nr\":"
-		// 		+ QByteArray::number(mCustomerNumber) + "}";
 		mRequestJson.clear();
 		// START
 		mRequestJson.append(jsonStart);
@@ -1125,8 +1167,6 @@ void ODSData::initiateRequest(int usecase) {
 		break;
 	case Usecase::FilesDownload:
 		isJsonContent = true;
-		// mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\",\"fileID\":"
-		// 		+ QByteArray::number(mFileId) + "}";
 		mRequestJson.clear();
 		// START
 		mRequestJson.append(jsonStart);
@@ -1154,8 +1194,6 @@ void ODSData::initiateRequest(int usecase) {
 	case Usecase::FilesDownloadThumbnail:
 		isJsonContent = true;
 		mFileName = QString::number(mFileId) + "_thumb.png";
-		// mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\",\"fileID\":"
-		// 		+ QByteArray::number(mFileId) + "}";
 		mRequestJson.clear();
 		// START
 		mRequestJson.append(jsonStart);
@@ -1184,7 +1222,6 @@ void ODSData::initiateRequest(int usecase) {
 		break;
 	case Usecase::FilesUpload:
 		isJsonContent = false;
-		// mFileToUpload = new QFile(uploadPath(mFileName));
 		mFileToUpload = new QFile(mSourceFileName);
 		ok = mFileToUpload->open(QIODevice::ReadOnly);
 		if (!ok) {
@@ -1250,7 +1287,6 @@ void ODSData::initiateRequest(int usecase) {
 		break;
 	case Usecase::TexteAll:
 		isJsonContent = true;
-		// mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
 		mRequestJson.clear();
 		// START
 		mRequestJson.append(jsonStart);
@@ -1268,7 +1304,6 @@ void ODSData::initiateRequest(int usecase) {
 		break;
 	case Usecase::SettingsUser:
 		isJsonContent = true;
-		// mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
 		mRequestJson.clear();
 		// START
 		mRequestJson.append(jsonStart);
@@ -1292,7 +1327,6 @@ void ODSData::initiateRequest(int usecase) {
 		break;
 	case Usecase::SettingsInfoListe:
 		isJsonContent = true;
-		// mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\"}";
 		mRequestJson.clear();
 		// START
 		mRequestJson.append(jsonStart);
@@ -1610,19 +1644,19 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 		// do UsersAuth, then get Users data to know what is allowed, get customer_no etc
 	case Usecase::UsersUser:
 		mCustomerNumber = bodyMap.value("last_customer", "").toInt();
-		// mMyUserMap = bodyMap;
 		qDebug() << "cust no:" << mCustomerNumber;
 		break;
 	case Usecase::UsersAll:
 		users = bodyMap.value("users", "").toList().size();
 		qDebug() << "Users: " << users;
-
 		break;
 	case Usecase::FilesAll:
-		// need customernumber
 		break;
 	case Usecase::FilesCreateFolder:
 		qDebug() << "Folder successfully Created !";
+		break;
+	case Usecase::FilesDelete:
+		qDebug() << "File successfully Deleted !";
 		break;
 	case Usecase::FilesDeleteFolder:
 		qDebug() << "Folder successfully Deleted !";
@@ -1637,9 +1671,6 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 		// returns 200 if OK
 		break;
 	case Usecase::SettingsUser:
-		//
-		//list = bodyMap.value("languages", "").toList();
-		//mLanguageNumber = list.at(0).toMap().value("lnr", "").toInt();
 		if (bodyMap.value("languages", "").toList().size() > 0) {
 			mLanguageNumber =
 					bodyMap.value("languages", "").toList().at(0).toMap().value(
