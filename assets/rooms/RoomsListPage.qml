@@ -27,7 +27,6 @@ Page {
     id: roomsListPage
     signal recordAudio()
     signal openAddFolder()
-    signal openDeleteFolderPage(string name)
     signal openFileInfoPage(int fileId)
     signal openFolderInfoPage(string name)
     signal openSubRoomInfoPage(int subroomId)
@@ -362,7 +361,12 @@ Page {
                                 DeleteActionItem {
                                     title: qsTr("Delete") + Retranslate.onLanguageChanged
                                     onTriggered: {
-                                        foldersItem.ListItem.view.pushDeleteFolderPage(ListItemData.name)
+                                        if (ListItemData.path.length > 0) {
+                                            foldersItem.ListItem.view.deleteFolder(ListItemData.containerId,
+                                                ListItemData.path + "/" + ListItemData.name)
+                                        } else {
+                                            foldersItem.ListItem.view.deleteFolder(ListItemData.containerId, ListItemData.name)
+                                        }
                                     }
                                 }
                             }
@@ -441,7 +445,7 @@ Page {
                                 DeleteActionItem {
                                     title: qsTr("Delete") + Retranslate.onLanguageChanged
                                     onTriggered: {
-                                        // TODO
+                                        filesItem.ListItem.view.deleteFile(ListItemData.id, ListItemData.name)
                                     }
                                 }
                             }
@@ -479,27 +483,16 @@ Page {
             function pushSubRoomInfoPage(id) {
                 openSubRoomInfoPage(id)
             }
-            function pushDeleteFolderPage(name) {
-                openDeleteFolderPage(name)
-            }
             function downloadFile(id, name) {
                 odsdata.downloadFile(id, name)
             }
+            function deleteFile(id, name) {
+                odsdata.deleteFile(id, name)
+            }
+            function deleteFolder(roomId, path) {
+                odsdata.deleteFolder(roomId, path)
+            }
         } // end ListView
     } // end Container
-    // TODO must go to UPLOAD
-    function addFile(name) {
-        console.debug("Now add new FILE to LISTMODEL on RoomsListPage")
-        mockupModel.insert({
-                "name": fileInfo.getShortName(name),
-                "displayType": "L",
-                "lastEditedBy": "BlackBerry",
-                "fileSize": fileInfo.getSizeAsString(ods.getCurrentLocale(), name),
-                "fileType": fileInfo.getSuffix(name),
-                "timestamp": fileInfo.getLastModifiedAsShortString(ods.getCurrentLocale(), name),
-                "icon": "../images/files-icon.png"
-            })
-    }
-
     // TODO localization: loop thru datamodel and localize datetime strings
 }// end page

@@ -6,6 +6,7 @@
 #include <bb/cascades/controls/listview.h>
 #include "ODSSettings.hpp"
 #include <bb/system/SystemProgressDialog.hpp>
+#include <bb/system/SystemDialog>
 
 using namespace bb::cascades;
 using namespace bb::system;
@@ -73,7 +74,7 @@ public:
 	void deleteFolder(int roomId, QString path);
 
 	Q_INVOKABLE
-	void deleteFile(int fileId);
+	void deleteFile(int fileId, QString fileName);
 
 	Q_INVOKABLE
 	void downloadFile(int fileId, QString fileName);
@@ -105,6 +106,7 @@ private:
 	ODSSettings* mOdsSettings;
 
 	SystemProgressDialog* mProgressDialog;
+	SystemDialog* mDialog;
 
 	// network access
 	QNetworkAccessManager *mNetworkAccessManager;

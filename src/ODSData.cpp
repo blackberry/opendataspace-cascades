@@ -12,6 +12,7 @@
 #include <bb/system/SystemProgressDialog.hpp>
 #include <bb/system/SystemUiButton.hpp>
 #include <bb/system/SystemUiProgressState>
+#include <bb/system/SystemUiResult>
 #include "FileInfo.hpp"
 
 #include <Usecase.hpp>
@@ -62,9 +63,6 @@ ODSData::ODSData() {
 	// Create a network access manager and connect a custom slot to its
 	// finished signal
 	mNetworkAccessManager = new QNetworkAccessManager(this);
-
-	mProgressDialog = new SystemProgressDialog(this);
-
 	bool connectOK = connect(mNetworkAccessManager,
 			SIGNAL(finished(QNetworkReply*)), this,
 			SLOT(requestFinished(QNetworkReply*)));
@@ -143,7 +141,7 @@ void ODSData::loginToServer() {
 		delayedInit();
 	}
 	mBaseUrl = mOdsSettings->getValueFor("server/url", "");
-
+	mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Sync with OpenDataSpace"));
@@ -706,7 +704,15 @@ void ODSData::refreshCaches() {
 	mProgressDialog->confirmButton()->setLabel(tr("OK"));
 	mProgressDialog->cancelButton()->setLabel(QString::null);
 	// wait for USER
-	mProgressDialog->exec();
+	int result = mProgressDialog->exec();
+	switch (result) {
+		case SystemUiResult::CancelButtonSelection:
+			// TODO of canceled
+			break;
+		default:
+			// OK
+			break;
+	}
 }
 
 /**
@@ -746,6 +752,17 @@ void ODSData::createFolder(int roomId, QString path) {
  * so user is responsible that folder with content can be deleted
  */
 void ODSData::deleteFolder(int roomId, QString path) {
+	mDialog = new SystemDialog(this);
+	mDialog->setTitle(tr("Delete Folder"));
+	mDialog->setBody(path);
+	mDialog->cancelButton()->setLabel(tr("No"));
+	mDialog->defaultButton()->setLabel(tr("Yes: Delete"));
+	switch (mDialog->exec()) {
+		case SystemUiResult::CancelButtonSelection:
+			return;
+		default:
+			break;
+	}
 	qDebug() << "DELETE FOLDER for groupPk: " << roomId << "and folderpath: "
 			<< path;
 	// start progress
@@ -769,7 +786,19 @@ void ODSData::deleteFolder(int roomId, QString path) {
 	// if request went well: reloadFiles is called
 }
 
-void ODSData::deleteFile(int fileId){
+void ODSData::deleteFile(int fileId, QString fileName){
+	mDialog = new SystemDialog(this);
+	mDialog->setTitle(tr("Delete File"));
+	mDialog->setBody(fileName);
+	mDialog->cancelButton()->setLabel(tr("No"));
+	mDialog->defaultButton()->setLabel(tr("Yes: Delete"));
+	int result = mDialog->exec();
+	switch (result) {
+		case SystemUiResult::CancelButtonSelection:
+			return;
+		default:
+			break;
+	}
 	qDebug() << "DELETE File: " << fileId;
 	// start progress
 	// some problems with reusing SystemProgressDialog
@@ -1537,10 +1566,15 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			mProgressDialog->confirmButton()->setLabel(
 					tr("Synchronization done"));
 			mProgressDialog->cancelButton()->setLabel(QString::null);
-			mProgressDialog->exec();
-			// TODO wait for OK before signal
-			// signal   O K
-			emit loginFinished(true);
+			switch (mProgressDialog->exec()) {
+				case SystemUiResult::CancelButtonSelection:
+					// TODO if canceled
+					break;
+				default:
+					// OK
+					emit loginFinished(true);
+					break;
+			}
 			break;
 		default:
 			// now test if we have to do a reload
@@ -1705,8 +1739,15 @@ void ODSData::reportError(QString& errorText) {
 				tr("No valid result from Server"));
 		mProgressDialog->cancelButton()->setLabel(QString::null);
 		mProgressDialog->setIcon(QUrl("asset:///images/offline-icon.png"));
-		mProgressDialog->exec();
-		// wait for user
+		int result = mProgressDialog->exec();
+		switch (result) {
+			case SystemUiResult::CancelButtonSelection:
+				// TODO if canceled
+				break;
+			default:
+				// OK
+				break;
+		}
 	}
 }
 

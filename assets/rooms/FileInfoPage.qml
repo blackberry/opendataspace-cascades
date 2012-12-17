@@ -87,7 +87,7 @@ Page {
             title: qsTr("Delete") + Retranslate.onLanguageChanged
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
-                // TODO
+                odsdata.deleteFile(cloudFileId.valueText, headerId.valueText)
             }
         }
     ]
