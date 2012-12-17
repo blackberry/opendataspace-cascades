@@ -349,6 +349,7 @@ Page {
                                     imageSource: "asset:///images/ics/5-content-copy81.png"
                                     onTriggered: {
                                         // TODO
+                                        foldersItem.ListItem.view.wip()
                                     }
                                 }
                                 ActionItem {
@@ -356,6 +357,7 @@ Page {
                                     imageSource: "asset:///images/ics/5-content-import-export81.png"
                                     onTriggered: {
                                         // TODO
+                                        foldersItem.ListItem.view.wip()
                                     }
                                 }
                                 ActionItem {
@@ -363,9 +365,7 @@ Page {
                                     imageSource: "asset:///images/ics/5-content-edit81.png"
                                     onTriggered: {
                                         // TODO
-                                        console.debug("FOLDER: name to be renamed: " + ListItemData.name)
-                                        // TODO
-                                        ListItemData.name = "renamed"
+                                        foldersItem.ListItem.view.wip()
                                     }
                                 }
                                 DeleteActionItem {
@@ -404,6 +404,7 @@ Page {
                                     imageSource: "asset:///images/ics/2-action-search81.png"
                                     onTriggered: {
                                         // TODO
+                                        filesItem.ListItem.view.wip()
                                     }
                                 }
                                 ActionItem {
@@ -422,6 +423,7 @@ Page {
                                     imageSource: "asset:///images/ics/5-content-copy81.png"
                                     onTriggered: {
                                         // TODO
+                                        filesItem.ListItem.view.wip()
                                     }
                                 }
                                 ActionItem {
@@ -429,6 +431,7 @@ Page {
                                     imageSource: "asset:///images/ics/5-content-import-export81.png"
                                     onTriggered: {
                                         // TODO
+                                        filesItem.ListItem.view.wip()
                                     }
                                 }
                                 ActionItem {
@@ -436,6 +439,7 @@ Page {
                                     imageSource: "asset:///images/ics/5-content-edit81.png"
                                     onTriggered: {
                                         // TODO
+                                        filesItem.ListItem.view.wip()
                                     }
                                 }
                                 ActionItem {
@@ -450,6 +454,7 @@ Page {
                                     imageSource: "asset:///images/ics/4-collections-labels81.png"
                                     onTriggered: {
                                         // TODO
+                                        filesItem.ListItem.view.wip()
                                     }
                                 }
                                 DeleteActionItem {
@@ -501,6 +506,9 @@ Page {
             }
             function deleteFolder(roomId, path) {
                 odsdata.deleteFolder(roomId, path)
+            }
+            function wip() {
+                workInProgress.show()
             }
         } // end ListView
     } // end Container

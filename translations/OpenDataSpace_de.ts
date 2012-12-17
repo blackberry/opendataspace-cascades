@@ -1337,7 +1337,7 @@
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="314"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="341"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="410"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="411"/>
         <source>Info</source>
         <translation>Information</translation>
     </message>
@@ -1348,25 +1348,25 @@
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="348"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="421"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="422"/>
         <source>Copy</source>
         <translation>Kopieren</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="355"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="428"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="356"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="430"/>
         <source>Move</source>
         <translation>Verschieben</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="362"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="435"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="364"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="438"/>
         <source>Rename</source>
         <translation>Umbenennen</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="372"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="456"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="461"/>
         <source>Delete</source>
         <translation>Löschen</translation>
     </message>
@@ -1381,12 +1381,12 @@
         <translation>Betrachten</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="442"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="446"/>
         <source>Download</source>
         <translation>Download</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="449"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="453"/>
         <source>Link</source>
         <translation>Link</translation>
     </message>
