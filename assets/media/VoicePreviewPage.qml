@@ -47,23 +47,6 @@ Page {
                 stopIt()
             }
         },
-        SystemToast {
-            id: betaBugToast
-            body: qsTr("Beta3 Bug: MediaPlayer unstoppable.")
-            icon: "asset:///images/nuvola/bug.png"
-            onFinished: {
-                ods.invokeBoundMediaPlayer(previewPage.previewPath);
-            }
-        },
-        SystemToast {
-            id: queuedForUploadToast
-            body: qsTr("Queued for Upload to ODS Cloud")
-            icon: "asset:///images/ics/4-collections-cloud-av-upload81.png"
-            position: SystemUiPosition.BottomCenter
-            onFinished: {
-                //
-            }
-        },
         // application supports changing the Orientation
         OrientationHandler {
             onOrientationAboutToChange: {
@@ -80,8 +63,7 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 // Calls a function that play thru Invokation Framework
-                betaBugToast.show()
-                //ods.invokeBoundMediaPlayer(previewPage.previewPath);
+                ods.invokeBoundMediaPlayer(previewPage.previewPath);
                 console.debug("just called function to View from IF");
             }
         },
@@ -92,7 +74,6 @@ Page {
             onTriggered: {
                 if (! ods.isEmbedded()) {
                     rootNavigationPane.addUpload(previewPage.previewPath)
-                    queuedForUploadToast.show()
                 } else {
                     // SIGNAL
                     uploadFromCard()

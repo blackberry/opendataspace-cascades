@@ -148,17 +148,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/BooksPreviewPage.qml" line="42"/>
-        <source>Queued for Upload to ODS Cloud</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/documents/BooksPreviewPage.qml" line="60"/>
+        <location filename="../assets/documents/BooksPreviewPage.qml" line="51"/>
         <source>Read in...</source>
         <translation type="unfinished">Leer pulg...</translation>
     </message>
     <message>
-        <location filename="../assets/documents/BooksPreviewPage.qml" line="71"/>
+        <location filename="../assets/documents/BooksPreviewPage.qml" line="62"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -232,12 +227,7 @@
         <translation>Avance</translation>
     </message>
     <message>
-        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="42"/>
-        <source>Queued for Upload to ODS Cloud</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="60"/>
+        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="51"/>
         <source>View in...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -250,7 +240,7 @@
         <translation type="obsolete">Participación</translation>
     </message>
     <message>
-        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="71"/>
+        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="62"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -507,22 +497,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/HtmlPreviewPage.qml" line="42"/>
-        <source>Queued for Upload to ODS Cloud</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/documents/HtmlPreviewPage.qml" line="60"/>
+        <location filename="../assets/documents/HtmlPreviewPage.qml" line="51"/>
         <source>View in...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/HtmlPreviewPage.qml" line="71"/>
+        <location filename="../assets/documents/HtmlPreviewPage.qml" line="62"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/documents/HtmlPreviewPage.qml" line="138"/>
+        <location filename="../assets/documents/HtmlPreviewPage.qml" line="128"/>
         <source>content preview</source>
         <translation type="unfinished">vista previa del contenido</translation>
     </message>
@@ -535,12 +520,7 @@
         <translation type="unfinished">Avance</translation>
     </message>
     <message>
-        <location filename="../assets/media/ImagePreviewPage.qml" line="43"/>
-        <source>Queued for Upload to ODS Cloud</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/media/ImagePreviewPage.qml" line="61"/>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="52"/>
         <source>View in...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -553,7 +533,7 @@
         <translation type="obsolete">Participación</translation>
     </message>
     <message>
-        <location filename="../assets/media/ImagePreviewPage.qml" line="71"/>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="62"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1096,12 +1076,7 @@
         <translation type="unfinished">Avance</translation>
     </message>
     <message>
-        <location filename="../assets/documents/PdfPreviewPage.qml" line="42"/>
-        <source>Queued for Upload to ODS Cloud</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/documents/PdfPreviewPage.qml" line="60"/>
+        <location filename="../assets/documents/PdfPreviewPage.qml" line="51"/>
         <source>View in...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1114,7 +1089,7 @@
         <translation type="obsolete">Participación</translation>
     </message>
     <message>
-        <location filename="../assets/documents/PdfPreviewPage.qml" line="71"/>
+        <location filename="../assets/documents/PdfPreviewPage.qml" line="62"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1247,7 +1222,7 @@
 <context>
     <name>RoomsListPage</name>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="47"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="48"/>
         <source>File Picker</source>
         <translation type="unfinished">Selección de archivos</translation>
     </message>
@@ -1264,18 +1239,18 @@
         <translation type="obsolete">Actualizar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="133"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="137"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="143"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="147"/>
         <source>Select Document</source>
         <translation type="unfinished">Seleccione Documento</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="149"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="159"/>
         <source>Select Image</source>
         <translation type="unfinished">Seleccionar imagen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="161"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="171"/>
         <source>Select Video</source>
         <translation type="unfinished">Seleccione Video</translation>
     </message>
@@ -1292,125 +1267,130 @@
         <translation type="obsolete">Grabación de audio</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="145"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="155"/>
         <source>Select | Capture Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="157"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="167"/>
         <source>Select | Capture Video</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="173"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="183"/>
         <source>Select Recorded Voice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="194"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="198"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="204"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="208"/>
         <source>Select Music</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="219"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="229"/>
         <source>Select Other File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="223"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="233"/>
         <source>Select File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="184"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="194"/>
         <source>Dictaphone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="116"/>
+        <source>work-in-progress please stay tuned</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="126"/>
         <source>Create Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="125"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="135"/>
         <source>Sync with Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="169"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="179"/>
         <source>Select Voice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="206"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="210"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="216"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="220"/>
         <source>Select Book</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="233"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="243"/>
         <source>DataRoom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="294"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="304"/>
         <source>ODS Subroom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="304"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="331"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="400"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="314"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="341"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="410"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="321"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="331"/>
         <source>ODS Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="338"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="411"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="348"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="421"/>
         <source>Copy</source>
         <translation type="unfinished">Copiar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="345"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="418"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="355"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="428"/>
         <source>Move</source>
         <translation type="unfinished">Mover</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="352"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="425"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="362"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="435"/>
         <source>Rename</source>
         <translation type="unfinished">Rebautizar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="362"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="446"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="372"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="456"/>
         <source>Delete</source>
         <translation type="unfinished">borrar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="383"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="393"/>
         <source>ODS File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="393"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="403"/>
         <source>View</source>
         <translation type="unfinished">ver</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="432"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="442"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="439"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="449"/>
         <source>Link</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1479,12 +1459,7 @@
         <translation type="unfinished">avance</translation>
     </message>
     <message>
-        <location filename="../assets/documents/UnknownPreviewPage.qml" line="42"/>
-        <source>Queued for Upload to ODS Cloud</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/documents/UnknownPreviewPage.qml" line="60"/>
+        <location filename="../assets/documents/UnknownPreviewPage.qml" line="51"/>
         <source>View in...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1497,7 +1472,7 @@
         <translation type="obsolete">participación</translation>
     </message>
     <message>
-        <location filename="../assets/documents/UnknownPreviewPage.qml" line="71"/>
+        <location filename="../assets/documents/UnknownPreviewPage.qml" line="62"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1598,17 +1573,7 @@
         <translation type="unfinished">avance</translation>
     </message>
     <message>
-        <location filename="../assets/media/VideoPreviewPage.qml" line="42"/>
-        <source>Queued for Upload to ODS Cloud</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../assets/media/VideoPreviewPage.qml" line="51"/>
-        <source>Beta3 Bug: MediaPlayer unstoppable.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/media/VideoPreviewPage.qml" line="68"/>
         <source>Watch in...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1621,7 +1586,7 @@
         <translation type="obsolete">participación</translation>
     </message>
     <message>
-        <location filename="../assets/media/VideoPreviewPage.qml" line="79"/>
+        <location filename="../assets/media/VideoPreviewPage.qml" line="61"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1638,32 +1603,22 @@
         <translation type="obsolete">ver</translation>
     </message>
     <message>
-        <location filename="../assets/media/VoicePreviewPage.qml" line="52"/>
-        <source>Beta3 Bug: MediaPlayer unstoppable.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/media/VoicePreviewPage.qml" line="60"/>
-        <source>Queued for Upload to ODS Cloud</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/media/VoicePreviewPage.qml" line="78"/>
+        <location filename="../assets/media/VoicePreviewPage.qml" line="61"/>
         <source>Hear in...</source>
         <translation type="unfinished">escuchar...</translation>
     </message>
     <message>
-        <location filename="../assets/media/VoicePreviewPage.qml" line="89"/>
+        <location filename="../assets/media/VoicePreviewPage.qml" line="71"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/media/VoicePreviewPage.qml" line="103"/>
+        <location filename="../assets/media/VoicePreviewPage.qml" line="84"/>
         <source>Play Audio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/media/VoicePreviewPage.qml" line="112"/>
+        <location filename="../assets/media/VoicePreviewPage.qml" line="93"/>
         <source>Stop Audio</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1698,12 +1653,7 @@
         <translation type="unfinished">avance</translation>
     </message>
     <message>
-        <location filename="../assets/documents/ZipPreviewPage.qml" line="42"/>
-        <source>Queued for Upload to ODS Cloud</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/documents/ZipPreviewPage.qml" line="60"/>
+        <location filename="../assets/documents/ZipPreviewPage.qml" line="51"/>
         <source>Inspect in...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1716,7 +1666,7 @@
         <translation type="obsolete">participación</translation>
     </message>
     <message>
-        <location filename="../assets/documents/ZipPreviewPage.qml" line="71"/>
+        <location filename="../assets/documents/ZipPreviewPage.qml" line="62"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>

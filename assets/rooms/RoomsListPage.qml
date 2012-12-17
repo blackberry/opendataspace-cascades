@@ -16,6 +16,7 @@
 import org.opendataspace.fileinfo 1.0
 import org.opendataspace.dateutil 1.0
 import bb.cascades.pickers 1.0
+import bb.system 1.0
 
 /*
  * 
@@ -109,6 +110,15 @@ Page {
         // DateUtil
         DateUtil {
             id: dateUtil
+        },
+        SystemToast {
+            id: workInProgress
+            body: qsTr("work-in-progress please stay tuned")
+            icon: "asset:///images/dialog-info114.png"
+            position: SystemUiPosition.BottomCenter
+            onFinished: {
+                //
+            }
         }
     ]
     actions: [

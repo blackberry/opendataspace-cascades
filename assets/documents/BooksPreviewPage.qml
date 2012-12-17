@@ -37,15 +37,6 @@ Page {
         FileInfo {
             id: fileInfo
         },
-        SystemToast {
-            id: queuedForUploadToast
-            body: qsTr("Queued for Upload to ODS Cloud")
-            icon: "asset:///images/ics/4-collections-cloud-av-upload81.png"
-            position: SystemUiPosition.BottomCenter
-            onFinished: {
-                //
-            }
-        },
         // application supports changing the Orientation
         OrientationHandler {
             onOrientationAboutToChange: {
@@ -74,7 +65,6 @@ Page {
             onTriggered: {
                 if (! ods.isEmbedded()) {
                     rootNavigationPane.addUpload(previewPage.previewPath)
-                    queuedForUploadToast.show()
                 } else {
                     // SIGNAL
                     uploadFromCard()
