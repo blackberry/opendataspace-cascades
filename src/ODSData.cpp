@@ -29,6 +29,9 @@ static QString uploadPath(const QString& fileName) {
 static QString downloadPath(const QString& fileName) {
 	return QDir::currentPath() + "/data/ods/download/" + fileName;
 }
+static QString thumbnailPath(const QString& fileName) {
+	return QDir::currentPath() + "/data/ods/thumbnails/" + fileName;
+}
 static const QString isGroupValue = "is_group";
 static const QString typeValue = "type";
 static const QString nodesValue = "nodes";
@@ -126,6 +129,10 @@ void ODSData::delayedInit() {
 	exists = dir.exists(dataPath("ods/download"));
 	if (!exists) {
 		dir.mkpath(dataPath("ods/download"));
+	}
+	exists = dir.exists(dataPath("ods/thumbnails"));
+	if (!exists) {
+		dir.mkpath(dataPath("ods/thumbnails"));
 	}
 	Q_UNUSED(exists);
 }
@@ -784,6 +791,24 @@ void ODSData::downloadFile(int fileId, QString fileName) {
 	initiateRequest(Usecase::FilesDownload);
 }
 
+/**
+ * get the path of a thumbnail created by the server
+ */
+QString ODSData::thumbnail(int fileId){
+	// TODO: only if isImage
+	// TODO if response == error: dont store json in thumbnail folder
+	QString name = thumbnailPath(QString::number(fileId) + "_thumb.png");
+	if (QFile::exists(name)) {
+		qDebug() << "thumbnail exists: " << name;
+		return name;
+	} else {
+		mFileId = fileId;
+		initiateRequest(Usecase::FilesDownloadThumbnail);
+		// TODO no progress and if downloaded signal to top page of NavigationPane if fileId still the same
+	}
+	return "";
+}
+
 void ODSData::simpleUpload(QString sourceFileName){
 	QObject* container = parentData();
 	if (qobject_cast<ODSRoom*>(container)) {
@@ -1128,9 +1153,7 @@ void ODSData::initiateRequest(int usecase) {
 		break;
 	case Usecase::FilesDownloadThumbnail:
 		isJsonContent = true;
-		// need fileId
-		mFileId = 67;
-		mFileName = "ekkeThumb.png";
+		mFileName = QString::number(mFileId) + "_thumb.png";
 		// mRequestJson = "{\"token\":\"" + mToken.toUtf8() + "\",\"fileID\":"
 		// 		+ QByteArray::number(mFileId) + "}";
 		mRequestJson.clear();
@@ -1339,7 +1362,7 @@ void ODSData::setRequestheader(QNetworkRequest &request, int usecase) {
 				"application/json");
 		// responses are coming in async, so I need to know the filename
 		// perhaps also store the destination path - in this case we have a default downloads folder
-		request.setRawHeader("FileName2Download", mFileName.toUtf8());
+		request.setRawHeader("Thumbnail2Download", mFileName.toUtf8());
 		break;
 	default:
 		request.setRawHeader("Accept", "application/json");
@@ -1389,11 +1412,19 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			filename += ".json";
 		}
 		if (isStreamContent) {
-			qDebug() << "we got a STREAM content for file: "
-					<< reply->request().rawHeader("FileName2Download");
-			// using a downloads folder inside the app sandbox, so files are secure stored
-			filename += "/download/";
-			filename += reply->request().rawHeader("FileName2Download");
+			if (reply->request().hasRawHeader("Thumbnail2Download")) {
+				qDebug() << "we got a STREAM content for FileName2Download: "
+									<< reply->request().rawHeader("Thumbnail2Download");
+				// using a thumbnails folder inside the app sandbox, so files are secure stored
+				filename += "/thumbnails/";
+				filename += reply->request().rawHeader("Thumbnail2Download");
+			} else {
+				qDebug() << "we got a STREAM content for FileName2Download: "
+									<< reply->request().rawHeader("FileName2Download");
+				// using a downloads folder inside the app sandbox, so files are secure stored
+				filename += "/download/";
+				filename += reply->request().rawHeader("FileName2Download");
+			}
 		}
 		if (isJsonContent || isStreamContent) {
 			qDebug() << "filename: " << filename;
@@ -1600,7 +1631,7 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 		qDebug() << "File successfully done !";
 		break;
 	case Usecase::FilesDownloadThumbnail:
-		// need fileID
+		qDebug() << "got Thumbnail with successfully !";
 		break;
 	case Usecase::FilesUpload:
 		// returns 200 if OK

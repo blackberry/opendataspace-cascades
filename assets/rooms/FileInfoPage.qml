@@ -176,6 +176,11 @@ Page {
             headerId.valueText = qsTr("File not found") + Retranslate.onLanguageChanged
             return;
         }
+        //if (odsdata.thumbnail(id).length > 0) {
+        //    headerId.imageSource = odsdata.thumbnail(id)
+        //} else {
+        //    headerId.imageSource = data.displayIcon
+        //}
         headerId.imageSource = data.displayIcon
         headerId.valueText = data.name
         fileSize.valueText = data.displayFileSize

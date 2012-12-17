@@ -76,6 +76,9 @@ public:
 	void downloadFile(int fileId, QString fileName);
 
 	Q_INVOKABLE
+	QString thumbnail(int fileId);
+
+	Q_INVOKABLE
 	void uploadFile(int roomId, QString fileName, QString path, QString comment);
 
 	Q_INVOKABLE
