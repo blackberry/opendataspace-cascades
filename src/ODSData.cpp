@@ -763,6 +763,59 @@ void ODSData::downloadFile(int fileId, QString fileName) {
 	initiateRequest(Usecase::FilesDownload);
 }
 
+void ODSData::simpleUpload(QString fileName){
+	QObject* container = parentData();
+	if (qobject_cast<ODSRoom*>(container)) {
+		ODSRoom* room = (ODSRoom*)container;
+		qDebug() << "upload into Room";
+		uploadFile(room->id(),fileName,"","");
+	} else {
+		if (qobject_cast<ODSSubRoom*>(container)) {
+			ODSSubRoom* subroom = (ODSSubRoom*)container;
+			qDebug() << "upload into SubRoom";
+			uploadFile(subroom->id(), fileName, "", "");
+		} else {
+			if (qobject_cast<ODSFolder*>(container)) {
+				ODSFolder* folder = (ODSFolder*)container;
+				qDebug() << "upload into Folder name " << folder->name() << " path: " << folder->path();
+				QString uploadPath = folder->path();
+//				if (!uploadPath.isEmpty()) {
+//					uploadPath += "/";
+//				}
+//				uploadPath += folder->name();
+				// TODO check parent code for path - name is included yet
+				uploadFile(folder->containerId(), fileName, uploadPath, "");
+			}
+		}
+	}
+	// TODO error dialog
+}
+
+void ODSData::uploadFile(int roomId, QString fileName, QString path, QString comment) {
+	qDebug() << "start upload File: " << fileName << " path: " << path << "into Room: " << roomId;
+
+	// start progress
+	// some problems with reusing SystemProgressDialog
+	// so we create a new one, but still sometimes disappears
+	mProgressDialog = new SystemProgressDialog(this);
+	mProgressDialog->setState(SystemUiProgressState::Active);
+	mProgressDialog->setEmoticonsEnabled(true);
+	mProgressDialog->setTitle(tr("Upload a file"));
+	mProgressDialog->setStatusMessage(mBaseUrl);
+	mProgressDialog->setIcon(QUrl("asset:///images/upload-icon.png"));
+	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
+	mProgressDialog->confirmButton()->setLabel(QString::null);
+	mProgressDialog->setProgress(15);
+	mProgressDialog->setBody(tr("send request to server..."));
+	mProgressDialog->show();
+	//
+	mGroupPk = roomId;
+	mFileName = fileName;
+	mPath = path;
+	mComment = comment;
+	initiateRequest(Usecase::FilesUpload);
+}
+
 void ODSData::initiateRequest(int usecase) {
 	bool isJsonContent;
 	bool isInitialization;
@@ -1084,8 +1137,8 @@ void ODSData::initiateRequest(int usecase) {
 		break;
 	case Usecase::FilesUpload:
 		isJsonContent = false;
-		mFileName = "bb-ods-io.png";
-		mFileToUpload = new QFile(uploadPath(mFileName));
+		// mFileToUpload = new QFile(uploadPath(mFileName));
+		mFileToUpload = new QFile(mFileName);
 		ok = mFileToUpload->open(QIODevice::ReadOnly);
 		if (!ok) {
 			qDebug() << "cannot open file to upload: " << mFileName;
@@ -1096,12 +1149,8 @@ void ODSData::initiateRequest(int usecase) {
 			return;
 		}
 		mFileLength = mFileToUpload->size();
-		qDebug() << "uploading file " << mFileName << " size: " << mFileLength
+		qDebug() << "create multipart to upload file " << mFileName << " size: " << mFileLength
 				<< "\npath: " << mFileToUpload->fileName();
-		mGroupPk = 19;
-		mPath = "";
-		mComment = "ekkes test from QHttpMultiPart";
-
 		mRequestMultipart = new QHttpMultiPart(QHttpMultiPart::FormDataType,
 				this);
 		fileLengthPart.setHeader(QNetworkRequest::ContentDispositionHeader,
@@ -1246,8 +1295,8 @@ void ODSData::setRequestheader(QNetworkRequest &request, int usecase) {
 	switch (usecase) {
 	case Usecase::FilesUpload:
 		request.setRawHeader("Accept", "application/json");
-		request.setHeader(QNetworkRequest::ContentTypeHeader,
-				"multipart/form-data");
+		//request.setHeader(QNetworkRequest::ContentTypeHeader,
+		//		"multipart/form-data");
 		break;
 	case Usecase::FilesDownload:
 		request.setRawHeader("Accept", "application/octet-stream");

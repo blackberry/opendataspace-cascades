@@ -75,6 +75,12 @@ public:
 	Q_INVOKABLE
 	void downloadFile(int fileId, QString fileName);
 
+	Q_INVOKABLE
+	void uploadFile(int roomId, QString fileName, QString path, QString comment);
+
+	Q_INVOKABLE
+	void simpleUpload(QString fileName);
+
 Q_SIGNALS:
 	void loginFinished(bool success);
 

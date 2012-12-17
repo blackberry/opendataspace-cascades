@@ -211,6 +211,8 @@ TabbedPane {
         }
     }
     function addUpload(name) {
+        // TODO ask queue or immediately
+        odsdata.simpleUpload(name)
         uploadTab.enabled = true
         uploadTab.newContentAvailable = true
         uploadTab.unreadContentCount = uploadTab.unreadContentCount + 1
