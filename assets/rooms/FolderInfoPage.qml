@@ -47,6 +47,19 @@ Page {
     ]
     actions: [
         ActionItem {
+            title: qsTr("Rename") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/ics/5-content-edit81.png"
+            onTriggered: {
+                navigationPane.pop();
+                if (inRoom == true) {
+                    odsdata.renameFolder(roomId.valueText, folderPath.valueText, headerId.valueText)
+                } else {
+                    odsdata.renameFolder(subroomId.valueText, folderPath.valueText, headerId.valueText)
+                }
+                
+            }
+        },
+        ActionItem {
             title: qsTr("Copy") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/5-content-copy81.png"
             onTriggered: {
@@ -60,19 +73,6 @@ Page {
             onTriggered: {
                 // TODO
                 workInProgress.show()
-                
-            }
-        },
-        ActionItem {
-            title: qsTr("Rename") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/5-content-edit81.png"
-            onTriggered: {
-                navigationPane.pop();
-                if (inRoom == true) {
-                    odsdata.renameFolder(roomId.valueText, folderPath.valueText, headerId.valueText)
-                } else {
-                    odsdata.renameFolder(subroomId.valueText, folderPath.valueText, headerId.valueText)
-                }
                 
             }
         },

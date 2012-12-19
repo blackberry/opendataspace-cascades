@@ -317,12 +317,12 @@
         <translation type="unfinished">Betrachten</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="60"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="87"/>
         <source>Copy</source>
         <translation type="unfinished">Kopieren</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="69"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="96"/>
         <source>Move</source>
         <translation type="unfinished">Verschieben</translation>
     </message>
@@ -332,12 +332,12 @@
         <translation type="unfinished">Umbenennen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="88"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="70"/>
         <source>Download</source>
         <translation type="unfinished">Download</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="96"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="60"/>
         <source>Link</source>
         <translation type="unfinished">Link</translation>
     </message>
@@ -420,17 +420,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="50"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="63"/>
         <source>Copy</source>
         <translation type="unfinished">Kopieren</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="58"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="71"/>
         <source>Move</source>
         <translation type="unfinished">Verschieben</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="67"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="50"/>
         <source>Rename</source>
         <translation type="unfinished">Umbenennen</translation>
     </message>
@@ -1410,20 +1410,20 @@
         <translation>ODS Ordner</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="348"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="423"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="356"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="445"/>
         <source>Copy</source>
         <translation>Kopieren</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="356"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="431"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="364"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="453"/>
         <source>Move</source>
         <translation>Verschieben</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="364"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="439"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="348"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="438"/>
         <source>Rename</source>
         <translation>Umbenennen</translation>
     </message>
@@ -1444,12 +1444,12 @@
         <translation>Betrachten</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="446"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="431"/>
         <source>Download</source>
         <translation>Download</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="453"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="423"/>
         <source>Link</source>
         <translation>Link</translation>
     </message>

@@ -345,6 +345,14 @@ Page {
                                     }
                                 }
                                 ActionItem {
+                                    title: qsTr("Rename") + Retranslate.onLanguageChanged
+                                    imageSource: "asset:///images/ics/5-content-edit81.png"
+                                    onTriggered: {
+                                        foldersItem.ListItem.view.renameFolder(ListItemData.containerId,
+                                                ListItemData.path, ListItemData.name)
+                                    }
+                                }
+                                ActionItem {
                                     title: qsTr("Copy") + Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/5-content-copy81.png"
                                     onTriggered: {
@@ -358,14 +366,6 @@ Page {
                                     onTriggered: {
                                         // TODO
                                         foldersItem.ListItem.view.wip()
-                                    }
-                                }
-                                ActionItem {
-                                    title: qsTr("Rename") + Retranslate.onLanguageChanged
-                                    imageSource: "asset:///images/ics/5-content-edit81.png"
-                                    onTriggered: {
-                                        foldersItem.ListItem.view.renameFolder(ListItemData.containerId,
-                                                ListItemData.path, ListItemData.name)
                                     }
                                 }
                                 DeleteActionItem {
@@ -420,26 +420,11 @@ Page {
                                     }
                                 }
                                 ActionItem {
-                                    title: qsTr("Copy") + Retranslate.onLanguageChanged
-                                    imageSource: "asset:///images/ics/5-content-copy81.png"
+                                    title: qsTr("Link") + Retranslate.onLanguageChanged
+                                    imageSource: "asset:///images/ics/4-collections-labels81.png"
                                     onTriggered: {
                                         // TODO
                                         filesItem.ListItem.view.wip()
-                                    }
-                                }
-                                ActionItem {
-                                    title: qsTr("Move") + Retranslate.onLanguageChanged
-                                    imageSource: "asset:///images/ics/5-content-import-export81.png"
-                                    onTriggered: {
-                                        // TODO
-                                        filesItem.ListItem.view.wip()
-                                    }
-                                }
-                                ActionItem {
-                                    title: qsTr("Rename") + Retranslate.onLanguageChanged
-                                    imageSource: "asset:///images/ics/5-content-edit81.png"
-                                    onTriggered: {
-                                        filesItem.ListItem.view.renameFile(ListItemData.id, ListItemData.name)
                                     }
                                 }
                                 ActionItem {
@@ -450,8 +435,23 @@ Page {
                                     }
                                 }
                                 ActionItem {
-                                    title: qsTr("Link") + Retranslate.onLanguageChanged
-                                    imageSource: "asset:///images/ics/4-collections-labels81.png"
+                                    title: qsTr("Rename") + Retranslate.onLanguageChanged
+                                    imageSource: "asset:///images/ics/5-content-edit81.png"
+                                    onTriggered: {
+                                        filesItem.ListItem.view.renameFile(ListItemData.id, ListItemData.name)
+                                    }
+                                }
+                                ActionItem {
+                                    title: qsTr("Copy") + Retranslate.onLanguageChanged
+                                    imageSource: "asset:///images/ics/5-content-copy81.png"
+                                    onTriggered: {
+                                        // TODO
+                                        filesItem.ListItem.view.wip()
+                                    }
+                                }
+                                ActionItem {
+                                    title: qsTr("Move") + Retranslate.onLanguageChanged
+                                    imageSource: "asset:///images/ics/5-content-import-export81.png"
                                     onTriggered: {
                                         // TODO
                                         filesItem.ListItem.view.wip()

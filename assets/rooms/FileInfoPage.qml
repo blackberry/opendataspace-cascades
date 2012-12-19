@@ -57,30 +57,12 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("Copy") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/5-content-copy81.png"
+            title: qsTr("Link") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/ics/4-collections-labels81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // TODO
                 workInProgress.show()
-            }
-        },
-        ActionItem {
-            title: qsTr("Move") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/5-content-import-export81.png"
-            ActionBar.placement: ActionBarPlacement.InOverflow
-            onTriggered: {
-                // TODO
-                workInProgress.show()
-            }
-        },
-        ActionItem {
-            title: qsTr("Rename") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/5-content-edit81.png"
-            ActionBar.placement: ActionBarPlacement.InOverflow
-            onTriggered: {
-                odsdata.renameFile(cloudFileId.valueText, headerId.valueText)
-                navigationPane.pop();
             }
         },
         ActionItem {
@@ -93,8 +75,26 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("Link") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/4-collections-labels81.png"
+            title: qsTr("Rename") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/ics/5-content-edit81.png"
+            ActionBar.placement: ActionBarPlacement.InOverflow
+            onTriggered: {
+                odsdata.renameFile(cloudFileId.valueText, headerId.valueText)
+                navigationPane.pop();
+            }
+        },
+        ActionItem {
+            title: qsTr("Copy") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/ics/5-content-copy81.png"
+            ActionBar.placement: ActionBarPlacement.InOverflow
+            onTriggered: {
+                // TODO
+                workInProgress.show()
+            }
+        },
+        ActionItem {
+            title: qsTr("Move") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/ics/5-content-import-export81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // TODO

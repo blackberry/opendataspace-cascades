@@ -321,12 +321,12 @@
         <translation type="unfinished">ver</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="60"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="87"/>
         <source>Copy</source>
         <translation type="unfinished">Copiar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="69"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="96"/>
         <source>Move</source>
         <translation type="unfinished">Mover</translation>
     </message>
@@ -336,12 +336,12 @@
         <translation type="unfinished">Rebautizar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="88"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="70"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="96"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="60"/>
         <source>Link</source>
         <translation type="unfinished"></translation>
     </message>
@@ -424,17 +424,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="50"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="63"/>
         <source>Copy</source>
         <translation type="unfinished">Copiar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="58"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="71"/>
         <source>Move</source>
         <translation type="unfinished">Mover</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="67"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="50"/>
         <source>Rename</source>
         <translation type="unfinished">Rebautizar</translation>
     </message>
@@ -1414,20 +1414,20 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="348"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="423"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="356"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="445"/>
         <source>Copy</source>
         <translation type="unfinished">Copiar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="356"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="431"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="364"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="453"/>
         <source>Move</source>
         <translation type="unfinished">Mover</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="364"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="439"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="348"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="438"/>
         <source>Rename</source>
         <translation type="unfinished">Rebautizar</translation>
     </message>
@@ -1448,12 +1448,12 @@
         <translation type="unfinished">ver</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="446"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="431"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="453"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="423"/>
         <source>Link</source>
         <translation type="unfinished"></translation>
     </message>
