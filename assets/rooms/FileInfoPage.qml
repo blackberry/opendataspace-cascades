@@ -14,9 +14,11 @@
  * limitations under the License.
  */import bb.cascades 1.0
 import "../common"
+import bb.system 1.0
 
 Page {
     id: fileInfoPage
+    property string downloadPath: ""
     titleBar: TitleBar {
         id: addBar
         title: qsTr("File Info") + Retranslate.onLanguageChanged
@@ -32,15 +34,26 @@ Page {
                     relayout(false)
                 }
             }
+        },
+        SystemToast {
+            id: workInProgress
+            body: qsTr("work-in-progress please stay tuned")
+            icon: "asset:///images/dialog-info114.png"
+            position: SystemUiPosition.BottomCenter
+            onFinished: {
+                //
+            }
         }
     ]
     actions: [
         ActionItem {
+            id: viewAction
             title: qsTr("View") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/2-action-search81.png"
-            ActionBar.placement: ActionBarPlacement.InOverflow
+            ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                // TODO
+                // Calls a function that show's the image in a View from InvocationFramework
+                ods.showInView(downloadPath);
             }
         },
         ActionItem {
@@ -49,6 +62,7 @@ Page {
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // TODO
+                workInProgress.show()
             }
         },
         ActionItem {
@@ -57,6 +71,7 @@ Page {
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // TODO
+                workInProgress.show()
             }
         },
         ActionItem {
@@ -65,9 +80,11 @@ Page {
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // TODO
+                workInProgress.show()
             }
         },
         ActionItem {
+            id: downloadAction
             title: qsTr("Download") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/download81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
@@ -81,6 +98,7 @@ Page {
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 // TODO
+                workInProgress.show()
             }
         },
         DeleteActionItem {
@@ -107,7 +125,7 @@ Page {
                 rightPadding: 40
                 // header
                 Divider {
-                                }
+                }
                 ImageAndLabel {
                     id: headerId
                 }
@@ -143,7 +161,7 @@ Page {
                 CloudInfoHeader {
                 }
                 Divider {
-                                }
+                }
                 LabelAndLabel {
                     id: cloudFileId
                     labelText: qsTr("File ID") + Retranslate.onLanguageChanged
@@ -194,6 +212,8 @@ Page {
         groupId.valueText = data.containerId
         groupName.valueText = odsdata.roomGroupName(data.containerId)
         folderPath.valueText = data.path
+        viewAction.enabled = data.downloaded
+        downloadPath = data.downloadPath;
     }
     // the fileId we got from context action of ListItem
     function refreshData(id) {

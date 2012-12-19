@@ -3,6 +3,7 @@
 #include "ODSFile.hpp"
 #include "FileInfo.hpp"
 #include <QDebug>
+#include <qdir.h>
 #include <qlocale.h>
 
 static const QString nameValue = "name";
@@ -16,6 +17,9 @@ static const QString logMeValue = "log_me";
 static const QString commentValue = "comment";
 static const QString logDeValue = "log_de";
 
+static QString downloadFilePath(const QString& fileName) {
+	return QDir::currentPath() + "/data/ods/download/" + fileName;
+}
 
 ODSFile::ODSFile(QObject *parent) {}
 
@@ -26,6 +30,12 @@ ODSFile::ODSFile(QVariantMap fileMap, QString path) :
 	mComment = mFilesMap.value(commentValue, "").toString();
 	mContainerId = mFilesMap.value(groupPkValue, 0).toInt();
 	mFileSize = mFilesMap.value(fileSizeValue, 0).toInt();
+	mDownloaded = QFile::exists(downloadFilePath(mName));
+	if (mDownloaded) {
+		mDownloadPath = "file://"+downloadFilePath(mName);
+	} else {
+		mDownloadPath = "";
+	}
 	int classification = mFilesMap.value(classificationValue, -1).toInt();
 	switch (classification) {
 		case 1:
@@ -97,6 +107,16 @@ void ODSFile::setPath(QString newPath) {
 	if (newPath != mPath) {
 		mPath = newPath;
 		emit pathChanged(newPath);
+	}
+}
+
+QString ODSFile::downloadPath() const {
+	return mDownloadPath;
+}
+void ODSFile::setDownloadPath(QString newDownloadPath) {
+	if (newDownloadPath != mDownloadPath) {
+		mDownloadPath = newDownloadPath;
+		emit downloadPathChanged(newDownloadPath);
 	}
 }
 
@@ -177,6 +197,16 @@ void ODSFile::setFileSize(int fileSize) {
 	if (fileSize != mFileSize) {
 		mFileSize = fileSize;
 		emit fileSizeChanged(fileSize);
+	}
+}
+
+bool ODSFile::downloaded() const {
+	return mDownloaded;
+}
+void ODSFile::setDownloaded(bool downloaded) {
+	if (downloaded != mDownloaded) {
+		mDownloaded = downloaded;
+		emit downloadedChanged(downloaded);
 	}
 }
 

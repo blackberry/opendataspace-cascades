@@ -107,6 +107,19 @@ Container {
                     }
                 }
             }
+            ImageView {
+                id: itemDownloadedImage
+                preferredWidth: 81
+                preferredHeight: 81
+                minWidth: 81
+                visible: ListItemData.downloaded
+                rightPadding: 16
+                // datamodel knows the icon source
+                imageSource: "asset:///images/download81.png"
+                layoutProperties: StackLayoutProperties {
+                }
+                verticalAlignment: VerticalAlignment.Center
+            }
         }
     }
     function setHighlight(highlighted) {

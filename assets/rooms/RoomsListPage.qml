@@ -402,9 +402,10 @@ Page {
                                 ActionItem {
                                     title: qsTr("View") + Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/2-action-search81.png"
+                                    enabled: ListItemData.downloaded
                                     onTriggered: {
                                         // TODO
-                                        filesItem.ListItem.view.wip()
+                                        filesItem.ListItem.view.viewFile(ListItemData.downloadPath)
                                     }
                                 }
                                 ActionItem {
@@ -509,6 +510,9 @@ Page {
             }
             function wip() {
                 workInProgress.show()
+            }
+            function viewFile(downloadPath) {
+                ods.showInView(downloadPath);
             }
         } // end ListView
     } // end Container

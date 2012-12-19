@@ -44,6 +44,8 @@ static const QString parentValue = "parent";
 
 static const QString tokenValue = "token";
 static const QString pathValue = "path";
+static const QString pathNewValue = "new_path";
+static const QString pathOldValue = "old_path";
 static const QString contentValue = "content";
 static const QString usernameValue = "username";
 static const QString passwordValue = "password";
@@ -842,6 +844,100 @@ void ODSData::downloadFile(int fileId, QString fileName) {
 	initiateRequest(Usecase::FilesDownload);
 }
 
+void ODSData::renameFile(int fileId,QString fileNameOld){
+	mPrompt = new SystemPrompt(this);
+	mPrompt->setTitle(tr("Rename File"));
+	mPrompt->setBody(tr("Old File: ") + fileNameOld);
+	mPrompt->cancelButton()->setLabel(tr("No"));
+	mPrompt->defaultButton()->setLabel(tr("Rename"));
+	mPrompt->inputField()->setEmptyText(tr("the new Filename"));
+	int result = mPrompt->exec();
+	switch (result) {
+		case SystemUiResult::CancelButtonSelection:
+			return;
+		default:
+			break;
+	}
+	if (mPrompt->inputFieldTextEntry().isEmpty()) {
+		qDebug() << "now new name - so no rename";
+		return;
+	} else {
+		mFileName = mPrompt->inputFieldTextEntry().trimmed();
+	}
+	qDebug() << "RENAME File: " << fileId << " to " << mFileName;
+	// start progress
+	// some problems with reusing SystemProgressDialog
+	// so we create a new one, but still sometimes disappears
+	mProgressDialog = new SystemProgressDialog(this);
+	mProgressDialog->setState(SystemUiProgressState::Active);
+	mProgressDialog->setEmoticonsEnabled(true);
+	mProgressDialog->setTitle(tr("Rename a file"));
+	mProgressDialog->setStatusMessage(mBaseUrl);
+	mProgressDialog->setIcon(QUrl("asset:///images/upload-icon.png"));
+	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
+	mProgressDialog->confirmButton()->setLabel(QString::null);
+	mProgressDialog->setProgress(15);
+	mProgressDialog->setBody(tr("send request to server..."));
+	mProgressDialog->show();
+	//
+	mFileId = fileId;
+	initiateRequest(Usecase::FilesRename);
+	// if request went well: reloadFiles is called
+}
+
+void ODSData::renameFolder(int roomId, QString pathOld, QString folderNameOld) {
+	mPath = pathOld;
+	mFileName = folderNameOld;
+	mPrompt = new SystemPrompt(this);
+	mPrompt->setTitle(tr("Rename Folder"));
+	if (pathOld.isEmpty()) {
+		mPrompt->setBody(tr("Old Folder: ") + folderNameOld);
+	} else {
+		mPrompt->setBody(tr("Old Folder: ") + pathOld + "/" + folderNameOld);
+	}
+	mPrompt->cancelButton()->setLabel(tr("No"));
+	mPrompt->defaultButton()->setLabel(tr("Rename"));
+	mPrompt->inputField()->setEmptyText(tr("the new Foldername"));
+	int result = mPrompt->exec();
+	switch (result) {
+		case SystemUiResult::CancelButtonSelection:
+			return;
+		default:
+			break;
+	}
+	if (mPrompt->inputFieldTextEntry().isEmpty()) {
+		qDebug() << "now new name - so no rename";
+		return;
+	} else {
+		if (mPath.isEmpty()) {
+			mPath = mFileName;
+			mPathNew = mPrompt->inputFieldTextEntry().trimmed();
+		} else {
+			mPath = mPath + "/" + mFileName;
+			mPathNew = mPath + "/" + mPrompt->inputFieldTextEntry().trimmed();
+		}
+	}
+	qDebug() << "RENAME Folder: " << mPath << " to " << mPathNew;
+	// start progress
+	// some problems with reusing SystemProgressDialog
+	// so we create a new one, but still sometimes disappears
+	mProgressDialog = new SystemProgressDialog(this);
+	mProgressDialog->setState(SystemUiProgressState::Active);
+	mProgressDialog->setEmoticonsEnabled(true);
+	mProgressDialog->setTitle(tr("Rename a folder"));
+	mProgressDialog->setStatusMessage(mBaseUrl);
+	mProgressDialog->setIcon(QUrl("asset:///images/upload-icon.png"));
+	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
+	mProgressDialog->confirmButton()->setLabel(QString::null);
+	mProgressDialog->setProgress(15);
+	mProgressDialog->setBody(tr("send request to server..."));
+	mProgressDialog->show();
+	//
+	mGroupPk = roomId;
+	initiateRequest(Usecase::FilesRenameFolder);
+	// if request went well: reloadFiles is called
+}
+
 /**
  * get the path of a thumbnail created by the server
  */
@@ -858,6 +954,15 @@ QString ODSData::thumbnail(int fileId){
 		// TODO no progress and if downloaded signal to top page of NavigationPane if fileId still the same
 	}
 	return "";
+}
+
+/**
+ * true if the file was downloaded
+ */
+bool ODSData::fileDownloaded(int fileId, QString fileName){
+	// TODO map fileid to downloaded file
+	// TODO add check of timestamp - if file downloaded was older then from cloud
+	return QFile::exists(downloadPath(fileName));
 }
 
 void ODSData::simpleUpload(QString sourceFileName){
@@ -1249,6 +1354,90 @@ void ODSData::initiateRequest(int usecase) {
 								+ mUsecasePathes.at(
 										Usecase::FilesDownloadThumbnail)));
 		break;
+	case Usecase::FilesRename:
+			isJsonContent = true;
+			mRequestJson.clear();
+			// START
+			mRequestJson.append(jsonStart);
+			// TOKEN
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(tokenValue);
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(colon);
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(mToken.toUtf8());
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(comma);
+			// FILE ID
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(fileIdValue);
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(colon);
+			mRequestJson.append(QByteArray::number(mFileId));
+			mRequestJson.append(comma);
+			// NAME
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(nameValue);
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(colon);
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(mFileName.toUtf8());
+			mRequestJson.append(quotationMark);
+			// END
+			mRequestJson.append(jsonEnd);
+			request.setUrl(QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesDelete)));
+			// add a special header to reload all files as next step
+			request.setRawHeader("reload",
+					QByteArray::number(Usecase::FilesRename));
+			break;
+		case Usecase::FilesRenameFolder:
+			isJsonContent = true;
+			mRequestJson.clear();
+			// START
+			mRequestJson.append(jsonStart);
+			// TOKEN
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(tokenValue);
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(colon);
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(mToken.toUtf8());
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(comma);
+			// GROUP_PK
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(groupPkValue);
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(colon);
+			mRequestJson.append(QByteArray::number(mGroupPk));
+			mRequestJson.append(comma);
+			// PATH OLD
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(pathOldValue);
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(colon);
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(mPath.toUtf8());
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(comma);
+			// CONTENT
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(pathNewValue);
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(colon);
+			mRequestJson.append(quotationMark);
+			mRequestJson.append(mPathNew.toUtf8());
+			mRequestJson.append(quotationMark);
+			// END
+			mRequestJson.append(jsonEnd);
+			request.setUrl(
+					QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesRenameFolder)));
+			if (!isInitialization) {
+				// add a special header to reload all files as next step
+				request.setRawHeader("reload",
+						QByteArray::number(Usecase::FilesAll));
+			}
+			break;
 	case Usecase::FilesUpload:
 		isJsonContent = false;
 		mFileToUpload = new QFile(mSourceFileName);
@@ -1492,7 +1681,7 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 		if (isJsonContent || isStreamContent) {
 			qDebug() << "filename: " << filename;
 			// write the JSON content to a file in app data directory
-			// so wen use it for data models
+			// so we can use it for data models
 			bool success = writeReplyToFile(replyBytes, filename);
 			if (!success) {
 				errorString = tr("Error: could not write to file: ");
@@ -1694,6 +1883,12 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 		break;
 	case Usecase::FilesDeleteFolder:
 		qDebug() << "Folder successfully Deleted !";
+		break;
+	case Usecase::FilesRename:
+		qDebug() << "File successfully renamed !";
+		break;
+	case Usecase::FilesRenameFolder:
+		qDebug() << "Folder successfully renamed !";
 		break;
 	case Usecase::FilesDownload:
 		qDebug() << "File successfully done !";

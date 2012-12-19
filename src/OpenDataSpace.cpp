@@ -451,6 +451,10 @@ void OpenDataSpace::invokeBoundMediaPlayer(QString uri) {
  */
 void OpenDataSpace::showInView(QString uri) {
 	qDebug() << "showInView called: " << uri;
+	if (uri.endsWith(".ogg")) {
+		invokeBoundMediaPlayer(uri);
+		return;
+	}
 	InvokeRequest invokeRequest;
 	invokeRequest.setAction("bb.action.VIEW");
 	invokeRequest.setUri(uri);

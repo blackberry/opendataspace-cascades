@@ -7,6 +7,7 @@
 #include "ODSSettings.hpp"
 #include <bb/system/SystemProgressDialog.hpp>
 #include <bb/system/SystemDialog>
+#include <bb/system/SystemPrompt.hpp>
 
 using namespace bb::cascades;
 using namespace bb::system;
@@ -77,7 +78,16 @@ public:
 	void deleteFile(int fileId, QString fileName);
 
 	Q_INVOKABLE
+	void renameFolder(int roomId, QString pathOld, QString folderNameOld);
+
+	Q_INVOKABLE
+	void renameFile(int fileId, QString fileNameOld);
+
+	Q_INVOKABLE
 	void downloadFile(int fileId, QString fileName);
+
+	Q_INVOKABLE
+	bool fileDownloaded(int fileId, QString fileName);
 
 	Q_INVOKABLE
 	QString thumbnail(int fileId);
@@ -107,6 +117,7 @@ private:
 
 	SystemProgressDialog* mProgressDialog;
 	SystemDialog* mDialog;
+	SystemPrompt* mPrompt;
 
 	// network access
 	QNetworkAccessManager *mNetworkAccessManager;
@@ -133,6 +144,7 @@ private:
 	int mFileLength;
 	int mGroupPk;
 	QString mPath;
+	QString mPathNew;
 	QString mComment;
 
 	// models and caches

@@ -22,6 +22,8 @@ class ODSFile: public QObject {
 	Q_PROPERTY(int containerId READ containerId WRITE setContainerId NOTIFY containerIdChanged FINAL)
 	Q_PROPERTY(int fileSize READ fileSize WRITE setFileSize NOTIFY fileSizeChanged FINAL)
 
+	Q_PROPERTY(bool downloaded READ downloaded WRITE setDownloaded NOTIFY downloadedChanged FINAL)
+	Q_PROPERTY(QString downloadPath READ downloadPath WRITE setDownloadPath NOTIFY downloadPathChanged FINAL)
 
 	Q_PROPERTY(QString displayType READ displayType NOTIFY displayTypeChanged FINAL)
 	Q_PROPERTY(QString displayIcon READ displayIcon NOTIFY displayIconChanged FINAL)
@@ -36,6 +38,7 @@ public:
 
 	QString name() const;
 	QString path() const;
+	QString downloadPath() const;
 	QString displayType() const;
 	QString displayIcon() const;
 	QString displayTitle() const;
@@ -53,8 +56,11 @@ public:
 	int fileSize() const;
 	QString classification() const;
 
+	bool downloaded() const;
+
 	void setName(QString newName);
 	void setPath(QString newPath);
+	void setDownloadPath(QString downloadPath);
 	void setComment(QString newComment);
 	void setCreatedBy(QString newCreatedBy);
 	void setCreatedAt(QString newCreatedAt);
@@ -65,12 +71,14 @@ public:
 	void setContainerId(int containerId);
 	void setFileSize(int fileSize);
 	void setClassification(QString classification);
+	void setDownloaded(bool downloaded);
 
 
 Q_SIGNALS:
 
 	void nameChanged(QString name);
 	void pathChanged(QString path);
+	void downloadPathChanged(QString downloadPath);
 	void commentChanged(QString comment);
 	void createdByChanged(QString createdBy);
 	void createdAtChanged(QString createdAt);
@@ -81,6 +89,7 @@ Q_SIGNALS:
 	void containerIdChanged(int containerId);
 	void fileSizeChanged(int fileSize);
 	void classificationChanged(QString classification);
+	void downloadedChanged(bool downloaded);
 
 	void displayTypeChanged(QString displayType);
 	void displayIconChanged(QString displayIcon);
@@ -93,6 +102,7 @@ private:
 	QVariantMap mFilesMap;
 	QString mName;
 	QString mPath;
+	QString mDownloadPath;
 	QString mComment;
 	QString mCreatedBy;
 	QString mCreatedAt;
@@ -103,6 +113,8 @@ private:
 	int mContainerId;
 	int mFileSize;
 	QString mClassification;
+
+	bool mDownloaded;
 
 	QString mDisplayType;
 	QString mDisplayIcon;
