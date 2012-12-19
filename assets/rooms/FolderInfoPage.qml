@@ -14,9 +14,11 @@
  * limitations under the License.
  */import bb.cascades 1.0
 import "../common"
+import bb.system 1.0
 
 Page {
     id: folderInfoPage
+    property bool inRoom: false
     titleBar: TitleBar {
         id: addBar
         title: qsTr("Folder Info") + Retranslate.onLanguageChanged
@@ -32,6 +34,15 @@ Page {
                     relayout(false)
                 }
             }
+        },
+        SystemToast {
+            id: workInProgress
+            body: qsTr("work-in-progress please stay tuned")
+            icon: "asset:///images/dialog-info114.png"
+            position: SystemUiPosition.BottomCenter
+            onFinished: {
+                //
+            }
         }
     ]
     actions: [
@@ -40,6 +51,7 @@ Page {
             imageSource: "asset:///images/ics/5-content-copy81.png"
             onTriggered: {
                 // TODO
+                workInProgress.show()
             }
         },
         ActionItem {
@@ -47,22 +59,42 @@ Page {
             imageSource: "asset:///images/ics/5-content-import-export81.png"
             onTriggered: {
                 // TODO
+                workInProgress.show()
+                
             }
         },
         ActionItem {
             title: qsTr("Rename") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/5-content-edit81.png"
             onTriggered: {
-                // TODO
-                console.debug("FOLDER: name to be renamed: " + ListItemData.name)
-                // TODO
-                ListItemData.name = "renamed"
+                navigationPane.pop();
+                if (inRoom == true) {
+                    odsdata.renameFolder(roomId.valueText, folderPath.valueText, headerId.valueText)
+                } else {
+                    odsdata.renameFolder(subroomId.valueText, folderPath.valueText, headerId.valueText)
+                }
+                
             }
         },
         DeleteActionItem {
             title: qsTr("Delete") + Retranslate.onLanguageChanged
             onTriggered: {
-                // TODO
+                navigationPane.pop();
+                if (inRoom == true) {
+                    if (folderPath.valueText == "") {
+                        odsdata.deleteFolder(roomId.valueText, headerId.valueText)
+                    } else {
+                        odsdata.deleteFolder(roomId.valueText, folderPath.valueText + "/" +headerId.valueText)
+                    }
+                    
+                } else {
+                    if (folderPath.valueText == "") {
+                        odsdata.deleteFolder(subroomId.valueText, headerId.valueText)
+                    } else {
+                        odsdata.deleteFolder(subroomId.valueText, folderPath.valueText + "/" +headerId.valueText)
+                    }
+                    
+                }
             }
         }
     ]
@@ -140,11 +172,13 @@ Page {
         containsFilesAndFolders.valueText = data.children + qsTr(" Files / Folders") + Retranslate.onLanguageChanged
         if (data.roomId == 0) {
             // no subroom - directly into the Room
+            inRoom = true
             roomId.valueText = data.containerId
             roomName.valueText = odsdata.roomGroupName(data.containerId)
             subroomId.visible = false
             subroomName.visible = false
         } else {
+            inRoom = false
             subroomId.valueText = data.containerId
             subroomName.valueText = odsdata.roomGroupName(data.containerId)
             subroomId.visible = true

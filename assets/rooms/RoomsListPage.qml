@@ -364,8 +364,8 @@ Page {
                                     title: qsTr("Rename") + Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/5-content-edit81.png"
                                     onTriggered: {
-                                        // TODO
-                                        foldersItem.ListItem.view.wip()
+                                        foldersItem.ListItem.view.renameFolder(ListItemData.containerId,
+                                                ListItemData.path, ListItemData.name)
                                     }
                                 }
                                 DeleteActionItem {
@@ -439,8 +439,7 @@ Page {
                                     title: qsTr("Rename") + Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/5-content-edit81.png"
                                     onTriggered: {
-                                        // TODO
-                                        filesItem.ListItem.view.wip()
+                                        filesItem.ListItem.view.renameFile(ListItemData.id, ListItemData.name)
                                     }
                                 }
                                 ActionItem {
@@ -507,6 +506,12 @@ Page {
             }
             function deleteFolder(roomId, path) {
                 odsdata.deleteFolder(roomId, path)
+            }
+            function renameFolder(roomId, path, name) {
+                odsdata.renameFolder(roomId, path, name)
+            }
+            function renameFile(id, name) {
+                odsdata.renameFile(id, name)
             }
             function wip() {
                 workInProgress.show()

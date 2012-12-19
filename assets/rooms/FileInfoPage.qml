@@ -79,8 +79,8 @@ Page {
             imageSource: "asset:///images/ics/5-content-edit81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
-                // TODO
-                workInProgress.show()
+                odsdata.renameFile(cloudFileId.valueText, headerId.valueText)
+                navigationPane.pop();
             }
         },
         ActionItem {
@@ -106,6 +106,7 @@ Page {
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
                 odsdata.deleteFile(cloudFileId.valueText, headerId.valueText)
+                navigationPane.pop();
             }
         }
     ]

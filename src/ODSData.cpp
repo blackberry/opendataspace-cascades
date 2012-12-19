@@ -910,11 +910,11 @@ void ODSData::renameFolder(int roomId, QString pathOld, QString folderNameOld) {
 		return;
 	} else {
 		if (mPath.isEmpty()) {
-			mPath = mFileName;
 			mPathNew = mPrompt->inputFieldTextEntry().trimmed();
+			mPath = mFileName;
 		} else {
-			mPath = mPath + "/" + mFileName;
 			mPathNew = mPath + "/" + mPrompt->inputFieldTextEntry().trimmed();
+			mPath = mPath + "/" + mFileName;
 		}
 	}
 	qDebug() << "RENAME Folder: " << mPath << " to " << mPathNew;
@@ -1385,10 +1385,10 @@ void ODSData::initiateRequest(int usecase) {
 			mRequestJson.append(quotationMark);
 			// END
 			mRequestJson.append(jsonEnd);
-			request.setUrl(QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesDelete)));
+			request.setUrl(QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesRename)));
 			// add a special header to reload all files as next step
 			request.setRawHeader("reload",
-					QByteArray::number(Usecase::FilesRename));
+					QByteArray::number(Usecase::FilesAll));
 			break;
 		case Usecase::FilesRenameFolder:
 			isJsonContent = true;
