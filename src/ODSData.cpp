@@ -50,6 +50,11 @@ static const QString contentValue = "content";
 static const QString usernameValue = "username";
 static const QString passwordValue = "password";
 static const QString customerNumberValue = "customer_nr";
+static const QString linkLanguageValue = "link_language";
+static const QString linkExpirationValue = "link_expiration";
+static const QString linkPasswordValue = "link_password";
+static const QString linkCodeValue = "link_code";
+static const QString noticeDownloadValue = "noticeDownload";
 
 static const int deleteNotEmpty = 1;
 
@@ -718,8 +723,61 @@ void ODSData::refreshCaches() {
 }
 
 void ODSData::createLink(int fileId, QString fileName, bool expires, QDate expiration, QString password, QString code, bool notice) {
+	qDebug() << "CREATE LINK for file: " << fileId << "and code: "
+				<< code;
+	// start progress
+	// some problems with reusing SystemProgressDialog
+	// so we create a new one, but still sometimes disappears
+	mProgressDialog = new SystemProgressDialog(this);
+	mProgressDialog->setState(SystemUiProgressState::Active);
+	mProgressDialog->setEmoticonsEnabled(true);
+	mProgressDialog->setTitle(tr("Create a new link"));
+	mProgressDialog->setStatusMessage(mBaseUrl);
+	mProgressDialog->setIcon(QUrl("asset:///images/upload-icon.png"));
+	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
+	mProgressDialog->confirmButton()->setLabel(QString::null);
+	mProgressDialog->setProgress(15);
+	mProgressDialog->setBody(tr("send request to server..."));
+	mProgressDialog->show();
+	//
+	mFileId = fileId;
+	mFileName = fileName;
+	if (expires) {
+		mExpiration = expiration.toString(Qt::ISODate);
+	} else {
+		mExpiration = "";
+	}
+	mLinkPassword = password.trimmed();
+	mComment = code.trimmed();
+	if (notice) {
+		mNotice = "on";
+	} else {
+		mNotice = "";
+	}
+	initiateRequest(Usecase::FilesCreateLink);
+	// if request went well: reloadFiles is called
+}
 
-	qDebug() << "Date: " << expiration.toString(Qt::ISODate);
+void ODSData::shareLink(){
+	qDebug() << "shareLink found";
+	// finished // TODO
+	mProgressDialog->setProgress(100);
+	mProgressDialog->setState(SystemUiProgressState::Inactive);
+	mProgressDialog->setBody(tr("got Link to share)"));
+	mProgressDialog->setIcon(QUrl("asset:///images/online-icon.png"));
+	mProgressDialog->confirmButton()->setLabel(tr("OK"));
+	mProgressDialog->cancelButton()->setLabel(QString::null);
+	// wait for USER
+	int result = mProgressDialog->exec();
+	switch (result) {
+		case SystemUiResult::CancelButtonSelection:
+			// TODO of canceled
+			break;
+		default:
+			// OK
+			break;
+	}
+	// TODO got link from JSON share with BBM, email and so on
 }
 
 /**
@@ -1199,6 +1257,79 @@ void ODSData::initiateRequest(int usecase) {
 			// add a special header to reload all files as next step
 			request.setRawHeader("reload",
 					QByteArray::number(Usecase::FilesAll));
+		}
+		break;
+	case Usecase::FilesCreateLink:
+		isJsonContent = true;
+		mRequestJson.clear();
+		// START
+		mRequestJson.append(jsonStart);
+		// TOKEN
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(tokenValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mToken.toUtf8());
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(comma);
+		// FILE ID
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(fileIdValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(QByteArray::number(mFileId));
+		mRequestJson.append(comma);
+		// EXPIRATION
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(linkExpirationValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mExpiration.toUtf8());
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(comma);
+		// EXPIRATION
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(linkPasswordValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mLinkPassword.toUtf8());
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(comma);
+		// CODE
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(linkCodeValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mComment.toUtf8());
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(comma);
+		// LANGUAGE
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(linkLanguageValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(QByteArray::number(mLanguageNumber));
+		mRequestJson.append(comma);
+		// NOTICE DOWNLOAD
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(noticeDownloadValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mNotice.toUtf8());
+		mRequestJson.append(quotationMark);
+		// END
+		mRequestJson.append(jsonEnd);
+		request.setUrl(
+				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesCreateLink)));
+		if (!isInitialization) {
+			// add a special header to reload all files as next step
+			request.setRawHeader("shareLink",
+					"true");
 		}
 		break;
 	case Usecase::FilesDelete:
@@ -1782,6 +1913,31 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 				initiateRequest(Usecase::FilesAll);
 				break;
 			default:
+				if (reply->request().rawHeaderList().contains("shareLink")) {
+					shareLink();
+					break;
+				}
+				if (reply->request().rawHeaderList().contains("no_refresh")) {
+					qDebug() << "no refresh";
+					// finished
+					mProgressDialog->setProgress(100);
+					mProgressDialog->setState(SystemUiProgressState::Inactive);
+					mProgressDialog->setBody(tr("Server Request done)"));
+					mProgressDialog->setIcon(QUrl("asset:///images/online-icon.png"));
+					mProgressDialog->confirmButton()->setLabel(tr("OK"));
+					mProgressDialog->cancelButton()->setLabel(QString::null);
+					// wait for USER
+					int result = mProgressDialog->exec();
+					switch (result) {
+						case SystemUiResult::CancelButtonSelection:
+							// TODO of canceled
+							break;
+						default:
+							// OK
+							break;
+					}
+					break;
+				}
 				// nothing else to do - then refresh cache
 				refreshCaches();
 				break;
@@ -1882,6 +2038,9 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 		break;
 	case Usecase::FilesCreateFolder:
 		qDebug() << "Folder successfully Created !";
+		break;
+	case Usecase::FilesCreateLink:
+		qDebug() << "got Link !";
 		break;
 	case Usecase::FilesDelete:
 		qDebug() << "File successfully Deleted !";

@@ -149,6 +149,9 @@ private:
 	QString mPath;
 	QString mPathNew;
 	QString mComment;
+	QString mExpiration;
+	QString mLinkPassword;
+	QString mNotice;
 
 	// models and caches
 	GroupDataModel* mUsersDataModel;
@@ -176,6 +179,7 @@ private:
 	void refreshCaches();
 	void reloadFiles();
 	void createRoomsModel();
+	void shareLink();
 
 	/**
 	 * some parts of initialization will be done delayed
