@@ -184,8 +184,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="118"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="116"/>
+        <source>should Link expire ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="125"/>
         <source>Link expires on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="112"/>
+        <source>get notified via email</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -193,7 +203,7 @@
         <translation type="obsolete">Название новой папки</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="125"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="131"/>
         <source>File ID</source>
         <translation type="unfinished"></translation>
     </message>

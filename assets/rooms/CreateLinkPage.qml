@@ -53,7 +53,7 @@ Page {
                     expires.checked, expirationDate.value, 
                     password.text, 
                     linkCode.textFieldText, 
-                    noticeDownload.checked)
+                    noticeDownload.valueChecked)
                 // reset fields
                 clearFields()
                 // automagically close this page
@@ -107,33 +107,38 @@ Page {
                     hintText: qsTr("optional: Password")  + Retranslate.onLanguageChanged;
                     inputMode: TextFieldInputMode.Password
                 }
-                ToggleButton {
+                LabelAndToggle {
+                    id: noticeDownload
+                    labelText: qsTr("get notified via email") + Retranslate.onLanguageChanged
+                }
+                LabelAndToggle {
                     id: expires
-                    
+                    labelText: qsTr("should Link expire ?") + Retranslate.onLanguageChanged
+                    onValueCheckedChanged: {
+                        expirationDate.visible = valueChecked
+                    }
                 }
                 DateTimePicker {
                     id: expirationDate
-                    visible: expires.checked
+                    visible: expires.valueChecked
                     mode: DateTimePickerMode.Date
                     title: qsTr("Link expires on") + Retranslate.onLanguageChanged
                 }
-                ToggleButton {
-                    id: noticeDownload
+                Divider {
                 }
                 LabelAndLabel {
                     id: fileId
                     labelText: qsTr("File ID") + Retranslate.onLanguageChanged
                 }
-                Divider {
-                }
+                
             } // end Container
         } // end scroll view
     } // end main container
     function clearFields() {
-        expires.checked = false
+        expires.valueChecked = false
         password.text = ""
         linkCode.textFieldText = ""
-        noticeDownload.checked = false
+        noticeDownload.valueChecked = false
     }
     // set the field values from ODSFolder* data
     function setValues(id, name) {
@@ -147,9 +152,15 @@ Page {
     // relayout if orientation changes
     function relayout(landscape) {
         if (landscape == true) {
-
+            fileName.landscape = true
+            fileId.landscape = true
+            expires.landscape = true
+            noticeDownload.landscape = true
         } else {
-
+        fileName.landscape = false
+        fileId.landscape = false
+        expires.landscape = false
+        noticeDownload.landscape = false
         }
     }
     onCreationCompleted: {

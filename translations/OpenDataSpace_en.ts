@@ -164,12 +164,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="118"/>
-        <source>Link expires on</source>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="116"/>
+        <source>should Link expire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/rooms/CreateLinkPage.qml" line="125"/>
+        <source>Link expires on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="112"/>
+        <source>get notified via email</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="131"/>
         <source>File ID</source>
         <translation type="unfinished"></translation>
     </message>
