@@ -193,6 +193,17 @@ NavigationPane {
                     }
                 }
             }
+        },
+        // Create a Link
+        CreateLinkPage {
+            id: createLinkPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
         }
     ]
     // the ROOT Page of this NavigationPane
@@ -386,6 +397,11 @@ NavigationPane {
         roomInfoPage.refreshData(id)
         navigationPane.push(roomInfoPage)
     }
+    function openCreateLinkPage(id, name) {
+        console.debug("want to open openCreateLinkPage for id: " + id + " name: " + name)
+        createLinkPage.refreshData(id, name)
+        navigationPane.push(createLinkPage)
+    }
     onTopChanged: {
         if (navigationPane.top == dataspacePage) {
             odsdata.resetLevel();
@@ -406,13 +422,11 @@ NavigationPane {
         roomsListPage.previewPdf.connect(previewPdf)
         roomsListPage.previewZip.connect(previewZip)
         roomsListPage.previewUnknown.connect(previewUnknown)
-        //-- connect the RoomsList onOpenAddFolder SIGNAL to the handler SLOT
         roomsListPage.openAddFolder.connect(onOpenAddFolder)
-        //
         roomsListPage.openFileInfoPage.connect(openFileInfoPage)
         roomsListPage.openFolderInfoPage.connect(openFolderInfoPage)
         roomsListPage.openSubRoomInfoPage.connect(openSubRoomInfoPage)
-        //-- connect the onFolderAdded SIGNAL from AddFolderPage with SLOT folderAdded
+        roomsListPage.openCreateLinkPage.connect(openCreateLinkPage)
         addFolderPage.onFolderAdded.connect(folderAdded)
         //-- connect the RoomsList recordAudio SIGNAL to the handler SLOT
         roomsListPage.recordAudio.connect(openRecordAudioPage)

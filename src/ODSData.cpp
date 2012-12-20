@@ -717,6 +717,11 @@ void ODSData::refreshCaches() {
 	}
 }
 
+void ODSData::createLink(int fileId, QString fileName, bool expires, QDate expiration, QString password, QString code, bool notice) {
+
+	qDebug() << "Date: " << expiration.toString(Qt::ISODate);
+}
+
 /**
  * create a new Folder inside a Room or SubRoom:
  * path == name of the folder

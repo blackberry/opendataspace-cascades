@@ -31,6 +31,7 @@ Page {
     signal openFileInfoPage(int fileId)
     signal openFolderInfoPage(string name)
     signal openSubRoomInfoPage(int subroomId)
+    signal openCreateLinkPage(int id, string name)
     signal previewImage(string filePath)
     signal previewVideo(string path)
     signal previewDocuments(string path)
@@ -423,8 +424,7 @@ Page {
                                     title: qsTr("Link") + Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/4-collections-labels81.png"
                                     onTriggered: {
-                                        // TODO
-                                        filesItem.ListItem.view.wip()
+                                        filesItem.ListItem.view.createLink(ListItemData.id, ListItemData.name)
                                     }
                                 }
                                 ActionItem {
@@ -512,6 +512,9 @@ Page {
             }
             function renameFile(id, name) {
                 odsdata.renameFile(id, name)
+            }
+            function createLink(id, name) {
+                openCreateLinkPage(id, name)
             }
             function wip() {
                 workInProgress.show()

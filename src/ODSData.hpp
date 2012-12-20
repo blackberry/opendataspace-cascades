@@ -72,6 +72,9 @@ public:
 	void createFolder(int roomId, QString path);
 
 	Q_INVOKABLE
+	void createLink(int fileId, QString fileName, bool expires, QDate expiration, QString password, QString code, bool notice);
+
+	Q_INVOKABLE
 	void deleteFolder(int roomId, QString path);
 
 	Q_INVOKABLE

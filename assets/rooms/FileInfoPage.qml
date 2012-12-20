@@ -61,8 +61,7 @@ Page {
             imageSource: "asset:///images/ics/4-collections-labels81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {
-                // TODO
-                workInProgress.show()
+                navigationPane.openCreateLinkPage(cloudFileId.valueText, headerId.valueText)
             }
         },
         ActionItem {
