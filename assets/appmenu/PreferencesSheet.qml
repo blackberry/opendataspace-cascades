@@ -104,6 +104,7 @@ NavigationPane {
                 }
                 TextField {
                     id: email
+                    visible: false
                     hintText: qsTr("User email address") + Retranslate.onLanguageChanged
                     inputMode: TextFieldInputMode.EmailAddress
                     textStyle {
@@ -113,6 +114,7 @@ NavigationPane {
                 // Label displays the current selected customer
                 Label {
                     id: customerLabel
+                    visible: false
                     text: "Musterfirma GmbH"
                     leftMargin: 20
                     textStyle {
@@ -146,6 +148,7 @@ NavigationPane {
                 // TODO data from server
                 Label {
                     id: memoryUsedLabel
+                    visible: false
                     text: "257.0 MB " + qsTr("of") + Retranslate.onLanguageChanged + " 2.0 GB " + qsTr("Memory used") + Retranslate.onLanguageChanged
                     leftMargin: 20
                     textStyle {
@@ -155,9 +158,11 @@ NavigationPane {
                 // special class to draw a bar with red and green colors
                 RedGreenBar {
                     id: usedMem
+                    visible: false
                 }
                 Label {
                     id: uploadLabel
+                    visible: false
                     text: "86.6 MB " + qsTr("Files to upload") + Retranslate.onLanguageChanged
                     leftMargin: 20
                     textStyle {
@@ -166,9 +171,11 @@ NavigationPane {
                 }
                 RedGreenBar {
                     id: afterUploadMem
+                    visible: false
                 }
                 Label {
                     id: versionLabel
+                    visible: false
                     text: qsTr("Version %1").arg("1.3.2") + Retranslate.onLanguageChanged
                     leftMargin: 20
                     textStyle {

@@ -1265,17 +1265,17 @@
         <translation>Sichern</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/PreferencesSheet.qml" line="186"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="193"/>
         <source>German</source>
         <translation>Deutsch</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/PreferencesSheet.qml" line="161"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="166"/>
         <source>Files to upload</source>
         <translation>Dateien zum Upload</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/PreferencesSheet.qml" line="149"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="152"/>
         <source>of</source>
         <translation>von</translation>
     </message>
@@ -1285,47 +1285,47 @@
         <translation>Server Adresse (URL)</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/PreferencesSheet.qml" line="107"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="108"/>
         <source>User email address</source>
         <translation>Benutzer email Adresse</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/PreferencesSheet.qml" line="131"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="133"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/PreferencesSheet.qml" line="149"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="152"/>
         <source>Memory used</source>
         <translation>Speicher verbraucht</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/PreferencesSheet.qml" line="172"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="179"/>
         <source>Version %1</source>
         <translation>Version %1</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/PreferencesSheet.qml" line="188"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="195"/>
         <source>French</source>
         <translation>Französich</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/PreferencesSheet.qml" line="190"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="197"/>
         <source>Spanish</source>
         <translation>Spanisch</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/PreferencesSheet.qml" line="192"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="199"/>
         <source>Italian</source>
         <translation>Italienisch</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/PreferencesSheet.qml" line="194"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="201"/>
         <source>Russian</source>
         <translation>Russisch</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/PreferencesSheet.qml" line="196"/>
+        <location filename="../assets/appmenu/PreferencesSheet.qml" line="203"/>
         <source>English</source>
         <translation>Englisch</translation>
     </message>
