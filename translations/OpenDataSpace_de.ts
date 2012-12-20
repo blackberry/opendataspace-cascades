@@ -57,67 +57,69 @@
 <context>
     <name>AddUserPage</name>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="34"/>
         <source>User added to ODS Cloud</source>
-        <translation>Benutzer hinzugefügt zur ODS Wolke</translation>
+        <translation type="obsolete">Benutzer hinzugefügt zur ODS Wolke</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="58"/>
         <source>Add User</source>
-        <translation>Benutzer hinzufügen</translation>
+        <translation type="obsolete">Benutzer hinzufügen</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="70"/>
         <source>User %1 added to ODS Cloud</source>
-        <translation>Benutzer %1 hinzugefügt zur ODS Wolke</translation>
+        <translation type="obsolete">Benutzer %1 hinzugefügt zur ODS Wolke</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="86"/>
+        <location filename="../assets/users/AddUserPage.qml" line="49"/>
+        <source>Create User now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/users/AddUserPage.qml" line="72"/>
         <source>User Data</source>
         <translation>Benutzer Daten</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="155"/>
+        <location filename="../assets/users/AddUserPage.qml" line="141"/>
         <source>User email address</source>
         <translation>Benutzer email Adresse</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="175"/>
+        <location filename="../assets/users/AddUserPage.qml" line="161"/>
         <source>Salutation</source>
         <translation>Anrede</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="187"/>
+        <location filename="../assets/users/AddUserPage.qml" line="173"/>
         <source>Mr.</source>
         <translation>Herr</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="190"/>
+        <location filename="../assets/users/AddUserPage.qml" line="176"/>
         <source>Mrs.</source>
         <translation>Frau</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="197"/>
+        <location filename="../assets/users/AddUserPage.qml" line="183"/>
         <source>Title</source>
         <translation>Titel</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="206"/>
+        <location filename="../assets/users/AddUserPage.qml" line="192"/>
         <source>First Name</source>
         <translation>Vorname</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="217"/>
+        <location filename="../assets/users/AddUserPage.qml" line="203"/>
         <source>Last Name</source>
         <translation>Nachname</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="238"/>
+        <location filename="../assets/users/AddUserPage.qml" line="224"/>
         <source>Administrator</source>
         <translation>Administrator</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="290"/>
+        <location filename="../assets/users/AddUserPage.qml" line="276"/>
         <source>DataRoom</source>
         <translation>Datenraum</translation>
     </message>
@@ -1658,45 +1660,50 @@
 <context>
     <name>UsersNavPane</name>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="47"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="44"/>
+        <source>work-in-progress please stay tuned</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/users/UsersNavPane.qml" line="57"/>
         <source>Users</source>
         <translation type="unfinished">Benutzer</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="53"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="63"/>
         <source>New User</source>
         <translation>Neuer Benutzer</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="62"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="72"/>
         <source>Refresh</source>
         <translation>Aktualisieren</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="112"/>
-        <location filename="../assets/users/UsersNavPane.qml" line="152"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="123"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="163"/>
         <source>Info</source>
         <translation>Information</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="119"/>
-        <location filename="../assets/users/UsersNavPane.qml" line="159"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="130"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="170"/>
         <source>MailTo</source>
         <translation>Email an</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="126"/>
-        <location filename="../assets/users/UsersNavPane.qml" line="166"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="137"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="177"/>
         <source>Contact</source>
         <translation>Kontakt</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="145"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="156"/>
         <source>Add Room</source>
         <translation>Raum hinzufügen</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="173"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="184"/>
         <source>Delete</source>
         <translation>Löschen</translation>
     </message>

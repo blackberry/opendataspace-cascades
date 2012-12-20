@@ -29,15 +29,6 @@ Page {
             repeatPattern: RepeatPattern.XY
             imageSource: "asset:///images/tiles/red16x16.png"
         },
-        SystemToast {
-            id: adduserToast
-            body: qsTr("User added to ODS Cloud")
-            icon: "asset:///images/rooms-icon.png"
-            position : SystemUiPosition.BottomCenter
-            onFinished: {
-                //
-            }
-        },
         // recalculate positions
         OrientationHandler {
             onOrientationAboutToChange: {
@@ -55,8 +46,8 @@ Page {
     ]
     actions: [
         ActionItem {
-            title: qsTr("Add User") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/5-content-new81.png"
+            title: qsTr("Create User now") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/upload81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 if (firstNameWithMarker.textFieldText != "" && lastNameWithMarker.textFieldText != "" && emailWithMarker.textFieldText != "") {
@@ -67,12 +58,7 @@ Page {
                     //transport.value = 80
                     //transport.visible = true
                     //dummi.play()
-                    adduserToast.body= qsTr("User %1 added to ODS Cloud","").arg(
-                        firstNameWithMarker.textFieldText
-                        + " "
-                        + lastNameWithMarker.textFieldText)
                     clearFields()
-                    adduserToast.show()
                 } else {
                     // animation to demonstrate that there are errors
                     dataError.animation.play()

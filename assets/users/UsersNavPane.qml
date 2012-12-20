@@ -14,6 +14,7 @@
  * limitations under the License.
  */import bb.cascades 1.0
  import org.opendataspace.user 1.0
+ import bb.system 1.0
 
 /*
  * 
@@ -37,6 +38,15 @@ NavigationPane {
         ComponentDefinition {
             id: usersPageComponentDefinition
             //
+        },
+        SystemToast {
+            id: workInProgress
+            body: qsTr("work-in-progress please stay tuned")
+            icon: "asset:///images/dialog-info114.png"
+            position: SystemUiPosition.BottomCenter
+            onFinished: {
+                //
+            }
         }
     ]
     // the Root Page of this NavigationPane
@@ -64,6 +74,7 @@ NavigationPane {
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {
                     // TODO call server
+                    workInProgress.show()
                 }
             }
         ]
@@ -203,11 +214,7 @@ NavigationPane {
         function addUser(name, displayType) {
             console.debug("Now add new USER to LISTMODEL on UserNavPage")
             // TODO from SERVER
-            userGroupDataModel.insert({
-                    "name": name,
-                    "displayType": displayType,
-                    "displayIcon": getDisplayIcon(displayType)
-                });
+            workInProgress.show()
         }
         function getDisplayIcon(displayType) {
             if (displayType == "U") {
