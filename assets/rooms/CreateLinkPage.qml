@@ -40,7 +40,7 @@ Page {
     actions: [
         ActionItem {
             id: createNowAction
-            title: qsTr("Create now") + Retranslate.onLanguageChanged
+            title: qsTr("Share now via BBM") + Retranslate.onLanguageChanged
             // dynamically changed if enabled onRedBarVisible
             enabled: ! folderName.redBarVisible
             imageSource: "asset:///images/upload81.png"

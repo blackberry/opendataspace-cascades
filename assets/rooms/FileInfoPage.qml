@@ -57,7 +57,7 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("Link") + Retranslate.onLanguageChanged
+            title: qsTr("Share Link (BBM)") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/ics/4-collections-labels81.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
             onTriggered: {

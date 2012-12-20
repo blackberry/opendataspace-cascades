@@ -50,6 +50,7 @@ static const QString contentValue = "content";
 static const QString usernameValue = "username";
 static const QString passwordValue = "password";
 static const QString customerNumberValue = "customer_nr";
+static const QString linkValue = "link";
 static const QString linkLanguageValue = "link_language";
 static const QString linkExpirationValue = "link_expiration";
 static const QString linkPasswordValue = "link_password";
@@ -761,23 +762,27 @@ void ODSData::createLink(int fileId, QString fileName, bool expires, QDate expir
 void ODSData::shareLink(){
 	qDebug() << "shareLink found";
 	// finished // TODO
-	mProgressDialog->setProgress(100);
+	mProgressDialog->setProgress(95);
 	mProgressDialog->setState(SystemUiProgressState::Inactive);
-	mProgressDialog->setBody(tr("got Link to share)"));
+	mProgressDialog->setBody(tr("got Link to share with BBM)"));
 	mProgressDialog->setIcon(QUrl("asset:///images/online-icon.png"));
 	mProgressDialog->confirmButton()->setLabel(tr("OK"));
 	mProgressDialog->cancelButton()->setLabel(QString::null);
 	// wait for USER
-	int result = mProgressDialog->exec();
-	switch (result) {
-		case SystemUiResult::CancelButtonSelection:
-			// TODO of canceled
-			break;
-		default:
-			// OK
-			break;
+	mProgressDialog->show();
+	QString message;
+	QVariantMap bodyMap;
+	message = tr("Please download this file from secure OpenDataSpace Server: ");
+	bodyMap = readDataFromJson(Usecase::FilesCreateLink);
+	if (!bodyMap.isEmpty()) {
+		message += bodyMap.value(linkValue, "").toString();
+		message += bodyMap.value(linkCodeValue, "").toString();
+		mProgressDialog->cancel();
+		emit shareLinkWithBBM(message);
+	} else {
+		message = tr("sorry - we got no Link to share");
+		reportError(message);
 	}
-	// TODO got link from JSON share with BBM, email and so on
 }
 
 /**

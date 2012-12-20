@@ -184,6 +184,13 @@ OpenDataSpace::OpenDataSpace(QObject *parent) :
 	mOdsData = new ODSData();
 	qml->setContextProperty("odsdata", mOdsData);
 
+	ok = connect(mOdsData,
+			SIGNAL(shareLinkWithBBM(const QString&)), this,
+			SLOT(shareTextWithBBM(const QString&)));
+	if (!ok) {
+		qDebug() << "connect shareTextWithBBM failed";
+	}
+
 	// create root object for the UI
 	// all our root objects are a NavigationPane or a TabbedPane
 	AbstractPane *root = qml->createRootObject<AbstractPane>();
@@ -443,6 +450,15 @@ void OpenDataSpace::invokeBoundMediaPlayer(QString uri) {
 	cardRequest.setUri(uri);
 	cardRequest.setTarget("sys.mediaplayer.previewer");
 	mInvokeManager->invoke(cardRequest);
+}
+
+void OpenDataSpace::shareTextWithBBM(const QString& text){
+	InvokeRequest bbmRequest;
+	bbmRequest.setTarget("sys.bbm.sharehandler");
+	bbmRequest.setAction("bb.action.SHARE");
+	bbmRequest.setData(text.toUtf8());
+	qDebug() << "share with BBM: " << text;
+	mInvokeManager->invoke(bbmRequest);
 }
 
 /**

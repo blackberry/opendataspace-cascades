@@ -77,6 +77,7 @@ public:
 	Q_INVOKABLE
 	void invokeBoundMediaPlayer(QString uri);
 
+
 	/**
 	 * uses Invokation Framework to View the file from URI
 	 *
@@ -146,6 +147,7 @@ public Q_SLOTS:
 	// locale changed by user from device settings
 	void localeChanged();
 	void onThumbnail();
+	void shareTextWithBBM(const QString& text);
 
 Q_SIGNALS:
 	// The change notification signal of card status change
