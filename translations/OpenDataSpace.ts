@@ -1073,42 +1073,42 @@
 <context>
     <name>OpenDataSpace</name>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="292"/>
+        <location filename="../src/OpenDataSpace.cpp" line="294"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="295"/>
+        <location filename="../src/OpenDataSpace.cpp" line="297"/>
         <source>Feedback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="298"/>
+        <location filename="../src/OpenDataSpace.cpp" line="300"/>
         <source>Logout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="301"/>
+        <location filename="../src/OpenDataSpace.cpp" line="303"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="614"/>
+        <location filename="../src/OpenDataSpace.cpp" line="637"/>
         <source>Resized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="625"/>
+        <location filename="../src/OpenDataSpace.cpp" line="655"/>
         <source>Pooled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="636"/>
+        <location filename="../src/OpenDataSpace.cpp" line="666"/>
         <source>:)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="638"/>
+        <location filename="../src/OpenDataSpace.cpp" line="668"/>
         <source>save</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1603,12 +1603,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/WebPageHelpSheet.qml" line="47"/>
-        <source>Beta3</source>
+        <location filename="../assets/appmenu/WebPageHelpSheet.qml" line="48"/>
+        <source>Developer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/WebPageHelpSheet.qml" line="57"/>
+        <location filename="../assets/appmenu/WebPageHelpSheet.qml" line="58"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>

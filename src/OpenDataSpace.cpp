@@ -65,22 +65,24 @@ using namespace bb::system;
 OpenDataSpace::OpenDataSpace(QObject *parent) :
 		QObject(parent), mInvokeManager(new InvokeManager(this)) {
 
+	// BUG in SDK: IDE reports error with bb::system::, but compiles and runs
+	// removing bb::system:: compiles also well but running says "signal not found"
 	// ODS is a Invocation Target
 	bool ok = connect(mInvokeManager,
-			SIGNAL(invoked(const InvokeRequest&)), this,
-			SLOT(handleInvoke(const InvokeRequest&)));
+			SIGNAL(invoked(const bb::system::InvokeRequest&)), this,
+			SLOT(handleInvoke(const bb::system::InvokeRequest&)));
 	if (!ok) {
 		qDebug() << "connect handleInvoke failed";
 	}
 	ok = connect(mInvokeManager,
-			SIGNAL(cardResizeRequested(const CardResizeMessage&)),
-			this, SLOT(handleCardResize(const CardResizeMessage&)));
+			SIGNAL(cardResizeRequested(const bb::system::CardResizeMessage&)),
+			this, SLOT(handleCardResize(const bb::system::CardResizeMessage&)));
 	if (!ok) {
 		qDebug() << "connect handleCardResize failed";
 	}
 	ok = connect(mInvokeManager,
-			SIGNAL(cardPooled(const CardDoneMessage&)), this,
-			SLOT(handleCardPooled(const CardDoneMessage&)));
+			SIGNAL(cardPooled(const bb::system::CardDoneMessage&)), this,
+			SLOT(handleCardPooled(const bb::system::CardDoneMessage&)));
 	if (!ok) {
 		qDebug() << "connect handleCardPooled failed";
 	}
@@ -439,6 +441,10 @@ void OpenDataSpace::settingsTriggered() {
 
 // unbound Invokation
 void OpenDataSpace::invokeUnbound(QString uri) {
+	if (uri.endsWith(".svg")) {
+		invokeBrowser(uri);
+		return;
+	}
 	InvokeRequest cardRequest;
 	cardRequest.setUri(uri);
 	mInvokeManager->invoke(cardRequest);
@@ -452,6 +458,13 @@ void OpenDataSpace::invokeBoundMediaPlayer(QString uri) {
 	mInvokeManager->invoke(cardRequest);
 }
 
+void OpenDataSpace::invokeBrowser(QString uri) {
+	InvokeRequest cardRequest;
+	cardRequest.setUri(uri);
+	cardRequest.setTarget("sys.browser");
+	mInvokeManager->invoke(cardRequest);
+}
+
 void OpenDataSpace::shareTextWithBBM(const QString& text){
 	InvokeRequest bbmRequest;
 	bbmRequest.setTarget("sys.bbm.sharehandler");
@@ -459,6 +472,8 @@ void OpenDataSpace::shareTextWithBBM(const QString& text){
 	bbmRequest.setData(text.toUtf8());
 	qDebug() << "share with BBM: " << text;
 	mInvokeManager->invoke(bbmRequest);
+	// TODO listen to InvokeTargetReply *reply to see if invocation was successfull
+	// https://developer.blackberry.com/cascades/documentation/device_platform/invocation/sending_invocation.html
 }
 
 /**
@@ -469,6 +484,10 @@ void OpenDataSpace::showInView(QString uri) {
 	qDebug() << "showInView called: " << uri;
 	if (uri.endsWith(".ogg")) {
 		invokeBoundMediaPlayer(uri);
+		return;
+	}
+	if (uri.endsWith(".svg")) {
+		invokeBrowser(uri);
 		return;
 	}
 	InvokeRequest invokeRequest;
@@ -549,20 +568,22 @@ void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
 			request.source().installId()).arg(request.source().groupId());
 	qDebug() << "Invoke Target ID: " << mInvokationTarget << " from Source: "
 			<< mInvokationSource;
+	// Metadata ? not used yet
+	// QVariantMap meta = request.metadata();
 	// Invoked as Application
 	if (mInvokationTarget == "io.ods.bb10.invoke") {
 		mIsCard = false;
 		qDebug() << "Invoked";
 	}
-	// invoked as embedded Card (Previewer) from OPEN or SHARE
-	else if (mInvokationTarget == "io.ods.bb10.card.upload.previewer") {
+	// invoked as embedded Card (Previewer) from OPEN
+	else if (mInvokationTarget == "io.ods.bb10.card.upload") {
 		mIsCard = true;
 		qDebug() << "Invoked for UploadCard as Previewer";
 	}
-	// invoked as embedded Card (Composer) from OPEN
-	else if (mInvokationTarget == "io.ods.bb10.upload.composer") {
+	// invoked as embedded Card (Previewer) from OPEN or SHARE
+	else if (mInvokationTarget == "io.ods.bb10.upload.and.share") {
 		mIsCard = true;
-		qDebug() << "Invoked for UploadCard as Composer";
+		qDebug() << "Invoked for UploadCard as Previewer AND share via BBM";
 	}
 	// do some preparing-stuff for a invoked Card
 	// reset values (can come from pool)
@@ -572,7 +593,7 @@ void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
 		AbstractPane *p = Application::instance()->scene();
 		bool ok = false;
 		// if there's a URI we take the URI
-		// else we take the data
+		// else we take the data (bpund invokation can use data)
 		if (request.uri().isEmpty()) {
 			ok = p->setProperty("filePath", request.data());
 		} else {
@@ -591,6 +612,8 @@ void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
 		}
 	} else {
 		// do what needed if Invoked, per ex. switch to Upload TAB
+		// TODO test for URI and upload the file
+		qDebug() << "invoked as APPLICATION URI:" << request.uri() << " data: " << request.data();
 	}
 }
 
@@ -610,10 +633,17 @@ bool OpenDataSpace::isEmbedded() {
 	return mIsLaunchedEmbedded;
 }
 
-void OpenDataSpace::handleCardResize(const bb::system::CardResizeMessage&) {
+void OpenDataSpace::handleCardResize(const bb::system::CardResizeMessage& resizeMessage) {
 	mCardStatus = tr("Resized");
+	// width available to the card
+	// resizeMessage.width();
+	// height available to the card
+	// resizeMessage.height();
+	// which edge of the device is pointing up
+	// resizeMessage.upEdge();
+	// Orientation of the device (portrait or landscape)
+	// resizeMessage.orientation();
 	emit cardStatusChanged();
-	qDebug() << "handleCardResize";
 }
 
 void OpenDataSpace::handleCardPooled(

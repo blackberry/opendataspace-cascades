@@ -77,6 +77,9 @@ public:
 	Q_INVOKABLE
 	void invokeBoundMediaPlayer(QString uri);
 
+	Q_INVOKABLE
+	void invokeBrowser(QString uri);
+
 
 	/**
 	 * uses Invokation Framework to View the file from URI

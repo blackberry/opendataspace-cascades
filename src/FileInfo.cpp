@@ -150,7 +150,7 @@ QString FileInfo::getSuffix(QString filePath) const {
  */
 bool FileInfo::isImage(QString filePath) const {
 	QString s = getSuffix(filePath);
-	if (s == "png" || s == "jpg" || s == "jpeg" || s == "gif") {
+	if (s == "png" || s == "jpg" || s == "jpeg" || s == "gif" || s == "svg") {
 		return true;
 	}
 	return false;
@@ -209,7 +209,7 @@ bool FileInfo::isDocument(QString filePath) const {
  */
 bool FileInfo::isHtml(QString filePath) const {
 	QString s = getSuffix(filePath);
-	if (s == "html") {
+	if (s == "html" || s == "htm" || s == "xhtml") {
 		return true;
 	}
 	return false;

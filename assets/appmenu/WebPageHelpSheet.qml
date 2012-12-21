@@ -35,6 +35,7 @@ Page {
             id: backItem
             title: qsTr("ODS Homepage") + Retranslate.onLanguageChanged
             enabled: false
+            imageSource: "asset:///images/home81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             // we reset the URL
             onTriggered: {
@@ -44,7 +45,7 @@ Page {
         },
         ActionItem {
             id: ekke
-            title: qsTr("Beta3") + Retranslate.onLanguageChanged
+            title: qsTr("Developer") + Retranslate.onLanguageChanged
             enabled: true
             ActionBar.placement: ActionBarPlacement.OnBar
             // we reset the URL
@@ -55,6 +56,7 @@ Page {
         },
         ActionItem {
             title: qsTr("Close") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/offline81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 helpDone(true)
@@ -64,6 +66,11 @@ Page {
      
     // ScrollView to support long sites
     ScrollView {
+        id: scrollView
+        scrollViewProperties {
+                scrollMode: ScrollMode.Both
+                pinchToZoomEnabled: true
+            }
         Container {
             layout: StackLayout {
             }
@@ -80,6 +87,13 @@ Page {
             WebView {
                 id: webView
                 url: webPage.theURL
+                onMinContentScaleChanged: {
+                    scrollView.scrollViewProperties.minContentScale = minContentScale;
+                }
+         
+                onMaxContentScaleChanged: {
+                    scrollView.scrollViewProperties.maxContentScale = maxContentScale;
+                }
                 // if the URL was changed, we enable the ActionItem to go back
                 onUrlChanged: {
                     myIndicator.visible = true
