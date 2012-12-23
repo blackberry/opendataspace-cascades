@@ -15,6 +15,7 @@
  */import bb.cascades 1.0
 import "../media"
 import "../documents"
+import bb.system 1.0
 
 /*
  * 
@@ -216,6 +217,30 @@ NavigationPane {
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {
                     odsdata.syncWithServer()
+                }
+            },
+            ActionItem {
+                title: qsTr("Invite to BBM") + Retranslate.onLanguageChanged
+                imageSource: "asset:///images/bbm.png"
+                ActionBar.placement: ActionBarPlacement.InOverflow
+                onTriggered: {
+                    ods.inviteBBM()
+                }
+            },
+            ActionItem {
+                title: qsTr("Invite to ODS") + Retranslate.onLanguageChanged
+                imageSource: "asset:///images/bbm.png"
+                ActionBar.placement: ActionBarPlacement.InOverflow
+                onTriggered: {
+                    ods.inviteODS()
+                }
+            },
+            ActionItem {
+                title: qsTr("Leave Review") + Retranslate.onLanguageChanged
+                imageSource: "asset:///images/online81.png"
+                ActionBar.placement: ActionBarPlacement.InOverflow
+                onTriggered: {
+                    ods.leaveReview()
                 }
             }
         ]

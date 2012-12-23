@@ -65,6 +65,14 @@ Page {
             }
         },
         ActionItem {
+            title: qsTr("Start Chat (BBM)") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/bbm.png"
+            ActionBar.placement: ActionBarPlacement.InOverflow
+            onTriggered: {
+                ods.shareTextWithBBM(qsTr("I want to chat about: ") + Retranslate.onLanguageChanged + headerId.valueText)
+            }
+        },
+        ActionItem {
             id: downloadAction
             title: qsTr("Download") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/download81.png"
@@ -221,6 +229,7 @@ Page {
         // result is an empty ODSFile* or the correct one
         setValues(odsdata.fileFromId(id), id)
     }
+    
     // relayout if orientation changes
     function relayout(landscape) {
         if (landscape == true) {
@@ -255,6 +264,7 @@ Page {
         // initialize positioning
         if (OrientationSupport.orientation == UIOrientation.Landscape) {
             relayout(true)
+            startChat()
         }
     }
 }

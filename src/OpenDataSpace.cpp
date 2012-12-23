@@ -476,6 +476,38 @@ void OpenDataSpace::shareTextWithBBM(const QString& text){
 	// https://developer.blackberry.com/cascades/documentation/device_platform/invocation/sending_invocation.html
 }
 
+void OpenDataSpace::startChat(const QString& text) {
+	InvokeRequest bbmRequest;
+	bbmRequest.setTarget("sys.bbm.chathandler");
+	bbmRequest.setAction("bb.action.BBMCHAT");
+	bbmRequest.setData(text.toUtf8());
+	qDebug() << "start chat with BBM: " << text;
+	mInvokeManager->invoke(bbmRequest);
+}
+
+void OpenDataSpace::inviteBBM() {
+	InvokeRequest bbmRequest;
+	bbmRequest.setTarget("sys.bbm.invitehandler");
+	bbmRequest.setAction("bb.action.INVITEBBM");
+	qDebug() << "invite to BBM";
+	mInvokeManager->invoke(bbmRequest);
+}
+
+void OpenDataSpace::inviteODS() {
+	shareTextWithBBM(tr("Please download OpenDataSpace Application from BlackBerry World for FREE: ")+"http://appworld.blackberry.com/webstore/content/134203");
+	qDebug() << "invite to BBM";
+}
+
+void OpenDataSpace::leaveReview() {
+	InvokeRequest bbmRequest;
+	bbmRequest.setAction("bb.action.OPEN");
+	bbmRequest.setMimeType("application/x-bb-appworld");
+	bbmRequest.setUri("appworld://content/134203");
+	qDebug() << "leave review";
+	mInvokeManager->invoke(bbmRequest);
+}
+
+
 /**
  * uses Invokation Framework to View the file from URI
  *

@@ -234,22 +234,37 @@
         <translation type="obsolete">Actualizar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="214"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="215"/>
         <source>Sync with Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="224"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="223"/>
+        <source>Invite to BBM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="231"/>
+        <source>Invite to ODS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="239"/>
+        <source>Leave Review</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="249"/>
         <source>DataRoom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="263"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="288"/>
         <source>ODS Data Room</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="265"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="290"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
@@ -375,87 +390,97 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="86"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="68"/>
+        <source>Start Chat (BBM)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="94"/>
         <source>Copy</source>
         <translation type="unfinished">Copiar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="95"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="103"/>
         <source>Move</source>
         <translation type="unfinished">Mover</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="77"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="85"/>
         <source>Rename</source>
         <translation type="unfinished">Rebautizar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="69"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="72"/>
+        <source>I want to chat about: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="77"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="104"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="112"/>
         <source>Delete</source>
         <translation type="unfinished">borrar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="137"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="145"/>
         <source>Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="141"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="149"/>
         <source>Created by user</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="145"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="153"/>
         <source>Classification</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="149"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="157"/>
         <source>Date created</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="153"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="161"/>
         <source>Expiration date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="157"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="165"/>
         <source>Comment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="175"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="183"/>
         <source>Room ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="179"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="187"/>
         <source>Room Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="183"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="191"/>
         <source>In Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="167"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="175"/>
         <source>File ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="171"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="179"/>
         <source>Node</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="194"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="202"/>
         <source>File not found</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1170,22 +1195,27 @@
         <translation type="unfinished">Configuración</translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="637"/>
+        <location filename="../src/OpenDataSpace.cpp" line="497"/>
+        <source>Please download OpenDataSpace Application from BlackBerry World for FREE: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/OpenDataSpace.cpp" line="669"/>
         <source>Resized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="655"/>
+        <location filename="../src/OpenDataSpace.cpp" line="687"/>
         <source>Pooled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="666"/>
+        <location filename="../src/OpenDataSpace.cpp" line="698"/>
         <source>:)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="668"/>
+        <location filename="../src/OpenDataSpace.cpp" line="700"/>
         <source>save</source>
         <translation type="unfinished"></translation>
     </message>

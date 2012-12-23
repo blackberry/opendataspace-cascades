@@ -135,6 +135,18 @@ public:
 	Q_INVOKABLE
 	bool isEmbedded();
 
+	Q_INVOKABLE
+	void startChat(const QString& text);
+
+	Q_INVOKABLE
+	void inviteBBM();
+
+	Q_INVOKABLE
+	void inviteODS();
+
+	Q_INVOKABLE
+	void leaveReview();
+
 public Q_SLOTS:
 	// Invoaction
 	// This method is invoked to notify the invocation system that the action has been done successfully
