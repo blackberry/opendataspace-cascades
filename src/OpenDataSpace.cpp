@@ -451,9 +451,16 @@ void OpenDataSpace::invokeUnbound(QString uri) {
 }
 
 // invoke MediaPlayer
-void OpenDataSpace::invokeBoundMediaPlayer(QString uri) {
+void OpenDataSpace::invokeBoundMediaPlayer(const QString& uri) {
+	qDebug() << "invoke bound mediaplayer" << uri;
 	InvokeRequest cardRequest;
-	cardRequest.setUri(uri);
+	// MediaPlayer needs file:// or http:// etc as prefix
+	// FilePicker uses /account....... etc
+	if (uri.startsWith('/')) {
+		cardRequest.setUri("file://" + uri);
+	} else {
+		cardRequest.setUri(uri);
+	}
 	cardRequest.setTarget("sys.mediaplayer.previewer");
 	mInvokeManager->invoke(cardRequest);
 }

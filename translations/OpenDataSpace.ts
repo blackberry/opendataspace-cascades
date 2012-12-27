@@ -1118,27 +1118,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="497"/>
+        <location filename="../src/OpenDataSpace.cpp" line="504"/>
         <source>Please download OpenDataSpace Application from BlackBerry World for FREE: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="669"/>
+        <location filename="../src/OpenDataSpace.cpp" line="676"/>
         <source>Resized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="687"/>
+        <location filename="../src/OpenDataSpace.cpp" line="694"/>
         <source>Pooled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="698"/>
+        <location filename="../src/OpenDataSpace.cpp" line="705"/>
         <source>:)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/OpenDataSpace.cpp" line="700"/>
+        <location filename="../src/OpenDataSpace.cpp" line="707"/>
         <source>save</source>
         <translation type="unfinished"></translation>
     </message>

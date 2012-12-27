@@ -75,7 +75,7 @@ public:
 	 *
 	 */
 	Q_INVOKABLE
-	void invokeBoundMediaPlayer(QString uri);
+	void invokeBoundMediaPlayer(const QString& uri);
 
 	Q_INVOKABLE
 	void invokeBrowser(QString uri);
