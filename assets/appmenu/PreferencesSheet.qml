@@ -91,7 +91,7 @@ NavigationPane {
                 rightPadding: 25
                 TextField {
                     id: server
-                    text: odssettings.getValueFor("server/url","")
+                    text: odssettings.getServerUrl()
                     hintText: qsTr("Server URL") + Retranslate.onLanguageChanged
                     inputMode: TextFieldInputMode.Url
                     textStyle {
@@ -99,7 +99,7 @@ NavigationPane {
                     }
                     onTextChanged: {
                         // TODO ask new login ?
-                        odssettings.saveValueFor("server/url",server.text)
+                        odssettings.setServerUrl(server.text)
                     }
                 }
                 TextField {

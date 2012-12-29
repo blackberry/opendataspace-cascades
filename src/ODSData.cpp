@@ -148,7 +148,7 @@ void ODSData::loginToServer() {
 	if (!mDelayedInitDone) {
 		delayedInit();
 	}
-	mBaseUrl = mOdsSettings->getValueFor("server/url", "");
+	mBaseUrl = mOdsSettings->getValueFor(SETTINGS_KEY_SERVER_URL, "");
 	mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
@@ -161,8 +161,8 @@ void ODSData::loginToServer() {
 	mProgressDialog->setBody(tr("connect Server, authenticate user..."));
 	mProgressDialog->show();
 
-	mUser = mOdsSettings->getValueFor("server/current/user", "");
-	mPassword = mOdsSettings->getValueFor("server/current/password", "");
+	mUser = mOdsSettings->getValueFor(SETTINGS_KEY_SERVER_CURRENT_USER, "");
+	mPassword = mOdsSettings->getValueFor(SETTINGS_KEY_SERVER_CURRENT_PASSWORD, "");
 
 	// auth-user-settings-files
 	initiateRequest(-1);

@@ -5,6 +5,15 @@
 #include <qobject.h>
 #include <bb/cascades/Application>
 
+static const QString SETTINGS_KEY_SERVER_URL = "server/url";
+static const QString SETTINGS_KEY_SERVER_CURRENT_USER = "server/current/user";
+static const QString SETTINGS_KEY_SERVER_CURRENT_PASSWORD = "server/current/password";
+
+// used from QML LoginSheet
+static const QString SETTINGS_KEY_LOGIN_USER = "login/user";
+static const QString SETTINGS_KEY_LOGIN_PASSWORD = "login/password";
+
+
 class ODSSettings: public QObject {
 Q_OBJECT
 
@@ -33,6 +42,24 @@ public:
 	 */
 	Q_INVOKABLE
 	void saveValueFor(const QString &objectName, const QString &inputValue);
+
+	Q_INVOKABLE
+	QString getUser();
+
+	Q_INVOKABLE
+	QString getServerUrl();
+
+	Q_INVOKABLE
+	QString getPassword();
+
+	Q_INVOKABLE
+	void setUser(const QString &user);
+
+	Q_INVOKABLE
+	void setPassword(const QString &password);
+
+	Q_INVOKABLE
+	void setServerUrl(const QString &url);
 
 };
 

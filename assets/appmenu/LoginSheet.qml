@@ -64,8 +64,8 @@ Page {
                     console.debug("ConfirmButtonSelection done from SystemCredentialsPrompt");
                     // save settings if remember me was checked
                     if (rememberMeSelection()) {
-                        odssettings.saveValueFor("login/user",usernameEntry())
-                        odssettings.saveValueFor("login/password",passwordEntry())
+                        odssettings.setUser(usernameEntry())
+                        odssettings.setPassword(passwordEntry())
                     }
                     ods.login(usernameEntry(), passwordEntry())
                 } else if (result == SystemUiResult.CancelButtonSelection) {
@@ -120,8 +120,8 @@ Page {
                     preferredWidth: 400.0
                     onClicked: {
                         // set last values from settings
-                        credentialsPrompt.usernameField.defaultText = odssettings.getValueFor("login/user","")
-                        credentialsPrompt.passwordField.defaultText = odssettings.getValueFor("login/password","")
+                        credentialsPrompt.usernameField.defaultText = odssettings.getUser()
+                        credentialsPrompt.passwordField.defaultText = odssettings.getPassword()
                         credentialsPrompt.show()
                     }
                 }
