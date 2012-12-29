@@ -200,6 +200,10 @@ void ODSData::loginInterrupted() {
 	switch (mProgressDialog->result()) {
 		case SystemUiResult::CancelButtonSelection:
 			qDebug() << "login   C A N C E L E D";
+			if (mProgressDialog->state() == SystemUiProgressState::Inactive) {
+				// nothing to do
+				return;
+			}
 			mProgressDialog->setState(SystemUiProgressState::Error);
 			// now we have to test if we can go on without valid Login
 			if (mOdsSettings->isTrueFor(SETTINGS_KEY_FILES_AVAILABLE, false)) {
@@ -749,20 +753,13 @@ void ODSData::refreshCaches() {
 	// finished
 	mProgressDialog->setProgress(100);
 	mProgressDialog->setState(SystemUiProgressState::Inactive);
-	mProgressDialog->setBody(tr("Cache refreshed :)"));
-	mProgressDialog->setIcon(QUrl("asset:///images/online-icon.png"));
-	mProgressDialog->confirmButton()->setLabel(tr("OK"));
-	mProgressDialog->cancelButton()->setLabel(QString::null);
-	// wait for USER
-	int result = mProgressDialog->exec();
-	switch (result) {
-		case SystemUiResult::CancelButtonSelection:
-			// TODO of canceled
-			break;
-		default:
-			// OK
-			break;
-	}
+	mProgressDialog->cancel();
+	// display toast instead
+	mToast = new SystemToast(this);
+	mToast->setPosition(SystemUiPosition::BottomCenter);
+	mToast->setBody(tr("Cache refreshed :)"));
+	mToast->setIcon(QUrl("asset:///images/online-icon.png"));
+	mToast->show();
 }
 
 void ODSData::createLink(int fileId, QString fileName, bool expires, QDate expiration, QString password, QString code, bool notice) {
@@ -1953,23 +1950,18 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			}
 			mProgressDialog->setProgress(100);
 			mProgressDialog->setState(SystemUiProgressState::Inactive);
-			mProgressDialog->setBody(tr("Synchronization with Server done :)"));
-			mProgressDialog->setIcon(QUrl("asset:///images/online-icon.png"));
-			mProgressDialog->confirmButton()->setLabel(
-					tr("Synchronization done"));
-			mProgressDialog->cancelButton()->setLabel(QString::null);
 			disconnect(mProgressDialog,
-							SIGNAL(finished(bb::system::SystemUiResult::Type)), this,
-							SLOT(loginInterrupted()));
-			switch (mProgressDialog->exec()) {
-				case SystemUiResult::CancelButtonSelection:
-					// TODO if canceled
-					break;
-				default:
-					// OK OK OK OK     I N I T   D O N E
-					emit loginFinished(true);
-					break;
-			}
+					SIGNAL(finished(bb::system::SystemUiResult::Type)), this,
+					SLOT(loginInterrupted()));
+			mProgressDialog->cancel();
+			// display toast instead
+			mToast = new SystemToast(this);
+			mToast->setPosition(SystemUiPosition::BottomCenter);
+			mToast->setBody(tr("Synchronization with Server done :)"));
+			mToast->setIcon(QUrl("asset:///images/online-icon.png"));
+			mToast->show();
+			// OK OK OK OK     I N I T   D O N E
+			emit loginFinished(true);
 			break;
 		default:
 			// now test if we have to do a reload
@@ -1992,20 +1984,13 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 					// finished
 					mProgressDialog->setProgress(100);
 					mProgressDialog->setState(SystemUiProgressState::Inactive);
-					mProgressDialog->setBody(tr("Server Request done)"));
-					mProgressDialog->setIcon(QUrl("asset:///images/online-icon.png"));
-					mProgressDialog->confirmButton()->setLabel(tr("OK"));
-					mProgressDialog->cancelButton()->setLabel(QString::null);
-					// wait for USER
-					int result = mProgressDialog->exec();
-					switch (result) {
-						case SystemUiResult::CancelButtonSelection:
-							// TODO of canceled
-							break;
-						default:
-							// OK
-							break;
-					}
+					mProgressDialog->cancel();
+					// display toast instead
+					mToast = new SystemToast(this);
+					mToast->setPosition(SystemUiPosition::BottomCenter);
+					mToast->setBody(tr("Server request finished :)"));
+					mToast->setIcon(QUrl("asset:///images/online-icon.png"));
+					mToast->show();
 					break;
 				}
 				// nothing else to do - then refresh cache
@@ -2164,25 +2149,25 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 }
 
 void ODSData::reportError(QString& errorText) {
-	if (mProgressDialog->progress() > 0 && mProgressDialog->progress() < 100) {
-		// we have a running dialog
-		mProgressDialog->setBody(errorText + " :(");
-		mProgressDialog->setState(SystemUiProgressState::Error);
-		// switch button
-		mProgressDialog->confirmButton()->setLabel(
-				tr("No valid result from Server"));
-		mProgressDialog->cancelButton()->setLabel(QString::null);
-		mProgressDialog->setIcon(QUrl("asset:///images/offline-icon.png"));
-		int result = mProgressDialog->exec();
-		switch (result) {
-			case SystemUiResult::CancelButtonSelection:
-				// TODO if canceled
-				break;
-			default:
-				// OK
-				break;
-		}
+
+	mProgressDialog->setEmoticonsEnabled(false);
+	mProgressDialog->setBody(errorText + " :(");
+	mProgressDialog->setState(SystemUiProgressState::Error);
+	// switch button
+	mProgressDialog->confirmButton()->setLabel(
+			tr("Error"));
+	mProgressDialog->cancelButton()->setLabel(QString::null);
+	mProgressDialog->setIcon(QUrl("asset:///images/offline-icon.png"));
+	int result = mProgressDialog->exec();
+	switch (result) {
+		case SystemUiResult::CancelButtonSelection:
+			// TODO if canceled
+			break;
+		default:
+			// OK
+			break;
 	}
+	mProgressDialog->setEmoticonsEnabled(true);
 }
 
 ODSData::~ODSData() {

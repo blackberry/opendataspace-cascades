@@ -8,6 +8,7 @@
 #include <bb/system/SystemProgressDialog.hpp>
 #include <bb/system/SystemDialog>
 #include <bb/system/SystemPrompt.hpp>
+#include <bb/system/SystemToast.hpp>
 
 using namespace bb::cascades;
 using namespace bb::system;
@@ -127,6 +128,7 @@ private:
 	SystemProgressDialog* mProgressDialog;
 	SystemDialog* mDialog;
 	SystemPrompt* mPrompt;
+	SystemToast* mToast;
 
 	// network access
 	QNetworkAccessManager *mNetworkAccessManager;

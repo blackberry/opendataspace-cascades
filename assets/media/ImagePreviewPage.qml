@@ -26,6 +26,7 @@ import bb.system 1.0
 
 Page {
     property alias previewPath: previewImage.imageSource
+    property string path: ""
     id: previewPage
     signal uploadFromCard()
     titleBar: TitleBar {
@@ -64,7 +65,7 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 if (! ods.isEmbedded()) {
-                    rootNavigationPane.addUpload(previewPage.previewPath)
+                    rootNavigationPane.addUpload(previewPage.path)
                 } else {
                     // SIGNAL
                     uploadFromCard()
@@ -134,6 +135,7 @@ Page {
     } // end ScrollView
     function recalculateValues(name, folder) {
         console.debug("ImagePreviewPage recalculate for " + name)
+        previewPage.path = name
         titleBar.title = fileInfo.getShortName(name)
         titleLabel.text = titleBar.title;
         filenameInfo.enabled = true;
