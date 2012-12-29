@@ -19,6 +19,7 @@ import bb.system 1.0
 Page {
     id: fileInfoPage
     property string downloadPath: ""
+    property int downloadSize: 0
     titleBar: TitleBar {
         id: addBar
         title: qsTr("File Info") + Retranslate.onLanguageChanged
@@ -78,7 +79,7 @@ Page {
             imageSource: "asset:///images/download81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
-                odsdata.downloadFile(cloudFileId.valueText, headerId.valueText)
+                odsdata.downloadFile(cloudFileId.valueText, headerId.valueText, fileInfoPage.downloadSize)
             }
         },
         ActionItem {
@@ -222,6 +223,7 @@ Page {
         folderPath.valueText = data.path
         viewAction.enabled = data.downloaded
         downloadPath = data.downloadPath;
+        downloadSize = data.fileSize;
     }
     // the fileId we got from context action of ListItem
     function refreshData(id) {

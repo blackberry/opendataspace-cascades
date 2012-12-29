@@ -929,7 +929,7 @@ void ODSData::deleteFile(int fileId, QString fileName){
 	// if request went well: reloadFiles is called
 }
 
-void ODSData::downloadFile(int fileId, QString fileName) {
+void ODSData::downloadFile(int fileId, QString fileName, qint64 fileSizeBytes) {
 	qDebug() << "start download File #" << fileId << " " << fileName;
 	// start progress
 	// some problems with reusing SystemProgressDialog
@@ -948,6 +948,8 @@ void ODSData::downloadFile(int fileId, QString fileName) {
 	//
 	mFileId = fileId;
 	mFileName = fileName;
+	// TODO    S I Z E
+	mRequestedFileSize = fileSizeBytes;
 	initiateRequest(Usecase::FilesDownload);
 }
 
@@ -1760,14 +1762,65 @@ void ODSData::initiateRequest(int usecase) {
 			request.setHeader(QNetworkRequest::ContentLengthHeader, 0);
 		}
 		setRequestheader(request, usecase);
-		mNetworkAccessManager->post(request, mRequestJson);
+		QNetworkReply *reply = mNetworkAccessManager->post(request, mRequestJson);
+		connect(reply, SIGNAL(downloadProgress(qint64, qint64)), this, SLOT(downloadProgress(qint64, qint64)));
 	} else {
-		qDebug() << "POST MultiPart ";
+		qDebug() << "POST MultiPart (we are UPLOADING...)";
 		setRequestheader(request, usecase);
-		mNetworkAccessManager->post(request, mRequestMultipart);
+		QNetworkReply *reply = mNetworkAccessManager->post(request, mRequestMultipart);
+		connect(reply, SIGNAL(uploadProgress(qint64, qint64)), this, SLOT(uploadProgress(qint64, qint64)));
 	}
 	// don't stop the Activity Indicator ! Response will be async
 	// response processed in SLOT requestFinished
+}
+
+// private SLOT
+/**
+ * bytesTotal can be -1 if size not known
+ * ODS Cloud sends no size info, but we can get the info from from datamodel
+ * ignore if both are 0 == no download  (one time emitted)
+ * The download is finished when bytesReceived is equal to bytesTotal.
+ * At that time, bytesTotal will not be -1
+ */
+void ODSData::downloadProgress(qint64 bytesReceived, qint64 bytesTotal){
+	if (bytesReceived == 0 && bytesTotal == 0) {
+		// ignore
+		qDebug() << "IGNORE downloadProgress";
+		return;
+	}
+	if (bytesTotal == -1) {
+		QNetworkReply *reply = (QNetworkReply*) sender();
+		if (reply) {
+			bytesTotal = reply->request().rawHeader("downloadBytes").toInt();
+		}
+		if (bytesTotal <= 0) {
+			// size unknown
+			qDebug() << "Bytes received: " << bytesReceived;
+		} else {
+			// progress
+			qDebug() << "Bytes received: " << bytesReceived << " of (requested) " << bytesTotal;
+		}
+	} else {
+		// progress
+		qDebug() << "Bytes received: " << bytesReceived << " of " << bytesTotal;
+	}
+}
+
+// private SLOT
+/**
+ * bytesTotal can be -1 if size not known
+ * no signal emitted if no upload
+ * The upload is finished when bytesSent is equal to bytesTotal.
+ * At that time, bytesTotal will not be -1
+ */
+void ODSData::uploadProgress(qint64 bytesSent, qint64 bytesTotal) {
+	if (bytesTotal == -1) {
+		// size unknown
+		qDebug() << "Bytes sent: " << bytesSent;
+	} else {
+		// progress
+		qDebug() << "Bytes sent: " << bytesSent << " of " << bytesTotal;
+	}
 }
 
 /*
@@ -1787,6 +1840,7 @@ void ODSData::setRequestheader(QNetworkRequest &request, int usecase) {
 		// responses are coming in async, so I need to know the filename
 		// perhaps also store the destination path - in this case we have a default downloads folder
 		request.setRawHeader("FileName2Download", mFileName.toUtf8());
+		request.setRawHeader("downloadBytes", QByteArray::number(mRequestedFileSize));
 		break;
 	case Usecase::FilesDownloadThumbnail:
 		request.setRawHeader("Accept", "application/octet-stream");

@@ -88,7 +88,7 @@ public:
 	void renameFile(int fileId, QString fileNameOld);
 
 	Q_INVOKABLE
-	void downloadFile(int fileId, QString fileName);
+	void downloadFile(int fileId, QString fileName, qint64 fileSizeBytes);
 
 	Q_INVOKABLE
 	bool fileDownloaded(int fileId, QString fileName);
@@ -120,6 +120,22 @@ private slots:
 	 */
 	void loginInterrupted();
 
+	/**
+	 * bytesTotal can be -1 if size not known
+	 * ignore if both are 0 == no download (one time emitted)
+	 * The download is finished when bytesReceived is equal to bytesTotal.
+	 * At that time, bytesTotal will not be -1
+	 */
+	void downloadProgress(qint64 bytesReceived, qint64 bytesTotal);
+
+	/**
+	 * bytesTotal can be -1 if size not known
+	 * no signal emitted if no upload
+	 * The upload is finished when bytesSent is equal to bytesTotal.
+	 * At that time, bytesTotal will not be -1
+	 */
+	void uploadProgress(qint64 bytesSent, qint64 bytesTotal);
+
 private:
 	bool mDelayedInitDone;
 
@@ -150,6 +166,7 @@ private:
 	int mLanguageNumber;
 	QFile *mFileToUpload;
 	QString mFileName;
+	qint64 mRequestedFileSize;
 	QString mSourceFileName;
 	int mFileId;
 	int mFileLength;

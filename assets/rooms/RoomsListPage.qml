@@ -431,7 +431,7 @@ Page {
                                     title: qsTr("Download") + Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/download81.png"
                                     onTriggered: {
-                                        filesItem.ListItem.view.downloadFile(ListItemData.id, ListItemData.name)
+                                        filesItem.ListItem.view.downloadFile(ListItemData.id, ListItemData.name, ListItemData.fileSize)
                                     }
                                 }
                                 ActionItem {
@@ -498,8 +498,8 @@ Page {
             function pushSubRoomInfoPage(id) {
                 openSubRoomInfoPage(id)
             }
-            function downloadFile(id, name) {
-                odsdata.downloadFile(id, name)
+            function downloadFile(id, name, size) {
+                odsdata.downloadFile(id, name, size)
             }
             function deleteFile(id, name) {
                 odsdata.deleteFile(id, name)
