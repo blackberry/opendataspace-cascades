@@ -1080,12 +1080,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2088"/>
+        <location filename="../src/ODSData.cpp" line="2091"/>
         <source>Unknown Response Usecase</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2103"/>
+        <location filename="../src/ODSData.cpp" line="2106"/>
         <source>No valid result from Server</source>
         <translation type="unfinished"></translation>
     </message>

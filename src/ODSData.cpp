@@ -2040,6 +2040,11 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 		qDebug() << "Users: " << users;
 		break;
 	case Usecase::FilesAll:
+		qDebug() << "got ALL FILES";
+		// settings: YES we have files, so we survive offline-mode
+		mOdsSettings->setTrueFor(SETTINGS_KEY_FILES_AVAILABLE, true);
+		// last files from Date and Time
+		mOdsSettings->saveValueFor(SETTINGS_KEY_FILES_LAST_SYNC,QDateTime::currentDateTime().toString(Qt::ISODate));
 		break;
 	case Usecase::FilesCreateFolder:
 		qDebug() << "Folder successfully Created !";

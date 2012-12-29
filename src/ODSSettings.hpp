@@ -8,6 +8,8 @@
 static const QString SETTINGS_KEY_SERVER_URL = "server/url";
 static const QString SETTINGS_KEY_SERVER_CURRENT_USER = "server/current/user";
 static const QString SETTINGS_KEY_SERVER_CURRENT_PASSWORD = "server/current/password";
+static const QString SETTINGS_KEY_FILES_AVAILABLE = "files/available";
+static const QString SETTINGS_KEY_FILES_LAST_SYNC = "files/last_sync";
 
 // used from QML LoginSheet
 static const QString SETTINGS_KEY_LOGIN_USER = "login/user";
@@ -33,6 +35,9 @@ public:
 	Q_INVOKABLE
 	QString getValueFor(const QString &objectName, const QString &defaultValue);
 
+	Q_INVOKABLE
+	bool isTrueFor(const QString &objectName, const bool &defaultValue);
+
 	/**
 	 * This function sets a value in the QSettings database. This function should to be called
 	 * when a data value has been updated from QML
@@ -42,6 +47,9 @@ public:
 	 */
 	Q_INVOKABLE
 	void saveValueFor(const QString &objectName, const QString &inputValue);
+
+	Q_INVOKABLE
+	void setTrueFor(const QString &objectName, const bool &inputValue);
 
 	Q_INVOKABLE
 	QString getUser();

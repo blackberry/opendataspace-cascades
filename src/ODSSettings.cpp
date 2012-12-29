@@ -28,8 +28,28 @@ QString ODSSettings::getValueFor(const QString &objectName,
 	return settings.value(objectName).toString();
 }
 
+bool ODSSettings::isTrueFor(const QString &objectName,
+		const bool &defaultValue) {
+	QSettings settings;
+
+	// If no value has been saved, return the default value.
+	if (settings.value(objectName).isNull()) {
+		return defaultValue;
+	}
+
+	// Otherwise, return the value stored in the settings object.
+	return settings.value(objectName).toBool();
+}
+
 void ODSSettings::saveValueFor(const QString &objectName,
 		const QString &inputValue) {
+	// A new value is saved to the application settings object.
+	QSettings settings;
+	settings.setValue(objectName, QVariant(inputValue));
+}
+
+void ODSSettings::setTrueFor(const QString &objectName,
+		const bool &inputValue) {
 	// A new value is saved to the application settings object.
 	QSettings settings;
 	settings.setValue(objectName, QVariant(inputValue));
