@@ -148,7 +148,7 @@ void ODSData::loginToServer() {
 	if (!mDelayedInitDone) {
 		delayedInit();
 	}
-	mBaseUrl = mOdsSettings->getValueFor(SETTINGS_KEY_SERVER_URL, "");
+	mBaseUrl = mOdsSettings->getServerUrl();
 	mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);

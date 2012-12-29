@@ -394,8 +394,8 @@ void OpenDataSpace::logoutTriggered() {
 void OpenDataSpace::login(const QString user, const QString pw) {
 	if (!user.isEmpty() && !pw.isEmpty()) {
 		// save values
-		mOdsSettings->saveValueFor("server/current/user", user);
-		mOdsSettings->saveValueFor("server/current/password", pw);
+		mOdsSettings->saveValueFor(SETTINGS_KEY_SERVER_CURRENT_USER, user);
+		mOdsSettings->saveValueFor(SETTINGS_KEY_SERVER_CURRENT_PASSWORD, pw);
 		// do server stuff for logging into dataspace
 		mOdsData->loginToServer();
 	} else {
