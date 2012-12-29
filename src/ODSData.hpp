@@ -114,6 +114,11 @@ private slots:
 	 */
 	void requestFinished(QNetworkReply* reply);
 
+	/**
+	 * handles interrupted login
+	 */
+	void loginInterrupted();
+
 private:
 	bool mDelayedInitDone;
 

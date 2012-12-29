@@ -85,6 +85,8 @@ ODSData::ODSData() {
 	mNodeNames = new QStringList;
 	mRoomGroups = new QMap<int, QString>;
 
+	mProgressDialog = new SystemProgressDialog(this);
+
 	// Displays a warning message if there's an issue connecting the signal
 	// and slot. This is a good practice with signals and slots as it can
 	// be easier to mistype a slot or signal definition
@@ -149,7 +151,10 @@ void ODSData::loginToServer() {
 		delayedInit();
 	}
 	mBaseUrl = mOdsSettings->getServerUrl();
-	mProgressDialog = new SystemProgressDialog(this);
+	// mProgressDialog = new SystemProgressDialog(this);
+	bool ok = connect(mProgressDialog,
+				SIGNAL(finished(bb::system::SystemUiResult::Type)), this,
+				SLOT(loginInterrupted()));
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Sync with OpenDataSpace"));
@@ -185,6 +190,43 @@ bool ODSData::loginValid() {
 		return false;
 	}
 	return true;
+}
+
+// private SLOT
+/**
+ * login finished or interrupted (cancel button)
+ */
+void ODSData::loginInterrupted() {
+	switch (mProgressDialog->result()) {
+		case SystemUiResult::CancelButtonSelection:
+			qDebug() << "login   C A N C E L E D";
+			mProgressDialog->setState(SystemUiProgressState::Error);
+			// now we have to test if we can go on without valid Login
+			if (mOdsSettings->isTrueFor(SETTINGS_KEY_FILES_AVAILABLE, false)) {
+				mDialog = new SystemDialog(this);
+				mDialog->setTitle(tr("Login interrupted"));
+				mDialog->setBody(tr("... using Data synchronized at: ")+mOdsSettings->getValueFor(SETTINGS_KEY_FILES_LAST_SYNC,"?????"));
+				mDialog->cancelButton()->setLabel(QString::null);
+				mDialog->defaultButton()->setLabel(tr("OK"));
+				mDialog->exec();
+				emit loginFinished(true);
+			} else {
+				// sorry no login without data
+				// login sheet will remain
+				emit loginFinished(false);
+			}
+			break;
+		case SystemUiResult::ConfirmButtonSelection:
+			qDebug() << "login   C O N F I R M E D";
+			// nothing to do here
+			return;
+		default:
+			break;
+	}
+	bool ok = disconnect(mProgressDialog,
+			SIGNAL(finished(bb::system::SystemUiResult::Type)), this,
+			SLOT(loginInterrupted()));
+	qDebug() << "disconnected from loginInterrupted: " << ok;
 }
 
 void ODSData::initPathes() {
@@ -622,7 +664,7 @@ void ODSData::syncWithServer() {
 	// start progress
 	// some problems with reusing SystemProgressDialog
 	// so we create a new one, but still sometimes disappears
-	mProgressDialog = new SystemProgressDialog(this);
+	// mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Sync with Server"));
@@ -729,7 +771,7 @@ void ODSData::createLink(int fileId, QString fileName, bool expires, QDate expir
 	// start progress
 	// some problems with reusing SystemProgressDialog
 	// so we create a new one, but still sometimes disappears
-	mProgressDialog = new SystemProgressDialog(this);
+	// mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Create a new link"));
@@ -798,7 +840,7 @@ void ODSData::createFolder(int roomId, QString path) {
 	// start progress
 	// some problems with reusing SystemProgressDialog
 	// so we create a new one, but still sometimes disappears
-	mProgressDialog = new SystemProgressDialog(this);
+	// mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Create a new folder"));
@@ -838,7 +880,7 @@ void ODSData::deleteFolder(int roomId, QString path) {
 	// start progress
 	// some problems with reusing SystemProgressDialog
 	// so we create a new one, but still sometimes disappears
-	mProgressDialog = new SystemProgressDialog(this);
+	// mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Delete a folder"));
@@ -873,7 +915,7 @@ void ODSData::deleteFile(int fileId, QString fileName){
 	// start progress
 	// some problems with reusing SystemProgressDialog
 	// so we create a new one, but still sometimes disappears
-	mProgressDialog = new SystemProgressDialog(this);
+	// mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Delete a file"));
@@ -895,7 +937,7 @@ void ODSData::downloadFile(int fileId, QString fileName) {
 	// start progress
 	// some problems with reusing SystemProgressDialog
 	// so we create a new one, but still sometimes disappears
-	mProgressDialog = new SystemProgressDialog(this);
+	// mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Download a file"));
@@ -936,7 +978,7 @@ void ODSData::renameFile(int fileId,QString fileNameOld){
 	// start progress
 	// some problems with reusing SystemProgressDialog
 	// so we create a new one, but still sometimes disappears
-	mProgressDialog = new SystemProgressDialog(this);
+	// mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Rename a file"));
@@ -989,7 +1031,7 @@ void ODSData::renameFolder(int roomId, QString pathOld, QString folderNameOld) {
 	// start progress
 	// some problems with reusing SystemProgressDialog
 	// so we create a new one, but still sometimes disappears
-	mProgressDialog = new SystemProgressDialog(this);
+	// mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Rename a folder"));
@@ -1067,7 +1109,7 @@ void ODSData::uploadFile(int roomId, QString sourceFileName, QString path, QStri
 	// start progress
 	// some problems with reusing SystemProgressDialog
 	// so we create a new one, but still sometimes disappears
-	mProgressDialog = new SystemProgressDialog(this);
+	// mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Upload a file"));
@@ -1862,6 +1904,10 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 		switch (usecase) {
 		// usersAuth done - go on with users user
 		case Usecase::UsersUser:
+			if (mProgressDialog->state() == SystemUiProgressState::Error) {
+				// login sequence was interrupted nothing more to do
+				break;
+			}
 			mProgressDialog->setProgress(30);
 			mProgressDialog->setBody(
 					tr("Authentication done, getting User..."));
@@ -1870,6 +1916,10 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			break;
 			// auth and users user done, go on with users settings
 		case Usecase::SettingsUser:
+			if (mProgressDialog->state() == SystemUiProgressState::Error) {
+				// login sequence was interrupted nothing more to do
+				break;
+			}
 			mProgressDialog->setProgress(45);
 			mProgressDialog->setBody(tr("User received, getting Settings..."));
 			mProgressDialog->show();
@@ -1877,18 +1927,30 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			break;
 			// auth, users user, settings user done, go on with all files
 		case Usecase::FilesAll:
+			if (mProgressDialog->state() == SystemUiProgressState::Error) {
+				// login sequence was interrupted nothing more to do
+				break;
+			}
 			mProgressDialog->setProgress(60);
 			mProgressDialog->setBody(tr("Settings received, getting Files..."));
 			mProgressDialog->show();
 			initiateRequest(-4);
 			break;
 		case Usecase::UsersAll:
+			if (mProgressDialog->state() == SystemUiProgressState::Error) {
+				// login sequence was interrupted nothing more to do
+				break;
+			}
 			mProgressDialog->setProgress(90);
 			mProgressDialog->setBody(tr("Files received, getting Userlist..."));
 			mProgressDialog->show();
 			initiateRequest(-5);
 			break;
 		case -9999:
+			if (mProgressDialog->state() == SystemUiProgressState::Error) {
+				// login sequence was interrupted nothing more to do
+				break;
+			}
 			mProgressDialog->setProgress(100);
 			mProgressDialog->setState(SystemUiProgressState::Inactive);
 			mProgressDialog->setBody(tr("Synchronization with Server done :)"));
@@ -1896,12 +1958,15 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 			mProgressDialog->confirmButton()->setLabel(
 					tr("Synchronization done"));
 			mProgressDialog->cancelButton()->setLabel(QString::null);
+			disconnect(mProgressDialog,
+							SIGNAL(finished(bb::system::SystemUiResult::Type)), this,
+							SLOT(loginInterrupted()));
 			switch (mProgressDialog->exec()) {
 				case SystemUiResult::CancelButtonSelection:
 					// TODO if canceled
 					break;
 				default:
-					// OK
+					// OK OK OK OK     I N I T   D O N E
 					emit loginFinished(true);
 					break;
 			}
