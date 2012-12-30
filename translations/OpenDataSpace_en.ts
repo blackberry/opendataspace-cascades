@@ -762,19 +762,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="677"/>
-        <location filename="../src/ODSData.cpp" line="777"/>
-        <location filename="../src/ODSData.cpp" line="846"/>
-        <location filename="../src/ODSData.cpp" line="886"/>
-        <location filename="../src/ODSData.cpp" line="921"/>
-        <location filename="../src/ODSData.cpp" line="943"/>
-        <location filename="../src/ODSData.cpp" line="986"/>
-        <location filename="../src/ODSData.cpp" line="1039"/>
-        <location filename="../src/ODSData.cpp" line="1117"/>
-        <source>STOP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/ODSData.cpp" line="680"/>
         <source>get new file structure from server...</source>
         <translation type="unfinished"></translation>
@@ -814,6 +801,19 @@
     <message>
         <location filename="../src/ODSData.cpp" line="212"/>
         <source>... using Data synchronized at: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="677"/>
+        <location filename="../src/ODSData.cpp" line="777"/>
+        <location filename="../src/ODSData.cpp" line="846"/>
+        <location filename="../src/ODSData.cpp" line="886"/>
+        <location filename="../src/ODSData.cpp" line="921"/>
+        <location filename="../src/ODSData.cpp" line="943"/>
+        <location filename="../src/ODSData.cpp" line="986"/>
+        <location filename="../src/ODSData.cpp" line="1039"/>
+        <location filename="../src/ODSData.cpp" line="1117"/>
+        <source>Please Wait</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

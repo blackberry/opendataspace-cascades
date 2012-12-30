@@ -674,7 +674,7 @@ void ODSData::syncWithServer() {
 	mProgressDialog->setTitle(tr("Sync with Server"));
 	mProgressDialog->setStatusMessage(mBaseUrl);
 	mProgressDialog->setIcon(QUrl("asset:///images/download-icon.png"));
-	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
+	mProgressDialog->cancelButton()->setLabel(tr("Please Wait"));
 	mProgressDialog->confirmButton()->setLabel(QString::null);
 	mProgressDialog->setProgress(15);
 	mProgressDialog->setBody(tr("get new file structure from server..."));
@@ -774,7 +774,7 @@ void ODSData::createLink(int fileId, QString fileName, bool expires, QDate expir
 	mProgressDialog->setTitle(tr("Create a new link"));
 	mProgressDialog->setStatusMessage(mBaseUrl);
 	mProgressDialog->setIcon(QUrl("asset:///images/upload-icon.png"));
-	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
+	mProgressDialog->cancelButton()->setLabel(tr("Please Wait"));
 	mProgressDialog->confirmButton()->setLabel(QString::null);
 	mProgressDialog->setProgress(15);
 	mProgressDialog->setBody(tr("send request to server..."));
@@ -843,7 +843,7 @@ void ODSData::createFolder(int roomId, QString path) {
 	mProgressDialog->setTitle(tr("Create a new folder"));
 	mProgressDialog->setStatusMessage(mBaseUrl);
 	mProgressDialog->setIcon(QUrl("asset:///images/upload-icon.png"));
-	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
+	mProgressDialog->cancelButton()->setLabel(tr("Please Wait"));
 	mProgressDialog->confirmButton()->setLabel(QString::null);
 	mProgressDialog->setProgress(15);
 	mProgressDialog->setBody(tr("send request to server..."));
@@ -883,7 +883,7 @@ void ODSData::deleteFolder(int roomId, QString path) {
 	mProgressDialog->setTitle(tr("Delete a folder"));
 	mProgressDialog->setStatusMessage(mBaseUrl);
 	mProgressDialog->setIcon(QUrl("asset:///images/upload-icon.png"));
-	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
+	mProgressDialog->cancelButton()->setLabel(tr("Please Wait"));
 	mProgressDialog->confirmButton()->setLabel(QString::null);
 	mProgressDialog->setProgress(15);
 	mProgressDialog->setBody(tr("send request to server..."));
@@ -918,7 +918,7 @@ void ODSData::deleteFile(int fileId, QString fileName){
 	mProgressDialog->setTitle(tr("Delete a file"));
 	mProgressDialog->setStatusMessage(mBaseUrl);
 	mProgressDialog->setIcon(QUrl("asset:///images/upload-icon.png"));
-	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
+	mProgressDialog->cancelButton()->setLabel(tr("Please Wait"));
 	mProgressDialog->confirmButton()->setLabel(QString::null);
 	mProgressDialog->setProgress(15);
 	mProgressDialog->setBody(tr("send request to server..."));
@@ -940,7 +940,7 @@ void ODSData::downloadFile(int fileId, QString fileName, qint64 fileSizeBytes) {
 	mProgressDialog->setTitle(tr("Download a file"));
 	mProgressDialog->setStatusMessage(mBaseUrl);
 	mProgressDialog->setIcon(QUrl("asset:///images/download-icon.png"));
-	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
+	mProgressDialog->cancelButton()->setLabel(tr("Please Wait"));
 	mProgressDialog->confirmButton()->setLabel(QString::null);
 	mProgressDialog->setProgress(15);
 	mProgressDialog->setBody(tr("send request to server..."));
@@ -983,7 +983,7 @@ void ODSData::renameFile(int fileId,QString fileNameOld){
 	mProgressDialog->setTitle(tr("Rename a file"));
 	mProgressDialog->setStatusMessage(mBaseUrl);
 	mProgressDialog->setIcon(QUrl("asset:///images/upload-icon.png"));
-	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
+	mProgressDialog->cancelButton()->setLabel(tr("Please Wait"));
 	mProgressDialog->confirmButton()->setLabel(QString::null);
 	mProgressDialog->setProgress(15);
 	mProgressDialog->setBody(tr("send request to server..."));
@@ -1036,7 +1036,7 @@ void ODSData::renameFolder(int roomId, QString pathOld, QString folderNameOld) {
 	mProgressDialog->setTitle(tr("Rename a folder"));
 	mProgressDialog->setStatusMessage(mBaseUrl);
 	mProgressDialog->setIcon(QUrl("asset:///images/upload-icon.png"));
-	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
+	mProgressDialog->cancelButton()->setLabel(tr("Please Wait"));
 	mProgressDialog->confirmButton()->setLabel(QString::null);
 	mProgressDialog->setProgress(15);
 	mProgressDialog->setBody(tr("send request to server..."));
@@ -1114,7 +1114,7 @@ void ODSData::uploadFile(int roomId, QString sourceFileName, QString path, QStri
 	mProgressDialog->setTitle(tr("Upload a file"));
 	mProgressDialog->setStatusMessage(mBaseUrl);
 	mProgressDialog->setIcon(QUrl("asset:///images/upload-icon.png"));
-	mProgressDialog->cancelButton()->setLabel(tr("STOP"));
+	mProgressDialog->cancelButton()->setLabel(tr("Please Wait"));
 	mProgressDialog->confirmButton()->setLabel(QString::null);
 	mProgressDialog->setProgress(-1); // 15
 	mProgressDialog->setBody(tr("send file to server..."));
