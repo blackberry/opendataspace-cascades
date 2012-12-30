@@ -1785,25 +1785,44 @@ void ODSData::initiateRequest(int usecase) {
 void ODSData::downloadProgress(qint64 bytesReceived, qint64 bytesTotal){
 	if (bytesReceived == 0 && bytesTotal == 0) {
 		// ignore
-		qDebug() << "IGNORE downloadProgress";
 		return;
 	}
+	qint64 total = bytesTotal;
 	if (bytesTotal == -1) {
+		// size unknown
+		// lets test if we know the size from request raw header
 		QNetworkReply *reply = (QNetworkReply*) sender();
 		if (reply) {
-			bytesTotal = reply->request().rawHeader("downloadBytes").toInt();
+			total = reply->request().rawHeader("downloadBytes").toInt();
 		}
-		if (bytesTotal <= 0) {
-			// size unknown
-			qDebug() << "Bytes received: " << bytesReceived;
-		} else {
-			// progress
-			qDebug() << "Bytes received: " << bytesReceived << " of (requested) " << bytesTotal;
-		}
-	} else {
-		// progress
-		qDebug() << "Bytes received: " << bytesReceived << " of " << bytesTotal;
 	}
+	// TODO - not working well yet test with newer OS again
+	if (total <= 0) {
+		// do nothing yet - no progress was visible
+		// so better ignore
+		return;
+	}
+	// only trying to show progress on downloading files with known size
+	QString b = tr("downloading...");
+	if (total <= 0) {
+		// size unknown
+		// ignored yet - see above TODO
+		b += QString::number(bytesReceived);
+		b += tr(" Bytes ");
+		b += tr(" (Total Size unknown)");
+		mProgressDialog->setProgress(-1);
+	} else {
+		// progress in %
+		int progressValue = bytesReceived*100/total;
+		b += QString::number(progressValue);
+		b += tr("% of total:");
+		b += QString::number(total);
+		b += tr(" Bytes ");
+		mProgressDialog->setProgress(progressValue);
+	}
+	mProgressDialog->setBody(b);
+	mProgressDialog->show();
+	// qDebug() << b;
 }
 
 // private SLOT

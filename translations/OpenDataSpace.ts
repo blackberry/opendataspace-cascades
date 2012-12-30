@@ -801,7 +801,7 @@
     <message>
         <location filename="../src/ODSData.cpp" line="214"/>
         <location filename="../src/ODSData.cpp" line="808"/>
-        <location filename="../src/ODSData.cpp" line="2234"/>
+        <location filename="../src/ODSData.cpp" line="2253"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
@@ -958,83 +958,92 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1817"/>
+        <location filename="../src/ODSData.cpp" line="1806"/>
+        <source>downloading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="1836"/>
         <source>uploading...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1821"/>
-        <location filename="../src/ODSData.cpp" line="1830"/>
+        <location filename="../src/ODSData.cpp" line="1811"/>
+        <location filename="../src/ODSData.cpp" line="1820"/>
+        <location filename="../src/ODSData.cpp" line="1840"/>
+        <location filename="../src/ODSData.cpp" line="1849"/>
         <source> Bytes </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1822"/>
+        <location filename="../src/ODSData.cpp" line="1812"/>
+        <location filename="../src/ODSData.cpp" line="1841"/>
         <source> (Total Size unknown)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1828"/>
+        <location filename="../src/ODSData.cpp" line="1818"/>
+        <location filename="../src/ODSData.cpp" line="1847"/>
         <source>% of total:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1933"/>
+        <location filename="../src/ODSData.cpp" line="1952"/>
         <source>Error: could not write to file: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1942"/>
+        <location filename="../src/ODSData.cpp" line="1961"/>
         <source>wrong content </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1976"/>
+        <location filename="../src/ODSData.cpp" line="1995"/>
         <source>Authentication done, getting User...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1987"/>
+        <location filename="../src/ODSData.cpp" line="2006"/>
         <source>User received, getting Settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1998"/>
+        <location filename="../src/ODSData.cpp" line="2017"/>
         <source>Settings received, getting Files...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2008"/>
+        <location filename="../src/ODSData.cpp" line="2027"/>
         <source>Files received, getting Userlist...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2026"/>
+        <location filename="../src/ODSData.cpp" line="2045"/>
         <source>Synchronization with Server done :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2039"/>
+        <location filename="../src/ODSData.cpp" line="2058"/>
         <source>Work done, sync Filestructure...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2057"/>
+        <location filename="../src/ODSData.cpp" line="2076"/>
         <source>Server request finished :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2108"/>
+        <location filename="../src/ODSData.cpp" line="2127"/>
         <source>Response without Body-part</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2209"/>
+        <location filename="../src/ODSData.cpp" line="2228"/>
         <source>Unknown Response Usecase</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2231"/>
+        <location filename="../src/ODSData.cpp" line="2250"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
