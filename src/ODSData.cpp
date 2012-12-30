@@ -1814,13 +1814,25 @@ void ODSData::downloadProgress(qint64 bytesReceived, qint64 bytesTotal){
  * At that time, bytesTotal will not be -1
  */
 void ODSData::uploadProgress(qint64 bytesSent, qint64 bytesTotal) {
+	QString b = tr("uploading...");
 	if (bytesTotal == -1) {
 		// size unknown
-		qDebug() << "Bytes sent: " << bytesSent;
+		b += QString::number(bytesSent);
+		b += tr(" Bytes ");
+		b += tr(" (Total Size unknown)");
+		mProgressDialog->setProgress(-1);
 	} else {
-		// progress
-		qDebug() << "Bytes sent: " << bytesSent << " of " << bytesTotal;
+		// progress in %
+		int progressValue = bytesSent*100/bytesTotal;
+		b += QString::number(progressValue);
+		b += tr("% of total:");
+		b += QString::number(bytesTotal);
+		b += tr(" Bytes ");
+		mProgressDialog->setProgress(progressValue);
 	}
+	mProgressDialog->setBody(b);
+	mProgressDialog->show();
+	qDebug() << b;
 }
 
 /*
@@ -2204,24 +2216,24 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 
 void ODSData::reportError(QString& errorText) {
 
-	mProgressDialog->setEmoticonsEnabled(false);
-	mProgressDialog->setBody(errorText + " :(");
+	mProgressDialog->setBody(errorText);
 	mProgressDialog->setState(SystemUiProgressState::Error);
-	// switch button
-	mProgressDialog->confirmButton()->setLabel(
-			tr("Error"));
-	mProgressDialog->cancelButton()->setLabel(QString::null);
-	mProgressDialog->setIcon(QUrl("asset:///images/offline-icon.png"));
-	int result = mProgressDialog->exec();
-	switch (result) {
-		case SystemUiResult::CancelButtonSelection:
-			// TODO if canceled
-			break;
-		default:
-			// OK
-			break;
-	}
-	mProgressDialog->setEmoticonsEnabled(true);
+	mProgressDialog->cancel();
+	// progress canceled
+	// use SystemDialog to inform user
+	// works more stable then progress dialog with exec()
+//	mProgressDialog->confirmButton()->setLabel(tr("Error"));
+//	mProgressDialog->cancelButton()->setLabel(QString::null);
+//	mProgressDialog->setIcon(QUrl("asset:///images/offline-icon.png"));
+//	mProgressDialog->exec();
+
+	mDialog = new SystemDialog(this);
+	mDialog->setTitle(tr("Error"));
+	mDialog->setBody(errorText);
+	mDialog->cancelButton()->setLabel(QString::null);
+	mDialog->defaultButton()->setLabel(tr("OK"));
+	mDialog->exec();
+
 }
 
 ODSData::~ODSData() {
