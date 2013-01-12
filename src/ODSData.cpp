@@ -663,6 +663,17 @@ QVariantMap ODSData::readDataFromJson(int usecase) {
 }
 
 void ODSData::syncWithServer() {
+	mDialog->setTitle(tr("Sync with Server"));
+		mDialog->setBody(tr("Synchronizing can take some time.\nStart Sync now ?"));
+		mDialog->cancelButton()->setLabel(tr("No"));
+		mDialog->defaultButton()->setLabel(tr("Synchronize"));
+		int result = mDialog->exec();
+		switch (result) {
+			case SystemUiResult::CancelButtonSelection:
+				return;
+			default:
+				break;
+		}
 	// start progress
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
@@ -880,7 +891,6 @@ void ODSData::deleteFolder(int roomId, QString path) {
 }
 
 void ODSData::deleteFile(int fileId, QString fileName){
-	// mDialog = new SystemDialog(this);
 	mDialog->setTitle(tr("Delete File"));
 	mDialog->setBody(fileName);
 	mDialog->cancelButton()->setLabel(tr("No"));
