@@ -86,6 +86,9 @@ ODSData::ODSData() {
 	mRoomGroups = new QMap<int, QString>;
 
 	mProgressDialog = new SystemProgressDialog(this);
+	mDialog = new SystemDialog(this);
+	mToast = new SystemToast(this);
+	mPrompt = new SystemPrompt(this);
 
 	// Displays a warning message if there's an issue connecting the signal
 	// and slot. This is a good practice with signals and slots as it can
@@ -207,7 +210,7 @@ void ODSData::loginInterrupted() {
 			mProgressDialog->setState(SystemUiProgressState::Error);
 			// now we have to test if we can go on without valid Login
 			if (mOdsSettings->isTrueFor(SETTINGS_KEY_FILES_AVAILABLE, false)) {
-				mDialog = new SystemDialog(this);
+				// mDialog = new SystemDialog(this);
 				mDialog->setTitle(tr("Login interrupted"));
 				mDialog->setBody(tr("... using Data synchronized at: ")+mOdsSettings->getValueFor(SETTINGS_KEY_FILES_LAST_SYNC,"?????"));
 				mDialog->cancelButton()->setLabel(QString::null);
@@ -277,18 +280,12 @@ void ODSData::initErrors() {
 //  M O D E L     F O R    L I S T V I E W S
 void ODSData::initUserModel() {
 
-	// TODO Cascades BUG ???
+	// this bug is fixed, to be safe I continue to use findChildren()
+	// TODO remove later
 	//mUsersDataModel = Application::instance()->scene()->findChild<GroupDataModel*>("userGroupDataModel");
-	//mUsersList = Application::instance()->scene()->findChild<ListView*>("usersList");
 
 	mUsersDataModel = Application::instance()->scene()->findChildren<
 			GroupDataModel*>("userGroupDataModel").last();
-	//mUsersList = Application::instance()->scene()->findChildren<ListView*>(
-	//		"usersList").last();
-
-	//qDebug() << "Listview children: "
-	//		<< Application::instance()->scene()->findChildren<ListView*>(
-	//				"usersList").size();
 	qDebug() << "DataModel children: "
 			<< Application::instance()->scene()->findChildren<GroupDataModel*>(
 					"userGroupDataModel").size();
@@ -365,6 +362,7 @@ void ODSData::initRoomsModel() {
 }
 
 void ODSData::createRoomsModel() {
+	// TODO use findChild() - the bug where not all components were destroyed seems to be fixed
 	mRoomsDataModel = Application::instance()->scene()->findChildren<
 			GroupDataModel*>("roomGroupDataModel").last();
 	if (mRoomsDataModel) {
@@ -666,9 +664,6 @@ QVariantMap ODSData::readDataFromJson(int usecase) {
 
 void ODSData::syncWithServer() {
 	// start progress
-	// some problems with reusing SystemProgressDialog
-	// so we create a new one, but still sometimes disappears
-	// mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Sync with Server"));
@@ -755,7 +750,6 @@ void ODSData::refreshCaches() {
 	mProgressDialog->setState(SystemUiProgressState::Inactive);
 	mProgressDialog->cancel();
 	// display toast instead
-	mToast = new SystemToast(this);
 	mToast->setPosition(SystemUiPosition::BottomCenter);
 	mToast->setBody(tr("Cache refreshed :)"));
 	mToast->setIcon(QUrl("asset:///images/online-icon.png"));
@@ -766,9 +760,6 @@ void ODSData::createLink(int fileId, QString fileName, bool expires, QDate expir
 	qDebug() << "CREATE LINK for file: " << fileId << "and code: "
 				<< code;
 	// start progress
-	// some problems with reusing SystemProgressDialog
-	// so we create a new one, but still sometimes disappears
-	// mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Create a new link"));
@@ -835,9 +826,6 @@ void ODSData::createFolder(int roomId, QString path) {
 	qDebug() << "CREATE FOLDER for groupPk: " << roomId << "and folderpath: "
 			<< path;
 	// start progress
-	// some problems with reusing SystemProgressDialog
-	// so we create a new one, but still sometimes disappears
-	// mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Create a new folder"));
@@ -861,7 +849,6 @@ void ODSData::createFolder(int roomId, QString path) {
  * so user is responsible that folder with content can be deleted
  */
 void ODSData::deleteFolder(int roomId, QString path) {
-	mDialog = new SystemDialog(this);
 	mDialog->setTitle(tr("Delete Folder"));
 	mDialog->setBody(path);
 	mDialog->cancelButton()->setLabel(tr("No"));
@@ -875,9 +862,6 @@ void ODSData::deleteFolder(int roomId, QString path) {
 	qDebug() << "DELETE FOLDER for groupPk: " << roomId << "and folderpath: "
 			<< path;
 	// start progress
-	// some problems with reusing SystemProgressDialog
-	// so we create a new one, but still sometimes disappears
-	// mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Delete a folder"));
@@ -896,7 +880,7 @@ void ODSData::deleteFolder(int roomId, QString path) {
 }
 
 void ODSData::deleteFile(int fileId, QString fileName){
-	mDialog = new SystemDialog(this);
+	// mDialog = new SystemDialog(this);
 	mDialog->setTitle(tr("Delete File"));
 	mDialog->setBody(fileName);
 	mDialog->cancelButton()->setLabel(tr("No"));
@@ -910,9 +894,6 @@ void ODSData::deleteFile(int fileId, QString fileName){
 	}
 	qDebug() << "DELETE File: " << fileId;
 	// start progress
-	// some problems with reusing SystemProgressDialog
-	// so we create a new one, but still sometimes disappears
-	// mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Delete a file"));
@@ -932,9 +913,6 @@ void ODSData::deleteFile(int fileId, QString fileName){
 void ODSData::downloadFile(int fileId, QString fileName, qint64 fileSizeBytes) {
 	qDebug() << "start download File #" << fileId << " " << fileName;
 	// start progress
-	// some problems with reusing SystemProgressDialog
-	// so we create a new one, but still sometimes disappears
-	// mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Download a file"));
@@ -954,7 +932,7 @@ void ODSData::downloadFile(int fileId, QString fileName, qint64 fileSizeBytes) {
 }
 
 void ODSData::renameFile(int fileId,QString fileNameOld){
-	mPrompt = new SystemPrompt(this);
+	// mPrompt = new SystemPrompt(this);
 	mPrompt->setTitle(tr("Rename File"));
 	mPrompt->setBody(tr("Old File: ") + fileNameOld);
 	mPrompt->cancelButton()->setLabel(tr("No"));
@@ -975,9 +953,6 @@ void ODSData::renameFile(int fileId,QString fileNameOld){
 	}
 	qDebug() << "RENAME File: " << fileId << " to " << mFileName;
 	// start progress
-	// some problems with reusing SystemProgressDialog
-	// so we create a new one, but still sometimes disappears
-	// mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Rename a file"));
@@ -997,7 +972,7 @@ void ODSData::renameFile(int fileId,QString fileNameOld){
 void ODSData::renameFolder(int roomId, QString pathOld, QString folderNameOld) {
 	mPath = pathOld;
 	mFileName = folderNameOld;
-	mPrompt = new SystemPrompt(this);
+	// mPrompt = new SystemPrompt(this);
 	mPrompt->setTitle(tr("Rename Folder"));
 	if (pathOld.isEmpty()) {
 		mPrompt->setBody(tr("Old Folder: ") + folderNameOld);
@@ -1028,9 +1003,6 @@ void ODSData::renameFolder(int roomId, QString pathOld, QString folderNameOld) {
 	}
 	qDebug() << "RENAME Folder: " << mPath << " to " << mPathNew;
 	// start progress
-	// some problems with reusing SystemProgressDialog
-	// so we create a new one, but still sometimes disappears
-	// mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Rename a folder"));
@@ -1104,11 +1076,7 @@ void ODSData::simpleUpload(QString sourceFileName){
 
 void ODSData::uploadFile(int roomId, QString sourceFileName, QString path, QString comment) {
 	qDebug() << "start upload File: " << sourceFileName << " path: " << path << "into Room: " << roomId;
-
 	// start progress
-	// some problems with reusing SystemProgressDialog
-	// so we create a new one, but still sometimes disappears
-	// mProgressDialog = new SystemProgressDialog(this);
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Upload a file"));
@@ -2040,7 +2008,7 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 					SLOT(loginInterrupted()));
 			mProgressDialog->cancel();
 			// display toast instead
-			mToast = new SystemToast(this);
+			// mToast = new SystemToast(this);
 			mToast->setPosition(SystemUiPosition::BottomCenter);
 			mToast->setBody(tr("Synchronization with Server done :)"));
 			mToast->setIcon(QUrl("asset:///images/online-icon.png"));
@@ -2071,7 +2039,7 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 					mProgressDialog->setState(SystemUiProgressState::Inactive);
 					mProgressDialog->cancel();
 					// display toast instead
-					mToast = new SystemToast(this);
+					// mToast = new SystemToast(this);
 					mToast->setPosition(SystemUiPosition::BottomCenter);
 					mToast->setBody(tr("Server request finished :)"));
 					mToast->setIcon(QUrl("asset:///images/online-icon.png"));
@@ -2241,12 +2209,6 @@ void ODSData::reportError(QString& errorText) {
 	// progress canceled
 	// use SystemDialog to inform user
 	// works more stable then progress dialog with exec()
-//	mProgressDialog->confirmButton()->setLabel(tr("Error"));
-//	mProgressDialog->cancelButton()->setLabel(QString::null);
-//	mProgressDialog->setIcon(QUrl("asset:///images/offline-icon.png"));
-//	mProgressDialog->exec();
-
-	mDialog = new SystemDialog(this);
 	mDialog->setTitle(tr("Error"));
 	mDialog->setBody(errorText);
 	mDialog->cancelButton()->setLabel(QString::null);

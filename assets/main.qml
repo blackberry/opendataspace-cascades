@@ -34,6 +34,8 @@ TabbedPane {
     property bool asyncLoadingDone: false
     // login property triggered from C++ when login to server done
     property int login: -1
+    // property needed to destroy it later
+    property UsersNavPane createdUsersNavPane
     id: rootNavigationPane
     showTabsOnActionBar: true
     // these objects have to be available on all tabs
@@ -199,7 +201,8 @@ TabbedPane {
     }
     function createUserTabComponent() {
         console.debug("createUserTabComponent")
-        usersTab.content = onDemandComponentUsersNavPane.createObject()
+        createdUsersNavPane = onDemandComponentUsersNavPane.createObject()
+        usersTab.content = createdUsersNavPane
         // Now the component is cvreated and we can do some stuff from C++
         // Now the objects will be found from findChild()
         odsdata.initUserModel()
@@ -207,7 +210,11 @@ TabbedPane {
     function destroyUserTabComponent() {
         if (usersTab.content) {
             console.debug("destroyUserTabComponent")
-            usersTab.content = null
+            // two steps to destroy:
+            // 1st step: reset the content of the Tab
+            usersTab.resetContent();
+            // 2nd step: destroy the created NavPane with all their childs
+            createdUsersNavPane.destroy()
         }
     }
     function addUpload(name) {
