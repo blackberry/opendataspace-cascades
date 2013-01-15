@@ -830,11 +830,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="666"/>
-        <source>Sync with Server ?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/ODSData.cpp" line="667"/>
         <source>Synchronizing can take some time.
 Start Sync now ?</source>
@@ -846,6 +841,7 @@ Start Sync now ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/ODSData.cpp" line="666"/>
         <location filename="../src/ODSData.cpp" line="680"/>
         <source>Sync with Server</source>
         <translation type="unfinished"></translation>

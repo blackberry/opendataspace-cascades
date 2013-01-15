@@ -266,7 +266,6 @@ Page {
         // initialize positioning
         if (OrientationSupport.orientation == UIOrientation.Landscape) {
             relayout(true)
-            startChat()
         }
     }
 }
