@@ -105,6 +105,9 @@ public:
 	Q_INVOKABLE
 	void syncWithServer();
 
+	Q_INVOKABLE
+	void createRoomsDropDown();
+
 Q_SIGNALS:
 	void loginFinished(bool success);
 	void shareLinkWithBBM(const QString& textToShare);

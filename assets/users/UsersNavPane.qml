@@ -64,7 +64,8 @@ NavigationPane {
                 imageSource: "asset:///images/new-user81.png"
                 ActionBar.placement: ActionBarPlacement.InOverflow
                 onTriggered: {
-                    console.debug("now pushing AddUserPage")
+                    console.debug("now clear fields and pushing AddUserPage")
+                    addUserPage.clearFields();
                     push(addUserPage)
                 }
             },

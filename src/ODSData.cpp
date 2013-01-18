@@ -9,6 +9,8 @@
 #include <bb/data/JsonDataAccess>
 #include <bb/cascades/GroupDataModel>
 #include <bb/cascades/AbstractPane>
+#include <bb/cascades/controls/dropdown.h>
+#include <bb/cascades/controls/option.h>
 #include <bb/system/SystemProgressDialog.hpp>
 #include <bb/system/SystemUiButton.hpp>
 #include <bb/system/SystemUiProgressState>
@@ -398,6 +400,31 @@ void ODSData::createRoomsModel() {
 		}
 
 	}
+}
+
+/**
+ * looks for DropDowns named roomsDropDown
+ * clears and inserts the names of Rooms
+ */
+void ODSData::createRoomsDropDown() {
+	DropDown* roomsDropDown = Application::instance()->scene()->findChildren<
+			DropDown*>("roomsDropDown").last();
+	// dropDown->add(Option::create().text("Option 1"));
+	if (roomsDropDown) {
+		qDebug() << "roomsDropDown F O U N D";
+		roomsDropDown->removeAll();
+		int loop = 0;
+		QList<int> keylist = mRoomGroups->keys();
+		for (loop = 0; loop < keylist.size(); ++loop) {
+			roomsDropDown->add(Option::create().text(mRoomGroups->value(keylist.at(loop))).value(keylist.at(loop)));
+		}
+		if (keylist.size() > 1) {
+			roomsDropDown->setSelectedIndex(0);
+		}
+	} else {
+		qDebug() << "roomsDropDown: no children found";
+	}
+
 }
 
 void ODSData::showFilesFromNode(QVariantList nodes, bool isBackNavigation) {

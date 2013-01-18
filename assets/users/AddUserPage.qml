@@ -280,6 +280,7 @@ Page {
                         }
                         DropDown {
                             id: dataRoom
+                            objectName: "roomsDropDown"
                             layoutProperties: StackLayoutProperties {
                                 spaceQuota: 1
                             }
@@ -307,6 +308,7 @@ Page {
         firstNameWithMarker.textFieldText = ""
         lastNameWithMarker.textFieldText = ""
         userTitle.text = ""
+        odsdata.createRoomsDropDown()
     }
     onCreationCompleted: {
         // initialize positioning
@@ -317,7 +319,6 @@ Page {
             userDataContainer.rightPadding = 25
             userDataContainer.leftPadding = 25
         }
-        clearFields();
         console.debug("AddUserPage INIT done")
     }
 }
