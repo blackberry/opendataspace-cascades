@@ -23,14 +23,14 @@
  */
 
 NavigationPane {
-    id: navigationPane
+    id: usersNavigationPane
     attachedObjects: [
         AddUserPage {
             id: addUserPage
             paneProperties: NavigationPaneProperties {
                 backButton: ActionItem {
                     onTriggered: {
-                        navigationPane.pop();
+                        usersNavigationPane.pop();
                     }
                 }
             }
@@ -74,8 +74,7 @@ NavigationPane {
                 imageSource: "asset:///images/ics/1-navigation-refresh81.png"
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {
-                    // TODO call server
-                    workInProgress.show()
+                    odsdata.initUserModel()
                 }
             }
         ]

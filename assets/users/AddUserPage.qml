@@ -19,6 +19,8 @@ import bb.system 1.0
 Page {
     // SIGNAL if user was added
     signal onUserAdded(string name, string displayType)
+    property int salutationIndex: 0
+    property int dataRoomSelectedValue: -1
     id: addUserPage
     resizeBehavior: PageResizeBehavior.Resize
     //
@@ -53,12 +55,7 @@ Page {
                 if (firstNameWithMarker.textFieldText != "" && lastNameWithMarker.textFieldText != "" && emailWithMarker.textFieldText != "") {
                     addUserPage.onUserAdded(firstNameWithMarker.textFieldText + " " + lastNameWithMarker.textFieldText, isAdmin.displayType)
                     dataError.containerVisible = false
-                    //TODO call CPP to send to the cloud
-                    // perhaps an abnimation while uploading
-                    //transport.value = 80
-                    //transport.visible = true
-                    //dummi.play()
-                    clearFields()
+                    addUserToCloud()
                 } else {
                     // animation to demonstrate that there are errors
                     dataError.animation.play()
@@ -176,6 +173,9 @@ Page {
                                 text: qsTr("Mrs.") + Retranslate.onLanguageChanged
                             }
                             selectedIndex: 0
+                            onSelectedIndexChanged: {
+                                salutationIndex = selectedIndex
+                            }
                         }
                     } // end salutationContainer
                     TextField {
@@ -286,15 +286,11 @@ Page {
                             }
                             verticalAlignment: VerticalAlignment.Center
                             Option {
-                                text: "Berlin"
+                                text: "n/a"
                             }
-                            Option {
-                                text: "Offers"
+                            onSelectedValueChanged: {
+                                dataRoomSelectedValue = selectedValue
                             }
-                            Option {
-                                text: "Orders"
-                            }
-                            selectedIndex: 0
                         }
                     } // end dataRoomContainer
 
@@ -308,7 +304,22 @@ Page {
         firstNameWithMarker.textFieldText = ""
         lastNameWithMarker.textFieldText = ""
         userTitle.text = ""
+        salutationIndex = 0
+        dataRoomSelectedValue = -1
         odsdata.createRoomsDropDown()
+    }
+    function addUserToCloud() {
+        
+        odsdata.addUser([
+                emailWithMarker.textFieldText,
+                salutationIndex,
+                userTitle.text,
+                firstNameWithMarker.textFieldText,
+                lastNameWithMarker.textFieldText,
+                isAdmin.checked,
+                dataRoomSelectedValue
+            ])
+        usersNavigationPane.pop()
     }
     onCreationCompleted: {
         // initialize positioning

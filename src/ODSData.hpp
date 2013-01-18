@@ -43,6 +43,9 @@ public:
 	void showNextNode(QVariantList nodes, QString name);
 
 	Q_INVOKABLE
+	void addUser(QVariantList userdata);
+
+	Q_INVOKABLE
 	bool showPreviousNode();
 
 	Q_INVOKABLE

@@ -358,6 +358,8 @@ void ODSData::initUserModel() {
 
 }
 
+// TODO syncUsermodelWithServer
+
 void ODSData::initRoomsModel() {
 	createRoomsModel();
 	resetLevel();
@@ -417,9 +419,6 @@ void ODSData::createRoomsDropDown() {
 		QList<int> keylist = mRoomGroups->keys();
 		for (loop = 0; loop < keylist.size(); ++loop) {
 			roomsDropDown->add(Option::create().text(mRoomGroups->value(keylist.at(loop))).value(keylist.at(loop)));
-		}
-		if (keylist.size() > 1) {
-			roomsDropDown->setSelectedIndex(0);
 		}
 	} else {
 		qDebug() << "roomsDropDown: no children found";
@@ -879,6 +878,22 @@ void ODSData::createFolder(int roomId, QString path) {
 	mPath = path.trimmed();
 	initiateRequest(Usecase::FilesCreateFolder);
 	// if request went well: reloadFiles is called
+}
+
+/**
+ * simple interface to be filled from QML with data
+ * sending Array of strings or int or bool from QML
+ * 	0	 emailWithMarker.textFieldText,
+ *  1    salutation.selectedIndex,
+ *  2    userTitle.text,
+ *  3    firstNameWithMarker.textFieldText,
+ *  4    lastNameWithMarker.textFieldText,
+ *  5    isAdmin.checked,
+ *  6    dataRoom.selectecOption.value
+ */
+void ODSData::addUser(QVariantList userData) {
+	qDebug() << "ADD User: " << userData.size() << " 1:" << userData.at(0).toString() << " 3:" << userData.at(3).toString() << " 5:" << userData.at(5).toBool();
+	// TODO send to server
 }
 
 /**

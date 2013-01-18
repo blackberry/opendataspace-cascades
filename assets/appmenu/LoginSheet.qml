@@ -45,7 +45,7 @@ Page {
             id: credentialsPrompt
             modality: SystemUiModality.Application
             title: qsTr("ODS LogIn")
-            body: qsTr("Enter Username and Password to log into your OpenDataSpace Cloud Account") + Retranslate.onLanguageChanged
+            body: qsTr("Enter Username and Password to log into your OpenDataSpace Cloud Account. If you don't have an Account you can register for free: http://bb.ods.io") + Retranslate.onLanguageChanged
             includeShowPassword: true
             includeRememberMe: true
             confirmButton.label: qsTr("Login now") + Retranslate.onLanguageChanged
