@@ -19,6 +19,7 @@
 #include "ODSData.hpp"
 #include "ODSUser.hpp"
 #include "ODSSettings.hpp"
+#include "Singleton.hpp"
 
 #include <bb/system/SystemCredentialsPrompt>
 #include <bb/system/SystemDialog>
@@ -180,7 +181,8 @@ OpenDataSpace::OpenDataSpace(QObject *parent) :
 	// doesn't matter which root object - we always refer as 'ods' to this
 	qml->setContextProperty("ods", this);
 	// access to the settings
-	mOdsSettings = new ODSSettings();
+	//mOdsSettings = new ODSSettings();
+	mOdsSettings = &Singleton<ODSSettings>::Instance();
 	qml->setContextProperty("odssettings", mOdsSettings);
 	// we need also access to the data
 	mOdsData = new ODSData();
@@ -296,9 +298,9 @@ void OpenDataSpace::translateMenuItems() {
 	if (mFeedbackItem) {
 		mFeedbackItem->setTitle(tr("Feedback"));
 	}
-	if (mLogoutItem) {
-		mLogoutItem->setTitle(tr("Logout"));
-	}
+//	if (mLogoutItem) {
+//		mLogoutItem->setTitle(tr("Logout"));
+//	}
 	if (mSettingsItem) {
 		mSettingsItem->setTitle(tr("Settings"));
 	}
@@ -347,19 +349,19 @@ Menu* OpenDataSpace::createApplicationMenu() {
 	mFeedbackItem->setImageSource(
 			QString("asset:///images/ics/5-content-email81.png"));
 	// LOGOUT will do a LogOut and jump back to HomeScreen and open the LogIn Sheet
-	mLogoutItem = new ActionItem();
-	mLogoutItem->setImageSource(
-			QString("asset:///images/ics/10-device-access-accounts81.png"));
+//	mLogoutItem = new ActionItem();
+//	mLogoutItem->setImageSource(
+//			QString("asset:///images/ics/10-device-access-accounts81.png"));
 	// SETTINGS will open the User Settings
 	mSettingsItem = new SettingsActionItem();
 	// set the translated Titles
 	translateMenuItems();
 	// plug it all together
-	Menu* menu = Menu::create().addAction(mFeedbackItem).addAction(
-			mLogoutItem).help(mHelpItem).settings(mSettingsItem);
+	// TODO .addAction(mLogoutItem) need some more logic for testdrive
+	Menu* menu = Menu::create().addAction(mFeedbackItem).help(mHelpItem).settings(mSettingsItem);
 	// Connect SIGNALS and SLOTS
-	QObject::connect(mLogoutItem, SIGNAL(triggered()), this,
-			SLOT(logoutTriggered()));
+//	QObject::connect(mLogoutItem, SIGNAL(triggered()), this,
+//			SLOT(logoutTriggered()));
 	QObject::connect(mFeedbackItem, SIGNAL(triggered()), this,
 			SLOT(feedbackTriggered()));
 	QObject::connect(mHelpItem, SIGNAL(triggered()), this,
@@ -378,6 +380,8 @@ void OpenDataSpace::localeChanged() {
 
 // handles SLOT from logoutItem
 void OpenDataSpace::logoutTriggered() {
+	mOdsSettings->setTestdrive(false);
+	mOdsData->resetUserFromLogout();
 	Sheet *s = Application::instance()->scene()->findChild<Sheet*>(
 			"loginSheet");
 	if (s) {
@@ -393,7 +397,7 @@ void OpenDataSpace::logoutTriggered() {
  */
 void OpenDataSpace::login(const QString user, const QString pw) {
 	if (!user.isEmpty() && !pw.isEmpty()) {
-		// save values
+		// save values ?
 		mOdsSettings->saveValueFor(SETTINGS_KEY_SERVER_CURRENT_USER, user);
 		mOdsSettings->saveValueFor(SETTINGS_KEY_SERVER_CURRENT_PASSWORD, pw);
 		// do server stuff for logging into dataspace

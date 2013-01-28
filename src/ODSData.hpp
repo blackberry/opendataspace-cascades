@@ -20,6 +20,7 @@ public:
 	virtual ~ODSData();
 
 	void loginToServer();
+	void resetUserFromLogout();
 
 	Q_INVOKABLE
 	bool loginValid();
@@ -211,6 +212,7 @@ private:
 	void reloadFiles();
 	void createRoomsModel();
 	void shareLink();
+
 
 	/**
 	 * some parts of initialization will be done delayed

@@ -63,6 +63,7 @@ Page {
                 if (result == SystemUiResult.ConfirmButtonSelection) {
                     console.debug("ConfirmButtonSelection done from SystemCredentialsPrompt");
                     // save settings if remember me was checked
+                    odssettings.setTestdrive(false)
                     if (rememberMeSelection()) {
                         odssettings.setUser(usernameEntry())
                         odssettings.setPassword(passwordEntry())
@@ -115,22 +116,52 @@ Page {
                 layout: StackLayout {
                     orientation: LayoutOrientation.TopToBottom
                 }
-                Button {
-                    text: qsTr("Login") + Retranslate.onLanguageChanged
-                    preferredWidth: 400.0
-                    onClicked: {
-                        // set last values from settings
-                        credentialsPrompt.usernameField.defaultText = odssettings.getUser()
-                        credentialsPrompt.passwordField.defaultText = odssettings.getPassword()
-                        credentialsPrompt.show()
+                Container {
+                    layout: StackLayout {
+                        orientation: LayoutOrientation.LeftToRight
+                    }
+                    Button {
+                        text: qsTr("Login") + Retranslate.onLanguageChanged
+                        preferredWidth: 320
+                        onClicked: {
+                            // set last values from settings ?
+                            odssettings.setTestdrive(false)
+                            credentialsPrompt.usernameField.defaultText = odssettings.getUser()
+                            credentialsPrompt.passwordField.defaultText = odssettings.getPassword()
+                            credentialsPrompt.show()
+                        }
+                    }
+                    Button {
+                        text: qsTr("Testdrive") + Retranslate.onLanguageChanged
+                        preferredWidth: 320
+                        visible: ods.isEmbedded() == false
+                        onClicked: {
+                            //
+                            odssettings.setTestdrive(true)
+                            ods.login(odssettings.getUser(), odssettings.getPassword())
+                        }
                     }
                 }
-                Button {
-                    text: qsTr("Preferences") + Retranslate.onLanguageChanged
-                    preferredWidth: 400.0
-                    visible: ods.isEmbedded() == false
-                    onClicked: {
-                        rootNavigationPane.openPreferences()
+                Container {
+                    layout: StackLayout {
+                        orientation: LayoutOrientation.LeftToRight
+                    }
+                    Button {
+                        text: qsTr("Preferences") + Retranslate.onLanguageChanged
+                        preferredWidth: 320
+                        visible: ods.isEmbedded() == false
+                        onClicked: {
+                            rootNavigationPane.openPreferences()
+                        }
+                    }
+                    Button {
+                        text: qsTr("Register") + Retranslate.onLanguageChanged
+                        preferredWidth: 320
+                        visible: ods.isEmbedded() == false
+                        onClicked: {
+                            //
+                            ods.invokeBrowser("http://ods.io")
+                        }
                     }
                 }
             }
@@ -150,5 +181,4 @@ Page {
         // initialize positioning
         reLayout(OrientationSupport.orientation)
     }
-
 }

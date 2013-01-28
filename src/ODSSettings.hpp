@@ -4,6 +4,7 @@
 
 #include <qobject.h>
 #include <bb/cascades/Application>
+#include <QSettings>
 
 static const QString SETTINGS_KEY_SERVER_URL = "server/url";
 static const QString SETTINGS_KEY_SERVER_CURRENT_USER = "server/current/user";
@@ -14,6 +15,8 @@ static const QString SETTINGS_KEY_FILES_LAST_SYNC = "files/last_sync";
 // used from QML LoginSheet
 static const QString SETTINGS_KEY_LOGIN_USER = "login/user";
 static const QString SETTINGS_KEY_LOGIN_PASSWORD = "login/password";
+
+static const QString SETTINGS_KEY_TESTDRIVE = "login/testdrive";
 
 
 class ODSSettings: public QObject {
@@ -68,6 +71,16 @@ public:
 
 	Q_INVOKABLE
 	void setServerUrl(const QString &url);
+
+	Q_INVOKABLE
+	void setTestdrive(const bool testdrive);
+
+	Q_INVOKABLE
+	bool testdrive();
+
+private:
+	QSettings mSettings;
+	bool mTestdriving;
 
 };
 

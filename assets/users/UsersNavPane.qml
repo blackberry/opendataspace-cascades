@@ -13,8 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */import bb.cascades 1.0
- import org.opendataspace.user 1.0
- import bb.system 1.0
+import org.opendataspace.user 1.0
+import bb.system 1.0
 
 /*
  * 
@@ -62,6 +62,7 @@ NavigationPane {
             ActionItem {
                 title: qsTr("New User") + Retranslate.onLanguageChanged
                 imageSource: "asset:///images/new-user81.png"
+                enabled: !odssettings.testdrive()
                 ActionBar.placement: ActionBarPlacement.InOverflow
                 onTriggered: {
                     console.debug("now clear fields and pushing AddUserPage")
@@ -206,7 +207,6 @@ NavigationPane {
                     }
                     return "header";
                 }
-
                 onCreationCompleted: {
                 }
             } // end ListView

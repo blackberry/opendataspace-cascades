@@ -4,6 +4,7 @@
 #include "ODSSubRoom.hpp"
 #include "ODSFolder.hpp"
 #include "ODSFile.hpp"
+#include "Singleton.hpp"
 #include <QUrl>
 #include <bb/cascades/Application>
 #include <bb/data/JsonDataAccess>
@@ -78,7 +79,7 @@ ODSData::ODSData() {
 			SLOT(requestFinished(QNetworkReply*)));
 
 	// access to the settings
-	mOdsSettings = new ODSSettings();
+	mOdsSettings = &Singleton<ODSSettings>::Instance(); // new ODSSettings();
 	mCustomerNumber = -1;
 	mFilesLevel = -1;
 	mFolderLevel = -1;
@@ -165,7 +166,7 @@ void ODSData::loginToServer() {
 	mProgressDialog->setTitle(tr("Sync with OpenDataSpace"));
 	mProgressDialog->setStatusMessage(mBaseUrl);
 	mProgressDialog->setIcon(QUrl("asset:///images/download-icon.png"));
-	mProgressDialog->cancelButton()->setLabel(tr("Stop synchronization"));
+	mProgressDialog->cancelButton()->setLabel(tr("Please wait"));
 	mProgressDialog->confirmButton()->setLabel(QString::null);
 	mProgressDialog->setProgress(15);
 	mProgressDialog->setBody(tr("connect Server, authenticate user..."));
@@ -177,6 +178,19 @@ void ODSData::loginToServer() {
 	// auth-user-settings-files
 	initiateRequest(-1);
 
+}
+
+void ODSData::resetUserFromLogout(){
+	mCustomerNumber = -1;
+	mUser = "";
+	mPassword = "";
+	mFilesLevel = -1;
+	mFolderLevel = -1;
+	mRooms = new QVariantList;
+	mCache = new QVariantList;
+	mNodeNames = new QStringList;
+	mRoomGroups = new QMap<int, QString>;
+	mToken = "";
 }
 
 bool ODSData::loginValid() {
@@ -252,7 +266,7 @@ void ODSData::initPathes() {
 }
 
 void ODSData::initErrors() {
-	mResponseErrorTexts << tr("Code 0: No Error")
+	mResponseErrorTexts << tr("Code 0: Unknown User, are you registered ? You can try out using Testdrive")
 			<< tr("Code 1 JSON Error: Server was unable to parse the request.")
 			<< tr(
 					"Code 2 Invalid Credentials: Invalid user or password specified during login.")
@@ -285,6 +299,8 @@ void ODSData::initUserModel() {
 	// this bug is fixed, to be safe I continue to use findChildren()
 	// TODO remove later
 	//mUsersDataModel = Application::instance()->scene()->findChild<GroupDataModel*>("userGroupDataModel");
+	mUser = mOdsSettings->getValueFor(SETTINGS_KEY_SERVER_CURRENT_USER, "");
+	mPassword = mOdsSettings->getValueFor(SETTINGS_KEY_SERVER_CURRENT_PASSWORD, "");
 
 	mUsersDataModel = Application::instance()->scene()->findChildren<
 			GroupDataModel*>("userGroupDataModel").last();
@@ -366,6 +382,8 @@ void ODSData::initRoomsModel() {
 }
 
 void ODSData::createRoomsModel() {
+	mUser = mOdsSettings->getValueFor(SETTINGS_KEY_SERVER_CURRENT_USER, "");
+	mPassword = mOdsSettings->getValueFor(SETTINGS_KEY_SERVER_CURRENT_PASSWORD, "");
 	// TODO use findChild() - the bug where not all components were destroyed seems to be fixed
 	mRoomsDataModel = Application::instance()->scene()->findChildren<
 			GroupDataModel*>("roomGroupDataModel").last();
@@ -2156,11 +2174,9 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 		} else {
 			qDebug() << "STOP Process response. we got an error:"
 					<< errorString;
-			if (errorString.toInt()) {
-				int i = errorString.toInt();
-				if (i < mResponseErrorTexts.size()) {
-					errorString = mResponseErrorTexts.at(i);
-				}
+			int i = errorString.toInt();
+			if (i < mResponseErrorTexts.size()) {
+				errorString = mResponseErrorTexts.at(i);
 			}
 			reportError(errorString);
 			// S T O P
