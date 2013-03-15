@@ -159,8 +159,8 @@ void ODSData::loginToServer() {
 	mBaseUrl = mOdsSettings->getServerUrl();
 	// mProgressDialog = new SystemProgressDialog(this);
 	bool ok = connect(mProgressDialog,
-				SIGNAL(finished(bb::system::SystemUiResult::Type)), this,
-				SLOT(loginInterrupted()));
+			SIGNAL(finished(bb::system::SystemUiResult::Type)), this,
+			SLOT(loginInterrupted()));
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Sync with OpenDataSpace"));
@@ -173,14 +173,15 @@ void ODSData::loginToServer() {
 	mProgressDialog->show();
 
 	mUser = mOdsSettings->getValueFor(SETTINGS_KEY_SERVER_CURRENT_USER, "");
-	mPassword = mOdsSettings->getValueFor(SETTINGS_KEY_SERVER_CURRENT_PASSWORD, "");
+	mPassword = mOdsSettings->getValueFor(SETTINGS_KEY_SERVER_CURRENT_PASSWORD,
+			"");
 
 	// auth-user-settings-files
 	initiateRequest(-1);
 
 }
 
-void ODSData::resetUserFromLogout(){
+void ODSData::resetUserFromLogout() {
 	mCustomerNumber = -1;
 	mUser = "";
 	mPassword = "";
@@ -217,34 +218,37 @@ bool ODSData::loginValid() {
  */
 void ODSData::loginInterrupted() {
 	switch (mProgressDialog->result()) {
-		case SystemUiResult::CancelButtonSelection:
-			qDebug() << "login   C A N C E L E D";
-			if (mProgressDialog->state() == SystemUiProgressState::Inactive) {
-				// nothing to do
-				return;
-			}
-			mProgressDialog->setState(SystemUiProgressState::Error);
-			// now we have to test if we can go on without valid Login
-			if (mOdsSettings->isTrueFor(SETTINGS_KEY_FILES_AVAILABLE, false)) {
-				// mDialog = new SystemDialog(this);
-				mDialog->setTitle(tr("Login interrupted"));
-				mDialog->setBody(tr("... using Data synchronized at: ")+mOdsSettings->getValueFor(SETTINGS_KEY_FILES_LAST_SYNC,"?????"));
-				mDialog->cancelButton()->setLabel(QString::null);
-				mDialog->defaultButton()->setLabel(tr("OK"));
-				mDialog->exec();
-				emit loginFinished(true);
-			} else {
-				// sorry no login without data
-				// login sheet will remain
-				emit loginFinished(false);
-			}
-			break;
-		case SystemUiResult::ConfirmButtonSelection:
-			qDebug() << "login   C O N F I R M E D";
-			// nothing to do here
+	case SystemUiResult::CancelButtonSelection:
+		qDebug() << "login   C A N C E L E D";
+		if (mProgressDialog->state() == SystemUiProgressState::Inactive) {
+			// nothing to do
 			return;
-		default:
-			break;
+		}
+		mProgressDialog->setState(SystemUiProgressState::Error);
+		// now we have to test if we can go on without valid Login
+		if (mOdsSettings->isTrueFor(SETTINGS_KEY_FILES_AVAILABLE, false)) {
+			// mDialog = new SystemDialog(this);
+			mDialog->setTitle(tr("Login interrupted"));
+			mDialog->setBody(
+					tr("... using Data synchronized at: ")
+							+ mOdsSettings->getValueFor(
+									SETTINGS_KEY_FILES_LAST_SYNC, "?????"));
+			mDialog->cancelButton()->setLabel(QString::null);
+			mDialog->defaultButton()->setLabel(tr("OK"));
+			mDialog->exec();
+			emit loginFinished(true);
+		} else {
+			// sorry no login without data
+			// login sheet will remain
+			emit loginFinished(false);
+		}
+		break;
+	case SystemUiResult::ConfirmButtonSelection:
+		qDebug() << "login   C O N F I R M E D";
+		// nothing to do here
+		return;
+	default:
+		break;
 	}
 	bool ok = disconnect(mProgressDialog,
 			SIGNAL(finished(bb::system::SystemUiResult::Type)), this,
@@ -266,7 +270,9 @@ void ODSData::initPathes() {
 }
 
 void ODSData::initErrors() {
-	mResponseErrorTexts << tr("Code 0: Unknown User, are you registered ? You can try out using Testdrive")
+	mResponseErrorTexts
+			<< tr(
+					"Code 0: Unknown User, are you registered ? You can try out using Testdrive")
 			<< tr("Code 1 JSON Error: Server was unable to parse the request.")
 			<< tr(
 					"Code 2 Invalid Credentials: Invalid user or password specified during login.")
@@ -300,7 +306,8 @@ void ODSData::initUserModel() {
 	// TODO remove later
 	//mUsersDataModel = Application::instance()->scene()->findChild<GroupDataModel*>("userGroupDataModel");
 	mUser = mOdsSettings->getValueFor(SETTINGS_KEY_SERVER_CURRENT_USER, "");
-	mPassword = mOdsSettings->getValueFor(SETTINGS_KEY_SERVER_CURRENT_PASSWORD, "");
+	mPassword = mOdsSettings->getValueFor(SETTINGS_KEY_SERVER_CURRENT_PASSWORD,
+			"");
 
 	mUsersDataModel = Application::instance()->scene()->findChildren<
 			GroupDataModel*>("userGroupDataModel").last();
@@ -383,7 +390,8 @@ void ODSData::initRoomsModel() {
 
 void ODSData::createRoomsModel() {
 	mUser = mOdsSettings->getValueFor(SETTINGS_KEY_SERVER_CURRENT_USER, "");
-	mPassword = mOdsSettings->getValueFor(SETTINGS_KEY_SERVER_CURRENT_PASSWORD, "");
+	mPassword = mOdsSettings->getValueFor(SETTINGS_KEY_SERVER_CURRENT_PASSWORD,
+			"");
 	// TODO use findChild() - the bug where not all components were destroyed seems to be fixed
 	mRoomsDataModel = Application::instance()->scene()->findChildren<
 			GroupDataModel*>("roomGroupDataModel").last();
@@ -436,7 +444,9 @@ void ODSData::createRoomsDropDown() {
 		int loop = 0;
 		QList<int> keylist = mRoomGroups->keys();
 		for (loop = 0; loop < keylist.size(); ++loop) {
-			roomsDropDown->add(Option::create().text(mRoomGroups->value(keylist.at(loop))).value(keylist.at(loop)));
+			roomsDropDown->add(
+					Option::create().text(mRoomGroups->value(keylist.at(loop))).value(
+							keylist.at(loop)));
 		}
 	} else {
 		qDebug() << "roomsDropDown: no children found";
@@ -708,16 +718,16 @@ QVariantMap ODSData::readDataFromJson(int usecase) {
 
 void ODSData::syncWithServer() {
 	mDialog->setTitle(tr("Sync with Server"));
-		mDialog->setBody(tr("Synchronizing can take some time.\nStart Sync now ?"));
-		mDialog->cancelButton()->setLabel(tr("No"));
-		mDialog->defaultButton()->setLabel(tr("Synchronize"));
-		int result = mDialog->exec();
-		switch (result) {
-			case SystemUiResult::CancelButtonSelection:
-				return;
-			default:
-				break;
-		}
+	mDialog->setBody(tr("Synchronizing can take some time.\nStart Sync now ?"));
+	mDialog->cancelButton()->setLabel(tr("No"));
+	mDialog->defaultButton()->setLabel(tr("Synchronize"));
+	int result = mDialog->exec();
+	switch (result) {
+	case SystemUiResult::CancelButtonSelection:
+		return;
+	default:
+		break;
+	}
 	// start progress
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
@@ -789,11 +799,13 @@ void ODSData::refreshCaches() {
 					continue;
 				}
 				if (map.value(isGroupValue, 42).toInt() == 0) {
-					mFilesDataModel->insert(new ODSFolder(map, folderPath(false)));
+					mFilesDataModel->insert(
+							new ODSFolder(map, folderPath(false)));
 					continue;
 				}
 				if (map.value(typeValue, 42).toInt() == 2) {
-					mFilesDataModel->insert(new ODSFile(map, folderPath(false)));
+					mFilesDataModel->insert(
+							new ODSFile(map, folderPath(false)));
 					continue;
 				}
 				qDebug() << "unknown ItemType from nodes list";
@@ -811,9 +823,10 @@ void ODSData::refreshCaches() {
 	mToast->show();
 }
 
-void ODSData::createLink(int fileId, QString fileName, bool expires, QDate expiration, QString password, QString code, bool notice) {
-	qDebug() << "CREATE LINK for file: " << fileId << "and code: "
-				<< code;
+void ODSData::createLink(int fileId, QString fileName, bool expires,
+		QDate expiration, QString password, QString code, bool notice,
+		bool shareViaMail) {
+	qDebug() << "CREATE LINK for file: " << fileId << "and code: " << code;
 	// start progress
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
@@ -840,11 +853,12 @@ void ODSData::createLink(int fileId, QString fileName, bool expires, QDate expir
 	} else {
 		mNotice = "";
 	}
+	mShareViaMail = shareViaMail;
 	initiateRequest(Usecase::FilesCreateLink);
 	// if request went well: reloadFiles is called
 }
 
-void ODSData::shareLink(){
+void ODSData::shareLink() {
 	qDebug() << "shareLink found";
 	// finished // TODO
 	mProgressDialog->setProgress(95);
@@ -857,13 +871,41 @@ void ODSData::shareLink(){
 	mProgressDialog->show();
 	QString message;
 	QVariantMap bodyMap;
-	message = tr("Please download this file from secure OpenDataSpace Server: ");
+	message = tr(
+			"Please download this file from secure OpenDataSpace Server: ");
 	bodyMap = readDataFromJson(Usecase::FilesCreateLink);
 	if (!bodyMap.isEmpty()) {
 		message += bodyMap.value(linkValue, "").toString();
 		message += bodyMap.value(linkCodeValue, "").toString();
 		mProgressDialog->cancel();
 		emit shareLinkWithBBM(message);
+	} else {
+		message = tr("sorry - we got no Link to share");
+		reportError(message);
+	}
+}
+
+void ODSData::mailLink() {
+	qDebug() << "mailLink found";
+	// finished // TODO
+	mProgressDialog->setProgress(95);
+	mProgressDialog->setState(SystemUiProgressState::Inactive);
+	mProgressDialog->setBody(tr("got Link to share with Mail)"));
+	mProgressDialog->setIcon(QUrl("asset:///images/online-icon.png"));
+	mProgressDialog->confirmButton()->setLabel(tr("OK"));
+	mProgressDialog->cancelButton()->setLabel(QString::null);
+	// wait for USER
+	mProgressDialog->show();
+	QString message;
+	QVariantMap bodyMap;
+	message = tr(
+			"Please download this file from secure OpenDataSpace Server: ");
+	bodyMap = readDataFromJson(Usecase::FilesCreateLink);
+	if (!bodyMap.isEmpty()) {
+		message += bodyMap.value(linkValue, "").toString();
+		message += bodyMap.value(linkCodeValue, "").toString();
+		mProgressDialog->cancel();
+		emit shareLinkWithMail(message);
 	} else {
 		message = tr("sorry - we got no Link to share");
 		reportError(message);
@@ -910,7 +952,9 @@ void ODSData::createFolder(int roomId, QString path) {
  *  6    dataRoom.selectecOption.value
  */
 void ODSData::addUser(QVariantList userData) {
-	qDebug() << "ADD User: " << userData.size() << " 1:" << userData.at(0).toString() << " 3:" << userData.at(3).toString() << " 5:" << userData.at(5).toBool();
+	qDebug() << "ADD User: " << userData.size() << " 1:"
+			<< userData.at(0).toString() << " 3:" << userData.at(3).toString()
+			<< " 5:" << userData.at(5).toBool();
 	// TODO send to server
 }
 
@@ -925,10 +969,10 @@ void ODSData::deleteFolder(int roomId, QString path) {
 	mDialog->cancelButton()->setLabel(tr("No"));
 	mDialog->defaultButton()->setLabel(tr("Yes: Delete"));
 	switch (mDialog->exec()) {
-		case SystemUiResult::CancelButtonSelection:
-			return;
-		default:
-			break;
+	case SystemUiResult::CancelButtonSelection:
+		return;
+	default:
+		break;
 	}
 	qDebug() << "DELETE FOLDER for groupPk: " << roomId << "and folderpath: "
 			<< path;
@@ -950,17 +994,17 @@ void ODSData::deleteFolder(int roomId, QString path) {
 	// if request went well: reloadFiles is called
 }
 
-void ODSData::deleteFile(int fileId, QString fileName){
+void ODSData::deleteFile(int fileId, QString fileName) {
 	mDialog->setTitle(tr("Delete File"));
 	mDialog->setBody(fileName);
 	mDialog->cancelButton()->setLabel(tr("No"));
 	mDialog->defaultButton()->setLabel(tr("Yes: Delete"));
 	int result = mDialog->exec();
 	switch (result) {
-		case SystemUiResult::CancelButtonSelection:
-			return;
-		default:
-			break;
+	case SystemUiResult::CancelButtonSelection:
+		return;
+	default:
+		break;
 	}
 	qDebug() << "DELETE File: " << fileId;
 	// start progress
@@ -1001,7 +1045,7 @@ void ODSData::downloadFile(int fileId, QString fileName, qint64 fileSizeBytes) {
 	initiateRequest(Usecase::FilesDownload);
 }
 
-void ODSData::renameFile(int fileId,QString fileNameOld){
+void ODSData::renameFile(int fileId, QString fileNameOld) {
 	// mPrompt = new SystemPrompt(this);
 	mPrompt->setTitle(tr("Rename File"));
 	mPrompt->setBody(tr("Old File: ") + fileNameOld);
@@ -1010,10 +1054,10 @@ void ODSData::renameFile(int fileId,QString fileNameOld){
 	mPrompt->inputField()->setEmptyText(tr("the new Filename"));
 	int result = mPrompt->exec();
 	switch (result) {
-		case SystemUiResult::CancelButtonSelection:
-			return;
-		default:
-			break;
+	case SystemUiResult::CancelButtonSelection:
+		return;
+	default:
+		break;
 	}
 	if (mPrompt->inputFieldTextEntry().isEmpty()) {
 		qDebug() << "now new name - so no rename";
@@ -1054,10 +1098,10 @@ void ODSData::renameFolder(int roomId, QString pathOld, QString folderNameOld) {
 	mPrompt->inputField()->setEmptyText(tr("the new Foldername"));
 	int result = mPrompt->exec();
 	switch (result) {
-		case SystemUiResult::CancelButtonSelection:
-			return;
-		default:
-			break;
+	case SystemUiResult::CancelButtonSelection:
+		return;
+	default:
+		break;
 	}
 	if (mPrompt->inputFieldTextEntry().isEmpty()) {
 		qDebug() << "now new name - so no rename";
@@ -1092,7 +1136,7 @@ void ODSData::renameFolder(int roomId, QString pathOld, QString folderNameOld) {
 /**
  * get the path of a thumbnail created by the server
  */
-QString ODSData::thumbnail(int fileId){
+QString ODSData::thumbnail(int fileId) {
 	// TODO: only if isImage
 	// TODO if response == error: dont store json in thumbnail folder
 	QString name = thumbnailPath(QString::number(fileId) + "_thumb.png");
@@ -1110,42 +1154,46 @@ QString ODSData::thumbnail(int fileId){
 /**
  * true if the file was downloaded
  */
-bool ODSData::fileDownloaded(int fileId, QString fileName){
+bool ODSData::fileDownloaded(int fileId, QString fileName) {
 	// TODO map fileid to downloaded file
 	// TODO add check of timestamp - if file downloaded was older then from cloud
 	return QFile::exists(downloadPath(fileName));
 }
 
-void ODSData::simpleUpload(QString sourceFileName){
+void ODSData::simpleUpload(QString sourceFileName) {
 	QObject* container = parentData();
 	if (qobject_cast<ODSRoom*>(container)) {
-		ODSRoom* room = (ODSRoom*)container;
+		ODSRoom* room = (ODSRoom*) container;
 		qDebug() << "upload into Room";
-		uploadFile(room->id(),sourceFileName,"","BB10");
+		uploadFile(room->id(), sourceFileName, "", "BB10");
 	} else {
 		if (qobject_cast<ODSSubRoom*>(container)) {
-			ODSSubRoom* subroom = (ODSSubRoom*)container;
+			ODSSubRoom* subroom = (ODSSubRoom*) container;
 			qDebug() << "upload into SubRoom";
 			uploadFile(subroom->id(), sourceFileName, "", "BB10");
 		} else {
 			if (qobject_cast<ODSFolder*>(container)) {
-				ODSFolder* folder = (ODSFolder*)container;
-				qDebug() << "upload into Folder name " << folder->name() << " path: " << folder->path();
+				ODSFolder* folder = (ODSFolder*) container;
+				qDebug() << "upload into Folder name " << folder->name()
+						<< " path: " << folder->path();
 				QString uploadPath = folder->path();
 //				if (!uploadPath.isEmpty()) {
 //					uploadPath += "/";
 //				}
 //				uploadPath += folder->name();
 				// TODO check parent code for path - name is included yet
-				uploadFile(folder->containerId(), sourceFileName, uploadPath, "BB10");
+				uploadFile(folder->containerId(), sourceFileName, uploadPath,
+						"BB10");
 			}
 		}
 	}
 	// TODO error dialog
 }
 
-void ODSData::uploadFile(int roomId, QString sourceFileName, QString path, QString comment) {
-	qDebug() << "start upload File: " << sourceFileName << " path: " << path << "into Room: " << roomId;
+void ODSData::uploadFile(int roomId, QString sourceFileName, QString path,
+		QString comment) {
+	qDebug() << "start upload File: " << sourceFileName << " path: " << path
+			<< "into Room: " << roomId;
 	// start progress
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
@@ -1412,8 +1460,10 @@ void ODSData::initiateRequest(int usecase) {
 				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesCreateLink)));
 		if (!isInitialization) {
 			// add a special header to reload all files as next step
-			request.setRawHeader("shareLink",
-					"true");
+			request.setRawHeader("shareLink", "true");
+			if (mShareViaMail) {
+				request.setRawHeader("shareViaMail", "true");
+			}
 		}
 		break;
 	case Usecase::FilesDelete:
@@ -1438,10 +1488,10 @@ void ODSData::initiateRequest(int usecase) {
 		mRequestJson.append(QByteArray::number(mFileId));
 		// END
 		mRequestJson.append(jsonEnd);
-		request.setUrl(QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesDelete)));
+		request.setUrl(
+				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesDelete)));
 		// add a special header to reload all files as next step
-		request.setRawHeader("reload",
-				QByteArray::number(Usecase::FilesAll));
+		request.setRawHeader("reload", QByteArray::number(Usecase::FilesAll));
 		break;
 	case Usecase::FilesDeleteFolder:
 		isJsonContent = true;
@@ -1575,89 +1625,89 @@ void ODSData::initiateRequest(int usecase) {
 										Usecase::FilesDownloadThumbnail)));
 		break;
 	case Usecase::FilesRename:
-			isJsonContent = true;
-			mRequestJson.clear();
-			// START
-			mRequestJson.append(jsonStart);
-			// TOKEN
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(tokenValue);
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(colon);
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(mToken.toUtf8());
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(comma);
-			// FILE ID
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(fileIdValue);
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(colon);
-			mRequestJson.append(QByteArray::number(mFileId));
-			mRequestJson.append(comma);
-			// NAME
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(nameValue);
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(colon);
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(mFileName.toUtf8());
-			mRequestJson.append(quotationMark);
-			// END
-			mRequestJson.append(jsonEnd);
-			request.setUrl(QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesRename)));
+		isJsonContent = true;
+		mRequestJson.clear();
+		// START
+		mRequestJson.append(jsonStart);
+		// TOKEN
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(tokenValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mToken.toUtf8());
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(comma);
+		// FILE ID
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(fileIdValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(QByteArray::number(mFileId));
+		mRequestJson.append(comma);
+		// NAME
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(nameValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mFileName.toUtf8());
+		mRequestJson.append(quotationMark);
+		// END
+		mRequestJson.append(jsonEnd);
+		request.setUrl(
+				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesRename)));
+		// add a special header to reload all files as next step
+		request.setRawHeader("reload", QByteArray::number(Usecase::FilesAll));
+		break;
+	case Usecase::FilesRenameFolder:
+		isJsonContent = true;
+		mRequestJson.clear();
+		// START
+		mRequestJson.append(jsonStart);
+		// TOKEN
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(tokenValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mToken.toUtf8());
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(comma);
+		// GROUP_PK
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(groupPkValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(QByteArray::number(mGroupPk));
+		mRequestJson.append(comma);
+		// PATH OLD
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(pathOldValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mPath.toUtf8());
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(comma);
+		// CONTENT
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(pathNewValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(mPathNew.toUtf8());
+		mRequestJson.append(quotationMark);
+		// END
+		mRequestJson.append(jsonEnd);
+		request.setUrl(
+				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesRenameFolder)));
+		if (!isInitialization) {
 			// add a special header to reload all files as next step
 			request.setRawHeader("reload",
 					QByteArray::number(Usecase::FilesAll));
-			break;
-		case Usecase::FilesRenameFolder:
-			isJsonContent = true;
-			mRequestJson.clear();
-			// START
-			mRequestJson.append(jsonStart);
-			// TOKEN
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(tokenValue);
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(colon);
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(mToken.toUtf8());
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(comma);
-			// GROUP_PK
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(groupPkValue);
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(colon);
-			mRequestJson.append(QByteArray::number(mGroupPk));
-			mRequestJson.append(comma);
-			// PATH OLD
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(pathOldValue);
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(colon);
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(mPath.toUtf8());
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(comma);
-			// CONTENT
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(pathNewValue);
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(colon);
-			mRequestJson.append(quotationMark);
-			mRequestJson.append(mPathNew.toUtf8());
-			mRequestJson.append(quotationMark);
-			// END
-			mRequestJson.append(jsonEnd);
-			request.setUrl(
-					QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesRenameFolder)));
-			if (!isInitialization) {
-				// add a special header to reload all files as next step
-				request.setRawHeader("reload",
-						QByteArray::number(Usecase::FilesAll));
-			}
-			break;
+		}
+		break;
 	case Usecase::FilesUpload:
 		isJsonContent = false;
 		mFileToUpload = new QFile(mSourceFileName);
@@ -1671,8 +1721,9 @@ void ODSData::initiateRequest(int usecase) {
 			return;
 		}
 		mFileLength = mFileToUpload->size();
-		qDebug() << "create multipart to upload file " << mSourceFileName << " as " << mFileName << " size: " << mFileLength
-				<< "\npath: " << mPath;
+		qDebug() << "create multipart to upload file " << mSourceFileName
+				<< " as " << mFileName << " size: " << mFileLength << "\npath: "
+				<< mPath;
 		mRequestMultipart = new QHttpMultiPart(QHttpMultiPart::FormDataType,
 				this);
 		fileLengthPart.setHeader(QNetworkRequest::ContentDispositionHeader,
@@ -1720,8 +1771,7 @@ void ODSData::initiateRequest(int usecase) {
 		request.setUrl(
 				QUrl(mBaseUrl + mUsecasePathes.at(Usecase::FilesUpload)));
 		// add a special header to reload all files as next step
-					request.setRawHeader("reload",
-							QByteArray::number(Usecase::FilesAll));
+		request.setRawHeader("reload", QByteArray::number(Usecase::FilesAll));
 		break;
 	case Usecase::TexteAll:
 		isJsonContent = true;
@@ -1800,13 +1850,17 @@ void ODSData::initiateRequest(int usecase) {
 			request.setHeader(QNetworkRequest::ContentLengthHeader, 0);
 		}
 		setRequestheader(request, usecase);
-		QNetworkReply *reply = mNetworkAccessManager->post(request, mRequestJson);
-		connect(reply, SIGNAL(downloadProgress(qint64, qint64)), this, SLOT(downloadProgress(qint64, qint64)));
+		QNetworkReply *reply = mNetworkAccessManager->post(request,
+				mRequestJson);
+		connect(reply, SIGNAL(downloadProgress(qint64, qint64)), this,
+				SLOT(downloadProgress(qint64, qint64)));
 	} else {
 		qDebug() << "POST MultiPart (we are UPLOADING...)";
 		setRequestheader(request, usecase);
-		QNetworkReply *reply = mNetworkAccessManager->post(request, mRequestMultipart);
-		connect(reply, SIGNAL(uploadProgress(qint64, qint64)), this, SLOT(uploadProgress(qint64, qint64)));
+		QNetworkReply *reply = mNetworkAccessManager->post(request,
+				mRequestMultipart);
+		connect(reply, SIGNAL(uploadProgress(qint64, qint64)), this,
+				SLOT(uploadProgress(qint64, qint64)));
 	}
 	// don't stop the Activity Indicator ! Response will be async
 	// response processed in SLOT requestFinished
@@ -1820,7 +1874,7 @@ void ODSData::initiateRequest(int usecase) {
  * The download is finished when bytesReceived is equal to bytesTotal.
  * At that time, bytesTotal will not be -1
  */
-void ODSData::downloadProgress(qint64 bytesReceived, qint64 bytesTotal){
+void ODSData::downloadProgress(qint64 bytesReceived, qint64 bytesTotal) {
 	if (bytesReceived == 0 && bytesTotal == 0) {
 		// ignore
 		return;
@@ -1851,7 +1905,7 @@ void ODSData::downloadProgress(qint64 bytesReceived, qint64 bytesTotal){
 		mProgressDialog->setProgress(-1);
 	} else {
 		// progress in %
-		int progressValue = bytesReceived*100/total;
+		int progressValue = bytesReceived * 100 / total;
 		b += QString::number(progressValue);
 		b += tr("% of total:");
 		b += QString::number(total);
@@ -1880,7 +1934,7 @@ void ODSData::uploadProgress(qint64 bytesSent, qint64 bytesTotal) {
 		mProgressDialog->setProgress(-1);
 	} else {
 		// progress in %
-		int progressValue = bytesSent*100/bytesTotal;
+		int progressValue = bytesSent * 100 / bytesTotal;
 		b += QString::number(progressValue);
 		b += tr("% of total:");
 		b += QString::number(bytesTotal);
@@ -1909,7 +1963,8 @@ void ODSData::setRequestheader(QNetworkRequest &request, int usecase) {
 		// responses are coming in async, so I need to know the filename
 		// perhaps also store the destination path - in this case we have a default downloads folder
 		request.setRawHeader("FileName2Download", mFileName.toUtf8());
-		request.setRawHeader("downloadBytes", QByteArray::number(mRequestedFileSize));
+		request.setRawHeader("downloadBytes",
+				QByteArray::number(mRequestedFileSize));
 		break;
 	case Usecase::FilesDownloadThumbnail:
 		request.setRawHeader("Accept", "application/octet-stream");
@@ -1969,13 +2024,13 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 		if (isStreamContent) {
 			if (reply->request().hasRawHeader("Thumbnail2Download")) {
 				qDebug() << "we got a STREAM content for FileName2Download: "
-									<< reply->request().rawHeader("Thumbnail2Download");
+						<< reply->request().rawHeader("Thumbnail2Download");
 				// using a thumbnails folder inside the app sandbox, so files are secure stored
 				filename += "/thumbnails/";
 				filename += reply->request().rawHeader("Thumbnail2Download");
 			} else {
 				qDebug() << "we got a STREAM content for FileName2Download: "
-									<< reply->request().rawHeader("FileName2Download");
+						<< reply->request().rawHeader("FileName2Download");
 				// using a downloads folder inside the app sandbox, so files are secure stored
 				filename += "/download/";
 				filename += reply->request().rawHeader("FileName2Download");
@@ -2099,7 +2154,11 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 				break;
 			default:
 				if (reply->request().rawHeaderList().contains("shareLink")) {
-					shareLink();
+					if (reply->request().rawHeaderList().contains("shareViaMail")) {
+						mailLink();
+					} else {
+						shareLink();
+					}
 					break;
 				}
 				if (reply->request().rawHeaderList().contains("no_refresh")) {
@@ -2215,7 +2274,8 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 		// settings: YES we have files, so we survive offline-mode
 		mOdsSettings->setTrueFor(SETTINGS_KEY_FILES_AVAILABLE, true);
 		// last files from Date and Time
-		mOdsSettings->saveValueFor(SETTINGS_KEY_FILES_LAST_SYNC,QDateTime::currentDateTime().toString(Qt::ISODate));
+		mOdsSettings->saveValueFor(SETTINGS_KEY_FILES_LAST_SYNC,
+				QDateTime::currentDateTime().toString(Qt::ISODate));
 		break;
 	case Usecase::FilesCreateFolder:
 		qDebug() << "Folder successfully Created !";

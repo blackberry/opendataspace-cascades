@@ -163,6 +163,7 @@ public Q_SLOTS:
 	void localeChanged();
 	void onThumbnail();
 	void shareTextWithBBM(const QString& text);
+	void shareTextWithMail(const QString& text);
 
 Q_SIGNALS:
 	// The change notification signal of card status change

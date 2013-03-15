@@ -188,11 +188,16 @@ OpenDataSpace::OpenDataSpace(QObject *parent) :
 	mOdsData = new ODSData();
 	qml->setContextProperty("odsdata", mOdsData);
 
-	ok = connect(mOdsData,
-			SIGNAL(shareLinkWithBBM(const QString&)), this,
+	ok = connect(mOdsData, SIGNAL(shareLinkWithBBM(const QString&)), this,
 			SLOT(shareTextWithBBM(const QString&)));
 	if (!ok) {
 		qDebug() << "connect shareTextWithBBM failed";
+	}
+
+	ok = connect(mOdsData, SIGNAL(shareLinkWithMail(const QString&)), this,
+			SLOT(shareTextWithMail(const QString&)));
+	if (!ok) {
+		qDebug() << "connect shareTextWithMail failed";
 	}
 
 	// create root object for the UI
@@ -358,7 +363,9 @@ Menu* OpenDataSpace::createApplicationMenu() {
 	translateMenuItems();
 	// plug it all together
 	// TODO .addAction(mLogoutItem) need some more logic for testdrive
-	Menu* menu = Menu::create().addAction(mFeedbackItem).help(mHelpItem).settings(mSettingsItem);
+	Menu* menu =
+			Menu::create().addAction(mFeedbackItem).help(mHelpItem).settings(
+					mSettingsItem);
 	// Connect SIGNALS and SLOTS
 //	QObject::connect(mLogoutItem, SIGNAL(triggered()), this,
 //			SLOT(logoutTriggered()));
@@ -409,14 +416,22 @@ void OpenDataSpace::login(const QString user, const QString pw) {
 
 // handles SLOT from feedbackItem
 void OpenDataSpace::feedbackTriggered() {
-	Sheet *s = Application::instance()->scene()->findChild<Sheet*>(
-			"feedbackSheet");
-	if (s) {
-		qDebug() << "feedback triggered and Feedback Sheet found";
-		s->open();
-	} else {
-		qDebug() << "feedback triggered, but no Feedback Sheet found";
-	}
+//	Sheet *s = Application::instance()->scene()->findChild<Sheet*>(
+//			"feedbackSheet");
+//	if (s) {
+//		qDebug() << "feedback triggered and Feedback Sheet found";
+//		s->open();
+//	} else {
+//		qDebug() << "feedback triggered, but no Feedback Sheet found";
+//	}
+	//
+	qDebug() << "invoke sendFeedback";
+	InvokeRequest request;
+	request.setAction("bb.action.SENDEMAIL");
+	request.setTarget("sys.pim.uib.email.hybridcomposer");
+	request.setMimeType("settings/view");
+	request.setUri("mailto:support@opendataspace.org?subject=Feedback%20OpenDataSpace");
+	mInvokeManager->invoke(request);
 }
 
 // handles SLOT from helpItem
@@ -476,7 +491,7 @@ void OpenDataSpace::invokeBrowser(QString uri) {
 	mInvokeManager->invoke(cardRequest);
 }
 
-void OpenDataSpace::shareTextWithBBM(const QString& text){
+void OpenDataSpace::shareTextWithBBM(const QString& text) {
 	InvokeRequest bbmRequest;
 	bbmRequest.setTarget("sys.bbm.sharehandler");
 	bbmRequest.setAction("bb.action.SHARE");
@@ -485,6 +500,17 @@ void OpenDataSpace::shareTextWithBBM(const QString& text){
 	mInvokeManager->invoke(bbmRequest);
 	// TODO listen to InvokeTargetReply *reply to see if invocation was successfull
 	// https://developer.blackberry.com/cascades/documentation/device_platform/invocation/sending_invocation.html
+}
+
+void OpenDataSpace::shareTextWithMail(const QString& text) {
+	InvokeRequest mailRequest;
+	mailRequest.setTarget("sys.pim.uib.email.hybridcomposer");
+	mailRequest.setAction("bb.action.SENDEMAIL");
+	mailRequest.setMimeType("settings/view");
+	mailRequest.setUri(
+			"mailto:?subject="+text);
+	qDebug() << "share with Mail: " << text;
+	mInvokeManager->invoke(mailRequest);
 }
 
 void OpenDataSpace::startChat(const QString& text) {
@@ -505,7 +531,10 @@ void OpenDataSpace::inviteBBM() {
 }
 
 void OpenDataSpace::inviteODS() {
-	shareTextWithBBM(tr("Please download OpenDataSpace Application from BlackBerry World for FREE: ")+"http://appworld.blackberry.com/webstore/content/134203");
+	shareTextWithBBM(
+			tr(
+					"Please download OpenDataSpace Application from BlackBerry World for FREE: ")
+					+ "http://appworld.blackberry.com/webstore/content/134203");
 	qDebug() << "invite to BBM";
 }
 
@@ -517,7 +546,6 @@ void OpenDataSpace::leaveReview() {
 	qDebug() << "leave review";
 	mInvokeManager->invoke(bbmRequest);
 }
-
 
 /**
  * uses Invokation Framework to View the file from URI
@@ -656,7 +684,8 @@ void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
 	} else {
 		// do what needed if Invoked, per ex. switch to Upload TAB
 		// TODO test for URI and upload the file
-		qDebug() << "invoked as APPLICATION URI:" << request.uri() << " data: " << request.data();
+		qDebug() << "invoked as APPLICATION URI:" << request.uri() << " data: "
+				<< request.data();
 	}
 }
 
@@ -676,7 +705,8 @@ bool OpenDataSpace::isEmbedded() {
 	return mIsLaunchedEmbedded;
 }
 
-void OpenDataSpace::handleCardResize(const bb::system::CardResizeMessage& resizeMessage) {
+void OpenDataSpace::handleCardResize(
+		const bb::system::CardResizeMessage& resizeMessage) {
 	mCardStatus = tr("Resized");
 	// width available to the card
 	// resizeMessage.width();

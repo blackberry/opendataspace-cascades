@@ -16,7 +16,7 @@
 import "../common"
 
 Page {
-    id: createLinkPage
+    id: createMailLinkPage
     property int fileId: 0
     resizeBehavior: PageResizeBehavior.Resize
     attachedObjects: [
@@ -40,21 +40,21 @@ Page {
     actions: [
         ActionItem {
             id: createNowAction
-            title: qsTr("Share now via BBM") + Retranslate.onLanguageChanged
+            title: qsTr("Share now via Mail") + Retranslate.onLanguageChanged
             // dynamically changed if enabled onRedBarVisible
             enabled: ! folderName.redBarVisible
             imageSource: "asset:///images/upload81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             // only triggered if enabled if foldertext was entered
             onTriggered: {
-                // create the Link last param false = share via BBM
+                // create the Link last param true = shareViaMail
                 odsdata.createLink(
                     fileId.valueText, fileName.valueText, 
                     expires.checked, expirationDate.value, 
                     password.text, 
                     linkCode.textFieldText, 
                     noticeDownload.valueChecked,
-                    false)
+                    true)
                 // reset fields
                 clearFields()
                 // automagically close this page
@@ -64,7 +64,7 @@ Page {
     ]
     titleBar: TitleBar {
         id: addBar
-        title: qsTr("Create Link") + Retranslate.onLanguageChanged
+        title: qsTr("Create Link and Mail") + Retranslate.onLanguageChanged
         visibility: ChromeVisibility.Visible
     }
     Container {

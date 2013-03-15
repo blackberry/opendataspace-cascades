@@ -21,11 +21,6 @@ QString ODSSettings::getValueFor(const QString &objectName,
 		const QString &defaultValue) {
 	// QSettings settings;
 
-	// If no value has been saved, return the default value.
-	if (mSettings.value(objectName).isNull()) {
-		return defaultValue;
-	}
-
 	if (mTestdriving && (objectName == SETTINGS_KEY_SERVER_CURRENT_USER || objectName == SETTINGS_KEY_LOGIN_USER)) {
 		qDebug() << "return testdrive user";
 		return "test-drive@ods.io";
@@ -33,6 +28,11 @@ QString ODSSettings::getValueFor(const QString &objectName,
 	if (mTestdriving && (objectName == SETTINGS_KEY_SERVER_CURRENT_PASSWORD || objectName == SETTINGS_KEY_LOGIN_PASSWORD)) {
 		qDebug() << "return testdrive pw";
 		return "MDUb4eWq";
+	}
+
+	// If no value has been saved, return the default value.
+	if (mSettings.value(objectName).isNull()) {
+		return defaultValue;
 	}
 
 	// Otherwise, return the value stored in the settings object.

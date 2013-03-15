@@ -53,7 +53,6 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 // Calls a function that show's the image in a View from InvocationFramework
-                //ods.showInView(previewPage.previewPath);
                 ods.invokeUnbound(previewPage.previewPath);
                 console.debug("just called function to View from IF");
             }

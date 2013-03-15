@@ -77,7 +77,7 @@ public:
 	void createFolder(int roomId, QString path);
 
 	Q_INVOKABLE
-	void createLink(int fileId, QString fileName, bool expires, QDate expiration, QString password, QString code, bool notice);
+	void createLink(int fileId, QString fileName, bool expires, QDate expiration, QString password, QString code, bool notice, bool shareViaMail);
 
 	Q_INVOKABLE
 	void deleteFolder(int roomId, QString path);
@@ -115,6 +115,7 @@ public:
 Q_SIGNALS:
 	void loginFinished(bool success);
 	void shareLinkWithBBM(const QString& textToShare);
+	void shareLinkWithMail(const QString& textToShare);
 
 private slots:
 	/*!
@@ -184,6 +185,7 @@ private:
 	QString mExpiration;
 	QString mLinkPassword;
 	QString mNotice;
+	bool mShareViaMail;
 
 	// models and caches
 	GroupDataModel* mUsersDataModel;
@@ -212,6 +214,7 @@ private:
 	void reloadFiles();
 	void createRoomsModel();
 	void shareLink();
+	void mailLink();
 
 
 	/**

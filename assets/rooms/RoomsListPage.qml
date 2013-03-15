@@ -32,6 +32,7 @@ Page {
     signal openFolderInfoPage(string name)
     signal openSubRoomInfoPage(int subroomId)
     signal openCreateLinkPage(int id, string name)
+    signal openCreateMailLinkPage(int id, string name)
     signal previewImage(string filePath)
     signal previewVideo(string path)
     signal previewDocuments(string path)
@@ -349,8 +350,7 @@ Page {
                                     title: qsTr("Rename") + Retranslate.onLanguageChanged
                                     imageSource: "asset:///images/ics/5-content-edit81.png"
                                     onTriggered: {
-                                        foldersItem.ListItem.view.renameFolder(ListItemData.containerId,
-                                                ListItemData.path, ListItemData.name)
+                                        foldersItem.ListItem.view.renameFolder(ListItemData.containerId, ListItemData.path, ListItemData.name)
                                     }
                                 }
                                 ActionItem {
@@ -373,8 +373,7 @@ Page {
                                     title: qsTr("Delete") + Retranslate.onLanguageChanged
                                     onTriggered: {
                                         if (ListItemData.path.length > 0) {
-                                            foldersItem.ListItem.view.deleteFolder(ListItemData.containerId,
-                                                ListItemData.path + "/" + ListItemData.name)
+                                            foldersItem.ListItem.view.deleteFolder(ListItemData.containerId, ListItemData.path + "/" + ListItemData.name)
                                         } else {
                                             foldersItem.ListItem.view.deleteFolder(ListItemData.containerId, ListItemData.name)
                                         }
@@ -425,6 +424,13 @@ Page {
                                     imageSource: "asset:///images/ics/4-collections-labels81.png"
                                     onTriggered: {
                                         filesItem.ListItem.view.createLink(ListItemData.id, ListItemData.name)
+                                    }
+                                }
+                                ActionItem {
+                                    title: qsTr("Share Link (Mail)") + Retranslate.onLanguageChanged
+                                    imageSource: "asset:///images/ics/5-content-email81.png"
+                                    onTriggered: {
+                                        filesItem.ListItem.view.createMailLink(ListItemData.id, ListItemData.name)
                                     }
                                 }
                                 ActionItem {
@@ -515,6 +521,9 @@ Page {
             }
             function createLink(id, name) {
                 openCreateLinkPage(id, name)
+            }
+            function createMailLink(id, name) {
+                openCreateMailLinkPage(id, name)
             }
             function wip() {
                 workInProgress.show()

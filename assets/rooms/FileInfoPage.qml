@@ -66,6 +66,14 @@ Page {
             }
         },
         ActionItem {
+            title: qsTr("Share Link (Mail)") + Retranslate.onLanguageChanged
+            imageSource: "asset:///images/ics/5-content-email81.png"
+            ActionBar.placement: ActionBarPlacement.InOverflow
+            onTriggered: {
+                navigationPane.openCreateMailLinkPage(cloudFileId.valueText, headerId.valueText)
+            }
+        },
+        ActionItem {
             title: qsTr("Start Chat (BBM)") + Retranslate.onLanguageChanged
             imageSource: "asset:///images/bbm.png"
             ActionBar.placement: ActionBarPlacement.InOverflow
@@ -231,7 +239,7 @@ Page {
         // result is an empty ODSFile* or the correct one
         setValues(odsdata.fileFromId(id), id)
     }
-    
+
     // relayout if orientation changes
     function relayout(landscape) {
         if (landscape == true) {

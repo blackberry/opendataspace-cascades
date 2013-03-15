@@ -205,6 +205,17 @@ NavigationPane {
                     }
                 }
             }
+        },
+        // Create a Link and share via Mail
+        CreateMailLinkPage {
+            id: createMailLinkPage
+            paneProperties: NavigationPaneProperties {
+                backButton: ActionItem {
+                    onTriggered: {
+                        navigationPane.pop();
+                    }
+                }
+            }
         }
     ]
     // the ROOT Page of this NavigationPane
@@ -427,6 +438,11 @@ NavigationPane {
         createLinkPage.refreshData(id, name)
         navigationPane.push(createLinkPage)
     }
+    function openCreateMailLinkPage(id, name) {
+        console.debug("want to open openCreateMailLinkPage for id: " + id + " name: " + name)
+        createMailLinkPage.refreshData(id, name)
+        navigationPane.push(createMailLinkPage)
+    }
     onTopChanged: {
         if (navigationPane.top == dataspacePage) {
             odsdata.resetLevel();
@@ -452,6 +468,7 @@ NavigationPane {
         roomsListPage.openFolderInfoPage.connect(openFolderInfoPage)
         roomsListPage.openSubRoomInfoPage.connect(openSubRoomInfoPage)
         roomsListPage.openCreateLinkPage.connect(openCreateLinkPage)
+        roomsListPage.openCreateMailLinkPage.connect(openCreateMailLinkPage)
         addFolderPage.onFolderAdded.connect(folderAdded)
         //-- connect the RoomsList recordAudio SIGNAL to the handler SLOT
         roomsListPage.recordAudio.connect(openRecordAudioPage)
