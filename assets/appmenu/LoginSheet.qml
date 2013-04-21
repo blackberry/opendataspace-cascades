@@ -34,7 +34,7 @@ Page {
         // TODO: different background images for different sizes of smartphone or tablet
         ImageTracker {
             id: backgroundLandscape
-            imageSource: "asset:///images/login-ods-1280x768.png"
+            imageSource: ods.isSquare() ? "asset:///images/login-ods-720x720.png" : "asset:///images/login-ods-1280x768.png"
         },
         // the BackgroundImage
         ImageTracker {
@@ -107,7 +107,7 @@ Page {
             layout: StackLayout {
             }
             layoutProperties: AbsoluteLayoutProperties {
-                positionX: 50
+                positionX: ods.isSquare() ? 26 :  50
             }
             id: mainContainer
             // would prefer to use background: Color.Transparent
@@ -170,7 +170,11 @@ Page {
     function reLayout(orientation) {
         if (ods.isSquare() || orientation == UIOrientation.Landscape) {
             backgroundImage.image = backgroundLandscape.image
-            mainContainer.layoutProperties.positionY = 460
+            if (ods.isSquare()){
+                mainContainer.layoutProperties.positionY = 460 + 80
+            }else {
+                mainContainer.layoutProperties.positionY = 460
+            }         
         } else {
             backgroundImage.image = backgroundPortrait.image
             mainContainer.layoutProperties.positionY = 900
