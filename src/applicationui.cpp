@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include "OpenDataSpace.hpp"
+#include "applicationui.hpp"
+
 #include "FileInfo.hpp"
 #include "DateUtil.hpp"
 #include "ODSData.hpp"
@@ -37,6 +38,7 @@
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/AbstractPane>
+
 #include <bb/cascades/controls/navigationpane.h>
 #include <bb/cascades/controls/tabbedpane.h>
 #include <bb/cascades/LocaleHandler>
@@ -58,14 +60,9 @@
 using namespace bb::cascades;
 using namespace bb::system;
 
-/*
- *
- * Author: Ekkehard Gentz (ekke), Rosenheim, Germany
- *
- */
-OpenDataSpace::OpenDataSpace(QObject *parent) :
-		QObject(parent), mInvokeManager(new InvokeManager(this)) {
-
+ApplicationUI::ApplicationUI(bb::cascades::Application *app)
+: QObject(app), mInvokeManager(new InvokeManager(this))
+{
 	// BUG in SDK: IDE reports error with bb::system::, but compiles and runs
 	// removing bb::system:: compiles also well but running says "signal not found"
 	// ODS is a Invocation Target
@@ -214,14 +211,13 @@ OpenDataSpace::OpenDataSpace(QObject *parent) :
 		qDebug() << "we are running EMBEDDED";
 	}
 	qDebug() << "INIT done";
-
 }
 
 /**
  * some stuff we only need if Opened from HomeScreen
  * or Invoked as Application from another app thru Invocation Framework
  */
-void OpenDataSpace::initTheApplication() {
+void ApplicationUI::initTheApplication() {
 	qDebug() << "we are NOT running EMBEDDED, so do some APPLICATION stuff";
 	// ApplicationMenu
 	// Hint: first set the scene - then set the menu
@@ -250,7 +246,7 @@ void OpenDataSpace::initTheApplication() {
  * at runtime.
  *
  */
-void OpenDataSpace::initLocalization(QTranslator* translator) {
+void ApplicationUI::initLocalization(QTranslator* translator) {
 	// remember current locale set
 	mCurrentLocale = QLocale().name();
 	qDebug() << "init with locale: " << mCurrentLocale;
@@ -271,7 +267,7 @@ void OpenDataSpace::initLocalization(QTranslator* translator) {
  * Update view content basing on the given locale.
  *
  */
-void OpenDataSpace::updateLocale(QString locale) {
+void ApplicationUI::updateLocale(QString locale) {
 	qDebug() << "updateLocale: " << locale;
 
 	// if locale is empty - refresh current. otherwise change the local
@@ -296,7 +292,7 @@ void OpenDataSpace::updateLocale(QString locale) {
  * (re)translates the titles of System menus
  *
  */
-void OpenDataSpace::translateMenuItems() {
+void ApplicationUI::translateMenuItems() {
 	if (mHelpItem) {
 		mHelpItem->setTitle(tr("Help"));
 	}
@@ -316,7 +312,7 @@ void OpenDataSpace::translateMenuItems() {
  *
  * Retrieve the language name corresponding to the current locale.
  */
-QString OpenDataSpace::getCurrentLanguage() {
+QString ApplicationUI::getCurrentLanguage() {
 	// TODO get language name from QLocale - we have now more languages
 	qDebug() << "OpenDataSpaceApp getCurrentLanguage: " << mCurrentLocale;
 	QLocale *loc = new QLocale(mCurrentLocale);
@@ -328,7 +324,7 @@ QString OpenDataSpace::getCurrentLanguage() {
  *
  * Retrieve the current locale.
  */
-QString OpenDataSpace::getCurrentLocale() {
+QString ApplicationUI::getCurrentLocale() {
 	qDebug() << "getCurrentLocale: " << mCurrentLocale;
 	return mCurrentLocale;
 }
@@ -338,7 +334,7 @@ QString OpenDataSpace::getCurrentLocale() {
  *
  * A helper function to force the keyboard to hide
  */
-void OpenDataSpace::suppressKeyboard() {
+void ApplicationUI::suppressKeyboard() {
 	virtualkeyboard_request_events(0);
 	virtualkeyboard_hide();
 }
@@ -346,7 +342,7 @@ void OpenDataSpace::suppressKeyboard() {
 // M E N U
 // ApplicationMenu is available on all Screens
 // opens using swipe-down
-Menu* OpenDataSpace::createApplicationMenu() {
+Menu* ApplicationUI::createApplicationMenu() {
 	// HELP will open a website with Help Instructions from OpenDataSpace
 	mHelpItem = new HelpActionItem();
 	// FEEDBACK will send an email to OpenDataSpace
@@ -381,12 +377,12 @@ Menu* OpenDataSpace::createApplicationMenu() {
 // S L O T S
 
 // handles SLOT from Locale Chaned by user at Device
-void OpenDataSpace::localeChanged() {
+void ApplicationUI::localeChanged() {
 	updateLocale(QLocale().name());
 }
 
 // handles SLOT from logoutItem
-void OpenDataSpace::logoutTriggered() {
+void ApplicationUI::logoutTriggered() {
 	mOdsSettings->setTestdrive(false);
 	mOdsData->resetUserFromLogout();
 	Sheet *s = Application::instance()->scene()->findChild<Sheet*>(
@@ -402,7 +398,7 @@ void OpenDataSpace::logoutTriggered() {
 /*
  * executes login from Credentials Dialog
  */
-void OpenDataSpace::login(const QString user, const QString pw) {
+void ApplicationUI::login(const QString user, const QString pw) {
 	if (!user.isEmpty() && !pw.isEmpty()) {
 		// save values ?
 		mOdsSettings->saveValueFor(SETTINGS_KEY_SERVER_CURRENT_USER, user);
@@ -415,7 +411,7 @@ void OpenDataSpace::login(const QString user, const QString pw) {
 }
 
 // handles SLOT from feedbackItem
-void OpenDataSpace::feedbackTriggered() {
+void ApplicationUI::feedbackTriggered() {
 //	Sheet *s = Application::instance()->scene()->findChild<Sheet*>(
 //			"feedbackSheet");
 //	if (s) {
@@ -435,7 +431,7 @@ void OpenDataSpace::feedbackTriggered() {
 }
 
 // handles SLOT from helpItem
-void OpenDataSpace::helpTriggered() {
+void ApplicationUI::helpTriggered() {
 	Sheet *s = Application::instance()->scene()->findChild<Sheet*>("helpSheet");
 	if (s) {
 		qDebug() << "help triggered and helpSheet found";
@@ -446,7 +442,7 @@ void OpenDataSpace::helpTriggered() {
 }
 
 // handles SLOT from settingsItem
-void OpenDataSpace::settingsTriggered() {
+void ApplicationUI::settingsTriggered() {
 	Sheet *s = Application::instance()->scene()->findChild<Sheet*>(
 			"preferencesSheet");
 	if (s) {
@@ -459,7 +455,7 @@ void OpenDataSpace::settingsTriggered() {
 }
 
 // unbound Invokation
-void OpenDataSpace::invokeUnbound(QString uri) {
+void ApplicationUI::invokeUnbound(QString uri) {
 	if (uri.endsWith(".svg")) {
 		invokeBrowser(uri);
 		return;
@@ -470,7 +466,7 @@ void OpenDataSpace::invokeUnbound(QString uri) {
 }
 
 // invoke MediaPlayer
-void OpenDataSpace::invokeBoundMediaPlayer(const QString& uri) {
+void ApplicationUI::invokeBoundMediaPlayer(const QString& uri) {
 	qDebug() << "invoke bound mediaplayer" << uri;
 	InvokeRequest cardRequest;
 	// MediaPlayer needs file:// or http:// etc as prefix
@@ -484,14 +480,14 @@ void OpenDataSpace::invokeBoundMediaPlayer(const QString& uri) {
 	mInvokeManager->invoke(cardRequest);
 }
 
-void OpenDataSpace::invokeBrowser(QString uri) {
+void ApplicationUI::invokeBrowser(QString uri) {
 	InvokeRequest cardRequest;
 	cardRequest.setUri(uri);
 	cardRequest.setTarget("sys.browser");
 	mInvokeManager->invoke(cardRequest);
 }
 
-void OpenDataSpace::shareTextWithBBM(const QString& text) {
+void ApplicationUI::shareTextWithBBM(const QString& text) {
 	InvokeRequest bbmRequest;
 	bbmRequest.setTarget("sys.bbm.sharehandler");
 	bbmRequest.setAction("bb.action.SHARE");
@@ -502,7 +498,7 @@ void OpenDataSpace::shareTextWithBBM(const QString& text) {
 	// https://developer.blackberry.com/cascades/documentation/device_platform/invocation/sending_invocation.html
 }
 
-void OpenDataSpace::shareTextWithMail(const QString& text) {
+void ApplicationUI::shareTextWithMail(const QString& text) {
 	InvokeRequest mailRequest;
 	mailRequest.setTarget("sys.pim.uib.email.hybridcomposer");
 	mailRequest.setAction("bb.action.SENDEMAIL");
@@ -513,7 +509,7 @@ void OpenDataSpace::shareTextWithMail(const QString& text) {
 	mInvokeManager->invoke(mailRequest);
 }
 
-void OpenDataSpace::startChat(const QString& text) {
+void ApplicationUI::startChat(const QString& text) {
 	InvokeRequest bbmRequest;
 	bbmRequest.setTarget("sys.bbm.chathandler");
 	bbmRequest.setAction("bb.action.BBMCHAT");
@@ -522,7 +518,7 @@ void OpenDataSpace::startChat(const QString& text) {
 	mInvokeManager->invoke(bbmRequest);
 }
 
-void OpenDataSpace::inviteBBM() {
+void ApplicationUI::inviteBBM() {
 	InvokeRequest bbmRequest;
 	bbmRequest.setTarget("sys.bbm.invitehandler");
 	bbmRequest.setAction("bb.action.INVITEBBM");
@@ -530,7 +526,7 @@ void OpenDataSpace::inviteBBM() {
 	mInvokeManager->invoke(bbmRequest);
 }
 
-void OpenDataSpace::inviteODS() {
+void ApplicationUI::inviteODS() {
 	shareTextWithBBM(
 			tr(
 					"Please download OpenDataSpace Application from BlackBerry World for FREE: ")
@@ -538,7 +534,7 @@ void OpenDataSpace::inviteODS() {
 	qDebug() << "invite to BBM";
 }
 
-void OpenDataSpace::leaveReview() {
+void ApplicationUI::leaveReview() {
 	InvokeRequest bbmRequest;
 	bbmRequest.setAction("bb.action.OPEN");
 	bbmRequest.setMimeType("application/x-bb-appworld");
@@ -551,7 +547,7 @@ void OpenDataSpace::leaveReview() {
  * uses Invokation Framework to View the file from URI
  *
  */
-void OpenDataSpace::showInView(QString uri) {
+void ApplicationUI::showInView(QString uri) {
 	qDebug() << "showInView called: " << uri;
 	if (uri.endsWith(".ogg")) {
 		invokeBoundMediaPlayer(uri);
@@ -573,7 +569,7 @@ void OpenDataSpace::showInView(QString uri) {
  * for a specific MimeType
  *
  */
-void OpenDataSpace::showInViewForMimeType(QString uri, QString mimeType) {
+void ApplicationUI::showInViewForMimeType(QString uri, QString mimeType) {
 	qDebug() << "showInViewForMimeType called: " << uri;
 	InvokeRequest invokeRequest;
 	invokeRequest.setAction("bb.action.VIEW");
@@ -589,7 +585,7 @@ void OpenDataSpace::showInViewForMimeType(QString uri, QString mimeType) {
  * for a specific target like "sys.pictures.app"
  *
  */
-void OpenDataSpace::showInTarget(QString uri, QString target) {
+void ApplicationUI::showInTarget(QString uri, QString target) {
 	qDebug() << "showInTarget called: " << uri;
 	InvokeRequest invokeRequest;
 	invokeRequest.setAction("bb.action.VIEW");
@@ -605,7 +601,7 @@ void OpenDataSpace::showInTarget(QString uri, QString target) {
  * and for a specific target like "sys.pictures.app"
  *
  */
-void OpenDataSpace::showInTargetForMimeType(QString uri, QString mimeType,
+void ApplicationUI::showInTargetForMimeType(QString uri, QString mimeType,
 		QString target) {
 	qDebug() << "showInTargetForMimeType called: " << uri;
 	InvokeRequest invokeRequest;
@@ -619,7 +615,7 @@ void OpenDataSpace::showInTargetForMimeType(QString uri, QString mimeType,
 }
 
 // triggered if Application was sent to back
-void OpenDataSpace::onThumbnail() {
+void ApplicationUI::onThumbnail() {
 	// TODO set Cover()
 	qDebug() << "Application shrinks to thumbnail";
 	// AbstractCover *cover;
@@ -627,7 +623,7 @@ void OpenDataSpace::onThumbnail() {
 }
 
 // triggered if Application was invoked by a client
-void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
+void ApplicationUI::handleInvoke(const InvokeRequest& request) {
 	// TODO
 	qDebug() << "Invoke Request";
 	qDebug() << "Invoke Request Action:" << request.action();
@@ -693,7 +689,7 @@ void OpenDataSpace::handleInvoke(const InvokeRequest& request) {
  * true if this Application was embedded as a Card
  * from Invocation Framework
  */
-bool OpenDataSpace::isCard() {
+bool ApplicationUI::isCard() {
 	return mIsCard;
 }
 
@@ -701,11 +697,11 @@ bool OpenDataSpace::isCard() {
  * true if this Application is running embedded
  * can be a Card, a Viewer or a Service
  */
-bool OpenDataSpace::isEmbedded() {
+bool ApplicationUI::isEmbedded() {
 	return mIsLaunchedEmbedded;
 }
 
-void OpenDataSpace::handleCardResize(
+void ApplicationUI::handleCardResize(
 		const bb::system::CardResizeMessage& resizeMessage) {
 	mCardStatus = tr("Resized");
 	// width available to the card
@@ -719,7 +715,7 @@ void OpenDataSpace::handleCardResize(
 	emit cardStatusChanged();
 }
 
-void OpenDataSpace::handleCardPooled(
+void ApplicationUI::handleCardPooled(
 		const bb::system::CardDoneMessage& message) {
 	// reason can be: "closed" or "Success"
 	qDebug() << "handleCardPooled data: " << message.data() << " reason: "
@@ -732,7 +728,7 @@ void OpenDataSpace::handleCardPooled(
 /**
  * the Card was processed with success
  */
-void OpenDataSpace::cardDone() {
+void ApplicationUI::cardDone() {
 	qDebug() << "cardDone: assemble message";
 	// Assemble message
 	CardDoneMessage message;
@@ -751,7 +747,7 @@ void OpenDataSpace::cardDone() {
  * so we're sending with reason cancel
  * and add data to describe why
  */
-void OpenDataSpace::cardCanceled(const QString data) {
+void ApplicationUI::cardCanceled(const QString data) {
 	qDebug() << "cardDone: assemble message";
 	// Assemble message
 	CardDoneMessage message;
@@ -764,4 +760,5 @@ void OpenDataSpace::cardCanceled(const QString data) {
 	mInvokeManager->sendCardDone(message);
 
 }
+
 

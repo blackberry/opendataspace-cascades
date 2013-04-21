@@ -99,24 +99,24 @@ Page {
                 navigationPane.pop();
             }
         },
-        ActionItem {
-            title: qsTr("Copy") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/5-content-copy81.png"
-            ActionBar.placement: ActionBarPlacement.InOverflow
-            onTriggered: {
-                // TODO
-                workInProgress.show()
-            }
-        },
-        ActionItem {
-            title: qsTr("Move") + Retranslate.onLanguageChanged
-            imageSource: "asset:///images/ics/5-content-import-export81.png"
-            ActionBar.placement: ActionBarPlacement.InOverflow
-            onTriggered: {
-                // TODO
-                workInProgress.show()
-            }
-        },
+//        ActionItem {
+//            title: qsTr("Copy") + Retranslate.onLanguageChanged
+//            imageSource: "asset:///images/ics/5-content-copy81.png"
+//            ActionBar.placement: ActionBarPlacement.InOverflow
+//            onTriggered: {
+//                // TODO
+//                workInProgress.show()
+//            }
+//        },
+//        ActionItem {
+//            title: qsTr("Move") + Retranslate.onLanguageChanged
+//            imageSource: "asset:///images/ics/5-content-import-export81.png"
+//            ActionBar.placement: ActionBarPlacement.InOverflow
+//            onTriggered: {
+//                // TODO
+//                workInProgress.show()
+//            }
+//        },
         DeleteActionItem {
             title: qsTr("Delete") + Retranslate.onLanguageChanged
             ActionBar.placement: ActionBarPlacement.InOverflow

@@ -173,6 +173,7 @@ private:
 	int mCustomerNumber;
 	int mLanguageNumber;
 	QFile *mFileToUpload;
+	bool mOverwriteFile;
 	QString mFileName;
 	qint64 mRequestedFileSize;
 	QString mSourceFileName;

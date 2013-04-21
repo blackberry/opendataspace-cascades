@@ -98,7 +98,8 @@ Page {
                     scalingMethod: ScalingMethod.AspectFit
                     onImageSourceChanged: {
                         console.debug("IMAGESOURCE Changed:" + imageSource)
-                        recalculateValues(imageSource, previewPage.currentFolder)
+                        // previewPage.currentFolder ?? TODO
+                        recalculateValues(imageSource)
                     }
                 }
                 Container {
@@ -133,7 +134,8 @@ Page {
             }
         } // end main container
     } // end ScrollView
-    function recalculateValues(name, folder) {
+    // TODO folder needed ?
+    function recalculateValues(name) {
         console.debug("ImagePreviewPage recalculate for " + name)
         previewPage.path = name
         titleBar.title = fileInfo.getShortName(name)

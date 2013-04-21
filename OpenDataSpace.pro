@@ -1,12 +1,10 @@
-TEMPLATE = app
-TARGET = OpenDataSpace
+APP_NAME = OpenDataSpace
 
-CONFIG += qt warn_on debug_and_release cascades
+CONFIG += qt warn_on cascades10
+
 LIBS += -lcamapi -lscreen -lbbsystem -lbbsystemlocale -lbbplatform -lbbpim -lbbdata -lbbmultimedia -lbbcascadespickers -lbbplatformbbm
 
-INCLUDEPATH += ../src
-SOURCES += ../src/*.cpp
-HEADERS += ../src/*.hpp ../src/*.h
+include(config.pri)
 
 lupdate_inclusion {
     SOURCES += ../assets/*.qml
@@ -20,40 +18,17 @@ lupdate_inclusion {
 }
 
 device {
-	CONFIG(release, debug|release) {
-		DESTDIR = o.le-v7
-	}
-	CONFIG(debug, debug|release) {
-		DESTDIR = o.le-v7-g
-	}
+    CONFIG(debug, debug|release) {
+        # Device-Debug custom configuration
+    }
+
+    CONFIG(release, debug|release) {
+        # Device-Release custom configuration
+    }
 }
 
 simulator {
-	CONFIG(release, debug|release) {
-		DESTDIR = o
-	}
-	CONFIG(debug, debug|release) {
-		DESTDIR = o-g
-	}
+    CONFIG(debug, debug|release) {
+        # Simulator-Debug custom configuration
+    }
 }
-
-OBJECTS_DIR = $${DESTDIR}/.obj
-MOC_DIR = $${DESTDIR}/.moc
-RCC_DIR = $${DESTDIR}/.rcc
-UI_DIR = $${DESTDIR}/.ui
-
-suredelete.target = sureclean
-suredelete.commands = $(DEL_FILE) $${MOC_DIR}/*; $(DEL_FILE) $${RCC_DIR}/*; $(DEL_FILE) $${UI_DIR}/*
-suredelete.depends = distclean
-
-QMAKE_EXTRA_TARGETS += suredelete
-
-TRANSLATIONS = \
-    $${TARGET}_fr.ts \
-    $${TARGET}_it.ts \    
-    $${TARGET}_de.ts \
-    $${TARGET}_en.ts \
-    $${TARGET}_es.ts \
-    $${TARGET}_ru.ts \
-    $${TARGET}.ts
-

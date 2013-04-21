@@ -25,41 +25,43 @@ NavigationPane {
     id: paneId
     Page {
         id: tab1
-        actions: [
-            //-- define the actions for first tab here
-            ActionItem {
-                title: qsTr("Placeholder") + Retranslate.onLanguageChanged
-                ActionBar.placement: ActionBarPlacement.OnBar
-                onTriggered: {
-                    //
-                }
-            }
-        ]
         Container {
             //-- define tab content here
-            layout: StackLayout {
+            layout: DockLayout {
             }
             Label {
+                id: infoLabel
                 layoutProperties: StackLayoutProperties {
-                }
-                horizontalAlignment: HorizontalAlignment.Center
-                multiline: true
-                text: qsTr("Queued Uploads (Work-in-Progress) - at the moment all single files will be uploaded immediately - stay tuned for bulk background uploads coming soon") + Retranslate.onLanguageChanged
-                textStyle {
-                    base: SystemDefaults.TextStyles.TitleText
-                }
-            }
-            ImageView {
-                id: imgTab1
-                imageSource: "asset:///images/upload-icon.png"
-                layoutProperties: StackLayoutProperties {
-                    spaceQuota: 1.0
                 }
                 horizontalAlignment: HorizontalAlignment.Center
                 verticalAlignment: VerticalAlignment.Center
-                scalingMethod: ScalingMethod.AspectFit
+                multiline: true
+                textStyle {
+                    base: SystemDefaults.TextStyles.BodyText
+                }
             }
+
         }
+    }
+    function createInfoText(){
+        var s;
+        s = qsTr("HowTo Upload Files to OpenDataSpace")
+        s += "\n"
+        s += "\n"
+        s += qsTr("1. GoTo Tab DataSpace to see your Data Rooms")
+        s += "\n"
+        s += qsTr("2. Open a Data Room to see Files and Folders of this Room")
+        s += "\n"
+        s += qsTr("3. GoTo the place where you want to upload a File")
+        s += "\n"
+        s += qsTr("4. Open Overflow Menu (3 dots)")
+        s += "\n"
+        s += qsTr("5. Select or Create an Image, Document, ...")
+        s += "\n"
+        s += qsTr("6. Verify and click Upload")
+        s += "\n"
+        s += qsTr("You're done")
+        infoLabel.text = s;
     }
     // SLOTS
     function onQueueFileForUpload(path) {
@@ -67,6 +69,6 @@ NavigationPane {
     }
 
     onCreationCompleted: {
-        //
+        createInfoText()
     }
 }

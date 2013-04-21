@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--
   
-   Copyright (c) 2011, 2012 Research In Motion Limited.
+   Copyright (c) 2011, 2012, 2013 Research In Motion Limited.
   
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@
          Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
          An updated version of application must have a versionNumber value higher than the previous version. Required. -->
     <versionNumber>0.9.12</versionNumber>
-    <packageLocale>de,en,fr,es,it,ru</packageLocale>
+    <packageLocale>de,en,fr,it,ru,es</packageLocale>
 
     <!-- Fourth digit segment of the package version. First three segments are taken from the 
          <versionNumber> element.  Must be an integer from 0 to 2^16-1 -->
@@ -71,9 +71,6 @@
     <!--  Name of author which is used for signing. Must match the developer name of your development certificate. -->
     <author>ekkes-corner UG</author>
     <authorId>gYAAgNK-ORMeS0PwOlcZSTMDa98</authorId>
-    <icon>
-       <image>icon.png</image>
-    </icon>
     
     <!--  Unique author ID assigned by signing authority. Required if using debug tokens. -->
     <!-- <authorId>ABC1234YjsnUk235h</authorId> -->
@@ -85,29 +82,31 @@
     </initialWindow>
     
     <!--  The category where the application appears. Either core.games or core.media. -->
-    <configuration id="com.qnx.qcc.toolChain.1969782242" name="Default">
+    <configuration name="Device-Debug">
        <platformArchitecture>armle-v7</platformArchitecture>
        <asset path="arm/o.le-v7-g/OpenDataSpace" entry="true" type="Qnx/Elf">OpenDataSpace</asset>
     </configuration>
-    <configuration id="com.qnx.qcc.toolChain.1783127934" name="Device-Debug">
+    <configuration name="Device-Release">
+       <entryPointType>Qnx/Cascades</entryPointType>
        <platformArchitecture>armle-v7</platformArchitecture>
-       <asset path="arm/o.le-v7-g/OpenDataSpace" entry="true" type="Qnx/Elf">OpenDataSpace</asset>
+       <asset path="arm/o.le-v7/OpenDataSpace.so" entry="true" type="Qnx/Elf">OpenDataSpace.so</asset>
     </configuration>
-    <configuration id="com.qnx.qcc.toolChain.1363308007" name="Device-Release">
+    <configuration name="Device-Profile">
        <platformArchitecture>armle-v7</platformArchitecture>
-       <asset path="arm/o.le-v7/OpenDataSpace" entry="true" type="Qnx/Elf">OpenDataSpace</asset>
+       <asset path="arm-p/o.le-v7-g/OpenDataSpace" entry="true" type="Qnx/Elf">OpenDataSpace</asset>
     </configuration>
-    <configuration id="com.qnx.qcc.toolChain.421977417" name="Simulator-Debug">
+    <configuration name="Simulator-Debug">
        <platformArchitecture>x86</platformArchitecture>
        <asset path="x86/o-g/OpenDataSpace" entry="true" type="Qnx/Elf">OpenDataSpace</asset>
     </configuration>
     
-    <!--  The icon for the application, which should be 86x86. -->
+    <!--  The icon for the application -->
+    <icon>
+        <image>icon.png</image>
+    </icon>
 
     <asset path="icon.png">icon.png</asset>
     <asset path="assets">assets</asset>
-    <!--  The splash screen that will appear when your application is launching. Should be 1024x600. -->
-    <!-- <splashscreen></splashscreen> -->
     
     <!-- Locale support -->
     <asset path="translations" dest="qm">
@@ -116,19 +115,15 @@
     
     <!-- Request permission to execute native code.  Required for native applications. -->
     <permission system="true">run_native</permission>
-    <permission>record_audio</permission>
-    <permission>read_geolocation</permission>
-    <permission>use_camera</permission>
-    <permission>access_internet</permission>
-    <permission>play_audio</permission>
-    <permission>access_led_control</permission>
-    <permission>set_audio_volume</permission>
-    <permission>access_shared</permission>
-    <permission>run_when_backgrounded</permission>
-    <permission>access_pimdomain_contacts</permission>
     <permission>bbm_connect</permission>
+    <permission>use_camera</permission>
+    <permission>access_pimdomain_contacts</permission>
+    <permission>read_geolocation</permission>
+    <permission>access_internet</permission>
+    <permission>record_audio</permission>
     <permission>post_notification</permission>
-    <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib"/>
+    <permission>run_when_backgrounded</permission>
+    <permission>access_shared</permission>
     
     <!-- Invoke filters -->
     <!-- Invoke ths Application as a normal Application -->
@@ -191,5 +186,9 @@
       		<mime-type>video/x-msvideo</mime-type>	
       		<mime-type>video/mp4</mime-type>
         </filter>
-    </invoke-target>
+    </invoke-target>    
+    
+    
+    <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib"/>
+
 </qnx>

@@ -1194,6 +1194,22 @@ void ODSData::uploadFile(int roomId, QString sourceFileName, QString path,
 		QString comment) {
 	qDebug() << "start upload File: " << sourceFileName << " path: " << path
 			<< "into Room: " << roomId;
+	// check if overwrite allowed
+	mOverwriteFile = true;
+	mDialog->setTitle(tr("Overwrite File if exists ?"));
+	mDialog->setBody(sourceFileName);
+	mDialog->cancelButton()->setLabel(tr("No"));
+	mDialog->defaultButton()->setLabel(tr("Overwrite"));
+	int result = mDialog->exec();
+	switch (result) {
+	case SystemUiResult::CancelButtonSelection:
+		mOverwriteFile = false;
+		break;
+	default:
+		break;
+	}
+	qDebug() << "Overwrite File ? " << mOverwriteFile;
+
 	// start progress
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
@@ -1756,7 +1772,11 @@ void ODSData::initiateRequest(int usecase) {
 		mRequestMultipart->append(tokenPart);
 		overWritePart.setHeader(QNetworkRequest::ContentDispositionHeader,
 				QVariant("form-data; name=\"overwrite\""));
-		overWritePart.setBody(QString::number(0).toUtf8());
+		if (mOverwriteFile) {
+			overWritePart.setBody(QString::number(1).toUtf8());
+		} else {
+			overWritePart.setBody(QString::number(0).toUtf8());
+		}
 		mRequestMultipart->append(overWritePart);
 
 		fileAttachementPart.setHeader(QNetworkRequest::ContentTypeHeader,

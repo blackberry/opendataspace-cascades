@@ -125,6 +125,53 @@
     </message>
 </context>
 <context>
+    <name>ApplicationUI</name>
+    <message>
+        <location filename="../src/applicationui.cpp" line="297"/>
+        <source>Help</source>
+        <translation type="unfinished">Ayudar</translation>
+    </message>
+    <message>
+        <location filename="../src/applicationui.cpp" line="300"/>
+        <source>Feedback</source>
+        <translation type="unfinished">Realimentación</translation>
+    </message>
+    <message>
+        <source>Logout</source>
+        <translation type="obsolete">Cerrar sesión</translation>
+    </message>
+    <message>
+        <location filename="../src/applicationui.cpp" line="306"/>
+        <source>Settings</source>
+        <translation type="unfinished">Configuración</translation>
+    </message>
+    <message>
+        <location filename="../src/applicationui.cpp" line="531"/>
+        <source>Please download OpenDataSpace Application from BlackBerry World for FREE: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/applicationui.cpp" line="706"/>
+        <source>Resized</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/applicationui.cpp" line="724"/>
+        <source>Pooled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/applicationui.cpp" line="735"/>
+        <source>:)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/applicationui.cpp" line="737"/>
+        <source>save</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AudioRecordPage</name>
     <message>
         <location filename="../assets/media/AudioRecordPage.qml" line="32"/>
@@ -438,14 +485,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="103"/>
         <source>Copy</source>
-        <translation type="unfinished">Copiar</translation>
+        <translation type="obsolete">Copiar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="112"/>
         <source>Move</source>
-        <translation type="unfinished">Mover</translation>
+        <translation type="obsolete">Mover</translation>
     </message>
     <message>
         <location filename="../assets/rooms/FileInfoPage.qml" line="94"/>
@@ -930,7 +975,7 @@ Start Sync now ?</source>
         <location filename="../src/ODSData.cpp" line="237"/>
         <location filename="../src/ODSData.cpp" line="868"/>
         <location filename="../src/ODSData.cpp" line="895"/>
-        <location filename="../src/ODSData.cpp" line="2343"/>
+        <location filename="../src/ODSData.cpp" line="2363"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
@@ -953,7 +998,7 @@ Start Sync now ?</source>
         <location filename="../src/ODSData.cpp" line="1035"/>
         <location filename="../src/ODSData.cpp" line="1075"/>
         <location filename="../src/ODSData.cpp" line="1125"/>
-        <location filename="../src/ODSData.cpp" line="1203"/>
+        <location filename="../src/ODSData.cpp" line="1219"/>
         <source>Please Wait</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1006,6 +1051,7 @@ Start Sync now ?</source>
         <location filename="../src/ODSData.cpp" line="1000"/>
         <location filename="../src/ODSData.cpp" line="1052"/>
         <location filename="../src/ODSData.cpp" line="1096"/>
+        <location filename="../src/ODSData.cpp" line="1201"/>
         <source>No</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1098,112 +1144,122 @@ Start Sync now ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1200"/>
+        <location filename="../src/ODSData.cpp" line="1199"/>
+        <source>Overwrite File if exists ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="1202"/>
+        <source>Overwrite</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="1216"/>
         <source>Upload a file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1206"/>
+        <location filename="../src/ODSData.cpp" line="1222"/>
         <source>send file to server...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1717"/>
+        <location filename="../src/ODSData.cpp" line="1733"/>
         <source>Cannot read file to upload: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1835"/>
+        <location filename="../src/ODSData.cpp" line="1855"/>
         <source>unknown Usecase: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1898"/>
+        <location filename="../src/ODSData.cpp" line="1918"/>
         <source>downloading...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1928"/>
+        <location filename="../src/ODSData.cpp" line="1948"/>
         <source>uploading...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1903"/>
-        <location filename="../src/ODSData.cpp" line="1912"/>
+        <location filename="../src/ODSData.cpp" line="1923"/>
         <location filename="../src/ODSData.cpp" line="1932"/>
-        <location filename="../src/ODSData.cpp" line="1941"/>
+        <location filename="../src/ODSData.cpp" line="1952"/>
+        <location filename="../src/ODSData.cpp" line="1961"/>
         <source> Bytes </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1904"/>
-        <location filename="../src/ODSData.cpp" line="1933"/>
+        <location filename="../src/ODSData.cpp" line="1924"/>
+        <location filename="../src/ODSData.cpp" line="1953"/>
         <source> (Total Size unknown)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1910"/>
-        <location filename="../src/ODSData.cpp" line="1939"/>
+        <location filename="../src/ODSData.cpp" line="1930"/>
+        <location filename="../src/ODSData.cpp" line="1959"/>
         <source>% of total:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2045"/>
+        <location filename="../src/ODSData.cpp" line="2065"/>
         <source>Error: could not write to file: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2054"/>
+        <location filename="../src/ODSData.cpp" line="2074"/>
         <source>wrong content </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2088"/>
+        <location filename="../src/ODSData.cpp" line="2108"/>
         <source>Authentication done, getting User...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2099"/>
+        <location filename="../src/ODSData.cpp" line="2119"/>
         <source>User received, getting Settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2110"/>
+        <location filename="../src/ODSData.cpp" line="2130"/>
         <source>Settings received, getting Files...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2120"/>
+        <location filename="../src/ODSData.cpp" line="2140"/>
         <source>Files received, getting Userlist...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2138"/>
+        <location filename="../src/ODSData.cpp" line="2158"/>
         <source>Synchronization with Server done :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2151"/>
+        <location filename="../src/ODSData.cpp" line="2171"/>
         <source>Work done, sync Filestructure...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2173"/>
+        <location filename="../src/ODSData.cpp" line="2193"/>
         <source>Server request finished :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2224"/>
+        <location filename="../src/ODSData.cpp" line="2244"/>
         <source>Response without Body-part</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2324"/>
+        <location filename="../src/ODSData.cpp" line="2344"/>
         <source>Unknown Response Usecase</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2340"/>
+        <location filename="../src/ODSData.cpp" line="2360"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1288,72 +1344,6 @@ Start Sync now ?</source>
         <location filename="../src/ODSSubRoom.cpp" line="31"/>
         <source>empty SubRoom</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>OpenDataSpace</name>
-    <message>
-        <location filename="../src/OpenDataSpace.cpp" line="301"/>
-        <source>Help</source>
-        <translation type="unfinished">Ayudar</translation>
-    </message>
-    <message>
-        <location filename="../src/OpenDataSpace.cpp" line="304"/>
-        <source>Feedback</source>
-        <translation type="unfinished">Realimentación</translation>
-    </message>
-    <message>
-        <source>Logout</source>
-        <translation type="obsolete">Cerrar sesión</translation>
-    </message>
-    <message>
-        <location filename="../src/OpenDataSpace.cpp" line="310"/>
-        <source>Settings</source>
-        <translation type="unfinished">Configuración</translation>
-    </message>
-    <message>
-        <location filename="../src/OpenDataSpace.cpp" line="535"/>
-        <source>Please download OpenDataSpace Application from BlackBerry World for FREE: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/OpenDataSpace.cpp" line="710"/>
-        <source>Resized</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/OpenDataSpace.cpp" line="728"/>
-        <source>Pooled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/OpenDataSpace.cpp" line="739"/>
-        <source>:)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/OpenDataSpace.cpp" line="741"/>
-        <source>save</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>OpenDataSpaceApp</name>
-    <message>
-        <source>Help</source>
-        <translation type="obsolete">Ayudar</translation>
-    </message>
-    <message>
-        <source>Feedback</source>
-        <translation type="obsolete">Realimentación</translation>
-    </message>
-    <message>
-        <source>Logout</source>
-        <translation type="obsolete">Cerrar sesión</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="obsolete">Configuración</translation>
     </message>
 </context>
 <context>
@@ -1639,13 +1629,11 @@ Start Sync now ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="357"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="451"/>
         <source>Copy</source>
         <translation type="unfinished">Copiar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="365"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="459"/>
         <source>Move</source>
         <translation type="unfinished">Mover</translation>
@@ -1791,13 +1779,43 @@ Start Sync now ?</source>
 <context>
     <name>UploadNavPane</name>
     <message>
-        <location filename="../assets/upload/UploadNavPane.qml" line="31"/>
-        <source>Placeholder</source>
+        <location filename="../assets/upload/UploadNavPane.qml" line="48"/>
+        <source>HowTo Upload Files to OpenDataSpace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/upload/UploadNavPane.qml" line="47"/>
-        <source>Queued Uploads (Work-in-Progress) - at the moment all single files will be uploaded immediately - stay tuned for bulk background uploads coming soon</source>
+        <location filename="../assets/upload/UploadNavPane.qml" line="51"/>
+        <source>1. GoTo Tab DataSpace to see your Data Rooms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/upload/UploadNavPane.qml" line="53"/>
+        <source>2. Open a Data Room to see Files and Folders of this Room</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/upload/UploadNavPane.qml" line="55"/>
+        <source>3. GoTo the place where you want to upload a File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/upload/UploadNavPane.qml" line="57"/>
+        <source>4. Open Overflow Menu (3 dots)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/upload/UploadNavPane.qml" line="59"/>
+        <source>5. Select or Create an Image, Document, ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/upload/UploadNavPane.qml" line="61"/>
+        <source>6. Verify and click Upload</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/upload/UploadNavPane.qml" line="63"/>
+        <source>You&apos;re done</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

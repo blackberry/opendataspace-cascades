@@ -50,7 +50,7 @@ Page {
                 // create the Link last param true = shareViaMail
                 odsdata.createLink(
                     fileId.valueText, fileName.valueText, 
-                    expires.checked, expirationDate.value, 
+                    expires.valueChecked, expirationDate.value, 
                     password.text, 
                     linkCode.textFieldText, 
                     noticeDownload.valueChecked,
@@ -153,12 +153,12 @@ Page {
     // relayout if orientation changes
     function relayout(landscape) {
         if (landscape == true) {
-            fileName.landscape = true
+//            fileName.landscape = true
             fileId.landscape = true
             expires.landscape = true
             noticeDownload.landscape = true
         } else {
-        fileName.landscape = false
+//        fileName.landscape = false
         fileId.landscape = false
         expires.landscape = false
         noticeDownload.landscape = false

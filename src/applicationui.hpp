@@ -1,7 +1,9 @@
-#ifndef OPENDATASPACE_H
-#define OPENDATASPACE_H
+// Default empty project template
+#ifndef ApplicationUI_HPP_
+#define ApplicationUI_HPP_
 
 #include <QObject>
+
 #include <bb/cascades/Menu>
 #include <bb/cascades/Application>
 #include <bb/cascades/LocaleHandler>
@@ -11,24 +13,22 @@
 #include "ODSData.hpp"
 #include "ODSSettings.hpp"
 
-namespace bb {
-namespace cascades {
-class Application;
-}
-}
+namespace bb { namespace cascades { class Application; }}
 
 using namespace bb::cascades;
 
-/*!
- * @brief Application GUI object
- */
-class OpenDataSpace: public QObject {
-Q_OBJECT
 
+/*!
+ * @brief Application pane object
+ *
+ *Use this object to create and init app UI, to create context objects, to register the new meta types etc.
+ */
+class ApplicationUI : public QObject
+{
+    Q_OBJECT
 public:
-	OpenDataSpace(QObject *parent = 0);
-	virtual ~OpenDataSpace() {
-	}
+    ApplicationUI(bb::cascades::Application *app);
+    virtual ~ApplicationUI() {}
 
 	Q_INVOKABLE
 	void initLocalization(QTranslator* translator);
@@ -198,6 +198,8 @@ private:
 
 	void translateMenuItems();
 	void initTheApplication();
+
 };
 
-#endif // ifndef OPENDATASPACE_H
+
+#endif /* ApplicationUI_HPP_ */

@@ -193,16 +193,16 @@ Page {
     function relayout(landscape) {
         if (landscape == true) {
             roomId.landscape = true
-            roomName.landscape = true
+//            roomName.landscape = true
             subroomId.landscape = true
-            subroomName.landscape = true
-            folderPath.landscape = true
+//            subroomName.landscape = true
+//            folderPath.landscape = true
         } else {
             roomId.landscape = false
-            roomName.landscape = false
+//            roomName.landscape = false
             subroomId.landscape = false
-            subroomName.landscape = false
-            folderPath.landscape = false
+//            subroomName.landscape = false
+//            folderPath.landscape = false
         }
     }
     onCreationCompleted: {

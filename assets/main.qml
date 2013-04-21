@@ -138,7 +138,7 @@ TabbedPane {
         id: uploadTab
         title: qsTr("Upload") + Retranslate.onLanguageChanged
         imageSource: "asset:///images/upload81.png"
-        enabled: false
+        enabled: true
         // NO CONTENT .... will be lazy loaded after LogIn done
         onTriggered: {
             destroyUserTabComponent()
@@ -220,9 +220,9 @@ TabbedPane {
     function addUpload(name) {
         // TODO ask queue or immediately
         odsdata.simpleUpload(name)
-        uploadTab.enabled = true
-        uploadTab.newContentAvailable = true
-        uploadTab.unreadContentCount = uploadTab.unreadContentCount + 1
+//        uploadTab.enabled = true
+//        uploadTab.newContentAvailable = true
+//        uploadTab.unreadContentCount = uploadTab.unreadContentCount + 1
     }
 
     // the TabbedPane is initialized, lets do some work at startup

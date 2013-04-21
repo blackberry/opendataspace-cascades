@@ -353,22 +353,22 @@ Page {
                                         foldersItem.ListItem.view.renameFolder(ListItemData.containerId, ListItemData.path, ListItemData.name)
                                     }
                                 }
-                                ActionItem {
-                                    title: qsTr("Copy") + Retranslate.onLanguageChanged
-                                    imageSource: "asset:///images/ics/5-content-copy81.png"
-                                    onTriggered: {
-                                        // TODO
-                                        foldersItem.ListItem.view.wip()
-                                    }
-                                }
-                                ActionItem {
-                                    title: qsTr("Move") + Retranslate.onLanguageChanged
-                                    imageSource: "asset:///images/ics/5-content-import-export81.png"
-                                    onTriggered: {
-                                        // TODO
-                                        foldersItem.ListItem.view.wip()
-                                    }
-                                }
+//                                ActionItem {
+//                                    title: qsTr("Copy") + Retranslate.onLanguageChanged
+//                                    imageSource: "asset:///images/ics/5-content-copy81.png"
+//                                    onTriggered: {
+//                                        // TODO
+//                                        foldersItem.ListItem.view.wip()
+//                                    }
+//                                }
+//                                ActionItem {
+//                                    title: qsTr("Move") + Retranslate.onLanguageChanged
+//                                    imageSource: "asset:///images/ics/5-content-import-export81.png"
+//                                    onTriggered: {
+//                                        // TODO
+//                                        foldersItem.ListItem.view.wip()
+//                                    }
+//                                }
                                 DeleteActionItem {
                                     title: qsTr("Delete") + Retranslate.onLanguageChanged
                                     onTriggered: {
