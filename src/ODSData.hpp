@@ -144,6 +144,8 @@ private slots:
 	 */
 	void uploadProgress(qint64 bytesSent, qint64 bytesTotal);
 
+	void uploadAndOverwriteFile();
+
 private:
 	bool mDelayedInitDone;
 
@@ -225,6 +227,9 @@ private:
 	void delayedInit();
 
 	void reportError(QString &errorText);
+
+	Q_SIGNALS:
+	void askOverwrite();
 
 };
 

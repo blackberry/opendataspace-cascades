@@ -33,6 +33,9 @@ public:
 	Q_INVOKABLE
 	void initLocalization(QTranslator* translator);
 
+	Q_INVOKABLE
+	bool isSquare();
+
 	/*
 	 * Refreshes the UI with the specified locale
 	 *

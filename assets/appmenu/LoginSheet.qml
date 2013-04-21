@@ -168,7 +168,7 @@ Page {
         }
     }
     function reLayout(orientation) {
-        if (orientation == UIOrientation.Landscape) {
+        if (ods.isSquare() || orientation == UIOrientation.Landscape) {
             backgroundImage.image = backgroundLandscape.image
             mainContainer.layoutProperties.positionY = 460
         } else {

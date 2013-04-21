@@ -59,7 +59,7 @@ Container {
         }
     }
     onLandscapeChanged: {
-        if (landscape == true) {
+        if (landscape == true && !app.isSquare()) {
             valueId.layoutProperties.spaceQuota = 2.0
         } else {
             valueId.layoutProperties.spaceQuota = 1.0

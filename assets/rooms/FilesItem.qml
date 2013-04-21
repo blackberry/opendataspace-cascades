@@ -64,7 +64,7 @@ Container {
             layout: StackLayout {
                 orientation: LayoutOrientation.LeftToRight
             }
-            leftPadding: 6
+            leftPadding: 18
             horizontalAlignment: HorizontalAlignment.Fill
             verticalAlignment: VerticalAlignment.Center
             ImageView {

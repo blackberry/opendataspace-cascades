@@ -93,6 +93,11 @@ ODSData::ODSData() {
 	mToast = new SystemToast(this);
 	mPrompt = new SystemPrompt(this);
 
+	connectOK = connect(this,SIGNAL(askOverwrite()), this,SLOT(uploadAndOverwriteFile()));
+	if (!connectOK) {
+		qDebug() << "connect connect askoverwrite";
+	}
+
 	// Displays a warning message if there's an issue connecting the signal
 	// and slot. This is a good practice with signals and slots as it can
 	// be easier to mistype a slot or signal definition
@@ -1190,26 +1195,46 @@ void ODSData::simpleUpload(QString sourceFileName) {
 	// TODO error dialog
 }
 
-void ODSData::uploadFile(int roomId, QString sourceFileName, QString path,
-		QString comment) {
-	qDebug() << "start upload File: " << sourceFileName << " path: " << path
-			<< "into Room: " << roomId;
+void ODSData::uploadAndOverwriteFile(){
+	qDebug() << "start upload and overwrite File: " << mFileName << " path: " << mPath
+			<< "into Room: " << mGroupPk;
 	// check if overwrite allowed
 	mOverwriteFile = true;
-	mDialog->setTitle(tr("Overwrite File if exists ?"));
-	mDialog->setBody(sourceFileName);
+	mDialog->setTitle(tr("File already exists ! Overwrite ?"));
+	mDialog->setBody(mFileName);
 	mDialog->cancelButton()->setLabel(tr("No"));
 	mDialog->defaultButton()->setLabel(tr("Overwrite"));
 	int result = mDialog->exec();
 	switch (result) {
 	case SystemUiResult::CancelButtonSelection:
 		mOverwriteFile = false;
-		break;
+		return;
 	default:
+		qDebug() << "Overwrite File ? NO" ;
 		break;
 	}
-	qDebug() << "Overwrite File ? " << mOverwriteFile;
+	qDebug() << "Overwrite File ? YES";
 
+	// start progress
+	mProgressDialog->setState(SystemUiProgressState::Active);
+	mProgressDialog->setEmoticonsEnabled(true);
+	mProgressDialog->setTitle(tr("Upload a file"));
+	mProgressDialog->setStatusMessage(mBaseUrl);
+	mProgressDialog->setIcon(QUrl("asset:///images/upload-icon.png"));
+	mProgressDialog->cancelButton()->setLabel(tr("Please Wait"));
+	mProgressDialog->confirmButton()->setLabel(QString::null);
+	mProgressDialog->setProgress(-1); // 15
+	mProgressDialog->setBody(tr("send file to server..."));
+	mProgressDialog->show();
+	//
+	initiateRequest(Usecase::FilesUpload);
+}
+
+void ODSData::uploadFile(int roomId, QString sourceFileName, QString path,
+		QString comment) {
+	qDebug() << "start upload File: " << sourceFileName << " path: " << path
+			<< "into Room: " << roomId;
+	mOverwriteFile = false;
 	// start progress
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
@@ -2254,6 +2279,14 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 			qDebug() << "STOP Process response. we got an error:"
 					<< errorString;
 			int i = errorString.toInt();
+			// check if error 13 and ask overwrite
+			if (i == 13) {
+				mProgressDialog->setProgress(100);
+				mProgressDialog->setState(SystemUiProgressState::Inactive);
+				mProgressDialog->cancel();
+				emit askOverwrite();
+				return false;
+			}
 			if (i < mResponseErrorTexts.size()) {
 				errorString = mResponseErrorTexts.at(i);
 			}

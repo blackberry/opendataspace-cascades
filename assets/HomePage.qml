@@ -97,7 +97,7 @@ Page {
         // support all orientations
         //OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
         // test current Orientation and set the Background Image
-        if (OrientationSupport.orientation == UIOrientation.Landscape) {
+        if (ods.isSquare() || OrientationSupport.orientation == UIOrientation.Landscape) {
             backgroundImage.image = backgroundLandscape.image
         } else {
             backgroundImage.image = backgroundPortrait.image

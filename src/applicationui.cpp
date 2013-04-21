@@ -35,6 +35,8 @@
 #include <bb/system/InvokeManager.hpp>
 #include <bb/system/InvokeRequest.hpp>
 
+#include <bb/device/DisplayInfo.hpp>
+
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/AbstractPane>
@@ -211,6 +213,21 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app)
 		qDebug() << "we are running EMBEDDED";
 	}
 	qDebug() << "INIT done";
+}
+
+/**
+ * Q10 support - also working on 10.0
+ */
+bool ApplicationUI::isSquare() {
+	bb::device::DisplayInfo display;
+	if (display.pixelSize().width() == 720
+			&& display.pixelSize().height() == 720) {
+		qDebug() << "Q 1 0";
+		return true;
+	} else {
+		qDebug() << "Z 1 0";
+		return false;
+	}
 }
 
 /**

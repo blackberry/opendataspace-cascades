@@ -2,7 +2,7 @@ APP_NAME = OpenDataSpace
 
 CONFIG += qt warn_on cascades10
 
-LIBS += -lcamapi -lscreen -lbbsystem -lbbsystemlocale -lbbplatform -lbbpim -lbbdata -lbbmultimedia -lbbcascadespickers -lbbplatformbbm
+LIBS += -lcamapi -lscreen -lbbsystem -lbbsystemlocale -lbbplatform -lbbpim -lbbdata -lbbmultimedia -lbbcascadespickers -lbbplatformbbm -lbbdevice
 
 include(config.pri)
 

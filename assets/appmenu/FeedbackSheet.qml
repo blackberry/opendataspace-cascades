@@ -95,7 +95,7 @@ Page {
     }
     onCreationCompleted: {
         // initial setup for orientation
-        if (OrientationSupport.orientation == UIOrientation.Landscape) {
+        if (ods.isSquare() || OrientationSupport.orientation == UIOrientation.Landscape) {
             feedback.preferredHeight = 430
         } else {
             feedback.preferredHeight = 940
