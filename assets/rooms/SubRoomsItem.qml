@@ -22,6 +22,7 @@
  */
 
 Container {
+    property alias backgroundVisible: itemBackground.visible
     layout: DockLayout {
     }
     Container {
@@ -92,7 +93,7 @@ Container {
                     text: ListItemData.displayTitle
                     textStyle {
                         base: SystemDefaults.TextStyles.TitleText
-                        color: Color.Black
+                        // color: Color.Black
                     }
                 }
                 // SUBTITLE
@@ -101,10 +102,13 @@ Container {
                     text: ListItemData.displaySubtitle
                     textStyle {
                         base: SystemDefaults.TextStyles.SubtitleText
-                        color: Color.Black
+                        // color: Color.Black
                     }
                 }
             }
+        }
+        Divider {
+            visible: ! backgroundVisible
         }
     }
     function setHighlight(highlighted) {

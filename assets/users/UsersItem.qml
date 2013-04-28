@@ -22,6 +22,7 @@
  */
 
 Container {
+    property alias backgroundVisible: itemBackground.visible
     layout: DockLayout {
     }
     Container {
@@ -83,12 +84,15 @@ Container {
                 leftMargin: 30
                 textStyle {
                     base: SystemDefaults.TextStyles.TitleText
-                    color: Color.Black
+                    // color: Color.Black
                 }
                 layoutProperties: StackLayoutProperties {
                 }
                 verticalAlignment: VerticalAlignment.Center
             }
+        }
+        Divider {
+            visible: ! backgroundVisible
         }
     }
     function setHighlight(highlighted) {

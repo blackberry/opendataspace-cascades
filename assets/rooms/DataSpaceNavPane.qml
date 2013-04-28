@@ -293,6 +293,7 @@ NavigationPane {
                         type: "roomsItem"
                         RoomsItem {
                             id: roomsItem
+                            backgroundVisible: ! roomsItem.ListItem.view.isSquare()
                             contextActions: [
                                 ActionSet {
                                     title: ListItemData.name
@@ -338,6 +339,9 @@ NavigationPane {
                 // ListView functions
                 function pushRoomInfoPage(id) {
                     openRoomInfoPage(id)
+                }
+                function isSquare(){
+                    return ods.isSquare()
                 }
                 onCreationCompleted: {
                 }

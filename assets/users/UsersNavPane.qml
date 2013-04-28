@@ -116,6 +116,7 @@ NavigationPane {
                         type: "usersItem"
                         UsersItem {
                             id: usersItem
+                            backgroundVisible: ! usersItem.ListItem.view.isSquare()
                             contextActions: [
                                 ActionSet {
                                     title: ListItemData.displayName
@@ -149,6 +150,7 @@ NavigationPane {
                         type: "adminItem"
                         UsersItem {
                             id: adminItem
+                            backgroundVisible: ! adminItem.ListItem.view.isSquare()
                             contextActions: [
                                 ActionSet {
                                     title: ListItemData.displayName
@@ -207,6 +209,9 @@ NavigationPane {
                     }
                     return "header";
                 }
+                function isSquare() {
+                    return ods.isSquare()
+                }
                 onCreationCompleted: {
                 }
             } // end ListView
@@ -223,6 +228,7 @@ NavigationPane {
                 return "../images/admin-icon.png"
             }
         }
+        
         // we need this and the entry in bar-descriptor to support all directions
         onCreationCompleted: {
             addUserPage.onUserAdded.connect(addUser)

@@ -355,12 +355,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="299"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="300"/>
         <source>ODS Data Room</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="301"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="302"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1605,66 +1605,66 @@ Start Sync now ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="306"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="307"/>
         <source>ODS Subroom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="316"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="343"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="412"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="317"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="345"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="415"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="333"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="335"/>
         <source>ODS Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="451"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="454"/>
         <source>Copy</source>
         <translation type="unfinished">Copiare</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="459"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="462"/>
         <source>Move</source>
         <translation type="unfinished">spostare</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="350"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="444"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="352"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="447"/>
         <source>Rename</source>
         <translation type="unfinished">rinominare</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="373"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="467"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="375"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="470"/>
         <source>Delete</source>
         <translation type="unfinished">cancellare</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="393"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="396"/>
         <source>ODS File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="403"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="406"/>
         <source>View</source>
         <translation type="unfinished">vista</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="423"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="426"/>
         <source>Share Link (BBM)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="430"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="433"/>
         <source>Share Link (Mail)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="437"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="440"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1835,30 +1835,30 @@ Start Sync now ?</source>
         <translation type="unfinished">aggiornare</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="124"/>
-        <location filename="../assets/users/UsersNavPane.qml" line="164"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="125"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="166"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="131"/>
-        <location filename="../assets/users/UsersNavPane.qml" line="171"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="132"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="173"/>
         <source>MailTo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="138"/>
-        <location filename="../assets/users/UsersNavPane.qml" line="178"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="139"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="180"/>
         <source>Contact</source>
         <translation type="unfinished">contatto</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="157"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="159"/>
         <source>Add Room</source>
         <translation type="unfinished">Aggiungi spazio</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="185"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="187"/>
         <source>Delete</source>
         <translation type="unfinished">cancellare</translation>
     </message>

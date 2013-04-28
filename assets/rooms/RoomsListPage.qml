@@ -300,6 +300,7 @@ Page {
                     type: "subroomsItem"
                     SubRoomsItem {
                         id: subroomsItem
+                        backgroundVisible: ! subroomsItem.ListItem.view.isSquare()
                         contextActions: [
                             ActionSet {
                                 title: ListItemData.name
@@ -327,6 +328,7 @@ Page {
                     type: "foldersItem"
                     FoldersItem {
                         id: foldersItem
+                        backgroundVisible: ! foldersItem.ListItem.view.isSquare()
                         contextActions: [
                             ActionSet {
                                 title: ListItemData.name
@@ -387,6 +389,7 @@ Page {
                     type: "filesItem"
                     FilesItem {
                         id: filesItem
+                        backgroundVisible: ! filesItem.ListItem.view.isSquare()
                         contextActions: [
                             ActionSet {
                                 title: ListItemData.name
@@ -530,6 +533,9 @@ Page {
             }
             function viewFile(downloadPath) {
                 ods.showInView(downloadPath);
+            }
+            function isSquare() {
+                return ods.isSquare()
             }
         } // end ListView
     } // end Container
