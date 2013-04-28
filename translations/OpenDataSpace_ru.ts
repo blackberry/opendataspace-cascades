@@ -141,32 +141,42 @@
         <translation type="obsolete">Выйти</translation>
     </message>
     <message>
+        <location filename="../src/applicationui.cpp" line="323"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/applicationui.cpp" line="326"/>
+        <source>FAQ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/applicationui.cpp" line="329"/>
         <source>Settings</source>
         <translation type="unfinished">настройки</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="551"/>
+        <location filename="../src/applicationui.cpp" line="576"/>
         <source>Please download OpenDataSpace Application from BlackBerry World for FREE: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="726"/>
+        <location filename="../src/applicationui.cpp" line="751"/>
         <source>Resized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="744"/>
+        <location filename="../src/applicationui.cpp" line="769"/>
         <source>Pooled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="755"/>
+        <location filename="../src/applicationui.cpp" line="780"/>
         <source>:)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="757"/>
+        <location filename="../src/applicationui.cpp" line="782"/>
         <source>save</source>
         <translation type="unfinished"></translation>
     </message>

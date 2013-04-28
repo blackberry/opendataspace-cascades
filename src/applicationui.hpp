@@ -159,6 +159,8 @@ public Q_SLOTS:
 	void cardCanceled(QString reason);
 	// slots from AppMenu Sheets:
 	void logoutTriggered();
+	void aboutTriggered();
+	void faqTriggered();
 	void feedbackTriggered();
 	void helpTriggered();
 	void settingsTriggered();
@@ -182,6 +184,8 @@ private:
 	Menu* createApplicationMenu();
 	HelpActionItem* mHelpItem;
 	ActionItem* mFeedbackItem;
+	ActionItem* mAboutItem;
+	ActionItem* mFAQItem;
 	SettingsActionItem* mSettingsItem;
 	ActionItem* mLogoutItem;
 

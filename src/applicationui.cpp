@@ -319,9 +319,12 @@ void ApplicationUI::translateMenuItems() {
 	if (mFeedbackItem) {
 		mFeedbackItem->setTitle(tr("Feedback"));
 	}
-//	if (mLogoutItem) {
-//		mLogoutItem->setTitle(tr("Logout"));
-//	}
+	if (mAboutItem) {
+		mAboutItem->setTitle(tr("About"));
+	}
+	if (mFAQItem) {
+		mFAQItem->setTitle(tr("FAQ"));
+	}
 	if (mSettingsItem) {
 		mSettingsItem->setTitle(tr("Settings"));
 	}
@@ -365,6 +368,15 @@ void ApplicationUI::suppressKeyboard() {
 Menu* ApplicationUI::createApplicationMenu() {
 	// HELP will open a website with Help Instructions from OpenDataSpace
 	mHelpItem = new HelpActionItem();
+	// ABOUT will open a website with about infos
+	mAboutItem = new ActionItem();
+	mAboutItem->setImageSource(
+			QString("asset:///images/info.png"));
+	// FAQ will open a website with FAQ's
+	mFAQItem = new ActionItem();
+	mFAQItem->setImageSource(
+			QString("asset:///images/faq.png"));
+
 	// FEEDBACK will send an email to OpenDataSpace
 	mFeedbackItem = new ActionItem();
 	mFeedbackItem->setImageSource(
@@ -380,11 +392,15 @@ Menu* ApplicationUI::createApplicationMenu() {
 	// plug it all together
 	// TODO .addAction(mLogoutItem) need some more logic for testdrive
 	Menu* menu =
-			Menu::create().addAction(mFeedbackItem).help(mHelpItem).settings(
+			Menu::create().addAction(mAboutItem).addAction(mFAQItem).addAction(mFeedbackItem).help(mHelpItem).settings(
 					mSettingsItem);
 	// Connect SIGNALS and SLOTS
 //	QObject::connect(mLogoutItem, SIGNAL(triggered()), this,
 //			SLOT(logoutTriggered()));
+	QObject::connect(mAboutItem, SIGNAL(triggered()), this,
+			SLOT(aboutTriggered()));
+	QObject::connect(mFAQItem, SIGNAL(triggered()), this,
+			SLOT(faqTrieggered()));
 	QObject::connect(mFeedbackItem, SIGNAL(triggered()), this,
 			SLOT(feedbackTriggered()));
 	QObject::connect(mHelpItem, SIGNAL(triggered()), this,
@@ -399,6 +415,15 @@ Menu* ApplicationUI::createApplicationMenu() {
 // handles SLOT from Locale Chaned by user at Device
 void ApplicationUI::localeChanged() {
 	updateLocale(QLocale().name());
+}
+
+// handles SLOT from about item
+void ApplicationUI::aboutTriggered() {
+
+}
+// handles SLOT from faq item
+void ApplicationUI::faqTriggered() {
+
 }
 
 // handles SLOT from logoutItem
