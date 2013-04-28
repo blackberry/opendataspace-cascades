@@ -400,7 +400,7 @@ Menu* ApplicationUI::createApplicationMenu() {
 	QObject::connect(mAboutItem, SIGNAL(triggered()), this,
 			SLOT(aboutTriggered()));
 	QObject::connect(mFAQItem, SIGNAL(triggered()), this,
-			SLOT(faqTrieggered()));
+			SLOT(faqTriggered()));
 	QObject::connect(mFeedbackItem, SIGNAL(triggered()), this,
 			SLOT(feedbackTriggered()));
 	QObject::connect(mHelpItem, SIGNAL(triggered()), this,
@@ -419,11 +419,23 @@ void ApplicationUI::localeChanged() {
 
 // handles SLOT from about item
 void ApplicationUI::aboutTriggered() {
-
+	Sheet *s = Application::instance()->scene()->findChild<Sheet*>("aboutSheet");
+	if (s) {
+		qDebug() << "about triggered and aboutSheet found";
+		s->open();
+	} else {
+		qDebug() << "about triggered, but no aboutSheet found";
+	}
 }
 // handles SLOT from faq item
 void ApplicationUI::faqTriggered() {
-
+	Sheet *s = Application::instance()->scene()->findChild<Sheet*>("faqSheet");
+	if (s) {
+		qDebug() << "FAQ triggered and faqSheet found";
+		s->open();
+	} else {
+		qDebug() << "FAQ triggered, but no faqSheet found";
+	}
 }
 
 // handles SLOT from logoutItem
@@ -455,17 +467,19 @@ void ApplicationUI::login(const QString user, const QString pw) {
 	}
 }
 
+void ApplicationUI::sendMail(const QString title){
+	qDebug() << "invoke sendMail";
+	InvokeRequest request;
+	request.setAction("bb.action.SENDEMAIL");
+	request.setTarget("sys.pim.uib.email.hybridcomposer");
+	request.setMimeType("settings/view");
+	request.setUri(
+			"mailto:appsupport@ekkes-corner.org?subject=OpenDataSpace%20"+title);
+	mInvokeManager->invoke(request);
+}
+
 // handles SLOT from feedbackItem
 void ApplicationUI::feedbackTriggered() {
-//	Sheet *s = Application::instance()->scene()->findChild<Sheet*>(
-//			"feedbackSheet");
-//	if (s) {
-//		qDebug() << "feedback triggered and Feedback Sheet found";
-//		s->open();
-//	} else {
-//		qDebug() << "feedback triggered, but no Feedback Sheet found";
-//	}
-	//
 	qDebug() << "invoke sendFeedback";
 	InvokeRequest request;
 	request.setAction("bb.action.SENDEMAIL");

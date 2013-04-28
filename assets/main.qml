@@ -60,6 +60,24 @@ TabbedPane {
             }
         },
         Sheet {
+            id: aboutSheet
+            objectName: "aboutSheet"
+            content: WebPageAboutSheet {
+                id: aboutContent
+                // theURL is a custom property to allow setting the URL fro  outside or inside the QML file
+                theURL: "http://aboutekkesapps.wordpress.com/2013/04/28/opendataspace/"
+            }
+        },
+        Sheet {
+            id: faqSheet
+            objectName: "faqSheet"
+            content: WebPageFAQSheet {
+                id: faqContent
+                // theURL is a custom property to allow setting the URL fro  outside or inside the QML file
+                theURL: "http://aboutekkesapps.wordpress.com/2013/04/28/f-a-q-opendataspace/"
+            }
+        },
+        Sheet {
             id: preferencesSheet
             objectName: "preferencesSheet"
             //-- sheet GUI appearence component is defined in external PreferencesSheet.qml file
@@ -189,6 +207,16 @@ TabbedPane {
     function closeHelp(ok) {
         helpSheet.close()
     }
+    // the handler  SLOT ABOUT done
+    // SIGNALed from AboutSheet
+    function closeAbout(ok) {
+        aboutSheet.close()
+    }
+    // the handler  SLOT FAQ done
+    // SIGNALed from FAQSheet
+    function closeFaq(ok) {
+        faqSheet.close()
+    }
     // these components will be created async to speed up startup time
     function createLazyComponents() {
         console.debug("create LAZY components")
@@ -239,6 +267,10 @@ TabbedPane {
         loginContent.loginDone.connect(onLoginDone)
         //-- connect the help sheet close SIGNAL to the handler SLOT
         helpContent.helpDone.connect(closeHelp)
+        //-- connect the about sheet close SIGNAL to the handler SLOT
+        aboutContent.aboutDone.connect(closeAbout)
+        //-- connect the FAQ sheet close SIGNAL to the handler SLOT
+        faqContent.faqDone.connect(closeFaq)
         //-- connect the preferences save SIGNAL to the handler SLOT
         preferencesContent.done.connect(onSavePreferences)
         //-- connect the preferences save SIGNAL to the handler SLOT

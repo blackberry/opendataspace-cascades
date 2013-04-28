@@ -156,27 +156,27 @@
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="576"/>
+        <location filename="../src/applicationui.cpp" line="590"/>
         <source>Please download OpenDataSpace Application from BlackBerry World for FREE: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="751"/>
+        <location filename="../src/applicationui.cpp" line="765"/>
         <source>Resized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="769"/>
+        <location filename="../src/applicationui.cpp" line="783"/>
         <source>Pooled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="780"/>
+        <location filename="../src/applicationui.cpp" line="794"/>
         <source>:)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="782"/>
+        <location filename="../src/applicationui.cpp" line="796"/>
         <source>save</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1969,6 +1969,48 @@ Start Sync now ?</source>
     </message>
 </context>
 <context>
+    <name>WebPageAboutSheet</name>
+    <message>
+        <location filename="../assets/appmenu/WebPageAboutSheet.qml" line="36"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/appmenu/WebPageAboutSheet.qml" line="48"/>
+        <source>Close</source>
+        <translation type="unfinished">Schließen</translation>
+    </message>
+</context>
+<context>
+    <name>WebPageFAQSheet</name>
+    <message>
+        <location filename="../assets/appmenu/WebPageFAQSheet.qml" line="36"/>
+        <source>F A Q</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/appmenu/WebPageFAQSheet.qml" line="48"/>
+        <source>new Question</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/appmenu/WebPageFAQSheet.qml" line="54"/>
+        <source>Question</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/appmenu/WebPageFAQSheet.qml" line="59"/>
+        <location filename="../assets/appmenu/WebPageFAQSheet.qml" line="65"/>
+        <source>Bugreport</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/appmenu/WebPageFAQSheet.qml" line="69"/>
+        <source>Close</source>
+        <translation type="unfinished">Schließen</translation>
+    </message>
+</context>
+<context>
     <name>WebPageHelpSheet</name>
     <message>
         <source>Back</source>
@@ -2019,22 +2061,22 @@ Start Sync now ?</source>
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="107"/>
+        <location filename="../assets/main.qml" line="125"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="120"/>
+        <location filename="../assets/main.qml" line="138"/>
         <source>Data Space</source>
         <translation>Daten Raum</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="129"/>
+        <location filename="../assets/main.qml" line="147"/>
         <source>Users</source>
         <translation>Benutzer</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="143"/>
+        <location filename="../assets/main.qml" line="161"/>
         <source>Upload</source>
         <translation>Upload</translation>
     </message>

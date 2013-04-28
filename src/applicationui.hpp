@@ -83,6 +83,8 @@ public:
 	Q_INVOKABLE
 	void invokeBrowser(QString uri);
 
+	Q_INVOKABLE
+	void sendMail(const QString title);
 
 	/**
 	 * uses Invokation Framework to View the file from URI
