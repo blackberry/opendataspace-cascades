@@ -22,6 +22,8 @@
 #include "ODSSettings.hpp"
 #include "Singleton.hpp"
 
+#include <bb/cascades/SceneCover>
+
 #include <bb/system/SystemCredentialsPrompt>
 #include <bb/system/SystemDialog>
 #include <bb/system/SystemPrompt>
@@ -62,9 +64,8 @@
 using namespace bb::cascades;
 using namespace bb::system;
 
-ApplicationUI::ApplicationUI(bb::cascades::Application *app)
-: QObject(app), mInvokeManager(new InvokeManager(this))
-{
+ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
+		QObject(app), mInvokeManager(new InvokeManager(this)) {
 	// BUG in SDK: IDE reports error with bb::system::, but compiles and runs
 	// removing bb::system:: compiles also well but running says "signal not found"
 	// ODS is a Invocation Target
@@ -86,10 +87,12 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app)
 	if (!ok) {
 		qDebug() << "connect handleCardPooled failed";
 	}
-
-	// register the MyListModel C++ type to be visible in QML
-
-	// Register some classes for Filepicker for QML
+	// The SceneCover if minimized
+	qmlRegisterType<SceneCover>("bb.cascades", 1, 0, "SceneCover");
+	// Since it is not possible to create an instance of the AbstractCover
+	// necessary for accessing Application.cover).
+	qmlRegisterUncreatableType<AbstractCover>("bb.cascades", 1, 0,
+			"AbstractCover", "An AbstractCover cannot be created."); // Register some classes for Filepicker for QML
 	qmlRegisterType<bb::cascades::pickers::FilePicker>("bb.cascades.pickers", 1,
 			0, "FilePicker");
 	qmlRegisterUncreatableType<bb::cascades::pickers::FilePickerMode>(
@@ -181,7 +184,7 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app)
 	qml->setContextProperty("ods", this);
 	// access to the settings
 	//mOdsSettings = new ODSSettings();
-	mOdsSettings = &Singleton<ODSSettings>::Instance();
+	mOdsSettings = &Singleton < ODSSettings > ::Instance();
 	qml->setContextProperty("odssettings", mOdsSettings);
 	// we need also access to the data
 	mOdsData = new ODSData();
@@ -443,7 +446,8 @@ void ApplicationUI::feedbackTriggered() {
 	request.setAction("bb.action.SENDEMAIL");
 	request.setTarget("sys.pim.uib.email.hybridcomposer");
 	request.setMimeType("settings/view");
-	request.setUri("mailto:support@opendataspace.org?subject=Feedback%20OpenDataSpace");
+	request.setUri(
+			"mailto:support@opendataspace.org?subject=Feedback%20OpenDataSpace");
 	mInvokeManager->invoke(request);
 }
 
@@ -520,8 +524,7 @@ void ApplicationUI::shareTextWithMail(const QString& text) {
 	mailRequest.setTarget("sys.pim.uib.email.hybridcomposer");
 	mailRequest.setAction("bb.action.SENDEMAIL");
 	mailRequest.setMimeType("settings/view");
-	mailRequest.setUri(
-			"mailto:?subject="+text);
+	mailRequest.setUri("mailto:?subject=" + text);
 	qDebug() << "share with Mail: " << text;
 	mInvokeManager->invoke(mailRequest);
 }
@@ -777,5 +780,4 @@ void ApplicationUI::cardCanceled(const QString data) {
 	mInvokeManager->sendCardDone(message);
 
 }
-
 

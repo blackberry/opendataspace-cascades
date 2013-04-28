@@ -92,6 +92,10 @@ TabbedPane {
             UsersNavPane {
                 id: usersPane
             }
+        },
+        ComponentDefinition {
+            id: appCover
+            source: "AppCover.qml"
         }
     ]
 
@@ -241,7 +245,8 @@ TabbedPane {
         feedbackContent.send.connect(onSendFeedback)
         // connect server-login
         odsdata.loginFinished.connect(onLoginDone)
-
+        // minimied app cover
+        Application.cover = appCover.createObject();
         // but we have to do LogIn at Startup
         // dont want to display the Shee immediately, so using a delayed animation
         // start the animation to open LoginSheet after 1 s

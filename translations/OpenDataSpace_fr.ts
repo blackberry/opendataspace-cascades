@@ -127,12 +127,12 @@
 <context>
     <name>ApplicationUI</name>
     <message>
-        <location filename="../src/applicationui.cpp" line="314"/>
+        <location filename="../src/applicationui.cpp" line="317"/>
         <source>Help</source>
         <translation type="unfinished">Aider</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="317"/>
+        <location filename="../src/applicationui.cpp" line="320"/>
         <source>Feedback</source>
         <translation type="unfinished">Réaction</translation>
     </message>
@@ -141,32 +141,32 @@
         <translation type="obsolete">Déconnexion</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="323"/>
+        <location filename="../src/applicationui.cpp" line="326"/>
         <source>Settings</source>
         <translation type="unfinished">Réglages</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="548"/>
+        <location filename="../src/applicationui.cpp" line="551"/>
         <source>Please download OpenDataSpace Application from BlackBerry World for FREE: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="723"/>
+        <location filename="../src/applicationui.cpp" line="726"/>
         <source>Resized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="741"/>
+        <location filename="../src/applicationui.cpp" line="744"/>
         <source>Pooled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="752"/>
+        <location filename="../src/applicationui.cpp" line="755"/>
         <source>:)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="754"/>
+        <location filename="../src/applicationui.cpp" line="757"/>
         <source>save</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1982,22 +1982,22 @@ Start Sync now ?</source>
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="103"/>
+        <location filename="../assets/main.qml" line="107"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="116"/>
+        <location filename="../assets/main.qml" line="120"/>
         <source>Data Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="125"/>
+        <location filename="../assets/main.qml" line="129"/>
         <source>Users</source>
         <translation type="unfinished">utilisateurs</translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="139"/>
+        <location filename="../assets/main.qml" line="143"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
     </message>
