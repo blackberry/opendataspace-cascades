@@ -2410,6 +2410,7 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 		qDebug() << "got Thumbnail with successfully !";
 		break;
 	case Usecase::FilesUpload:
+		emit fileUploaded();
 		// returns 200 if OK
 		break;
 	case Usecase::SettingsUser:

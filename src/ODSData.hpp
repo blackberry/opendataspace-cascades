@@ -119,6 +119,7 @@ Q_SIGNALS:
 	void loginFinished(bool success);
 	void shareLinkWithBBM(const QString& textToShare);
 	void shareLinkWithMail(const QString& textToShare);
+	void fileUploaded();
 
 private slots:
 	/*!

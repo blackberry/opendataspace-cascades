@@ -340,10 +340,13 @@ NavigationPane {
     function onUpload(name) {
         // select the destination room and upload
         odsdata.simpleUploadFromCard(name)
-        ods.cardDone();
+        
         if (cardNavPaneId.top != pageId) {
             cardNavPaneId.pop();
         }
+    }
+    function uploadDone(){
+        ods.cardDone();
     }
     // triggered from C++
     onLoginChanged: {
@@ -374,6 +377,8 @@ NavigationPane {
         zipPreviewPage.uploadFromCard.connect(onUpload)
         documentsPreviewPage.uploadFromCard.connect(onUpload)
         booksPreviewPage.uploadFromCard.connect(onUpload)
+        //
+        odsdata.fileUploaded.connect(uploadDone)
         console.debug("UPLOAD CARD NavigationPane created");
     }
 }
