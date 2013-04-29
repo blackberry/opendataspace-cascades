@@ -16,6 +16,7 @@
 #include <bb/system/SystemUiButton.hpp>
 #include <bb/system/SystemUiProgressState>
 #include <bb/system/SystemUiResult>
+#include <bb/system/SystemListDialog>
 #include "FileInfo.hpp"
 
 #include <Usecase.hpp>
@@ -79,7 +80,7 @@ ODSData::ODSData() {
 			SLOT(requestFinished(QNetworkReply*)));
 
 	// access to the settings
-	mOdsSettings = &Singleton<ODSSettings>::Instance(); // new ODSSettings();
+	mOdsSettings = &Singleton < ODSSettings > ::Instance(); // new ODSSettings();
 	mCustomerNumber = -1;
 	mFilesLevel = -1;
 	mFolderLevel = -1;
@@ -93,7 +94,8 @@ ODSData::ODSData() {
 	mToast = new SystemToast(this);
 	mPrompt = new SystemPrompt(this);
 
-	connectOK = connect(this,SIGNAL(askOverwrite()), this,SLOT(uploadAndOverwriteFile()));
+	connectOK = connect(this, SIGNAL(askOverwrite()), this,
+			SLOT(uploadAndOverwriteFile()));
 	if (!connectOK) {
 		qDebug() << "connect connect askoverwrite";
 	}
@@ -1166,6 +1168,7 @@ bool ODSData::fileDownloaded(int fileId, QString fileName) {
 }
 
 void ODSData::simpleUpload(QString sourceFileName) {
+	qDebug() << "simple upload for " << sourceFileName;
 	QObject* container = parentData();
 	if (qobject_cast<ODSRoom*>(container)) {
 		ODSRoom* room = (ODSRoom*) container;
@@ -1195,9 +1198,45 @@ void ODSData::simpleUpload(QString sourceFileName) {
 	// TODO error dialog
 }
 
-void ODSData::uploadAndOverwriteFile(){
-	qDebug() << "start upload and overwrite File: " << mFileName << " path: " << mPath
-			<< "into Room: " << mGroupPk;
+void ODSData::simpleUploadFromCard(QString sourceFileName) {
+	qDebug() << "simple upload from CARD for " << sourceFileName;
+	// select room
+	int loop = 0;
+	QList<int> keylist = mRoomGroups->keys();
+//	for (loop = 0; loop < keylist.size(); ++loop) {
+//		roomsDropDown->add(
+//				Option::create().text(mRoomGroups->value(keylist.at(loop))).value(
+//						keylist.at(loop)));
+//	}
+	QStringList roomsNames = mRoomGroups->values();
+	SystemListDialog* mlistDialog = new SystemListDialog();
+	mlistDialog->setTitle(tr("Select DataRoom"));
+	// TODO 10.1 setBody with filename
+	mlistDialog->setSelectionMode(ListSelectionMode::Single);
+	mlistDialog->appendItems(roomsNames);
+	mlistDialog->cancelButton()->setLabel(tr("Cancel"));
+	mlistDialog->defaultButton()->setLabel(tr("Upload"));
+	int result = mlistDialog->exec();
+	switch (result) {
+	case SystemUiResult::CancelButtonSelection:
+		return;
+	default:
+		break;
+	}
+	QList<int> selectedRooms = mlistDialog->selectedIndices();
+	if (selectedRooms.size() == 0) {
+		// TODO Toast nothing selected - no upload
+		return;
+	}
+	QString selectedRoom = roomsNames.at(selectedRooms.at(0));
+	int id = mRoomGroups->key(selectedRoom);
+	uploadFile(id, sourceFileName, "", "BB10");
+	// TODO error dialog
+}
+
+void ODSData::uploadAndOverwriteFile() {
+	qDebug() << "start upload and overwrite File: " << mFileName << " path: "
+			<< mPath << "into Room: " << mGroupPk;
 	// check if overwrite allowed
 	mOverwriteFile = true;
 	mDialog->setTitle(tr("File already exists ! Overwrite ?"));
@@ -1210,7 +1249,7 @@ void ODSData::uploadAndOverwriteFile(){
 		mOverwriteFile = false;
 		return;
 	default:
-		qDebug() << "Overwrite File ? NO" ;
+		qDebug() << "Overwrite File ? NO";
 		break;
 	}
 	qDebug() << "Overwrite File ? YES";
@@ -2199,7 +2238,8 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 				break;
 			default:
 				if (reply->request().rawHeaderList().contains("shareLink")) {
-					if (reply->request().rawHeaderList().contains("shareViaMail")) {
+					if (reply->request().rawHeaderList().contains(
+							"shareViaMail")) {
 						mailLink();
 					} else {
 						shareLink();

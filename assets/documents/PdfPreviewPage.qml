@@ -24,9 +24,9 @@ import bb.system 1.0
  */
 
 Page {
-    property string previewPath
+    property string previewPath: ""
     id: previewPage
-    signal uploadFromCard()
+    signal uploadFromCard(string name)
     titleBar: TitleBar {
         id: titleBarId
         title: qsTr("Preview") + Retranslate.onLanguageChanged
@@ -66,7 +66,7 @@ Page {
                     rootNavigationPane.addUpload(previewPage.previewPath)
                 } else {
                     // SIGNAL
-                    uploadFromCard()
+                    uploadFromCard(previewPage.previewPath)
                 }
             }
         }

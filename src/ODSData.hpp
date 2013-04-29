@@ -107,6 +107,9 @@ public:
 	void simpleUpload(QString fileName);
 
 	Q_INVOKABLE
+	void simpleUploadFromCard(QString fileName);
+
+	Q_INVOKABLE
 	void syncWithServer();
 
 	Q_INVOKABLE

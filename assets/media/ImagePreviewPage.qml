@@ -28,7 +28,7 @@ Page {
     property alias previewPath: previewImage.imageSource
     property string path: ""
     id: previewPage
-    signal uploadFromCard()
+    signal uploadFromCard(string name)
     titleBar: TitleBar {
         id: titleBarId
         title: qsTr("Preview") + Retranslate.onLanguageChanged
@@ -68,7 +68,7 @@ Page {
                     rootNavigationPane.addUpload(previewPage.path)
                 } else {
                     // SIGNAL
-                    uploadFromCard()
+                    uploadFromCard(previewPage.path)
                 }
             }
         }

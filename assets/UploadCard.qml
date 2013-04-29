@@ -337,13 +337,12 @@ NavigationPane {
         // ods.cardCanceled("Back")
     }
     // called if the user decided to upload the file to ODS
-    function onUpload() {
+    function onUpload(name) {
+        // select the destination room and upload
+        odsdata.simpleUploadFromCard(name)
         if (cardNavPaneId.top != pageId) {
             cardNavPaneId.pop();
         }
-        // TODO select the destination
-        // if destination OK, then close card - if not cancel card
-        queuedForUploadToast.show()
     }
     // triggered from C++
     onLoginChanged: {
@@ -373,7 +372,6 @@ NavigationPane {
         htmlPreviewPage.uploadFromCard.connect(onUpload)
         zipPreviewPage.uploadFromCard.connect(onUpload)
         documentsPreviewPage.uploadFromCard.connect(onUpload)
-        imagePreviewPage.uploadFromCard.connect(onUpload)
         booksPreviewPage.uploadFromCard.connect(onUpload)
         console.debug("UPLOAD CARD NavigationPane created");
     }

@@ -830,449 +830,464 @@
 <context>
     <name>ODSData</name>
     <message>
-        <location filename="../src/ODSData.cpp" line="171"/>
+        <location filename="../src/ODSData.cpp" line="173"/>
         <source>Sync with OpenDataSpace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="174"/>
+        <location filename="../src/ODSData.cpp" line="176"/>
         <source>Please wait</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="177"/>
+        <location filename="../src/ODSData.cpp" line="179"/>
         <source>connect Server, authenticate user...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="236"/>
+        <location filename="../src/ODSData.cpp" line="238"/>
         <source>Login interrupted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="238"/>
+        <location filename="../src/ODSData.cpp" line="240"/>
         <source>... using Data synchronized at: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="242"/>
-        <location filename="../src/ODSData.cpp" line="873"/>
-        <location filename="../src/ODSData.cpp" line="900"/>
-        <location filename="../src/ODSData.cpp" line="2396"/>
+        <location filename="../src/ODSData.cpp" line="244"/>
+        <location filename="../src/ODSData.cpp" line="875"/>
+        <location filename="../src/ODSData.cpp" line="902"/>
+        <location filename="../src/ODSData.cpp" line="2436"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="279"/>
+        <location filename="../src/ODSData.cpp" line="281"/>
         <source>Code 0: Unknown User, are you registered ? You can try out using Testdrive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="281"/>
+        <location filename="../src/ODSData.cpp" line="283"/>
         <source>Code 1 JSON Error: Server was unable to parse the request.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="282"/>
+        <location filename="../src/ODSData.cpp" line="284"/>
         <source>Code 2 Invalid Credentials: Invalid user or password specified during login.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="284"/>
+        <location filename="../src/ODSData.cpp" line="286"/>
         <source>Code 3: Account has expired.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="285"/>
+        <location filename="../src/ODSData.cpp" line="287"/>
         <source>Code 4: Account locked due to lost mobile device.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="286"/>
+        <location filename="../src/ODSData.cpp" line="288"/>
         <source>Code 5: Mobile access locked for this account.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="287"/>
+        <location filename="../src/ODSData.cpp" line="289"/>
         <source>Code 6: Account locked by admin.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="288"/>
+        <location filename="../src/ODSData.cpp" line="290"/>
         <source>Code 7 Token expired: Session ID has expired. Login has to be invoked again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="290"/>
+        <location filename="../src/ODSData.cpp" line="292"/>
         <source>Code 8: User already exists.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="291"/>
+        <location filename="../src/ODSData.cpp" line="293"/>
         <source>Code 9: Customer not found during AllFilesRequest.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="292"/>
+        <location filename="../src/ODSData.cpp" line="294"/>
         <source>Code 10: Invalid path.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="292"/>
+        <location filename="../src/ODSData.cpp" line="294"/>
         <source>Code 11: File write error.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="293"/>
+        <location filename="../src/ODSData.cpp" line="295"/>
         <source>Code 12 Invalid File: Attempted a file operation using an invalid ID.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="295"/>
+        <location filename="../src/ODSData.cpp" line="297"/>
         <source>Code 13 File exists: Attempt to copy or move to an existing file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="297"/>
+        <location filename="../src/ODSData.cpp" line="299"/>
         <source>Code 14 Folder not empty: Attempted to delete a non-emty folder.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="299"/>
+        <location filename="../src/ODSData.cpp" line="301"/>
         <source>Code 15: Failed to create a download link.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="300"/>
+        <location filename="../src/ODSData.cpp" line="302"/>
         <source>Code 16: Maximum number of users reached.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="301"/>
+        <location filename="../src/ODSData.cpp" line="303"/>
         <source>Code 17: Disk quota was reached.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="302"/>
+        <location filename="../src/ODSData.cpp" line="304"/>
         <source>Code 18: DeleteAll could not delete all files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="303"/>
+        <location filename="../src/ODSData.cpp" line="305"/>
         <source>Code 19: MoveAll could not move all files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="304"/>
+        <location filename="../src/ODSData.cpp" line="306"/>
         <source>Code 20: CopyAll could not copy all files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="725"/>
-        <location filename="../src/ODSData.cpp" line="739"/>
+        <location filename="../src/ODSData.cpp" line="727"/>
+        <location filename="../src/ODSData.cpp" line="741"/>
         <source>Sync with Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="726"/>
+        <location filename="../src/ODSData.cpp" line="728"/>
         <source>Synchronizing can take some time.
 Start Sync now ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="727"/>
-        <location filename="../src/ODSData.cpp" line="974"/>
-        <location filename="../src/ODSData.cpp" line="1005"/>
-        <location filename="../src/ODSData.cpp" line="1057"/>
-        <location filename="../src/ODSData.cpp" line="1101"/>
-        <location filename="../src/ODSData.cpp" line="1205"/>
+        <location filename="../src/ODSData.cpp" line="729"/>
+        <location filename="../src/ODSData.cpp" line="976"/>
+        <location filename="../src/ODSData.cpp" line="1007"/>
+        <location filename="../src/ODSData.cpp" line="1059"/>
+        <location filename="../src/ODSData.cpp" line="1103"/>
+        <location filename="../src/ODSData.cpp" line="1244"/>
         <source>No</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="728"/>
+        <location filename="../src/ODSData.cpp" line="730"/>
         <source>Synchronize</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="742"/>
-        <location filename="../src/ODSData.cpp" line="841"/>
-        <location filename="../src/ODSData.cpp" line="936"/>
-        <location filename="../src/ODSData.cpp" line="990"/>
-        <location filename="../src/ODSData.cpp" line="1021"/>
-        <location filename="../src/ODSData.cpp" line="1040"/>
-        <location filename="../src/ODSData.cpp" line="1080"/>
-        <location filename="../src/ODSData.cpp" line="1130"/>
-        <location filename="../src/ODSData.cpp" line="1224"/>
-        <location filename="../src/ODSData.cpp" line="1244"/>
+        <location filename="../src/ODSData.cpp" line="744"/>
+        <location filename="../src/ODSData.cpp" line="843"/>
+        <location filename="../src/ODSData.cpp" line="938"/>
+        <location filename="../src/ODSData.cpp" line="992"/>
+        <location filename="../src/ODSData.cpp" line="1023"/>
+        <location filename="../src/ODSData.cpp" line="1042"/>
+        <location filename="../src/ODSData.cpp" line="1082"/>
+        <location filename="../src/ODSData.cpp" line="1132"/>
+        <location filename="../src/ODSData.cpp" line="1263"/>
+        <location filename="../src/ODSData.cpp" line="1283"/>
         <source>Please Wait</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="745"/>
+        <location filename="../src/ODSData.cpp" line="747"/>
         <source>get new file structure from server...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="757"/>
+        <location filename="../src/ODSData.cpp" line="759"/>
         <source>got new structure, now refresh cache...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="758"/>
+        <location filename="../src/ODSData.cpp" line="760"/>
         <source>refresh Data Rooms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="764"/>
+        <location filename="../src/ODSData.cpp" line="766"/>
         <source>refresh Nodes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="826"/>
+        <location filename="../src/ODSData.cpp" line="828"/>
         <source>Cache refreshed :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="838"/>
+        <location filename="../src/ODSData.cpp" line="840"/>
         <source>Create a new link</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="844"/>
-        <location filename="../src/ODSData.cpp" line="939"/>
-        <location filename="../src/ODSData.cpp" line="993"/>
-        <location filename="../src/ODSData.cpp" line="1024"/>
-        <location filename="../src/ODSData.cpp" line="1043"/>
-        <location filename="../src/ODSData.cpp" line="1083"/>
-        <location filename="../src/ODSData.cpp" line="1133"/>
+        <location filename="../src/ODSData.cpp" line="846"/>
+        <location filename="../src/ODSData.cpp" line="941"/>
+        <location filename="../src/ODSData.cpp" line="995"/>
+        <location filename="../src/ODSData.cpp" line="1026"/>
+        <location filename="../src/ODSData.cpp" line="1045"/>
+        <location filename="../src/ODSData.cpp" line="1085"/>
+        <location filename="../src/ODSData.cpp" line="1135"/>
         <source>send request to server...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="871"/>
+        <location filename="../src/ODSData.cpp" line="873"/>
         <source>got Link to share with BBM)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="879"/>
-        <location filename="../src/ODSData.cpp" line="906"/>
+        <location filename="../src/ODSData.cpp" line="881"/>
+        <location filename="../src/ODSData.cpp" line="908"/>
         <source>Please download this file from secure OpenDataSpace Server: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="888"/>
-        <location filename="../src/ODSData.cpp" line="915"/>
+        <location filename="../src/ODSData.cpp" line="890"/>
+        <location filename="../src/ODSData.cpp" line="917"/>
         <source>sorry - we got no Link to share</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="898"/>
+        <location filename="../src/ODSData.cpp" line="900"/>
         <source>got Link to share with Mail)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="933"/>
+        <location filename="../src/ODSData.cpp" line="935"/>
         <source>Create a new folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="972"/>
+        <location filename="../src/ODSData.cpp" line="974"/>
         <source>Delete Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="975"/>
-        <location filename="../src/ODSData.cpp" line="1006"/>
+        <location filename="../src/ODSData.cpp" line="977"/>
+        <location filename="../src/ODSData.cpp" line="1008"/>
         <source>Yes: Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="987"/>
+        <location filename="../src/ODSData.cpp" line="989"/>
         <source>Delete a folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1003"/>
+        <location filename="../src/ODSData.cpp" line="1005"/>
         <source>Delete File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1018"/>
+        <location filename="../src/ODSData.cpp" line="1020"/>
         <source>Delete a file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1037"/>
+        <location filename="../src/ODSData.cpp" line="1039"/>
         <source>Download a file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1055"/>
+        <location filename="../src/ODSData.cpp" line="1057"/>
         <source>Rename File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1056"/>
+        <location filename="../src/ODSData.cpp" line="1058"/>
         <source>Old File: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1058"/>
-        <location filename="../src/ODSData.cpp" line="1102"/>
+        <location filename="../src/ODSData.cpp" line="1060"/>
+        <location filename="../src/ODSData.cpp" line="1104"/>
         <source>Rename</source>
         <translation type="unfinished">Rebautizar</translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1059"/>
+        <location filename="../src/ODSData.cpp" line="1061"/>
         <source>the new Filename</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1077"/>
+        <location filename="../src/ODSData.cpp" line="1079"/>
         <source>Rename a file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1095"/>
+        <location filename="../src/ODSData.cpp" line="1097"/>
         <source>Rename Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1097"/>
         <location filename="../src/ODSData.cpp" line="1099"/>
+        <location filename="../src/ODSData.cpp" line="1101"/>
         <source>Old Folder: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1103"/>
+        <location filename="../src/ODSData.cpp" line="1105"/>
         <source>the new Foldername</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1127"/>
+        <location filename="../src/ODSData.cpp" line="1129"/>
         <source>Rename a folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1203"/>
+        <location filename="../src/ODSData.cpp" line="1213"/>
+        <source>Select DataRoom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="1217"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancelar</translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="1218"/>
+        <source>Upload</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ODSData.cpp" line="1242"/>
         <source>File already exists ! Overwrite ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1206"/>
+        <location filename="../src/ODSData.cpp" line="1245"/>
         <source>Overwrite</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1221"/>
-        <location filename="../src/ODSData.cpp" line="1241"/>
+        <location filename="../src/ODSData.cpp" line="1260"/>
+        <location filename="../src/ODSData.cpp" line="1280"/>
         <source>Upload a file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1227"/>
-        <location filename="../src/ODSData.cpp" line="1247"/>
+        <location filename="../src/ODSData.cpp" line="1266"/>
+        <location filename="../src/ODSData.cpp" line="1286"/>
         <source>send file to server...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1758"/>
+        <location filename="../src/ODSData.cpp" line="1797"/>
         <source>Cannot read file to upload: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1880"/>
+        <location filename="../src/ODSData.cpp" line="1919"/>
         <source>unknown Usecase: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1943"/>
+        <location filename="../src/ODSData.cpp" line="1982"/>
         <source>downloading...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1948"/>
-        <location filename="../src/ODSData.cpp" line="1957"/>
-        <location filename="../src/ODSData.cpp" line="1977"/>
-        <location filename="../src/ODSData.cpp" line="1986"/>
+        <location filename="../src/ODSData.cpp" line="1987"/>
+        <location filename="../src/ODSData.cpp" line="1996"/>
+        <location filename="../src/ODSData.cpp" line="2016"/>
+        <location filename="../src/ODSData.cpp" line="2025"/>
         <source> Bytes </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1949"/>
-        <location filename="../src/ODSData.cpp" line="1978"/>
+        <location filename="../src/ODSData.cpp" line="1988"/>
+        <location filename="../src/ODSData.cpp" line="2017"/>
         <source> (Total Size unknown)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1955"/>
-        <location filename="../src/ODSData.cpp" line="1984"/>
+        <location filename="../src/ODSData.cpp" line="1994"/>
+        <location filename="../src/ODSData.cpp" line="2023"/>
         <source>% of total:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="1973"/>
+        <location filename="../src/ODSData.cpp" line="2012"/>
         <source>uploading...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2090"/>
+        <location filename="../src/ODSData.cpp" line="2129"/>
         <source>Error: could not write to file: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2099"/>
+        <location filename="../src/ODSData.cpp" line="2138"/>
         <source>wrong content </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2133"/>
+        <location filename="../src/ODSData.cpp" line="2172"/>
         <source>Authentication done, getting User...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2144"/>
+        <location filename="../src/ODSData.cpp" line="2183"/>
         <source>User received, getting Settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2155"/>
+        <location filename="../src/ODSData.cpp" line="2194"/>
         <source>Settings received, getting Files...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2165"/>
+        <location filename="../src/ODSData.cpp" line="2204"/>
         <source>Files received, getting Userlist...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2183"/>
+        <location filename="../src/ODSData.cpp" line="2222"/>
         <source>Synchronization with Server done :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2196"/>
+        <location filename="../src/ODSData.cpp" line="2235"/>
         <source>Work done, sync Filestructure...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2218"/>
+        <location filename="../src/ODSData.cpp" line="2258"/>
         <source>Server request finished :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2269"/>
+        <location filename="../src/ODSData.cpp" line="2309"/>
         <source>Response without Body-part</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2377"/>
+        <location filename="../src/ODSData.cpp" line="2417"/>
         <source>Unknown Response Usecase</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ODSData.cpp" line="2393"/>
+        <location filename="../src/ODSData.cpp" line="2433"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
