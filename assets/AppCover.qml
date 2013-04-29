@@ -35,6 +35,8 @@ SceneCover {
                 minWidth: 334
                 maxWidth: 334
                 topMargin: 0
+                leftPadding: 0
+                leftMargin: 0
                 ImageView {
                     id: minimizedImage
                     imageSource: "asset:///images/minimized.png"
@@ -43,6 +45,8 @@ SceneCover {
                     minWidth: 334
                     maxWidth: 334
                     topMargin: 0
+                    leftMargin: 0
+                    translationX: ods.isSquare()? -20 : 0
                 }
             }
 
