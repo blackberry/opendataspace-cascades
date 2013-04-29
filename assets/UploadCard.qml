@@ -340,6 +340,7 @@ NavigationPane {
     function onUpload(name) {
         // select the destination room and upload
         odsdata.simpleUploadFromCard(name)
+        ods.cardDone();
         if (cardNavPaneId.top != pageId) {
             cardNavPaneId.pop();
         }

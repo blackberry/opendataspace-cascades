@@ -1200,18 +1200,33 @@ void ODSData::simpleUpload(QString sourceFileName) {
 
 void ODSData::simpleUploadFromCard(QString sourceFileName) {
 	qDebug() << "simple upload from CARD for " << sourceFileName;
+	if(sourceFileName.startsWith("file:///")){
+		sourceFileName = sourceFileName.right(sourceFileName.length()-7);
+		qDebug() << "simple upload from CARD filename cutted to " << sourceFileName;
+	}
 	// select room
 	int loop = 0;
-	QList<int> keylist = mRoomGroups->keys();
-//	for (loop = 0; loop < keylist.size(); ++loop) {
-//		roomsDropDown->add(
-//				Option::create().text(mRoomGroups->value(keylist.at(loop))).value(
-//						keylist.at(loop)));
-//	}
+	if (!mRoomGroups->size() > 0) {
+		QVariantMap dataMap;
+		// all rooms
+		dataMap = readDataFromJson(Usecase::FilesAll);
+		// group informations stored to get the name of thew rooms easy
+		// later on subrooms and folders will reference to the group they belong to
+		QVariantList dataList;
+		dataList = dataMap.value(groupsValue, "").toList();
+		if (!dataList.isEmpty()) {
+			for (int i = 0; i < dataList.size(); ++i) {
+				QVariantMap map = dataList.at(i).toMap();
+				mRoomGroups->insert(map.value(groupPkValue, 0).toInt(),
+						map.value(nameValue, "").toString());
+			}
+		}
+		qDebug() << "got asome roomGroups:" << mRoomGroups->size();
+	}
 	QStringList roomsNames = mRoomGroups->values();
 	SystemListDialog* mlistDialog = new SystemListDialog();
 	mlistDialog->setTitle(tr("Select DataRoom"));
-	// TODO 10.1 setBody with filename
+// TODO 10.1 setBody with filename
 	mlistDialog->setSelectionMode(ListSelectionMode::Single);
 	mlistDialog->appendItems(roomsNames);
 	mlistDialog->cancelButton()->setLabel(tr("Cancel"));
@@ -1231,13 +1246,13 @@ void ODSData::simpleUploadFromCard(QString sourceFileName) {
 	QString selectedRoom = roomsNames.at(selectedRooms.at(0));
 	int id = mRoomGroups->key(selectedRoom);
 	uploadFile(id, sourceFileName, "", "BB10");
-	// TODO error dialog
+// TODO error dialog
 }
 
 void ODSData::uploadAndOverwriteFile() {
 	qDebug() << "start upload and overwrite File: " << mFileName << " path: "
 			<< mPath << "into Room: " << mGroupPk;
-	// check if overwrite allowed
+// check if overwrite allowed
 	mOverwriteFile = true;
 	mDialog->setTitle(tr("File already exists ! Overwrite ?"));
 	mDialog->setBody(mFileName);
@@ -1254,7 +1269,7 @@ void ODSData::uploadAndOverwriteFile() {
 	}
 	qDebug() << "Overwrite File ? YES";
 
-	// start progress
+// start progress
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Upload a file"));
@@ -1265,7 +1280,7 @@ void ODSData::uploadAndOverwriteFile() {
 	mProgressDialog->setProgress(-1); // 15
 	mProgressDialog->setBody(tr("send file to server..."));
 	mProgressDialog->show();
-	//
+//
 	initiateRequest(Usecase::FilesUpload);
 }
 
@@ -1274,7 +1289,7 @@ void ODSData::uploadFile(int roomId, QString sourceFileName, QString path,
 	qDebug() << "start upload File: " << sourceFileName << " path: " << path
 			<< "into Room: " << roomId;
 	mOverwriteFile = false;
-	// start progress
+// start progress
 	mProgressDialog->setState(SystemUiProgressState::Active);
 	mProgressDialog->setEmoticonsEnabled(true);
 	mProgressDialog->setTitle(tr("Upload a file"));
@@ -1285,7 +1300,7 @@ void ODSData::uploadFile(int roomId, QString sourceFileName, QString path,
 	mProgressDialog->setProgress(-1); // 15
 	mProgressDialog->setBody(tr("send file to server..."));
 	mProgressDialog->show();
-	//
+//
 	mGroupPk = roomId;
 	mSourceFileName = sourceFileName;
 	FileInfo* fi = new FileInfo();
@@ -1303,7 +1318,7 @@ void ODSData::initiateRequest(int usecase) {
 
 	QNetworkRequest request = QNetworkRequest();
 	QByteArray postDataSize;
-	//
+//
 	QHttpPart fileLengthPart;
 	QHttpPart groupPkPart;
 	QHttpPart parentPathPart;
@@ -1313,8 +1328,8 @@ void ODSData::initiateRequest(int usecase) {
 	QHttpPart tokenPart;
 	QHttpPart overWritePart;
 	QHttpPart fileAttachementPart;
-	//QString formdata;
-	// test if initialization
+//QString formdata;
+// test if initialization
 	switch (usecase) {
 	case -1:
 		isInitialization = true;
@@ -1341,7 +1356,7 @@ void ODSData::initiateRequest(int usecase) {
 		break;
 	}
 	switch (usecase) {
-	// only for tests
+// only for tests
 	case Usecase::UsersTestGet:
 		isJsonContent = true;
 		request.setUrl(
@@ -1923,7 +1938,7 @@ void ODSData::initiateRequest(int usecase) {
 		return;
 		break;
 	}
-	// POST Request
+// POST Request
 	if (isJsonContent) {
 		qDebug() << "POST JSON";
 		if (!mRequestJson.isEmpty()) {
@@ -1946,8 +1961,8 @@ void ODSData::initiateRequest(int usecase) {
 		connect(reply, SIGNAL(uploadProgress(qint64, qint64)), this,
 				SLOT(uploadProgress(qint64, qint64)));
 	}
-	// don't stop the Activity Indicator ! Response will be async
-	// response processed in SLOT requestFinished
+// don't stop the Activity Indicator ! Response will be async
+// response processed in SLOT requestFinished
 }
 
 // private SLOT
@@ -1972,13 +1987,13 @@ void ODSData::downloadProgress(qint64 bytesReceived, qint64 bytesTotal) {
 			total = reply->request().rawHeader("downloadBytes").toInt();
 		}
 	}
-	// TODO - not working well yet test with newer OS again
+// TODO - not working well yet test with newer OS again
 	if (total <= 0) {
 		// do nothing yet - no progress was visible
 		// so better ignore
 		return;
 	}
-	// only trying to show progress on downloading files with known size
+// only trying to show progress on downloading files with known size
 	QString b = tr("downloading...");
 	if (total <= 0) {
 		// size unknown
@@ -1998,7 +2013,7 @@ void ODSData::downloadProgress(qint64 bytesReceived, qint64 bytesTotal) {
 	}
 	mProgressDialog->setBody(b);
 	mProgressDialog->show();
-	// qDebug() << b;
+// qDebug() << b;
 }
 
 // private SLOT
@@ -2070,7 +2085,7 @@ void ODSData::setRequestheader(QNetworkRequest &request, int usecase) {
 // S L O T
 // async getting info that request was finished
 void ODSData::requestFinished(QNetworkReply* reply) {
-	// Check the network reply for errors
+// Check the network reply for errors
 	QString errorString;
 	if (reply->error() == QNetworkReply::NoError) {
 		QString replyUrl(reply->url().toString(QUrl::None));
@@ -2292,9 +2307,9 @@ bool ODSData::writeReplyToFile(QByteArray &replyBytes, QString &filename) {
 bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 
 	JsonDataAccess jda;
-	// we load a JSON with root is Object
+// we load a JSON with root is Object
 	const QVariantMap rootObject(jda.loadFromBuffer(replyBytes).toMap());
-	// exists root object body ?
+// exists root object body ?
 	QVariantMap bodyMap;
 	QString errorString;
 	if (rootObject.contains("body")) {
@@ -2337,12 +2352,12 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 	} else {
 		qDebug() << "no error part - we ignore this";
 	}
-	// number of users (created by me - without me)
+// number of users (created by me - without me)
 	int users;
 	QVariantList list;
 	QVariantMap map;
 	switch (usecase) {
-	// only for tests
+// only for tests
 	case Usecase::UsersTestGet:
 		return true;
 		// only for tests
@@ -2427,9 +2442,9 @@ void ODSData::reportError(QString& errorText) {
 	mProgressDialog->setBody(errorText);
 	mProgressDialog->setState(SystemUiProgressState::Error);
 	mProgressDialog->cancel();
-	// progress canceled
-	// use SystemDialog to inform user
-	// works more stable then progress dialog with exec()
+// progress canceled
+// use SystemDialog to inform user
+// works more stable then progress dialog with exec()
 	mDialog->setTitle(tr("Error"));
 	mDialog->setBody(errorText);
 	mDialog->cancelButton()->setLabel(QString::null);
@@ -2439,6 +2454,6 @@ void ODSData::reportError(QString& errorText) {
 }
 
 ODSData::~ODSData() {
-	// TODO Auto-generated destructor stub
+// TODO Auto-generated destructor stub
 }
 
