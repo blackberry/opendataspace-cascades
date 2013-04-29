@@ -19,7 +19,7 @@ NavigationPane {
         // TODO: different background images for different sizes of smartphone or tablet
         ImageTracker {
             id: backgroundLandscape
-            imageSource: "asset:///images/login-ods-1280x768-o.png"
+            imageSource: ods.isSquare() ? "asset:///images/login-ods-720x720-o.png" : "asset:///images/login-ods-1280x768-o.png"
         },
         // the BackgroundImage
         ImageTracker {
@@ -201,7 +201,7 @@ NavigationPane {
             // support all orientations
             //OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
             // test current Orientation and set the Background Image
-            if (OrientationSupport.orientation == UIOrientation.Landscape) {
+            if (ods.isSquare() || OrientationSupport.orientation == UIOrientation.Landscape) {
                 backgroundImage.image = backgroundLandscape.image
             } else {
                 backgroundImage.image = backgroundPortrait.image
