@@ -4,34 +4,14 @@
 <context>
     <name>AddFolderPage</name>
     <message>
-        <source>Folder successfully added</source>
-        <translation type="obsolete">Carpeta agregado con éxito</translation>
-    </message>
-    <message>
-        <source>Add Folder</source>
-        <translation type="obsolete">Agregar carpeta</translation>
-    </message>
-    <message>
-        <source>Folder %1 successfully added</source>
-        <translation type="obsolete">Carpeta %1 agregado con éxito</translation>
-    </message>
-    <message>
-        <source>Folder Name</source>
-        <translation type="obsolete">Nombre de la carpeta</translation>
-    </message>
-    <message>
-        <source>another Foldername</source>
-        <translation type="obsolete">Otro nombre de carpeta</translation>
-    </message>
-    <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="47"/>
         <source>Create now</source>
-        <translation type="unfinished"></translation>
+        <translation>Crear ahora</translation>
     </message>
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="70"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Crear carpeta</translation>
     </message>
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="119"/>
@@ -46,7 +26,7 @@
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="183"/>
         <source>File Type wrong, cannot create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo de archivo incorrecto, no puede crear carpetas</translation>
     </message>
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="107"/>
@@ -57,21 +37,9 @@
 <context>
     <name>AddUserPage</name>
     <message>
-        <source>User added to ODS Cloud</source>
-        <translation type="obsolete">Usuario añadido a las ODS Nube</translation>
-    </message>
-    <message>
-        <source>Add User</source>
-        <translation type="obsolete">Añadir usuario</translation>
-    </message>
-    <message>
-        <source>User %1 added to ODS Cloud</source>
-        <translation type="obsolete">Usuario %1 añadido a las ODS Nube</translation>
-    </message>
-    <message>
         <location filename="../assets/users/AddUserPage.qml" line="51"/>
         <source>Create User now</source>
-        <translation type="unfinished"></translation>
+        <translation>Crear usuario ahora</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="69"/>
@@ -129,21 +97,17 @@
     <message>
         <location filename="../src/applicationui.cpp" line="317"/>
         <source>Help</source>
-        <translation type="unfinished">Ayudar</translation>
+        <translation>Ayudar</translation>
     </message>
     <message>
         <location filename="../src/applicationui.cpp" line="320"/>
         <source>Feedback</source>
-        <translation type="unfinished">Realimentación</translation>
-    </message>
-    <message>
-        <source>Logout</source>
-        <translation type="obsolete">Cerrar sesión</translation>
+        <translation>Realimentación</translation>
     </message>
     <message>
         <location filename="../src/applicationui.cpp" line="323"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>acerca de</translation>
     </message>
     <message>
         <location filename="../src/applicationui.cpp" line="326"/>
@@ -153,12 +117,12 @@
     <message>
         <location filename="../src/applicationui.cpp" line="329"/>
         <source>Settings</source>
-        <translation type="unfinished">Configuración</translation>
+        <translation>Configuración</translation>
     </message>
     <message>
         <location filename="../src/applicationui.cpp" line="590"/>
         <source>Please download %1 Application from BlackBerry World for FREE: </source>
-        <translation type="unfinished"></translation>
+        <translation>Por favor, descargue %1 Aplicación de BlackBerry Mundial GRATIS:</translation>
     </message>
     <message>
         <location filename="../src/applicationui.cpp" line="767"/>
@@ -186,17 +150,17 @@
     <message>
         <location filename="../assets/media/AudioRecordPage.qml" line="32"/>
         <source>Start</source>
-        <translation type="unfinished">iniciar</translation>
+        <translation>iniciar</translation>
     </message>
     <message>
         <location filename="../assets/media/AudioRecordPage.qml" line="44"/>
         <source>Stop</source>
-        <translation type="unfinished">Deténgase</translation>
+        <translation>Deténgase</translation>
     </message>
     <message>
         <location filename="../assets/media/AudioRecordPage.qml" line="72"/>
         <source>Recording</source>
-        <translation type="unfinished"></translation>
+        <translation>grabación</translation>
     </message>
 </context>
 <context>
@@ -256,10 +220,6 @@
         <location filename="../assets/rooms/CreateLinkPage.qml" line="109"/>
         <source>get notified via email</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Name of the new Folder</source>
-        <translation type="obsolete">Nombre de la nueva carpeta</translation>
     </message>
     <message>
         <location filename="../assets/rooms/CreateLinkPage.qml" line="128"/>
@@ -326,14 +286,6 @@
 <context>
     <name>DataSpaceNavPane</name>
     <message>
-        <source>New Room</source>
-        <translation type="obsolete">Nuevo habitación</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="obsolete">Actualizar</translation>
-    </message>
-    <message>
         <location filename="../assets/rooms/DataSpaceNavPane.qml" line="226"/>
         <source>Sync with Server</source>
         <translation type="unfinished"></translation>
@@ -396,14 +348,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>View</source>
-        <translation type="obsolete">ver</translation>
-    </message>
-    <message>
-        <source>Share</source>
-        <translation type="obsolete">Participación</translation>
-    </message>
-    <message>
         <location filename="../assets/documents/DocumentsPreviewPage.qml" line="62"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
@@ -411,10 +355,6 @@
 </context>
 <context>
     <name>ErrorAssistant</name>
-    <message>
-        <source>Please check entry</source>
-        <translation type="obsolete">por favor revise entrada</translation>
-    </message>
     <message>
         <location filename="../assets/common/ErrorAssistant.qml" line="54"/>
         <source>please check entry</source>
@@ -493,14 +433,6 @@
         <location filename="../assets/rooms/FileInfoPage.qml" line="77"/>
         <source>Start Chat (BBM)</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy</source>
-        <translation type="obsolete">Copiar</translation>
-    </message>
-    <message>
-        <source>Move</source>
-        <translation type="obsolete">Mover</translation>
     </message>
     <message>
         <location filename="../assets/rooms/FileInfoPage.qml" line="94"/>
@@ -667,16 +599,6 @@
     </message>
 </context>
 <context>
-    <name>FoldersItem</name>
-    <message numerus="yes">
-        <source>%1 file(s)</source>
-        <translation type="obsolete">
-            <numerusform>%1 expediente</numerusform>
-            <numerusform>%1 archivos</numerusform>
-        </translation>
-    </message>
-</context>
-<context>
     <name>HtmlPreviewPage</name>
     <message>
         <location filename="../assets/documents/HtmlPreviewPage.qml" line="32"/>
@@ -710,14 +632,6 @@
         <location filename="../assets/media/ImagePreviewPage.qml" line="53"/>
         <source>View in...</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View</source>
-        <translation type="obsolete">ver</translation>
-    </message>
-    <message>
-        <source>Share</source>
-        <translation type="obsolete">Participación</translation>
     </message>
     <message>
         <location filename="../assets/media/ImagePreviewPage.qml" line="63"/>
@@ -766,21 +680,9 @@
 <context>
     <name>LoginSheet</name>
     <message>
-        <source>Username</source>
-        <translation type="obsolete">Nombre de usuario</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation type="obsolete">Contraseña</translation>
-    </message>
-    <message>
         <location filename="../assets/appmenu/LoginSheet.qml" line="47"/>
         <source>ODS LogIn</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enter Username and Password to log into your OpenDataSpace Cloud Account</source>
-        <translation type="obsolete">Ingrese nombre de usuario y contraseña para iniciar sesión en su cuenta de Nube OpenDataSpace</translation>
     </message>
     <message>
         <location filename="../assets/appmenu/LoginSheet.qml" line="48"/>
@@ -806,10 +708,6 @@
         <location filename="../assets/appmenu/LoginSheet.qml" line="158"/>
         <source>Register</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ODS Login successfull</source>
-        <translation type="obsolete">ODS identificado correctamente</translation>
     </message>
     <message>
         <location filename="../assets/appmenu/LoginSheet.qml" line="124"/>
@@ -1387,31 +1285,9 @@ Start Sync now ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>View</source>
-        <translation type="obsolete">ver</translation>
-    </message>
-    <message>
-        <source>Share</source>
-        <translation type="obsolete">Participación</translation>
-    </message>
-    <message>
         <location filename="../assets/documents/PdfPreviewPage.qml" line="61"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PlayerListPage</name>
-    <message>
-        <source>Back</source>
-        <translation type="obsolete">espalda</translation>
-    </message>
-</context>
-<context>
-    <name>PlayerSheet</name>
-    <message>
-        <source>Back</source>
-        <translation type="obsolete">espalda</translation>
     </message>
 </context>
 <context>
@@ -1543,18 +1419,6 @@ Start Sync now ?</source>
         <translation type="unfinished">Selección de archivos</translation>
     </message>
     <message>
-        <source>New SubRoom</source>
-        <translation type="obsolete">Nueva SubRoom</translation>
-    </message>
-    <message>
-        <source>New Folder</source>
-        <translation type="obsolete">Nueva carpeta</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="obsolete">Actualizar</translation>
-    </message>
-    <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="145"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="149"/>
         <source>Select Document</source>
@@ -1569,18 +1433,6 @@ Start Sync now ?</source>
         <location filename="../assets/rooms/RoomsListPage.qml" line="173"/>
         <source>Select Video</source>
         <translation type="unfinished">Seleccione Video</translation>
-    </message>
-    <message>
-        <source>Open Camera</source>
-        <translation type="obsolete">Cámara abierta</translation>
-    </message>
-    <message>
-        <source>Record Video</source>
-        <translation type="obsolete">Grabación de vídeo</translation>
-    </message>
-    <message>
-        <source>Record Audio</source>
-        <translation type="obsolete">Grabación de audio</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="157"/>
@@ -1626,7 +1478,7 @@ Start Sync now ?</source>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="128"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Crear carpeta</translation>
     </message>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="137"/>
@@ -1753,16 +1605,6 @@ Start Sync now ?</source>
     </message>
 </context>
 <context>
-    <name>SubRoomsItem</name>
-    <message numerus="yes">
-        <source>%1 file(s)</source>
-        <translation type="obsolete">
-            <numerusform>%1 expediente</numerusform>
-            <numerusform>%1 archivos</numerusform>
-        </translation>
-    </message>
-</context>
-<context>
     <name>TextFieldWithMarker</name>
     <message>
         <location filename="../assets/common/TextFieldWithMarker.qml" line="48"/>
@@ -1781,14 +1623,6 @@ Start Sync now ?</source>
         <location filename="../assets/documents/UnknownPreviewPage.qml" line="51"/>
         <source>View in...</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View</source>
-        <translation type="obsolete">ver</translation>
-    </message>
-    <message>
-        <source>Share</source>
-        <translation type="obsolete">participación</translation>
     </message>
     <message>
         <location filename="../assets/documents/UnknownPreviewPage.qml" line="62"/>
@@ -1894,25 +1728,6 @@ Start Sync now ?</source>
         <source>Contact</source>
         <translation type="unfinished">contacto</translation>
     </message>
-    <message>
-        <source>Add Room</source>
-        <translation type="obsolete">Añadir sala</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation type="obsolete">borrar</translation>
-    </message>
-</context>
-<context>
-    <name>VideoCapturePage</name>
-    <message>
-        <source>Start</source>
-        <translation type="obsolete">iniciar</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation type="obsolete">Deténgase</translation>
-    </message>
 </context>
 <context>
     <name>VideoPreviewPage</name>
@@ -1927,14 +1742,6 @@ Start Sync now ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>View</source>
-        <translation type="obsolete">ver</translation>
-    </message>
-    <message>
-        <source>Share</source>
-        <translation type="obsolete">participación</translation>
-    </message>
-    <message>
         <location filename="../assets/media/VideoPreviewPage.qml" line="61"/>
         <source>Upload</source>
         <translation type="unfinished"></translation>
@@ -1946,10 +1753,6 @@ Start Sync now ?</source>
         <location filename="../assets/media/VoicePreviewPage.qml" line="33"/>
         <source>Preview</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View</source>
-        <translation type="obsolete">ver</translation>
     </message>
     <message>
         <location filename="../assets/media/VoicePreviewPage.qml" line="61"/>
@@ -1977,7 +1780,7 @@ Start Sync now ?</source>
     <message>
         <location filename="../assets/appmenu/WebPageAboutSheet.qml" line="36"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">acerca de</translation>
     </message>
     <message>
         <location filename="../assets/appmenu/WebPageAboutSheet.qml" line="48"/>
@@ -2017,10 +1820,6 @@ Start Sync now ?</source>
 <context>
     <name>WebPageHelpSheet</name>
     <message>
-        <source>Back</source>
-        <translation type="obsolete">espalda</translation>
-    </message>
-    <message>
         <location filename="../assets/appmenu/WebPageHelpSheet.qml" line="41"/>
         <source>ODS Homepage</source>
         <translation type="unfinished"></translation>
@@ -2047,14 +1846,6 @@ Start Sync now ?</source>
         <location filename="../assets/documents/ZipPreviewPage.qml" line="51"/>
         <source>Inspect in...</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View</source>
-        <translation type="obsolete">ver</translation>
-    </message>
-    <message>
-        <source>Share</source>
-        <translation type="obsolete">participación</translation>
     </message>
     <message>
         <location filename="../assets/documents/ZipPreviewPage.qml" line="62"/>

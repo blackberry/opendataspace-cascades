@@ -6,12 +6,12 @@
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="47"/>
         <source>Create now</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="70"/>
         <source>Create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="119"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="183"/>
         <source>File Type wrong, cannot create Folder</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="107"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="51"/>
         <source>Create User now</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="69"/>
@@ -97,17 +97,17 @@
     <message>
         <location filename="../src/applicationui.cpp" line="317"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/applicationui.cpp" line="320"/>
         <source>Feedback</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/applicationui.cpp" line="323"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/applicationui.cpp" line="326"/>
@@ -117,12 +117,12 @@
     <message>
         <location filename="../src/applicationui.cpp" line="329"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/applicationui.cpp" line="590"/>
         <source>Please download %1 Application from BlackBerry World for FREE: </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/applicationui.cpp" line="767"/>
@@ -150,17 +150,17 @@
     <message>
         <location filename="../assets/media/AudioRecordPage.qml" line="32"/>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../assets/media/AudioRecordPage.qml" line="44"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../assets/media/AudioRecordPage.qml" line="72"/>
         <source>Recording</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -596,16 +596,6 @@
         <location filename="../assets/rooms/FolderInfoPage.qml" line="172"/>
         <source> Files / Folders</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>FoldersItem</name>
-    <message numerus="yes">
-        <source>%1 file(s)</source>
-        <translation type="obsolete">
-            <numerusform>%1 file</numerusform>
-            <numerusform>%1 files</numerusform>
-        </translation>
     </message>
 </context>
 <context>
@@ -1612,16 +1602,6 @@ Start Sync now ?</source>
         <location filename="../assets/rooms/SubRoomInfoPage.qml" line="99"/>
         <source> Files / Folders</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SubRoomsItem</name>
-    <message numerus="yes">
-        <source>%1 file(s)</source>
-        <translation type="obsolete">
-            <numerusform>%1 file</numerusform>
-            <numerusform>%1 files</numerusform>
-        </translation>
     </message>
 </context>
 <context>
