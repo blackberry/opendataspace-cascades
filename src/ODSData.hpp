@@ -115,6 +115,9 @@ public:
 	Q_INVOKABLE
 	void createRoomsDropDown();
 
+	Q_INVOKABLE
+	bool hasTestDrive();
+
 Q_SIGNALS:
 	void loginFinished(bool success);
 	void shareLinkWithBBM(const QString& textToShare);

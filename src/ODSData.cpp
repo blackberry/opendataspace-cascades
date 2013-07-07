@@ -118,6 +118,10 @@ ODSData::ODSData() {
 	Q_UNUSED(connectOK);
 }
 
+bool ODSData::hasTestDrive(){
+	return mCustomizationMap.value("hasTestDrive",true).toBool();
+}
+
 void ODSData::readCustomizationDataFromJson() {
 	JsonDataAccess jda;
 	QFile customizingFile(customizingFilePath());

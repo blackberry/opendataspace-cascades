@@ -134,7 +134,7 @@ Page {
                     Button {
                         text: qsTr("Testdrive") + Retranslate.onLanguageChanged
                         preferredWidth: 320
-                        visible: ods.isEmbedded() == false
+                        visible: ods.isEmbedded() == false && odsdata.hasTestDrive()
                         onClicked: {
                             //
                             odssettings.setTestdrive(true)
