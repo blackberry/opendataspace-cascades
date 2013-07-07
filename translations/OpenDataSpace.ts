@@ -14,6 +14,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="107"/>
+        <source>Name of the new Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="119"/>
         <source>Room ID</source>
         <translation type="unfinished"></translation>
@@ -26,11 +31,6 @@
     <message>
         <location filename="../assets/rooms/AddFolderPage.qml" line="183"/>
         <source>File Type wrong, cannot create Folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="107"/>
-        <source>Name of the new Folder</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -95,52 +95,52 @@
 <context>
     <name>ApplicationUI</name>
     <message>
-        <location filename="../src/applicationui.cpp" line="317"/>
+        <location filename="../src/applicationui.cpp" line="313"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="320"/>
+        <location filename="../src/applicationui.cpp" line="316"/>
         <source>Feedback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="323"/>
+        <location filename="../src/applicationui.cpp" line="319"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="326"/>
+        <location filename="../src/applicationui.cpp" line="322"/>
         <source>FAQ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="329"/>
+        <location filename="../src/applicationui.cpp" line="325"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="590"/>
+        <location filename="../src/applicationui.cpp" line="579"/>
         <source>Please download %1 Application from BlackBerry World for FREE: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="767"/>
+        <location filename="../src/applicationui.cpp" line="758"/>
         <source>Resized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="785"/>
+        <location filename="../src/applicationui.cpp" line="776"/>
         <source>Pooled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="796"/>
+        <location filename="../src/applicationui.cpp" line="787"/>
         <source>:)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="798"/>
+        <location filename="../src/applicationui.cpp" line="789"/>
         <source>save</source>
         <translation type="unfinished"></translation>
     </message>
@@ -192,6 +192,11 @@
 <context>
     <name>CreateLinkPage</name>
     <message>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="43"/>
+        <source>Share now via BBM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../assets/rooms/CreateLinkPage.qml" line="67"/>
         <source>Create Link</source>
         <translation type="unfinished"></translation>
@@ -199,6 +204,16 @@
     <message>
         <location filename="../assets/rooms/CreateLinkPage.qml" line="97"/>
         <source>LinkCode (last part of URL)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="104"/>
+        <source>optional: Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="109"/>
+        <source>get notified via email</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -212,23 +227,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="109"/>
-        <source>get notified via email</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="43"/>
-        <source>Share now via BBM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../assets/rooms/CreateLinkPage.qml" line="128"/>
         <source>File ID</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="104"/>
-        <source>optional: Password</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -430,18 +430,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="77"/>
-        <source>Start Chat (BBM)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="94"/>
-        <source>Rename</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../assets/rooms/FileInfoPage.qml" line="69"/>
         <source>Share Link (Mail)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="77"/>
+        <source>Start Chat (BBM)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -452,6 +447,11 @@
     <message>
         <location filename="../assets/rooms/FileInfoPage.qml" line="86"/>
         <source>Download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="94"/>
+        <source>Rename</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -490,6 +490,16 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="184"/>
+        <source>File ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="188"/>
+        <source>Node</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../assets/rooms/FileInfoPage.qml" line="192"/>
         <source>Room ID</source>
         <translation type="unfinished"></translation>
@@ -502,16 +512,6 @@
     <message>
         <location filename="../assets/rooms/FileInfoPage.qml" line="200"/>
         <source>In Folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="184"/>
-        <source>File ID</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="188"/>
-        <source>Node</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -533,6 +533,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="50"/>
+        <source>Rename</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../assets/rooms/FolderInfoPage.qml" line="63"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
@@ -540,11 +545,6 @@
     <message>
         <location filename="../assets/rooms/FolderInfoPage.qml" line="71"/>
         <source>Move</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="50"/>
-        <source>Rename</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -596,15 +596,6 @@
         <location filename="../assets/rooms/FolderInfoPage.qml" line="172"/>
         <source> Files / Folders</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>FoldersItem</name>
-    <message numerus="yes">
-        <source>%1 file(s)</source>
-        <translation type="obsolete">
-            <numerusform>%1 file</numerusform>
-        </translation>
     </message>
 </context>
 <context>
@@ -1428,6 +1419,21 @@ Start Sync now ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="118"/>
+        <source>work-in-progress please stay tuned</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="128"/>
+        <source>Create Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="137"/>
+        <source>Sync with Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="145"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="149"/>
         <source>Select Document</source>
@@ -1464,6 +1470,11 @@ Start Sync now ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="196"/>
+        <source>Dictaphone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="206"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="210"/>
         <source>Select Music</source>
@@ -1486,26 +1497,6 @@ Start Sync now ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="196"/>
-        <source>Dictaphone</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="118"/>
-        <source>work-in-progress please stay tuned</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="128"/>
-        <source>Create Folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="137"/>
-        <source>Sync with Server</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="245"/>
         <source>DataRoom</source>
         <translation type="unfinished"></translation>
@@ -1525,16 +1516,6 @@ Start Sync now ?</source>
     <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="340"/>
         <source>ODS Folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="460"/>
-        <source>Copy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="468"/>
-        <source>Move</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1574,6 +1555,16 @@ Start Sync now ?</source>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="460"/>
+        <source>Copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="468"/>
+        <source>Move</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SubRoomInfoPage</name>
@@ -1611,15 +1602,6 @@ Start Sync now ?</source>
         <location filename="../assets/rooms/SubRoomInfoPage.qml" line="99"/>
         <source> Files / Folders</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SubRoomsItem</name>
-    <message numerus="yes">
-        <source>%1 file(s)</source>
-        <translation type="obsolete">
-            <numerusform>%1 file</numerusform>
-        </translation>
     </message>
 </context>
 <context>

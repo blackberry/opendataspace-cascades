@@ -1,4 +1,3 @@
-// Default empty project template
 #ifndef ApplicationUI_HPP_
 #define ApplicationUI_HPP_
 
@@ -13,29 +12,30 @@
 #include "ODSData.hpp"
 #include "ODSSettings.hpp"
 
-namespace bb { namespace cascades { class Application; }}
+namespace bb {
+namespace cascades {
+class Application;
+class LocaleHandler;
+}
+}
 
-using namespace bb::cascades;
-
+class QTranslator;
 
 /*!
- * @brief Application pane object
+ * @brief Application object
  *
- *Use this object to create and init app UI, to create context objects, to register the new meta types etc.
+ *
  */
-class ApplicationUI : public QObject
-{
-    Q_OBJECT
+
+class ApplicationUI: public QObject {
+Q_OBJECT
 public:
-    ApplicationUI(bb::cascades::Application *app);
-    virtual ~ApplicationUI() {}
+	ApplicationUI(bb::cascades::Application *app);
 
-	Q_INVOKABLE
-	void initLocalization(QTranslator* translator);
-
+	//
 	Q_INVOKABLE
 	bool isSquare();
-
+	//
 	/*
 	 * Refreshes the UI with the specified locale
 	 *
@@ -44,11 +44,7 @@ public:
 	Q_INVOKABLE
 	void updateLocale(QString locale);
 
-	/*
-	 * Allows the current language to be retrieved from QML
-	 *
-	 * @return the current language (translated)
-	 */
+	//
 	Q_INVOKABLE
 	QString getCurrentLanguage();
 
@@ -151,37 +147,33 @@ public:
 
 	Q_INVOKABLE
 	void leaveReview();
-
-public Q_SLOTS:
-	// Invoaction
-	// This method is invoked to notify the invocation system that the action has been done successfully
+	virtual ~ApplicationUI() {
+	}
+public slots:
+// Invoaction
+// This method is invoked to notify the invocation system that the action has been done successfully
 	void cardDone();
-	// This method is invoked to notify the invocation system that the action has been done without success
-	// per ex. Login failed
+// This method is invoked to notify the invocation system that the action has been done without success
+// per ex. Login failed
 	void cardCanceled(QString reason);
-	// slots from AppMenu Sheets:
+// slots from AppMenu Sheets:
 	void logoutTriggered();
 	void aboutTriggered();
 	void faqTriggered();
 	void feedbackTriggered();
 	void helpTriggered();
 	void settingsTriggered();
-	// locale changed by user from device settings
-	void localeChanged();
 	void onThumbnail();
 	void shareTextWithBBM(const QString& text);
-	void shareTextWithMail(const QString& text);
-
-Q_SIGNALS:
+	void shareTextWithMail(const QString& text);Q_SIGNALS:
 	// The change notification signal of card status change
 	void cardStatusChanged();
-
-private Q_SLOTS:
+private slots:
+	void onSystemLanguageChanged();
 	// ods as target for Invocation Queries
 	void handleInvoke(const bb::system::InvokeRequest& request);
 	void handleCardResize(const bb::system::CardResizeMessage&);
 	void handleCardPooled(const bb::system::CardDoneMessage&);
-
 private:
 	Menu* createApplicationMenu();
 	HelpActionItem* mHelpItem;
@@ -192,9 +184,8 @@ private:
 	ActionItem* mLogoutItem;
 
 	QString mCurrentLocale;
-	LocaleHandler* mLocaleHandler;
 	QTranslator* mTranslator;
-
+	bb::cascades::LocaleHandler* mLocaleHandler;
 	ODSData* mOdsData;
 	ODSSettings* mOdsSettings;
 
@@ -204,11 +195,10 @@ private:
 	bool mIsCard;
 	bool mIsLaunchedEmbedded;
 	bb::system::InvokeManager *mInvokeManager;
+	bool mInitialized;
 
 	void translateMenuItems();
 	void initTheApplication();
-
 };
-
 
 #endif /* ApplicationUI_HPP_ */

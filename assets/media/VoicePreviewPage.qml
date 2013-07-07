@@ -43,9 +43,9 @@ Page {
             onPlaybackCompleted: {
                 stopIt()
             }
-            onStop: {
-                stopIt()
-            }
+//            onStop: {
+//                stopIt()
+//            }
         },
         // application supports changing the Orientation
         OrientationHandler {

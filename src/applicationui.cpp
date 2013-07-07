@@ -66,9 +66,9 @@ using namespace bb::system;
 
 ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
 		QObject(app), mInvokeManager(new InvokeManager(this)) {
-	// BUG in SDK: IDE reports error with bb::system::, but compiles and runs
-	// removing bb::system:: compiles also well but running says "signal not found"
-	// ODS is a Invocation Target
+	qDebug() << "ApplicationUI constructor";
+
+	mInitialized = false;
 	bool ok = connect(mInvokeManager,
 			SIGNAL(invoked(const bb::system::InvokeRequest&)), this,
 			SLOT(handleInvoke(const bb::system::InvokeRequest&)));
@@ -184,7 +184,7 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
 	qml->setContextProperty("ods", this);
 	// access to the settings
 	//mOdsSettings = new ODSSettings();
-	mOdsSettings = &Singleton < ODSSettings > ::Instance();
+	mOdsSettings = &Singleton<ODSSettings>::Instance();
 	qml->setContextProperty("odssettings", mOdsSettings);
 	// we need also access to the data
 	mOdsData = new ODSData();
@@ -202,22 +202,67 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
 		qDebug() << "connect shareTextWithMail failed";
 	}
 
-	// create root object for the UI
-	// all our root objects are a NavigationPane or a TabbedPane
-	AbstractPane *root = qml->createRootObject<AbstractPane>();
-	qDebug() << "created root object";
+	// prepare the localization
+	mTranslator = new QTranslator(this);
+	mLocaleHandler = new LocaleHandler(this);
+	if (!QObject::connect(mLocaleHandler, SIGNAL(systemLanguageChanged()), this,
+			SLOT(onSystemLanguageChanged()))) {
+		// This is an abnormal situation! Something went wrong!
+		// Add own code to recover here
+		qWarning() << "Recovering from a failed connect()";
+	}
 
-	Application::instance()->setScene(root);
-	qDebug() << "set the scene";
+	// initial load
+	onSystemLanguageChanged();
+
+	// Create root object for the UI
+	AbstractPane *root = qml->createRootObject<AbstractPane>();
+
+	// Set created root object as the application scene
+	app->setScene(root);
+	qDebug() << "created root object";
 
 	if (!mIsLaunchedEmbedded) {
 		initTheApplication();
+		translateMenuItems();
 	} else {
 		qDebug() << "we are running EMBEDDED";
 	}
+	mInitialized = true;
 	qDebug() << "INIT done";
 }
 
+void ApplicationUI::onSystemLanguageChanged() {
+	qDebug() << "onSystemLanguageChanged called";
+	QCoreApplication::instance()->removeTranslator(mTranslator);
+	// Initiate, load and install the application translation files.
+	mCurrentLocale = QLocale().name();
+	QString file_name = QString("OpenDataSpace_%1").arg(mCurrentLocale);
+	if (mTranslator->load(file_name, "app/native/qm")) {
+		QCoreApplication::instance()->installTranslator(mTranslator);
+		if (mInitialized) {
+			translateMenuItems();
+		}
+	}
+
+}
+void ApplicationUI::updateLocale(QString locale) {
+	qDebug() << "updateLocale: " << locale;
+
+	// if locale is empty - refresh current. otherwise change the local
+	if (!locale.trimmed().isEmpty() && mCurrentLocale != locale) {
+		QCoreApplication::instance()->removeTranslator(mTranslator);
+		mCurrentLocale = locale;
+		qDebug() << "updating UI to language: " << mCurrentLocale;
+		QString filename = QString("OpenDataSpace_%1").arg(mCurrentLocale);
+		if (mTranslator->load(filename, "app/native/qm")) {
+			QCoreApplication::instance()->installTranslator(mTranslator);
+			if (!mIsLaunchedEmbedded) {
+				translateMenuItems();
+			}
+		}
+	}
+}
 /**
  * Q10 support - also working on 10.0
  */
@@ -256,55 +301,6 @@ void ApplicationUI::initTheApplication() {
 	bool ok = connect(app, SIGNAL(thumbnail()), this, SLOT(onThumbnail()));
 	if (!ok) {
 		qDebug() << "connect thumbnail failed";
-	}
-}
-
-// INTERNATIONALIZATION (i18n)
-/**
- *
- * This method initializes translation engine based on current locale
- * at runtime.
- *
- */
-void ApplicationUI::initLocalization(QTranslator* translator) {
-	// remember current locale set
-	mCurrentLocale = QLocale().name();
-	qDebug() << "init with locale: " << mCurrentLocale;
-	mTranslator = translator;
-
-	// watch if user changes locale from device settings
-	mLocaleHandler = new LocaleHandler(this);
-	// connect the handler
-	connect(mLocaleHandler, SIGNAL(systemLanguageChanged()), this,
-			SLOT(localeChanged()));
-	qDebug() << "connected systemLanguageChanged";
-
-}
-
-/**
- * App::updateLocale(QString locale)
- *
- * Update view content basing on the given locale.
- *
- */
-void ApplicationUI::updateLocale(QString locale) {
-	qDebug() << "updateLocale: " << locale;
-
-	// if locale is empty - refresh current. otherwise change the local
-	if (!locale.trimmed().isEmpty() && mCurrentLocale != locale) {
-		mCurrentLocale = locale;
-
-		qDebug() << "updating UI to language: " << mCurrentLocale;
-		QString filename = QString("OpenDataSpace_%1").arg(mCurrentLocale);
-		if (mTranslator->load(filename, "app/native/qm")) {
-			// multiple translators can be installed but for this
-			// app we only use one translator instance for brevity
-			Application::instance()->removeTranslator(mTranslator);
-			Application::instance()->installTranslator(mTranslator);
-			// retranslate System menu items
-			translateMenuItems();
-		}
-
 	}
 }
 
@@ -370,12 +366,10 @@ Menu* ApplicationUI::createApplicationMenu() {
 	mHelpItem = new HelpActionItem();
 	// ABOUT will open a website with about infos
 	mAboutItem = new ActionItem();
-	mAboutItem->setImageSource(
-			QString("asset:///images/info.png"));
+	mAboutItem->setImageSource(QString("asset:///images/info.png"));
 	// FAQ will open a website with FAQ's
 	mFAQItem = new ActionItem();
-	mFAQItem->setImageSource(
-			QString("asset:///images/faq.png"));
+	mFAQItem->setImageSource(QString("asset:///images/faq.png"));
 
 	// FEEDBACK will send an email to OpenDataSpace
 	mFeedbackItem = new ActionItem();
@@ -392,15 +386,14 @@ Menu* ApplicationUI::createApplicationMenu() {
 	// plug it all together
 	// TODO .addAction(mLogoutItem) need some more logic for testdrive
 	Menu* menu =
-			Menu::create().addAction(mAboutItem).addAction(mFAQItem).addAction(mFeedbackItem).help(mHelpItem).settings(
-					mSettingsItem);
+			Menu::create().addAction(mAboutItem).addAction(mFAQItem).addAction(
+					mFeedbackItem).help(mHelpItem).settings(mSettingsItem);
 	// Connect SIGNALS and SLOTS
 //	QObject::connect(mLogoutItem, SIGNAL(triggered()), this,
 //			SLOT(logoutTriggered()));
 	QObject::connect(mAboutItem, SIGNAL(triggered()), this,
 			SLOT(aboutTriggered()));
-	QObject::connect(mFAQItem, SIGNAL(triggered()), this,
-			SLOT(faqTriggered()));
+	QObject::connect(mFAQItem, SIGNAL(triggered()), this, SLOT(faqTriggered()));
 	QObject::connect(mFeedbackItem, SIGNAL(triggered()), this,
 			SLOT(feedbackTriggered()));
 	QObject::connect(mHelpItem, SIGNAL(triggered()), this,
@@ -410,16 +403,10 @@ Menu* ApplicationUI::createApplicationMenu() {
 	return menu;
 }
 
-// S L O T S
-
-// handles SLOT from Locale Chaned by user at Device
-void ApplicationUI::localeChanged() {
-	updateLocale(QLocale().name());
-}
-
 // handles SLOT from about item
 void ApplicationUI::aboutTriggered() {
-	Sheet *s = Application::instance()->scene()->findChild<Sheet*>("aboutSheet");
+	Sheet *s = Application::instance()->scene()->findChild<Sheet*>(
+			"aboutSheet");
 	if (s) {
 		qDebug() << "about triggered and aboutSheet found";
 		s->open();
@@ -467,14 +454,15 @@ void ApplicationUI::login(const QString user, const QString pw) {
 	}
 }
 
-void ApplicationUI::sendMail(const QString title){
+void ApplicationUI::sendMail(const QString title) {
 	qDebug() << "invoke sendMail";
 	InvokeRequest request;
 	request.setAction("bb.action.SENDEMAIL");
 	request.setTarget("sys.pim.uib.email.hybridcomposer");
 	request.setMimeType("settings/view");
 	request.setUri(
-			"mailto:"+mOdsData->supportMail()+"?subject="+mOdsData->applicationName()+"%20"+title);
+			"mailto:" + mOdsData->supportMail() + "?subject="
+					+ mOdsData->applicationName() + "%20" + title);
 	mInvokeManager->invoke(request);
 }
 
@@ -486,7 +474,8 @@ void ApplicationUI::feedbackTriggered() {
 	request.setTarget("sys.pim.uib.email.hybridcomposer");
 	request.setMimeType("settings/view");
 	request.setUri(
-			"mailto:"+mOdsData->feedbackMail()+"?subject=Feedback%20"+mOdsData->applicationName());
+			"mailto:" + mOdsData->feedbackMail() + "?subject=Feedback%20"
+					+ mOdsData->applicationName());
 	mInvokeManager->invoke(request);
 }
 
@@ -588,8 +577,10 @@ void ApplicationUI::inviteBBM() {
 void ApplicationUI::inviteODS() {
 	shareTextWithBBM(
 			tr(
-					"Please download %1 Application from BlackBerry World for FREE: ").arg(mOdsData->applicationName())
-					+ "http://appworld.blackberry.com/webstore/content/" + mOdsData->applicationId());
+					"Please download %1 Application from BlackBerry World for FREE: ").arg(
+					mOdsData->applicationName())
+					+ "http://appworld.blackberry.com/webstore/content/"
+					+ mOdsData->applicationId());
 	qDebug() << "invite to BBM";
 }
 
@@ -821,4 +812,3 @@ void ApplicationUI::cardCanceled(const QString data) {
 	mInvokeManager->sendCardDone(message);
 
 }
-

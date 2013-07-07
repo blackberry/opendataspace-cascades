@@ -16,19 +16,3 @@ lupdate_inclusion {
     SOURCES += ../assets/documents/*.qml
     SOURCES += ../assets/appmenu/*.qml
 }
-
-device {
-    CONFIG(debug, debug|release) {
-        # Device-Debug custom configuration
-    }
-
-    CONFIG(release, debug|release) {
-        # Device-Release custom configuration
-    }
-}
-
-simulator {
-    CONFIG(debug, debug|release) {
-        # Simulator-Debug custom configuration
-    }
-}

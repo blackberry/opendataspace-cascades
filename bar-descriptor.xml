@@ -18,17 +18,17 @@
 -->
 <qnx xmlns="http://www.qnx.com/schemas/application/1.0">
 
-<!-- BlackBerry Tablet OS application descriptor file.
+<!-- BlackBerry 10 application descriptor file.
 
-    Specifies parameters for identifying, installing, and launching native applications on BlackBerry Tablet OS.
+    Specifies parameters for identifying, installing, and launching native applications on BlackBerry 10.
 
 -->
 
-    <!-- A universally unique application identifier. Must be unique across all BlackBerry Tablet OS applications.
+    <!-- A universally unique application identifier. Must be unique across all BlackBerry 10 applications.
          Using a reverse DNS-style name as the id is recommended. (Eg. com.example.ExampleApplication.) Required. -->
     <id>org.opendataspace</id>
 
-    <!-- The name that is displayed in the BlackBerry Tablet OS application installer. 
+    <!-- The name that is displayed in the BlackBerry 10 application installer. 
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
     <name>
        Data Space
@@ -53,7 +53,7 @@
     <!-- A string value (such as "v1", "2.5", or "Alpha 1") that represents the version of the application, as it should be shown to users. Optional. -->
     <!-- <versionLabel></versionLabel> -->
 
-    <!-- Description, displayed in the BlackBerry Tablet OS application installer.
+    <!-- Description, displayed in the BlackBerry 10 application installer.
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
     <description>
        OpenDataSpace Client APP for Cascades.
@@ -100,7 +100,7 @@
        <asset path="x86/o-g/OpenDataSpace" entry="true" type="Qnx/Elf">OpenDataSpace</asset>
     </configuration>
     
-    <!--  The icon for the application -->
+    <!--  The icon for the application, which should be 114x114. -->
     <icon>
         <image>icon.png</image>
     </icon>
@@ -115,7 +115,6 @@
     
     <!-- Request permission to execute native code.  Required for native applications. -->
     <permission system="true">run_native</permission>
-    <permission>bbm_connect</permission>
     <permission>use_camera</permission>
     <permission>access_pimdomain_contacts</permission>
     <permission>read_geolocation</permission>
@@ -125,7 +124,7 @@
     <permission>run_when_backgrounded</permission>
     <permission>access_shared</permission>
     
-    <!-- Invoke filters -->
+       <!-- Invoke filters -->
     <!-- Invoke ths Application as a normal Application -->
     <invoke-target id="io.ods.bb10.invoke">
 	<invoke-target-name>OpenDataSpace</invoke-target-name>  		
@@ -187,7 +186,6 @@
       		<mime-type>video/mp4</mime-type>
         </filter>
     </invoke-target>    
-    
     
     <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib"/>
 

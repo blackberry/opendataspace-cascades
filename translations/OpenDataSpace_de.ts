@@ -95,52 +95,52 @@
 <context>
     <name>ApplicationUI</name>
     <message>
-        <location filename="../src/applicationui.cpp" line="317"/>
+        <location filename="../src/applicationui.cpp" line="313"/>
         <source>Help</source>
         <translation>Hilfe</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="320"/>
+        <location filename="../src/applicationui.cpp" line="316"/>
         <source>Feedback</source>
         <translation>Kommentar</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="323"/>
+        <location filename="../src/applicationui.cpp" line="319"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="326"/>
+        <location filename="../src/applicationui.cpp" line="322"/>
         <source>FAQ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="329"/>
+        <location filename="../src/applicationui.cpp" line="325"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="590"/>
+        <location filename="../src/applicationui.cpp" line="579"/>
         <source>Please download %1 Application from BlackBerry World for FREE: </source>
         <translation>Bitte Anwendung %1 von der BlackBerry World downloaden (FREE):</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="767"/>
+        <location filename="../src/applicationui.cpp" line="758"/>
         <source>Resized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="785"/>
+        <location filename="../src/applicationui.cpp" line="776"/>
         <source>Pooled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="796"/>
+        <location filename="../src/applicationui.cpp" line="787"/>
         <source>:)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="798"/>
+        <location filename="../src/applicationui.cpp" line="789"/>
         <source>save</source>
         <translation type="unfinished"></translation>
     </message>
