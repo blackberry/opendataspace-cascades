@@ -157,10 +157,10 @@ Page {
                     Button {
                         text: qsTr("Register") + Retranslate.onLanguageChanged
                         preferredWidth: 320
-                        visible: ods.isEmbedded() == false
+                        visible: ods.isEmbedded() == false && odsdata.hasRegisterUrl()
                         onClicked: {
                             //
-                            ods.invokeBrowser("http://ods.io")
+                            ods.invokeBrowser(odsdata.registerUrl())
                         }
                     }
                 }

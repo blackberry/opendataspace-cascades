@@ -117,6 +117,10 @@ public:
 
 	Q_INVOKABLE
 	bool hasTestDrive();
+	Q_INVOKABLE
+	bool hasRegisterUrl();
+	Q_INVOKABLE
+	QString registerUrl();
 
 Q_SIGNALS:
 	void loginFinished(bool success);

@@ -123,6 +123,12 @@ ODSData::ODSData() {
 bool ODSData::hasTestDrive(){
 	return mCustomizationMap.value("hasTestDrive",true).toBool();
 }
+bool ODSData::hasRegisterUrl(){
+	return mCustomizationMap.value("hasRegisterUrl",true).toBool();
+}
+QString ODSData::registerUrl(){
+	return mCustomizationMap.value("registerUrl",true).toString();
+}
 
 void ODSData::readCustomizationDataFromJson() {
 	JsonDataAccess jda;
