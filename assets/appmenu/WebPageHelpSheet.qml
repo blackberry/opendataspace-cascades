@@ -33,7 +33,7 @@ Page {
             webPage.removeAction(ekke)
         }
     }
-    property string theURL: ""
+    property string theURL: "local:///assets/dummi.html"
     // Actions
     actions: [
         ActionItem {
@@ -121,7 +121,7 @@ Page {
                     } else if (loadRequest.status == WebLoadStatus.Succeeded) {
                         myIndicator.visible = false
                         // uuuups we failed  - give the user a notice
-                    } else if (loadRequest.status == WebLoadStatus.Failed) {
+                    } else if (loadRequest.status == WebLoadStatus.Failed  && theURL.length > 0) {
                         // If loading failed fallback to inline HTML, by setting the HTML property.                     
                         html = "<html><head><title>Fallback HTML on Loading Failed</title><style>* { margin: 0px; padding 0px; }body { font-size: 48px; font-family: monospace; border: 1px solid #444; padding: 4px; }</style> </head> <body>Oh ooh, loading failed. Perhaps you are not connected to the Internet?.</body></html>"
                         myIndicator.visible = false

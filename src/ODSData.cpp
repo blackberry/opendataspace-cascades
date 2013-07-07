@@ -108,7 +108,7 @@ ODSData::ODSData() {
 	if(mCustomizationMap.isEmpty()){
 		qDebug() << "customization map is empty";
 	}
-	qDebug() << "Customized for: " << mCustomizationMap.value("customizingCustomerName","NO NAME FOUND").toString();
+	qDebug() << "Customized for: " << mCustomizationMap.value("applicationName","NO NAME FOUND").toString();
 	mOdsSettings->saveValueFor(SETTINGS_KEY_TESTDRIVE_SERVER_URL,mCustomizationMap.value("testDriveUrl","https://bb.ods.io/mobile").toString());
 	mOdsSettings->saveValueFor(SETTINGS_KEY_TESTDRIVE_USER,mCustomizationMap.value("testDriveUser","test-drive@ods.io").toString());
 	mOdsSettings->saveValueFor(SETTINGS_KEY_TESTDRIVE_PASSWORD,mCustomizationMap.value("testDrivePassword","MDUb4eWq").toString());
@@ -140,6 +140,15 @@ QString ODSData::aboutsiteUrl(){
 }
 QString ODSData::faqsiteUrl(){
 	return mCustomizationMap.value("faqsiteUrl","").toString();
+}
+QString ODSData::feedbackMail(){
+	return mCustomizationMap.value("feedbackMail","").toString();
+}
+QString ODSData::supportMail(){
+	return mCustomizationMap.value("supportMail","").toString();
+}
+QString ODSData::applicationName(){
+	return mCustomizationMap.value("applicationName","").toString();
 }
 
 

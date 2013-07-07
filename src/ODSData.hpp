@@ -129,6 +129,12 @@ public:
 	QString aboutsiteUrl();
 	Q_INVOKABLE
 	QString faqsiteUrl();
+	Q_INVOKABLE
+	QString feedbackMail();
+	Q_INVOKABLE
+	QString supportMail();
+	Q_INVOKABLE
+	QString applicationName();
 
 Q_SIGNALS:
 	void loginFinished(bool success);

@@ -474,7 +474,7 @@ void ApplicationUI::sendMail(const QString title){
 	request.setTarget("sys.pim.uib.email.hybridcomposer");
 	request.setMimeType("settings/view");
 	request.setUri(
-			"mailto:appsupport@ekkes-corner.org?subject=OpenDataSpace%20"+title);
+			"mailto:"+mOdsData->supportMail()+"?subject="+mOdsData->applicationName()+"%20"+title);
 	mInvokeManager->invoke(request);
 }
 
@@ -486,7 +486,7 @@ void ApplicationUI::feedbackTriggered() {
 	request.setTarget("sys.pim.uib.email.hybridcomposer");
 	request.setMimeType("settings/view");
 	request.setUri(
-			"mailto:support@opendataspace.org?subject=Feedback%20OpenDataSpace");
+			"mailto:"+mOdsData->feedbackMail()+"?subject=Feedback%20"+mOdsData->applicationName());
 	mInvokeManager->invoke(request);
 }
 
