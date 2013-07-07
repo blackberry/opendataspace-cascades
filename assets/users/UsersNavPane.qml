@@ -107,6 +107,7 @@ NavigationPane {
                 id: usersList
                 objectName: "usersList"
                 dataModel: userGroupDataModel
+                property variant selectionColor: rootNavigationPane.selectionColor
                 // its the root, only single selction makes sense
                 // TODO selectionMode: SelectionMode.Single
 
@@ -117,6 +118,7 @@ NavigationPane {
                         UsersItem {
                             id: usersItem
                             backgroundVisible: ! usersItem.ListItem.view.isSquare()
+                            selectionColor: usersItem.ListItem.view.selectionColor
                             contextActions: [
                                 ActionSet {
                                     title: ListItemData.displayName
@@ -150,47 +152,48 @@ NavigationPane {
                         type: "adminItem"
                         UsersItem {
                             id: adminItem
-                            backgroundVisible: ! adminItem.ListItem.view.isSquare()
-                            contextActions: [
-                                ActionSet {
-                                    title: ListItemData.displayName
-                                    subtitle: "ODS Aministrator"
-                                    ActionItem {
-                                        title: qsTr("Add Room") + Retranslate.onLanguageChanged
-                                        imageSource: "asset:///images/new-folder81.png"
-                                        onTriggered: {
-                                            // TODO
-                                        }
-                                    }
-                                    ActionItem {
-                                        title: qsTr("Info") + Retranslate.onLanguageChanged
-                                        imageSource: "asset:///images/ics/2-action-about81.png"
-                                        onTriggered: {
-                                            // TODO
-                                        }
-                                    }
-                                    ActionItem {
-                                        title: qsTr("MailTo") + Retranslate.onLanguageChanged
-                                        imageSource: "asset:///images/ics/5-content-email81.png"
-                                        onTriggered: {
-                                            // TODO
-                                        }
-                                    }
-                                    ActionItem {
-                                        title: qsTr("Contact") + Retranslate.onLanguageChanged
-                                        imageSource: "asset:///images/ics/6-social-person81.png"
-                                        onTriggered: {
-                                            // TODO
-                                        }
-                                    }
-                                    DeleteActionItem {
-                                        title: qsTr("Delete") + Retranslate.onLanguageChanged
-                                        onTriggered: {
-                                            // TODO
-                                        }
-                                    }
-                                }
-                            ]
+                            backgroundVisible: !adminItem.ListItem.view.isSquare()
+                            selectionColor: adminItem.ListItem.view.selectionColor
+//                            contextActions: [
+//                                ActionSet {
+//                                    title: ListItemData.displayName
+//                                    subtitle: "ODS Aministrator"
+//                                    ActionItem {
+//                                        title: qsTr("Add Room") + Retranslate.onLanguageChanged
+//                                        imageSource: "asset:///images/new-folder81.png"
+//                                        onTriggered: {
+//                                            // TODO
+//                                        }
+//                                    }
+//                                    ActionItem {
+//                                        title: qsTr("Info") + Retranslate.onLanguageChanged
+//                                        imageSource: "asset:///images/ics/2-action-about81.png"
+//                                        onTriggered: {
+//                                            // TODO
+//                                        }
+//                                    }
+//                                    ActionItem {
+//                                        title: qsTr("MailTo") + Retranslate.onLanguageChanged
+//                                        imageSource: "asset:///images/ics/5-content-email81.png"
+//                                        onTriggered: {
+//                                            // TODO
+//                                        }
+//                                    }
+//                                    ActionItem {
+//                                        title: qsTr("Contact") + Retranslate.onLanguageChanged
+//                                        imageSource: "asset:///images/ics/6-social-person81.png"
+//                                        onTriggered: {
+//                                            // TODO
+//                                        }
+//                                    }
+//                                    DeleteActionItem {
+//                                        title: qsTr("Delete") + Retranslate.onLanguageChanged
+//                                        onTriggered: {
+//                                            // TODO
+//                                        }
+//                                    }
+//                                }
+//                            ]
                         }
                     },
                     ListItemComponent {

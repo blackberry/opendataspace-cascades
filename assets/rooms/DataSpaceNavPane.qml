@@ -284,6 +284,7 @@ NavigationPane {
             ListView {
                 id: dataspaceList
                 objectName: "dataspaceList"
+                property variant selectionColor: rootNavigationPane.selectionColor
                 dataModel: roomGroupDataModel
                 // its the root, only single selction makes sense
                 // TODO selectionMode: SelectionMode.Single
@@ -294,6 +295,7 @@ NavigationPane {
                         RoomsItem {
                             id: roomsItem
                             backgroundVisible: ! roomsItem.ListItem.view.isSquare()
+                            selectionColor: roomsItem.ListItem.view.selectionColor
                             contextActions: [
                                 ActionSet {
                                     title: ListItemData.name
@@ -334,6 +336,7 @@ NavigationPane {
                         odsdata.resetLevel();
                         odsdata.showNextNode(roomGroupDataModel.data(indexPath).nodes, roomGroupDataModel.data(indexPath).name)
                         navigationPane.push(roomsListPage)
+                        dataspaceList.select(indexPath,true);
                     }
                 }
                 // ListView functions
@@ -450,6 +453,10 @@ NavigationPane {
     onTopChanged: {
         if (navigationPane.top == dataspacePage) {
             odsdata.resetLevel();
+            dataspaceList.clearSelection()
+        }
+        if(navigationPane.top == roomsListPage){
+            roomsListPage.deselectAll()
         }
     }
     onCreationCompleted: {

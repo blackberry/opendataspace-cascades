@@ -22,44 +22,39 @@
  */
 
 Container {
-    property alias backgroundVisible: itemBackground.visible
+    id: rootNode
+    property bool backgroundVisible : true
+    property variant selectionColor
     layout: DockLayout {
     }
+    topPadding: 6
+    bottomPadding: 6
+    preferredWidth: Infinity
+    background: ListItem.selected || ListItem.active ? selectionColor : Color.Transparent
     Container {
         layout: DockLayout {
         }
-        horizontalAlignment: HorizontalAlignment.Center
+        horizontalAlignment: HorizontalAlignment.Left
         attachedObjects: [
             // application supports changing the Orientation
             OrientationHandler {
                 onOrientationAboutToChange: {
                     if (orientation == UIOrientation.Landscape) {
                         itemBackground.preferredWidth = 1280
-                        highlightContainer.preferredWidth = 1272
                     } else {
                         itemBackground.preferredWidth = 768
-                        highlightContainer.preferredWidth = 760
                     }
                 }
             }
         ]
-
         // Item background image.
         ImageView {
             id: itemBackground
+            visible: backgroundVisible && !(rootNode.ListItem.selected || rootNode.ListItem.active)
             imageSource: "asset:///images/white_photo.png"
             preferredWidth: 768
             preferredHeight: 137
         }
-        Container {
-            id: highlightContainer
-            background: Color.create("#75b5d3")
-            opacity: 0.0
-            preferredWidth: 760
-            preferredHeight: 132
-            horizontalAlignment: HorizontalAlignment.Center
-        }
-
         // The Item content an image and a text.
         Container {
             layout: StackLayout {
@@ -95,25 +90,11 @@ Container {
             visible: ! backgroundVisible
         }
     }
-    function setHighlight(highlighted) {
-        if (highlighted) {
-            highlightContainer.opacity = 0.9;
-        } else {
-            highlightContainer.opacity = 0.0;
-        }
-    }
-    ListItem.onActivationChanged: {
-        setHighlight(ListItem.active);
-    }
-    ListItem.onSelectionChanged: {
-        setHighlight(ListItem.selected);
-    }
     // init
     onCreationCompleted: {
         // set to Landscape if aklready in landscape while staring up
         if (OrientationSupport.orientation == UIOrientation.Landscape) {
             itemBackground.preferredWidth = 1280
-            highlightContainer.preferredWidth = 1272
         }
     }
 }

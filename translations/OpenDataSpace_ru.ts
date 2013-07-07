@@ -238,22 +238,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="99"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="97"/>
         <source>LinkCode (last part of URL)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="117"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="113"/>
         <source>should Link expire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="126"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="122"/>
         <source>Link expires on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="113"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="109"/>
         <source>get notified via email</source>
         <translation type="unfinished"></translation>
     </message>
@@ -262,12 +262,12 @@
         <translation type="obsolete">Название новой папки</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="132"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="128"/>
         <source>File ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="108"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="104"/>
         <source>optional: Password</source>
         <translation type="unfinished"></translation>
     </message>
@@ -285,32 +285,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="99"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="97"/>
         <source>LinkCode (last part of URL)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="108"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="104"/>
         <source>optional: Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="113"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="109"/>
         <source>get notified via email</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="117"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="113"/>
         <source>should Link expire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="126"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="122"/>
         <source>Link expires on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="132"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="128"/>
         <source>File ID</source>
         <translation type="unfinished"></translation>
     </message>
@@ -359,12 +359,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="300"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="302"/>
         <source>ODS Data Room</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="302"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="304"/>
         <source>Info</source>
         <translation type="unfinished">информация</translation>
     </message>
@@ -1643,66 +1643,66 @@ Start Sync now ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="307"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="311"/>
         <source>ODS Subroom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="317"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="345"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="415"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="321"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="350"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="421"/>
         <source>Info</source>
         <translation type="unfinished">информация</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="335"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="340"/>
         <source>ODS Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="454"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="460"/>
         <source>Copy</source>
         <translation type="unfinished">Скопировать</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="462"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="468"/>
         <source>Move</source>
         <translation type="unfinished">двигаться</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="352"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="447"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="357"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="453"/>
         <source>Rename</source>
         <translation type="unfinished">переименовать</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="375"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="470"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="380"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="476"/>
         <source>Delete</source>
         <translation type="unfinished">удалять</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="396"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="402"/>
         <source>ODS File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="406"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="412"/>
         <source>View</source>
         <translation type="unfinished">смотреть</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="426"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="432"/>
         <source>Share Link (BBM)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="433"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="439"/>
         <source>Share Link (Mail)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="440"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="446"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1874,32 +1874,27 @@ Start Sync now ?</source>
         <translation type="unfinished">обновление</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="125"/>
-        <location filename="../assets/users/UsersNavPane.qml" line="166"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="127"/>
         <source>Info</source>
         <translation type="unfinished">информация</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="132"/>
-        <location filename="../assets/users/UsersNavPane.qml" line="173"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="134"/>
         <source>MailTo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="139"/>
-        <location filename="../assets/users/UsersNavPane.qml" line="180"/>
+        <location filename="../assets/users/UsersNavPane.qml" line="141"/>
         <source>Contact</source>
         <translation type="unfinished">связаться</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="159"/>
         <source>Add Room</source>
-        <translation type="unfinished">Добавить номер</translation>
+        <translation type="obsolete">Добавить номер</translation>
     </message>
     <message>
-        <location filename="../assets/users/UsersNavPane.qml" line="187"/>
         <source>Delete</source>
-        <translation type="unfinished">удалять</translation>
+        <translation type="obsolete">удалять</translation>
     </message>
 </context>
 <context>
@@ -2068,22 +2063,22 @@ Start Sync now ?</source>
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="132"/>
+        <location filename="../assets/main.qml" line="133"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="145"/>
+        <location filename="../assets/main.qml" line="146"/>
         <source>Data Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="154"/>
+        <location filename="../assets/main.qml" line="155"/>
         <source>Users</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="168"/>
+        <location filename="../assets/main.qml" line="169"/>
         <source>Upload</source>
         <translation type="unfinished">Пользователи</translation>
     </message>

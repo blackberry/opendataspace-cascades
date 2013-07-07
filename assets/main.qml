@@ -36,6 +36,7 @@ TabbedPane {
     property int login: -1
     // property needed to destroy it later
     property UsersNavPane createdUsersNavPane
+    property variant selectionColor
     id: rootNavigationPane
     showTabsOnActionBar: true
     // these objects have to be available on all tabs
@@ -290,6 +291,8 @@ TabbedPane {
         // dont want to display the Shee immediately, so using a delayed animation
         // start the animation to open LoginSheet after 1 s
         homePage.loginDelayed()
+        //
+        rootNavigationPane.selectionColor = Color.create("#ffff00ff")
     }
     // triggered from C++
     onLoginChanged: {

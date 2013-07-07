@@ -271,6 +271,7 @@ Page {
         ListView {
             id: roomsList
             objectName: "roomsList"
+            property variant selectionColor: rootNavigationPane.selectionColor
             dataModel: fileGroupDataModel
             // its the root, only single selction makes sense
             //selectionMode: SelectionMode.Single
@@ -279,6 +280,7 @@ Page {
             }
             onTriggered: {
                 if (selected) {
+                    roomsList.clearSelection()
                     if (fileGroupDataModel.data(indexPath).displayType != "L") {
                         // name of current Room, SubRoom, Folder
                         roomsListPage.headerTitle = fileGroupDataModel.data(indexPath).name
@@ -292,6 +294,7 @@ Page {
                         // current level of files tree is cached at c++ so we get fast access
                         pushFileInfoPage(fileGroupDataModel.data(indexPath).id)
                     }
+                    roomsList.select(indexPath,true);
                 }
             }
             // define the appearance
@@ -301,6 +304,7 @@ Page {
                     SubRoomsItem {
                         id: subroomsItem
                         backgroundVisible: ! subroomsItem.ListItem.view.isSquare()
+                        selectionColor: subroomsItem.ListItem.view.selectionColor
                         contextActions: [
                             ActionSet {
                                 title: ListItemData.name
@@ -329,6 +333,7 @@ Page {
                     FoldersItem {
                         id: foldersItem
                         backgroundVisible: ! foldersItem.ListItem.view.isSquare()
+                        selectionColor: foldersItem.ListItem.view.selectionColor
                         contextActions: [
                             ActionSet {
                                 title: ListItemData.name
@@ -390,6 +395,7 @@ Page {
                     FilesItem {
                         id: filesItem
                         backgroundVisible: ! filesItem.ListItem.view.isSquare()
+                        selectionColor: filesItem.ListItem.view.selectionColor
                         contextActions: [
                             ActionSet {
                                 title: ListItemData.name
@@ -540,4 +546,7 @@ Page {
         } // end ListView
     } // end Container
     // TODO localization: loop thru datamodel and localize datetime strings
+    function deselectAll(){
+        roomsList.clearSelection();
+    }
 }// end page

@@ -91,8 +91,6 @@ Page {
                 
                 TextFieldWithMarker {
                     id: linkCode
-                    topPadding: 20
-                    bottomPadding: 20
                     redBarImage: redTile.image
                     textFieldInputMode: TextFieldInputMode.Text
                     textFieldText: ""
@@ -103,8 +101,6 @@ Page {
                 }
                 TextField {
                     id: password
-                    topPadding: 20
-                    bottomPadding: 20
                     hintText: qsTr("optional: Password")  + Retranslate.onLanguageChanged;
                     inputMode: TextFieldInputMode.Password
                 }
