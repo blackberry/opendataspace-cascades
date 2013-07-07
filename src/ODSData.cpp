@@ -156,6 +156,12 @@ QString ODSData::applicationId(){
 bool ODSData::listBackgroundForBright(){
 	return mCustomizationMap.value("listBackgroundForBright",true).toBool();
 }
+QString ODSData::listHighlightColorForBright(){
+	return mCustomizationMap.value("listHighlightColorForBright","").toString();
+}
+QString ODSData::listHighlightColorForDark(){
+	return mCustomizationMap.value("listHighlightColorForDark","").toString();
+}
 
 void ODSData::readCustomizationDataFromJson() {
 	JsonDataAccess jda;

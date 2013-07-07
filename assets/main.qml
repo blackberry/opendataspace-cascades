@@ -297,7 +297,12 @@ TabbedPane {
         // start the animation to open LoginSheet after 1 s
         homePage.loginDelayed()
         //
-        rootNavigationPane.selectionColor = Color.create("#ffff00ff")
+        if(isDark()){
+            rootNavigationPane.selectionColor = Color.create(odsdata.listHighlightColorForDark())
+        }else {
+            rootNavigationPane.selectionColor = Color.create(odsdata.listHighlightColorForBright())
+        }
+        
         // 
         console.debug("DARK ? "+isDark())
     }

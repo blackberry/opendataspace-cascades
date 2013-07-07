@@ -139,6 +139,10 @@ public:
 	QString applicationId();
 	Q_INVOKABLE
 	bool listBackgroundForBright();
+	Q_INVOKABLE
+	QString listHighlightColorForBright();
+	Q_INVOKABLE
+	QString listHighlightColorForDark();
 
 Q_SIGNALS:
 	void loginFinished(bool success);
