@@ -303,7 +303,7 @@ Page {
                     type: "subroomsItem"
                     SubRoomsItem {
                         id: subroomsItem
-                        backgroundVisible: ! subroomsItem.ListItem.view.isSquare()
+                        backgroundVisible: subroomsItem.ListItem.view.hasBackgroundImage()
                         selectionColor: subroomsItem.ListItem.view.selectionColor
                         contextActions: [
                             ActionSet {
@@ -332,7 +332,7 @@ Page {
                     type: "foldersItem"
                     FoldersItem {
                         id: foldersItem
-                        backgroundVisible: ! foldersItem.ListItem.view.isSquare()
+                        backgroundVisible: foldersItem.ListItem.view.hasBackgroundImage()
                         selectionColor: foldersItem.ListItem.view.selectionColor
                         contextActions: [
                             ActionSet {
@@ -394,7 +394,7 @@ Page {
                     type: "filesItem"
                     FilesItem {
                         id: filesItem
-                        backgroundVisible: ! filesItem.ListItem.view.isSquare()
+                        backgroundVisible: filesItem.ListItem.view.hasBackgroundImage()
                         selectionColor: filesItem.ListItem.view.selectionColor
                         contextActions: [
                             ActionSet {
@@ -540,8 +540,8 @@ Page {
             function viewFile(downloadPath) {
                 ods.showInView(downloadPath);
             }
-            function isSquare() {
-                return ods.isSquare()
+            function hasBackgroundImage() {
+                return Application.themeSupport.theme.colorTheme.style == VisualStyle.Bright && odsdata.listBackgroundForBright()
             }
         } // end ListView
     } // end Container

@@ -264,6 +264,11 @@ TabbedPane {
 //        uploadTab.newContentAvailable = true
 //        uploadTab.unreadContentCount = uploadTab.unreadContentCount + 1
     }
+    
+    function isDark(){
+        // 
+        return Application.themeSupport.theme.colorTheme.style == VisualStyle.Dark
+    }
 
     // the TabbedPane is initialized, lets do some work at startup
     onCreationCompleted: {
@@ -293,6 +298,8 @@ TabbedPane {
         homePage.loginDelayed()
         //
         rootNavigationPane.selectionColor = Color.create("#ffff00ff")
+        // 
+        console.debug("DARK ? "+isDark())
     }
     // triggered from C++
     onLoginChanged: {

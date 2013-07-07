@@ -117,7 +117,7 @@ NavigationPane {
                         type: "usersItem"
                         UsersItem {
                             id: usersItem
-                            backgroundVisible: ! usersItem.ListItem.view.isSquare()
+                            backgroundVisible: usersItem.ListItem.view.hasBackgroundImage()
                             selectionColor: usersItem.ListItem.view.selectionColor
                             contextActions: [
                                 ActionSet {
@@ -152,7 +152,7 @@ NavigationPane {
                         type: "adminItem"
                         UsersItem {
                             id: adminItem
-                            backgroundVisible: !adminItem.ListItem.view.isSquare()
+                            backgroundVisible: adminItem.ListItem.view.hasBackgroundImage()
                             selectionColor: adminItem.ListItem.view.selectionColor
 //                            contextActions: [
 //                                ActionSet {
@@ -212,8 +212,8 @@ NavigationPane {
                     }
                     return "header";
                 }
-                function isSquare() {
-                    return ods.isSquare()
+                function hasBackgroundImage() {
+                    return Application.themeSupport.theme.colorTheme.style == VisualStyle.Bright && odsdata.listBackgroundForBright()
                 }
                 onCreationCompleted: {
                 }

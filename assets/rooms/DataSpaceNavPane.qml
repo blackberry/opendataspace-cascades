@@ -294,7 +294,7 @@ NavigationPane {
                         type: "roomsItem"
                         RoomsItem {
                             id: roomsItem
-                            backgroundVisible: ! roomsItem.ListItem.view.isSquare()
+                            backgroundVisible: roomsItem.ListItem.view.hasBackgroundImage()
                             selectionColor: roomsItem.ListItem.view.selectionColor
                             contextActions: [
                                 ActionSet {
@@ -343,8 +343,8 @@ NavigationPane {
                 function pushRoomInfoPage(id) {
                     openRoomInfoPage(id)
                 }
-                function isSquare(){
-                    return ods.isSquare()
+                function hasBackgroundImage() {
+                    return Application.themeSupport.theme.colorTheme.style == VisualStyle.Bright && odsdata.listBackgroundForBright()
                 }
                 onCreationCompleted: {
                 }

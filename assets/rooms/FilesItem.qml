@@ -23,17 +23,16 @@
 
 Container {
     id: rootNode
-    property bool backgroundVisible : true
+    property bool backgroundVisible: true
     property variant selectionColor
     layout: DockLayout {
     }
-    topPadding: 6
-    bottomPadding: 6
     preferredWidth: Infinity
     background: ListItem.selected || ListItem.active ? selectionColor : Color.Transparent
     Container {
         layout: DockLayout {
         }
+        minHeight: 137
         horizontalAlignment: HorizontalAlignment.Left
         attachedObjects: [
             // application supports changing the Orientation
@@ -51,7 +50,7 @@ Container {
         // Item background image.
         ImageView {
             id: itemBackground
-            visible: backgroundVisible && !(rootNode.ListItem.selected || rootNode.ListItem.active)
+            visible: backgroundVisible && ! (rootNode.ListItem.selected || rootNode.ListItem.active)
             imageSource: "asset:///images/white_photo.png"
             preferredWidth: 768
             preferredHeight: 137
@@ -87,7 +86,7 @@ Container {
                 Label {
                     id: titleLabel
                     // name, fileType are properties from data model
-                    text: ListItemData.displayTitle 
+                    text: ListItemData.displayTitle
                     textStyle {
                         base: SystemDefaults.TextStyles.TitleText
                         //color: Color.Black
@@ -118,16 +117,18 @@ Container {
                 verticalAlignment: VerticalAlignment.Center
             }
         }
-        Divider {
+        Container {
+            verticalAlignment: VerticalAlignment.Bottom
             visible: ! backgroundVisible
+            Divider {
+            }
         }
     }
     function workaround() {
         itemImage.imageSource = ListItemData.displayIcon
         titleLabel.text = ListItemData.displayTitle
         subtitleLabel.text = ListItemData.displaySubtitle
-	}
-    // init
+    }
     onCreationCompleted: {
         // set to Landscape if aklready in landscape while staring up
         if (OrientationSupport.orientation == UIOrientation.Landscape) {

@@ -27,13 +27,12 @@ Container {
     property variant selectionColor
     layout: DockLayout {
     }
-    topPadding: 6
-    bottomPadding: 6
     preferredWidth: Infinity
     background: ListItem.selected || ListItem.active ? selectionColor : Color.Transparent
     Container {
         layout: DockLayout {
         }
+        minHeight: 137
         horizontalAlignment: HorizontalAlignment.Left
         attachedObjects: [
             // application supports changing the Orientation
@@ -101,12 +100,13 @@ Container {
                 
             }
         }
-        Divider {
-            visible: !backgroundVisible
+        Container {
+            verticalAlignment: VerticalAlignment.Bottom
+            visible: ! backgroundVisible
+            Divider {
+            }
         }
     }
-
-    // init
     onCreationCompleted: {
         // set to Landscape if aklready in landscape while staring up
         if (OrientationSupport.orientation == UIOrientation.Landscape) {
