@@ -206,6 +206,9 @@ private:
 	int mFolderLevel;
 	QMap<int, QString>* mRoomGroups;
 
+	QVariantMap mCustomizationMap;
+	void readCustomizationDataFromJson();
+
 
 	void initPathes();
 	void initErrors();

@@ -25,6 +25,10 @@ using namespace bb::cascades;
 using namespace bb::data;
 using namespace bb::system;
 
+static QString customizingFilePath() {
+	return QDir::currentPath()
+			+ "/app/native/assets/customizing/customizing.json";
+}
 static QString dataPath(const QString& fileName) {
 	return QDir::currentPath() + "/data/" + fileName;
 }
@@ -80,7 +84,7 @@ ODSData::ODSData() {
 			SLOT(requestFinished(QNetworkReply*)));
 
 	// access to the settings
-	mOdsSettings = &Singleton < ODSSettings > ::Instance(); // new ODSSettings();
+	mOdsSettings = &Singleton<ODSSettings>::Instance(); // new ODSSettings();
 	mCustomerNumber = -1;
 	mFilesLevel = -1;
 	mFolderLevel = -1;
@@ -100,11 +104,37 @@ ODSData::ODSData() {
 		qDebug() << "connect connect askoverwrite";
 	}
 
+	readCustomizationDataFromJson();
+	if(mCustomizationMap.isEmpty()){
+		qDebug() << "customization map is empty";
+	} else {
+		qDebug() << "Customized for: " << mCustomizationMap.value("customizingCustomerName","NO NAME FOUND").toString();
+	}
+
 	// Displays a warning message if there's an issue connecting the signal
 	// and slot. This is a good practice with signals and slots as it can
 	// be easier to mistype a slot or signal definition
 	Q_ASSERT(connectOK);
 	Q_UNUSED(connectOK);
+}
+
+void ODSData::readCustomizationDataFromJson() {
+	JsonDataAccess jda;
+	QFile customizingFile(customizingFilePath());
+	// test if file already exists
+	if (!customizingFile.exists()) {
+		qDebug() << "no customization file found - using default from ODS";
+		return;
+	}
+	bool ok = customizingFile.open(QIODevice::ReadOnly);
+	if (ok) {
+		mCustomizationMap =
+				jda.loadFromBuffer(customizingFile.readAll()).toMap();
+		customizingFile.close();
+	} else {
+		qDebug() << "cannot read customizingFile file: "
+				<< customizingFilePath();
+	}
 }
 
 // to speed up startup time we delay some parts of initialization
@@ -1200,9 +1230,10 @@ void ODSData::simpleUpload(QString sourceFileName) {
 
 void ODSData::simpleUploadFromCard(QString sourceFileName) {
 	qDebug() << "simple upload from CARD for " << sourceFileName;
-	if(sourceFileName.startsWith("file:///")){
-		sourceFileName = sourceFileName.right(sourceFileName.length()-7);
-		qDebug() << "simple upload from CARD filename cutted to " << sourceFileName;
+	if (sourceFileName.startsWith("file:///")) {
+		sourceFileName = sourceFileName.right(sourceFileName.length() - 7);
+		qDebug() << "simple upload from CARD filename cutted to "
+				<< sourceFileName;
 	}
 	// select room
 	int loop = 0;
