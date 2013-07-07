@@ -129,6 +129,12 @@ bool ODSData::hasRegisterUrl(){
 QString ODSData::registerUrl(){
 	return mCustomizationMap.value("registerUrl",true).toString();
 }
+QString ODSData::helpsiteUrl(){
+	return mCustomizationMap.value("helpsiteUrl",true).toString();
+}
+bool ODSData::isDeveloperApplication(){
+	return mCustomizationMap.value("developerApplication",true).toBool();
+}
 
 void ODSData::readCustomizationDataFromJson() {
 	JsonDataAccess jda;

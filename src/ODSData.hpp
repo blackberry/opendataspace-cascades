@@ -121,6 +121,10 @@ public:
 	bool hasRegisterUrl();
 	Q_INVOKABLE
 	QString registerUrl();
+	Q_INVOKABLE
+	QString helpsiteUrl();
+	Q_INVOKABLE
+	bool isDeveloperApplication();
 
 Q_SIGNALS:
 	void loginFinished(bool success);

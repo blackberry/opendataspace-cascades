@@ -27,8 +27,13 @@ Page {
     // this SIGNAL can be watched to know that the site should be closed (== Sheet invisible)
     signal helpDone(bool ok)
     id: webPage
-    // this is the Home URL for this WebView
-    property string theURL: "http://devblog.blackberry.com/"
+    property bool developerApplication : true
+    onDeveloperApplicationChanged: {
+        if(!developerApplication){
+            webPage.removeAction(ekke)
+        }
+    }
+    property string theURL: "http://ods.io"
     // Actions
     actions: [
         ActionItem {
@@ -46,7 +51,8 @@ Page {
         ActionItem {
             id: ekke
             title: qsTr("Developer") + Retranslate.onLanguageChanged
-            enabled: true
+            imageSource: "asset:///images/cascades.png"
+            enabled: developerApplication
             ActionBar.placement: ActionBarPlacement.OnBar
             // we reset the URL
             onTriggered: {

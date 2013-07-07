@@ -55,8 +55,10 @@ TabbedPane {
             //-- sheet GUI appearence component is defined in external HelpSheet.qml file
             content: WebPageHelpSheet {
                 id: helpContent
-                // theURL is a custom property to allow setting the URL fro  outside or inside the QML file
-                theURL: "http://ods.io"
+            }
+            onOpened: {
+                helpContent.theURL = odsdata.helpsiteUrl()
+                helpContent.developerApplication = odsdata.isDeveloperApplication()
             }
         },
         Sheet {
