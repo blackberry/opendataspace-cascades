@@ -28,7 +28,7 @@ Page {
     signal faqDone(bool ok)
     id: webPage
     // this is the Home URL for this WebView
-    property string theURL: "http://devblog.blackberry.com/"
+    property string theURL: ""
     // Actions
     actions: [
         ActionItem {

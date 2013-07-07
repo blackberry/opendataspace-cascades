@@ -76,8 +76,9 @@ TabbedPane {
             objectName: "faqSheet"
             content: WebPageFAQSheet {
                 id: faqContent
-                // theURL is a custom property to allow setting the URL fro  outside or inside the QML file
-                theURL: "http://aboutekkesapps.wordpress.com/2013/04/28/f-a-q-opendataspace/"
+            }
+            onOpened: {
+                faqContent.theURL = odsdata.faqsiteUrl()
             }
         },
         Sheet {

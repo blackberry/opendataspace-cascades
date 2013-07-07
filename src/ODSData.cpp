@@ -138,6 +138,9 @@ QString ODSData::helpsiteUrl(){
 QString ODSData::aboutsiteUrl(){
 	return mCustomizationMap.value("aboutsiteUrl","").toString();
 }
+QString ODSData::faqsiteUrl(){
+	return mCustomizationMap.value("faqsiteUrl","").toString();
+}
 
 
 void ODSData::readCustomizationDataFromJson() {
