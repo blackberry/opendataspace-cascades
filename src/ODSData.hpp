@@ -135,6 +135,8 @@ public:
 	QString supportMail();
 	Q_INVOKABLE
 	QString applicationName();
+	Q_INVOKABLE
+	QString applicationId();
 
 Q_SIGNALS:
 	void loginFinished(bool success);

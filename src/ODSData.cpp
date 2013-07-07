@@ -150,7 +150,9 @@ QString ODSData::supportMail(){
 QString ODSData::applicationName(){
 	return mCustomizationMap.value("applicationName","").toString();
 }
-
+QString ODSData::applicationId(){
+	return mCustomizationMap.value("applicationId","").toString();
+}
 
 void ODSData::readCustomizationDataFromJson() {
 	JsonDataAccess jda;

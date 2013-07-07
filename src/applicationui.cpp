@@ -588,8 +588,8 @@ void ApplicationUI::inviteBBM() {
 void ApplicationUI::inviteODS() {
 	shareTextWithBBM(
 			tr(
-					"Please download OpenDataSpace Application from BlackBerry World for FREE: ")
-					+ "http://appworld.blackberry.com/webstore/content/134203");
+					"Please download %1 Application from BlackBerry World for FREE: ").arg(mOdsData->applicationName())
+					+ "http://appworld.blackberry.com/webstore/content/" + mOdsData->applicationId());
 	qDebug() << "invite to BBM";
 }
 
@@ -597,7 +597,9 @@ void ApplicationUI::leaveReview() {
 	InvokeRequest bbmRequest;
 	bbmRequest.setAction("bb.action.OPEN");
 	bbmRequest.setMimeType("application/x-bb-appworld");
-	bbmRequest.setUri("appworld://content/134203");
+	QString uri = "appworld://content/";
+	uri += mOdsData->applicationId();
+	bbmRequest.setUri(uri);
 	qDebug() << "leave review";
 	mInvokeManager->invoke(bbmRequest);
 }
