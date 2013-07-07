@@ -125,6 +125,8 @@ public:
 	QString helpsiteUrl();
 	Q_INVOKABLE
 	bool isDeveloperApplication();
+	Q_INVOKABLE
+	QString aboutsiteUrl();
 
 Q_SIGNALS:
 	void loginFinished(bool success);

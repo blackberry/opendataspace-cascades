@@ -126,15 +126,19 @@ bool ODSData::hasTestDrive(){
 bool ODSData::hasRegisterUrl(){
 	return mCustomizationMap.value("hasRegisterUrl",true).toBool();
 }
-QString ODSData::registerUrl(){
-	return mCustomizationMap.value("registerUrl",true).toString();
-}
-QString ODSData::helpsiteUrl(){
-	return mCustomizationMap.value("helpsiteUrl",true).toString();
-}
 bool ODSData::isDeveloperApplication(){
 	return mCustomizationMap.value("developerApplication",true).toBool();
 }
+QString ODSData::registerUrl(){
+	return mCustomizationMap.value("registerUrl","").toString();
+}
+QString ODSData::helpsiteUrl(){
+	return mCustomizationMap.value("helpsiteUrl","").toString();
+}
+QString ODSData::aboutsiteUrl(){
+	return mCustomizationMap.value("aboutsiteUrl","").toString();
+}
+
 
 void ODSData::readCustomizationDataFromJson() {
 	JsonDataAccess jda;

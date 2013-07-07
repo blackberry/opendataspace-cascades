@@ -33,7 +33,7 @@ Page {
             webPage.removeAction(ekke)
         }
     }
-    property string theURL: "http://ods.io"
+    property string theURL: ""
     // Actions
     actions: [
         ActionItem {
