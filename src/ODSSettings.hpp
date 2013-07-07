@@ -9,13 +9,16 @@
 static const QString SETTINGS_KEY_SERVER_URL = "server/url";
 static const QString SETTINGS_KEY_SERVER_CURRENT_USER = "server/current/user";
 static const QString SETTINGS_KEY_SERVER_CURRENT_PASSWORD = "server/current/password";
+static const QString SETTINGS_KEY_TESTDRIVE_USER = "testdrive/user";
+static const QString SETTINGS_KEY_TESTDRIVE_PASSWORD = "testdrive/password";
+static const QString SETTINGS_KEY_TESTDRIVE_SERVER_URL = "testdrive/url";
 static const QString SETTINGS_KEY_FILES_AVAILABLE = "files/available";
 static const QString SETTINGS_KEY_FILES_LAST_SYNC = "files/last_sync";
 
 // used from QML LoginSheet
 static const QString SETTINGS_KEY_LOGIN_USER = "login/user";
 static const QString SETTINGS_KEY_LOGIN_PASSWORD = "login/password";
-
+// running on testdrive true/false
 static const QString SETTINGS_KEY_TESTDRIVE = "login/testdrive";
 
 

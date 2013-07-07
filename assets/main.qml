@@ -84,6 +84,9 @@ TabbedPane {
             content: PreferencesSheet {
                 id: preferencesContent
             }
+            onOpened: {
+                preferencesContent.testDrive = odssettings.testdrive()
+            }
         },
         Sheet {
             id: feedbackSheet

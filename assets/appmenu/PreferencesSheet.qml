@@ -29,6 +29,13 @@ NavigationPane {
     signal done(bool ok)
     // the current customer - can be set from outside
     property string currentCustomer: "Musterfirma GmbH"
+    property  bool testDrive: false
+    onTestDriveChanged: {
+        server.enabled = !testDrive
+        myAcceptAction.enabled = !testDrive
+        testdriveLabel.visible = testDrive
+        testdriveDivider.visible = testDrive
+    }
     id: navigationPane
     attachedObjects: [
         // special editor to select the Language
@@ -69,6 +76,7 @@ NavigationPane {
                 }
             }
             acceptAction: ActionItem {
+                id: myAcceptAction
                 title: qsTr("Save") + Retranslate.onLanguageChanged
                 onTriggered: {
                     navigationPane.done(true);
@@ -105,6 +113,16 @@ NavigationPane {
                         // TODO ask new login ?
                         odssettings.setServerUrl(server.text)
                     }
+                }
+                Label {
+                    id: testdriveLabel
+                    text: qsTr("While running TestDrive you cannot change the Server URL");
+                    multiline: true
+                    visible: false
+                }
+                Divider {
+                    id: testdriveDivider
+                    visible: false
                 }
                 TextField {
                     id: email

@@ -107,9 +107,11 @@ ODSData::ODSData() {
 	readCustomizationDataFromJson();
 	if(mCustomizationMap.isEmpty()){
 		qDebug() << "customization map is empty";
-	} else {
-		qDebug() << "Customized for: " << mCustomizationMap.value("customizingCustomerName","NO NAME FOUND").toString();
 	}
+	qDebug() << "Customized for: " << mCustomizationMap.value("customizingCustomerName","NO NAME FOUND").toString();
+	mOdsSettings->saveValueFor(SETTINGS_KEY_TESTDRIVE_SERVER_URL,mCustomizationMap.value("testDriveUrl","https://bb.ods.io/mobile").toString());
+	mOdsSettings->saveValueFor(SETTINGS_KEY_TESTDRIVE_USER,mCustomizationMap.value("testDriveUser","test-drive@ods.io").toString());
+	mOdsSettings->saveValueFor(SETTINGS_KEY_TESTDRIVE_PASSWORD,mCustomizationMap.value("testDrivePassword","MDUb4eWq").toString());
 
 	// Displays a warning message if there's an issue connecting the signal
 	// and slot. This is a good practice with signals and slots as it can

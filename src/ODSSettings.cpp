@@ -1,8 +1,5 @@
-
 #include "ODSSettings.hpp"
 #include <QSettings>
-
-
 
 ODSSettings::ODSSettings() {
 	// don't need to set Organization and Application
@@ -21,13 +18,19 @@ QString ODSSettings::getValueFor(const QString &objectName,
 		const QString &defaultValue) {
 	// QSettings settings;
 
-	if (mTestdriving && (objectName == SETTINGS_KEY_SERVER_CURRENT_USER || objectName == SETTINGS_KEY_LOGIN_USER)) {
+	if (mTestdriving
+			&& (objectName == SETTINGS_KEY_SERVER_CURRENT_USER
+					|| objectName == SETTINGS_KEY_LOGIN_USER)) {
 		qDebug() << "return testdrive user";
-		return "test-drive@ods.io";
+		// return "test-drive@ods.io";
+		return mSettings.value(SETTINGS_KEY_TESTDRIVE_USER).toString();
 	}
-	if (mTestdriving && (objectName == SETTINGS_KEY_SERVER_CURRENT_PASSWORD || objectName == SETTINGS_KEY_LOGIN_PASSWORD)) {
+	if (mTestdriving
+			&& (objectName == SETTINGS_KEY_SERVER_CURRENT_PASSWORD
+					|| objectName == SETTINGS_KEY_LOGIN_PASSWORD)) {
 		qDebug() << "return testdrive pw";
-		return "MDUb4eWq";
+		// return "MDUb4eWq";
+		return mSettings.value(SETTINGS_KEY_TESTDRIVE_PASSWORD).toString();
 	}
 
 	// If no value has been saved, return the default value.
@@ -52,13 +55,13 @@ bool ODSSettings::isTrueFor(const QString &objectName,
 	return mSettings.value(objectName).toBool();
 }
 
-void ODSSettings::setTestdrive(const bool testdrive){
+void ODSSettings::setTestdrive(const bool testdrive) {
 	mTestdriving = testdrive;
 	qDebug() << "set testdrive to " << testdrive;
 	setTrueFor(SETTINGS_KEY_TESTDRIVE, testdrive);
 }
 
-bool ODSSettings::testdrive(){
+bool ODSSettings::testdrive() {
 	bool td = isTrueFor(SETTINGS_KEY_TESTDRIVE, false);
 	qDebug() << "get testdrive():" << td;
 	return td;
@@ -89,7 +92,8 @@ void ODSSettings::setTrueFor(const QString &objectName,
 QString ODSSettings::getUser() {
 	qDebug() << "get user - testdrive ?" << mTestdriving;
 	if (mTestdriving) {
-		return "test-drive@ods.io";
+		// return "test-drive@ods.io";
+		return mSettings.value(SETTINGS_KEY_TESTDRIVE_USER).toString();
 	} else {
 		return getValueFor(SETTINGS_KEY_LOGIN_USER, "");
 	}
@@ -98,14 +102,19 @@ QString ODSSettings::getUser() {
 QString ODSSettings::getPassword() {
 	qDebug() << "get pw - testdrive ?" << mTestdriving;
 	if (mTestdriving) {
-		return "MDUb4eWq";
+		// return "MDUb4eWq";
+		return mSettings.value(SETTINGS_KEY_TESTDRIVE_PASSWORD).toString();
 	} else {
 		return getValueFor(SETTINGS_KEY_LOGIN_PASSWORD, "");
 	}
 }
 
 QString ODSSettings::getServerUrl() {
-	return getValueFor(SETTINGS_KEY_SERVER_URL, "");
+	if (mTestdriving) {
+		return getValueFor(SETTINGS_KEY_TESTDRIVE_SERVER_URL, "");
+	} else {
+		return getValueFor(SETTINGS_KEY_SERVER_URL, "");
+	}
 }
 
 void ODSSettings::setUser(const QString &user) {
@@ -125,6 +134,9 @@ void ODSSettings::setPassword(const QString &password) {
 }
 
 void ODSSettings::setServerUrl(const QString &user) {
+	if (mTestdriving) {
+		return;
+	}
 	saveValueFor(SETTINGS_KEY_SERVER_URL, user);
 }
 
