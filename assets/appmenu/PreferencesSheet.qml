@@ -89,6 +89,10 @@ NavigationPane {
                 topPadding: 25
                 leftPadding: 25
                 rightPadding: 25
+                Label {
+                    id: serverLabel
+                    text: qsTr("Server address") + Retranslate.onLanguageChanged
+                }
                 TextField {
                     id: server
                     text: odssettings.getServerUrl()
