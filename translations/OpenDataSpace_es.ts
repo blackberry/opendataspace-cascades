@@ -1450,23 +1450,23 @@ Start Sync now ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="206"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="210"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="205"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="209"/>
         <source>Select Music</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="231"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="230"/>
         <source>Select Other File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="235"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="234"/>
         <source>Select File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="196"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="195"/>
         <source>Dictaphone</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1491,8 +1491,8 @@ Start Sync now ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="218"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="222"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="217"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="221"/>
         <source>Select Book</source>
         <translation type="unfinished"></translation>
     </message>

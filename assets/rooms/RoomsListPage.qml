@@ -185,8 +185,7 @@ Page {
                 picker.title = qsTr("Select Recorded Voice")
                 picker.type = FileType.Other
                 picker.directories = [
-                    "/accounts/1000/shared/voice",
-                    "/accounts/1000/shared/downloads"
+                    "/accounts/1000/shared/voice"
                 ]
                 // picker.filter = ["*.m4a"]
                 picker.open();
@@ -235,6 +234,7 @@ Page {
                 picker.title = qsTr("Select File")
                 picker.type = FileType.Other
                 picker.directories = [
+                "/accounts/1000/shared/misc"
                 ]
                 picker.open();
             }
