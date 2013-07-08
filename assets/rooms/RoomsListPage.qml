@@ -280,7 +280,6 @@ Page {
             }
             onTriggered: {
                 if (selected) {
-                    roomsList.clearSelection()
                     if (fileGroupDataModel.data(indexPath).displayType != "L") {
                         // name of current Room, SubRoom, Folder
                         roomsListPage.headerTitle = fileGroupDataModel.data(indexPath).name
@@ -293,8 +292,8 @@ Page {
                         // to be transported between sgnals, slots, pages, c++
                         // current level of files tree is cached at c++ so we get fast access
                         pushFileInfoPage(fileGroupDataModel.data(indexPath).id)
-                    }
-                    roomsList.select(indexPath,true);
+                        roomsList.select(indexPath,true);
+                    }               
                 }
             }
             // define the appearance

@@ -1502,66 +1502,66 @@ Start Sync now ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="311"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="310"/>
         <source>ODS Subroom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="321"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="350"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="421"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="320"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="349"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="420"/>
         <source>Info</source>
         <translation type="unfinished">информация</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="340"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="339"/>
         <source>ODS Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="460"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="459"/>
         <source>Copy</source>
         <translation type="unfinished">Скопировать</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="468"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="467"/>
         <source>Move</source>
         <translation type="unfinished">двигаться</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="357"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="453"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="356"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="452"/>
         <source>Rename</source>
         <translation type="unfinished">переименовать</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="380"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="476"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="379"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="475"/>
         <source>Delete</source>
         <translation type="unfinished">удалять</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="402"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="401"/>
         <source>ODS File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="412"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="411"/>
         <source>View</source>
         <translation type="unfinished">смотреть</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="432"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="431"/>
         <source>Share Link (BBM)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="439"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="438"/>
         <source>Share Link (Mail)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="446"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="445"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
