@@ -125,24 +125,9 @@
         <translation>Пожалуйста, скачайте Приложение %1 из мира BlackBerry бесплатно:</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="758"/>
-        <source>Resized</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/applicationui.cpp" line="776"/>
-        <source>Pooled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/applicationui.cpp" line="787"/>
         <source>:)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/applicationui.cpp" line="789"/>
-        <source>save</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -318,7 +303,7 @@
     <message>
         <location filename="../assets/rooms/DataSpaceNavPane.qml" line="304"/>
         <source>Info</source>
-        <translation type="unfinished">информация</translation>
+        <translation>информация</translation>
     </message>
 </context>
 <context>
@@ -1228,7 +1213,7 @@ Start Sync now ?</source>
     <message>
         <location filename="../src/ODSFolder.cpp" line="28"/>
         <source> Files / Folders</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/ODSFolder.cpp" line="30"/>
@@ -1330,7 +1315,7 @@ Start Sync now ?</source>
     <message>
         <location filename="../assets/appmenu/PreferencesSheet.qml" line="155"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../assets/appmenu/PreferencesSheet.qml" line="174"/>
@@ -1596,7 +1581,7 @@ Start Sync now ?</source>
     <message>
         <location filename="../assets/rooms/SubRoomInfoPage.qml" line="93"/>
         <source>Subroom not found</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../assets/rooms/SubRoomInfoPage.qml" line="99"/>

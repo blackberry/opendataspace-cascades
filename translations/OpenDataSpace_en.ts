@@ -125,24 +125,9 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="758"/>
-        <source>Resized</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/applicationui.cpp" line="776"/>
-        <source>Pooled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/applicationui.cpp" line="787"/>
         <source>:)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/applicationui.cpp" line="789"/>
-        <source>save</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>

@@ -44,7 +44,7 @@
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="69"/>
         <source>User Data</source>
-        <translation>Datos de Usuario</translation>
+        <translation type="unfinished">Datos de Usuario</translation>
     </message>
     <message>
         <location filename="../assets/users/AddUserPage.qml" line="138"/>
@@ -125,24 +125,9 @@
         <translation>Por favor, descargue %1 Aplicación de BlackBerry Mundial GRATIS:</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="758"/>
-        <source>Resized</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/applicationui.cpp" line="776"/>
-        <source>Pooled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/applicationui.cpp" line="787"/>
         <source>:)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/applicationui.cpp" line="789"/>
-        <source>save</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -204,7 +189,7 @@
     <message>
         <location filename="../assets/rooms/CreateLinkPage.qml" line="97"/>
         <source>LinkCode (last part of URL)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../assets/rooms/CreateLinkPage.qml" line="113"/>

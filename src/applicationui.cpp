@@ -755,7 +755,7 @@ bool ApplicationUI::isEmbedded() {
 
 void ApplicationUI::handleCardResize(
 		const bb::system::CardResizeMessage& resizeMessage) {
-	mCardStatus = tr("Resized");
+	mCardStatus = "Resized";
 	// width available to the card
 	// resizeMessage.width();
 	// height available to the card
@@ -773,7 +773,7 @@ void ApplicationUI::handleCardPooled(
 	qDebug() << "handleCardPooled data: " << message.data() << " reason: "
 			<< message.reason();
 	// TODO do we need this ?
-	mCardStatus = tr("Pooled");
+	mCardStatus = "Pooled";
 	emit cardStatusChanged();
 }
 
@@ -786,7 +786,7 @@ void ApplicationUI::cardDone() {
 	CardDoneMessage message;
 	message.setData(tr(":)"));
 	message.setDataType("text/plain");
-	message.setReason(tr("save"));
+	message.setReason("save");
 	// Send message
 	qDebug() << "cardDone: sending message via IvokeManager data: "
 			<< message.data() << " reason: " << message.reason();
