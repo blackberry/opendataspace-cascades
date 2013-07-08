@@ -105,14 +105,24 @@ ODSData::ODSData() {
 	}
 
 	readCustomizationDataFromJson();
-	if(mCustomizationMap.isEmpty()){
+	if (mCustomizationMap.isEmpty()) {
 		qDebug() << "customization map is empty";
 	}
-	qDebug() << "Customized for: " << mCustomizationMap.value("applicationName","NO NAME FOUND").toString();
-	mOdsSettings->saveValueFor(SETTINGS_KEY_TESTDRIVE_SERVER_URL,mCustomizationMap.value("testDriveUrl","https://bb.ods.io/mobile").toString());
-	mOdsSettings->saveValueFor(SETTINGS_KEY_TESTDRIVE_USER,mCustomizationMap.value("testDriveUser","test-drive@ods.io").toString());
-	mOdsSettings->saveValueFor(SETTINGS_KEY_TESTDRIVE_PASSWORD,mCustomizationMap.value("testDrivePassword","MDUb4eWq").toString());
+	qDebug() << "Customized for: "
+			<< mCustomizationMap.value("applicationName", "NO NAME FOUND").toString();
+	mOdsSettings->saveValueFor(SETTINGS_KEY_TESTDRIVE_SERVER_URL,
+			mCustomizationMap.value("testDriveUrl", "https://bb.ods.io/mobile").toString());
+	mOdsSettings->saveValueFor(SETTINGS_KEY_TESTDRIVE_USER,
+			mCustomizationMap.value("testDriveUser", "test-drive@ods.io").toString());
+	mOdsSettings->saveValueFor(SETTINGS_KEY_TESTDRIVE_PASSWORD,
+			mCustomizationMap.value("testDrivePassword", "MDUb4eWq").toString());
 
+	QString serverUrl;
+	serverUrl = mOdsSettings->getValueFor(SETTINGS_KEY_SERVER_URL, "");
+	if (serverUrl.isNull() || serverUrl.isEmpty()) {
+		mOdsSettings->saveValueFor(SETTINGS_KEY_SERVER_URL,
+				mCustomizationMap.value("serverUrl", "https://bb.ods.io/mobile").toString());
+	}
 	// Displays a warning message if there's an issue connecting the signal
 	// and slot. This is a good practice with signals and slots as it can
 	// be easier to mistype a slot or signal definition
@@ -120,47 +130,47 @@ ODSData::ODSData() {
 	Q_UNUSED(connectOK);
 }
 
-bool ODSData::hasTestDrive(){
-	return mCustomizationMap.value("hasTestDrive",true).toBool();
+bool ODSData::hasTestDrive() {
+	return mCustomizationMap.value("hasTestDrive", true).toBool();
 }
-bool ODSData::hasRegisterUrl(){
-	return mCustomizationMap.value("hasRegisterUrl",true).toBool();
+bool ODSData::hasRegisterUrl() {
+	return mCustomizationMap.value("hasRegisterUrl", true).toBool();
 }
-bool ODSData::isDeveloperApplication(){
-	return mCustomizationMap.value("developerApplication",true).toBool();
+bool ODSData::isDeveloperApplication() {
+	return mCustomizationMap.value("developerApplication", true).toBool();
 }
-QString ODSData::registerUrl(){
-	return mCustomizationMap.value("registerUrl","").toString();
+QString ODSData::registerUrl() {
+	return mCustomizationMap.value("registerUrl", "").toString();
 }
-QString ODSData::helpsiteUrl(){
-	return mCustomizationMap.value("helpsiteUrl","").toString();
+QString ODSData::helpsiteUrl() {
+	return mCustomizationMap.value("helpsiteUrl", "").toString();
 }
-QString ODSData::aboutsiteUrl(){
-	return mCustomizationMap.value("aboutsiteUrl","").toString();
+QString ODSData::aboutsiteUrl() {
+	return mCustomizationMap.value("aboutsiteUrl", "").toString();
 }
-QString ODSData::faqsiteUrl(){
-	return mCustomizationMap.value("faqsiteUrl","").toString();
+QString ODSData::faqsiteUrl() {
+	return mCustomizationMap.value("faqsiteUrl", "").toString();
 }
-QString ODSData::feedbackMail(){
-	return mCustomizationMap.value("feedbackMail","").toString();
+QString ODSData::feedbackMail() {
+	return mCustomizationMap.value("feedbackMail", "").toString();
 }
-QString ODSData::supportMail(){
-	return mCustomizationMap.value("supportMail","").toString();
+QString ODSData::supportMail() {
+	return mCustomizationMap.value("supportMail", "").toString();
 }
-QString ODSData::applicationName(){
-	return mCustomizationMap.value("applicationName","").toString();
+QString ODSData::applicationName() {
+	return mCustomizationMap.value("applicationName", "").toString();
 }
-QString ODSData::applicationId(){
-	return mCustomizationMap.value("applicationId","").toString();
+QString ODSData::applicationId() {
+	return mCustomizationMap.value("applicationId", "").toString();
 }
-bool ODSData::listBackgroundForBright(){
-	return mCustomizationMap.value("listBackgroundForBright",true).toBool();
+bool ODSData::listBackgroundForBright() {
+	return mCustomizationMap.value("listBackgroundForBright", true).toBool();
 }
-QString ODSData::listHighlightColorForBright(){
-	return mCustomizationMap.value("listHighlightColorForBright","").toString();
+QString ODSData::listHighlightColorForBright() {
+	return mCustomizationMap.value("listHighlightColorForBright", "").toString();
 }
-QString ODSData::listHighlightColorForDark(){
-	return mCustomizationMap.value("listHighlightColorForDark","").toString();
+QString ODSData::listHighlightColorForDark() {
+	return mCustomizationMap.value("listHighlightColorForDark", "").toString();
 }
 
 void ODSData::readCustomizationDataFromJson() {

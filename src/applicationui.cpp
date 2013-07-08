@@ -187,6 +187,7 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
 	mOdsSettings = &Singleton<ODSSettings>::Instance();
 	qml->setContextProperty("odssettings", mOdsSettings);
 	// we need also access to the data
+	// settings must be opened before because we need access
 	mOdsData = new ODSData();
 	qml->setContextProperty("odsdata", mOdsData);
 

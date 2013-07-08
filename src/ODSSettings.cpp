@@ -4,11 +4,6 @@
 ODSSettings::ODSSettings() {
 	// don't need to set Organization and Application
 	// will be used from bar-descriptor.xml
-	QString serverUrl;
-	serverUrl = getValueFor("server/url", "");
-	if (serverUrl.isNull() || serverUrl.isEmpty()) {
-		saveValueFor("server/url", "https://bb.ods.io/mobile");
-	}
 	setTestdrive(false);
 	mTestdriving = false;
 	qDebug() << "testdriving false";
