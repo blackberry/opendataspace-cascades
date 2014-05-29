@@ -67,6 +67,11 @@ static const QString noticeDownloadValue = "noticeDownload";
 
 static const int deleteNotEmpty = 1;
 
+// temp bugfix 2.0 API
+static const QString logEventValue = "log_events";
+static const QString logEvent =
+		"App-Name (com.ssp-europe.SecureDataSpace), App-Version (1.1.8), OS (iOS), Version (7.0.6), Device (iPhone)";
+
 static const QChar jsonStart = '{';
 static const QChar jsonEnd = '}';
 static const QString quotationMark = "\"";
@@ -84,7 +89,7 @@ ODSData::ODSData() {
 			SLOT(requestFinished(QNetworkReply*)));
 
 	// access to the settings
-	mOdsSettings = &Singleton<ODSSettings>::Instance(); // new ODSSettings();
+	mOdsSettings = &Singleton < ODSSettings > ::Instance(); // new ODSSettings();
 	mCustomerNumber = -1;
 	mFilesLevel = -1;
 	mFolderLevel = -1;
@@ -126,7 +131,7 @@ ODSData::ODSData() {
 	// Displays a warning message if there's an issue connecting the signal
 	// and slot. This is a good practice with signals and slots as it can
 	// be easier to mistype a slot or signal definition
-	Q_ASSERT(connectOK);
+	Q_ASSERT (connectOK);
 	Q_UNUSED(connectOK);
 }
 
@@ -436,10 +441,10 @@ void ODSData::initUserModel() {
 
 		// some debug logs
 		// map of sort values: 'displayName' and 'displaytype'
-		QList<QVariantMap> mylist = mUsersDataModel->toListOfMaps();
+		QList < QVariantMap > mylist = mUsersDataModel->toListOfMaps();
 		for (int i = 0; i < mylist.size(); ++i) {
-			QMap<QString, QVariant> myMap = mylist[i];
-			QMapIterator<QString, QVariant> j(myMap);
+			QMap < QString, QVariant > myMap = mylist[i];
+			QMapIterator < QString, QVariant > j(myMap);
 			while (j.hasNext()) {
 				j.next();
 				qDebug() << "myIndex: " << i << " Key: " << j.key()
@@ -1479,6 +1484,16 @@ void ODSData::initiateRequest(int usecase) {
 		mRequestJson.append(colon);
 		mRequestJson.append(quotationMark);
 		mRequestJson.append(mPassword.toUtf8());
+		mRequestJson.append(quotationMark);
+		// API 2.0 temp update
+		// LOG EVENT
+		mRequestJson.append(comma);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(logEventValue);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(colon);
+		mRequestJson.append(quotationMark);
+		mRequestJson.append(logEvent.toUtf8());
 		mRequestJson.append(quotationMark);
 		// END
 		mRequestJson.append(jsonEnd);
