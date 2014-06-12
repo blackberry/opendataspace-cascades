@@ -572,7 +572,7 @@ void ODSData::showFilesFromNode(QVariantList nodes, bool isBackNavigation) {
 					mFilesDataModel->insert(new ODSSubRoom(map));
 					continue;
 				}
-				if (map.value(isGroupValue, 42).toInt() == 0) {
+				if (map.value(isGroupValue, 42).toInt() == 0 && map.value(typeValue, 42).toInt() == 1) {
 					hasFolder = true;
 					mFilesDataModel->insert(
 							new ODSFolder(map, folderPath(isBackNavigation)));
@@ -724,7 +724,7 @@ QObject* ODSData::parentData() {
 					if (map.value(isGroupValue, 42).toInt() == 1) {
 						return new ODSSubRoom(map);
 					}
-					if (map.value(isGroupValue, 42).toInt() == 0) {
+					if (map.value(isGroupValue, 42).toInt() == 0 && map.value(typeValue, 42).toInt() == 1) {
 						return new ODSFolder(map, folderPath(false));
 					}
 				}
@@ -895,7 +895,7 @@ void ODSData::refreshCaches() {
 					mFilesDataModel->insert(new ODSSubRoom(map));
 					continue;
 				}
-				if (map.value(isGroupValue, 42).toInt() == 0) {
+				if (map.value(isGroupValue, 42).toInt() == 0 && map.value(typeValue, 42).toInt() == 1) {
 					mFilesDataModel->insert(
 							new ODSFolder(map, folderPath(false)));
 					continue;
@@ -2196,11 +2196,11 @@ void ODSData::requestFinished(QNetworkReply* reply) {
 				<< reply->header(QNetworkRequest::ContentTypeHeader).toString();
 		bool isJsonContent;
 		bool isStreamContent;
-		if (reply->header(QNetworkRequest::ContentTypeHeader).toString()
+		if (reply->header(QNetworkRequest::ContentTypeHeader).toString().left(16)
 				== "application/json") {
 			isJsonContent = true;
 			isStreamContent = false;
-		} else if (reply->header(QNetworkRequest::ContentTypeHeader).toString()
+		} else if (reply->header(QNetworkRequest::ContentTypeHeader).toString().left(24)
 				== "application/octet-stream") {
 			isJsonContent = false;
 			isStreamContent = true;
