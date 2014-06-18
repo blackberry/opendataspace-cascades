@@ -91,9 +91,10 @@ Page {
                 
                 TextFieldWithMarker {
                     id: linkCode
+                    visible: false
                     redBarImage: redTile.image
                     textFieldInputMode: TextFieldInputMode.Text
-                    textFieldText: ""
+                    textFieldText: "ods"
                     textFieldHintText: qsTr("LinkCode (last part of URL)") + Retranslate.onLanguageChanged
                     onRedBarVisibleChanged: {
                         createNowAction.enabled = ! linkCode.redBarVisible
@@ -134,7 +135,7 @@ Page {
     function clearFields() {
         expires.valueChecked = false
         password.text = ""
-        linkCode.textFieldText = ""
+        linkCode.textFieldText = "ods"
         noticeDownload.valueChecked = false
     }
     // set the field values from ODSFolder* data

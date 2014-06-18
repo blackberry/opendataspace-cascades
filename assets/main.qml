@@ -135,7 +135,7 @@ TabbedPane {
             id: homePage
         }
         onTriggered: {
-            destroyUserTabComponent()
+            //destroyUserTabComponent()
         }
     }
     // Tab: DataSpace with List of Rooms (DataSpace)
@@ -146,22 +146,22 @@ TabbedPane {
         title: qsTr("Data Space") + Retranslate.onLanguageChanged
         // NO CONTENT .... will be lazy loaded after LogIn done
         onTriggered: {
-            destroyUserTabComponent()
+            //destroyUserTabComponent()
         }
     }
     // Tab: Users with List of Users
-    Tab {
-        id: usersTab
-        title: qsTr("Users") + Retranslate.onLanguageChanged
-        imageSource: "asset:///images/users81.png"
-        enabled: true // TODO onlyIfCurrentUserIsAdministrator()
-        // NO CONTENT
-        // Users Pane only needed to manage Users
-        // so we load it only on demand
-        onTriggered: {
-            createUserTabComponent()
-        }
-    }
+//    Tab {
+//        id: usersTab
+//        title: qsTr("Users") + Retranslate.onLanguageChanged
+//        imageSource: "asset:///images/users81.png"
+//        enabled: true // TODO onlyIfCurrentUserIsAdministrator()
+//        // NO CONTENT
+//        // Users Pane only needed to manage Users
+//        // so we load it only on demand
+//        onTriggered: {
+//            createUserTabComponent()
+//        }
+//    }
     // Tab: Uploads with List of Files prepared for Upload
     // disabled at startup if nothing to upload
     Tab {
@@ -171,7 +171,7 @@ TabbedPane {
         enabled: true
         // NO CONTENT .... will be lazy loaded after LogIn done
         onTriggered: {
-            destroyUserTabComponent()
+            //destroyUserTabComponent()
         }
     }
     function openPreferences() {
@@ -239,24 +239,24 @@ TabbedPane {
         // we're done
         asyncLoadingDone = true
     }
-    function createUserTabComponent() {
-        console.debug("createUserTabComponent")
-        createdUsersNavPane = onDemandComponentUsersNavPane.createObject()
-        usersTab.content = createdUsersNavPane
-        // Now the component is cvreated and we can do some stuff from C++
-        // Now the objects will be found from findChild()
-        odsdata.initUserModel()
-    }
-    function destroyUserTabComponent() {
-        if (usersTab.content) {
-            console.debug("destroyUserTabComponent")
-            // two steps to destroy:
-            // 1st step: reset the content of the Tab
-            usersTab.resetContent();
-            // 2nd step: destroy the created NavPane with all their childs
-            createdUsersNavPane.destroy()
-        }
-    }
+//    function createUserTabComponent() {
+//        console.debug("createUserTabComponent")
+//        createdUsersNavPane = onDemandComponentUsersNavPane.createObject()
+//        usersTab.content = createdUsersNavPane
+//        // Now the component is cvreated and we can do some stuff from C++
+//        // Now the objects will be found from findChild()
+//        odsdata.initUserModel()
+//    }
+//    function destroyUserTabComponent() {
+//        if (usersTab.content) {
+//            console.debug("destroyUserTabComponent")
+//            // two steps to destroy:
+//            // 1st step: reset the content of the Tab
+//            usersTab.resetContent();
+//            // 2nd step: destroy the created NavPane with all their childs
+//            createdUsersNavPane.destroy()
+//        }
+//    }
     function addUpload(name) {
         // TODO ask queue or immediately
         odsdata.simpleUpload(name)
