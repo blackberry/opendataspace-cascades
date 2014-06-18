@@ -182,22 +182,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="97"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="98"/>
         <source>LinkCode (last part of URL)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="113"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="114"/>
         <source>should Link expire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="122"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="123"/>
         <source>Link expires on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="109"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="110"/>
         <source>get notified via email</source>
         <translation type="unfinished"></translation>
     </message>
@@ -207,12 +207,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="128"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="129"/>
         <source>File ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="104"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="105"/>
         <source>optional: Password</source>
         <translation type="unfinished"></translation>
     </message>
@@ -230,32 +230,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="97"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="98"/>
         <source>LinkCode (last part of URL)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="104"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="105"/>
         <source>optional: Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="109"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="110"/>
         <source>get notified via email</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="113"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="114"/>
         <source>should Link expire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="122"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="123"/>
         <source>Link expires on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="128"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="129"/>
         <source>File ID</source>
         <translation type="unfinished"></translation>
     </message>
@@ -515,16 +515,6 @@
     <message>
         <location filename="../assets/rooms/FolderInfoPage.qml" line="40"/>
         <source>work-in-progress please stay tuned</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="63"/>
-        <source>Copy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="71"/>
-        <source>Move</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1504,16 +1494,6 @@ Start Sync now ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="459"/>
-        <source>Copy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="467"/>
-        <source>Move</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../assets/rooms/RoomsListPage.qml" line="356"/>
         <location filename="../assets/rooms/RoomsListPage.qml" line="452"/>
         <source>Rename</source>
@@ -1848,11 +1828,6 @@ Start Sync now ?</source>
     <message>
         <location filename="../assets/main.qml" line="146"/>
         <source>Data Space</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/main.qml" line="155"/>
-        <source>Users</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
