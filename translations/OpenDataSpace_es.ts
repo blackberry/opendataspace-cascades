@@ -95,37 +95,37 @@
 <context>
     <name>ApplicationUI</name>
     <message>
-        <location filename="../src/applicationui.cpp" line="314"/>
+        <location filename="../src/applicationui.cpp" line="319"/>
         <source>Help</source>
         <translation>Ayudar</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="317"/>
+        <location filename="../src/applicationui.cpp" line="322"/>
         <source>Feedback</source>
         <translation>Realimentación</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="320"/>
+        <location filename="../src/applicationui.cpp" line="325"/>
         <source>About</source>
         <translation>acerca de</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="323"/>
+        <location filename="../src/applicationui.cpp" line="328"/>
         <source>FAQ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="326"/>
+        <location filename="../src/applicationui.cpp" line="331"/>
         <source>Settings</source>
         <translation>Configuración</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="580"/>
+        <location filename="../src/applicationui.cpp" line="585"/>
         <source>Please download %1 Application from BlackBerry World for FREE: </source>
         <translation>Por favor, descargue %1 Aplicación de BlackBerry Mundial GRATIS:</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="788"/>
+        <location filename="../src/applicationui.cpp" line="793"/>
         <source>:)</source>
         <translation></translation>
     </message>
@@ -291,17 +291,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="260"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="283"/>
         <source>DataRoom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="302"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="325"/>
         <source>ODS Data Room</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="304"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="327"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>

@@ -254,6 +254,29 @@ NavigationPane {
                     ods.leaveReview()
                 }
             }
+            ,
+            ActionItem {
+                id: bbmChannelAction
+                title: "BBM Channel"
+                imageSource: "asset:///images/bbm.png"
+                attachedObjects: [
+                    Invocation {
+                        id: invokeBBMChannel
+                        query {
+                            invokeTargetId: "sys.bbm.channels.card.previewer"
+                            invokeActionId: "bb.action.OPENBBMCHANNEL"
+                            uri: "bbmc:C002E250A"
+                        }
+                    }
+                ]
+                onTriggered: {
+                    if (ods.isWorkPerimeter()) {
+                        // showDialog(qsTr("OpenDataSpace BBM Channel"), qsTr("You cannot open BBM Channel directly from Work Perimeter.\nPlease switch to Private Perimeter and search for ODS BBM Channel.\nType 'OpenDataSpace' to search or the BBM Channel Pin: 'C00165746'"))
+                    } else {
+                        invokeBBMChannel.trigger("bb.action.OPENBBMCHANNEL")
+                    }
+                }
+            }
         ]
         titleBar: TitleBar {
             id: theBar

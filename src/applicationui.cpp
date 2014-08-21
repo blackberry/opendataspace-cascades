@@ -279,6 +279,11 @@ bool ApplicationUI::isSquare() {
 	}
 }
 
+bool ApplicationUI::isWorkPerimeter()
+{
+    return QDir::currentPath().contains("enterprise");
+}
+
 /**
  * some stuff we only need if Opened from HomeScreen
  * or Invoked as Application from another app thru Invocation Framework

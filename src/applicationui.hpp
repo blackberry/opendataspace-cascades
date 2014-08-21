@@ -137,6 +137,9 @@ public:
 	bool isEmbedded();
 
 	Q_INVOKABLE
+    bool isWorkPerimeter();
+
+	Q_INVOKABLE
 	void startChat(const QString& text);
 
 	Q_INVOKABLE
