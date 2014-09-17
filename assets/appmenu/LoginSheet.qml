@@ -110,7 +110,7 @@ Page {
             layout: StackLayout {
             }
             layoutProperties: AbsoluteLayoutProperties {
-                positionX: ods.isSquare() ? 26 :  50
+                positionX: ods.isSquare() ? (ods.isPassport()? 64 : 26) :  50
             }
             id: mainContainer
             // would prefer to use background: Color.Transparent
@@ -120,12 +120,16 @@ Page {
                     orientation: LayoutOrientation.TopToBottom
                 }
                 Container {
+                    visible: ods.isPassport()
+                    minHeight: 200
+                }
+                Container {
                     layout: StackLayout {
                         orientation: LayoutOrientation.LeftToRight
                     }
                     Button {
                         text: qsTr("Login") + Retranslate.onLanguageChanged
-                        preferredWidth: 320
+                        preferredWidth: ods.isPassport()? 480 : 320
                         onClicked: {
                             // set last values from settings ?
                             odssettings.setTestdrive(false)
@@ -134,9 +138,13 @@ Page {
                             credentialsPrompt.show()
                         }
                     }
+                    Container {
+                        visible: ods.isPassport()
+                        minWidth: 40
+                    }
                     Button {
                         text: qsTr("Testdrive") + Retranslate.onLanguageChanged
-                        preferredWidth: 320
+                        preferredWidth: ods.isPassport()? 480 : 320
                         visible: ods.isEmbedded() == false && odsdata.hasTestDrive()
                         onClicked: {
                             //
@@ -146,20 +154,28 @@ Page {
                     }
                 }
                 Container {
+                    visible: ods.isPassport()
+                    minHeight: 40
+                }
+                Container {
                     layout: StackLayout {
                         orientation: LayoutOrientation.LeftToRight
                     }
                     Button {
                         text: qsTr("Preferences") + Retranslate.onLanguageChanged
-                        preferredWidth: 320
+                        preferredWidth: ods.isPassport()? 480 : 320
                         visible: ods.isEmbedded() == false
                         onClicked: {
                             rootNavigationPane.openPreferences()
                         }
                     }
+                    Container {
+                        visible: ods.isPassport()
+                        minWidth: 40
+                    }
                     Button {
                         text: qsTr("Register") + Retranslate.onLanguageChanged
-                        preferredWidth: 320
+                        preferredWidth: ods.isPassport()? 480 : 320
                         visible: ods.isEmbedded() == false && odsdata.hasRegisterUrl()
                         onClicked: {
                             //
