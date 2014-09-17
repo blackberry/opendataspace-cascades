@@ -32,13 +32,13 @@ Container {
     Container {
         layout: DockLayout {
         }
-        minHeight: 137
+        minHeight: rootNode.ListItem.view.isPassport ? 206 :  137
         horizontalAlignment: HorizontalAlignment.Left
         attachedObjects: [
             // application supports changing the Orientation
             OrientationHandler {
                 onOrientationAboutToChange: {
-                    if(ods.isPassport()){
+                    if(rootNode.ListItem.view.isPassport ){
                         return 
                     }
                     if (orientation == UIOrientation.Landscape) {
@@ -55,8 +55,8 @@ Container {
             id: itemBackground
             visible: backgroundVisible && !(rootNode.ListItem.selected || rootNode.ListItem.active)
             imageSource: "asset:///images/white_photo.png"
-            preferredWidth: 768
-            preferredHeight: 137
+            preferredWidth: rootNode.ListItem.view.isPassport ? 1440 : 768
+            preferredHeight: rootNode.ListItem.view.isPassport ? 206 :  137
         }
         // The Item content an image and a text.
         Container {
@@ -67,9 +67,9 @@ Container {
             horizontalAlignment: HorizontalAlignment.Fill
             verticalAlignment: VerticalAlignment.Center
             ImageView {
-                preferredWidth: 114
-                preferredHeight: 114
-                minWidth: 114
+                preferredWidth: rootNode.ListItem.view.isPassport ? 171 :  114
+                preferredHeight: rootNode.ListItem.view.isPassport ? 171 :  114
+                minWidth: rootNode.ListItem.view.isPassport ? 171 :  114
                 // datamodel knows the icon source
                 imageSource: ListItemData.displayIcon
                 layoutProperties: StackLayoutProperties {
@@ -112,6 +112,9 @@ Container {
     }
     onCreationCompleted: {
         // set to Landscape if aklready in landscape while staring up
+        if(rootNode.ListItem.view.isPassport ){
+            return 
+        }
         if (OrientationSupport.orientation == UIOrientation.Landscape) {
             itemBackground.preferredWidth = 1280
         }
