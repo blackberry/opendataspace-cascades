@@ -4,32 +4,32 @@
 <context>
     <name>AddFolderPage</name>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="47"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="50"/>
         <source>Create now</source>
         <translation>Jetzt anlegen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="70"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="73"/>
         <source>Create Folder</source>
         <translation>Ordner anlegen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="119"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="122"/>
         <source>Room ID</source>
         <translation>Raum ID</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="123"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="126"/>
         <source>Subroom ID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="183"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="186"/>
         <source>File Type wrong, cannot create Folder</source>
         <translation>Falscher Dateityp, kann Ordner nicht anlegen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/AddFolderPage.qml" line="107"/>
+        <location filename="../assets/rooms/AddFolderPage.qml" line="110"/>
         <source>Name of the new Folder</source>
         <translation>Name des neuen Ordners</translation>
     </message>
@@ -37,57 +37,57 @@
 <context>
     <name>AddUserPage</name>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="51"/>
+        <location filename="../assets/users/AddUserPage.qml" line="54"/>
         <source>Create User now</source>
         <translation>Jetzt User anlegen</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="69"/>
+        <location filename="../assets/users/AddUserPage.qml" line="72"/>
         <source>User Data</source>
         <translation>Benutzer Daten</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="138"/>
+        <location filename="../assets/users/AddUserPage.qml" line="141"/>
         <source>User email address</source>
         <translation>Benutzer email Adresse</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="158"/>
+        <location filename="../assets/users/AddUserPage.qml" line="161"/>
         <source>Salutation</source>
         <translation>Anrede</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="170"/>
+        <location filename="../assets/users/AddUserPage.qml" line="173"/>
         <source>Mr.</source>
         <translation>Herr</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="173"/>
+        <location filename="../assets/users/AddUserPage.qml" line="176"/>
         <source>Mrs.</source>
         <translation>Frau</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="183"/>
+        <location filename="../assets/users/AddUserPage.qml" line="186"/>
         <source>Title</source>
         <translation>Titel</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="192"/>
+        <location filename="../assets/users/AddUserPage.qml" line="195"/>
         <source>First Name</source>
         <translation>Vorname</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="203"/>
+        <location filename="../assets/users/AddUserPage.qml" line="206"/>
         <source>Last Name</source>
         <translation>Nachname</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="224"/>
+        <location filename="../assets/users/AddUserPage.qml" line="227"/>
         <source>Administrator</source>
         <translation>Administrator</translation>
     </message>
     <message>
-        <location filename="../assets/users/AddUserPage.qml" line="276"/>
+        <location filename="../assets/users/AddUserPage.qml" line="279"/>
         <source>DataRoom</source>
         <translation>Datenraum</translation>
     </message>
@@ -95,37 +95,37 @@
 <context>
     <name>ApplicationUI</name>
     <message>
-        <location filename="../src/applicationui.cpp" line="319"/>
+        <location filename="../src/applicationui.cpp" line="330"/>
         <source>Help</source>
         <translation>Hilfe</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="322"/>
+        <location filename="../src/applicationui.cpp" line="333"/>
         <source>Feedback</source>
         <translation>Kommentar</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="325"/>
+        <location filename="../src/applicationui.cpp" line="336"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="328"/>
+        <location filename="../src/applicationui.cpp" line="339"/>
         <source>FAQ</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="331"/>
+        <location filename="../src/applicationui.cpp" line="342"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="585"/>
+        <location filename="../src/applicationui.cpp" line="596"/>
         <source>Please download %1 Application from BlackBerry World for FREE: </source>
         <translation>Bitte Anwendung %1 von der BlackBerry World downloaden (FREE):</translation>
     </message>
     <message>
-        <location filename="../src/applicationui.cpp" line="793"/>
+        <location filename="../src/applicationui.cpp" line="804"/>
         <source>:)</source>
         <translation></translation>
     </message>
@@ -156,12 +156,12 @@
         <translation>Vorschau</translation>
     </message>
     <message>
-        <location filename="../assets/documents/BooksPreviewPage.qml" line="51"/>
+        <location filename="../assets/documents/BooksPreviewPage.qml" line="54"/>
         <source>Read in...</source>
         <translation>Lesen in...</translation>
     </message>
     <message>
-        <location filename="../assets/documents/BooksPreviewPage.qml" line="62"/>
+        <location filename="../assets/documents/BooksPreviewPage.qml" line="65"/>
         <source>Upload</source>
         <translation></translation>
     </message>
@@ -177,42 +177,42 @@
 <context>
     <name>CreateLinkPage</name>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="43"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="46"/>
         <source>Share now via BBM</source>
         <translation>Teilen über BBM</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="67"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="70"/>
         <source>Create Link</source>
         <translation>Link Erzeugen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="98"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="101"/>
         <source>LinkCode (last part of URL)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="114"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="117"/>
         <source>should Link expire ?</source>
         <translation>Link mit Verfallsdatum ?</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="123"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="126"/>
         <source>Link expires on</source>
         <translation>Link verfällt am</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="110"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="113"/>
         <source>get notified via email</source>
         <translation>Bestätigung durch email bekommen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="129"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="132"/>
         <source>File ID</source>
         <translation>Datei ID</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateLinkPage.qml" line="105"/>
+        <location filename="../assets/rooms/CreateLinkPage.qml" line="108"/>
         <source>optional: Password</source>
         <translation></translation>
     </message>
@@ -220,42 +220,42 @@
 <context>
     <name>CreateMailLinkPage</name>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="43"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="46"/>
         <source>Share now via Mail</source>
         <translation>Über email teilen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="67"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="70"/>
         <source>Create Link and Mail</source>
         <translation>Link und email erzeugen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="98"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="101"/>
         <source>LinkCode (last part of URL)</source>
         <translation>LinkCode (letzter Teil der URL)</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="105"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="108"/>
         <source>optional: Password</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="110"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="113"/>
         <source>get notified via email</source>
         <translation>Bestätigung durch email bekommen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="114"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="117"/>
         <source>should Link expire ?</source>
         <translation>Link mit Verfallsdatum ?</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="123"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="126"/>
         <source>Link expires on</source>
         <translation>Link verfällt am</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="129"/>
+        <location filename="../assets/rooms/CreateMailLinkPage.qml" line="132"/>
         <source>File ID</source>
         <translation>Datei ID</translation>
     </message>
@@ -296,12 +296,12 @@
         <translation>Datenraum</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="325"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="326"/>
         <source>ODS Data Room</source>
         <translation>ODS Datenraum</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="327"/>
+        <location filename="../assets/rooms/DataSpaceNavPane.qml" line="328"/>
         <source>Info</source>
         <translation>Information</translation>
     </message>
@@ -310,12 +310,12 @@
     <name>DictaphonePage</name>
     <message>
         <location filename="../assets/media/DictaphonePage.qml" line="172"/>
-        <location filename="../assets/media/DictaphonePage.qml" line="288"/>
+        <location filename="../assets/media/DictaphonePage.qml" line="291"/>
         <source>Save Voice as...</source>
         <translation>Sprachaufnahme speichern als...</translation>
     </message>
     <message>
-        <location filename="../assets/media/DictaphonePage.qml" line="260"/>
+        <location filename="../assets/media/DictaphonePage.qml" line="263"/>
         <source>Select Recorded Audio</source>
         <translation>Sprachnotiz wählen</translation>
     </message>
@@ -328,12 +328,12 @@
         <translation>Vorschau</translation>
     </message>
     <message>
-        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="51"/>
+        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="54"/>
         <source>View in...</source>
         <translation>Ansehen in...</translation>
     </message>
     <message>
-        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="62"/>
+        <location filename="../assets/documents/DocumentsPreviewPage.qml" line="65"/>
         <source>Upload</source>
         <translation>Hochladen</translation>
     </message>
@@ -349,32 +349,32 @@
 <context>
     <name>FeedbackSheet</name>
     <message>
-        <location filename="../assets/appmenu/FeedbackSheet.qml" line="42"/>
+        <location filename="../assets/appmenu/FeedbackSheet.qml" line="45"/>
         <source>Feedback</source>
         <translation>Kommentare</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/FeedbackSheet.qml" line="45"/>
+        <location filename="../assets/appmenu/FeedbackSheet.qml" line="48"/>
         <source>Cancel</source>
         <translation>Abbruch</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/FeedbackSheet.qml" line="51"/>
+        <location filename="../assets/appmenu/FeedbackSheet.qml" line="54"/>
         <source>Send</source>
         <translation>Senden</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/FeedbackSheet.qml" line="68"/>
+        <location filename="../assets/appmenu/FeedbackSheet.qml" line="71"/>
         <source>from</source>
         <translation>Von</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/FeedbackSheet.qml" line="76"/>
+        <location filename="../assets/appmenu/FeedbackSheet.qml" line="79"/>
         <source>to</source>
         <translation>An</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/FeedbackSheet.qml" line="93"/>
+        <location filename="../assets/appmenu/FeedbackSheet.qml" line="96"/>
         <source>Your Feedback</source>
         <translation>Ihr Kommentar</translation>
     </message>
@@ -400,107 +400,107 @@
         <translation>Datei Info</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="41"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="44"/>
         <source>work-in-progress please stay tuned</source>
         <translation>in Arbeit </translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="52"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="55"/>
         <source>View</source>
         <translation>Betrachten</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="64"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="67"/>
         <source>Share Link (BBM)</source>
         <translation>Link teilen (BBM)</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="72"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="75"/>
         <source>Share Link (Mail)</source>
         <translation>Link teilen (email)</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="84"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="87"/>
         <source>I want to chat about: </source>
         <translation>Ich möchte mich unterhalten über:</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="98"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="101"/>
         <source>Rename</source>
         <translation>Umbenennen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="89"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="92"/>
         <source>Download</source>
         <translation>Download</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="125"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="128"/>
         <source>Delete</source>
         <translation>Löschen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="158"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="161"/>
         <source>Size</source>
         <translation>Größe</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="162"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="165"/>
         <source>Created by user</source>
         <translation>Angelegt von</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="166"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="169"/>
         <source>Classification</source>
         <translation>Klassifizierung</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="170"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="173"/>
         <source>Date created</source>
         <translation>Angelegt am</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="174"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="177"/>
         <source>Expiration date</source>
         <translation>Verfallsdatum</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="178"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="181"/>
         <source>Comment</source>
         <translation>Kommentar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="196"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="199"/>
         <source>Room ID</source>
         <translation>Raum ID</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="200"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="203"/>
         <source>Room Name</source>
         <translation>Raum Name</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="204"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="207"/>
         <source>In Folder</source>
         <translation>In Ordner</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="188"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="191"/>
         <source>File ID</source>
         <translation>Datei ID</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="80"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="83"/>
         <source>Start Chat (BBM)</source>
         <translation>Chat starten (BBM)</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="192"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="195"/>
         <source>Node</source>
         <translation>Knoten</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="215"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="218"/>
         <source>File not found</source>
         <translation>Datei nicht gefunden</translation>
     </message>
@@ -513,7 +513,7 @@
         <translation>Ordner Info</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="40"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="43"/>
         <source>work-in-progress please stay tuned</source>
         <translation>in Arbeit </translation>
     </message>
@@ -526,57 +526,57 @@
         <translation type="obsolete">Verschieben</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="50"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="53"/>
         <source>Rename</source>
         <translation>Umbenennen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="80"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="83"/>
         <source>Delete</source>
         <translation>Löschen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="126"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="129"/>
         <source>contains</source>
         <translation>enthält</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="136"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="139"/>
         <source>Node</source>
         <translation>Knoten</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="140"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="143"/>
         <source>Room ID</source>
         <translation>Raum ID</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="144"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="147"/>
         <source>Room Name</source>
         <translation>Raum name</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="148"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="151"/>
         <source>Subroom ID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="152"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="155"/>
         <source>Subroom Name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="156"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="159"/>
         <source>In Folder</source>
         <translation>In Ordner</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="167"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="170"/>
         <source>Folder not found</source>
         <translation>Ordner nicht gefunden</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FolderInfoPage.qml" line="172"/>
+        <location filename="../assets/rooms/FolderInfoPage.qml" line="175"/>
         <source> Files / Folders</source>
         <translation> Dateien / Ordner</translation>
     </message>
@@ -589,17 +589,17 @@
         <translation>Vorschau</translation>
     </message>
     <message>
-        <location filename="../assets/documents/HtmlPreviewPage.qml" line="51"/>
+        <location filename="../assets/documents/HtmlPreviewPage.qml" line="54"/>
         <source>View in...</source>
         <translation>Ansehen in...</translation>
     </message>
     <message>
-        <location filename="../assets/documents/HtmlPreviewPage.qml" line="62"/>
+        <location filename="../assets/documents/HtmlPreviewPage.qml" line="65"/>
         <source>Upload</source>
         <translation>Hochladen</translation>
     </message>
     <message>
-        <location filename="../assets/documents/HtmlPreviewPage.qml" line="128"/>
+        <location filename="../assets/documents/HtmlPreviewPage.qml" line="131"/>
         <source>content preview</source>
         <translation>Inhaltsvorschau</translation>
     </message>
@@ -612,12 +612,12 @@
         <translation>Vorschau</translation>
     </message>
     <message>
-        <location filename="../assets/media/ImagePreviewPage.qml" line="53"/>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="56"/>
         <source>View in...</source>
         <translation>Ansehen in...</translation>
     </message>
     <message>
-        <location filename="../assets/media/ImagePreviewPage.qml" line="63"/>
+        <location filename="../assets/media/ImagePreviewPage.qml" line="66"/>
         <source>Upload</source>
         <translation>Upload</translation>
     </message>
@@ -688,22 +688,22 @@
         <translation>ODS Login erfolgreich für </translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/LoginSheet.qml" line="158"/>
+        <location filename="../assets/appmenu/LoginSheet.qml" line="177"/>
         <source>Register</source>
         <translation>Registrieren</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/LoginSheet.qml" line="124"/>
+        <location filename="../assets/appmenu/LoginSheet.qml" line="131"/>
         <source>Login</source>
         <translation>Anmelden</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/LoginSheet.qml" line="135"/>
+        <location filename="../assets/appmenu/LoginSheet.qml" line="146"/>
         <source>Testdrive</source>
         <translation>Testfahrt</translation>
     </message>
     <message>
-        <location filename="../assets/appmenu/LoginSheet.qml" line="150"/>
+        <location filename="../assets/appmenu/LoginSheet.qml" line="165"/>
         <source>Preferences</source>
         <translation>Einstellungen</translation>
     </message>
@@ -1264,12 +1264,12 @@ Jetzt Sync starten ?</translation>
         <translation>Vorschau</translation>
     </message>
     <message>
-        <location filename="../assets/documents/PdfPreviewPage.qml" line="51"/>
+        <location filename="../assets/documents/PdfPreviewPage.qml" line="54"/>
         <source>View in...</source>
         <translation>Ansehen in...</translation>
     </message>
     <message>
-        <location filename="../assets/documents/PdfPreviewPage.qml" line="61"/>
+        <location filename="../assets/documents/PdfPreviewPage.qml" line="64"/>
         <source>Upload</source>
         <translation>Upload</translation>
     </message>
@@ -1375,22 +1375,22 @@ Jetzt Sync starten ?</translation>
         <translation>Datenraum Info</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomInfoPage.qml" line="64"/>
+        <location filename="../assets/rooms/RoomInfoPage.qml" line="67"/>
         <source>Room ID</source>
         <translation>Raum ID</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomInfoPage.qml" line="68"/>
+        <location filename="../assets/rooms/RoomInfoPage.qml" line="71"/>
         <source>contains</source>
         <translation>enthält </translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomInfoPage.qml" line="80"/>
+        <location filename="../assets/rooms/RoomInfoPage.qml" line="83"/>
         <source>Room not found</source>
         <translation>Raum nicht gefunden</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomInfoPage.qml" line="86"/>
+        <location filename="../assets/rooms/RoomInfoPage.qml" line="89"/>
         <source> Files / Folders</source>
         <translation> Dateien / Ordner </translation>
     </message>
@@ -1486,19 +1486,19 @@ Jetzt Sync starten ?</translation>
         <translation>Datenraum</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="310"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="311"/>
         <source>ODS Subroom</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="320"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="349"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="420"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="321"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="350"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="421"/>
         <source>Info</source>
         <translation>Information</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="339"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="340"/>
         <source>ODS Folder</source>
         <translation>ODS Ordner</translation>
     </message>
@@ -1511,39 +1511,39 @@ Jetzt Sync starten ?</translation>
         <translation type="obsolete">Verschieben</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="356"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="452"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="357"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="453"/>
         <source>Rename</source>
         <translation>Umbenennen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="379"/>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="475"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="380"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="476"/>
         <source>Delete</source>
         <translation>Löschen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="401"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="402"/>
         <source>ODS File</source>
         <translation>ODS Datei</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="411"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="412"/>
         <source>View</source>
         <translation>Betrachten</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="431"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="432"/>
         <source>Share Link (BBM)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="438"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="439"/>
         <source>Share Link (Mail)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/RoomsListPage.qml" line="445"/>
+        <location filename="../assets/rooms/RoomsListPage.qml" line="446"/>
         <source>Download</source>
         <translation>Download</translation>
     </message>
@@ -1556,32 +1556,32 @@ Jetzt Sync starten ?</translation>
         <translation></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/SubRoomInfoPage.qml" line="64"/>
+        <location filename="../assets/rooms/SubRoomInfoPage.qml" line="67"/>
         <source>Subroom ID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../assets/rooms/SubRoomInfoPage.qml" line="68"/>
+        <location filename="../assets/rooms/SubRoomInfoPage.qml" line="71"/>
         <source>contains</source>
         <translation>enthält </translation>
     </message>
     <message>
-        <location filename="../assets/rooms/SubRoomInfoPage.qml" line="78"/>
+        <location filename="../assets/rooms/SubRoomInfoPage.qml" line="81"/>
         <source>Room ID</source>
         <translation>Raum ID</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/SubRoomInfoPage.qml" line="82"/>
+        <location filename="../assets/rooms/SubRoomInfoPage.qml" line="85"/>
         <source>Room Name</source>
         <translation>Raum Name</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/SubRoomInfoPage.qml" line="93"/>
+        <location filename="../assets/rooms/SubRoomInfoPage.qml" line="96"/>
         <source>Subroom not found</source>
         <translation>Subroom nicht gefunden</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/SubRoomInfoPage.qml" line="99"/>
+        <location filename="../assets/rooms/SubRoomInfoPage.qml" line="102"/>
         <source> Files / Folders</source>
         <translation> Dateien / Ordner </translation>
     </message>
@@ -1602,12 +1602,12 @@ Jetzt Sync starten ?</translation>
         <translation>Vorschau</translation>
     </message>
     <message>
-        <location filename="../assets/documents/UnknownPreviewPage.qml" line="51"/>
+        <location filename="../assets/documents/UnknownPreviewPage.qml" line="54"/>
         <source>View in...</source>
         <translation>Ansehen in...</translation>
     </message>
     <message>
-        <location filename="../assets/documents/UnknownPreviewPage.qml" line="62"/>
+        <location filename="../assets/documents/UnknownPreviewPage.qml" line="65"/>
         <source>Upload</source>
         <translation>Upload</translation>
     </message>
@@ -1625,7 +1625,7 @@ Jetzt Sync starten ?</translation>
         <translation>Warteschlange zum Upload in ODS Cloud</translation>
     </message>
     <message>
-        <location filename="../assets/UploadCard.qml" line="236"/>
+        <location filename="../assets/UploadCard.qml" line="239"/>
         <source>SORRY: no FilePath - you cannot upload the file</source>
         <translation>Sorry: kein Dateipfad - kann Datei nicht hochladen</translation>
     </message>
@@ -1719,12 +1719,12 @@ Jetzt Sync starten ?</translation>
         <translation>Vorschau</translation>
     </message>
     <message>
-        <location filename="../assets/media/VideoPreviewPage.qml" line="51"/>
+        <location filename="../assets/media/VideoPreviewPage.qml" line="54"/>
         <source>Watch in...</source>
         <translation>Ansehen mit...</translation>
     </message>
     <message>
-        <location filename="../assets/media/VideoPreviewPage.qml" line="61"/>
+        <location filename="../assets/media/VideoPreviewPage.qml" line="64"/>
         <source>Upload</source>
         <translation>Upload</translation>
     </message>
@@ -1737,22 +1737,22 @@ Jetzt Sync starten ?</translation>
         <translation>Vorschau</translation>
     </message>
     <message>
-        <location filename="../assets/media/VoicePreviewPage.qml" line="61"/>
+        <location filename="../assets/media/VoicePreviewPage.qml" line="64"/>
         <source>Hear in...</source>
         <translation>Anhören in...</translation>
     </message>
     <message>
-        <location filename="../assets/media/VoicePreviewPage.qml" line="71"/>
+        <location filename="../assets/media/VoicePreviewPage.qml" line="74"/>
         <source>Upload</source>
         <translation>Hochladen</translation>
     </message>
     <message>
-        <location filename="../assets/media/VoicePreviewPage.qml" line="84"/>
+        <location filename="../assets/media/VoicePreviewPage.qml" line="87"/>
         <source>Play Audio</source>
         <translation>Audio abspielen</translation>
     </message>
     <message>
-        <location filename="../assets/media/VoicePreviewPage.qml" line="93"/>
+        <location filename="../assets/media/VoicePreviewPage.qml" line="96"/>
         <source>Stop Audio</source>
         <translation>Audio beenden</translation>
     </message>
@@ -1825,12 +1825,12 @@ Jetzt Sync starten ?</translation>
         <translation>Vorschau</translation>
     </message>
     <message>
-        <location filename="../assets/documents/ZipPreviewPage.qml" line="51"/>
+        <location filename="../assets/documents/ZipPreviewPage.qml" line="54"/>
         <source>Inspect in...</source>
         <translation>Untersuchen mit...</translation>
     </message>
     <message>
-        <location filename="../assets/documents/ZipPreviewPage.qml" line="62"/>
+        <location filename="../assets/documents/ZipPreviewPage.qml" line="65"/>
         <source>Upload</source>
         <translation>Upload</translation>
     </message>
