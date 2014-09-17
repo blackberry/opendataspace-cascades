@@ -308,6 +308,7 @@ NavigationPane {
                 id: dataspaceList
                 objectName: "dataspaceList"
                 property variant selectionColor: rootNavigationPane.selectionColor
+                property bool isPassport: ods.isPassport()
                 dataModel: roomGroupDataModel
                 // its the root, only single selction makes sense
                 // TODO selectionMode: SelectionMode.Single

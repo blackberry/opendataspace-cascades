@@ -272,6 +272,7 @@ Page {
             id: roomsList
             objectName: "roomsList"
             property variant selectionColor: rootNavigationPane.selectionColor
+            property bool isPassport: ods.isPassport()
             dataModel: fileGroupDataModel
             // its the root, only single selction makes sense
             //selectionMode: SelectionMode.Single
