@@ -45,7 +45,7 @@ Page {
             id: createNowAction
             title: qsTr("Share now via BBM") + Retranslate.onLanguageChanged
             // dynamically changed if enabled onRedBarVisible
-            enabled: ! folderName.redBarVisible
+            //enabled: ! folderName.redBarVisible
             imageSource: "asset:///images/upload81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             // only triggered if enabled if foldertext was entered
