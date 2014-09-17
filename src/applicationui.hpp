@@ -35,6 +35,9 @@ public:
 	//
 	Q_INVOKABLE
 	bool isSquare();
+
+	Q_INVOKABLE
+    bool isPassport();
 	//
 	/*
 	 * Refreshes the UI with the specified locale

@@ -279,6 +279,17 @@ bool ApplicationUI::isSquare() {
 	}
 }
 
+bool ApplicationUI::isPassport()
+{
+    bb::device::DisplayInfo display;
+    if (display.pixelSize().width() == 1440 && display.pixelSize().height() == 1440) {
+        qDebug() << "PASSPORT";
+        return true;
+    } else {
+        return false;
+    }
+}
+
 bool ApplicationUI::isWorkPerimeter()
 {
     return QDir::currentPath().contains("enterprise");
