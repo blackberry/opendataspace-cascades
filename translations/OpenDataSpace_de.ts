@@ -410,97 +410,97 @@
         <translation>Betrachten</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="61"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="64"/>
         <source>Share Link (BBM)</source>
         <translation>Link teilen (BBM)</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="69"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="72"/>
         <source>Share Link (Mail)</source>
         <translation>Link teilen (email)</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="81"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="84"/>
         <source>I want to chat about: </source>
         <translation>Ich möchte mich unterhalten über:</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="94"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="98"/>
         <source>Rename</source>
         <translation>Umbenennen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="86"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="89"/>
         <source>Download</source>
         <translation>Download</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="121"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="125"/>
         <source>Delete</source>
         <translation>Löschen</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="154"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="158"/>
         <source>Size</source>
         <translation>Größe</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="158"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="162"/>
         <source>Created by user</source>
         <translation>Angelegt von</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="162"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="166"/>
         <source>Classification</source>
         <translation>Klassifizierung</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="166"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="170"/>
         <source>Date created</source>
         <translation>Angelegt am</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="170"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="174"/>
         <source>Expiration date</source>
         <translation>Verfallsdatum</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="174"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="178"/>
         <source>Comment</source>
         <translation>Kommentar</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="192"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="196"/>
         <source>Room ID</source>
         <translation>Raum ID</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="196"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="200"/>
         <source>Room Name</source>
         <translation>Raum Name</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="200"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="204"/>
         <source>In Folder</source>
         <translation>In Ordner</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="184"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="188"/>
         <source>File ID</source>
         <translation>Datei ID</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="77"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="80"/>
         <source>Start Chat (BBM)</source>
         <translation>Chat starten (BBM)</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="188"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="192"/>
         <source>Node</source>
         <translation>Knoten</translation>
     </message>
     <message>
-        <location filename="../assets/rooms/FileInfoPage.qml" line="211"/>
+        <location filename="../assets/rooms/FileInfoPage.qml" line="215"/>
         <source>File not found</source>
         <translation>Datei nicht gefunden</translation>
     </message>
