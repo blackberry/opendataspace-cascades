@@ -53,6 +53,9 @@ Page {
             imageSource: "asset:///images/ics/2-action-search81.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
+                if(downloadPath.length == 0){
+                    refreshData(cloudFileId.valueText)
+                }
                 // Calls a function that show's the image in a View from InvocationFramework
                 ods.showInView(downloadPath);
             }
@@ -88,6 +91,7 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 odsdata.downloadFile(cloudFileId.valueText, headerId.valueText, fileInfoPage.downloadSize)
+                viewAction.enabled = true
             }
         },
         ActionItem {
