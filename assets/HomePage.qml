@@ -36,11 +36,14 @@ Page {
         // the BackgroundImage
         ImageTracker {
             id: backgroundPortrait
-            imageSource: "asset:///images/login-ods-768x1280-o.png"
+            imageSource: ods.isPassport()? "asset:///images/login-ods-1440x1440-o.png" :  "asset:///images/login-ods-768x1280-o.png"
         },
         // application supports changing the Orientation
         OrientationHandler {
             onOrientationAboutToChange: {
+                if(ods.isPassport()){
+                    return 
+                }
                 if (orientation == UIOrientation.Landscape) {
                     backgroundImage.image = backgroundLandscape.image
                 } else {

@@ -40,6 +40,9 @@ Page {
         // application supports changing the Orientation
         OrientationHandler {
             onOrientationAboutToChange: {
+                if(ods.isPassport()){
+                    return 
+                }
                 console.debug("DocumentsPreview: onOrientationAboutToChange")
                 previewPage.reLayout(orientation);
             }

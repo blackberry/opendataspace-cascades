@@ -162,6 +162,9 @@ NavigationPane {
         // application supports changing the Orientation
         OrientationHandler {
             onOrientationAboutToChange: {
+                if(ods.isPassport()){
+                    return 
+                }
                 if (orientation == UIOrientation.Landscape) {
                     backgroundImage.image = backgroundLandscape.image
                 } else {

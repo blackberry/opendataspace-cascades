@@ -38,6 +38,9 @@ Container {
             // application supports changing the Orientation
             OrientationHandler {
                 onOrientationAboutToChange: {
+                    if(ods.isPassport()){
+                        return 
+                    }
                     if (orientation == UIOrientation.Landscape) {
                         itemBackground.preferredWidth = 1280
                     } else {

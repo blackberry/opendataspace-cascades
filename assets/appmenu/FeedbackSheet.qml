@@ -27,6 +27,9 @@ Page {
         // application supports changing the Orientation
         OrientationHandler {
             onOrientationAboutToChange: {
+                if(ods.isPassport()){
+                    return 
+                }
                 if (orientation == UIOrientation.Landscape) {
                     feedback.preferredHeight = 430
                 } else {
@@ -95,6 +98,10 @@ Page {
     }
     onCreationCompleted: {
         // initial setup for orientation
+        if(ods.isPassport()){
+            feedback.preferredHeight = 1100
+            return 
+        }
         if (ods.isSquare() || OrientationSupport.orientation == UIOrientation.Landscape) {
             feedback.preferredHeight = 430
         } else {

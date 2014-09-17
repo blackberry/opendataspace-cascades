@@ -39,7 +39,7 @@ Page {
         // the BackgroundImage
         ImageTracker {
             id: backgroundPortrait
-            imageSource: "asset:///images/login-ods-768x1280.png"
+            imageSource: ods.isPassport()? "asset:///images/login-ods-1440x1440.png" : "asset:///images/login-ods-768x1280.png"
         },
         SystemCredentialsPrompt {
             id: credentialsPrompt
@@ -89,6 +89,9 @@ Page {
         // recalculate positions
         OrientationHandler {
             onOrientationAboutToChange: {
+                if(ods.isPassport()){
+                    return 
+                }
                 reLayout(orientation)
             }
         }

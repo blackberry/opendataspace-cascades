@@ -28,6 +28,9 @@ Page {
         // recalculate positions
         OrientationHandler {
             onOrientationAboutToChange: {
+                if(ods.isPassport()){
+                    return 
+                }
                 if (orientation == UIOrientation.Landscape) {
                     relayout(true)
                 } else {

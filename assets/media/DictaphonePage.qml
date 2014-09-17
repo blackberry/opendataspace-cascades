@@ -211,6 +211,9 @@ Page {
         OrientationHandler {
             // onOrientationChanged: { should be this from docs, but onOrientationAboutToChange runs smoother
             onOrientationAboutToChange: {
+                if(ods.isPassport()){
+                    return 
+                }
                 console.debug("onOrientationAboutToChange")
                 dictaphonePage.reLayout(orientation);
             }

@@ -34,6 +34,9 @@ Page {
         // recalculate positions
         OrientationHandler {
             onOrientationAboutToChange: {
+                if(ods.isPassport()){
+                    return 
+                }
                 // in Landscape we extend the left and right padding
                 // then it'sd easier to scrill with the thumbs without tapping into a field
                 if (orientation == UIOrientation.Landscape) {
