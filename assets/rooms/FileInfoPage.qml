@@ -279,7 +279,7 @@ Page {
     }
     onCreationCompleted: {
         // initialize positioning
-        if (OrientationSupport.orientation == UIOrientation.Landscape) {
+        if (!ods.isPassport() && OrientationSupport.orientation == UIOrientation.Landscape) {
             relayout(true)
         }
     }

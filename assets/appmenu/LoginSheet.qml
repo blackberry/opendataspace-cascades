@@ -202,6 +202,11 @@ Page {
     // watch the Orientation and reposition the controls
     onCreationCompleted: {
         // initialize positioning
-        reLayout(OrientationSupport.orientation)
+        if(ods.isPassport()){
+            reLayout(UIOrientation.Portrait)
+        } else {
+            reLayout(OrientationSupport.orientation)
+        }
+        
     }
 }

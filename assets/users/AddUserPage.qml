@@ -326,7 +326,7 @@ Page {
     }
     onCreationCompleted: {
         // initialize positioning
-        if (OrientationSupport.orientation == UIOrientation.Landscape) {
+        if (!ods.isPassport() && OrientationSupport.orientation == UIOrientation.Landscape) {
             userDataContainer.rightPadding = 140
             userDataContainer.leftPadding = 140
         } else {

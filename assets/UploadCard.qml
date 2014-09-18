@@ -204,6 +204,11 @@ NavigationPane {
             // support all orientations
             //OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
             // test current Orientation and set the Background Image
+            if(ods.isPassport()){
+                backgroundImage.image = backgroundPortrait.image
+                console.debug("CardPage created on Passport");
+                return 
+            }
             if (ods.isSquare() || OrientationSupport.orientation == UIOrientation.Landscape) {
                 backgroundImage.image = backgroundLandscape.image
             } else {
