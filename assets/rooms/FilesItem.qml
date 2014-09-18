@@ -106,18 +106,23 @@ Container {
                     }
                 }
             }
-            ImageView {
-                id: itemDownloadedImage
-                preferredWidth: 81
-                preferredHeight: 81
-                minWidth: 81
-                visible: ListItemData.downloaded
-                // datamodel knows the icon source
-                imageSource: "asset:///images/download81.png"
-                layoutProperties: StackLayoutProperties {
-                }
-                verticalAlignment: VerticalAlignment.Center
+            
+        }
+        ImageView {
+            id: itemDownloadedImage
+            preferredWidth: rootNode.ListItem.view.isPassport? 92 : 61
+            preferredHeight: rootNode.ListItem.view.isPassport? 92 : 61
+            minWidth: rootNode.ListItem.view.isPassport? 92 : 61
+            visible: ListItemData.downloaded
+            // datamodel knows the icon source
+            imageSource: "asset:///images/download81.png"
+            layoutProperties: StackLayoutProperties {
             }
+            verticalAlignment: VerticalAlignment.Center
+            horizontalAlignment: HorizontalAlignment.Right
+            translationX: rootNode.ListItem.view.isPassport?  -64 : -16
+            translationY: 24
+            
         }
         Container {
             verticalAlignment: VerticalAlignment.Bottom
