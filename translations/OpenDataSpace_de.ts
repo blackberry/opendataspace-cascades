@@ -1625,7 +1625,7 @@ Jetzt Sync starten ?</translation>
         <translation>Warteschlange zum Upload in ODS Cloud</translation>
     </message>
     <message>
-        <location filename="../assets/UploadCard.qml" line="239"/>
+        <location filename="../assets/UploadCard.qml" line="244"/>
         <source>SORRY: no FilePath - you cannot upload the file</source>
         <translation>Sorry: kein Dateipfad - kann Datei nicht hochladen</translation>
     </message>

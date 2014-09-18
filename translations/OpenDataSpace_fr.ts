@@ -1624,7 +1624,7 @@ Start Sync now ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/UploadCard.qml" line="239"/>
+        <location filename="../assets/UploadCard.qml" line="244"/>
         <source>SORRY: no FilePath - you cannot upload the file</source>
         <translation type="unfinished"></translation>
     </message>
