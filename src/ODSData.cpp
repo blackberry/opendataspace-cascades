@@ -2541,7 +2541,11 @@ bool ODSData::processResponse(QByteArray &replyBytes, int usecase) {
 
 void ODSData::reportError(QString& errorText) {
 
-	mProgressDialog->setBody(errorText);
+    if(errorText == "Response without Body-part"){
+        mProgressDialog->setBody("Falsche Logindaten");
+    } else {
+        mProgressDialog->setBody(errorText);
+    }
 	mProgressDialog->setState(SystemUiProgressState::Error);
 	mProgressDialog->cancel();
 // progress canceled
